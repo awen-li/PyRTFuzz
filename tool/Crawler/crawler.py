@@ -10,16 +10,48 @@ import pandas as pd
 from time import sleep
 
 
+class Issue():
+    def __init__(self, ID, Status, Title, Label, Url, PatchUrl):
+        self.ID = ID
+        self.Title    = Title
+        self.Status   = Status  
+        self.Label    = Label
+        self.Url      = Url
+        self.PatchUrl = PatchUrl
+        
+    def AppendWrite (self, FileName):
+        IsNew = False
+        if not os.path.exists (FileName):
+            IsNew = True
+        
+        with open(FileName, 'a+', encoding='utf-8') as CsvFile:
+            writer = csv.writer(CsvFile)      
+            if IsNew == True:
+                Header = ['ID', 'Status', 'Title', 'Label', 'Url', 'PatchUrl']
+                writer.writerow(Header)
+            Row = [self.ID, self.Status, self.Title, self.Label, self.Url, self.PatchUrl]
+            writer.writerow(Row)
+
+
 class Crawler():
     def __init__(self, Url, Dir='.'):
-    	
+
         self.IssueFile= Dir + "/Issues.csv"
         self.CmmtFile = Dir + "/Commits.csv"
         
-        self.Username = "wangtong0908"
+        self.Username = "Daybreak2019"
         self.Password = ""
         
         self.Url = Url
+
+        self.IssueMap = {}
+        self.CmmtMap  = {}
+
+
+    def LoadIssues (self):
+        df = pd.read_csv(self.IssueFile)
+        for index, row in df.iterrows():
+            self.IssueMap ['ID'] = True
 
     def HttpCall(self, Url):
         Result = requests.get(Url,
@@ -56,7 +88,43 @@ class Crawler():
         return
 
     def GrabIssues (self):
-        pass
+
+        IssueStates = ['open', 'closed']
+        for status in IssueStates:
+    
+            # trying to get issue lists
+            pageNum = 0
+            while True:
+                Url = self.Url + "/issues?" + "per_page=100&page=" + str(pageNum) + "&state=" + status
+                Result = self.HttpCall (Url)
+                if (len (Result) == 0):
+                    break
+
+                print ("[%d] retrieve issue = %d" %(pageNum, len (Result)))
+                pageNum += 1
+                
+                # iterate the list
+                for issue in Result:
+                    ID = issue['number']
+                    if self.IssueMap.get (ID) != None:
+                        continue
+                    
+                    Label  = ' '
+                    Labels = issue['labels']
+                    if len (Labels) != 0:
+                        Label = Labels[0]['name']
+
+                    if Label.find ('bug') == -1:
+                        continue
+
+                    # get pullrequest
+                    PatchUrl = ' '
+                    if 'pull_request' in issue:
+                        PullReq = issue['pull_request']
+                        PatchUrl = PullReq['patch_url']
+                        
+                    curIssue = Issue(ID, issue['state'], issue['title'], Label, issue['url'], PatchUrl)
+                    curIssue.AppendWrite (self.IssueFile)
 
     def GrabCommits (self):
         pass
@@ -65,7 +133,8 @@ class Crawler():
         pass
 
 def main(argv):
-    Function = 'issue'
+    Function   = 'issue'
+    DefaultUrl = 'https://api.github.com/repos/python/cpython'
 
     try:
         opts, args = getopt.getopt(argv,"f:",["Function="])
@@ -77,13 +146,13 @@ def main(argv):
             Function = arg;
     
     if (Function == "issue"):
-        Cl = Crawler()
+        Cl = Crawler(DefaultUrl)
         Cl.GrabIssues ()
     elif (Function == "commit"):
-        Cl = Crawler()
+        Cl = Crawler(DefaultUrl)
         Cl.GrabCommits ()
-    elif
-        Cl = Crawler()
+    else:
+        Cl = Crawler(DefaultUrl)
         
         Cl.GrabIssues ()
         Cl.GrabCommits ()
