@@ -11,11 +11,12 @@ from time import sleep
 
 
 class Issue():
-    def __init__(self, ID, Status, Title, Label, Url, PatchUrl):
+    def __init__(self, ID, Status, Title, Label, SecLabel, Url, PatchUrl):
         self.ID = ID
         self.Title    = Title
         self.Status   = Status  
         self.Label    = Label
+        self.SecLabel = SecLabel
         self.Url      = Url
         self.PatchUrl = PatchUrl
         
@@ -27,9 +28,9 @@ class Issue():
         with open(FileName, 'a+', encoding='utf-8') as CsvFile:
             writer = csv.writer(CsvFile)      
             if IsNew == True:
-                Header = ['ID', 'Status', 'Title', 'Label', 'Url', 'PatchUrl']
+                Header = ['ID', 'Status', 'Title', 'Label', 'Security-Label', 'Url', 'PatchUrl']
                 writer.writerow(Header)
-            Row = [self.ID, self.Status, self.Title, self.Label, self.Url, self.PatchUrl]
+            Row = [self.ID, self.Status, self.Title, self.Label, self.SecLabel, self.Url, self.PatchUrl]
             writer.writerow(Row)
 
 
@@ -87,6 +88,20 @@ class Crawler():
             writer.writerow(Row)
         return
 
+    def GetSecLabel (self, Label, Title, Description):
+        
+        Keywords = ['leak', 'slow', 'infinite', 'oom', 'out-of-memory', 'assertion', 'assert', 'overflow', 'deadlock', 'permission', 'crash', 'performance']
+
+        Context = (Title + Description).lower()
+        for key in Keywords:
+            if Context.find (key) != -1:
+                return key
+
+        if Label.find ('security') != -1:
+            return 'security'
+        
+        return ' '
+
     def GrabIssues (self):
 
         IssueStates = ['open', 'closed']
@@ -108,14 +123,26 @@ class Crawler():
                     ID = issue['number']
                     if self.IssueMap.get (ID) != None:
                         continue
+                    self.IssueMap[ID] = True
                     
-                    Label  = ' '
+                    Label  = ''
+                    Description = ''
                     Labels = issue['labels']
-                    if len (Labels) != 0:
-                        Label = Labels[0]['name']
+                    for i in range (0, len (Labels)):
+                        if Label != '':
+                            Label += ','
 
-                    if Label.find ('bug') == -1:
+                        CurLabel = Labels[i]
+                        Label += CurLabel['name']
+
+                        if CurLabel['description'] != None:
+                            Description += CurLabel['description']
+
+                    if Label.find ('bug') == -1 and Label.find ('security') == -1:
                         continue
+
+                    Title = issue['title']
+                    SecLabel = self.GetSecLabel (Label, Title, Description)
 
                     # get pullrequest
                     PatchUrl = ' '
@@ -123,7 +150,7 @@ class Crawler():
                         PullReq = issue['pull_request']
                         PatchUrl = PullReq['patch_url']
                         
-                    curIssue = Issue(ID, issue['state'], issue['title'], Label, issue['url'], PatchUrl)
+                    curIssue = Issue(ID, issue['state'], Title, Label, SecLabel, issue['url'], PatchUrl)
                     curIssue.AppendWrite (self.IssueFile)
 
     def GrabCommits (self):
