@@ -90,7 +90,8 @@ class Crawler():
 
     def GetSecLabel (self, Label, Title, Description):
         
-        Keywords = ['leak', 'slow', 'infinite', 'oom', 'out-of-memory', 'assertion', 'assert', 'overflow', 'deadlock', 'permission', 'crash', 'performance']
+        Keywords = ['leak', 'slow', 'infinite', 'oom', 'out-of-memory', 'assertion', 'assert', 'overflow', 'deadlock', 'permission', 'crash', 'performance',
+                    'hang', 'segmentation', 'endless', 'unhandled exception']
 
         Context = (Title + Description).lower()
         for key in Keywords:
