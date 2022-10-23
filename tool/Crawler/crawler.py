@@ -11,12 +11,13 @@ from time import sleep
 
 
 class Issue():
-    def __init__(self, ID, Status, Title, Label, SecLabel, Url, PatchUrl):
+    def __init__(self, ID, Status, Title, Label, SecLabel, Module, Url, PatchUrl):
         self.ID = ID
         self.Title    = Title
         self.Status   = Status  
         self.Label    = Label
         self.SecLabel = SecLabel
+        self.Module   = Module
         self.Url      = Url
         self.PatchUrl = PatchUrl
         
@@ -28,9 +29,9 @@ class Issue():
         with open(FileName, 'a+', encoding='utf-8') as CsvFile:
             writer = csv.writer(CsvFile)      
             if IsNew == True:
-                Header = ['ID', 'Status', 'Title', 'Label', 'Security-Label', 'Url', 'PatchUrl']
+                Header = ['ID', 'Status', 'Title', 'Label', 'Security-Label', 'Module', 'Url', 'PatchUrl']
                 writer.writerow(Header)
-            Row = [self.ID, self.Status, self.Title, self.Label, self.SecLabel, self.Url, self.PatchUrl]
+            Row = [self.ID, self.Status, self.Title, self.Label, self.SecLabel, self.Module, self.Url, self.PatchUrl]
             writer.writerow(Row)
 
 
@@ -145,13 +146,17 @@ class Crawler():
                     Title = issue['title']
                     SecLabel = self.GetSecLabel (Label, Title, Description)
 
+                    Module = ' '
+                    if Label.find ('interpreter') != -1:
+                        Module = 'cpython'
+                    
                     # get pullrequest
                     PatchUrl = ' '
                     if 'pull_request' in issue:
                         PullReq = issue['pull_request']
                         PatchUrl = PullReq['patch_url']
                         
-                    curIssue = Issue(ID, issue['state'], Title, Label, SecLabel, issue['url'], PatchUrl)
+                    curIssue = Issue(ID, issue['state'], Title, Label, SecLabel, Module, issue['url'], PatchUrl)
                     curIssue.AppendWrite (self.IssueFile)
 
     def GrabCommits (self):
