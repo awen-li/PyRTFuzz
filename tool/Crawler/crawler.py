@@ -53,7 +53,7 @@ class Crawler():
     def LoadIssues (self):
         df = pd.read_csv(self.IssueFile)
         for index, row in df.iterrows():
-            self.IssueMap ['ID'] = True
+            self.IssueMap [row['ID']] = True
 
     def HttpCall(self, Url):
         Result = requests.get(Url,
@@ -106,6 +106,9 @@ class Crawler():
 
     def GrabIssues (self):
 
+        TotalIssues = 0
+        BugIssues   = 0
+        
         IssueStates = ['open', 'closed']
         for status in IssueStates:
     
@@ -122,6 +125,8 @@ class Crawler():
                 
                 # iterate the list
                 for issue in Result:
+                    TotalIssues += 1
+                    
                     ID = issue['number']
                     if self.IssueMap.get (ID) != None:
                         continue
@@ -143,6 +148,8 @@ class Crawler():
                     if Label.find ('bug') == -1 and Label.find ('security') == -1:
                         continue
 
+                    BugIssues += 1
+                    
                     Title = issue['title']
                     SecLabel = self.GetSecLabel (Label, Title, Description)
 
@@ -159,36 +166,55 @@ class Crawler():
                     curIssue = Issue(ID, issue['state'], Title, Label, SecLabel, Module, issue['url'], PatchUrl)
                     curIssue.AppendWrite (self.IssueFile)
 
-    def GrabCommits (self):
-        pass
+        print ("Total Issues: %d, Bug-Issues: %d" %(TotalIssues, BugIssues))
 
-    def GrabMain (self):
-        pass
+    def UpdateIssues (self, IssueFile):
+        AllIssues = []
+        
+        df = pd.read_csv(IssueFile)
+        for index, row in df.iterrows():
+            ID       = row['ID']
+            Status   = row['Status']
+            Title    = row['Title']
+            Label    = row['Label']
+            SecLabel = row['Security-Label']
+            Module   = row['Module']
+            Url      = row['Url']
+            PatchUrl = row['PatchUrl']
+
+            if Label.find ('interpreter') != -1:
+                Module = 'cpython'
+            else:
+                Module = ' '
+            
+            curIssue = Issue(ID, Status, Title, Label, SecLabel, Module, Url, PatchUrl)
+            curIssue.AppendWrite ('new-' + IssueFile)
+
 
 def main(argv):
     Function   = 'issue'
+    IssueFile  = 'Issues.csv'
     DefaultUrl = 'https://api.github.com/repos/python/cpython'
 
     try:
-        opts, args = getopt.getopt(argv,"f:",["Function="])
+        opts, args = getopt.getopt(argv,"f:i:",["Function="])
     except getopt.GetoptError:
-        print ("crawler.py -f <issue/commit>")
+        print ("crawler.py -f <issue/commit> -i <issuefile>")
         sys.exit(2)
     for opt, arg in opts:
         if opt in ("-f", "--function"):
             Function = arg;
+        elif opt in ("-i", "--issuefile"):
+            IssueFile = arg;
     
     if (Function == "issue"):
         Cl = Crawler(DefaultUrl)
         Cl.GrabIssues ()
-    elif (Function == "commit"):
+    elif (Function == "update"):
         Cl = Crawler(DefaultUrl)
-        Cl.GrabCommits ()
+        Cl.UpdateIssues (IssueFile)
     else:
-        Cl = Crawler(DefaultUrl)
-        
-        Cl.GrabIssues ()
-        Cl.GrabCommits ()
+        pass
 
 if __name__ == "__main__":
     main(sys.argv[1:])
