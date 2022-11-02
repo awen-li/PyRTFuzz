@@ -21,4 +21,7 @@ make -j4
 
 
 # 2. build atheris
+cd $BASE_DIR/atheris
+python setup.py install
+
 
