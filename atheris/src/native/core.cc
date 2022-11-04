@@ -43,7 +43,7 @@ extern "C" {
 int LLVMFuzzerRunDriver(int* argc, char*** argv,
                         int (*UserCb)(const uint8_t* Data, size_t Size));
 
-int LLVMFuzzerRunDriverPyPst(int* argc, char*** argv,
+int LLVMFuzzerRunDriverPyCore(int* argc, char*** argv,
                         int (*UserCb)(const uint8_t* Data, size_t Size));
 
 size_t LLVMFuzzerMutate(uint8_t* Data, size_t Size, size_t MaxSize);
@@ -59,8 +59,8 @@ std::string GetLibFuzzerSymbolsLocation() {
     return "<LLVMFuzzerRunDriver -> Not a shared object>";
   }
 
-  if (!dladdr((void*)&LLVMFuzzerRunDriverPyPst, &dl_info)) {
-    return "<LLVMFuzzerRunDriverPyPst -> Not a shared object>";
+  if (!dladdr((void*)&LLVMFuzzerRunDriverPyCore, &dl_info)) {
+    return "<LLVMFuzzerRunDriverPyCore -> Not a shared object>";
   }
   
   return (dl_info.dli_fname);
@@ -97,9 +97,9 @@ void Init() {
         "you built Atheris.");
   }
 
-  if (!&LLVMFuzzerRunDriverPyPst) {
+  if (!&LLVMFuzzerRunDriverPyCore) {
     throw std::runtime_error(
-        "LLVMFuzzerRunDriverPyPst symbol not found. This means "
+        "LLVMFuzzerRunDriverPyCore symbol not found. This means "
         "you had an old version of Clang installed when "
         "you built Atheris.");
   }
@@ -196,7 +196,7 @@ int TestOneInput(const uint8_t* data, size_t size) {
 
 NO_SANITIZE
 void start_fuzzing(const std::vector<std::string>& args,
-                   const std::function<void(py::bytes data)>& test_one_input) {
+                          const std::function<void(py::bytes data)>& test_one_input) {
   test_one_input_global = test_one_input;
 
   bool registered_alarm = SetupPythonSigaction();
@@ -243,6 +243,57 @@ void start_fuzzing(const std::vector<std::string>& args,
   GracefulExit(LLVMFuzzerRunDriver(&args_size, &args_ptr, &TestOneInput));
 }
 
+
+NO_SANITIZE
+void start_fuzzing_core(const std::vector<std::string>& args,
+                                 const std::function<void(py::bytes data)>& test_one_input) {
+  test_one_input_global = test_one_input;
+
+  bool registered_alarm = SetupPythonSigaction();
+
+  std::vector<char*> arg_array;
+  arg_array.reserve(args.size() + 1);
+  for (const std::string& arg : args) {
+    // We care about certain arguments. Other arguments are passed through to
+    // libFuzzer.
+    if (arg.substr(0, 9) == "-timeout=") {
+      if (!registered_alarm) {
+        std::cerr << "WARNING: -timeout ignored." << std::endl;
+      }
+      SetTimeout(std::stoi(arg.substr(9, std::string::npos)));
+    }
+    if (arg.substr(0, 14) == "-atheris_runs=") {
+      // We want to handle 'runs' ourselves so we can exit gracefully rather
+      // than letting libFuzzer call _exit().
+      // This is a different flag from -runs because -runs sometimes has other
+      // unrelated behavior. For example, if you set -runs when running with
+      // a fixed set of inputs, *each* input will be run that many times. The
+      // -atheris_runs= flag always performs precisely the specified number of
+      // runs.
+      runs = std::stoll(arg.substr(14, std::string::npos));
+      continue;
+    }
+    if (arg.substr(0, 14) == "-max_counters=") {
+      int max = std::stoll(arg.substr(14, std::string::npos));
+      SetMaxCounters(max);
+      continue;
+    }
+
+    arg_array.push_back(const_cast<char*>(arg.c_str()));
+  }
+
+  arg_array.push_back(nullptr);
+  char** args_ptr = &arg_array[0];
+  int args_size = arg_array.size() - 1;
+
+  fuzzer_start_time = std::chrono::duration_cast<std::chrono::seconds>(
+                          std::chrono::system_clock::now().time_since_epoch())
+                          .count();
+
+  GracefulExit(LLVMFuzzerRunDriverPyCore(&args_size, &args_ptr, &TestOneInput));
+}
+
+
 NO_SANITIZE
 py::bytes Mutate(py::bytes data, size_t max_size) {
   std::string d = data;
@@ -262,6 +313,8 @@ PYBIND11_MODULE(ATHERIS_MODULE_NAME, m) {
   Init();
 
   m.def("start_fuzzing", &start_fuzzing);
+  m.def("start_fuzzing_core", &start_fuzzing_core);
+  
   m.def("_trace_branch", &_trace_branch);
   m.def("_reserve_counter", ReserveCounter);
   m.def("_reserve_counters", ReserveCounters);

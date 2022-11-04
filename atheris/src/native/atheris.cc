@@ -152,7 +152,7 @@ bool libfuzzer_is_loaded() {
   if (!self_lib) return false;
 
   void* sym = dlsym(self_lib, "LLVMFuzzerRunDriver");
-  void* symPy = dlsym(self_lib, "LLVMFuzzerRunDriverPyPst");
+  void* symPy = dlsym(self_lib, "LLVMFuzzerRunDriverPyCore");
 
   dlclose(self_lib);
   return (sym && symPy);
@@ -249,9 +249,63 @@ void Fuzz() {
   core.attr("start_fuzzing")(args_global, test_one_input_global);
 }
 
+
+NO_SANITIZE
+void FuzzPyCore() {
+  if (!setup_called) {
+    std::cerr << Colorize(STDERR_FILENO,
+                          "Setup() must be called before Fuzz() can be called.")
+              << std::endl;
+    exit(1);
+  }
+
+  py::module atheris =
+      (py::module)py::module::import("sys").attr("modules")["atheris"];
+
+  std::string atheris_prefix = "atheris.";
+
+  if (use_custom_mutator) {
+    py::module custom_mutator =
+        LoadExternalFunctionsModule(atheris_prefix + "custom_mutator");
+    custom_mutator.attr("_set_custom_mutator")(custom_mutator_global);
+  }
+  if (use_custom_crossover) {
+    py::module custom_crossover =
+        LoadExternalFunctionsModule(atheris_prefix + "custom_crossover");
+    custom_crossover.attr("_set_custom_crossover")(custom_crossover_global);
+  }
+  py::module core = LoadCoreModule();
+
+  // Reserve all pending counters
+  int res_ctrs = core.attr("_reserve_counters")(pending_counters).cast<int>();
+  if (res_ctrs != 0) {
+    std::cerr << Colorize(
+                     STDERR_FILENO,
+                     "Atheris internal error: expected 0 counters previously "
+                     "reserved when reserving preregistered batch; got " +
+                         std::to_string(res_ctrs))
+              << std::endl;
+    _exit(1);
+  }
+  pending_counters = 0;
+
+  atheris.attr("Mutate") = core.attr("Mutate");
+  atheris.attr("_trace_cmp") = core.attr("_trace_cmp");
+  atheris.attr("_trace_regex_match") = core.attr("_trace_regex_match");
+  atheris.attr("_trace_branch") = core.attr("_trace_branch");
+  atheris.attr("_reserve_counter") = core.attr("_reserve_counter");
+
+  core.attr("start_fuzzing_core")(args_global, test_one_input_global);
+}
+
+
 PYBIND11_MODULE(native, m) {
+
   m.def("Setup", &Setup);
+  
   m.def("Fuzz", &Fuzz);
+  m.def("FuzzPyCore", &FuzzPyCore);
+  
   m.def("Mutate", &Mutate);
   m.def("_trace_branch", &prefuzz_trace_branch);
   m.def("_trace_cmp", &prefuzz_trace_cmp, py::return_value_policy::move);

@@ -855,7 +855,7 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
 }
 
 
-int FuzzerDriverPyPst(int *argc, char ***argv, UserCallback Callback) {
+int FuzzerDriverPyCore(int *argc, char ***argv, UserCallback Callback) {
   using namespace fuzzer;
   assert(argc && argv && "Argument pointers cannot be nullptr");
   std::string Argv0((*argv)[0]);
