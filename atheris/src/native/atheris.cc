@@ -152,9 +152,10 @@ bool libfuzzer_is_loaded() {
   if (!self_lib) return false;
 
   void* sym = dlsym(self_lib, "LLVMFuzzerRunDriver");
+  void* symPy = dlsym(self_lib, "LLVMFuzzerRunDriverPyPst");
 
   dlclose(self_lib);
-  return sym;
+  return (sym && symPy);
 }
 
 NO_SANITIZE

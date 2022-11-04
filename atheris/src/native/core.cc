@@ -42,6 +42,10 @@ using UserCb = int (*)(const uint8_t* Data, size_t Size);
 extern "C" {
 int LLVMFuzzerRunDriver(int* argc, char*** argv,
                         int (*UserCb)(const uint8_t* Data, size_t Size));
+
+int LLVMFuzzerRunDriverPyPst(int* argc, char*** argv,
+                        int (*UserCb)(const uint8_t* Data, size_t Size));
+
 size_t LLVMFuzzerMutate(uint8_t* Data, size_t Size, size_t MaxSize);
 void __sanitizer_cov_8bit_counters_init(uint8_t* start, uint8_t* stop);
 void __sanitizer_cov_pcs_init(uint8_t* pcs_beg, uint8_t* pcs_end);
@@ -50,9 +54,15 @@ void __sanitizer_cov_pcs_init(uint8_t* pcs_beg, uint8_t* pcs_end);
 NO_SANITIZE
 std::string GetLibFuzzerSymbolsLocation() {
   Dl_info dl_info;
+  
   if (!dladdr((void*)&LLVMFuzzerRunDriver, &dl_info)) {
-    return "<Not a shared object>";
+    return "<LLVMFuzzerRunDriver -> Not a shared object>";
   }
+
+  if (!dladdr((void*)&LLVMFuzzerRunDriverPyPst, &dl_info)) {
+    return "<LLVMFuzzerRunDriverPyPst -> Not a shared object>";
+  }
+  
   return (dl_info.dli_fname);
 }
 
@@ -83,6 +93,13 @@ void Init() {
   if (!&LLVMFuzzerRunDriver) {
     throw std::runtime_error(
         "LLVMFuzzerRunDriver symbol not found. This means "
+        "you had an old version of Clang installed when "
+        "you built Atheris.");
+  }
+
+  if (!&LLVMFuzzerRunDriverPyPst) {
+    throw std::runtime_error(
+        "LLVMFuzzerRunDriverPyPst symbol not found. This means "
         "you had an old version of Clang installed when "
         "you built Atheris.");
   }
