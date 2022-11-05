@@ -203,6 +203,8 @@ int ReservePendingCounter() { return ++pending_counters; }
 
 NO_SANITIZE
 void Fuzz() {
+  printf ("@@@ Fuzz \r\n");
+  
   if (!setup_called) {
     std::cerr << Colorize(STDERR_FILENO,
                           "Setup() must be called before Fuzz() can be called.")
@@ -252,6 +254,7 @@ void Fuzz() {
 
 NO_SANITIZE
 void FuzzPyCore() {
+  printf ("@@@ FuzzPyCore \r\n");
   if (!setup_called) {
     std::cerr << Colorize(STDERR_FILENO,
                           "Setup() must be called before Fuzz() can be called.")
