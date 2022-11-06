@@ -23,7 +23,7 @@ def InstrumentLibs ():
         import quopri
 
 
-def FuzzNext ():
+def PyMutation ():
     pass
     
 

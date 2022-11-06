@@ -44,6 +44,14 @@ std::function<void(py::bytes data)>& test_one_input_global =
       std::cerr << "You must call Setup() before Fuzz()." << std::endl;
       _exit(-1);
     });
+
+std::function<void(std::string script)>& test_one_script_global =
+    *new std::function<void(std::string script)>([](std::string script) -> void {
+      std::cerr << "You must call SetupCore() before Fuzz()." << std::endl;
+      _exit(-1);
+    });
+    
+
 std::function<py::bytes(py::bytes data, size_t max_size, unsigned int seed)>
     custom_mutator_global;
 bool use_custom_mutator = false;
@@ -144,6 +152,29 @@ std::vector<std::string> Setup(
   }
   return ret;
 }
+
+
+std::vector<std::string> SetupCore(
+    const std::vector<std::string>& args,
+    const std::function<void(std::string script_name)>& test_one_script,
+    py::kwargs kwargs)
+{
+    std::vector<std::string> ret = Setup (args, NULL, kwargs);
+    test_one_script_global = test_one_script;
+
+    return ret;
+}
+
+
+NO_SANITIZE
+void SetLv2Driver(    const std::function<void(py::bytes data)>& test_one_input)
+{
+    test_one_input_global = test_one_input;
+
+    return;
+}
+
+
 
 // Checks if libfuzzer is already present.
 NO_SANITIZE
@@ -253,8 +284,8 @@ void Fuzz() {
 
 
 NO_SANITIZE
-void FuzzPyCore(int time_budget) {
-  printf ("@@@ FuzzPyCore \r\n");
+void FuzzLv1(int time_budget) {
+  printf ("@@@ FuzzLv1 \r\n");
   if (!setup_called) {
     std::cerr << Colorize(STDERR_FILENO,
                           "Setup() must be called before Fuzz() can be called.")
@@ -298,7 +329,29 @@ void FuzzPyCore(int time_budget) {
   atheris.attr("_trace_branch") = core.attr("_trace_branch");
   atheris.attr("_reserve_counter") = core.attr("_reserve_counter");
 
-  core.attr("start_fuzzing_core")(args_global, test_one_input_global);
+  core.attr("start_fuzzing_core")(args_global, test_one_script_global);
+}
+
+
+NO_SANITIZE
+void FuzzLv2() {
+    py::module core = LoadCoreModule();
+
+    // Reserve all pending counters
+    int res_ctrs = core.attr("_reserve_counters")(pending_counters).cast<int>();
+    if (res_ctrs != 0) {
+    std::cerr << Colorize(STDERR_FILENO,
+                          "Atheris internal error: expected 0 counters previously "
+                          "reserved when reserving preregistered batch; got " +
+                          std::to_string(res_ctrs))
+              << std::endl;
+        _exit(1);
+    }
+    pending_counters = 0;
+  
+    core.attr("start_fuzzing")(args_global, test_one_input_global);
+
+    return;
 }
 
 
@@ -307,7 +360,10 @@ PYBIND11_MODULE(native, m) {
   m.def("Setup", &Setup);
   
   m.def("Fuzz", &Fuzz);
-  m.def("FuzzPyCore", &FuzzPyCore);
+  
+  m.def("FuzzLv1", &FuzzLv1);
+  m.def("FuzzLv2", &FuzzLv2);
+  m.def("SetLv2Driver", &SetLv2Driver);
   
   m.def("Mutate", &Mutate);
   m.def("_trace_branch", &prefuzz_trace_branch);

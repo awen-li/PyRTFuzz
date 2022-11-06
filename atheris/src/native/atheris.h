@@ -39,8 +39,15 @@ std::vector<std::string> Setup(
     const std::function<void(py::bytes data)>& test_one_input,
     py::kwargs kwargs);
 
+std::vector<std::string> SetupCore(
+    const std::vector<std::string>& args,
+    const std::function<void(std::string script_name)>& test_one_script,
+    py::kwargs kwargs);
+
+
 void Fuzz();
-void FuzzPyCore(int time_budget);
+void FuzzLv1(int time_budget);
+void FuzzLv2();
 
 py::handle _trace_cmp(py::handle left, py::handle right, int opid, uint64_t idx,
                       bool left_is_const);

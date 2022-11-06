@@ -34,7 +34,8 @@ from .native import _trace_regex_match  # type: ignore[import]
 from .native import ALL_REMAINING  # type: ignore[import]
 
 from .native import Fuzz  # type: ignore[import]
-from .native import FuzzPyCore  # type: ignore[import]
+from .native import FuzzLv1  # type: ignore[import]
+from .native import FuzzLv2  # type: ignore[import]
 
 from .native import FuzzedDataProvider  # type: ignore[import]
 from .native import Mutate  # type: ignore[import]
