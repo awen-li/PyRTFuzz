@@ -22,6 +22,11 @@ make -j4
 
 # 2. build atheris
 cd $BASE_DIR/atheris
+if [ -d "build" ]; then
+	rm -rf build
+fi
 python setup.py install
 
 
+# 3. install fuzzwrapper
+cd fuzzwrapper && ./build.sh && cd -

@@ -253,7 +253,7 @@ void Fuzz() {
 
 
 NO_SANITIZE
-void FuzzPyCore() {
+void FuzzPyCore(int time_budget) {
   printf ("@@@ FuzzPyCore \r\n");
   if (!setup_called) {
     std::cerr << Colorize(STDERR_FILENO,

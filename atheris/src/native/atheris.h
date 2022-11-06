@@ -40,7 +40,7 @@ std::vector<std::string> Setup(
     py::kwargs kwargs);
 
 void Fuzz();
-void FuzzPyCore();
+void FuzzPyCore(int time_budget);
 
 py::handle _trace_cmp(py::handle left, py::handle right, int opid, uint64_t idx,
                       bool left_is_const);

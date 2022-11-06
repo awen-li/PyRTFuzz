@@ -58,7 +58,7 @@ class AtherisMetaPathFinder(abc.MetaPathFinder):
   """Finds and loads package metapaths with Atheris loaders."""
 
   def __init__(self, include_packages: Set[str], exclude_modules: Set[str],
-               enable_loader_override: bool, trace_dataflow: bool, key=None):
+               enable_loader_override: bool, trace_dataflow: bool):
     """Finds and loads package metapaths with Atheris loaders.
 
     Args:
@@ -74,7 +74,6 @@ class AtherisMetaPathFinder(abc.MetaPathFinder):
     self._exclude_modules = exclude_modules
     self._trace_dataflow = trace_dataflow
     self._enable_loader_override = enable_loader_override
-    self.key = key
 
   def find_spec(
       self,
@@ -124,11 +123,6 @@ class AtherisMetaPathFinder(abc.MetaPathFinder):
         if isinstance(spec.loader, machinery.ExtensionFileLoader):
           # An extension, coverage doesn't come from Python
           return None
-
-        # add key validation
-        if self.key != None and not self.key in fullname:
-            sys.stderr.write(f"WARNING: skip the package {fullname}\n")
-            return None
 
         sys.stderr.write(f"INFO: Instrumenting {fullname}\n")
 
@@ -275,12 +269,11 @@ class HookManager:
   """A Context manager that manages hooks."""
 
   def __init__(self, include_packages: Set[str], exclude_modules: Set[str],
-               enable_loader_override: bool, trace_dataflow: bool, key=None):
+               enable_loader_override: bool, trace_dataflow: bool):
     self._include_packages = include_packages
     self._exclude_modules = exclude_modules
     self._enable_loader_override = enable_loader_override
     self._trace_dataflow = trace_dataflow
-    self.key = key
 
   def __enter__(self) -> "HookManager":
     i = 0
@@ -299,7 +292,7 @@ class HookManager:
         i,
         AtherisMetaPathFinder(self._include_packages, self._exclude_modules,
                               self._enable_loader_override,
-                              self._trace_dataflow, self.key))
+                              self._trace_dataflow))
 
     return self
 
@@ -313,8 +306,7 @@ class HookManager:
 
 def instrument_imports(include: Optional[Sequence[str]] = None,
                        exclude: Optional[Sequence[str]] = None,
-                       enable_loader_override: bool = True,
-                       key = None) -> HookManager:
+                       enable_loader_override: bool = True) -> HookManager:
   """Returns a context manager that will instrument modules as imported.
 
   Args:
@@ -356,5 +348,4 @@ def instrument_imports(include: Optional[Sequence[str]] = None,
       include_packages,
       set(exclude),
       enable_loader_override,
-      trace_dataflow=True,
-      key=key)
+      trace_dataflow=True)

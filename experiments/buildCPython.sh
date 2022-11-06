@@ -16,5 +16,5 @@ if [ ! -d "cpython" ]; then
 fi
 
 cd $BASE_DIR/cpython
-make 
+make clean && make
 #make install
