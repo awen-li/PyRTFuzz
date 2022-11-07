@@ -457,6 +457,25 @@ void Fuzzer::PrintPulseAndReportSlowInput(const uint8_t *Data, size_t Size) {
   }
 }
 
+void Fuzzer::PrintPulseAndReportSlowInput(const char *Script) {
+    auto TimeOfUnit = duration_cast<seconds>(UnitStopTime - UnitStartTime).count();
+    if (!(TotalNumberOfRuns & (TotalNumberOfRuns - 1)) && secondsSinceProcessStartUp() >= 2)
+        PrintStats("pulse ");
+    if (TimeOfUnit > TimeOfLongestUnitInSeconds * 1.1 &&
+        TimeOfUnit >= Options.ReportSlowUnits) {
+        
+        TimeOfLongestUnitInSeconds = TimeOfUnit;
+        Printf("Slowest unit: %zd s:\n", TimeOfLongestUnitInSeconds);
+
+        std::string Path = Options.ArtifactPrefix + "slow-unit-" + Script;
+        FILE *Out = fopen(Path.c_str(), "wb");
+        if (!Out) return;
+        fwrite(Script, strlen(Script), 1, Out);
+        fclose(Out);  
+    }
+}
+
+
 static void WriteFeatureSetToFile(const std::string &FeaturesDir,
                                   const std::string &FileName,
                                   const Vector<uint32_t> &FeatureSet) {
@@ -804,25 +823,6 @@ void Fuzzer::ReadAndExecuteSeedCorpora(Vector<SizedFile> &CorporaFiles) {
 }
 
 
-void Fuzzer::MutatePyAndTest()
-{
-    printf ("@@@ MutatePyAndTest \r\n");
-
-    std::vector<std::string> PySet;
-    PySet.push_back ("tc1.py");
-    PySet.push_back ("tc2.py");
-    PySet.push_back ("tc3.py");
-
-    for (auto It = PySet.begin (); It != PySet.end (); It++)
-    {
-        std::string Script = *It;
-        CBCore (Script.c_str());
-    }
-
-    return;
-}
-
-
 void Fuzzer::Loop(Vector<SizedFile> &CorporaFiles) {
   auto FocusFunctionOrAuto = Options.FocusFunction;
   DFT.Init(Options.DataFlowTrace, &FocusFunctionOrAuto, CorporaFiles,
@@ -876,8 +876,118 @@ void Fuzzer::Loop(Vector<SizedFile> &CorporaFiles) {
 }
 
 
+void Fuzzer::ExecuteCBCore(const char *Script)
+{
+    TPC.RecordInitialStack();
+    TotalNumberOfRuns++;
+    assert(InFuzzingThread());
+
+    ScopedEnableMsanInterceptorChecks S;
+    AllocTracer.Start(Options.TraceMalloc);
+    UnitStartTime = system_clock::now();
+    TPC.ResetMaps();
+    
+    RunningUserCallback = true;
+    int Res = CBCore(Script);
+    RunningUserCallback = false;
+    
+    UnitStopTime = system_clock::now();
+    (void)Res;
+    assert(Res == 0);
+    HasMoreMallocsThanFrees = AllocTracer.Stop();
+
+    return;    
+}
+
+
+bool Fuzzer::RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeatures)
+{
+    ExecuteCBCore (Script);
+
+    UniqFeatureSetTmp.clear();
+    size_t FoundUniqFeaturesOfII = 0;
+    size_t NumUpdatesBefore = Corpus.NumFeatureUpdates();
+    TPC.CollectFeatures([&](size_t Feature) {
+        if (Corpus.AddFeature(Feature, 0, Options.Shrink))
+            UniqFeatureSetTmp.push_back(Feature);
+        if (Options.Entropic)
+            Corpus.UpdateFeatureFrequency(II, Feature);
+        if (Options.ReduceInputs && II)
+            if (std::binary_search(II->UniqFeatureSet.begin(), II->UniqFeatureSet.end(), Feature))
+                FoundUniqFeaturesOfII++;
+    });
+
+    
+    if (FoundUniqFeatures)
+        *FoundUniqFeatures = FoundUniqFeaturesOfII;
+    
+    PrintPulseAndReportSlowInput(Script);
+    
+    size_t NumNewFeatures = Corpus.NumFeatureUpdates() - NumUpdatesBefore;
+    if (NumNewFeatures) {
+        TPC.UpdateObservedPCs();
+        //auto NewII = Corpus.AddToCorpus({Data, Data + Size}, NumNewFeatures,
+        //                            MayDeleteFile, TPC.ObservedFocusFunction(),
+        //                            UniqFeatureSetTmp, DFT, II);
+        //WriteFeatureSetToFile(Options.FeaturesDir, Sha1ToString(NewII->Sha1), NewII->UniqFeatureSet);
+        return true;
+    }
+
+
+    return false;
+}
+
+
+void Fuzzer::ExecuteScriptCorpora(Vector<SizedFile> &ScriptFiles) {
+
+    // Load and execute inputs one by one.
+    for (auto &SF : ScriptFiles) {
+        printf("ExecuteScriptCorpora  ---> %s \r\n", SF.File.c_str());
+        
+        ExecuteCBCore (SF.File.c_str());
+        //CheckExitOnSrcPosOrItem();
+    }
+
+    return;  
+}
+
+void Fuzzer::MutatePyAndTest()
+{
+    printf ("@@@ MutatePyAndTest \r\n");
+
+    std::vector<std::string> PySet;
+    PySet.push_back ("tc1.py");
+    PySet.push_back ("tc2.py");
+    PySet.push_back ("tc3.py");
+
+    for (auto It = PySet.begin (); It != PySet.end (); It++)
+    {
+        std::string Script = *It;
+        CBCore (Script.c_str());
+    }
+
+    return;
+}
+
 void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles) {
     printf ("@@@ LoopPyCore \r\n");
+    if (CorporaFiles.empty() && Options.MaxNumberOfRuns) {
+        Printf("ERROR: no interesting inputs were found. "
+               "Is the code instrumented for coverage? Exiting.\n");
+        exit(1);
+    }
+  
+    auto FocusFunctionOrAuto = Options.FocusFunction;
+    DFT.Init(Options.DataFlowTrace, &FocusFunctionOrAuto, CorporaFiles, MD.GetRand());
+    TPC.SetFocusFunction(FocusFunctionOrAuto);
+    
+    ExecuteScriptCorpora(CorporaFiles);
+    DFT.Clear();  // No need for DFT any more.
+    
+    TPC.SetPrintNewPCs(Options.PrintNewCovPcs);
+    TPC.SetPrintNewFuncs(Options.PrintNewCovFuncs);
+    system_clock::time_point LastCorpusReload = system_clock::now();
+    
     return;
 }
 

@@ -87,7 +87,7 @@ std::function<void(py::bytes data)>& test_one_input_global =
 
 std::function<void(std::string script)>& test_one_script_global =
     *new std::function<void(std::string script)>([](std::string script) -> void {
-      std::cerr << "You must call SetupCore() before Fuzz()." << std::endl;
+      std::cerr << "You must call SetupCore() before FuzzLv1()." << std::endl;
       throw std::runtime_error("You must call SetupCore() before FuzzLv1().");
     });
     
@@ -96,7 +96,7 @@ int64_t runs = -1;  // Default from libFuzzer, means infinite
 int64_t completed_runs = 0;
 int64_t fuzzer_start_time;
 
-std::string init_script_name = "";
+std::string init_script_dir = "";
 
 
 NO_SANITIZE
@@ -275,7 +275,7 @@ int TestOneScript(const char* Script) {
   }
 
   try {
-    test_one_input_global(Script);
+    test_one_script_global(Script);
   } catch (py::error_already_set& ex) {
     std::string exception_type = GetExceptionType(ex);
     if (exception_type == "KeyboardInterrupt" ||
@@ -348,8 +348,8 @@ void start_fuzzing_core(const std::vector<std::string>& args,
     }
 
     if (arg.substr(0, 8) == "-script=") {
-      init_script_name = arg.substr(8, std::string::npos);
-      std::cerr << "INFO: Set init script as: "<<init_script_name<< std::endl;
+      init_script_dir = arg.substr(8, std::string::npos);
+      std::cerr << "INFO: Set init script directory as: "<<init_script_dir<< std::endl;
       continue;
     }
 

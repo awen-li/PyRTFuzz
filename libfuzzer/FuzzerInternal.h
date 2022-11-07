@@ -38,12 +38,17 @@ public:
             FuzzingOptions Options);
   ~Fuzzer();
   void Loop(Vector<SizedFile> &CorporaFiles);
-  void LoopPyCore(Vector<SizedFile> &CorporaFiles);
-  
+
   void ReadAndExecuteSeedCorpora(Vector<SizedFile> &CorporaFiles);
   void MinimizeCrashLoop(const Unit &U);
   void RereadOutputCorpus(size_t MaxSize);
 
+  void LoopPyCore(Vector<SizedFile> &CorporaFiles);
+  void ExecuteScriptCorpora(Vector<SizedFile> &ScriptFiles);
+  bool RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeatures);
+  void PrintPulseAndReportSlowInput(const char *Script);
+  void ExecuteCBCore(const char *Script);
+  
   size_t secondsSinceProcessStartUp() {
     return duration_cast<seconds>(system_clock::now() - ProcessStartTime)
         .count();

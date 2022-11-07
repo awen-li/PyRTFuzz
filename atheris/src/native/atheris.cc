@@ -315,7 +315,7 @@ void FuzzLv1(int time_budget) {
   if (res_ctrs != 0) {
     std::cerr << Colorize(
                      STDERR_FILENO,
-                     "Atheris internal error: expected 0 counters previously "
+                     "FuzzLv1: Atheris internal error: expected 0 counters previously "
                      "reserved when reserving preregistered batch; got " +
                          std::to_string(res_ctrs))
               << std::endl;
@@ -335,23 +335,9 @@ void FuzzLv1(int time_budget) {
 
 NO_SANITIZE
 void FuzzLv2() {
-    py::module core = LoadCoreModule();
-
-    // Reserve all pending counters
-    int res_ctrs = core.attr("_reserve_counters")(pending_counters).cast<int>();
-    if (res_ctrs != 0) {
-    std::cerr << Colorize(STDERR_FILENO,
-                          "Atheris internal error: expected 0 counters previously "
-                          "reserved when reserving preregistered batch; got " +
-                          std::to_string(res_ctrs))
-              << std::endl;
-        _exit(1);
-    }
-    pending_counters = 0;
-
     printf ("@@@@ FuzzLv2\r\n");
-    return;
-  
+    
+    py::module core = LoadCoreModule();
     core.attr("start_fuzzing")(args_global, test_one_input_global);
 
     return;

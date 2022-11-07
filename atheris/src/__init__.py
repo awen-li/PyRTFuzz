@@ -25,9 +25,11 @@ from .utils import path
 
 from .pyfuzz_core import InstrumentLibs
 from .pyfuzz_core import PyMutation
-from .native import FuzzLv1  # type: ignore[import]
-from .native import FuzzLv2  # type: ignore[import]
-from .native import SetupCore  # type: ignore[import]
+from .native import FuzzLv1   
+from .native import FuzzLv2   
+from .native import SetupCore   
+from .native import SetLv2Driver 
+
 
 # MyPy cannot find native code.
 from .native import _reserve_counter  # type: ignore[import]
