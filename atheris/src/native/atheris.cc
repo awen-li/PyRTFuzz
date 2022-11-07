@@ -348,6 +348,9 @@ void FuzzLv2() {
         _exit(1);
     }
     pending_counters = 0;
+
+    printf ("@@@@ FuzzLv2\r\n");
+    return;
   
     core.attr("start_fuzzing")(args_global, test_one_input_global);
 
@@ -357,10 +360,10 @@ void FuzzLv2() {
 
 PYBIND11_MODULE(native, m) {
 
-  m.def("Setup", &Setup);
-  
+  m.def("Setup", &Setup);  
   m.def("Fuzz", &Fuzz);
-  
+
+  m.def("SetupCore", &SetupCore);
   m.def("FuzzLv1", &FuzzLv1);
   m.def("FuzzLv2", &FuzzLv2);
   m.def("SetLv2Driver", &SetLv2Driver);

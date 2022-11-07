@@ -44,7 +44,7 @@ int LLVMFuzzerRunDriver(int* argc, char*** argv,
                         int (*UserCb)(const uint8_t* Data, size_t Size));
 
 int LLVMFuzzerRunDriverPyCore(int* argc, char*** argv,
-                        int (*UserCb)(const uint8_t* Data, size_t Size));
+                        int (*UserCb)(const char *Script));
 
 size_t LLVMFuzzerMutate(uint8_t* Data, size_t Size, size_t MaxSize);
 void __sanitizer_cov_8bit_counters_init(uint8_t* start, uint8_t* stop);
@@ -84,6 +84,13 @@ std::function<void(py::bytes data)>& test_one_input_global =
       std::cerr << "You must call Setup() before Fuzz()." << std::endl;
       throw std::runtime_error("You must call Setup() before Fuzz().");
     });
+
+std::function<void(std::string script)>& test_one_script_global =
+    *new std::function<void(std::string script)>([](std::string script) -> void {
+      std::cerr << "You must call SetupCore() before Fuzz()." << std::endl;
+      throw std::runtime_error("You must call SetupCore() before FuzzLv1().");
+    });
+    
 
 int64_t runs = -1;  // Default from libFuzzer, means infinite
 int64_t completed_runs = 0;
@@ -249,9 +256,66 @@ void start_fuzzing(const std::vector<std::string>& args,
 
 
 NO_SANITIZE
+int TestOneScript(const char* Script) {
+
+  printf ("@@@ TestOneScript -> %s \r\n", Script);
+
+  (void)OnFirstTestOneInput();
+  RefreshTimeout();
+  
+  const auto alloc = AllocateCountersAndPcs();
+  
+  if (alloc.counters_start && alloc.counters_end) {
+    __sanitizer_cov_8bit_counters_init(alloc.counters_start,
+                                       alloc.counters_end);
+  }
+  
+  if (alloc.pctable_start && alloc.pctable_end) {
+    __sanitizer_cov_pcs_init(alloc.pctable_start, alloc.pctable_end);
+  }
+
+  try {
+    test_one_input_global(Script);
+  } catch (py::error_already_set& ex) {
+    std::string exception_type = GetExceptionType(ex);
+    if (exception_type == "KeyboardInterrupt" ||
+        exception_type == "exceptions.KeyboardInterrupt") {
+      // Unfortunately, this can occur in the transition between Python and C++,
+      // in which case it's impossible to catch in Python. Exit here instead.
+      std::cout << Colorize(STDOUT_FILENO, "KeyboardInterrupt: stopping.")
+                << std::endl;
+      GracefulExit(130);
+    }
+    std::cout << Colorize(STDOUT_FILENO,
+                          "\n === Uncaught Python exception: ===\n");
+    PrintPythonException(ex, std::cout);
+    GracefulExit(-1, /*prevent_crash_report=*/false);
+  }
+
+  --runs;
+  ++completed_runs;
+  if (!runs) {
+    // We've completed all requested runs.
+    uint64_t elapsed_time =
+        std::chrono::duration_cast<std::chrono::seconds>(
+            std::chrono::system_clock::now().time_since_epoch())
+            .count() -
+        fuzzer_start_time;
+    std::cerr << "Done " << completed_runs << " in " << elapsed_time
+              << " second(s)" << std::endl;
+    GracefulExit(0);
+  }
+
+  return 0;
+}
+
+
+NO_SANITIZE
 void start_fuzzing_core(const std::vector<std::string>& args,
-                                 const std::function<void(py::bytes data)>& test_one_input) {
-  test_one_input_global = test_one_input;
+                                 const std::function<void(std::string script)>& test_one_script) {
+  printf ("@@@ start_fuzzing_core\r\n");
+  
+  test_one_script_global = test_one_script;
 
   bool registered_alarm = SetupPythonSigaction();
 
@@ -284,8 +348,9 @@ void start_fuzzing_core(const std::vector<std::string>& args,
     }
 
     if (arg.substr(0, 8) == "-script=") {
-      init_script_name = arg.substr(9, std::string::npos);
+      init_script_name = arg.substr(8, std::string::npos);
       std::cerr << "INFO: Set init script as: "<<init_script_name<< std::endl;
+      continue;
     }
 
     arg_array.push_back(const_cast<char*>(arg.c_str()));
@@ -299,7 +364,7 @@ void start_fuzzing_core(const std::vector<std::string>& args,
                           std::chrono::system_clock::now().time_since_epoch())
                           .count();
 
-  GracefulExit(LLVMFuzzerRunDriverPyCore(&args_size, &args_ptr, &TestOneInput));
+  GracefulExit(LLVMFuzzerRunDriverPyCore(&args_size, &args_ptr, &TestOneScript));
 }
 
 

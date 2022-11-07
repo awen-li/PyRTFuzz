@@ -135,9 +135,8 @@ void Fuzzer::HandleMalloc(size_t Size) {
   _Exit(Options.OOMExitCode); // Stop right now.
 }
 
-Fuzzer::Fuzzer(UserCallback CB, InputCorpus &Corpus, MutationDispatcher &MD,
-               FuzzingOptions Options)
-    : CB(CB), Corpus(Corpus), MD(MD), Options(Options) {
+void Fuzzer::InitFuzzer ()
+{
   if (EF->__sanitizer_set_death_callback)
     EF->__sanitizer_set_death_callback(StaticDeathCallback);
   assert(!F);
@@ -159,6 +158,18 @@ Fuzzer::Fuzzer(UserCallback CB, InputCorpus &Corpus, MutationDispatcher &MD,
   CurrentUnitSize = 0;
   memset(BaseSha1, 0, sizeof(BaseSha1));
 }
+
+
+Fuzzer::Fuzzer(UserCallback CB, InputCorpus &Corpus, MutationDispatcher &MD, FuzzingOptions Options)
+    : CB(CB), Corpus(Corpus), MD(MD), Options(Options) {
+  InitFuzzer ();
+}
+
+Fuzzer::Fuzzer(UserCallbackCore CBCore, InputCorpus &Corpus, MutationDispatcher &MD, FuzzingOptions Options)
+    : CBCore(CBCore), Corpus(Corpus), MD(MD), Options(Options) {
+  InitFuzzer ();
+}
+
 
 Fuzzer::~Fuzzer() {}
 
@@ -792,6 +803,26 @@ void Fuzzer::ReadAndExecuteSeedCorpora(Vector<SizedFile> &CorporaFiles) {
   }
 }
 
+
+void Fuzzer::MutatePyAndTest()
+{
+    printf ("@@@ MutatePyAndTest \r\n");
+
+    std::vector<std::string> PySet;
+    PySet.push_back ("tc1.py");
+    PySet.push_back ("tc2.py");
+    PySet.push_back ("tc3.py");
+
+    for (auto It = PySet.begin (); It != PySet.end (); It++)
+    {
+        std::string Script = *It;
+        CBCore (Script.c_str());
+    }
+
+    return;
+}
+
+
 void Fuzzer::Loop(Vector<SizedFile> &CorporaFiles) {
   auto FocusFunctionOrAuto = Options.FocusFunction;
   DFT.Init(Options.DataFlowTrace, &FocusFunctionOrAuto, CorporaFiles,
@@ -843,6 +874,14 @@ void Fuzzer::Loop(Vector<SizedFile> &CorporaFiles) {
   PrintStats("DONE  ", "\n");
   MD.PrintRecommendedDictionary();
 }
+
+
+void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles) {
+    printf ("@@@ LoopPyCore \r\n");
+    return;
+}
+
+
 
 void Fuzzer::MinimizeCrashLoop(const Unit &U) {
   if (U.size() <= 1)

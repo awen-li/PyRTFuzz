@@ -26,7 +26,8 @@ if [ -d "build" ]; then
 	rm -rf build
 fi
 python setup.py install
+cd -
 
 
 # 3. install fuzzwrapper
-cd fuzzwrapper && ./build.sh && cd -
+cd $BASE_DIR/fuzzwrapper && ./build.sh && cd -

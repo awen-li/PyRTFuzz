@@ -24,7 +24,10 @@ from .instrument_bytecode import patch_code
 from .utils import path
 
 from .pyfuzz_core import InstrumentLibs
-from .pyfuzz_core import FuzzNext
+from .pyfuzz_core import PyMutation
+from .native import FuzzLv1  # type: ignore[import]
+from .native import FuzzLv2  # type: ignore[import]
+from .native import SetupCore  # type: ignore[import]
 
 # MyPy cannot find native code.
 from .native import _reserve_counter  # type: ignore[import]
@@ -34,9 +37,6 @@ from .native import _trace_regex_match  # type: ignore[import]
 from .native import ALL_REMAINING  # type: ignore[import]
 
 from .native import Fuzz  # type: ignore[import]
-from .native import FuzzLv1  # type: ignore[import]
-from .native import FuzzLv2  # type: ignore[import]
-
 from .native import FuzzedDataProvider  # type: ignore[import]
 from .native import Mutate  # type: ignore[import]
 from .native import Setup  # type: ignore[import]

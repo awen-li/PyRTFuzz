@@ -855,7 +855,9 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
 }
 
 
-int FuzzerDriverPyCore(int *argc, char ***argv, UserCallback Callback) {
+int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
+
+  printf ("@@@ FuzzerDriverPyCore\r\n");
   using namespace fuzzer;
   assert(argc && argv && "Argument pointers cannot be nullptr");
   std::string Argv0((*argv)[0]);
@@ -876,20 +878,6 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallback Callback) {
     PrintHelp();
     return 0;
   }
-
-  if (Flags.close_fd_mask & 2)
-    DupAndCloseStderr();
-  if (Flags.close_fd_mask & 1)
-    CloseStdout();
-
-  if (Flags.jobs > 0 && Flags.workers == 0) {
-    Flags.workers = std::min(NumberOfCpuCores() / 2, Flags.jobs);
-    if (Flags.workers > 1)
-      Printf("Running %u workers\n", Flags.workers);
-  }
-
-  if (Flags.workers > 0 && Flags.jobs > 0)
-    return RunInMultipleProcesses(Args, Flags.workers, Flags.jobs);
 
   FuzzingOptions Options;
   Options.Verbosity = Flags.verbosity;
@@ -931,12 +919,7 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallback Callback) {
     Options.ArtifactPrefix = Flags.artifact_prefix;
   if (Flags.exact_artifact_path)
     Options.ExactArtifactPath = Flags.exact_artifact_path;
-  Vector<Unit> Dictionary;
-  if (Flags.dict)
-    if (!ParseDictionaryFile(FileToString(Flags.dict), &Dictionary))
-      return 1;
-  if (Flags.verbosity > 0 && !Dictionary.empty())
-    Printf("Dictionary: %zd entries\n", Dictionary.size());
+
   bool RunIndividualFiles = AllInputsAreFiles();
   Options.SaveArtifacts =
       !RunIndividualFiles || Flags.minimize_crash_internal_step;
@@ -964,16 +947,7 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallback Callback) {
       (size_t)Flags.entropic_feature_frequency_threshold;
   Options.EntropicNumberOfRarestFeatures =
       (size_t)Flags.entropic_number_of_rarest_features;
-  if (Options.Entropic) {
-    if (!Options.FocusFunction.empty()) {
-      Printf("ERROR: The parameters `--entropic` and `--focus_function` cannot "
-             "be used together.\n");
-      exit(1);
-    }
-    Printf("INFO: Running with entropic power schedule (0x%X, %d).\n",
-           Options.EntropicFeatureFrequencyThreshold,
-           Options.EntropicNumberOfRarestFeatures);
-  }
+
   struct EntropicOptions Entropic;
   Entropic.Enabled = Options.Entropic;
   Entropic.FeatureFrequencyThreshold =
@@ -983,8 +957,7 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallback Callback) {
   unsigned Seed = Flags.seed;
   // Initialize Seed.
   if (Seed == 0)
-    Seed =
-        std::chrono::system_clock::now().time_since_epoch().count() + GetPid();
+    Seed = std::chrono::system_clock::now().time_since_epoch().count() + GetPid();
   if (Flags.verbosity)
     Printf("INFO: Seed: %u\n", Seed);
 
@@ -1002,16 +975,6 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallback Callback) {
   auto *Corpus = new InputCorpus(Options.OutputCorpus, Entropic);
   auto *F = new Fuzzer(Callback, *Corpus, *MD, Options);
 
-  for (auto &U: Dictionary)
-    if (U.size() <= Word::GetMaxSize())
-      MD->AddWordToManualDictionary(Word(U.data(), U.size()));
-
-      // Threads are only supported by Chrome. Don't use them with emscripten
-      // for now.
-#if !LIBFUZZER_EMSCRIPTEN
-  StartRssThread(F, Flags.rss_limit_mb);
-#endif // LIBFUZZER_EMSCRIPTEN
-
   Options.HandleAbrt = Flags.handle_abrt;
   Options.HandleBus = Flags.handle_bus;
   Options.HandleFpe = Flags.handle_fpe;
@@ -1025,15 +988,6 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallback Callback) {
   SetSignalHandler(Options);
 
   std::atexit(Fuzzer::StaticExitCallback);
-
-  if (Flags.minimize_crash)
-    return MinimizeCrashInput(Args, Options);
-
-  if (Flags.minimize_crash_internal_step)
-    return MinimizeCrashInputInternalStep(F, Corpus);
-
-  if (Flags.cleanse_crash)
-    return CleanseCrashInput(Args, Options);
 
   if (RunIndividualFiles) {
     Options.SaveArtifacts = false;
@@ -1057,47 +1011,12 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallback Callback) {
     exit(0);
   }
 
-  if (Flags.fork)
-    FuzzWithFork(F->GetMD().GetRand(), Options, Args, *Inputs, Flags.fork);
-
-  if (Flags.merge)
-    Merge(F, Options, Args, *Inputs, Flags.merge_control_file);
-
-  if (Flags.merge_inner) {
-    const size_t kDefaultMaxMergeLen = 1 << 20;
-    if (Options.MaxLen == 0)
-      F->SetMaxInputLen(kDefaultMaxMergeLen);
-    assert(Flags.merge_control_file);
-    F->CrashResistantMergeInternalStep(Flags.merge_control_file);
-    exit(0);
-  }
-
-  if (Flags.analyze_dict) {
-    size_t MaxLen = INT_MAX;  // Large max length.
-    UnitVector InitialCorpus;
-    for (auto &Inp : *Inputs) {
-      Printf("Loading corpus dir: %s\n", Inp.c_str());
-      ReadDirToVectorOfUnits(Inp.c_str(), &InitialCorpus, nullptr,
-                             MaxLen, /*ExitOnError=*/false);
-    }
-
-    if (Dictionary.empty() || Inputs->empty()) {
-      Printf("ERROR: can't analyze dict without dict and corpus provided\n");
-      return 1;
-    }
-    if (AnalyzeDictionary(F, Dictionary, InitialCorpus)) {
-      Printf("Dictionary analysis failed\n");
-      exit(1);
-    }
-    Printf("Dictionary analysis succeeded\n");
-    exit(0);
-  }
 
   // for python interpreter fuzzing
   // we need to maintain two-level seed queue
 
   auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs));
-  F->Loop(CorporaFiles);
+  F->LoopPyCore(CorporaFiles);
 
   if (Flags.verbosity)
     Printf("Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),

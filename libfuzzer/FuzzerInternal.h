@@ -33,9 +33,13 @@ class Fuzzer {
 public:
 
   Fuzzer(UserCallback CB, InputCorpus &Corpus, MutationDispatcher &MD,
-         FuzzingOptions Options);
+            FuzzingOptions Options);
+  Fuzzer(UserCallbackCore CBCore, InputCorpus &Corpus, MutationDispatcher &MD,
+            FuzzingOptions Options);
   ~Fuzzer();
   void Loop(Vector<SizedFile> &CorporaFiles);
+  void LoopPyCore(Vector<SizedFile> &CorporaFiles);
+  
   void ReadAndExecuteSeedCorpora(Vector<SizedFile> &CorporaFiles);
   void MinimizeCrashLoop(const Unit &U);
   void RereadOutputCorpus(size_t MaxSize);
@@ -88,6 +92,9 @@ public:
   std::string WriteToOutputCorpus(const Unit &U);
 
 private:
+  void InitFuzzer ();
+  void MutatePyAndTest();
+  
   void AlarmCallback();
   void CrashCallback();
   void ExitCallback();
@@ -129,6 +136,8 @@ private:
   MutationDispatcher &MD;
   FuzzingOptions Options;
   DataFlowTrace DFT;
+
+  UserCallbackCore CBCore;
 
   system_clock::time_point ProcessStartTime = system_clock::now();
   system_clock::time_point UnitStartTime, UnitStopTime;
