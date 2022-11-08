@@ -3,11 +3,11 @@
 import os
 
 
-def main():
+def main(data):
     curPath = os.getcwd ()
     Name = curPath + " ---> " + __file__
     print (Name)
 
-def FuzzTest ():
-    main()
+def RunFuzz (data):
+    main(data)
     

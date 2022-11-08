@@ -22,7 +22,7 @@ def PyCoreFuzz (script):
 
     # set Lv2Driver
     atheris.SetLv2Driver (lib.RunFuzz)
-    #atheris.FuzzLv2()
+    atheris.FuzzLv2()
 
     
 if __name__ == '__main__':
