@@ -926,10 +926,17 @@ bool Fuzzer::RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeat
     size_t NumNewFeatures = Corpus.NumFeatureUpdates() - NumUpdatesBefore;
     if (NumNewFeatures) {
         TPC.UpdateObservedPCs();
-        //auto NewII = Corpus.AddToCorpus({Data, Data + Size}, NumNewFeatures,
-        //                            MayDeleteFile, TPC.ObservedFocusFunction(),
-        //                            UniqFeatureSetTmp, DFT, II);
-        //WriteFeatureSetToFile(Options.FeaturesDir, Sha1ToString(NewII->Sha1), NewII->UniqFeatureSet);
+
+        int SriptLen = strlen (Script)+1;
+        Unit U(SriptLen);
+        for (int i = 0; i < SriptLen+1; i++) {
+            U[i] = Script[i];
+        }
+        printf ("U ---> %s \r\n", U.data());
+        
+        auto NewII = Corpus.AddToCorpus(U, NumNewFeatures, false, TPC.ObservedFocusFunction(),
+                                        UniqFeatureSetTmp, DFT, II);
+        WriteFeatureSetToFile(Options.FeaturesDir, Sha1ToString(NewII->Sha1), NewII->UniqFeatureSet);
         return true;
     }
 
@@ -963,7 +970,11 @@ void Fuzzer::MutatePyAndTest()
     for (auto It = PySet.begin (); It != PySet.end (); It++)
     {
         std::string Script = *It;
-        CBCore (Script.c_str());
+
+        InputInfo II;
+        bool FoundUniqFeatures = false;
+        
+        RunOneScript (Script.c_str(), &II, &FoundUniqFeatures);
     }
 
     return;
@@ -987,6 +998,24 @@ void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles) {
     TPC.SetPrintNewPCs(Options.PrintNewCovPcs);
     TPC.SetPrintNewFuncs(Options.PrintNewCovFuncs);
     system_clock::time_point LastCorpusReload = system_clock::now();
+
+    while (true) {
+        auto Now = system_clock::now();
+
+        if (TotalNumberOfRuns >= Options.MaxNumberOfRuns)
+            break;
+        
+        if (TimedOut())
+            break;
+
+        // Perform several mutations and runs.
+        MutatePyAndTest();
+
+        PurgeAllocator();
+    } 
+
+    PrintStats("DONE  ", "\n");
+    MD.PrintRecommendedDictionary();
     
     return;
 }
