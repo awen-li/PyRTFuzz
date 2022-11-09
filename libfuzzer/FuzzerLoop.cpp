@@ -837,6 +837,7 @@ void Fuzzer::Loop(Vector<SizedFile> &CorporaFiles) {
   TmpMaxMutationLen =
       Min(MaxMutationLen, Max(size_t(4), Corpus.MaxInputSize()));
 
+  printf ("Lv2 -> start entry Loop....\r\n");
   while (true) {
     auto Now = system_clock::now();
     if (!Options.StopFile.empty() &&

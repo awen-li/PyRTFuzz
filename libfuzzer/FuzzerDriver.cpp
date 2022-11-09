@@ -606,6 +606,7 @@ static Vector<SizedFile> ReadCorpora(const Vector<std::string> &CorpusDirs,
 }
 
 int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
+  printf ("@@@Lv2 ========> FuzzerDriver\r\n");
   using namespace fuzzer;
   assert(argc && argv && "Argument pointers cannot be nullptr");
   std::string Argv0((*argv)[0]);
@@ -857,7 +858,7 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
 
 int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
 
-  printf ("@@@ FuzzerDriverPyCore\r\n");
+  printf ("@@@Lv1 ========> FuzzerDriverPyCore\r\n");
   using namespace fuzzer;
   assert(argc && argv && "Argument pointers cannot be nullptr");
   std::string Argv0((*argv)[0]);
