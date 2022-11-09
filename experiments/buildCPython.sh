@@ -17,4 +17,4 @@ fi
 
 cd $BASE_DIR/cpython
 make clean && make
-#make install
+make install
