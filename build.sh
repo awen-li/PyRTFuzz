@@ -36,23 +36,24 @@ fi
 
 cd $LLVM_PATH/build
 make -j4
-cd $BASE_DIR
 
-# 2. install latest python from source
+
+# 2. install python from source
+cd $BASE_DIR/cpython
 setPython $PRIMARY_PYTHON
 python --version
-if [ ! -d "cpython" ]; then
+
+PYTHON_VER=Python-3.9.15
+if [ ! -d "$PYTHON_VER" ]; then
 	apt-get install openssl	
-	git clone https://github.com/Daybreak2019/cpython.git
+	tar -xvf $PYTHON_VER.tar.xz
 	
-	cd cpython && ./configure --prefix=$INSTALL_PATH --enable-optimizations --with-openssl=/root/anaconda3
+	cd $PYTHON_VER && ./configure --prefix=$INSTALL_PATH --enable-optimizations --with-openssl=/root/anaconda3
 	make clean && make && make altinstall
 fi
 
-
 # 3. build atheris
-setPython python3.12
-python --version
+setPython python3.9
 export ASAN_OPTIONS=detect_leaks=0
 cd $BASE_DIR/atheris
 if [ -d "build" ]; then

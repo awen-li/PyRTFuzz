@@ -1,6 +1,7 @@
 
 BASE_DIR=`pwd`
 INSTALL_PATH=/root/anaconda3
+PYTHON_VER=Python-3.9.15
 
 setPython ()
 {
@@ -14,7 +15,7 @@ setPython ()
 	cd -
 }
 
-setPython python3.12
+setPython python3.9
 export ASAN_OPTIONS=detect_leaks=0
 
 LD_CLANG="$(python -c "import sysconfig; print(sysconfig.get_config_var('LDSHARED'))")"	
@@ -24,15 +25,17 @@ export LDFLAGS="$(python -c "import atheris; print(atheris.path())")/asan_with_f
 export LDSHARED=$LD_CLANG
 export CC="clang" CFLAGS="-fsanitize=fuzzer-no-link" CXX="clang++" CXXFLAGS="-fsanitize=fuzzer-no-link"
 
-if [ ! -d "cpython" ]; then
-	git clone https://github.com/Daybreak2019/cpython.git
-	cd cpython && ./configure --prefix=$INSTALL_PATH --enable-optimizations --with-openssl=/root/anaconda3
+if [ ! -d "$PYTHON_VER" ]; then
+	cp ../cpython/$PYTHON_VER.tar.xz ./
+	tar -xvf $PYTHON_VER.tar.xz
+	cd $PYTHON_VER && ./configure --prefix=$INSTALL_PATH --enable-optimizations --with-openssl=/root/anaconda3
 	
 	make clean && make
 	make altinstall
+	cd -
 
 	#link to the current python
-	setPython python3.12
+	setPython python3.9	
 fi
 
 
