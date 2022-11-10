@@ -1,6 +1,7 @@
 
 BASE_DIR=`pwd`
 INSTALL_PATH=/root/anaconda3
+PRIMARY_PYTHON=python3.9
 
 setPython ()
 {
@@ -13,6 +14,10 @@ setPython ()
 	ln -s $py python
 	cd -
 }
+
+if [ -f "$INSTALL_PATH/bin/python3.8" ]; then
+	PRIMARY_PYTHON=python3.8
+fi
 
 # 1. build libfuzzer
 if [ ! -n "$LLVM_PATH" ]; then
@@ -34,7 +39,7 @@ make -j4
 cd $BASE_DIR
 
 # 2. install latest python from source
-setPython python3.9
+setPython $PRIMARY_PYTHON
 python --version
 if [ ! -d "cpython" ]; then
 	apt-get install openssl	
