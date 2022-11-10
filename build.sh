@@ -1,5 +1,18 @@
 
 BASE_DIR=`pwd`
+INSTALL_PATH=/root/anaconda3
+
+setPython ()
+{
+	py=$1
+	cd $INSTALL_PATH/bin
+	if [ -L "python" ]; then
+		unlink python
+	fi
+
+	ln -s $py python
+	cd -
+}
 
 # 1. build libfuzzer
 if [ ! -n "$LLVM_PATH" ]; then
@@ -18,9 +31,24 @@ fi
 
 cd $LLVM_PATH/build
 make -j4
+cd $BASE_DIR
+
+# 2. install latest python from source
+setPython python3.9
+python --version
+if [ ! -d "cpython" ]; then
+	apt-get install openssl	
+	git clone https://github.com/Daybreak2019/cpython.git
+	
+	cd cpython && ./configure --prefix=$INSTALL_PATH --enable-optimizations --with-openssl=/root/anaconda3
+	make clean && make && make altinstall
+fi
 
 
-# 2. build atheris
+# 3. build atheris
+setPython python3.12
+python --version
+export ASAN_OPTIONS=detect_leaks=0
 cd $BASE_DIR/atheris
 if [ -d "build" ]; then
 	rm -rf build
@@ -29,5 +57,5 @@ python setup.py install
 cd -
 
 
-# 3. install fuzzwrapper
+# 4. install fuzzwrapper
 cd $BASE_DIR/fuzzwrapper && ./build.sh && cd -
