@@ -48,6 +48,7 @@ public:
   bool RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeatures);
   void PrintPulseAndReportSlowInput(const char *Script);
   void ExecuteCBCore(const char *Script);
+  void SetFuzzer (UserCallback CB, InputCorpus &Corpus);
   
   size_t secondsSinceProcessStartUp() {
     return duration_cast<seconds>(system_clock::now() - ProcessStartTime)
@@ -158,6 +159,33 @@ private:
   // Need to know our own thread.
   static thread_local bool IsMyThread;
 };
+
+class SgnFuzzer {
+private:
+    static Fuzzer *FZ;
+     
+	SgnFuzzer() {}
+	~SgnFuzzer() { delete FZ; }
+     
+public:
+    static Fuzzer* getFuzzer(UserCallback CB, InputCorpus &Corpus, 
+                                 MutationDispatcher &MD, FuzzingOptions Options)
+    {
+        if (FZ == NULL) 
+        {  
+            FZ = new Fuzzer (CB, Corpus, MD, Options);
+            assert (FZ != NULL);
+        }
+        else
+        {
+            FZ->SetFuzzer (CB, Corpus);
+        }
+
+        return FZ;
+    }
+
+};
+
 
 struct ScopedEnableMsanInterceptorChecks {
   ScopedEnableMsanInterceptorChecks() {

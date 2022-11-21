@@ -171,6 +171,13 @@ Fuzzer::Fuzzer(UserCallbackCore CBCore, InputCorpus &Corpus, MutationDispatcher 
 }
 
 
+void Fuzzer::SetFuzzer (UserCallback CB, InputCorpus &Corpus)
+{
+    this->CB = CB;
+    this->Corpus = Corpus;
+}
+  
+
 Fuzzer::~Fuzzer() {}
 
 void Fuzzer::AllocateCurrentUnitData() {
