@@ -33,10 +33,10 @@ import types
 
 PYTHON_VERSION = sys.version_info[:2]
 
-if PYTHON_VERSION < (3, 6) or PYTHON_VERSION > (3, 12):
+if PYTHON_VERSION < (3, 6) or PYTHON_VERSION > (3, 10):
   raise RuntimeError(
       "You are fuzzing on an unsupported python version: " +
-      f"{PYTHON_VERSION[0]}.{PYTHON_VERSION[1]}. Only 3.6 - 3.12 are " +
+      f"{PYTHON_VERSION[0]}.{PYTHON_VERSION[1]}. Only 3.6 - 3.10 are " +
       "supported by atheris 2.0. Use atheris 1.0 for older python versions."
   )
 
@@ -150,7 +150,7 @@ else:
 
 ### Lnotab handling ###
 
-if (3, 6) <= PYTHON_VERSION <= (3, 12):
+if (3, 6) <= PYTHON_VERSION <= (3, 10):
 
   def get_lnotab(code, listing):
     """Returns line number table."""
