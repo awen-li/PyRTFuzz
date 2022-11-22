@@ -762,7 +762,8 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
   else
   {
     printf ("@@@ Wen ----> entry FuzzerDriver with F = %p\r\n", F);
-    assert (F != NULL);    
+    assert (F != NULL);
+    F->SetFuzzer(Callback, *Corpus);
   }
 
   for (auto &U: Dictionary)
