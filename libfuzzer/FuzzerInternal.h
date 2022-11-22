@@ -160,32 +160,8 @@ private:
   static thread_local bool IsMyThread;
 };
 
-class SgnFuzzer {
-private:
-    static Fuzzer *FZ;
-     
-	SgnFuzzer() {}
-	~SgnFuzzer() { delete FZ; }
-     
-public:
-    static Fuzzer* getFuzzer(UserCallback CB, InputCorpus &Corpus, 
-                                 MutationDispatcher &MD, FuzzingOptions Options)
-    {
-        if (FZ == NULL) 
-        {  
-            FZ = new Fuzzer (CB, Corpus, MD, Options);
-            assert (FZ != NULL);
-        }
-        else
-        {
-            FZ->SetFuzzer (CB, Corpus);
-        }
 
-        return FZ;
-    }
-
-};
-
+Fuzzer* GetFuzzer ();
 
 struct ScopedEnableMsanInterceptorChecks {
   ScopedEnableMsanInterceptorChecks() {

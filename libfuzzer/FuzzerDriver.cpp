@@ -85,6 +85,8 @@ static const size_t kNumFlags =
 static Vector<std::string> *Inputs;
 static std::string *ProgName;
 
+static bool TwoLvFuzzing = false;
+
 static void PrintHelp() {
   Printf("Usage:\n");
   auto Prog = ProgName->c_str();
@@ -751,7 +753,17 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
   Random Rand(Seed);
   auto *MD = new MutationDispatcher(Rand, Options);
   auto *Corpus = new InputCorpus(Options.OutputCorpus, Entropic);
-  auto *F = new Fuzzer(Callback, *Corpus, *MD, Options);
+
+  Fuzzer *F = fuzzer::GetFuzzer();
+  if (!TwoLvFuzzing && F == NULL)
+  {
+    F = new Fuzzer(Callback, *Corpus, *MD, Options);
+  }
+  else
+  {
+    printf ("@@@ Wen ----> entry FuzzerDriver with F = %p\r\n", F);
+    assert (F != NULL);    
+  }
 
   for (auto &U: Dictionary)
     if (U.size() <= Word::GetMaxSize())
@@ -974,7 +986,10 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
   Random Rand(Seed);
   auto *MD = new MutationDispatcher(Rand, Options);
   auto *Corpus = new InputCorpus(Options.OutputCorpus, Entropic);
+  
   auto *F = new Fuzzer(Callback, *Corpus, *MD, Options);
+  TwoLvFuzzing = true;
+  printf ("@@@ Wen ----> entry FuzzerDriverPyCore with F = %p\r\n", F);
 
   Options.HandleAbrt = Flags.handle_abrt;
   Options.HandleBus = Flags.handle_bus;

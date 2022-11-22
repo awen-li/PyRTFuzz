@@ -95,6 +95,13 @@ private:
 };
 
 ATTRIBUTE_NO_SANITIZE_MEMORY
+Fuzzer* GetFuzzer ()
+{
+    return F;
+}
+
+
+ATTRIBUTE_NO_SANITIZE_MEMORY
 void MallocHook(const volatile void *ptr, size_t size) {
   size_t N = AllocTracer.Mallocs++;
   F->HandleMalloc(size);
