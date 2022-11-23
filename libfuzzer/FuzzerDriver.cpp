@@ -213,7 +213,6 @@ static void ParseFlags(const Vector<std::string> &Args,
       continue;
     }
     Inputs->push_back(Args[A]);
-    printf ("ParseFlags --->  %s \r\n", Args[A].c_str());
   }
 }
 
@@ -1091,7 +1090,9 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
 
   // for python interpreter fuzzing
   // we need to maintain two-level seed queue
-
+  printf ("Load init scripts from: %s\r\n", Flags.py_script);
+  Inputs->push_back (Flags.py_script);
+  
   auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs));
   F->LoopPyCore(CorporaFiles);
 

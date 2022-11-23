@@ -347,11 +347,11 @@ void start_fuzzing_core(const std::vector<std::string>& args,
       continue;
     }
 
-    if (arg.substr(0, 8) == "-script=") {
-      init_script_dir = arg.substr(8, std::string::npos);
-      std::cerr << "INFO: Set init script directory as: "<<init_script_dir<< std::endl;
-      continue;
-    }
+    //if (arg.substr(0, 8) == "-script=") {
+    //  init_script_dir = arg.substr(8, std::string::npos);
+    //  std::cerr << "INFO: Set init script directory as: "<<init_script_dir<< std::endl;
+    //  continue;
+    //}
 
     arg_array.push_back(const_cast<char*>(arg.c_str()));
   }
