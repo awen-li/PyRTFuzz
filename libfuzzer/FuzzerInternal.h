@@ -144,6 +144,7 @@ private:
   DataFlowTrace DFT;
 
   UserCallbackCore CBCore;
+  std::vector<std::string> PyScriptCorpus;
 
   system_clock::time_point ProcessStartTime = system_clock::now();
   system_clock::time_point UnitStartTime, UnitStopTime;

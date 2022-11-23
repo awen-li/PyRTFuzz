@@ -531,25 +531,6 @@ protected:
   std::string OutputCorpus;
 };
 
-
-class PyScriptCorpus:InputCorpus {
-
-
-
-public:
-  PyScriptCorpus (const std::string &OutputCorpus, EntropicOptions Entropic):
-                         InputCorpus(OutputCorpus, Entropic){
-
-  }
-  
-  ~PyScriptCorpus() {
-    for (auto II : Inputs)
-      delete II;
-  }
-
-
-};
-
 }  // namespace fuzzer
 
 #endif  // LLVM_FUZZER_CORPUS

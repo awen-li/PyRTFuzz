@@ -86,6 +86,7 @@ static Vector<std::string> *Inputs;
 static std::string *ProgName;
 
 static bool TwoLvFuzzing = false;
+static FuzzingOptions Options;
 
 static void PrintHelp() {
   Printf("Usage:\n");
@@ -212,6 +213,7 @@ static void ParseFlags(const Vector<std::string> &Args,
       continue;
     }
     Inputs->push_back(Args[A]);
+    printf ("ParseFlags --->  %s \r\n", Args[A].c_str());
   }
 }
 
@@ -607,7 +609,7 @@ static Vector<SizedFile> ReadCorpora(const Vector<std::string> &CorpusDirs,
   return SizedFiles;
 }
 
-int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
+int FuzzerDriverOrigin(int *argc, char ***argv, UserCallback Callback) {
   printf ("@@@Lv2 ========> FuzzerDriver\r\n");
   using namespace fuzzer;
   assert(argc && argv && "Argument pointers cannot be nullptr");
@@ -869,6 +871,63 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
 }
 
 
+int FuzzerDriverPyCoreLv2 (int *argc, char ***argv, UserCallback Callback) {
+  printf ("@@@Lv2 ========> FuzzerDriver\r\n");
+  using namespace fuzzer;
+
+  bool RunIndividualFiles = AllInputsAreFiles();
+
+  struct EntropicOptions Entropic;
+  Entropic.Enabled = Options.Entropic;
+  Entropic.FeatureFrequencyThreshold = Options.EntropicFeatureFrequencyThreshold;
+  Entropic.NumberOfRarestFeatures = Options.EntropicNumberOfRarestFeatures;
+ 
+  unsigned Seed = Flags.seed;
+  // Initialize Seed.
+  if (Seed == 0)
+    Seed =
+        std::chrono::system_clock::now().time_since_epoch().count() + GetPid();
+  if (Flags.verbosity)
+    Printf("INFO: Seed: %u\n", Seed);
+
+  if (Flags.collect_data_flow && !Flags.fork && !Flags.merge) {
+    if (RunIndividualFiles)
+      return CollectDataFlow(Flags.collect_data_flow, Flags.data_flow_trace,
+                        ReadCorpora({}, *Inputs));
+    else
+      return CollectDataFlow(Flags.collect_data_flow, Flags.data_flow_trace,
+                        ReadCorpora(*Inputs, {}));
+  }
+
+  Random Rand(Seed);
+  auto *Corpus = new InputCorpus(Options.OutputCorpus, Entropic);
+
+  Fuzzer *F = fuzzer::GetFuzzer();
+  assert (F != NULL);
+  F->SetFuzzer(Callback, *Corpus);
+
+  auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs));
+  F->Loop(CorporaFiles);
+
+  if (Flags.verbosity)
+    Printf("Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),
+           F->secondsSinceProcessStartUp());
+  F->PrintFinalStats();
+
+  return 0;
+}
+
+
+int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
+  if (TwoLvFuzzing) {
+    return FuzzerDriverPyCoreLv2 (argc, argv, Callback);
+  }
+  else {
+    return FuzzerDriverOrigin (argc, argv, Callback);
+  }
+}
+
+
 int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
 
   printf ("@@@Lv1 ========> FuzzerDriverPyCore\r\n");
@@ -986,7 +1045,8 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
 
   Random Rand(Seed);
   auto *MD = new MutationDispatcher(Rand, Options);
-  auto *Corpus = new InputCorpus(Options.OutputCorpus, Entropic);
+  
+  auto *Corpus = new InputCorpus (Options.OutputCorpus, Entropic);
   
   auto *F = new Fuzzer(Callback, *Corpus, *MD, Options);
   TwoLvFuzzing = true;
