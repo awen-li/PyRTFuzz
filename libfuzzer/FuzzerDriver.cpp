@@ -870,9 +870,13 @@ int FuzzerDriverOrigin(int *argc, char ***argv, UserCallback Callback) {
 }
 
 
-int FuzzerDriverPyCoreLv2 (int *argc, char ***argv, UserCallback Callback) {
-  printf ("@@@Lv2 ========> FuzzerDriver\r\n");
+int FuzzerDriverPyCoreLv2 (int *argc, char ***argv, UserCallback Callback) { 
   using namespace fuzzer;
+
+  const Vector<std::string> Args(*argv, *argv + *argc);
+  ParseFlags(Args, EF);
+  std::string coupus_t = (*Inputs)[0];
+  printf ("@@@Lv2 ========> FuzzerDriver, coupus_t = %s\r\n", coupus_t.c_str());
 
   bool RunIndividualFiles = AllInputsAreFiles();
 
@@ -951,7 +955,7 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
     return 0;
   }
 
-  FuzzingOptions Options;
+
   Options.Verbosity = Flags.verbosity;
   Options.MaxLen = Flags.max_len;
   Options.LenControl = Flags.len_control;
