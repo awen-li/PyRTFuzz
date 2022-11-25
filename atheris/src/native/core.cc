@@ -96,8 +96,6 @@ int64_t runs = -1;  // Default from libFuzzer, means infinite
 int64_t completed_runs = 0;
 int64_t fuzzer_start_time;
 
-std::string init_script_dir = "";
-
 
 NO_SANITIZE
 void Init() {
@@ -346,12 +344,6 @@ void start_fuzzing_core(const std::vector<std::string>& args,
       SetMaxCounters(max);
       continue;
     }
-
-    //if (arg.substr(0, 8) == "-script=") {
-    //  init_script_dir = arg.substr(8, std::string::npos);
-    //  std::cerr << "INFO: Set init script directory as: "<<init_script_dir<< std::endl;
-    //  continue;
-    //}
 
     arg_array.push_back(const_cast<char*>(arg.c_str()));
   }

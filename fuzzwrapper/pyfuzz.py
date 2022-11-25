@@ -19,9 +19,12 @@ def PyCoreFuzz (script):
 
     md  = baseName.split('.')[0]
     lib = importlib.import_module(md)
+    
+    # create corpus dir for the current script
+    pyScriptCorpus = absDir + '/' + md
 
     # set Lv2Driver
-    atheris.SetLv2Driver (lib.RunFuzz)
+    atheris.SetLv2Driver (lib.RunFuzz, pyScriptCorpus)
     atheris.FuzzLv2()
 
     

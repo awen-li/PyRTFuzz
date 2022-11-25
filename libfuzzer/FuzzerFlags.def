@@ -168,5 +168,5 @@ FUZZER_FLAG_STRING(data_flow_trace, "Experimental: use the data flow trace")
 FUZZER_FLAG_STRING(collect_data_flow,
                    "Experimental: collect the data flow trace")
                    
-FUZZER_FLAG_STRING(py_script,
+FUZZER_FLAG_STRING(pyscript,
                    "initial python script corpus")

@@ -167,10 +167,22 @@ std::vector<std::string> SetupCore(
 
 
 NO_SANITIZE
-void SetLv2Driver(    const std::function<void(py::bytes data)>& test_one_input)
+void SetLv2Driver(    const std::function<void(py::bytes data)>& test_one_input, std::string test_input)
 {
     test_one_input_global = test_one_input;
 
+    const char *c_test_input = test_input.c_str();
+    if (access (c_test_input, F_OK) < 0)
+    {
+        mkdir (c_test_input, 0755);
+    }
+
+    args_global.pop_back ();
+    args_global.push_back (test_input);
+    //for (auto It = args_global.begin (); It != args_global.end (); It++)
+    //{
+    //    printf ("args_global ---> %s \r\n", It->c_str());
+    //}
     return;
 }
 

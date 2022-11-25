@@ -1090,8 +1090,14 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
 
   // for python interpreter fuzzing
   // we need to maintain two-level seed queue
-  printf ("Load init scripts from: %s\r\n", Flags.py_script);
-  Inputs->push_back (Flags.py_script);
+  if (Flags.pyscript == NULL) {
+    Printf("***\n"
+           "*** Warning: please specifiy the input corpus with -pyscript=***\n"
+           "***\n");
+    exit(0);
+  }
+  printf ("Load init scripts from: %s\r\n", Flags.pyscript);
+  Inputs->push_back (Flags.pyscript);
   
   auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs));
   F->LoopPyCore(CorporaFiles);
