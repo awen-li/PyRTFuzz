@@ -170,3 +170,6 @@ FUZZER_FLAG_STRING(collect_data_flow,
                    
 FUZZER_FLAG_STRING(pyscript,
                    "initial python script corpus")
+                   
+FUZZER_FLAG_INT(lv2timebudget, 300,
+                "the time budget (second) when no interests features found")

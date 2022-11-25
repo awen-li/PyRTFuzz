@@ -91,6 +91,7 @@ std::function<void(std::string script)>& test_one_script_global =
       throw std::runtime_error("You must call SetupCore() before FuzzLv1().");
     });
     
+static bool py_core_fuzzing = false;
 
 int64_t runs = -1;  // Default from libFuzzer, means infinite
 int64_t completed_runs = 0;
@@ -248,8 +249,10 @@ void start_fuzzing(const std::vector<std::string>& args,
   fuzzer_start_time = std::chrono::duration_cast<std::chrono::seconds>(
                           std::chrono::system_clock::now().time_since_epoch())
                           .count();
-
-  GracefulExit(LLVMFuzzerRunDriver(&args_size, &args_ptr, &TestOneInput));
+  if (py_core_fuzzing)
+    LLVMFuzzerRunDriver(&args_size, &args_ptr, &TestOneInput);
+  else
+    GracefulExit(LLVMFuzzerRunDriver(&args_size, &args_ptr, &TestOneInput));
 }
 
 
@@ -314,6 +317,7 @@ void start_fuzzing_core(const std::vector<std::string>& args,
   printf ("@@@ start_fuzzing_core\r\n");
   
   test_one_script_global = test_one_script;
+  py_core_fuzzing = true;
 
   bool registered_alarm = SetupPythonSigaction();
 

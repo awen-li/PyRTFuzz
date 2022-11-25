@@ -728,6 +728,7 @@ int FuzzerDriverOrigin(int *argc, char ***argv, UserCallback Callback) {
            Options.EntropicFeatureFrequencyThreshold,
            Options.EntropicNumberOfRarestFeatures);
   }
+
   struct EntropicOptions Entropic;
   Entropic.Enabled = Options.Entropic;
   Entropic.FeatureFrequencyThreshold =
@@ -754,18 +755,7 @@ int FuzzerDriverOrigin(int *argc, char ***argv, UserCallback Callback) {
   Random Rand(Seed);
   auto *MD = new MutationDispatcher(Rand, Options);
   auto *Corpus = new InputCorpus(Options.OutputCorpus, Entropic);
-
-  Fuzzer *F = fuzzer::GetFuzzer();
-  if (!TwoLvFuzzing && F == NULL)
-  {
-    F = new Fuzzer(Callback, *Corpus, *MD, Options);
-  }
-  else
-  {
-    printf ("@@@ Wen ----> entry FuzzerDriver with F = %p\r\n", F);
-    assert (F != NULL);
-    F->SetFuzzer(Callback, *Corpus);
-  }
+  auto *F = new Fuzzer(Callback, Corpus, *MD, Options);
 
   for (auto &U: Dictionary)
     if (U.size() <= Word::GetMaxSize())
@@ -876,7 +866,8 @@ int FuzzerDriverPyCoreLv2 (int *argc, char ***argv, UserCallback Callback) {
   const Vector<std::string> Args(*argv, *argv + *argc);
   ParseFlags(Args, EF);
   std::string coupus_t = (*Inputs)[0];
-  printf ("@@@Lv2 ========> FuzzerDriver, coupus_t = %s\r\n", coupus_t.c_str());
+  Options.MaxTotalTimeSec = Options.Lv2TimeBudgetSec;
+  printf ("@@@Lv2 ========> FuzzerDriver, coupus_t = %s, Lv2TimeBudgetSec = %d\r\n", coupus_t.c_str(), Options.Lv2TimeBudgetSec);
 
   bool RunIndividualFiles = AllInputsAreFiles();
 
@@ -907,13 +898,13 @@ int FuzzerDriverPyCoreLv2 (int *argc, char ***argv, UserCallback Callback) {
 
   Fuzzer *F = fuzzer::GetFuzzer();
   assert (F != NULL);
-  F->SetFuzzer(Callback, *Corpus);
+  F->SetFuzzer(Callback, Corpus);
 
   auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs));
   F->Loop(CorporaFiles);
 
   if (Flags.verbosity)
-    Printf("Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),
+    Printf("Level2-Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),
            F->secondsSinceProcessStartUp());
   F->PrintFinalStats();
 
@@ -954,7 +945,6 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
     PrintHelp();
     return 0;
   }
-
 
   Options.Verbosity = Flags.verbosity;
   Options.MaxLen = Flags.max_len;
@@ -1024,6 +1014,9 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
   Options.EntropicNumberOfRarestFeatures =
       (size_t)Flags.entropic_number_of_rarest_features;
 
+  if (Flags.lv2timebudget)
+    Options.Lv2TimeBudgetSec = Flags.lv2timebudget;
+
   struct EntropicOptions Entropic;
   Entropic.Enabled = Options.Entropic;
   Entropic.FeatureFrequencyThreshold =
@@ -1048,10 +1041,8 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
 
   Random Rand(Seed);
   auto *MD = new MutationDispatcher(Rand, Options);
-  
   auto *Corpus = new InputCorpus (Options.OutputCorpus, Entropic);
-  
-  auto *F = new Fuzzer(Callback, *Corpus, *MD, Options);
+  auto *F = new Fuzzer(Callback, Corpus, *MD, Options);
   TwoLvFuzzing = true;
   printf ("@@@ Wen ----> entry FuzzerDriverPyCore with F = %p\r\n", F);
 
@@ -1107,7 +1098,7 @@ int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
   F->LoopPyCore(CorporaFiles);
 
   if (Flags.verbosity)
-    Printf("Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),
+    Printf("Level2-Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),
            F->secondsSinceProcessStartUp());
   F->PrintFinalStats();
 

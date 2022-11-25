@@ -78,6 +78,8 @@ struct FuzzingOptions {
   bool HandleXfsz = false;
   bool HandleUsr1 = false;
   bool HandleUsr2 = false;
+
+  int Lv2TimeBudgetSec = 600; // default as 600 s
 };
 
 }  // namespace fuzzer

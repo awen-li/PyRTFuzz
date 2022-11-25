@@ -167,19 +167,25 @@ void Fuzzer::InitFuzzer ()
 }
 
 
-Fuzzer::Fuzzer(UserCallback CB, InputCorpus &Corpus, MutationDispatcher &MD, FuzzingOptions Options)
-    : CB(CB), Corpus(Corpus), MD(MD), Options(Options) {
+Fuzzer::Fuzzer(UserCallback CB, InputCorpus *Corpus, MutationDispatcher &MD, FuzzingOptions Options)
+    : CB(CB), Corpus(Corpus), PyCorpus(Corpus), MD(MD), Options(Options) {
   InitFuzzer ();
 }
 
-Fuzzer::Fuzzer(UserCallbackCore CBCore, InputCorpus &Corpus, MutationDispatcher &MD, FuzzingOptions Options)
-    : CBCore(CBCore), Corpus(Corpus), MD(MD), Options(Options) {
+Fuzzer::Fuzzer(UserCallbackCore CBCore, InputCorpus *Corpus, MutationDispatcher &MD, FuzzingOptions Options)
+    : CBCore(CBCore), Corpus(Corpus), PyCorpus(Corpus), MD(MD), Options(Options) {
   InitFuzzer ();
 }
 
 
-void Fuzzer::SetFuzzer (UserCallback CB, InputCorpus &Corpus)
+void Fuzzer::SetFuzzer (UserCallback CB, InputCorpus *Corpus)
 {
+    printf ("#### SetFuzzer -> this->Corpus = %p, this->PyCorpus = %p\r\n", this->Corpus, this->PyCorpus);
+    if (this->Corpus != this->PyCorpus)
+    {
+        delete this->Corpus;
+    }
+    
     this->CB = CB;
     this->Corpus = Corpus;
 }
@@ -353,11 +359,11 @@ void Fuzzer::PrintStats(const char *Where, const char *End, size_t Units,
   Printf("#%zd\t%s", TotalNumberOfRuns, Where);
   if (size_t N = TPC.GetTotalPCCoverage())
     Printf(" cov: %zd", N);
-  if (size_t N = Features ? Features : Corpus.NumFeatures())
+  if (size_t N = Features ? Features : Corpus->NumFeatures())
     Printf(" ft: %zd", N);
-  if (!Corpus.empty()) {
-    Printf(" corp: %zd", Corpus.NumActiveUnits());
-    if (size_t N = Corpus.SizeInBytes()) {
+  if (!Corpus->empty()) {
+    Printf(" corp: %zd", Corpus->NumActiveUnits());
+    if (size_t N = Corpus->SizeInBytes()) {
       if (N < (1 << 14))
         Printf("/%zdb", N);
       else if (N < (1 << 24))
@@ -365,7 +371,7 @@ void Fuzzer::PrintStats(const char *Where, const char *End, size_t Units,
       else
         Printf("/%zdMb", N >> 20);
     }
-    if (size_t FF = Corpus.NumInputsThatTouchFocusFunction())
+    if (size_t FF = Corpus->NumInputsThatTouchFocusFunction())
       Printf(" focus: %zd", FF);
   }
   if (TmpMaxMutationLen)
@@ -382,7 +388,7 @@ void Fuzzer::PrintFinalStats() {
   if (Options.PrintCoverage)
     TPC.PrintCoverage();
   if (Options.PrintCorpusStats)
-    Corpus.PrintStats();
+    Corpus->PrintStats();
   if (!Options.PrintFinalStats)
     return;
   size_t ExecPerSec = execPerSec();
@@ -425,7 +431,7 @@ void Fuzzer::CheckExitOnSrcPosOrItem() {
     TPC.ForEachObservedPC(HandlePC);
   }
   if (!Options.ExitOnItem.empty()) {
-    if (Corpus.HasUnit(Options.ExitOnItem)) {
+    if (Corpus->HasUnit(Options.ExitOnItem)) {
       Printf("INFO: found item with checksum '%s', exiting.\n",
              Options.ExitOnItem.c_str());
       _Exit(0);
@@ -446,7 +452,7 @@ void Fuzzer::RereadOutputCorpus(size_t MaxSize) {
   for (auto &U : AdditionalCorpus) {
     if (U.size() > MaxSize)
       U.resize(MaxSize);
-    if (!Corpus.HasUnit(U)) {
+    if (!Corpus->HasUnit(U)) {
       if (RunOne(U.data(), U.size())) {
         CheckExitOnSrcPosOrItem();
         Reloaded = true;
@@ -516,12 +522,12 @@ bool Fuzzer::RunOne(const uint8_t *Data, size_t Size, bool MayDeleteFile,
 
   UniqFeatureSetTmp.clear();
   size_t FoundUniqFeaturesOfII = 0;
-  size_t NumUpdatesBefore = Corpus.NumFeatureUpdates();
+  size_t NumUpdatesBefore = Corpus->NumFeatureUpdates();
   TPC.CollectFeatures([&](size_t Feature) {
-    if (Corpus.AddFeature(Feature, Size, Options.Shrink))
+    if (Corpus->AddFeature(Feature, Size, Options.Shrink))
       UniqFeatureSetTmp.push_back(Feature);
     if (Options.Entropic)
-      Corpus.UpdateFeatureFrequency(II, Feature);
+      Corpus->UpdateFeatureFrequency(II, Feature);
     if (Options.ReduceInputs && II)
       if (std::binary_search(II->UniqFeatureSet.begin(),
                              II->UniqFeatureSet.end(), Feature))
@@ -530,10 +536,10 @@ bool Fuzzer::RunOne(const uint8_t *Data, size_t Size, bool MayDeleteFile,
   if (FoundUniqFeatures)
     *FoundUniqFeatures = FoundUniqFeaturesOfII;
   PrintPulseAndReportSlowInput(Data, Size);
-  size_t NumNewFeatures = Corpus.NumFeatureUpdates() - NumUpdatesBefore;
+  size_t NumNewFeatures = Corpus->NumFeatureUpdates() - NumUpdatesBefore;
   if (NumNewFeatures) {
     TPC.UpdateObservedPCs();
-    auto NewII = Corpus.AddToCorpus({Data, Data + Size}, NumNewFeatures,
+    auto NewII = Corpus->AddToCorpus({Data, Data + Size}, NumNewFeatures,
                                     MayDeleteFile, TPC.ObservedFocusFunction(),
                                     UniqFeatureSetTmp, DFT, II);
     WriteFeatureSetToFile(Options.FeaturesDir, Sha1ToString(NewII->Sha1),
@@ -545,7 +551,7 @@ bool Fuzzer::RunOne(const uint8_t *Data, size_t Size, bool MayDeleteFile,
       FoundUniqFeaturesOfII == II->UniqFeatureSet.size() &&
       II->U.size() > Size) {
     auto OldFeaturesFile = Sha1ToString(II->Sha1);
-    Corpus.Replace(II, {Data, Data + Size});
+    Corpus->Replace(II, {Data, Data + Size});
     RenameFeatureSetFile(Options.FeaturesDir, OldFeaturesFile,
                          Sha1ToString(II->Sha1));
     return true;
@@ -643,7 +649,7 @@ void Fuzzer::PrintStatusForNewUnit(const Unit &U, const char *Text) {
     return;
   PrintStats(Text, "");
   if (Options.Verbosity) {
-    Printf(" L: %zd/%zd ", U.size(), Corpus.MaxInputSize());
+    Printf(" L: %zd/%zd ", U.size(), Corpus->MaxInputSize());
     MD.PrintMutationSequence();
     Printf("\n");
   }
@@ -707,9 +713,9 @@ void Fuzzer::TryDetectingAMemoryLeak(const uint8_t *Data, size_t Size,
 void Fuzzer::MutateAndTestOne() {
   MD.StartMutationSequence();
 
-  auto &II = Corpus.ChooseUnitToMutate(MD.GetRand());
+  auto &II = Corpus->ChooseUnitToMutate(MD.GetRand());
   if (Options.DoCrossOver)
-    MD.SetCrossOverWith(&Corpus.ChooseUnitToMutate(MD.GetRand()).U);
+    MD.SetCrossOverWith(&Corpus->ChooseUnitToMutate(MD.GetRand()).U);
   const auto &U = II.U;
   memcpy(BaseSha1, II.Sha1, sizeof(BaseSha1));
   assert(CurrentUnitData);
@@ -740,7 +746,7 @@ void Fuzzer::MutateAndTestOne() {
     assert(NewSize <= CurrentMaxMutationLen && "Mutator return oversized unit");
     Size = NewSize;
     II.NumExecutedMutations++;
-    Corpus.IncrementNumExecutedMutations();
+    Corpus->IncrementNumExecutedMutations();
 
     bool FoundUniqFeatures = false;
     bool NewCov = RunOne(CurrentUnitData, Size, /*MayDeleteFile=*/true, &II,
@@ -822,14 +828,14 @@ void Fuzzer::ReadAndExecuteSeedCorpora(Vector<SizedFile> &CorporaFiles) {
   PrintStats("INITED");
   if (!Options.FocusFunction.empty()) {
     Printf("INFO: %zd/%zd inputs touch the focus function\n",
-           Corpus.NumInputsThatTouchFocusFunction(), Corpus.size());
+           Corpus->NumInputsThatTouchFocusFunction(), Corpus->size());
     if (!Options.DataFlowTrace.empty())
       Printf("INFO: %zd/%zd inputs have the Data Flow Trace\n",
-             Corpus.NumInputsWithDataFlowTrace(),
-             Corpus.NumInputsThatTouchFocusFunction());
+             Corpus->NumInputsWithDataFlowTrace(),
+             Corpus->NumInputsThatTouchFocusFunction());
   }
 
-  if (Corpus.empty() && Options.MaxNumberOfRuns) {
+  if (Corpus->empty() && Options.MaxNumberOfRuns) {
     Printf("ERROR: no interesting inputs were found. "
            "Is the code instrumented for coverage? Exiting.\n");
     exit(1);
@@ -849,7 +855,7 @@ void Fuzzer::Loop(Vector<SizedFile> &CorporaFiles) {
   system_clock::time_point LastCorpusReload = system_clock::now();
 
   TmpMaxMutationLen =
-      Min(MaxMutationLen, Max(size_t(4), Corpus.MaxInputSize()));
+      Min(MaxMutationLen, Max(size_t(4), Corpus->MaxInputSize()));
 
   printf ("Lv2 -> start entry Loop....\r\n");
   while (true) {
@@ -921,12 +927,12 @@ bool Fuzzer::RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeat
 
     UniqFeatureSetTmp.clear();
     size_t FoundUniqFeaturesOfII = 0;
-    size_t NumUpdatesBefore = Corpus.NumFeatureUpdates();
+    size_t NumUpdatesBefore = PyCorpus->NumFeatureUpdates();
     TPC.CollectFeatures([&](size_t Feature) {
-        if (Corpus.AddFeature(Feature, 0, Options.Shrink))
+        if (PyCorpus->AddFeature(Feature, 0, Options.Shrink))
             UniqFeatureSetTmp.push_back(Feature);
         if (Options.Entropic)
-            Corpus.UpdateFeatureFrequency(II, Feature);
+            PyCorpus->UpdateFeatureFrequency(II, Feature);
         if (Options.ReduceInputs && II)
             if (std::binary_search(II->UniqFeatureSet.begin(), II->UniqFeatureSet.end(), Feature))
                 FoundUniqFeaturesOfII++;
@@ -938,7 +944,7 @@ bool Fuzzer::RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeat
     
     PrintPulseAndReportSlowInput(Script);
     
-    size_t NumNewFeatures = Corpus.NumFeatureUpdates() - NumUpdatesBefore;
+    size_t NumNewFeatures = PyCorpus->NumFeatureUpdates() - NumUpdatesBefore;
     if (NumNewFeatures) {
         TPC.UpdateObservedPCs();
 
@@ -949,7 +955,7 @@ bool Fuzzer::RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeat
         }
         printf ("U ---> %s \r\n", U.data());
         
-        auto NewII = Corpus.AddToCorpus(U, NumNewFeatures, false, TPC.ObservedFocusFunction(),
+        auto NewII = PyCorpus->AddToCorpus(U, NumNewFeatures, false, TPC.ObservedFocusFunction(),
                                         UniqFeatureSetTmp, DFT, II);
         WriteFeatureSetToFile(Options.FeaturesDir, Sha1ToString(NewII->Sha1), NewII->UniqFeatureSet);
         return true;
@@ -1029,7 +1035,7 @@ void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles) {
         PurgeAllocator();
     } 
 
-    PrintStats("DONE  ", "\n");
+    PrintStats("LoopPyCore DONE  ", "\n");
     MD.PrintRecommendedDictionary();
     
     return;

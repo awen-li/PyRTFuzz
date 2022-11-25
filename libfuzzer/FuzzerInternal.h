@@ -32,9 +32,9 @@ using namespace std::chrono;
 class Fuzzer {
 public:
 
-  Fuzzer(UserCallback CB, InputCorpus &Corpus, MutationDispatcher &MD,
+  Fuzzer(UserCallback CB, InputCorpus *Corpus, MutationDispatcher &MD,
             FuzzingOptions Options);
-  Fuzzer(UserCallbackCore CBCore, InputCorpus &Corpus, MutationDispatcher &MD,
+  Fuzzer(UserCallbackCore CBCore, InputCorpus *Corpus, MutationDispatcher &MD,
             FuzzingOptions Options);
   ~Fuzzer();
   void Loop(Vector<SizedFile> &CorporaFiles);
@@ -48,7 +48,7 @@ public:
   bool RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeatures);
   void PrintPulseAndReportSlowInput(const char *Script);
   void ExecuteCBCore(const char *Script);
-  void SetFuzzer (UserCallback CB, InputCorpus &Corpus);
+  void SetFuzzer (UserCallback CB, InputCorpus *Corpus);
   
   size_t secondsSinceProcessStartUp() {
     return duration_cast<seconds>(system_clock::now() - ProcessStartTime)
@@ -138,13 +138,13 @@ private:
   system_clock::time_point LastAllocatorPurgeAttemptTime = system_clock::now();
 
   UserCallback CB;
-  InputCorpus &Corpus;
+  InputCorpus *Corpus;
   MutationDispatcher &MD;
   FuzzingOptions Options;
   DataFlowTrace DFT;
 
   UserCallbackCore CBCore;
-  std::vector<std::string> PyScriptCorpus;
+  InputCorpus *PyCorpus;
 
   system_clock::time_point ProcessStartTime = system_clock::now();
   system_clock::time_point UnitStartTime, UnitStopTime;
