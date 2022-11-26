@@ -1,6 +1,8 @@
 # CpyFuzz
 fuzzing on python interpreter
 
+Useable docker image for CpyFuzz: ```docker pull daybreak2019/cpyfuzz:v1.0 ```
+
 ```
 CpyFuzz
 +-- atheris          --------------    the python fuzzer
