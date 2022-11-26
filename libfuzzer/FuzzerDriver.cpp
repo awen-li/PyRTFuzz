@@ -865,9 +865,9 @@ int FuzzerDriverPyCoreLv2 (int *argc, char ***argv, UserCallback Callback) {
 
   const Vector<std::string> Args(*argv, *argv + *argc);
   ParseFlags(Args, EF);
-  std::string coupus_t = (*Inputs)[0];
+  Options.OutputCorpus = (*Inputs)[0];
   Options.MaxTotalTimeSec = Options.Lv2TimeBudgetSec;
-  printf ("@@@Lv2 ========> FuzzerDriver, coupus_t = %s, Lv2TimeBudgetSec = %d\r\n", coupus_t.c_str(), Options.Lv2TimeBudgetSec);
+  printf ("@@@Lv2 ========> FuzzerDriver, Options.OutputCorpus = %s\r\n", Options.OutputCorpus.c_str());
 
   bool RunIndividualFiles = AllInputsAreFiles();
 

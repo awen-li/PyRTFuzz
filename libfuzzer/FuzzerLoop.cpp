@@ -619,12 +619,18 @@ void Fuzzer::ExecuteCallback(const uint8_t *Data, size_t Size) {
   delete[] DataCopy;
 }
 
-std::string Fuzzer::WriteToOutputCorpus(const Unit &U) {
+std::string Fuzzer::WriteToOutputCorpus(const Unit &U, bool IsLv2) {
   if (Options.OnlyASCII)
     assert(IsASCII(U));
   if (Options.OutputCorpus.empty())
     return "";
-  std::string Path = DirPlusFile(Options.OutputCorpus, Hash(U));
+    
+  std::string Path;
+  if (IsLv2)
+    Path = DirPlusFile(Corpus->GetOutputCorpus(), Hash(U));
+  else
+    Path = DirPlusFile(PyCorpus->GetOutputCorpus(), Hash(U));
+  
   WriteToFile(U, Path);
   if (Options.Verbosity >= 2)
     Printf("Written %zd bytes to %s\n", U.size(), Path.c_str());
@@ -655,11 +661,11 @@ void Fuzzer::PrintStatusForNewUnit(const Unit &U, const char *Text) {
   }
 }
 
-void Fuzzer::ReportNewCoverage(InputInfo *II, const Unit &U) {
+void Fuzzer::ReportNewCoverage(InputInfo *II, const Unit &U, bool IsLv2) {
   II->NumSuccessfullMutations++;
   MD.RecordSuccessfulMutationSequence();
   PrintStatusForNewUnit(U, II->Reduced ? "REDUCE" : "NEW   ");
-  WriteToOutputCorpus(U);
+  WriteToOutputCorpus(U, IsLv2);
   NumberOfNewUnitsAdded++;
   CheckExitOnSrcPosOrItem(); // Check only after the unit is saved to corpus.
   LastCorpusUpdateRun = TotalNumberOfRuns;
@@ -994,8 +1000,13 @@ void Fuzzer::MutatePyAndTest()
 
         InputInfo II;
         bool FoundUniqFeatures = false;
-        
-        RunOneScript (Script.c_str(), &II, &FoundUniqFeatures);
+
+        size_t Size = 4;
+        bool NewCov = RunOneScript (Script.c_str(), &II, &FoundUniqFeatures);
+        if (NewCov) {
+            ReportNewCoverage(&II, {CurrentUnitData, CurrentUnitData + Size}, false);
+            break;
+        }
     }
 
     return;

@@ -421,6 +421,7 @@ public:
 
   size_t NumFeatures() const { return NumAddedFeatures; }
   size_t NumFeatureUpdates() const { return NumUpdatedFeatures; }
+  inline std::string GetOutputCorpus () { return OutputCorpus; }
 
 protected:
 

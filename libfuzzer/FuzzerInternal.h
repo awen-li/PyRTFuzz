@@ -95,7 +95,7 @@ public:
 
   void HandleMalloc(size_t Size);
   static void MaybeExitGracefully();
-  std::string WriteToOutputCorpus(const Unit &U);
+  std::string WriteToOutputCorpus(const Unit &U, bool IsLv2=true);
 
 private:
   void InitFuzzer ();
@@ -108,7 +108,7 @@ private:
   void InterruptCallback();
   void MutateAndTestOne();
   void PurgeAllocator();
-  void ReportNewCoverage(InputInfo *II, const Unit &U);
+  void ReportNewCoverage(InputInfo *II, const Unit &U, bool IsLv2=true);
   void PrintPulseAndReportSlowInput(const uint8_t *Data, size_t Size);
   void WriteUnitToFileWithPrefix(const Unit &U, const char *Prefix);
   void PrintStats(const char *Where, const char *End = "\n", size_t Units = 0,
