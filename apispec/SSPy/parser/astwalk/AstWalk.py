@@ -26,7 +26,7 @@ class AstWalk(NodeVisitor):
             return False
 
     def visit_import(self, node):
-        #print (ast.dump (node))
+        print (ast.dump (node))
         Import = "import "
         for alias in node.names:
             if alias.name == "unittest":
@@ -44,7 +44,7 @@ class AstWalk(NodeVisitor):
         self.Imports.append (Import)
 
     def visit_importfrom(self, node):
-        #print (ast.dump (node))
+        print (ast.dump (node))
         module = node.module
         if module[0:4] == "test":
             return
@@ -92,5 +92,6 @@ class AstWalk(NodeVisitor):
 
     def visit_call (self, node):
         Callee = node.func
+        print (ast.dump (Callee))
         pass
         
