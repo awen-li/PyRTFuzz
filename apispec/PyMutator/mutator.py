@@ -2,11 +2,82 @@
 import os
 import sys, getopt
 import argparse
-import time
+import pickle
 import ast
 from ast import *
 import astunparse
 
+
+pg_tempt_oo = \
+"""
+class PYF_CLASS:
+    def __init__(self):
+        pass
+
+def RunFuzzer ():
+    pass
+"""
+
+pg_tempt_pro = \
+"""
+def PYF_FUNCTION ():
+    pass
+
+def RunFuzzer ():
+    pass
+"""
+
+
+
+Instance2Ast = {}
+
+if not os.path.exists ('pickle_set'):
+    os.mkdir ('pickle_set')
+
+def WriteAstPickle (Name, Data):
+    PklFile = 'pickle_set/' + Name + ".pkl"
+    with open(PklFile, 'wb') as Pkl:
+        pickle.dump(Data, Pkl)
+    Instance2Ast[Name] = PklFile
+    print ("Write pickle of %s to %s" %(Name, PklFile))
+
+def LoadAstPickle (Name):
+    PklFile = 'pickle_set/' + Name + ".pkl"
+    with open(PklFile, 'rb') as Pkl:
+        return pickle.load(Pkl)
+
+def Prepare ():
+    Ast = ast.parse("import PYF_IMPORT")
+    WriteAstPickle ('import', Ast)
+
+    Ast = ast.parse(pg_tempt_oo)
+    WriteAstPickle ('pg_tempt_oo', Ast)
+
+    Ast = ast.parse(pg_tempt_pro)
+    WriteAstPickle ('pg_tempt_pro', Ast)
+
+def NewClass (Name):
+    Template = \
+f"""
+class {Name}:
+    def __init__(self):
+        pass
+
+def RunFuzzer ():
+    pass
+"""
+    return Template
+
+def NewFunc ():
+    pass
+
+
+def NewExpr ():
+    pass
+
+
+#####################################################################################################
+#####################################################################################################
 source_def = \
 """
 import io
@@ -19,23 +90,6 @@ class Pickler(pickle.Pickler):
 Pickler(io.BytesIO()).dump(42)
 
 """
-
-def NewClass (Name):
-    Template = \
-f"""
-class {Name}:
-    def __init__(self):
-        pass
-"""
-    return Template
-
-def NewFunc ():
-    pass
-
-
-def NewExpr ():
-    pass
-
 
 def DemoGen ():
     AstTree = ast.parse(source_def)
@@ -67,6 +121,7 @@ def main():
         #parser.error('dirname is missing: required with the main options')
         pass
 
+    Prepare ()
     DemoGen ()
 
     print ("Run successful.....")
