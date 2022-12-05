@@ -6,6 +6,7 @@ import pickle
 import ast
 from ast import *
 import astunparse
+from astwrite import *
 
 
 pg_tempt_oo = \
@@ -76,6 +77,27 @@ def NewExpr ():
     pass
 
 
+class ApiSpec ():
+    def __init__ (self, Module, ApiName, Expr):
+        self.Module  = Module
+        self.ApiName = ApiName
+        self.Expr    = Expr
+        self.Ret     = {}
+        self.Parameters = []
+
+
+
+ApiSpecInfo = {}
+
+def InitApiSpec ():
+    # demo for cmath.exp 
+    cmath_exp = ApiSpec ('cmath', 'exp', 'ret = cmath.exp(x)')
+    cmath_exp.Parameters = [{'x':type(0)}]
+    cmath_exp.Ret  = {'ret':type(0)}
+    ApiSpecInfo ['cmath.exp'] = cmath_exp
+
+
+
 #####################################################################################################
 #####################################################################################################
 source_def = \
@@ -92,6 +114,8 @@ Pickler(io.BytesIO()).dump(42)
 """
 
 def DemoGen ():
+    InitApiSpec ()
+    
     AstTree = ast.parse(source_def)
 
     AstStr = ast.dump(AstTree)
@@ -102,6 +126,13 @@ def DemoGen ():
 
     NewCls = NewClass ("HelloWorld")
     print (NewCls)
+
+    FuncAst = ast.parse (ApiSpecInfo ['cmath.exp'].Expr)
+    print (ast.dump (FuncAst))
+    
+    Ast = ast.parse(pg_tempt_oo)
+    CO = ClassOp ("PYF_CLASS", FuncAst)
+    CO.visit (Ast)
 
 
 def InitArgument (parser):
