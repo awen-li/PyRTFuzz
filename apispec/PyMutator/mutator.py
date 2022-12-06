@@ -21,7 +21,7 @@ class demoCls:
     def demoFunc1(self, PYF_ARG1):
         pass
 
-def RunFuzzer ():
+def RunFuzzer (x):
     pass
 """
 
@@ -33,7 +33,7 @@ def demoFunc0 ():
 def demoFunc1 (PYF_ARG1):
     pass
 
-def RunFuzzer ():
+def RunFuzzer (x):
     pass
 """
 
@@ -122,6 +122,8 @@ def DemoGen ():
     
     CO = ClassOp ("demoCls", FuncAst, 'INSERT_CALL')
     NewAst = CO.visit (Ast)
+    FO = FuncOp ('RunFuzzer', ast.parse('demoCls ().demoFunc1(x)'), 'INSERT_ENTRY')
+    NewAst = FO.visit (NewAst)
     print ("=============   after op-CLASS-INSERT_CALL   =============\r\n")
     print (astunparse.unparse(NewAst))
 
@@ -131,10 +133,7 @@ def DemoGen ():
     print ("=============   after op-FUNC-INSERT_FOR   =============\r\n")
     print (astunparse.unparse(NewAst))
 
-    FO = FuncOp ('RunFuzzer', ast.parse('demoCls ().demoFunc1(10)'), 'INSERT_ENTRY')
-    NewAst = FO.visit (NewAst)
-    print ("=============   after op-FUNC-INSERT_ENTRY   =============\r\n")
-    print (astunparse.unparse(NewAst))
+
 
 
 def InitArgument (parser):
