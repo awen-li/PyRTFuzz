@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<apisepc>
+  <api>
+    <module>cmath</module>
+    <name>exp</name>
+    <expr>ret = cmath.exp(x)</expr>
+    <parameters>{'x':int}</parameters>
+    <return>{'ret':int}</return>
+  </api>
+</apisepc>
