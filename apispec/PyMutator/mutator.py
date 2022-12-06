@@ -11,8 +11,14 @@ from astwrite import *
 
 pg_tempt_oo = \
 """
-class PYF_CLASS:
+class demoCls:
     def __init__(self):
+        pass
+
+    def demoFunc0(self):
+        pass
+
+    def demoFunc1(self, PYF_ARG1):
         pass
 
 def RunFuzzer ():
@@ -21,26 +27,34 @@ def RunFuzzer ():
 
 pg_tempt_pro = \
 """
-def PYF_FUNCTION ():
+def demoFunc0 ():
+    pass
+
+def demoFunc1 (PYF_ARG1):
     pass
 
 def RunFuzzer ():
     pass
 """
 
-
+pg_for = \
+"""
+for PYF_I in range (0, PYF_E):
+    pass
+"""
 
 Instance2Ast = {}
 
 if not os.path.exists ('pickle_set'):
     os.mkdir ('pickle_set')
 
-def WriteAstPickle (Name, Data):
+def WriteAstPickle (Name, Ast):
     PklFile = 'pickle_set/' + Name + ".pkl"
     with open(PklFile, 'wb') as Pkl:
-        pickle.dump(Data, Pkl)
+        pickle.dump(Ast, Pkl)
     Instance2Ast[Name] = PklFile
     print ("Write pickle of %s to %s" %(Name, PklFile))
+    #print (ast.dump (Ast))
 
 def LoadAstPickle (Name):
     PklFile = 'pickle_set/' + Name + ".pkl"
@@ -57,24 +71,8 @@ def Prepare ():
     Ast = ast.parse(pg_tempt_pro)
     WriteAstPickle ('pg_tempt_pro', Ast)
 
-def NewClass (Name):
-    Template = \
-f"""
-class {Name}:
-    def __init__(self):
-        pass
-
-def RunFuzzer ():
-    pass
-"""
-    return Template
-
-def NewFunc ():
-    pass
-
-
-def NewExpr ():
-    pass
+    Ast = ast.parse(pg_for)
+    WriteAstPickle ('pg_for', Ast)
 
 
 class ApiSpec ():
@@ -116,23 +114,27 @@ Pickler(io.BytesIO()).dump(42)
 def DemoGen ():
     InitApiSpec ()
     
-    AstTree = ast.parse(source_def)
-
-    AstStr = ast.dump(AstTree)
-    print (AstStr)
-    
-    Source = astunparse.unparse(AstTree)
-    print (Source)
-
-    NewCls = NewClass ("HelloWorld")
-    print (NewCls)
-
-    FuncAst = ast.parse (ApiSpecInfo ['cmath.exp'].Expr)
-    print (ast.dump (FuncAst))
-    
     Ast = ast.parse(pg_tempt_oo)
-    CO = ClassOp ("PYF_CLASS", FuncAst)
-    CO.visit (Ast)
+    print ("=============   original source   =============\r\n")
+    print (astunparse.unparse(Ast))
+    
+    FuncAst = ast.parse (ApiSpecInfo ['cmath.exp'].Expr)
+    
+    CO = ClassOp ("demoCls", FuncAst, 'INSERT_CALL')
+    NewAst = CO.visit (Ast)
+    print ("=============   after op-CLASS-INSERT_CALL   =============\r\n")
+    print (astunparse.unparse(NewAst))
+
+    uAst = ast.parse(pg_for)
+    FO = FuncOp ('demoFunc1', uAst, 'INSERT_FOR')
+    NewAst = FO.visit (NewAst)
+    print ("=============   after op-FUNC-INSERT_FOR   =============\r\n")
+    print (astunparse.unparse(NewAst))
+
+    FO = FuncOp ('RunFuzzer', ast.parse('demoCls ().demoFunc1(10)'), 'INSERT_ENTRY')
+    NewAst = FO.visit (NewAst)
+    print ("=============   after op-FUNC-INSERT_ENTRY   =============\r\n")
+    print (astunparse.unparse(NewAst))
 
 
 def InitArgument (parser):
