@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<apisepc>
+    <library email>
+        <module charset>
+            <class Charset>
+                <api>
+                        <name>get_body_encoding</name>
+                        <expr>ret = get_body_encoding()</expr>
+                        <parameters>{}</parameters>
+                        <return>{'ret':base64|7bit}</return>
+                        <dependences>  </dependences>
+                </api>
+
+                <api>
+                        <name>header_encode</name>
+                        <expr>header_encode(str)</expr>
+                        <parameters>{'str':string}</parameters>
+                        <return>{}</return>
+                        <dependences>  </dependences>
+                </api>
+            </class>
+        </module>
+
+        <module contentmanager>
+            <api>
+                <name>header_encode</name>
+                <expr>header_encode(str)</expr>
+                <parameters>{'str':string}</parameters>
+                <return>{}</return>
+                <dependences>  </dependences>
+            </api>
+        </module >
+
+        <errors>
+            <exception>MessageError</exception>
+            <exception>MessageParseError</exception>
+            <exception>BoundaryError</exception>
+            <exception>MultipartConversionError</exception>
+        </errors>
+    </library>
+</apisepc>
