@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <apisepc>
-    <library email>
-        <module charset>
-            <class Charset>
+    <library name="email">
+        <module name="charset">
+            <class name="Charset">
                 <api>
                         <name>get_body_encoding</name>
                         <expr>ret = get_body_encoding()</expr>
@@ -21,7 +21,7 @@
             </class>
         </module>
 
-        <module contentmanager>
+        <module name="contentmanager">
             <api>
                 <name>header_encode</name>
                 <expr>header_encode(str)</expr>
@@ -37,5 +37,6 @@
             <exception>BoundaryError</exception>
             <exception>MultipartConversionError</exception>
         </errors>
+        
     </library>
 </apisepc>

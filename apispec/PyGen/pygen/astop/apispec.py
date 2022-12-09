@@ -47,26 +47,84 @@ import xml.dom.minidom
     </library>
 </apisepc>
 """
+class PyApi ():
+    def __init__ (self, Cls, ApiName, Expr):
+        self.Module  = Module
+        self.ApiName = ApiName
+        self.Expr    = Expr
+        self.Ret     = {}
+        self.Parameters = []
 
+
+class PyCls ():
+    def __init__ (self, clsName):
+        self.clsName  = clsName
+        self.Apis = {}
+
+
+class PyMod ():
+    def __init__ (self, mdName):
+        self.mdName  = mdName
+        self.Apis    = {}
+        self.Classes = {}
+        self.Exceps  = {}
+
+class PyExcep ():
+    def __init__ (self, exName):
+        self.exName  = exName
+
+        
+class PyLib ():
+    def __init__ (self, Name):
+        self.Name  = Name
+        self.Modules = {}
+
+        
 class ApiSpec():
     def __init__(self, apiSpecXml='apispec.xml'):
         self.apiSpecXml = apiSpecXml
-
+        self.PyLib = {}
 
     def AssertAttr (self, node, attr):
         if not node.hasAttribute(attr):
             print ("Node item has no attribute %s!" %attr)
             exit (0)
 
-    def ParseApi (self, ApiNode):
+    def ParseApi (self, xmlApi):
         pass
 
-    def ParseExceps (self, ExcepNode):
-        pass
+    def ParseExceps (self, xmlExp):
+        xmlExpList = xmlExp[0].getElementsByTagName("exception")
+        for xExp in xmlExpList:
+            print (xExp)
 
-    def ParseClass (self, ClsNode):
-        pass
+    def ParseClass (self, clsName, xmlCls):
+        curCls = PyCls (clsName)
         
+        xmlApis = xmlCls.getElementsByTagName("api")
+        for xmlApi in xmlApis:
+            self.ParseApi (xmlApi)
+
+    def ParseMod (self, mdName, xmlMd):
+        print ("\t# Parse module: %s" %mdName)
+        curMd = PyMod (mdName)
+
+        # class under modules
+        xmlClasses = xmlMd.getElementsByTagName ("class")
+        print (xmlClasses)
+        for xmlCls in xmlClasses:          
+            self.AssertAttr (xmlCls, "name")
+            clsName = xmlCls.getAttribute("name")
+            print ("\t\t# Parse class: %s" %clsName)
+                                   
+            curCls = self.ParseClass (clsName, xmlCls)
+
+        # api under module
+        xmlApis = xmlMd.getElementsByTagName ("api")
+        print (xmlApis)
+        for xmlApi in xmlApis:
+            self.ParseApi (xmlApi)
+            
     def Parser (self):
         DOMTree = xml.dom.minidom.parse(self.apiSpecXml)
         De = DOMTree.documentElement
@@ -74,37 +132,26 @@ class ApiSpec():
            print ("API spec version: %s" % De.getAttribute("shelf"))
          
 
-        libraries = De.getElementsByTagName("library")
-        for lib in libraries:
+        xmlLibs = De.getElementsByTagName("library")
+        for xmlLib in xmlLibs:
     
-            self.AssertAttr (lib, "name")
-            libName = lib.getAttribute("name")
+            self.AssertAttr (xmlLib, "name")
+            libName = xmlLib.getAttribute("name")
             print ("# Parse library: %s" %libName)
+            curLib = PyLib (libName)
 
-            modules = lib.getElementsByTagName ("module")
-            for md in modules:
+            xmlModules = xmlLib.getElementsByTagName ("module")
+            for xmlMd in xmlModules:
             
-                self.AssertAttr (md, "name")
-                mdName = md.getAttribute("name")
-                print ("\t# Parse module: %s" %mdName)
+                self.AssertAttr (xmlMd, "name")
+                mdName = xmlMd.getAttribute("name")
+                curMod = self.ParseMod (mdName, xmlMd)
+                curLib.Modules [mdName] = curMod
 
-                # class under modules
-                classes = md.getElementsByTagName ("class")
-                for cls in classes:
+            # exception under library
+            xmlExceps = xmlLib.getElementsByTagName ("errors")
+            self.ParseExceps (xmlExceps)
                 
-                    self.AssertAttr (cls, "name")
-                    clsName = cls.getAttribute("name")
-                    print ("\t\t# Parse class: %s" %clsName)
-                    self.ParseClass (cls)
-
-                # exception under modules
-                exceps = md.getElementsByTagName ("errors")
-                self.ParseExceps (exceps)
-
-                # api under module
-                apis = md.getElementsByTagName ("api")
-                for api in apis:
-                    self.ParseApi (api)
                
 
       
