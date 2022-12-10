@@ -1,6 +1,5 @@
 
 # _*_ coding:utf-8 _*_
-import re
 from xml.dom.minidom import parse
 import xml.dom.minidom
 
@@ -10,16 +9,14 @@ import xml.dom.minidom
     <library name="email">
         <module name="charset">
             <class name="Charset">
-                <api>
-                        <name>get_body_encoding</name>
+                <api name="get_body_encoding">
                         <expr>ret = get_body_encoding()</expr>
                         <parameters>{}</parameters>
                         <return>{'ret':base64|7bit}</return>
                         <dependences>  </dependences>
                 </api>
 
-                <api>
-                        <name>header_encode</name>
+                <api name="header_encode">
                         <expr>header_encode(str)</expr>
                         <parameters>{'str':string}</parameters>
                         <return>{}</return>
@@ -29,8 +26,7 @@ import xml.dom.minidom
         </module>
 
         <module name="contentmanager">
-            <api>
-                <name>header_encode</name>
+            <api name="header_encode">
                 <expr>header_encode(str)</expr>
                 <parameters>{'str':string}</parameters>
                 <return>{}</return>
@@ -48,12 +44,12 @@ import xml.dom.minidom
 </apisepc>
 """
 class PyApi ():
-    def __init__ (self, Cls, ApiName, Expr):
-        self.Module  = Module
+    def __init__ (self, ApiName, Expr, Ret, Parameters, Dependences):
         self.ApiName = ApiName
         self.Expr    = Expr
         self.Ret     = {}
         self.Parameters = []
+        self.Dependences = Dependences
 
 
 class PyCls ():
@@ -78,6 +74,7 @@ class PyLib ():
     def __init__ (self, Name):
         self.Name  = Name
         self.Modules = {}
+        self.Exceptions = []
 
         
 class ApiSpec():
@@ -85,52 +82,70 @@ class ApiSpec():
         self.apiSpecXml = apiSpecXml
         self.PyLib = {}
 
+        self.apiAddr = {}
+
     def AssertAttr (self, node, attr):
         if not node.hasAttribute(attr):
             print ("Node item has no attribute %s!" %attr)
             exit (0)
 
-    def ParseApi (self, xmlApi):
-        pass
+    def ParseApi (self, apiName, xmlApi):
+        print ("apiName = %s" %apiName)
+        expr = xmlApi.getElementsByTagName("expr")
+        print ("\t: expr-> %s" %expr[0].childNodes[0].data)
+        parameters = xmlApi.getElementsByTagName("parameters")
+        print ("\t: parameters-> %s" %parameters[0].childNodes[0].data)
+        ret = xmlApi.getElementsByTagName("return")
+        print ("\t: ret-> %s" %ret[0].childNodes[0].data)
+        dependences = xmlApi.getElementsByTagName("dependences")
+        print ("\t: dependences-> %s" %dependences[0].childNodes[0].data)
 
-    def ParseExceps (self, xmlExp):
+        return PyApi (apiName, expr, ret, parameters, dependences)
+
+    def ParseExceps (self, pyLib, xmlExp):
         xmlExpList = xmlExp[0].getElementsByTagName("exception")
         for xExp in xmlExpList:
-            print (xExp)
+            exp = xExp.childNodes[0].data
+            pyLib.Exceptions.append (exp)
+            print (exp)
 
     def ParseClass (self, clsName, xmlCls):
         curCls = PyCls (clsName)
         
         xmlApis = xmlCls.getElementsByTagName("api")
         for xmlApi in xmlApis:
-            self.ParseApi (xmlApi)
+            self.apiAddr [xmlApi] = True
+            
+            apiName = xmlApi.getAttribute("name")
+            curCls.Apis[apiName] = self.ParseApi (apiName, xmlApi)
 
     def ParseMod (self, mdName, xmlMd):
-        print ("\t# Parse module: %s" %mdName)
+        print ("# Parse module: %s" %mdName)
         curMd = PyMod (mdName)
 
         # class under modules
         xmlClasses = xmlMd.getElementsByTagName ("class")
-        print (xmlClasses)
         for xmlCls in xmlClasses:          
             self.AssertAttr (xmlCls, "name")
             clsName = xmlCls.getAttribute("name")
-            print ("\t\t# Parse class: %s" %clsName)
+            print ("# Parse class: %s" %clsName)
                                    
-            curCls = self.ParseClass (clsName, xmlCls)
+            curMd.Classes [clsName] = self.ParseClass (clsName, xmlCls)
 
         # api under module
         xmlApis = xmlMd.getElementsByTagName ("api")
-        print (xmlApis)
         for xmlApi in xmlApis:
-            self.ParseApi (xmlApi)
+            if self.apiAddr.get (xmlApi) != None:
+                continue
+            apiName = xmlApi.getAttribute("name")
+            curMd.Apis [apiName] = self.ParseApi (apiName, xmlApi)
+
+        self.apiAddr = {}
             
     def Parser (self):
         DOMTree = xml.dom.minidom.parse(self.apiSpecXml)
         De = DOMTree.documentElement
-        if De.hasAttribute("version"):
-           print ("API spec version: %s" % De.getAttribute("shelf"))
-         
+        self.AssertAttr (De, "version")     
 
         xmlLibs = De.getElementsByTagName("library")
         for xmlLib in xmlLibs:
@@ -150,7 +165,7 @@ class ApiSpec():
 
             # exception under library
             xmlExceps = xmlLib.getElementsByTagName ("errors")
-            self.ParseExceps (xmlExceps)
+            self.ParseExceps (curLib, xmlExceps)
                 
                
 
