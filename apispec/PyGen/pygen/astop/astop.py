@@ -27,6 +27,26 @@ class AstOp (NodeTransformer):
             argno += 1
         return None
 
+    def op_return(self, node):
+        print (ast.dump (node))
+    
+    def op_assign(self, node):
+        print (ast.dump (node))
+        self.visit (node.value)
+
+
+    def op_call(self, node):
+        print (ast.dump (node))
+    
+    def op_functiondef (self, node):
+        print (ast.dump (node))
+        for st in node.body:
+            self.visit (st)
+
+    def op_classdef(self, node):
+        print (ast.dump (node))
+        for st in node.body:
+            self.visit (st)
 
 class ClassOp(AstOp):
     def __init__(self, ClsName, FuncAst, Op):
@@ -36,8 +56,7 @@ class ClassOp(AstOp):
         self.Op      = Op
 
     def op_functiondef (self, node):
-        if node.name != 'demoFunc1':
-            return node
+        print (ast.dump (node))
 
         arg = self.get_arg (node)
         callee = self.FuncAst.body[0].value

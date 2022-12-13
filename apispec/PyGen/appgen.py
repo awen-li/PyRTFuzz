@@ -32,6 +32,9 @@ def main():
 
         apiSpec = ApiSpec (opts.filename)
         apiSpec.Parser ()
+
+        ag = AppGen ()
+        ag.Gen ()
     else:
         pass
 
