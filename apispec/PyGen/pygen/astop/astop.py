@@ -8,7 +8,7 @@ from ast import *
 
 class AstOp (NodeTransformer):
     def __init__(self):
-        pass
+        self.FormalArgs = {}
 
     def visit(self, node):
         if node is None:
@@ -18,7 +18,24 @@ class AstOp (NodeTransformer):
         operator = getattr(self, method, self.generic_visit)        
         return operator(node)
 
-    def get_arg (self, node, index=1):
+
+    def get_fcallee (self, node):
+        pass
+
+    def get_fargs (self, node):
+        funcName = node.name
+        fargs = []
+        
+        args  = node.args.args
+        argno = 0
+        for arg in args:
+            fargs.append (arg.arg)
+
+        self.FormalArgs[funcName] = fargs
+        print (self.FormalArgs)
+        return
+
+    def get_aargs (self, node):
         args  = node.args.args
         argno = 0
         for arg in args:
@@ -27,24 +44,38 @@ class AstOp (NodeTransformer):
             argno += 1
         return None
 
+    def op_value (self, node):
+        pass
+    
     def op_return(self, node):
-        print (ast.dump (node))
+        print (ast.dump (node), end="\n\n")
     
     def op_assign(self, node):
-        print (ast.dump (node))
+        print (ast.dump (node), end="\n\n")
+
+        for tg in node.targets:
+            self.visit (tg)
+        
         self.visit (node.value)
 
+    def op_atrribute (self, node):
+        print (ast.dump (node), end="\n\n")
 
     def op_call(self, node):
-        print (ast.dump (node))
+        print (ast.dump (node.func), end="\n\n")
+        if isinstance(node.func, Attribute):
+            self.visit (node.func)
+        else:
+            pass
     
     def op_functiondef (self, node):
-        print (ast.dump (node))
+        print (ast.dump (node), end="\n\n")
+        self.get_fargs (node)
         for st in node.body:
             self.visit (st)
 
     def op_classdef(self, node):
-        print (ast.dump (node))
+        print (ast.dump (node), end="\n\n")
         for st in node.body:
             self.visit (st)
 
