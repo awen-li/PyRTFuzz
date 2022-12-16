@@ -31,18 +31,36 @@ class graph:
 """
 
 class PgNode ():
-    def __init__ (self):
-        pass
+    def __init__ (self,Id, Type):
+        self.Id = Id
+        self.InEdge = []
+        self.OutEdge = []
 
 
 class PgEdge ():
-    def __init__ (self):
-        pass
+    def __init__ (self, Src, Dst):
+        self.SrcNd = Src
+        self.DstNd = Dst
 
         
 class PropGraph (NodeVisitor):
+
+    NodeId = 1
+    
     def __init__ (self, MainFunc='RunFuzz'):
         self.MainFunc = MainFunc
+        self.Id2Node  = {}
+        self.EdgeList = []
+
+    def AddNode (self, Type):
+         Nd = PgNode (PropGraph.NodeId, Type) 
+         self.Id2Node [Nd.Id] = Nd
+
+         PropGraph.NodeId += 1
+         return Nd
+
+    def AddEdge (self, Edge):
+        self.EdgeList.append (Edge)
 
 
     def Build (self):
