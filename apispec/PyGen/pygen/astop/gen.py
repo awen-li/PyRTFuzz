@@ -38,6 +38,18 @@ for PYF_I in range (0, PYF_E):
     pass
 """
 
+pg_inherit = \
+"""
+import io
+import pickle
+
+class Pickler(pickle.Pickler):
+  def persistent_id(self, obj):
+    return super().persistent_id(obj)
+
+Pickler(io.BytesIO()).dump(42)
+"""
+
 #####################################################################################################
 #####################################################################################################
 
@@ -46,7 +58,7 @@ class AppGen ():
         pass
 
     def Gen (self):
-        Ast = ast.parse(pg_tempt_oo)
+        Ast = ast.parse(pg_inherit)
         print ("=============   original source   =============\r\n")
 
         ap = AstOp ()
