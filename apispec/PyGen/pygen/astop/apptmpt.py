@@ -8,5 +8,21 @@ class AppTmpt ():
         self.TmptList.append (tmpt)
 
 
+ATs = AppTmpt ()
+
 def InitTmpts ():
-    pass
+    ATs.Add (
+    """
+class demoCls:
+    def __init__(self):
+        pass
+
+    def demoFunc1(self, arg1):
+        pass
+
+def RunFuzzer (x):
+    demoCls ().demoFunc1 (x)
+    """
+    )
+
+InitTmpts ()
