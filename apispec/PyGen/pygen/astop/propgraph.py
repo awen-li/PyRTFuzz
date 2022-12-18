@@ -30,18 +30,35 @@ class graph:
   __init__ (init)    demoFunc1 (x)
 """
 
+class NodeValue ():
+    NodeAttr_None = 0
+    NodeAttr_FP   = 1
+    NodeAttr_AP   = 2
+    
+    def __init__ (self, Attr=0):
+        self.Attr = Attr
+
+
+class NV_fp (NodeValue):
+    def __init__ (self, FP):
+        super(NV_fp, self).__init__(NodeValue.NodeAttr_FP)
+        self.FP = FP
+
 class PgNode ():
     def __init__ (self, Id, Type, Name='node'):
         self.Id   = Id
         self.Name = Name
+        self.NodeVal = None
+        
         self.InEdge  = []
         self.OutEdge = []
 
 
 class PgEdge ():
-    def __init__ (self, Src, Dst):
+    def __init__ (self, Src, Dst, Type):
         self.SrcNd = Src
         self.DstNd = Dst
+        self.Type  = Type
 
         
 class PropGraph (NodeVisitor):
@@ -50,6 +67,10 @@ class PropGraph (NodeVisitor):
 
     NodeType_CLASS =1
     NodeType_FUNC  =2
+
+    EdgeType_PROP = 1
+    EdgeType_CFG  = 2
+    EdgeType_DD   = 3
     
     def __init__ (self, MainFunc='RunFuzz'):
         self.MainFunc = MainFunc
@@ -59,6 +80,18 @@ class PropGraph (NodeVisitor):
 
         self.CurClass = None
         self.CurFunc  = None
+
+    def GetFP (self, Args):
+        ArgList = Args.args
+        fp = []
+        for arg in ArgList:
+            if arg.arg == 'self':
+                continue
+            fp.append (arg.arg)
+        return NV_fp (fp)
+
+    def GetAP (self):
+        pass
 
     def AddNode (self, Type, Name='node'):
          Nd = PgNode (PropGraph.NodeId, Type, Name) 
@@ -88,7 +121,13 @@ class PropGraph (NodeVisitor):
     
     def pg_functiondef (self, node):
         print (ast.dump (node), end="\n\n")
+        FP = self.GetFP(node.args)
         self.CurFunc = self.AddNode (PropGraph.NodeType_FUNC, node.name)
+        self.CurFunc.NodeVal = FP
+
+        if self.CurClass != None:
+            eg = PgEdge (self.CurClass, self.CurFunc, PropGraph.EdgeType_PROP)
+            self.AddEdge (eg)
         
         for st in node.body:
             self.VisitAst (st)
@@ -110,6 +149,7 @@ class PropGraph (NodeVisitor):
             print (tmpt)
             astTmpt = ast.parse(tmpt)
             print (ast.dump (astTmpt), end="\n\n")
-            
-            self.VisitAst (astTmpt.body[0])
+
+            for body in astTmpt.body:
+                self.VisitAst (body)
 
