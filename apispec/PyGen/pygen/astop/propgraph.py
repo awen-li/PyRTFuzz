@@ -31,9 +31,10 @@ class graph:
 """
 
 class PgNode ():
-    def __init__ (self, Id, Type):
-        self.Id = Id
-        self.InEdge = []
+    def __init__ (self, Id, Type, Name='node'):
+        self.Id   = Id
+        self.Name = Name
+        self.InEdge  = []
         self.OutEdge = []
 
 
@@ -46,6 +47,9 @@ class PgEdge ():
 class PropGraph (NodeVisitor):
 
     NodeId = 1
+
+    NodeType_CLASS =1
+    NodeType_FUNC  =2
     
     def __init__ (self, MainFunc='RunFuzz'):
         self.MainFunc = MainFunc
@@ -54,9 +58,10 @@ class PropGraph (NodeVisitor):
         self.EdgeList = []
 
         self.CurClass = None
+        self.CurFunc  = None
 
-    def AddNode (self, Type):
-         Nd = PgNode (PropGraph.NodeId, Type) 
+    def AddNode (self, Type, Name='node'):
+         Nd = PgNode (PropGraph.NodeId, Type, Name) 
          self.Id2Node [Nd.Id] = Nd
 
          PropGraph.NodeId += 1
@@ -71,12 +76,11 @@ class PropGraph (NodeVisitor):
             return
 
         method = 'pg_' + node.__class__.__name__.lower()
-        print (method)
         operator = getattr(self, method, self.generic_visit)        
         return operator(node)
 
-    def pg_call(self, node):
-        print (ast.dump (node.func), end="\n\n")
+    def pg_call(self, node):   
+        print (self.CurFunc.Name, end="\n\n")
         if isinstance(node.func, Attribute):
             self.visit (node.func)
         else:
@@ -84,11 +88,16 @@ class PropGraph (NodeVisitor):
     
     def pg_functiondef (self, node):
         print (ast.dump (node), end="\n\n")
+        self.CurFunc = self.AddNode (PropGraph.NodeType_FUNC, node.name)
+        
         for st in node.body:
             self.VisitAst (st)
 
+        self.CurFunc = None
+
     def pg_classdef(self, node):
-        self.CurClass = node.name
+        Nd = self.AddNode (PropGraph.NodeType_CLASS, node.name)
+        self.CurClass = Nd
         
         for st in node.body:
             self.VisitAst (st)
