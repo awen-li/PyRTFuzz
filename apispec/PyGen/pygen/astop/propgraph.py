@@ -47,11 +47,18 @@ class NodeVal ():
 class PgNode ():
     def __init__ (self, Id, Type, Name='node'):
         self.Id   = Id
+        self.Type = Type
         self.Name = Name
         self.NodeVal = None
         
         self.InEdge  = []
         self.OutEdge = []
+
+    def AddInEdge (self, InEg):
+        self.InEdge.append (InEg)
+
+    def AddOutEdge (self, OutEg):
+        self.OutEdge.append (OutEg)
 
 
 class PgEdge ():
@@ -69,10 +76,12 @@ class PropGraph (NodeVisitor):
     NodeType_CLASS = 1
     NodeType_FUNC  = 2
     NodeType_STMT  = 3
+    NodeTypes = ['NONE', 'CLASS', 'FUNCTION', 'STATEMENT']
 
     EdgeType_PROP = 1
     EdgeType_CFG  = 2
     EdgeType_DD   = 3
+    EdgeTypes = ['NONE', 'PROPERITY', 'CFG', 'DD']
     
     def __init__ (self, MainFunc='RunFuzz'):
         self.MainFunc = MainFunc
@@ -115,6 +124,10 @@ class PropGraph (NodeVisitor):
 
     def AddEdge (self, Edge):
         self.EdgeList.append (Edge)
+        Src = Edge.SrcNd
+        Dst = Edge.DstNd
+        Src.AddOutEdge (Edge)
+        Dst.AddInEdge (Edge)
 
     def IsDD (self, ApVal):
         FpList = self.CurFunc.NodeVal.Val
@@ -193,9 +206,28 @@ class PropGraph (NodeVisitor):
         self.CurClass = None
 
     def ShowPg (self):
+        # get roots
+        root = []
+        print ("Node List:")
         for id, node in self.Id2Node.items ():
-            print (id)
-            print (node.Name)
+            print ("[%d]%s" %(node.Id, node.Name))
+            if len (node.InEdge) == 0:
+                root.append (node)
+
+        print ("\r\n")
+        # iter root
+        for r in root:
+            queue = []
+            print ("\r\n\n[%s][%d]Root: %s" %(PropGraph.NodeTypes[r.Type], r.Id, r.Name))
+            queue.append (r)
+            while len (queue) != 0:
+                curNode = queue.pop (0)
+                
+                for oe in curNode.OutEdge:
+                    print ("\t [%d, %d](%s)" %(oe.SrcNd.Id, oe.DstNd.Id, PropGraph.EdgeTypes[oe.Type]), end='')
+                    if  oe.Val != None:
+                        print (str(oe.Val))
+                    queue.append (oe.DstNd)
     
     def Build (self):
         print ("\r\n================ PropGraph.Build ================\r\n")
