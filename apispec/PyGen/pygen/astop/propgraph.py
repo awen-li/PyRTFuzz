@@ -13,16 +13,17 @@ class demoCls:
         pass
 
 def RunFuzzer (x):
-    demoCls ().demoFunc1 (x)
+    dc = demoCls ()
+    dc.demoFunc1 (x)
 
 -------------------------------------------------------------------
 control flow graph:
 
                RunFuzzer (x)
                     |
-          obj = demoCls.__init__()
+          dc = demoCls.__init__()
                     |
-             obj.demoFunc1 (x)
+             dc.demoFunc1 (x)
 
 class graph:
                 demoCls
@@ -30,19 +31,18 @@ class graph:
   __init__ (init)    demoFunc1 (x)
 """
 
-class NodeValue ():
+class NodeVal ():
     NodeAttr_None = 0
     NodeAttr_FP   = 1
     NodeAttr_AP   = 2
     
-    def __init__ (self, Attr=0):
+    def __init__ (self, Val, Attr=0):
+        self.Val  = Val
         self.Attr = Attr
 
-
-class NV_fp (NodeValue):
-    def __init__ (self, FP):
-        super(NV_fp, self).__init__(NodeValue.NodeAttr_FP)
-        self.FP = FP
+    def View (self):
+        Types = ['None', 'FP', 'AP']
+        print (str(self.Val) + ' ---> with type: ' + Types[self.Attr])
 
 class PgNode ():
     def __init__ (self, Id, Type, Name='node'):
@@ -88,10 +88,21 @@ class PropGraph (NodeVisitor):
             if arg.arg == 'self':
                 continue
             fp.append (arg.arg)
-        return NV_fp (fp)
+        return NodeVal (fp, NodeVal.NodeAttr_FP)
 
-    def GetAP (self):
-        pass
+    def GetAP (self, Args):
+        ArgList = Args
+        ap = []
+        for arg in ArgList:
+            if isinstance (arg, Name):
+                ap.append (arg.id)
+            else:
+                raise Exception("GetAP -> Unsupport!!!")
+            
+        return NodeVal (ap, NodeVal.NodeAttr_AP)
+
+    def GetId (self, name):
+        return name.id
 
     def AddNode (self, Type, Name='node'):
          Nd = PgNode (PropGraph.NodeId, Type, Name) 
@@ -112,18 +123,37 @@ class PropGraph (NodeVisitor):
         operator = getattr(self, method, self.generic_visit)        
         return operator(node)
 
-    def pg_call(self, node):   
-        print (self.CurFunc.Name, end="\n\n")
-        if isinstance(node.func, Attribute):
-            self.visit (node.func)
+    def pg_assign(self, node):
+        lefts = node.targets
+        right = node.value
+        self.VisitAst (right)    
+
+    def pg_expr(self, node):   
+        print (ast.dump (node), end="\n\n")
+        self.VisitAst (node.value)
+        
+    def pg_call(self, node):
+        callee = None
+        
+        ap = self.GetAP(node.args)
+        ap.View ()
+        
+        if isinstance(node.func, Attribute):            
+            callee = self.GetId (node.func.value) + '.' + node.func.attr
+        elif isinstance(node.func, Name):
+            callee = self.GetId (node.func)         
         else:
-            pass
+            raise Exception("pg_call -> Unsupport!!!")
+
+        print (callee, end="\n\n")
     
     def pg_functiondef (self, node):
         print (ast.dump (node), end="\n\n")
-        FP = self.GetFP(node.args)
+        fp = self.GetFP(node.args)
+        fp.View ()
+        
         self.CurFunc = self.AddNode (PropGraph.NodeType_FUNC, node.name)
-        self.CurFunc.NodeVal = FP
+        self.CurFunc.NodeVal = fp
 
         if self.CurClass != None:
             eg = PgEdge (self.CurClass, self.CurFunc, PropGraph.EdgeType_PROP)

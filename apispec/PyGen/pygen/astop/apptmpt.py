@@ -21,7 +21,8 @@ class demoCls:
         pass
 
 def RunFuzzer (x):
-    demoCls ().demoFunc1 (x)
+    dc = demoCls ()
+    dc.demoFunc1 (x)
     """
     )
 
