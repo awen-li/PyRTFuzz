@@ -63,7 +63,6 @@ class PyMod ():
         self.mdName  = mdName
         self.Apis    = {}
         self.Classes = {}
-        self.Exceps  = {}
 
 class PyExcep ():
     def __init__ (self, exName):
@@ -80,7 +79,7 @@ class PyLib ():
 class ApiSpec():
     def __init__(self, apiSpecXml='apispec.xml'):
         self.apiSpecXml = apiSpecXml
-        self.PyLib = {}
+        self.PyLibs = {}
 
         self.apiAddr = {}
 
@@ -118,6 +117,8 @@ class ApiSpec():
             
             apiName = xmlApi.getAttribute("name")
             curCls.Apis[apiName] = self.ParseApi (apiName, xmlApi)
+        
+        return curCls
 
     def ParseMod (self, mdName, xmlMd):
         print ("# Parse module: %s" %mdName)
@@ -141,6 +142,7 @@ class ApiSpec():
             curMd.Apis [apiName] = self.ParseApi (apiName, xmlApi)
 
         self.apiAddr = {}
+        return curMd
             
     def Parser (self):
         DOMTree = xml.dom.minidom.parse(self.apiSpecXml)
@@ -154,6 +156,7 @@ class ApiSpec():
             libName = xmlLib.getAttribute("name")
             print ("# Parse library: %s" %libName)
             curLib = PyLib (libName)
+            self.PyLibs [libName] = curLib
 
             xmlModules = xmlLib.getElementsByTagName ("module")
             for xmlMd in xmlModules:

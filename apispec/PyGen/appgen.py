@@ -30,10 +30,7 @@ def main():
         if opts.filename is None:
             parser.error('filename is missing: required with the main options')
 
-        apiSpec = ApiSpec (opts.filename)
-        apiSpec.Parser ()
-
-        ag = AppGen ()
+        ag = AppGen (opts.filename)
         ag.Gen ()
     else:
         pass

@@ -143,6 +143,8 @@ def RunFuzzer (x):
     dc = demoCls ()
     dc.demoFunc1 (x)
 """
-    def __init__(self):
+    def __init__(self, api, excepts):
         super(NewOO, self).__init__(NewOO.OOTmpt)
+        self.api = api
+        self.excepts = excepts
         

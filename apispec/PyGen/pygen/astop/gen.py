@@ -1,9 +1,7 @@
 
 import os
-import astunparse
 from .astop import *
-from .propgraph import *
-from .apptmpt import *
+from .apispec import *
 
 
 pg_tempt_oo = \
@@ -56,11 +54,28 @@ Pickler(io.BytesIO()).dump(42)
 #####################################################################################################
 
 class AppGen ():
-    def __init__ (self):
-        pass
+    def __init__ (self, apiSpecXml):
+        apiSpec = ApiSpec (apiSpecXml)
+        apiSpec.Parser ()
+
+        self.PyLibs = apiSpec.PyLibs
 
     def Gen (self):
-        no = NewOO ()
+        for libName, pyLib in self.PyLibs.items ():
+            print ("# " + libName)
+            curExcepts = pyLib.Exceptions
+            for mdName, pyMoudle in pyLib.Modules.items ():
+                print ("## " + mdName)
+                for clsName, cls in pyMoudle.Classes.items ():
+                    print ("### " + clsName)
+                    for apiName, api in cls.Apis.items ():
+                        print ("#### " + apiName)
+
+                for apiName, api in pyMoudle.Apis.items ():
+                    print ("### " + apiName)
+                
+                
+        no = NewOO ('', '')
 
         
 
