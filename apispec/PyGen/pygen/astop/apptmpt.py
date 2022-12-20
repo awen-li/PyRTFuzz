@@ -26,4 +26,14 @@ def RunFuzzer (x):
     """
     )
 
+    ATs.Add (
+    """
+def demoFunc1 (arg1):
+    pass
+
+def RunFuzzer (x):
+    demoFunc1 (x)
+    """
+    )
+
 InitTmpts ()

@@ -81,7 +81,8 @@ class PropGraph (NodeVisitor):
     EdgeType_PROP = 1
     EdgeType_CFG  = 2
     EdgeType_DD   = 3
-    EdgeTypes = ['NONE', 'PROPERITY', 'CFG', 'DD']
+    EdgeType_CALL = 4
+    EdgeTypes = ['NONE', 'PROPERITY', 'CFG', 'DD', 'CALL']
     
     def __init__ (self, MainFunc='RunFuzz'):
         self.MainFunc = MainFunc
@@ -92,6 +93,19 @@ class PropGraph (NodeVisitor):
         self.CurClass = None
         self.CurFunc  = None
 
+    def AddFunc (self):
+        Cls = ''
+        if self.CurClass != None:
+            Cls = self.CurClass.Name + '.'
+
+        FuncName = Cls + self.CurFunc.Name
+        self.FuncList [FuncName] = self.CurFunc
+
+
+    def GetFunc (self, FuncName):
+        return self.FuncList.get (FuncName)
+        
+    
     def GetFP (self, Args):
         ArgList = Args.args
         fp = []
@@ -150,14 +164,14 @@ class PropGraph (NodeVisitor):
         self.VisitAst (right)    
 
     def pg_expr(self, node):   
-        print (ast.dump (node), end="\n\n")
+        #print (ast.dump (node), end="\n\n")
         self.VisitAst (node.value)
         
     def pg_call(self, node):
         callee = None
         
         ap = self.GetAP(node.args)
-        ap.View ()
+        #ap.View ()
         
         if isinstance(node.func, Attribute):            
             callee = self.GetId (node.func.value) + '.' + node.func.attr
@@ -169,6 +183,13 @@ class PropGraph (NodeVisitor):
         CalleeNd = self.AddNode (PropGraph.NodeType_STMT, callee)
         CalleeNd.NodeVal = ap
 
+        #Call
+        DefFunc = self.GetFunc(callee)
+        if DefFunc != None:
+            eg = PgEdge (DefFunc, CalleeNd, PropGraph.EdgeType_CALL)
+            self.AddEdge (eg)
+
+        
         # add a CFG edge
         eg = PgEdge (self.CurFunc, CalleeNd, PropGraph.EdgeType_CFG)
         self.AddEdge (eg)
@@ -180,12 +201,13 @@ class PropGraph (NodeVisitor):
             self.AddEdge (ddEg)
     
     def pg_functiondef (self, node):
-        print (ast.dump (node), end="\n\n")
+        #print (ast.dump (node), end="\n\n")
         fp = self.GetFP(node.args)
-        fp.View ()
+        #fp.View ()
         
         self.CurFunc = self.AddNode (PropGraph.NodeType_FUNC, node.name)
         self.CurFunc.NodeVal = fp
+        self.AddFunc ()
 
         if self.CurClass != None:
             eg = PgEdge (self.CurClass, self.CurFunc, PropGraph.EdgeType_PROP)
@@ -193,7 +215,7 @@ class PropGraph (NodeVisitor):
         
         for st in node.body:
             self.VisitAst (st)
-
+        
         self.CurFunc = None
 
     def pg_classdef(self, node):
@@ -208,7 +230,7 @@ class PropGraph (NodeVisitor):
     def ShowPg (self):
         # get roots
         root = []
-        print ("Node List:")
+        print ("\r\nNode List:")
         for id, node in self.Id2Node.items ():
             print ("[%d]%s" %(node.Id, node.Name))
             if len (node.InEdge) == 0:
@@ -218,7 +240,7 @@ class PropGraph (NodeVisitor):
         # iter root
         for r in root:
             queue = []
-            print ("\r\n\n[%s][%d]Root: %s" %(PropGraph.NodeTypes[r.Type], r.Id, r.Name))
+            print ("\r\n[%s][%d]Root: %s" %(PropGraph.NodeTypes[r.Type], r.Id, r.Name))
             queue.append (r)
             while len (queue) != 0:
                 curNode = queue.pop (0)
@@ -232,9 +254,9 @@ class PropGraph (NodeVisitor):
     def Build (self):
         print ("\r\n================ PropGraph.Build ================\r\n")
         for tmpt in ATs.TmptList:
-            print (tmpt)
+            print ("Template: \r\n" + tmpt)
             astTmpt = ast.parse(tmpt)
-            print (ast.dump (astTmpt), end="\n\n")
+            #print (ast.dump (astTmpt), end="\n\n")
 
             for body in astTmpt.body:
                 self.VisitAst (body)
