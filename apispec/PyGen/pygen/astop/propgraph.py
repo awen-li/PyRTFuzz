@@ -225,14 +225,21 @@ class PropGraph (NodeVisitor):
             
         self.CurClass = None
 
+    def GetRoots (self):
+        root = []
+        for id, node in self.Id2Node.items ():
+            if len (node.InEdge) == 0:
+                root.append (node)
+        return root
+        
+
     def ShowPg (self):
         # get roots
-        root = []
+        root = self.GetRoots ()
+        
         print ("\r\nNode List:")
         for id, node in self.Id2Node.items ():
             print ("[%d]%s" %(node.Id, node.Name))
-            if len (node.InEdge) == 0:
-                root.append (node)
 
         print ("\r\n")
         # iter root

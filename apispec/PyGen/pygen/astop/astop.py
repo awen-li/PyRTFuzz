@@ -1,15 +1,21 @@
 
 # _*_ coding:utf-8 _*_
 
-import re
 import ast
 from ast import *
-
+from .propgraph import *
 
 class AstOp (NodeTransformer):
-    def __init__(self):
-        self.FormalArgs = {}
+    def __init__(self, Tmpt):
+        self.Tmpt = Tmpt
+        self.pG   = None
 
+        self.InitPg ()
+
+    def InitPg (self):
+        pG = PropGraph ()
+        pG.Build (self.Tmpt)
+        
     def visit(self, node):
         if node is None:
             return
@@ -18,31 +24,8 @@ class AstOp (NodeTransformer):
         operator = getattr(self, method, self.generic_visit)        
         return operator(node)
 
-
-    def get_fcallee (self, node):
-        pass
-
-    def get_fargs (self, node):
-        funcName = node.name
-        fargs = []
-        
-        args  = node.args.args
-        argno = 0
-        for arg in args:
-            fargs.append (arg.arg)
-
-        self.FormalArgs[funcName] = fargs
-        print (self.FormalArgs)
-        return
-
-    def get_aargs (self, node):
-        args  = node.args.args
-        argno = 0
-        for arg in args:
-            if argno == index:
-                return Name(id=arg.arg, ctx=Load())
-            argno += 1
-        return None
+    def op_new_value (self, name):
+        return Name(id=name, ctx=Load())
 
     def op_value (self, node):
         pass
@@ -65,8 +48,10 @@ class AstOp (NodeTransformer):
         print (ast.dump (node.func), end="\n\n")
         if isinstance(node.func, Attribute):
             self.visit (node.func)
+        elif isinstance(node.func, Name):
+            callee = self.GetId (node.func)         
         else:
-            pass
+            raise Exception("pg_call -> Unsupport!!!")
     
     def op_functiondef (self, node):
         print (ast.dump (node), end="\n\n")
@@ -142,4 +127,22 @@ class FuncOp(AstOp):
         
         return node
 
-            
+
+
+class NewOO(AstOp):
+    OOTmpt = \
+"""
+class demoCls:
+    def __init__(self):
+        pass
+
+    def demoFunc1(self, arg1):
+        pass
+
+def RunFuzzer (x):
+    dc = demoCls ()
+    dc.demoFunc1 (x)
+"""
+    def __init__(self):
+        super(NewOO, self).__init__(NewOO.OOTmpt)
+        

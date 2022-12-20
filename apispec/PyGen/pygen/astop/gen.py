@@ -60,15 +60,7 @@ class AppGen ():
         pass
 
     def Gen (self):
-        Ast = ast.parse(pg_inherit)
-        print ("=============   original source   =============\r\n")
-
-        ap = AstOp ()
-        ap.visit (Ast)
-
-        for app in ATs.TmptList:
-            pG = PropGraph ()
-            pG.Build (app)
+        no = NewOO ()
 
         
 
