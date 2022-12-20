@@ -67,15 +67,17 @@ class AppGen ():
             for mdName, pyMoudle in pyLib.Modules.items ():
                 print ("## " + mdName)
                 for clsName, cls in pyMoudle.Classes.items ():
-                    print ("### " + clsName)
+                    print ("### " + clsName + ": " + cls.clsInit)
                     for apiName, api in cls.Apis.items ():
-                        print ("#### " + apiName)
+                        print ("#### " + apiName + " ---> " + api.Expr)
+                        OP = NewOO (cls.clsInit, api.Expr, curExcepts)
+                        OP.GenApp ()
 
                 for apiName, api in pyMoudle.Apis.items ():
                     print ("### " + apiName)
                 
                 
-        no = NewOO ('', '')
+        
 
         
 

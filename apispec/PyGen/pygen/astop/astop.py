@@ -5,16 +5,42 @@ import ast
 from ast import *
 from .propgraph import *
 
+def GetWrapF (pgNode):
+    print ("[%d]%s - %d" %(pgNode.Id, pgNode.Name, pgNode.Type))
+    # must be a STMT
+    if pgNode.Type != PropGraph.NodeType_STMT:
+        return None
+    
+    #check call STMT with inputs
+    if pgNode.NodeVal == None:
+        return None
+
+    #check value type: must be AP
+    if pgNode.NodeVal.Attr != NodeVal.NodeAttr_AP or len (pgNode.NodeVal.Val) == 0:
+        return None
+
+    #get the def of the callee
+    for oe in pgNode.OutEdge:
+        if oe.Type != PropGraph.EdgeType_CALL:
+            continue
+        defNode = oe.DstNd
+        return defNode
+    
+    return None
+
 class AstOp (NodeTransformer):
     def __init__(self, Tmpt):
-        self.Tmpt = Tmpt
-        self.pG   = None
+        self.Tmpt   = Tmpt
+        self.pG     = PropGraph ()
+        self.RootPg = self.pG.Build (self.Tmpt)
 
-        self.InitPg ()
-
-    def InitPg (self):
-        pG = PropGraph ()
-        pG.Build (self.Tmpt)
+    def GetWrapF (self):
+        for root in self.RootPg:
+            if root.Type == PropGraph.NodeType_CLASS:
+                # properity G entry
+                continue
+            WrapF = self.pG.VisitGp (GetWrapF, root, PropGraph.EdgeType_CFG)
+            print (WrapF)
         
     def visit(self, node):
         if node is None:
@@ -143,8 +169,12 @@ def RunFuzzer (x):
     dc = demoCls ()
     dc.demoFunc1 (x)
 """
-    def __init__(self, api, excepts):
+    def __init__(self, init, api, excepts):
         super(NewOO, self).__init__(NewOO.OOTmpt)
-        self.api = api
+        self.init = init
+        self.api  = api
         self.excepts = excepts
+
+    def GenApp (self):
+        Func = self.GetWrapF ()
         

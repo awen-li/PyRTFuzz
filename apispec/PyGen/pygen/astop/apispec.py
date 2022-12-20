@@ -8,7 +8,7 @@ import xml.dom.minidom
 <apisepc version="1.0">
     <library name="email">
         <module name="charset">
-            <class name="Charset">
+            <class name="Charset" init="Ch = Charset()">
                 <api name="get_body_encoding">
                         <expr>ret = get_body_encoding()</expr>
                         <parameters>{}</parameters>
@@ -50,11 +50,13 @@ class PyApi ():
         self.Ret     = {}
         self.Parameters = []
         self.Dependences = Dependences
+        
 
 
 class PyCls ():
-    def __init__ (self, clsName):
-        self.clsName  = clsName
+    def __init__ (self, clsName, Init):
+        self.clsName = clsName
+        self.clsInit = Init
         self.Apis = {}
 
 
@@ -90,14 +92,14 @@ class ApiSpec():
 
     def ParseApi (self, apiName, xmlApi):
         print ("apiName = %s" %apiName)
-        expr = xmlApi.getElementsByTagName("expr")
-        print ("\t: expr-> %s" %expr[0].childNodes[0].data)
-        parameters = xmlApi.getElementsByTagName("parameters")
-        print ("\t: parameters-> %s" %parameters[0].childNodes[0].data)
-        ret = xmlApi.getElementsByTagName("return")
-        print ("\t: ret-> %s" %ret[0].childNodes[0].data)
-        dependences = xmlApi.getElementsByTagName("dependences")
-        print ("\t: dependences-> %s" %dependences[0].childNodes[0].data)
+        expr = xmlApi.getElementsByTagName("expr")[0].childNodes[0].data
+        print ("\t: expr-> %s" %expr)
+        parameters = xmlApi.getElementsByTagName("parameters")[0].childNodes[0].data
+        print ("\t: parameters-> %s" %parameters)
+        ret = xmlApi.getElementsByTagName("return")[0].childNodes[0].data
+        print ("\t: ret-> %s" %ret)
+        dependences = xmlApi.getElementsByTagName("dependences")[0].childNodes[0].data
+        print ("\t: dependences-> %s" %dependences)
 
         return PyApi (apiName, expr, ret, parameters, dependences)
 
@@ -108,8 +110,8 @@ class ApiSpec():
             pyLib.Exceptions.append (exp)
             print (exp)
 
-    def ParseClass (self, clsName, xmlCls):
-        curCls = PyCls (clsName)
+    def ParseClass (self, clsName, clsInit, xmlCls):
+        curCls = PyCls (clsName, clsInit)
         
         xmlApis = xmlCls.getElementsByTagName("api")
         for xmlApi in xmlApis:
@@ -129,9 +131,10 @@ class ApiSpec():
         for xmlCls in xmlClasses:          
             self.AssertAttr (xmlCls, "name")
             clsName = xmlCls.getAttribute("name")
-            print ("# Parse class: %s" %clsName)
+            clsInit = xmlCls.getAttribute("init")
+            print ("# Parse class: %s -> [init]%s" %(clsName, clsInit))
                                    
-            curMd.Classes [clsName] = self.ParseClass (clsName, xmlCls)
+            curMd.Classes [clsName] = self.ParseClass (clsName, clsInit, xmlCls)
 
         # api under module
         xmlApis = xmlMd.getElementsByTagName ("api")

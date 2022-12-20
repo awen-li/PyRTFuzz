@@ -2,16 +2,16 @@
 <apisepc version="1.0">
     <library name="email">
         <module name="charset">
-            <class name="Charset">
+            <class name="Charset" init="Ch = Charset()">
                 <api name="get_body_encoding">
-                        <expr>ret = get_body_encoding()</expr>
+                        <expr>ret = Ch.get_body_encoding()</expr>
                         <parameters>{}</parameters>
                         <return>{'ret':base64|7bit}</return>
                         <dependences>  </dependences>
                 </api>
 
                 <api name="header_encode">
-                        <expr>header_encode(str)</expr>
+                        <expr>Ch.header_encode(str)</expr>
                         <parameters>{'str':string}</parameters>
                         <return>{}</return>
                         <dependences>  </dependences>

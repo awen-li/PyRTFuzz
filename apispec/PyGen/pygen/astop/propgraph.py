@@ -91,6 +91,24 @@ class PropGraph (NodeVisitor):
         self.CurClass = None
         self.CurFunc  = None
 
+    def VisitGp (self, Hook, Root, Type=None):
+        N = Root
+        Res = None
+        
+        queue = []
+        queue.append (N)
+        while len (queue) != 0:
+            N = queue.pop (0)
+            
+            Res = Hook (N)
+            if Res != None:
+                return Res
+   
+            for oe in N.OutEdge:
+                if Type == None or oe.Type == Type:
+                    queue.append (oe.DstNd)
+        return None
+
     def AddFunc (self):
         Cls = ''
         if self.CurClass != None:
@@ -99,11 +117,9 @@ class PropGraph (NodeVisitor):
         FuncName = Cls + self.CurFunc.Name
         self.FuncList [FuncName] = self.CurFunc
 
-
     def GetFunc (self, FuncName):
         return self.FuncList.get (FuncName)
-        
-    
+     
     def GetFP (self, Args):
         ArgList = Args.args
         fp = []
@@ -264,4 +280,5 @@ class PropGraph (NodeVisitor):
             self.VisitAst (body)
 
         self.ShowPg ()
+        return self.GetRoots ()
 
