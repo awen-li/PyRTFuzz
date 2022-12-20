@@ -1,7 +1,6 @@
 
 import ast
 from ast import *
-from .apptmpt import *
 
 """
 Example:
@@ -71,8 +70,6 @@ class PgEdge ():
         
 class PropGraph (NodeVisitor):
 
-    NodeId = 1
-
     NodeType_CLASS = 1
     NodeType_FUNC  = 2
     NodeType_STMT  = 3
@@ -85,6 +82,7 @@ class PropGraph (NodeVisitor):
     EdgeTypes = ['NONE', 'PROPERITY', 'CFG', 'DD', 'CALL']
     
     def __init__ (self, MainFunc='RunFuzz'):
+        self.NodeId   = 1
         self.MainFunc = MainFunc
         self.FuncList = {}
         self.Id2Node  = {}
@@ -130,10 +128,10 @@ class PropGraph (NodeVisitor):
         return name.id
 
     def AddNode (self, Type, Name='node'):
-         Nd = PgNode (PropGraph.NodeId, Type, Name) 
+         Nd = PgNode (self.NodeId, Type, Name) 
          self.Id2Node [Nd.Id] = Nd
 
-         PropGraph.NodeId += 1
+         self.NodeId += 1
          return Nd
 
     def AddEdge (self, Edge):
@@ -251,15 +249,12 @@ class PropGraph (NodeVisitor):
                         print (str(oe.Val))
                     queue.append (oe.DstNd)
     
-    def Build (self):
-        print ("\r\n================ PropGraph.Build ================\r\n")
-        for tmpt in ATs.TmptList:
-            print ("Template: \r\n" + tmpt)
-            astTmpt = ast.parse(tmpt)
-            #print (ast.dump (astTmpt), end="\n\n")
-
-            for body in astTmpt.body:
-                self.VisitAst (body)
+    def Build (self, App):
+        print ("\r\n================ PropGraph.Build ================")
+        print ("Template: \r\n" + App)
+        astApp = ast.parse(App)
+        for body in astApp.body:
+            self.VisitAst (body)
 
         self.ShowPg ()
 

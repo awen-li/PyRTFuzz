@@ -3,6 +3,7 @@ import os
 import astunparse
 from .astop import *
 from .propgraph import *
+from .apptmpt import *
 
 
 pg_tempt_oo = \
@@ -65,8 +66,9 @@ class AppGen ():
         ap = AstOp ()
         ap.visit (Ast)
 
-        pG = PropGraph ()
-        pG.Build ()
+        for app in ATs.TmptList:
+            pG = PropGraph ()
+            pG.Build (app)
 
         
 
