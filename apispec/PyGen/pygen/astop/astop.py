@@ -39,8 +39,8 @@ class AstOp (NodeTransformer):
             if root.Type == PropGraph.NodeType_CLASS:
                 # properity G entry
                 continue
-            WrapF = self.pG.VisitGp (GetWrapF, root, PropGraph.EdgeType_CFG)
-            print (WrapF)
+            return self.pG.VisitGp (GetWrapF, root, PropGraph.EdgeType_CFG)
+        return None
         
     def visit(self, node):
         if node is None:
@@ -177,4 +177,7 @@ def RunFuzzer (x):
 
     def GenApp (self):
         Func = self.GetWrapF ()
+        print (Func.Name)
+        if Func.NodeVal != None:
+            Func.NodeVal.View ()
         
