@@ -4,9 +4,10 @@ import astunparse
 import ast
 from ast import *
 from .propgraph import *
+from .debug import *
 
 def GetWrapF (pgNode):
-    print ("[%d]%s - %d" %(pgNode.Id, pgNode.Name, pgNode.Type))
+    DebugPrint ("GetWrapF -> [%d]%s - %d" %(pgNode.Id, pgNode.Name, pgNode.Type))
     # must be a STMT
     if pgNode.Type != PropGraph.NodeType_STMT:
         return None
@@ -47,7 +48,6 @@ class AstOp (NodeTransformer):
             return True
 
         if len (body) == 1 and isinstance(body[0], Pass):
-            print ("Pass function!")
             return True
 
         return False
@@ -85,7 +85,7 @@ class AstOp (NodeTransformer):
         return node
     
     def op_assign(self, node):
-        print (ast.dump (node), end="\n\n")
+        DebugPrint (ast.dump (node), end="\n\n")
 
         for tg in node.targets:
             self.visit (tg)
@@ -99,13 +99,13 @@ class AstOp (NodeTransformer):
         return node
     
     def op_functiondef (self, node):
-        print (ast.dump (node), end="\n\n")
+        DebugPrint (ast.dump (node), end="\n\n")
         for st in node.body:
             self.visit (st)
         return node
 
     def op_classdef(self, node):
-        print (ast.dump (node), end="\n\n")
+        DebugPrint (ast.dump (node), end="\n\n")
         for st in node.body:
             self.visit (st)
         return node
@@ -118,7 +118,7 @@ class ClassOp(AstOp):
         self.Op      = Op
 
     def op_functiondef (self, node):
-        print (ast.dump (node))
+        DebugPrint (ast.dump (node))
 
         arg = self.get_arg (node)
         callee = self.FuncAst.body[0].value
@@ -210,7 +210,7 @@ def RunFuzzer (x):
         if self.criterion.NodeVal == None or self.criterion.NodeVal.Attr != NodeVal.NodeAttr_FP:
             raise Exception("Unspected value type!")
         fp = self.criterion.NodeVal.Val
-        print (fp)
+        DebugPrint (self.criterion.Name + " formal paras: " + str(fp))
 
         # first edit the ast
         if self.HasArgs (CallStmt.body[0]):
@@ -230,16 +230,15 @@ def RunFuzzer (x):
     def GenApp (self):
         self.criterion = self.GetWrapF ()
         if self.criterion == None:
-            print ("[GenApp] get the insert point fail!...")
+            DebugPrint ("[GenApp] get the insert point fail!...")
             return
         self.criterion.View()
-        print (self.init, self.api.Expr)
+        DebugPrint ("GenApp -> api: " + self.init + "  " + self.api.Expr)
         
         astApp = ast.parse(NewOO.OOTmpt)
-        print (astunparse.unparse(astApp))
+        DebugPrint (astunparse.unparse(astApp))
         new = self.visit(astApp)
-        print (astunparse.unparse(new))
+        DebugPrint (astunparse.unparse(new))
         self.pG.ShowPg ()
-        print (__file__)
 
         

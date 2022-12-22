@@ -1,6 +1,7 @@
 
 import ast
 from ast import *
+from .debug import *
 
 """
 Example:
@@ -40,8 +41,11 @@ class NodeVal ():
         self.Attr = Attr
 
     def View (self):
+        if debugFlag == False:
+            return
+            
         Types = ['None', 'FP', 'AP']
-        print (str(self.Val) + ' ---> with type: ' + Types[self.Attr])
+        DebugPrint ('ValueView -> ' + str(self.Val) + ' ---> with type: ' + Types[self.Attr])
 
 class PgNode ():
     def __init__ (self, Id, Type, Name='node'):
@@ -67,7 +71,10 @@ class PgNode ():
         self.OutEdge.append (OutEg)
 
     def View (self):
-        print ("[%d]%s: " %(self.Id, self.Name), end = ": ")
+        if debugFlag == False:
+            return
+        
+        print ("[DEBUG]NodeView -> [%d]%s: " %(self.Id, self.Name), end = " -> value --- ")
         if self.NodeVal != None:
             print ("[%d]%s" %(self.NodeVal.Attr, str(self.NodeVal.Val)))
         else:
@@ -242,7 +249,7 @@ class PropGraph (NodeVisitor):
         if DefFunc != None:
             eg = PgEdge (CalleeNd, DefFunc, PropGraph.EdgeType_CALL)
             self.AddEdge (eg)
-            print ("@Add call edge: [%d, %d]" %(CalleeNd.Id, DefFunc.Id))
+            DebugPrint ("@Add call edge: [" + str(CalleeNd.Id) + ", " + str(DefFunc.Id) + "]")
 
         
         # add a CFG edge
@@ -292,6 +299,9 @@ class PropGraph (NodeVisitor):
         
 
     def ShowPg (self):
+        if debugFlag == False:
+            return
+        
         # get roots
         root = self.GetRoots ()
         
