@@ -59,6 +59,13 @@ class PgNode ():
     def AddOutEdge (self, OutEg):
         self.OutEdge.append (OutEg)
 
+    def View (self):
+        print ("[%d]%s: " %(self.Id, self.Name), end = ": ")
+        if self.NodeVal != None:
+            print ("[%d]%s" %(self.NodeVal.Attr, str(self.NodeVal.Val)))
+        else:
+            print ("None")
+
 
 class PgEdge ():
     def __init__ (self, Src, Dst, Type, Val=None):

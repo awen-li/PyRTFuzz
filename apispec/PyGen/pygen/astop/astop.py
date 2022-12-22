@@ -72,16 +72,9 @@ class AstOp (NodeTransformer):
 
     def op_call(self, node):
         print (ast.dump (node.func), end="\n\n")
-        if isinstance(node.func, Attribute):
-            self.visit (node.func)
-        elif isinstance(node.func, Name):
-            callee = self.GetId (node.func)         
-        else:
-            raise Exception("pg_call -> Unsupport!!!")
     
     def op_functiondef (self, node):
         print (ast.dump (node), end="\n\n")
-        self.get_fargs (node)
         for st in node.body:
             self.visit (st)
 
@@ -174,10 +167,30 @@ def RunFuzzer (x):
         self.init = init
         self.api  = api
         self.excepts = excepts
+        self.criterion = None
+
+    def op_functiondef (self, node):
+        if node.name != self.criterion.Name:
+            return
+
+        print ("NewOO -> op_functiondef\n\n")
+        print (ast.dump (node))
+
+        InitStmt = ast.parse(self.init)
+        CallStmt = ast.parse(self.api.Expr)
+
+        print (ast.dump (InitStmt))
+        print (ast.dump (CallStmt))
 
     def GenApp (self):
-        Func = self.GetWrapF ()
-        print (Func.Name)
-        if Func.NodeVal != None:
-            Func.NodeVal.View ()
+        self.criterion = self.GetWrapF ()
+        if self.criterion == None:
+            print ("[GenApp] get the insert point fail!...")
+            return
+        self.criterion.View()
+        print (self.init, self.api.Expr)
+        
+        astApp = ast.parse(NewOO.OOTmpt)
+        self.visit(astApp)
+
         
