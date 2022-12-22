@@ -53,6 +53,9 @@ class PgNode ():
         self.InEdge  = []
         self.OutEdge = []
 
+    def AddValue (self, Type, Value):
+        self.NodeVal = NodeVal (Value, Type)
+
     def AddInEdge (self, InEg):
         self.InEdge.append (InEg)
 
@@ -176,12 +179,28 @@ class PropGraph (NodeVisitor):
         Src.AddOutEdge (Edge)
         Dst.AddInEdge (Edge)
 
-    def IsDD (self, ApVal):
-        FpList = self.CurFunc.NodeVal.Val
+    def IsDD (self, ApVal, CurFunc=None):
+        if CurFunc == None:
+            CurFunc = self.CurFunc
+        
+        FpList = CurFunc.NodeVal.Val
         for ap in ApVal.Val:
             if ap in FpList:
                 return ap
         return None
+
+    def GetCallee (self, call):
+        Callee = DefFunc = None
+        if isinstance(call, Attribute):            
+            Callee = self.GetId (call.value) + '.' + call.attr
+            DefFunc = self.GetFunc(call.attr)
+        elif isinstance(call, Name):
+            Callee = self.GetId (call)
+            DefFunc = self.GetFunc(Callee)
+        else:
+            print (ast.dump (call))
+            raise Exception("pg_call -> Unsupport!!!")
+        return Callee, DefFunc
 
     def VisitAst(self, node):
         if node is None:
@@ -200,23 +219,18 @@ class PropGraph (NodeVisitor):
         #print (ast.dump (node), end="\n\n")
         self.VisitAst (node.value)
         
-    def pg_call(self, node):
+    def pg_call(self, node, CurFunc=None):
         #print (ast.dump (node), end="\n\n")
+        if CurFunc == None:
+            CurFunc = self.CurFunc
+        
         callee = None
         DefFunc = None
         
         ap = self.GetAP(node.args)
         #ap.View ()
-        
-        if isinstance(node.func, Attribute):            
-            callee = self.GetId (node.func.value) + '.' + node.func.attr
-            DefFunc = self.GetFunc(node.func.attr)
-        elif isinstance(node.func, Name):
-            callee = self.GetId (node.func)
-            DefFunc = self.GetFunc(callee)
-        else:
-            raise Exception("pg_call -> Unsupport!!!")
 
+        callee, DefFunc = self.GetCallee (node.func)
         CalleeNd = self.AddNode (PropGraph.NodeType_STMT, callee)
         CalleeNd.NodeVal = ap
 
@@ -227,13 +241,13 @@ class PropGraph (NodeVisitor):
 
         
         # add a CFG edge
-        eg = PgEdge (self.CurFunc, CalleeNd, PropGraph.EdgeType_CFG)
+        eg = PgEdge (CurFunc, CalleeNd, PropGraph.EdgeType_CFG)
         self.AddEdge (eg)
 
         # check DDG from FP
-        ddAp = self.IsDD (ap)
+        ddAp = self.IsDD (ap, CurFunc)
         if ddAp != None:
-            ddEg = PgEdge (self.CurFunc, CalleeNd, PropGraph.EdgeType_DD, ddAp)
+            ddEg = PgEdge (CurFunc, CalleeNd, PropGraph.EdgeType_DD, ddAp)
             self.AddEdge (ddEg)
     
     def pg_functiondef (self, node):

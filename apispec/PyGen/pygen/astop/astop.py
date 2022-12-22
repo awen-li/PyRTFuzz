@@ -1,6 +1,6 @@
 
 # _*_ coding:utf-8 _*_
-
+import astunparse
 import ast
 from ast import *
 from .propgraph import *
@@ -41,6 +41,31 @@ class AstOp (NodeTransformer):
                 continue
             return self.pG.VisitGp (GetWrapF, root, PropGraph.EdgeType_CFG)
         return None
+
+    def IsBlankBody (self, body):
+        if len (body) == 0:
+            return True
+
+        if len (body) == 1 and isinstance(body[0], Pass):
+            print ("Pass function!")
+            return True
+
+        return False
+
+
+    def HasArgs (self, stmt):
+        call = None
+        if isinstance (stmt, Assign):
+            call = stmt.value
+        elif isinstance (stmt, Expr):
+            call = stmt.value
+        else:
+            raise Exception("HasArgs -> Unsupport!!!")
+
+        if len (call.args) == 0:
+            return False
+        else:
+            return True
         
     def visit(self, node):
         if node is None:
@@ -54,10 +79,10 @@ class AstOp (NodeTransformer):
         return Name(id=name, ctx=Load())
 
     def op_value (self, node):
-        pass
+        return node
     
     def op_return(self, node):
-        print (ast.dump (node), end="\n\n")
+        return node
     
     def op_assign(self, node):
         print (ast.dump (node), end="\n\n")
@@ -65,23 +90,25 @@ class AstOp (NodeTransformer):
         for tg in node.targets:
             self.visit (tg)
         
-        self.visit (node.value)
+        return self.visit (node.value)
 
     def op_atrribute (self, node):
-        print (ast.dump (node), end="\n\n")
+        return node
 
     def op_call(self, node):
-        print (ast.dump (node.func), end="\n\n")
+        return node
     
     def op_functiondef (self, node):
         print (ast.dump (node), end="\n\n")
         for st in node.body:
             self.visit (st)
+        return node
 
     def op_classdef(self, node):
         print (ast.dump (node), end="\n\n")
         for st in node.body:
             self.visit (st)
+        return node
 
 class ClassOp(AstOp):
     def __init__(self, ClsName, FuncAst, Op):
@@ -171,16 +198,32 @@ def RunFuzzer (x):
 
     def op_functiondef (self, node):
         if node.name != self.criterion.Name:
-            return
-
-        print ("NewOO -> op_functiondef\n\n")
-        print (ast.dump (node))
+            return node
 
         InitStmt = ast.parse(self.init)
+        if self.HasArgs (InitStmt.body[0]):
+            raise Exception("Warning: unsopport parameters in construction function!")
         CallStmt = ast.parse(self.api.Expr)
 
-        print (ast.dump (InitStmt))
-        print (ast.dump (CallStmt))
+        # get the FP of current node
+        if self.criterion.NodeVal == None or self.criterion.NodeVal.Attr != NodeVal.NodeAttr_FP:
+            raise Exception("Unspected value type!")
+        fp = self.criterion.NodeVal.Val
+        print (fp)
+
+        # first edit the ast
+        if self.HasArgs (CallStmt.body[0]):
+            # data flow into the parameter 1 by default
+            CallStmt.body[0].value.args[0] = self.op_new_value ('arg1')
+
+        # then update the graph
+        self.pG.pg_call (CallStmt.body[0].value, self.criterion)
+                
+        if self.IsBlankBody (node.body):
+            node.body = InitStmt.body
+        node.body += CallStmt.body
+        print (ast.dump (node))
+        return node
 
     def GenApp (self):
         self.criterion = self.GetWrapF ()
@@ -191,6 +234,9 @@ def RunFuzzer (x):
         print (self.init, self.api.Expr)
         
         astApp = ast.parse(NewOO.OOTmpt)
-        self.visit(astApp)
+        print (astunparse.unparse(astApp))
+        new = self.visit(astApp)
+        print (astunparse.unparse(new))
+        self.pG.ShowPg ()
 
         
