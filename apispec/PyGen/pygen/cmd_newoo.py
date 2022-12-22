@@ -14,10 +14,7 @@ class demoCls:
         pass
 
     def demoFunc1(self, arg1):
-        try:
-            pass
-        except (NameError, TypeError) as error:
-            pass
+        pass
 
 def RunFuzzer (x):
     dc = demoCls ()
@@ -58,6 +55,8 @@ def RunFuzzer (x):
         if self.IsBlankBody (node.body):
             node.body = InitStmt.body
         node.body += CallStmt.body
+
+        node.body = self.op_try_wrapper (node.body, ['TypeError', 'NameError'])
         
         return node
 

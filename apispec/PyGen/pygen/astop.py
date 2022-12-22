@@ -77,10 +77,14 @@ class AstOp (NodeTransformer):
     def op_new_value (self, name):
         return Name(id=name, ctx=Load())
 
+    def op_new_try (self, stmts):
+        return Try(body=stmts, handlers=[], orelse=[], finalbody=[])
+        
     def op_new_tuple (self, list):
-        return Tuple(elts=list)
+        return Tuple(elts=[self.op_new_value (i) for i in list])
 
-    def op_new_excep_handler (self, excepTuple):
+    def op_new_excep_handler (self, excepList):
+        excepTuple = self.op_new_tuple (excepList)
         return ExceptHandler(type=excepTuple)
 
     def op_value (self, node):
@@ -114,4 +118,15 @@ class AstOp (NodeTransformer):
         for st in node.body:
             self.visit (st)
         return node
+
+
+    def op_try_wrapper (self, targetBody, targetExceps):
+        #body=[Try(body=[Pass()], 
+        #      handlers=[ExceptHandler(type=Tuple(elts=[Name(id='NameError', ctx=Load()), Name(id='TypeError', ctx=Load())], ctx=Load()), name='error', body=[Pass()])]
+        tryStmt = self.op_new_try(targetBody)
+        handler = self.op_new_excep_handler(targetExceps)
+        handler.body = [Pass()]
+        tryStmt.handlers.append (handler)
+
+        return [tryStmt]
 
