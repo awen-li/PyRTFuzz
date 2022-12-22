@@ -77,6 +77,12 @@ class AstOp (NodeTransformer):
     def op_new_value (self, name):
         return Name(id=name, ctx=Load())
 
+    def op_new_tuple (self, list):
+        return Tuple(elts=list)
+
+    def op_new_excep_handler (self, excepTuple):
+        return ExceptHandler(type=excepTuple)
+
     def op_value (self, node):
         return node
     
@@ -109,67 +115,3 @@ class AstOp (NodeTransformer):
             self.visit (st)
         return node
 
-class ClassOp(AstOp):
-    def __init__(self, ClsName, FuncAst, Op):
-        super(AstOp, self).__init__()
-        self.ClsName = ClsName
-        self.FuncAst = FuncAst
-        self.Op      = Op
-
-    def op_functiondef (self, node):
-        DebugPrint (ast.dump (node))
-
-        arg = self.get_arg (node)
-        callee = self.FuncAst.body[0].value
-        callee.args = [arg]
-        
-        node.body = self.FuncAst.body
-        return node
-
-    def op_classdef(self, node):
-        if self.ClsName != node.name:
-            return
-
-        if self.Op == 'INSERT_CALL':
-            for st in node.body:
-                self.visit (st)
-        
-        return node
-
-
-class FuncOp(AstOp):
-    def __init__(self, FuncName, UnitAst, Op):
-        super(AstOp, self).__init__()
-        self.UnitAst = UnitAst
-        self.FuncName = FuncName
-        self.Op = Op
-
-    def op_for (self, node, argS, argE):
-        if isinstance (node.iter, Call):
-            callee = node.iter
-            if callee.func.id == 'range':
-                callee.args = [argS, argE]
-        return node
-    
-    def op_functiondef (self, node):
-        if node.name != self.FuncName:
-            return node
-
-        if self.Op == 'INSERT_FOR':
-            forAst = self.op_for (self.UnitAst.body[0], Constant(value=0), self.get_arg(node))
-
-            oldBody = node.body
-            forAst = self.UnitAst.body[0]
-
-            oldBody[0].value.args = [forAst.target]
-            forAst.body = oldBody
-            
-            node.body = self.UnitAst.body
-
-        elif self.Op == 'INSERT_ENTRY':
-            enAst = self.UnitAst.body[0]
-            node.body = self.UnitAst.body + node.body
-        
-        return node
-
-   

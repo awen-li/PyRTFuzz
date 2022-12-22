@@ -40,10 +40,7 @@ class NodeVal ():
         self.Val  = Val
         self.Attr = Attr
 
-    def View (self):
-        if debugFlag == False:
-            return
-            
+    def View (self):           
         Types = ['None', 'FP', 'AP']
         DebugPrint ('ValueView -> ' + str(self.Val) + ' ---> with type: ' + Types[self.Attr])
 
@@ -56,6 +53,8 @@ class PgNode ():
         
         self.InEdge  = []
         self.OutEdge = []
+
+        self.debugFlag = LoadFlag ()
 
     def AddValue (self, Type, Value):
         self.NodeVal = NodeVal (Value, Type)
@@ -71,7 +70,7 @@ class PgNode ():
         self.OutEdge.append (OutEg)
 
     def View (self):
-        if debugFlag == False:
+        if self.debugFlag == False:
             return
         
         print ("[DEBUG]NodeView -> [%d]%s: " %(self.Id, self.Name), end = " -> value --- ")
@@ -114,6 +113,8 @@ class PropGraph (NodeVisitor):
 
         self.FuncList = {}
         self.ClsList  = {}
+
+        self.debugFlag = LoadFlag ()
 
     def VisitGp (self, Hook, Root, Type=None):
         N = Root
@@ -299,7 +300,7 @@ class PropGraph (NodeVisitor):
         
 
     def ShowPg (self):
-        if debugFlag == False:
+        if self.debugFlag == False:
             return
         
         # get roots

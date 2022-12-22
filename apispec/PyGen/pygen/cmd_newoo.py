@@ -14,7 +14,10 @@ class demoCls:
         pass
 
     def demoFunc1(self, arg1):
-        pass
+        try:
+            pass
+        except (NameError, TypeError) as error:
+            pass
 
 def RunFuzzer (x):
     dc = demoCls ()
