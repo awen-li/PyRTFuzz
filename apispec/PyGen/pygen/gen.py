@@ -1,6 +1,6 @@
 
 import os
-from .astop import *
+from .cmd_newoo import *
 from .apispec import *
 
 

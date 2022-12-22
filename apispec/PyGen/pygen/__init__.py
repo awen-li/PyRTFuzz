@@ -6,6 +6,8 @@ from .propgraph import *
 from .astop import *
 from .debug import *
 
+from .cmd_newoo import *
+
 
 
 
