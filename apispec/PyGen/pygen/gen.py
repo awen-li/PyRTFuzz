@@ -72,6 +72,7 @@ class AppGen ():
                         print ("#### " + apiName + " ---> " + api.Expr)
                         OP = NewOO (cls.clsInit, api, curExcepts)
                         OP.GenApp ()
+                        break
 
                 for apiName, api in pyMoudle.Apis.items ():
                     print ("### " + apiName)

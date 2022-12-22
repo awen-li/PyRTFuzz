@@ -200,6 +200,7 @@ def RunFuzzer (x):
         if node.name != self.criterion.Name:
             return node
 
+        # translate api code into ast
         InitStmt = ast.parse(self.init)
         if self.HasArgs (InitStmt.body[0]):
             raise Exception("Warning: unsopport parameters in construction function!")
@@ -218,11 +219,12 @@ def RunFuzzer (x):
 
         # then update the graph
         self.pG.pg_call (CallStmt.body[0].value, self.criterion)
-                
+
+        # encode new body
         if self.IsBlankBody (node.body):
             node.body = InitStmt.body
         node.body += CallStmt.body
-        print (ast.dump (node))
+        
         return node
 
     def GenApp (self):
@@ -238,5 +240,6 @@ def RunFuzzer (x):
         new = self.visit(astApp)
         print (astunparse.unparse(new))
         self.pG.ShowPg ()
+        print (__file__)
 
         

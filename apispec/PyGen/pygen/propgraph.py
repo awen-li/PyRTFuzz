@@ -57,9 +57,13 @@ class PgNode ():
         self.NodeVal = NodeVal (Value, Type)
 
     def AddInEdge (self, InEg):
+        if InEg in self.InEdge:
+            return
         self.InEdge.append (InEg)
 
     def AddOutEdge (self, OutEg):
+        if OutEg in self.OutEdge:
+            return
         self.OutEdge.append (OutEg)
 
     def View (self):
@@ -238,6 +242,7 @@ class PropGraph (NodeVisitor):
         if DefFunc != None:
             eg = PgEdge (CalleeNd, DefFunc, PropGraph.EdgeType_CALL)
             self.AddEdge (eg)
+            print ("@Add call edge: [%d, %d]" %(CalleeNd.Id, DefFunc.Id))
 
         
         # add a CFG edge
@@ -298,16 +303,24 @@ class PropGraph (NodeVisitor):
         # iter root
         for r in root:
             queue = []
+            visited = []
+            
             print ("\r\n[%s][%d]Root: %s" %(PropGraph.NodeTypes[r.Type], r.Id, r.Name))
             queue.append (r)
+            visited.append (r)
             while len (queue) != 0:
                 curNode = queue.pop (0)
-                
+  
                 for oe in curNode.OutEdge:
                     print ("\t [%d, %d](%s)" %(oe.SrcNd.Id, oe.DstNd.Id, PropGraph.EdgeTypes[oe.Type]), end='')
                     if  oe.Val != None:
                         print (str(oe.Val))
-                    queue.append (oe.DstNd)
+                    else:
+                        print ('')
+
+                    if not oe.DstNd in visited:
+                        queue.append (oe.DstNd)
+                        visited.append (oe.DstNd)
     
     def Build (self, App):
         print ("\r\n================ PropGraph.Build ================")
