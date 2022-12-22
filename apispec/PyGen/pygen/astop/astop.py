@@ -214,7 +214,7 @@ def RunFuzzer (x):
         # first edit the ast
         if self.HasArgs (CallStmt.body[0]):
             # data flow into the parameter 1 by default
-            CallStmt.body[0].value.args[0] = self.op_new_value ('arg1')
+            CallStmt.body[0].value.args[0] = self.op_new_value (fp[0])
 
         # then update the graph
         self.pG.pg_call (CallStmt.body[0].value, self.criterion)
