@@ -333,8 +333,8 @@ class PropGraph (NodeVisitor):
                         visited.append (oe.DstNd)
     
     def Build (self, App):
-        print ("\r\n================ PropGraph.Build ================")
-        print ("Template: \r\n" + App)
+        DebugPrint ("\r\n================ PropGraph.Build ================")
+        DebugPrint ("Template: \r\n" + App)
         astApp = ast.parse(App)
         for body in astApp.body:
             self.VisitAst (body)

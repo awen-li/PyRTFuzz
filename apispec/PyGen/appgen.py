@@ -16,6 +16,7 @@ def InitArgument (parser):
     
     grp = parser.add_argument_group('Main options', 'One of these (or --report) must be given')
     grp.add_argument('-g', '--generate', action='store_true', help='generate python app')
+    grp.add_argument('-d', '--debug', action='store_true', default=0, help='debug switch: 0-close, 1-open')
                      
     parser.add_argument('filename', nargs='?', help='source dir to process')
     parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
@@ -29,7 +30,9 @@ def main():
     if opts.generate:
         if opts.filename is None:
             parser.error('filename is missing: required with the main options')
-
+            
+        SetDebug (opts.debug)
+        
         ag = AppGen (opts.filename)
         ag.Gen ()
     else:
