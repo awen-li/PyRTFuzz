@@ -56,7 +56,7 @@ def RunFuzzer (x):
             node.body = InitStmt.body
         node.body += CallStmt.body
 
-        node.body = self.op_try_wrapper (node.body, ['TypeError', 'NameError'])
+        node.body = self.op_try_wrapper (node.body, self.excepts)
         
         return node
 
@@ -69,7 +69,6 @@ def RunFuzzer (x):
         DebugPrint ("GenApp -> api: " + self.init + "  " + self.api.Expr)
         
         astApp = ast.parse(NewOO.OOTmpt)
-        DebugPrint (astunparse.unparse(astApp))
         new = self.visit(astApp)
         DebugPrint (astunparse.unparse(new))
         self.pG.ShowPg ()

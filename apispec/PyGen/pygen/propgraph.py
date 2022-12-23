@@ -99,7 +99,7 @@ class PropGraph (NodeVisitor):
     EdgeType_CFG  = 2
     EdgeType_DD   = 3
     EdgeType_CALL = 4
-    EdgeTypes = ['NONE', 'PROPERITY', 'CFG', 'DD', 'CALL']
+    EdgeTypes = ['NONE', 'PROPERTY', 'CFG', 'DD', 'CALL']
     
     def __init__ (self, MainFunc='RunFuzz'):
         self.NodeId   = 1

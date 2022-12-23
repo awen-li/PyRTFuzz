@@ -108,13 +108,13 @@ class AstOp (NodeTransformer):
         return node
     
     def op_functiondef (self, node):
-        DebugPrint (ast.dump (node), end="\n\n")
+        #DebugPrint (ast.dump (node), end="\n\n")
         for st in node.body:
             self.visit (st)
         return node
 
     def op_classdef(self, node):
-        DebugPrint (ast.dump (node), end="\n\n")
+        #DebugPrint (ast.dump (node), end="\n\n")
         for st in node.body:
             self.visit (st)
         return node
