@@ -1,7 +1,8 @@
 
 import os
-from .cmd_newoo import *
 from .apispec import *
+from .cmd_newoo import *
+from .cmd_newpo import *
 
 
 pg_tempt_oo = \
@@ -70,9 +71,11 @@ class AppGen ():
                     print ("### " + clsName + ": " + cls.clsInit)
                     for apiName, api in cls.Apis.items ():
                         print ("#### " + apiName + " ---> " + api.Expr)
-                        OP = NewOO (cls.clsInit, api, curExcepts)
-                        OP.GenApp ()
-                        break
+                        OO = NewOO (cls.clsInit, api, curExcepts)
+                        OO.GenApp ()
+
+                        PO = NewPO (cls.clsInit, api, curExcepts)
+                        PO.GenApp ()
 
                 for apiName, api in pyMoudle.Apis.items ():
                     print ("### " + apiName)

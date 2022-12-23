@@ -6,22 +6,17 @@ from ast import *
 from .astop import *
 from .debug import *
 
-class NewOO(AstOp):
-    OOTmpt = \
+class NewPO(AstOp):
+    POTmpt = \
 """
-class demoCls:
-    def __init__(self):
-        pass
-
-    def demoFunc1(self, arg1):
-        pass
+def demoFunc1(arg1):
+    pass
 
 def RunFuzzer (x):
-    dc = demoCls ()
-    dc.demoFunc1 (x)
+    demoFunc1 (x)
 """
     def __init__(self, init, api, excepts):
-        super(NewOO, self).__init__(NewOO.OOTmpt)
+        super(NewPO, self).__init__(NewPO.POTmpt)
         self.init = init
         self.api  = api
         self.excepts = excepts
@@ -35,7 +30,7 @@ def RunFuzzer (x):
         self.criterion.View()
         DebugPrint ("GenApp -> api: " + self.init + "  " + self.api.Expr)
         
-        astApp = ast.parse(NewOO.OOTmpt)
+        astApp = ast.parse(NewPO.POTmpt)
         new = self.visit(astApp)
         DebugPrint (astunparse.unparse(new))
         self.pG.ShowPg ()

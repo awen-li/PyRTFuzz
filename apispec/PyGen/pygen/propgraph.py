@@ -152,7 +152,7 @@ class PropGraph (NodeVisitor):
                     dst = oe.DstNd
                     if dst.Name == FuncName:
                         return dst
-        return None                    
+        return Def                    
      
     def GetFP (self, Args):
         ArgList = Args.args
@@ -232,7 +232,7 @@ class PropGraph (NodeVisitor):
         self.VisitAst (node.value)
         
     def pg_call(self, node, CurFunc=None):
-        #print (ast.dump (node), end="\n\n")
+        DebugPrint (ast.dump (node), end="\n\n")
         if CurFunc == None:
             CurFunc = self.CurFunc
         
@@ -240,9 +240,9 @@ class PropGraph (NodeVisitor):
         DefFunc = None
         
         ap = self.GetAP(node.args)
-        #ap.View ()
+        ap.View ()
 
-        callee, DefFunc = self.GetCallee (node.func)
+        callee, DefFunc = self.GetCallee (node.func)       
         CalleeNd = self.AddNode (PropGraph.NodeType_STMT, callee)
         CalleeNd.NodeVal = ap
 
@@ -264,9 +264,9 @@ class PropGraph (NodeVisitor):
             self.AddEdge (ddEg)
     
     def pg_functiondef (self, node):
-        #print (ast.dump (node), end="\n\n")
+        DebugPrint (ast.dump (node), end="\n\n")
         fp = self.GetFP(node.args)
-        #fp.View ()
+        fp.View ()
         
         self.CurFunc = self.AddNode (PropGraph.NodeType_FUNC, node.name)
         self.CurFunc.NodeVal = fp

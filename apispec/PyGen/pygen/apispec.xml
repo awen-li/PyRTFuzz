@@ -4,7 +4,7 @@
         <module name="charset">
             <class name="Charset" init="Ch = Charset()">
                 <api name="get_body_encoding">
-                        <expr>ret = Ch.get_body_encoding()</expr>
+                        <expr>ret = Ch.get_body_encoding(xxx)</expr>
                         <parameters>{}</parameters>
                         <return>{'ret':base64|7bit}</return>
                         <dependences>  </dependences>

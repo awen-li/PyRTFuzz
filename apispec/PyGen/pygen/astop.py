@@ -108,9 +108,36 @@ class AstOp (NodeTransformer):
         return node
     
     def op_functiondef (self, node):
-        #DebugPrint (ast.dump (node), end="\n\n")
-        for st in node.body:
-            self.visit (st)
+        if node.name != self.criterion.Name:
+            return node
+
+        # translate api code into ast
+        InitStmt = ast.parse(self.init)
+        if self.HasArgs (InitStmt.body[0]):
+            raise Exception("Warning: unsopport parameters in construction function!")
+        CallStmt = ast.parse(self.api.Expr)
+
+        # get the FP of current node
+        if self.criterion.NodeVal == None or self.criterion.NodeVal.Attr != NodeVal.NodeAttr_FP:
+            raise Exception("Unspected value type!")
+        fp = self.criterion.NodeVal.Val
+        DebugPrint (self.criterion.Name + " formal paras: " + str(fp))
+
+        # first edit the ast
+        if self.HasArgs (CallStmt.body[0]):
+            # data flow into the parameter 1 by default
+            CallStmt.body[0].value.args[0] = self.op_new_value (fp[0])
+
+        # then update the graph
+        self.pG.pg_call (CallStmt.body[0].value, self.criterion)
+
+        # encode new body
+        if self.IsBlankBody (node.body):
+            node.body = InitStmt.body
+        node.body += CallStmt.body
+
+        node.body = self.op_try_wrapper (node.body, self.excepts)
+        
         return node
 
     def op_classdef(self, node):
