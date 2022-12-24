@@ -15,14 +15,22 @@ def demoFunc1(arg1):
 def RunFuzzer (x):
     demoFunc1 (x)
 """
-    def __init__(self, init, api, excepts):
+    def __init__(self):
         super(NewPO, self).__init__(NewPO.POTmpt)
+        self.init = None
+        self.api  = None
+        self.excepts = None
+        self.criterion = None
+
+    def SetUp (self, init, api, excepts):
         self.init = init
         self.api  = api
         self.excepts = excepts
-        self.criterion = None
 
     def GenApp (self):
+        if self.api == None:
+            return
+        
         self.criterion = self.GetWrapF ()
         if self.criterion == None:
             DebugPrint ("[GenApp] get the insert point fail!...")

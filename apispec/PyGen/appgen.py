@@ -37,6 +37,9 @@ def main():
 
         ag = AppGen (opts.filename)
         ag.Gen ()
+
+        core = Core (opts.filename)
+        core.GenApp ('')
     else:
         pass
 

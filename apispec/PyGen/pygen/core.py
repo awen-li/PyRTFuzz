@@ -23,23 +23,34 @@ class AppGen ():
                     print ("### " + clsName + ": " + cls.clsInit)
                     for apiName, api in cls.Apis.items ():
                         print ("#### " + apiName + " ---> " + api.Expr)
-                        OO = NewOO (cls.clsInit, api, curExcepts)
+                        OO = NewOO ()
+                        OO.SetUp (cls.clsInit, api, curExcepts)
                         OO.GenApp ()
 
-                        PO = NewPO (cls.clsInit, api, curExcepts)
+                        PO = NewPO ()
+                        PO.SetUp (cls.clsInit, api, curExcepts)
                         PO.GenApp ()
 
                 for apiName, api in pyMoudle.Apis.items ():
                     print ("### " + apiName)
                 
                 
-        
+class SLCmd ():
+    def __init__ (self, CmdName, Module):
+        self.CmdName = CmdName
+        self.Module  = Module
+
+class CmdOP ():
+    def __init__ (self, OpName):
+        self.OpName = OpName
 
 class Core ():
-    def __init__ (self, apiSpecXml)
+    def __init__ (self, apiSpecXml):
         self.PyLibs = self.InitPyLibs (apiSpecXml)
-        self.CmdList = None
-        self.OpList  = None
+        self.CmdList = {}
+        self.OpList  = {}
+
+        self.InitCmd ()
 
     def InitPyLibs (self, apiSpecXml):
         apiSpec = ApiSpec (apiSpecXml)
@@ -48,16 +59,21 @@ class Core ():
 
 
     def InitCmd (self):
-        pass
+        self.CmdList['NewOO'] = SLCmd ('NewOO ()', 'cmd_newoo')
+        self.CmdList['NewPO'] = SLCmd ('NewPO ()', 'cmd_newpo')
 
     def InitOp (self):
-        pass
+        self.OpList ['in'] = CmdOP ('in')
 
     def Decode (self, stream):
         pass
         
     def GenApp (self, Script):
-        pass
+        for name, cmd in self.CmdList.items ():
+            
+            cmdExe = eval (cmd.CmdName)
+            print (cmdExe)
+            
     
 
 

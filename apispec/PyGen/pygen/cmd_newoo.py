@@ -20,13 +20,18 @@ def RunFuzzer (x):
     dc = demoCls ()
     dc.demoFunc1 (x)
 """
-    def __init__(self, init, api, excepts):
+    def __init__(self):
         super(NewOO, self).__init__(NewOO.OOTmpt)
+        self.init = None
+        self.api  = None
+        self.excepts = None
+        self.criterion = None
+
+    def SetUp (self, init, api, excepts):
         self.init = init
         self.api  = api
         self.excepts = excepts
-        self.criterion = None
-
+        
     def GenApp (self):
         self.criterion = self.GetWrapF ()
         if self.criterion == None:
