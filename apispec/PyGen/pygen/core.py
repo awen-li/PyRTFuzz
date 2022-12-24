@@ -5,61 +5,13 @@ from .cmd_newoo import *
 from .cmd_newpo import *
 
 
-pg_tempt_oo = \
-"""
-class demoCls:
-    def __init__(self):
-        pass
-
-    def demoFunc0(self):
-        pass
-
-    def demoFunc1(self, PYF_ARG1):
-        pass
-
-def RunFuzzer (x):
-    pass
-"""
-
-pg_tempt_pro = \
-"""
-def demoFunc0 ():
-    pass
-
-def demoFunc1 (PYF_ARG1):
-    pass
-
-def RunFuzzer (x):
-    pass
-"""
-
-pg_for = \
-"""
-for PYF_I in range (0, PYF_E):
-    pass
-"""
-
-pg_inherit = \
-"""
-import io
-import pickle
-
-class Pickler(pickle.Pickler):
-  def persistent_id(self, obj):
-    return super().persistent_id(obj)
-
-Pickler(io.BytesIO()).dump(42)
-"""
-
-#####################################################################################################
-#####################################################################################################
-
 class AppGen ():
     def __init__ (self, apiSpecXml):
         apiSpec = ApiSpec (apiSpecXml)
         apiSpec.Parser ()
-
         self.PyLibs = apiSpec.PyLibs
+
+        
 
     def Gen (self):
         for libName, pyLib in self.PyLibs.items ():
@@ -83,6 +35,29 @@ class AppGen ():
                 
         
 
+class Core ():
+    def __init__ (self, apiSpecXml)
+        self.PyLibs = self.InitPyLibs (apiSpecXml)
+        self.CmdList = None
+        self.OpList  = None
+
+    def InitPyLibs (self, apiSpecXml):
+        apiSpec = ApiSpec (apiSpecXml)
+        apiSpec.Parser ()
+        return apiSpec.PyLibs
+
+
+    def InitCmd (self):
+        pass
+
+    def InitOp (self):
+        pass
+
+    def Decode (self, stream):
+        pass
         
+    def GenApp (self, Script):
+        pass
+    
 
 

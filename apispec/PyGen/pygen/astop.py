@@ -29,10 +29,11 @@ def GetWrapF (pgNode):
     return None
 
 class AstOp (NodeTransformer):
-    def __init__(self, Tmpt):
+    def __init__(self, Tmpt, Main='RunFuzzer'):
         self.Tmpt   = Tmpt
         self.pG     = PropGraph ()
         self.RootPg = self.pG.Build (self.Tmpt)
+        self.Main   = Main
 
     def GetWrapF (self):
         for root in self.RootPg:
@@ -50,7 +51,6 @@ class AstOp (NodeTransformer):
             return True
 
         return False
-
 
     def HasArgs (self, stmt):
         call = None

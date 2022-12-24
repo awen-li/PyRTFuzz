@@ -1,7 +1,7 @@
 
 
 from .apispec import *
-from .gen import * 
+from .core import * 
 from .propgraph import *
 from .astop import *
 from .debug import *
