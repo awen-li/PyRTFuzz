@@ -3,6 +3,7 @@ import os
 from .apispec import *
 from .cmd_newoo import *
 from .cmd_newpo import *
+from .cmd_for import *
 
 
 class AppGen ():
@@ -30,6 +31,10 @@ class AppGen ():
                         PO = NewPO ()
                         PO.SetUp (cls.clsInit, api, curExcepts)
                         PO.GenApp ()
+
+                        FOR = PyFor ()
+                        FOR.SetUp (cls.clsInit, api, curExcepts)
+                        FOR.GenApp ()
 
                 for apiName, api in pyMoudle.Apis.items ():
                     print ("### " + apiName)

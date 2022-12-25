@@ -89,6 +89,10 @@ class AstOp (NodeTransformer):
 
     def op_value (self, node):
         return node
+
+    def op_for (self, node):
+        DebugPrint (ast.dump (node), end="\n\n")
+        return node
     
     def op_return(self, node):
         return node
@@ -105,6 +109,14 @@ class AstOp (NodeTransformer):
         return node
 
     def op_call(self, node):
+        return node
+
+    def op_insert_apiinvoke (self, node, InitStmt, CallStmt):
+        if self.IsBlankBody (node.body):
+            node.body = InitStmt.body
+        else:
+            node.body += InitStmt.body
+        node.body += CallStmt.body
         return node
     
     def op_functiondef (self, node):
@@ -132,9 +144,7 @@ class AstOp (NodeTransformer):
         self.pG.pg_call (CallStmt.body[0].value, self.criterion)
 
         # encode new body
-        if self.IsBlankBody (node.body):
-            node.body = InitStmt.body
-        node.body += CallStmt.body
+        node = self.op_insert_apiinvoke (node, InitStmt, CallStmt)
 
         node.body = self.op_try_wrapper (node.body, self.excepts)
         
