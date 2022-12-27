@@ -1,5 +1,6 @@
 
 import os
+import re
 from .apispec import *
 from .cmd_newoo import *
 from .cmd_newpo import *
@@ -39,7 +40,7 @@ class AppGen ():
                 for apiName, api in pyMoudle.Apis.items ():
                     print ("### " + apiName)
                 
-                
+            
 class SLCmd ():
     def __init__ (self, CmdName, Module):
         self.CmdName = CmdName
@@ -48,6 +49,12 @@ class SLCmd ():
 class CmdOP ():
     def __init__ (self, OpName):
         self.OpName = OpName
+
+
+class ExeCmd ():
+    def __init__ (self, SlCmd, Para):
+        self.SlCmd = SlCmd
+        self.Para  = Para
 
 class Core ():
     def __init__ (self, apiSpecXml):
@@ -74,12 +81,48 @@ class Core ():
     def InitOp (self):
         self.OpList ['in'] = CmdOP ('in')
 
+
+    def GetSlCmd (self, CmdName):
+        return self.CmdList.get (CmdName)
+
+
+    def DeCmd (self, Stmt):
+        Cmd = re.findall (r"^(.+?)\(", Stmt)
+        if len (Cmd) == 0:
+            raise Exception("No cmd in " + Stmt)
+        Cmd = Cmd [0].strip ()
+        return Cmd
+
+    def DePara (self, Stmt):
+        Para = re.findall (r"\((.+?)\)", Stmt)
+        if len (Para) == 0:
+            raise Exception("No parameter in " + Cmd)
+        Para = Para[0].strip ()
+        return Para
+
     def Decode (self, Cmd):
         val = Cmd.split ('=')
-        print (val)
-        return '', ''
+        if len (val) == 0:
+            raise Exception("No execution info in cmd")
+
+        Value = Stmt = None
+        if len (val) == 1:
+            Stmt = val [0].strip ()         
+        else:
+            Value = val [0].strip ()
+            Stmt  = val [1].strip ()
+
+        Cmd = self.DeCmd (Stmt)
+        Para = self.DePara(Stmt)
+        SlCmd = self.GetSlCmd(Cmd)
+        if SlCmd == None:
+            raise Exception("Not support current cmd -> " + Cmd)
+
+        return Value, ExeCmd (SlCmd, Para)
         
-    def GenApp (self, Script):  
+    def Run (self, Script):
+        RunStack = []
+        LocalValue = {}
         Script = Script.split ('\n')
         DebugPrint (str(Script))
         for cmd in Script:
@@ -87,7 +130,13 @@ class Core ():
             if cmd == '':
                 continue
 
-            Value, CmdInfo = self.Decode (cmd)
+            try:
+                Value, exeCmd = self.Decode (cmd)
+                print (Value)
+                print (exeCmd)
+            except Exception as e:
+                print ('Execution fail -> \"' + cmd + '\"')
+                exit (0)
             
     
 

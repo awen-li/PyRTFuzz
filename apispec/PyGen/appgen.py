@@ -43,9 +43,10 @@ def main():
         p = OO (email.charset.Charset.get_body_encoding)
         p = For (p)
         PO (email.charset.Charset.get_body_encoding)
+        p = 
         """     
         core = Core (opts.filename)
-        core.GenApp (Script)
+        core.Run (Script)
     else:
         pass
 
