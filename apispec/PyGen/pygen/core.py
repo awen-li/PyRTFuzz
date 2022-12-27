@@ -142,8 +142,12 @@ class Core ():
             ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps)
             
         return ExeObj.GenApp ()
+
+    def Write(self, App, OutPut):
+        with open (OutPut, "w") as pyApp:
+            pyApp.write (App)
   
-    def Run (self, Script):
+    def Run (self, Script, OutPut='pyapp.py'):
         print ("@@@@ start run script: " + Script + '\r\n')
         Script = Script.split ('\n')
         for cmd in Script:
@@ -168,4 +172,5 @@ class Core ():
         
         Var, App = self.Pop ()
         print (App)
+        self.Write (App, OutPut)
 
