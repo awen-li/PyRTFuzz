@@ -37,7 +37,7 @@ def RunFuzzer (x):
 
     def op_insert_apiinvoke (self, node, InitStmt, CallStmt):
         pyFor = node.body[0]
-        print (ast.dump (pyFor))
+        DebugPrint (ast.dump (pyFor))
         if not isinstance (pyFor, For):
             print (ast.dump (pyFor))
             raise Exception("Warning: must be For stmt!")

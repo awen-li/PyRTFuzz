@@ -62,22 +62,32 @@ class Core ():
         apiSpec.Parser ()
         return apiSpec.PyLibs
 
+    def GetApiInfo (self, testApi):
+        pass
+
 
     def InitCmd (self):
-        self.CmdList['NewOO'] = SLCmd ('NewOO ()', 'cmd_newoo')
-        self.CmdList['NewPO'] = SLCmd ('NewPO ()', 'cmd_newpo')
+        self.CmdList['OO']  = SLCmd ('NewOO ()', 'cmd_newoo')
+        self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo')
+        self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for')
 
     def InitOp (self):
         self.OpList ['in'] = CmdOP ('in')
 
-    def Decode (self, stream):
-        pass
+    def Decode (self, Cmd):
+        val = Cmd.split ('=')
+        print (val)
+        return '', ''
         
-    def GenApp (self, Script):
-        for name, cmd in self.CmdList.items ():
-            
-            cmdExe = eval (cmd.CmdName)
-            print (cmdExe)
+    def GenApp (self, Script):  
+        Script = Script.split ('\n')
+        DebugPrint (str(Script))
+        for cmd in Script:
+            cmd = cmd.strip ()
+            if cmd == '':
+                continue
+
+            Value, CmdInfo = self.Decode (cmd)
             
     
 

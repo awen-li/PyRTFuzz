@@ -35,11 +35,17 @@ def main():
         if opts.filename is None:
             parser.error('filename is missing: required with the main options')
 
-        ag = AppGen (opts.filename)
-        ag.Gen ()
+        #ag = AppGen (opts.filename)
+        #ag.Gen ()
 
+        Script = \
+        """
+        p = OO (email.charset.Charset.get_body_encoding)
+        p = For (p)
+        PO (email.charset.Charset.get_body_encoding)
+        """     
         core = Core (opts.filename)
-        core.GenApp ('')
+        core.GenApp (Script)
     else:
         pass
 
