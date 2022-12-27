@@ -6,40 +6,11 @@ from .cmd_newoo import *
 from .cmd_newpo import *
 from .cmd_for import *
 
-
-class AppGen ():
-    def __init__ (self, apiSpecXml):
-        apiSpec = ApiSpec (apiSpecXml)
-        apiSpec.Parser ()
-        self.PyLibs = apiSpec.PyLibs
-
-        
-
-    def Gen (self):
-        for libName, pyLib in self.PyLibs.items ():
-            print ("# " + libName)
-            curExcepts = pyLib.Exceptions
-            for mdName, pyMoudle in pyLib.Modules.items ():
-                print ("## " + mdName)
-                for clsName, cls in pyMoudle.Classes.items ():
-                    print ("### " + clsName + ": " + cls.clsInit)
-                    for apiName, api in cls.Apis.items ():
-                        print ("#### " + apiName + " ---> " + api.Expr)
-                        OO = NewOO ()
-                        OO.SetUp (cls.clsInit, api, curExcepts)
-                        OO.GenApp ()
-
-                        PO = NewPO ()
-                        PO.SetUp (cls.clsInit, api, curExcepts)
-                        PO.GenApp ()
-
-                        FOR = PyFor ()
-                        FOR.SetUp (cls.clsInit, api, curExcepts)
-                        FOR.GenApp ()
-
-                for apiName, api in pyMoudle.Apis.items ():
-                    print ("### " + apiName)
-                
+class ApiInfo ():
+    def __init__ (self, ClsInit, Api, Exceps):
+        self.ClsInit = ClsInit
+        self.Api     = Api
+        self.Exceps  = Exceps
             
 class SLCmd ():
     def __init__ (self, CmdName, Module):
@@ -52,17 +23,48 @@ class CmdOP ():
 
 
 class ExeCmd ():
-    def __init__ (self, SlCmd, Para):
+    def __init__ (self, Cmd, SlCmd, Para):
+        self.Cmd   = Cmd
         self.SlCmd = SlCmd
         self.Para  = Para
 
 class Core ():
     def __init__ (self, apiSpecXml):
-        self.PyLibs = self.InitPyLibs (apiSpecXml)
+        self.PyLibs  = self.InitPyLibs (apiSpecXml)
+        self.ApiList = {}
+        self.InitApiList ()
+        
         self.CmdList = {}
         self.OpList  = {}
-
         self.InitCmd ()
+
+        self.RunStack = []
+        self.LocalValue = {}
+
+    def InitApiList (self):
+        for libName, pyLib in self.PyLibs.items ():
+            curExcepts = pyLib.Exceptions
+            for mdName, pyMoudle in pyLib.Modules.items ():
+                for clsName, cls in pyMoudle.Classes.items ():
+                    for apiName, api in cls.Apis.items ():
+                        absPath = libName + '.' + mdName + '.' + clsName + '.' + apiName
+                        self.ApiList[absPath] = ApiInfo (cls.clsInit, api, curExcepts)
+
+                for apiName, api in pyMoudle.Apis.items ():
+                    absPath = libName + '.' + mdName + '.' + apiName
+                    self.ApiList[absPath] = ApiInfo (None, api, curExcepts)
+                    
+    def Push (self, Var, Value):
+        self.RunStack.append (Var)
+        self.LocalValue [Var] = Value
+
+    def Pop (self):
+        Var = self.RunStack.pop ()
+        Value = self.LocalValue.pop (Var)
+        return Var, Value
+
+    def GetVarValue (self, Var):
+        return self.LocalValue.get (Var)
 
     def InitPyLibs (self, apiSpecXml):
         apiSpec = ApiSpec (apiSpecXml)
@@ -70,7 +72,7 @@ class Core ():
         return apiSpec.PyLibs
 
     def GetApiInfo (self, testApi):
-        pass
+        return self.ApiList.get (testApi)
 
 
     def InitCmd (self):
@@ -84,7 +86,6 @@ class Core ():
 
     def GetSlCmd (self, CmdName):
         return self.CmdList.get (CmdName)
-
 
     def DeCmd (self, Stmt):
         Cmd = re.findall (r"^(.+?)\(", Stmt)
@@ -105,12 +106,12 @@ class Core ():
         if len (val) == 0:
             raise Exception("No execution info in cmd")
 
-        Value = Stmt = None
+        Var = Stmt = None
         if len (val) == 1:
             Stmt = val [0].strip ()         
         else:
-            Value = val [0].strip ()
-            Stmt  = val [1].strip ()
+            Var  = val [0].strip ()
+            Stmt = val [1].strip ()
 
         Cmd = self.DeCmd (Stmt)
         Para = self.DePara(Stmt)
@@ -118,24 +119,47 @@ class Core ():
         if SlCmd == None:
             raise Exception("Not support current cmd -> " + Cmd)
 
-        return Value, ExeCmd (SlCmd, Para)
-        
-    def Run (self, Script):
-        RunStack = []
-        LocalValue = {}
+        return Var, ExeCmd (Cmd, SlCmd, Para)
+
+    def Exe (self, exeCmd):
+        SlCmd = exeCmd.SlCmd
+        ExeObj = eval (SlCmd.CmdName)
+
+        print (self.LocalValue)
+
+        print ("@@@@ Exe -> " + exeCmd.Cmd + " to " + SlCmd.CmdName + " with " + exeCmd.Para)
+        Value = self.GetVarValue (exeCmd.Para)
+        print (Value)
+        if Value != None:
+            ExeCode = Value
+            print ("run from local value: " + exeCmd.Para)
+        else:  
+            ExeCode = self.GetApiInfo (exeCmd.Para)
+            ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps)
+            print ("run from original api: " + exeCmd.Para)
+  
+        return ExeObj.GenApp ()
+  
+    def Run (self, Script):    
         Script = Script.split ('\n')
-        DebugPrint (str(Script))
+        print (str(Script))
+        
         for cmd in Script:
             cmd = cmd.strip ()
             if cmd == '':
                 continue
 
             try:
-                Value, exeCmd = self.Decode (cmd)
-                print (Value)
-                print (exeCmd)
+                Var, exeCmd = self.Decode (cmd)
+                Value = self.Exe (exeCmd)
+
+                print ("Left Var = " + Var)
+                if Var != None:
+                    self.Push (Var, Value)
+                
             except Exception as e:
                 print ('Execution fail -> \"' + cmd + '\"')
+                print (e)
                 exit (0)
             
     
