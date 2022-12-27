@@ -43,6 +43,13 @@ class AstOp (NodeTransformer):
             return self.pG.VisitGp (GetWrapF, root, PropGraph.EdgeType_CFG)
         return None
 
+    def GetMainNode (self):
+        for root in self.RootPg:
+            if root.Name == self.Main:
+                return root
+
+        return None
+
     def IsBlankBody (self, body):
         if len (body) == 0:
             return True
@@ -166,4 +173,7 @@ class AstOp (NodeTransformer):
         tryStmt.handlers.append (handler)
 
         return [tryStmt]
+
+    def GenApp (self):
+        print ("GenApp Default!")
 

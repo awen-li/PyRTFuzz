@@ -5,6 +5,7 @@ from .apispec import *
 from .cmd_newoo import *
 from .cmd_newpo import *
 from .cmd_for import *
+from .debug import *
 
 class ApiInfo ():
     def __init__ (self, ClsInit, Api, Exceps):
@@ -123,27 +124,28 @@ class Core ():
 
     def Exe (self, exeCmd):
         SlCmd = exeCmd.SlCmd
-        ExeObj = eval (SlCmd.CmdName)
-
-        print (self.LocalValue)
+        DebugPrint (str(self.LocalValue))
 
         print ("@@@@ Exe -> " + exeCmd.Cmd + " to " + SlCmd.CmdName + " with " + exeCmd.Para)
         Value = self.GetVarValue (exeCmd.Para)
-        print (Value)
         if Value != None:
+            Var, Val = self.Pop ()
+            if Var != exeCmd.Para:
+                raise Exception("Inconsistency with stack: " + Var + " -> " + exeCmd.Para)
+            
             ExeCode = Value
-            print ("run from local value: " + exeCmd.Para)
-        else:  
+            ExeObj = eval (SlCmd.CmdName)
+            ExeObj.SetExeCode (ExeCode)
+        else:
             ExeCode = self.GetApiInfo (exeCmd.Para)
+            ExeObj = eval (SlCmd.CmdName)      
             ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps)
-            print ("run from original api: " + exeCmd.Para)
-  
+            
         return ExeObj.GenApp ()
   
-    def Run (self, Script):    
+    def Run (self, Script):
+        print ("@@@@ start run script: " + Script + '\r\n')
         Script = Script.split ('\n')
-        print (str(Script))
-        
         for cmd in Script:
             cmd = cmd.strip ()
             if cmd == '':
@@ -153,15 +155,17 @@ class Core ():
                 Var, exeCmd = self.Decode (cmd)
                 Value = self.Exe (exeCmd)
 
-                print ("Left Var = " + Var)
                 if Var != None:
                     self.Push (Var, Value)
+                else:
+                    self.Push ('Default', Value)
                 
             except Exception as e:
                 print ('Execution fail -> \"' + cmd + '\"')
                 print (e)
                 exit (0)
             
-    
-
+        
+        Var, App = self.Pop ()
+        print (App)
 

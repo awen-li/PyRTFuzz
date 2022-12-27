@@ -1,5 +1,6 @@
 
 # _*_ coding:utf-8 _*_
+import random
 import astunparse
 import ast
 from ast import *
@@ -7,27 +8,32 @@ from .astop import *
 from .debug import *
 
 class PyFor(AstOp):
+
+    ForRange = random.randint (1, 10)
+    
     ForTmpt = \
-"""
+f"""
 def demoFunc1(arg1):
-    for i in range (0, 3):
+    for i in range (0, {ForRange}):
         pass
 
 def RunFuzzer (x):
     demoFunc1 (x)
 """
-    def __init__(self, pyCode=None):
-        self.PyCode = pyCode
-        if pyCode == None:
-            super(PyFor, self).__init__(PyFor.ForTmpt)
-        else:
-            super(PyFor, self).__init__(pyCode)
-        
+    def __init__(self):
         self.init = None
         self.api  = None
-        self.excepts = None
+        self.excepts   = None
         self.criterion = None
-
+        self.PyCode    = None
+    
+    def SetExeCode (self, ExeCode):
+        self.PyCode = ExeCode
+        if self.PyCode == None:
+            super(PyFor, self).__init__(PyFor.ForTmpt)
+        else:
+            super(PyFor, self).__init__(self.PyCode)
+    
     def SetUp (self, init, api, excepts):
         if self.PyCode != None:
             return
@@ -48,6 +54,18 @@ def RunFuzzer (x):
             pyFor.body += InitStmt.body
         pyFor.body += CallStmt.body
         return node
+
+    def op_functiondef (self, node):
+        if node.name != self.criterion.Name:
+            return node
+
+        Range = random.randint (1, 10)
+        forAst = ast.parse (f'for i in range (0, {Range}):\
+        pass').body[0]
+
+        forAst.body = node.body
+        node.body = [forAst]
+        return node
         
     def GenApp (self):
         
@@ -62,11 +80,20 @@ def RunFuzzer (x):
             
             astApp = ast.parse(PyFor.ForTmpt)
             new = self.visit(astApp)
+            
             DebugPrint (astunparse.unparse(new))
             self.pG.ShowPg ()
+            return astunparse.unparse(new)
         else:
             # we need to wrap the input code
-            pass
+            self.criterion = self.GetMainNode ()
+            self.criterion.View()
+
+            astApp = ast.parse(self.PyCode)
+            new = self.visit(astApp)
+
+            DebugPrint (astunparse.unparse(new))
+            return astunparse.unparse(new)
         
         
 

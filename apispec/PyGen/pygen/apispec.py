@@ -2,6 +2,7 @@
 # _*_ coding:utf-8 _*_
 from xml.dom.minidom import parse
 import xml.dom.minidom
+from .debug import *
 
 """
 <?xml version="1.0" ?>
@@ -52,7 +53,6 @@ class PyApi ():
         self.Dependences = Dependences
         
 
-
 class PyCls ():
     def __init__ (self, clsName, Init):
         self.clsName = clsName
@@ -91,15 +91,15 @@ class ApiSpec():
             exit (0)
 
     def ParseApi (self, apiName, xmlApi):
-        print ("apiName = %s" %apiName)
+        DebugPrint ("apiName = " + apiName)
         expr = xmlApi.getElementsByTagName("expr")[0].childNodes[0].data
-        print ("\t: expr-> %s" %expr)
+        DebugPrint ("\t: expr-> " + expr)
         parameters = xmlApi.getElementsByTagName("parameters")[0].childNodes[0].data
-        print ("\t: parameters-> %s" %parameters)
+        DebugPrint ("\t: parameters-> " +parameters)
         ret = xmlApi.getElementsByTagName("return")[0].childNodes[0].data
-        print ("\t: ret-> %s" %ret)
+        DebugPrint ("\t: ret-> " + ret)
         dependences = xmlApi.getElementsByTagName("dependences")[0].childNodes[0].data
-        print ("\t: dependences-> %s" %dependences)
+        DebugPrint ("\t: dependences-> " + dependences)
 
         return PyApi (apiName, expr, ret, parameters, dependences)
 
@@ -108,7 +108,7 @@ class ApiSpec():
         for xExp in xmlExpList:
             exp = xExp.childNodes[0].data
             pyLib.Exceptions.append (exp)
-            print (exp)
+            DebugPrint (exp)
 
     def ParseClass (self, clsName, clsInit, xmlCls):
         curCls = PyCls (clsName, clsInit)
@@ -123,7 +123,7 @@ class ApiSpec():
         return curCls
 
     def ParseMod (self, mdName, xmlMd):
-        print ("# Parse module: %s" %mdName)
+        DebugPrint ("# Parse module: " + mdName)
         curMd = PyMod (mdName)
 
         # class under modules
@@ -132,7 +132,7 @@ class ApiSpec():
             self.AssertAttr (xmlCls, "name")
             clsName = xmlCls.getAttribute("name")
             clsInit = xmlCls.getAttribute("init")
-            print ("# Parse class: %s -> [init]%s" %(clsName, clsInit))
+            DebugPrint ("# Parse class: " + clsName + " -> [init]"  + clsInit)
                                    
             curMd.Classes [clsName] = self.ParseClass (clsName, clsInit, xmlCls)
 
@@ -157,7 +157,7 @@ class ApiSpec():
     
             self.AssertAttr (xmlLib, "name")
             libName = xmlLib.getAttribute("name")
-            print ("# Parse library: %s" %libName)
+            DebugPrint ("# Parse library:  " + libName)
             curLib = PyLib (libName)
             self.PyLibs [libName] = curLib
 

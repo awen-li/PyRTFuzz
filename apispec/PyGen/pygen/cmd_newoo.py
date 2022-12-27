@@ -43,6 +43,8 @@ def RunFuzzer (x):
         astApp = ast.parse(NewOO.OOTmpt)
         new = self.visit(astApp)
         DebugPrint (astunparse.unparse(new))
+        
         self.pG.ShowPg ()
+        return astunparse.unparse(new)
 
         
