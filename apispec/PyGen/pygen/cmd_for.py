@@ -1,6 +1,7 @@
 
 # _*_ coding:utf-8 _*_
 import random
+import string
 import astunparse
 import ast
 from ast import *
@@ -10,11 +11,14 @@ from .debug import *
 class PyFor(AstOp):
 
     ForRange = random.randint (1, 10)
+
+    ForVar = random.choice (string.ascii_letters)
+    ForVar = ForVar + str (ForRange)
     
     ForTmpt = \
 f"""
 def demoFunc1(arg1):
-    for i in range (0, {ForRange}):
+    for {ForVar} in range (0, {ForRange}):
         pass
 
 def RunFuzzer (x):
@@ -59,8 +63,9 @@ def RunFuzzer (x):
         if node.name != self.criterion.Name:
             return node
 
-        Range = random.randint (1, 10)
-        forAst = ast.parse (f'for i in range (0, {Range}):\
+        Range  = random.randint (1, 10)
+        ForVar = random.choice (string.ascii_letters) + str (Range)
+        forAst = ast.parse (f'for {ForVar} in range (0, {Range}):\
         pass').body[0]
 
         forAst.body = node.body
