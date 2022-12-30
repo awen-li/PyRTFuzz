@@ -5,6 +5,7 @@ from .apispec import *
 from .cmd_newoo import *
 from .cmd_newpo import *
 from .cmd_for import *
+from .cmd_inherit import *
 from .debug import *
 
 class ApiInfo ():
@@ -82,7 +83,10 @@ class Core ():
     def InitCmd (self):
         self.CmdList['OO']  = SLCmd ('NewOO ()', 'cmd_newoo', SLCmd.Level1)
         self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo', SLCmd.Level1)
+        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.Level2)
+        
         self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.Level2)
+        
 
     def InitOp (self):
         self.OpList ['in'] = CmdOP ('in')

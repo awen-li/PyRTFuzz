@@ -9,17 +9,29 @@ from .astop import *
 from .debug import *
 
 class PyInherit(AstOp):
+    Tmpt =\
+    """
+import io
+import pickle
 
+class Pickler(pickle.Pickler):
+  def persistent_id(self, obj):
+    return super().persistent_id(obj)
+
+def RunFuzzer (x):
+    iob = io.BytesIO()
+    ob  = Pickler(iob)
+    ob.dump(x)
+    """
+    
     def __init__(self):
-    	super(PyFor, self).__init__(PyFor.ForTmpt)
+        super(PyInherit, self).__init__(PyInherit.Tmpt)
         self.init = None
         self.api  = None
         self.excepts   = None
         self.criterion = None
     
     def SetUp (self, init, api, excepts):
-        if self.PyCode != None:
-            return
         self.init = init
         self.api  = api
         self.excepts = excepts

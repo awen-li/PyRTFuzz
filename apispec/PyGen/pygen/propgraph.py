@@ -170,6 +170,7 @@ class PropGraph (NodeVisitor):
             if isinstance (arg, Name):
                 ap.append (arg.id)
             else:
+                print (ast.dump (arg))
                 raise Exception("GetAP -> Unsupport!!!")
             
         return NodeVal (ap, NodeVal.NodeAttr_AP)
