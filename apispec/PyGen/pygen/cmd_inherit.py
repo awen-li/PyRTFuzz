@@ -11,21 +11,20 @@ from .debug import *
 class PyInherit(AstOp):
     Tmpt =\
     """
-import io
-import pickle
+class demoCls:
+    def __init__(self):
+        pass
 
-class Pickler(pickle.Pickler):
-  def persistent_id(self, obj):
-    return super().persistent_id(obj)
+    def demoFunc1(self, arg1):
+        pass
 
 def RunFuzzer (x):
-    iob = io.BytesIO()
-    ob  = Pickler(iob)
-    ob.dump(x)
+    pass
     """
     
     def __init__(self):
         super(PyInherit, self).__init__(PyInherit.Tmpt)
+        self.cls  = None
         self.init = None
         self.api  = None
         self.excepts   = None
@@ -37,22 +36,25 @@ def RunFuzzer (x):
         self.api  = api
         self.excepts = excepts
 
-    def op_base (self, base):
-        if isinstance(base, Attribute):            
-            print (ast.dump (base))
-        elif isinstance(base, Name):
-            print (ast.dump (base))
+    def op_new_base (self):
+        if self.cls == None:
+            raise Exception("op_base -> Unsupport without base class!!!")
+
+        base = None
+        cls = self.cls.split ('.')
+        if len (cls) > 2:
+            raise Exception("op_base -> Unsupport format " + self.cls)
+        elif len (cls) == 2:
+            base = self.op_new_attribute (cls[0], cls[1])
         else:
-            print (ast.dump (base))
-            raise Exception("op_base -> Unsupport!!!")
+            base = self.op_new_value (cls[0])
+    
+        return [base]
 
     def op_classdef(self, node):
         print (ast.dump (node), end="\n\n")
 
-        bases = node.bases
-        for base in bases:
-            self.op_base (base)
-        return node
+        node.bases = self.op_new_base ()
         
         for st in node.body:
             self.visit (st)

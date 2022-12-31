@@ -11,7 +11,7 @@ from .debug import *
 class ApiInfo ():
     def __init__ (self, ClsInit, Cls, Api, Exceps):
         self.ClsInit = ClsInit
-        self.Cls     = Cls
+        self.Class   = Cls
         self.Api     = Api
         self.Exceps  = Exceps
             
@@ -53,9 +53,8 @@ class Core ():
             for mdName, pyMoudle in pyLib.Modules.items ():
                 for clsName, cls in pyMoudle.Classes.items ():
                     for apiName, api in cls.Apis.items ():
-                        Cls = libName + '.' + mdName + '.' + clsName
-                        absPath = Cls + '.' + apiName
-                        self.ApiList[absPath] = ApiInfo (cls.clsInit, Cls, api, curExcepts)
+                        absPath = libName + '.' + mdName + '.' + clsName + '.' + apiName
+                        self.ApiList[absPath] = ApiInfo (cls.clsInit, clsName, api, curExcepts)
 
                 for apiName, api in pyMoudle.Apis.items ():
                     absPath = libName + '.' + mdName + '.' + apiName
@@ -148,7 +147,7 @@ class Core ():
         else:
             ExeCode = self.GetApiInfo (exeCmd.Para)
             ExeObj = eval (SlCmd.CmdName)      
-            ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps)
+            ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps, ExeCode.Class)
             
         return ExeObj.GenApp ()
 
@@ -164,19 +163,13 @@ class Core ():
             if cmd == '':
                 continue
 
-            try:
-                Var, exeCmd = self.Decode (cmd)
-                Value = self.Exe (exeCmd)
+            Var, exeCmd = self.Decode (cmd)
+            Value = self.Exe (exeCmd)
 
-                if Var != None:
-                    self.Push (Var, Value)
-                else:
-                    self.Push ('Default', Value)
-                
-            except Exception as e:
-                print ('Execution fail -> \"' + cmd + '\"')
-                print (e)
-                exit (0)
+            if Var != None:
+                self.Push (Var, Value)
+            else:
+                self.Push ('Default', Value)
             
         
         Var, App = self.Pop ()

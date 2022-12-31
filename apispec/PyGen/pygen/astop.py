@@ -94,6 +94,9 @@ class AstOp (NodeTransformer):
         excepTuple = self.op_new_tuple (excepList)
         return ExceptHandler(type=excepTuple)
 
+    def op_new_attribute (self, name, attr):
+        return Attribute(value=self.op_new_value (name), attr=attr, ctx=Load())
+
     def op_value (self, node):
         return node
 
@@ -127,6 +130,9 @@ class AstOp (NodeTransformer):
         return node
     
     def op_functiondef (self, node):
+        if self.criterion == None:
+            return node
+        
         if node.name != self.criterion.Name:
             return node
 
