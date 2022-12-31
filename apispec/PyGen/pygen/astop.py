@@ -97,6 +97,31 @@ class AstOp (NodeTransformer):
     def op_new_attribute (self, name, attr):
         return Attribute(value=self.op_new_value (name), attr=attr, ctx=Load())
 
+    def op_new_call (self, name, attr, args):
+        call= None
+        if attr == None:
+            call = Call(func=self.op_new_value (name),
+                         args=[self.op_new_value (arg) for arg in args],
+                         keywords=[])
+        else:
+            call = Call(func=self.op_new_attribute (name, attr),
+                         args=[self.op_new_value (arg) for arg in args],
+                         keywords=[])
+        return call
+
+    def op_new_arguments (self, args):
+        argmt= arguments(posonlyargs=[],
+                         args=[arg(arg=x) for x in args],
+                         kwonlyargs=[], kw_defaults=[], defaults=[])
+        return argmt
+        
+    def op_new_functiondef (self, fname, args):
+        funcdef = FunctionDef(name=fname,
+                              args=self.op_new_arguments(args),
+                              body=[],
+                              decorator_list=[])
+        return funcdef
+        
     def op_value (self, node):
         return node
 

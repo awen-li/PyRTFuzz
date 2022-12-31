@@ -13,13 +13,14 @@ class PyInherit(AstOp):
     """
 class demoCls:
     def __init__(self):
-        pass
+        sp = super ()
+        sp.__init__ ()
 
     def demoFunc1(self, arg1):
         pass
 
 def RunFuzzer (x):
-    pass
+    demoFunc1 (x)
     """
     
     def __init__(self):
@@ -54,11 +55,9 @@ def RunFuzzer (x):
     def op_classdef(self, node):
         print (ast.dump (node), end="\n\n")
 
-        node.bases = self.op_new_base ()
-        
-        for st in node.body:
-            self.visit (st)
-        return node
+        node.bases = self.op_new_base ()       
+        return super ().op_classdef (node)
+
         
     def GenApp (self):
 
