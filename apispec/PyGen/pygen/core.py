@@ -9,8 +9,9 @@ from .cmd_inherit import *
 from .debug import *
 
 class ApiInfo ():
-    def __init__ (self, ClsInit, Api, Exceps):
+    def __init__ (self, ClsInit, Cls, Api, Exceps):
         self.ClsInit = ClsInit
+        self.Cls     = Cls
         self.Api     = Api
         self.Exceps  = Exceps
             
@@ -52,12 +53,13 @@ class Core ():
             for mdName, pyMoudle in pyLib.Modules.items ():
                 for clsName, cls in pyMoudle.Classes.items ():
                     for apiName, api in cls.Apis.items ():
-                        absPath = libName + '.' + mdName + '.' + clsName + '.' + apiName
-                        self.ApiList[absPath] = ApiInfo (cls.clsInit, api, curExcepts)
+                        Cls = libName + '.' + mdName + '.' + clsName
+                        absPath = Cls + '.' + apiName
+                        self.ApiList[absPath] = ApiInfo (cls.clsInit, Cls, api, curExcepts)
 
                 for apiName, api in pyMoudle.Apis.items ():
                     absPath = libName + '.' + mdName + '.' + apiName
-                    self.ApiList[absPath] = ApiInfo (None, api, curExcepts)
+                    self.ApiList[absPath] = ApiInfo (None, None, api, curExcepts)
                     
     def Push (self, Var, Value):
         self.RunStack.append (Var)

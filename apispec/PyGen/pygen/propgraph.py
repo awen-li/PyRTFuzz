@@ -283,6 +283,7 @@ class PropGraph (NodeVisitor):
         self.CurFunc = None
 
     def pg_classdef(self, node):
+        DebugPrint (ast.dump (node), end="\n\n")
         Nd = self.AddNode (PropGraph.NodeType_CLASS, node.name)
         self.CurClass = Nd
         self.ClsList [node.name] = Nd
