@@ -9,7 +9,7 @@ from .debug import *
 <apisepc version="1.0">
     <library name="email">
         <module name="charset">
-            <class name="Charset" init="Ch = Charset()" args="">
+            <class name="Charset" init="obj = Charset()" args="">
                 <api name="get_body_encoding">
                         <expr>ret = get_body_encoding()</expr>
                         <parameters>{}</parameters>

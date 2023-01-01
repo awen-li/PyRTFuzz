@@ -131,6 +131,12 @@ class AstOp (NodeTransformer):
                               body=[],
                               decorator_list=[])
         return funcdef
+
+    def op_new_expr (self, expr):
+        return Expr(value=expr)
+
+    def op_new_return (self, ret):
+        return Return(value=ret)
         
     def op_value (self, node):
         return node
