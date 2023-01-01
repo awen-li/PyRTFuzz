@@ -27,7 +27,10 @@ class demoCls(Charset):
     def demoFunc1(self, arg1):
         try:
             ret = self.get_body_encoding()
-        except (email.errors.MessageError, email.errors.MessageParseError, email.errors.BoundaryError, email.errors.MultipartConversionError):
+        except (email.errors.MessageError, 
+                email.errors.MessageParseError, 
+                email.errors.BoundaryError, 
+                email.errors.MultipartConversionError):
             pass
 
     def get_body_encoding():
