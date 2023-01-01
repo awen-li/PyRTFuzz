@@ -4,16 +4,16 @@
         <module name="charset">
             <class name="Charset" init="Ch = Charset()" args="">
                 <api name="get_body_encoding">
-                        <expr>ret = Ch.get_body_encoding(xxx)</expr>
-                        <parameters>{}</parameters>
-                        <return>{'ret':base64|7bit}</return>
+                        <expr>ret = Ch.get_body_encoding()</expr>
+                        <parameters>[]</parameters>
+                        <return>['ret:base64|7bit']</return>
                         <dependences>  </dependences>
                 </api>
 
                 <api name="header_encode">
                         <expr>Ch.header_encode(str)</expr>
-                        <parameters>{'str':string}</parameters>
-                        <return>{}</return>
+                        <parameters>['str:string']</parameters>
+                        <return>[]</return>
                         <dependences>  </dependences>
                 </api>
             </class>
@@ -22,8 +22,8 @@
         <module name="contentmanager">
             <api name="header_encode">
                 <expr>header_encode(str)</expr>
-                <parameters>{'str':string}</parameters>
-                <return>{}</return>
+                <parameters>['str:string']</parameters>
+                <return>[]</return>
                 <dependences>  </dependences>
             </api>
         </module >

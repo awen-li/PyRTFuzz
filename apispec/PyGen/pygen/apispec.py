@@ -48,8 +48,8 @@ class PyApi ():
     def __init__ (self, ApiName, Expr, Ret, Parameters, Dependences):
         self.ApiName = ApiName
         self.Expr    = Expr
-        self.Ret     = {}
-        self.Parameters = []
+        self.Ret     = Ret
+        self.Parameters = Parameters
         self.Dependences = Dependences
         
 
@@ -101,7 +101,7 @@ class ApiSpec():
         dependences = xmlApi.getElementsByTagName("dependences")[0].childNodes[0].data
         DebugPrint ("\t: dependences-> " + dependences)
 
-        return PyApi (apiName, expr, ret, parameters, dependences)
+        return PyApi (apiName, expr, eval(ret), eval(parameters), dependences)
 
     def ParseExceps (self, pyLib, xmlExp):
         xmlExpList = xmlExp[0].getElementsByTagName("exception")
