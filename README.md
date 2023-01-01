@@ -17,7 +17,7 @@ CpyFuzz
 ```
 
 ## Example
-### Inherit <- email.charset.Charset.get_body_encoding
+### Inherit (email.charset.Charset.get_body_encoding)
 ```
 class demoCls(Charset):
 
@@ -46,3 +46,25 @@ def RunFuzzer(x):
     ob.demoFunc1(x)
 ```
 
+### p = OO (email.charset.Charset.get_body_encoding)  p = For (p)
+```
+class demoCls():
+
+    def __init__(self):
+        pass
+
+    def demoFunc1(self, arg1):
+        try:
+            obj = Charset()
+            ret = obj.get_body_encoding()
+        except (email.errors.MessageError, 
+                email.errors.MessageParseError, 
+                email.errors.BoundaryError, 
+                email.errors.MultipartConversionError):
+            pass
+
+def RunFuzzer(x):
+    for M6 in range(0, 6):
+        dc = demoCls()
+        dc.demoFunc1(x)
+```
