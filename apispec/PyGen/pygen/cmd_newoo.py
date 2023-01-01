@@ -27,7 +27,7 @@ def RunFuzzer (x):
         self.excepts = None
         self.criterion = None
 
-    def SetUp (self, init, api, excepts):
+    def SetUp (self, init, api, excepts, cls=None):
         self.init = init
         self.api  = api
         self.excepts = excepts
