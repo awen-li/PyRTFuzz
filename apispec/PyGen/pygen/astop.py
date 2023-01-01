@@ -81,8 +81,18 @@ class AstOp (NodeTransformer):
         operator = getattr(self, method, self.generic_visit)        
         return operator(node)
 
-    def op_new_value (self, name):
+    def op_new_load  (self, name):
         return Name(id=name, ctx=Load())
+
+    def op_new_store (self, name):
+        return Name(id=name, ctx=Store())
+
+    def op_new_value (self, name):
+        return self.op_new_load (name)
+
+    def op_new_assignment (self, left, right):
+        asgn = Assign(targets=[left], value=right)
+        return asgn
 
     def op_new_try (self, stmts):
         return Try(body=stmts, handlers=[], orelse=[], finalbody=[])

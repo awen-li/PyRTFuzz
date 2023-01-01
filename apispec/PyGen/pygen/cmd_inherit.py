@@ -80,7 +80,16 @@ def RunFuzzer (x):
             self.ovfunc = self.op_new_functiondef (apiName, paras)
             node = super ().op_classdef (node)
             if self.ovfunc != None:
-                self.ovfunc.body = [Pass()]
+                # sp = super ()
+                asgn = self.op_new_assignment (self.op_new_store ('sp'), self.op_new_call ('super', None, []))
+                self.ovfunc.body.append (asgn)
+
+                # sp.cur_func ()
+                if len (api.Ret) == 0:
+                    pass # expr (sp.cur_func ())
+                else:
+                    pass # return sp.cur_func ()
+                
                 node.body.append (self.ovfunc)
         return node
 
