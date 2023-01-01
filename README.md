@@ -15,3 +15,31 @@ CpyFuzz
 +-- build.sh         --------------    the build script for CpyFuzz
 
 ```
+
+## Example
+### Inherit <- email.charset.Charset.get_body_encoding
+```
+class demoCls(Charset):
+
+    def __init__(self):
+        pass
+
+    def demoFunc1(self, arg1):
+        try:
+            ret = self.get_body_encoding()
+        except (email.errors.MessageError, email.errors.MessageParseError, email.errors.BoundaryError, email.errors.MultipartConversionError):
+            pass
+
+    def get_body_encoding():
+        sp = super()
+        return sp.get_body_encoding()
+
+    def header_encode(str):
+        sp = super()
+        sp.header_encode(str)
+
+def RunFuzzer(x):
+    ob = demoCls()
+    ob.demoFunc1(x)
+```
+
