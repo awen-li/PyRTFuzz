@@ -20,7 +20,8 @@ class demoCls:
         pass
 
 def RunFuzzer (x):
-    demoFunc1 (x)
+    ob = demoCls ()
+    ob.demoFunc1 (x)
     """
     
     def __init__(self):
@@ -36,6 +37,10 @@ def RunFuzzer (x):
         self.init = init
         self.api  = api
         self.excepts = excepts
+
+    def SetClassAttr (self, ClsAttrs):
+        self.Attrs = ClsAttrs
+        print (self.Attrs)
 
     def op_new_base (self):
         if self.cls == None:
@@ -55,7 +60,14 @@ def RunFuzzer (x):
     def op_classdef(self, node):
         print (ast.dump (node), end="\n\n")
 
-        node.bases = self.op_new_base ()       
+        # add base
+        node.bases = self.op_new_base ()
+
+        # override one function
+        ovfunc = self.op_new_functiondef ('hello_override', ['x', 'y'])
+        ovfunc.body = [Pass()]
+        node.body.append (ovfunc)
+        
         return super ().op_classdef (node)
 
         

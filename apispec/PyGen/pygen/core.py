@@ -37,7 +37,8 @@ class ExeCmd ():
 class Core ():
     def __init__ (self, apiSpecXml):
         self.PyLibs  = self.InitPyLibs (apiSpecXml)
-        self.ApiList = {}
+        self.ApiList  = {}
+        self.ClsAttrs = {}
         self.InitApiList ()
         
         self.CmdList = {}
@@ -52,9 +53,13 @@ class Core ():
             curExcepts = pyLib.Exceptions
             for mdName, pyMoudle in pyLib.Modules.items ():
                 for clsName, cls in pyMoudle.Classes.items ():
+                    Attrs = []
                     for apiName, api in cls.Apis.items ():
                         absPath = libName + '.' + mdName + '.' + clsName + '.' + apiName
-                        self.ApiList[absPath] = ApiInfo (cls.clsInit, clsName, api, curExcepts)
+                        apiInfo = ApiInfo (cls.clsInit, clsName, api, curExcepts)
+                        self.ApiList[absPath] = apiInfo
+                        Attrs.append (apiInfo)
+                    self.ClsAttrs [clsName] = Attrs
 
                 for apiName, api in pyMoudle.Apis.items ():
                     absPath = libName + '.' + mdName + '.' + apiName
@@ -84,7 +89,7 @@ class Core ():
     def InitCmd (self):
         self.CmdList['OO']  = SLCmd ('NewOO ()', 'cmd_newoo', SLCmd.Level1)
         self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo', SLCmd.Level1)
-        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.Level2)
+        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.Level1)
         
         self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.Level2)
         
@@ -148,6 +153,11 @@ class Core ():
             ExeCode = self.GetApiInfo (exeCmd.Para)
             ExeObj = eval (SlCmd.CmdName)      
             ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps, ExeCode.Class)
+            if hasattr (ExeObj, 'SetClassAttr') == True:
+                attrs = self.ClsAttrs.get (ExeCode.Class)
+                if attrs == None:
+                    raise Exception(ExeCode.Class + " has no attributes")
+                ExeObj.SetClassAttr (attrs)
             
         return ExeObj.GenApp ()
 
