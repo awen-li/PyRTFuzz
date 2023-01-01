@@ -31,6 +31,7 @@ def RunFuzzer (x):
         self.api  = None
         self.excepts   = None
         self.criterion = None
+        self.ovfunc    = None
     
     def SetUp (self, init, api, excepts, cls=None):
         self.cls  = cls
@@ -38,9 +39,9 @@ def RunFuzzer (x):
         self.api  = api
         self.excepts = excepts
 
-    def SetClassAttr (self, ClsAttrs):
-        self.Attrs = ClsAttrs
-        print (self.Attrs)
+    def SetClass (self, pyClass):
+        self.pyClass = pyClass
+        print (self.pyClass)
 
     def op_new_base (self):
         if self.cls == None:
@@ -57,6 +58,12 @@ def RunFuzzer (x):
     
         return [base]
 
+    def op_functiondef (self, node):
+        if self.ovfunc != None:
+            if self.ovfunc.name == node.name:
+                self.ovfunc = None
+        return super ().op_functiondef (node)   
+        
     def op_classdef(self, node):
         print (ast.dump (node), end="\n\n")
 
@@ -64,11 +71,14 @@ def RunFuzzer (x):
         node.bases = self.op_new_base ()
 
         # override one function
-        ovfunc = self.op_new_functiondef ('hello_override', ['x', 'y'])
-        ovfunc.body = [Pass()]
-        node.body.append (ovfunc)
-        
-        return super ().op_classdef (node)
+        for apiName, api in self.pyClass.Apis.items ():
+            
+            self.ovfunc = self.op_new_functiondef ('hello_override', ['x', 'y'])
+            node = super ().op_classdef (node)
+            if self.ovfunc != None:
+                self.ovfunc.body = [Pass()]
+                node.body.append (self.ovfunc)
+        return node
 
         
     def GenApp (self):

@@ -37,8 +37,8 @@ class ExeCmd ():
 class Core ():
     def __init__ (self, apiSpecXml):
         self.PyLibs  = self.InitPyLibs (apiSpecXml)
-        self.ApiList  = {}
-        self.ClsAttrs = {}
+        self.ApiList   = {}
+        self.ClassInfo = {}
         self.InitApiList ()
         
         self.CmdList = {}
@@ -53,13 +53,11 @@ class Core ():
             curExcepts = pyLib.Exceptions
             for mdName, pyMoudle in pyLib.Modules.items ():
                 for clsName, cls in pyMoudle.Classes.items ():
-                    Attrs = []
                     for apiName, api in cls.Apis.items ():
                         absPath = libName + '.' + mdName + '.' + clsName + '.' + apiName
                         apiInfo = ApiInfo (cls.clsInit, clsName, api, curExcepts)
                         self.ApiList[absPath] = apiInfo
-                        Attrs.append (apiInfo)
-                    self.ClsAttrs [clsName] = Attrs
+                    self.ClassInfo [clsName] = cls
 
                 for apiName, api in pyMoudle.Apis.items ():
                     absPath = libName + '.' + mdName + '.' + apiName
@@ -153,11 +151,11 @@ class Core ():
             ExeCode = self.GetApiInfo (exeCmd.Para)
             ExeObj = eval (SlCmd.CmdName)      
             ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps, ExeCode.Class)
-            if hasattr (ExeObj, 'SetClassAttr') == True:
-                attrs = self.ClsAttrs.get (ExeCode.Class)
-                if attrs == None:
+            if hasattr (ExeObj, 'SetClass') == True:
+                clsInfo = self.ClassInfo.get (ExeCode.Class)
+                if clsInfo == None:
                     raise Exception(ExeCode.Class + " has no attributes")
-                ExeObj.SetClassAttr (attrs)
+                ExeObj.SetClass (clsInfo)
             
         return ExeObj.GenApp ()
 
