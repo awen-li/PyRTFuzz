@@ -14,26 +14,37 @@ class ApiSpec ():
             if Path.find (excp) != -1:
                 return True
         return False
+
+    def GetLibs (self):
+        AllDirs = os.walk(self.CodeDir)
+        for Path, Libs, Pys in AllDirs:
+            Libs.append ('.')
+            return Libs
     
     def GenSpec (self):
-        PyDirs = os.walk(self.CodeDir) 
-        for Path, Dirs, Pys in PyDirs:
-            if self.IsExcept (Path) == True:
+        AllLibs = self.GetLibs ()
+
+        Visitor = AstWalk()
+        
+        for lib in AllLibs:
+            libDir = os.path.join(self.CodeDir, lib)
+            if self.IsExcept (libDir) == True:
                 continue
-            
-            for py in Pys:
-                _, Ext = os.path.splitext(py)
-                if Ext != ".py":
-                    continue
-                
-                PyFile = os.path.join(Path, py)
-                print (PyFile)
-                
-                with open(PyFile) as PyF:
-                    print ("#visit " + PyFile)
-                    Ast = parse(PyF.read(), PyFile, 'exec')
-                    Visitor = AstWalk()
-                    Visitor.visit(Ast)
+
+            Visitor.SetPyLib(lib)    
+            ModDir = os.walk(libDir)
+            for Path, Dirs, Pys in ModDir:      
+                for py in Pys:
+                    Mod, Ext = os.path.splitext(py)
+                    if Ext != ".py" or Mod[0:1] == '_':
+                        continue
+
+                    Visitor.SetPyMod(Mod)
+                    PyFile = os.path.join(Path, py)
+                    with open(PyFile) as PyF:
+                        print ("#visit " + PyFile)
+                        Ast = parse(PyF.read(), PyFile, 'exec')
+                        
+                        Visitor.visit(Ast)
                 break
                 
-            break

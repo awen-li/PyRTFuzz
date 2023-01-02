@@ -41,8 +41,24 @@ class PyLib ():
 class AstWalk(NodeVisitor):
     def __init__(self):
         self.Imports = []
+        self.pyLibs  = []
+        self.pyMods  = []
 
+        self.CurPyLib = None
+        self.CurPyMod = None
         self.CurClass = None
+
+    def SetPyLib (self, Name):
+        self.CurPyLib = PyLib (Name)
+        self.pyLibs.append (self.CurPyLib)
+
+    def SetPyMod (self, Name):
+        self.CurPyMod = PyMod (Name)
+        self.pyMods.append (self.CurPyMod)
+
+    def SetPyCls (self, Name, Init):
+        self.CurClass = PyCls (Name, Init)
+        return self.CurClass
   
     def visit(self, node):
         """Visit a node."""
