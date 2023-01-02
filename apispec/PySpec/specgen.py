@@ -5,7 +5,7 @@ from pyspec import *
 
 
 def InitArgument (parser):
-    parser.add_argument('--version', action='version', version='appgen 1.0')
+    parser.add_argument('--version', action='version', version='specgen 1.0')
     
     grp = parser.add_argument_group('Main options', 'One of these (or --report) must be given')
     grp.add_argument('-d', '--debug', action='store_true', help='generate python app')
