@@ -7,7 +7,7 @@ class ApiSpec ():
     def __init__ (self, CodeDir):
         self.CodeDir = CodeDir
 
-        self.Except = ['__pycache__', 'test', 'site-packages']
+        self.Except = ['__pycache__', 'test', 'site-packages', 'sqlite3', 'distutils', 'importlib']
 
     def IsExcept (self, Path):
         for excp in self.Except:
@@ -31,7 +31,8 @@ class ApiSpec ():
             if self.IsExcept (libDir) == True:
                 continue
 
-            Visitor.SetPyLib(lib)    
+            Visitor.SetPyLib(lib)
+            print ("# start proc lib: " + lib)
             ModDir = os.walk(libDir)
             for Path, Dirs, Pys in ModDir:      
                 for py in Pys:
@@ -39,6 +40,7 @@ class ApiSpec ():
                     if Ext != ".py" or Mod[0:1] == '_':
                         continue
 
+                    print ("## start proc mod: " + Mod)
                     Visitor.SetPyMod(Mod)
                     PyFile = os.path.join(Path, py)
                     with open(PyFile) as PyF:
@@ -47,4 +49,5 @@ class ApiSpec ():
                         
                         Visitor.visit(Ast)
                 break
+            break
                 
