@@ -81,23 +81,70 @@ class AstWalk(NodeVisitor):
         else:
             return False
 
+    def visit_unaryop (self, node):
+        if isinstance (node.operand, Constant):
+            return 'int'
+        else:
+            return None
+
+    def visit_binop (self, node):
+        if isinstance (node.left, Constant) or isinstance (node.right, Constant):
+            return 'int'
+        else:
+            return None
+
     def visit_return (self, node):
-        print ("IN function: " + self.CurFunc.ApiName + "  --->  " + ast.dump (node))
+        ret = self.visit(node.value)
+        if ret != None:
+            print (self.CurFunc.ApiName + " return with type: " + ret)
+        return None
         
     def visit_call (self, node):
         Callee = node.func
-        self.FuncCalled.append (Callee)
-        
+        if isinstance(Callee, Attribute):            
+            self.FuncCalled.append (Callee.attr)
+        elif isinstance(Callee, Name):
+            self.FuncCalled.append (Callee.id)
+        else:
+            return self.visit (Callee)  
 
+    def visit_for(self, node):
+        for s in node.body:
+            self.visit(s)
+
+    def visit_while(self, node):
+        for s in node.body:
+            self.visit(s)
+
+    def visit_if(self, node):
+        for s in node.body:
+            self.visit(s)
+
+        for s in node.orelse:
+            self.visit(s)
+
+    def visit_expr(self, node):
+        self.visit (node.value)
+
+    def visit_assign(self, node):
+        for tgt in node.targets:
+            self.visit (tgt)
+        self.visit (node.value)
+    
     def visit_functiondef(self, node, ClfName=None):
         if self._IsInternal (node.name) == True:
             return
 
         ApiName = node.name
+        print ("\n@@@@@@@@@@@@@@@@@@@@@@@ " + ApiName + "@@@@@@@@@@@@@@@@@@@@@@@ ")
+        if hasattr (node, 'body'):
+            print ("==============> has body!!!")
+            
         Parameters = self.GetFP (node.args)
 
         self.CurFunc = PyApi (ApiName, None, None, Parameters, None)
         for stmt in node.body:
+            print ("STMT  --->  " + ast.dump (stmt))
             self.visit (stmt)
 
         if self.CurClass != None:
@@ -106,7 +153,7 @@ class AstWalk(NodeVisitor):
             self.CurMod.Apis[ApiName] = self.CurFunc
         self.CurFunc = None
 
-        return
+        return None
 
     def visit_classdef(self, node):
 
