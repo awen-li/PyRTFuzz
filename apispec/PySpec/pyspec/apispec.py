@@ -20,6 +20,20 @@ class ApiSpec ():
         for Path, Libs, Pys in AllDirs:
             Libs.append ('.')
             return Libs
+
+    def ShowSpec (self, Visitor):
+        print ("\n\n=========================== ShowSpec ===========================")
+        for lib in Visitor.pyLibs:
+            print ("# LIB: " + lib.Name)
+            for mdname, md in lib.Modules.items ():
+                print ("## MOD: " + mdname)
+                for clsname, cls in md.Classes.items ():
+                    print ("### CLASS: " + clsname)
+                    for apiname, api in cls.Apis.items ():
+                        print ("#### API: " + apiname)
+
+                for apiname, api in md.Apis.items ():
+                    print ("### API: " + apiname)
     
     def GenSpec (self):
         AllLibs = self.GetLibs ()
@@ -50,4 +64,6 @@ class ApiSpec ():
                         Visitor.visit(Ast)
                 break
             break
+
+        self.ShowSpec (Visitor)
                 

@@ -48,7 +48,9 @@ class AstWalk(NodeVisitor):
         self.CurPyMod = None
         self.CurClass = None
         self.CurFunc  = None
-        self.FuncCalled = []
+        
+        self.FuncCalled  = []
+        self.FuncRetType = {}
 
     def SetPyLib (self, Name):
         self.CurPyLib = PyLib (Name)
@@ -56,7 +58,10 @@ class AstWalk(NodeVisitor):
 
     def SetPyMod (self, Name):
         self.CurPyMod = PyMod (Name)
-        self.pyMods.append (self.CurPyMod)
+        if self.CurPyLib == None:
+            self.pyMods.append (self.CurPyMod)
+        else:
+            self.CurPyLib.Modules [Name] = self.CurPyMod
 
     def GetFP (self, Args):
         ArgList = Args.args
@@ -93,10 +98,23 @@ class AstWalk(NodeVisitor):
         else:
             return None
 
+    def visit_boolop(self, node):
+        pass
+
+    def visit_subscript(self, node):
+        pass
+
+        
     def visit_return (self, node):
         ret = self.visit(node.value)
         if ret != None:
-            print (self.CurFunc.ApiName + " return with type: " + ret)
+            FuncName = self.CurFunc.ApiName
+            RetType  = f'ret:{ret}'
+            if self.FuncRetType.get (FuncName) == None:
+                self.CurFunc.Ret = RetType
+                print (self.CurFunc.ApiName + " return with type: " + RetType)
+            else:
+                self.FuncRetType [FuncName] = RetType
         return None
         
     def visit_call (self, node):
@@ -123,6 +141,27 @@ class AstWalk(NodeVisitor):
         for s in node.orelse:
             self.visit(s)
 
+    def visit_with(self, node):
+        for s in node.body:
+            self.visit(s)
+
+    def visit_try(self, node):
+        for s in node.body:
+            self.visit(s)
+
+        for s in node.orelse:
+            self.visit(s)
+
+        for s in node.finalbody:
+            self.visit(s)
+
+        # handlers
+        type_names_body = []
+        for handler in node.handlers:
+            type_names_body.append((self.visit(handler.type),
+                                    self.visit(handler.name)))
+        print (type_names_body)
+    
     def visit_expr(self, node):
         self.visit (node.value)
 
@@ -130,6 +169,18 @@ class AstWalk(NodeVisitor):
         for tgt in node.targets:
             self.visit (tgt)
         self.visit (node.value)
+
+    def visit_augassign(self, node):
+        self.visit (node.target)
+        self.visit (node.value)
+
+    def visit_annassign(self, node):
+        for tgt in node.targets:
+            self.visit (tgt)
+        self.visit (node.value)
+
+    def visit_asyncfunctiondef (self, node, ClfName=None):
+        self.visit_functiondef (node, ClfName)
     
     def visit_functiondef(self, node, ClfName=None):
         if self._IsInternal (node.name) == True:
@@ -159,6 +210,7 @@ class AstWalk(NodeVisitor):
 
         clsname = node.name
         self.CurClass = PyCls (clsname, None)
+        self.CurPyMod.Classes [clsname] = self.CurClass
         
         print ("visit class -> " + clsname)   
         
@@ -171,4 +223,6 @@ class AstWalk(NodeVisitor):
         self.CurClass = None
         return
 
-    
+    def visit_module(self, node):
+        for s in node.body:
+            self.visit(s)
