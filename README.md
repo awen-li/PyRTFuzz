@@ -46,7 +46,7 @@ def RunFuzzer(x):
     ob.demoFunc1(x)
 ```
 
-### p = OO (email.charset.Charset.get_body_encoding)  p = For (p)
+### p = OO (email.charset.Charset.get_body_encoding),  p = For (p)
 ```
 class demoCls():
 
@@ -67,4 +67,22 @@ def RunFuzzer(x):
     for M6 in range(0, 6):
         dc = demoCls()
         dc.demoFunc1(x)
+```
+
+### p = PO (email.charset.Charset.get_body_encoding),  p = For (p)
+```
+def demoFunc1(arg1):
+    try:
+        obj = Charset()
+        ret = obj.get_body_encoding()
+    except (email.errors.MessageError, 
+            email.errors.MessageParseError, 
+            email.errors.BoundaryError, 
+            email.errors.MultipartConversionError):
+        pass
+
+def RunFuzzer(x):
+    for j4 in range(0, 4):
+        demoFunc1(x)
+
 ```
