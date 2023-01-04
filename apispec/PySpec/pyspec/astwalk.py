@@ -40,7 +40,6 @@ class PyLib ():
 
 class AstWalk(NodeVisitor):
     def __init__(self):
-        self.Imports = []
         self.pyLibs  = []
         self.pyMods  = []
 
@@ -49,9 +48,13 @@ class AstWalk(NodeVisitor):
         self.CurClass = None
         self.CurFunc  = None
         
-        self.FuncCalled  = []
+        self.FuncCalled  = {}
         self.FuncRetType = {}
 
+    def Reset (self):
+        self.FuncCalled = {}
+        self.FuncRetType = {}
+        
     def SetPyLib (self, Name):
         self.CurPyLib = PyLib (Name)
         self.pyLibs.append (self.CurPyLib)
@@ -103,8 +106,7 @@ class AstWalk(NodeVisitor):
 
     def visit_subscript(self, node):
         pass
-
-        
+  
     def visit_return (self, node):
         ret = self.visit(node.value)
         if ret != None:
@@ -120,11 +122,11 @@ class AstWalk(NodeVisitor):
     def visit_call (self, node):
         Callee = node.func
         if isinstance(Callee, Attribute):            
-            self.FuncCalled.append (Callee.attr)
+            self.FuncCalled[Callee.attr] = True
         elif isinstance(Callee, Name):
-            self.FuncCalled.append (Callee.id)
-        else:
-            return self.visit (Callee)  
+            self.FuncCalled[Callee.id] = True
+
+        return self.visit (Callee)  
 
     def visit_for(self, node):
         for s in node.body:
@@ -186,13 +188,13 @@ class AstWalk(NodeVisitor):
         if self._IsInternal (node.name) == True:
             return
 
+        if isinstance (node.body[0], Pass):
+            return
+
         ApiName = node.name
         print ("\n@@@@@@@@@@@@@@@@@@@@@@@ " + ApiName + "@@@@@@@@@@@@@@@@@@@@@@@ ")
-        if hasattr (node, 'body'):
-            print ("==============> has body!!!")
             
         Parameters = self.GetFP (node.args)
-
         self.CurFunc = PyApi (ApiName, None, None, Parameters, None)
         for stmt in node.body:
             print ("STMT  --->  " + ast.dump (stmt))
@@ -220,9 +222,15 @@ class AstWalk(NodeVisitor):
                 continue         
             self.visit_functiondef (Fdef, node.name)
 
+        # check whether the function is invoked
+        for api,_ in self.FuncCalled.items ():
+            if self.CurClass.Apis.get (api) != None:
+                self.CurClass.Apis.pop (api)
+
         self.CurClass = None
         return
 
     def visit_module(self, node):
         for s in node.body:
             self.visit(s)
+        self.Reset ()
