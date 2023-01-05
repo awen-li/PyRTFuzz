@@ -51,6 +51,8 @@ class AstWalk(NodeVisitor):
         self.FuncCalled  = {}
         self.FuncRetType = {}
 
+        self.GetAttr = False
+
     def Reset (self):
         self.FuncCalled = {}
         self.FuncRetType = {}
@@ -84,7 +86,7 @@ class AstWalk(NodeVisitor):
         return visitor(node)
 
     def _IsInternal (self, FuncName):
-        if FuncName[0:2] == "__":
+        if FuncName[0:1] == "_":
             return True
         else:
             return False
@@ -108,6 +110,9 @@ class AstWalk(NodeVisitor):
         pass
   
     def visit_return (self, node):
+        if self.CurFunc == None:
+            return None
+        
         ret = self.visit(node.value)
         if ret != None:
             FuncName = self.CurFunc.ApiName
@@ -147,6 +152,15 @@ class AstWalk(NodeVisitor):
         for s in node.body:
             self.visit(s)
 
+    def visit_name (self, node):
+        return node.id
+
+    def visit_attribute (self, node, getstr=False):
+        if self.GetAttr == False:
+            return
+        else:
+            return self.visit (node.value) + '.' + node.attr
+        
     def visit_try(self, node):
         for s in node.body:
             self.visit(s)
@@ -160,8 +174,16 @@ class AstWalk(NodeVisitor):
         # handlers
         type_names_body = []
         for handler in node.handlers:
-            type_names_body.append((self.visit(handler.type),
-                                    self.visit(handler.name)))
+            type = handler.type
+            if isinstance (type, Name):
+                type_names_body.append(type.id)
+            elif isinstance (type, Attribute):
+                self.GetAttr = True
+                type_names_body.append(self.visit_attribute (type))
+                self.GetAttr = False
+            else:
+                print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (handler) + " ---> visit_try -> Unsuport type!!!")
+                
         print (type_names_body)
     
     def visit_expr(self, node):
@@ -191,19 +213,22 @@ class AstWalk(NodeVisitor):
         if isinstance (node.body[0], Pass):
             return
 
+        if self.CurFunc != None:
+            return
+
         ApiName = node.name
-        print ("\n@@@@@@@@@@@@@@@@@@@@@@@ " + ApiName + "@@@@@@@@@@@@@@@@@@@@@@@ ")
+        if ApiName[0:4] == 'test':
+            return
             
         Parameters = self.GetFP (node.args)
         self.CurFunc = PyApi (ApiName, None, None, Parameters, None)
         for stmt in node.body:
-            print ("STMT  --->  " + ast.dump (stmt))
             self.visit (stmt)
 
         if self.CurClass != None:
             self.CurClass.Apis[ApiName] = self.CurFunc
         else:
-            self.CurMod.Apis[ApiName] = self.CurFunc
+            self.CurPyMod.Apis[ApiName] = self.CurFunc
         self.CurFunc = None
 
         return None
@@ -211,10 +236,11 @@ class AstWalk(NodeVisitor):
     def visit_classdef(self, node):
 
         clsname = node.name
+        if self.CurClass != None:
+            return 
+            
         self.CurClass = PyCls (clsname, None)
         self.CurPyMod.Classes [clsname] = self.CurClass
-        
-        print ("visit class -> " + clsname)   
         
         Body = node.body
         for Fdef in Body:

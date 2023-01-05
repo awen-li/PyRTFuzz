@@ -98,7 +98,7 @@ class ApiSpec ():
             for Path, Dirs, Pys in ModDir:      
                 for py in Pys:
                     Mod, Ext = os.path.splitext(py)
-                    if Ext != ".py" or Mod[0:1] == '_':
+                    if Ext != ".py" or Mod[0:1] == '_' or Path.find ("test") != -1:
                         continue
 
                     print ("## start proc mod: " + Mod)
@@ -109,9 +109,7 @@ class ApiSpec ():
                         Ast = parse(PyF.read(), PyFile, 'exec')
                         
                         Visitor.visit(Ast)
-                break
-            break
 
-        self.ShowSpec (Visitor)
+        #self.ShowSpec (Visitor)
         self.WriteXml (Visitor)
                 
