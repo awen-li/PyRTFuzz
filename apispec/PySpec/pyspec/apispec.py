@@ -51,7 +51,10 @@ class ApiSpec ():
         Root = Document()  
         ApiSpec = self.AddChild (Root, Root, 'apisepc')
         ApiSpec.setAttribute ('version', '1.0')
-    
+
+        TotalApiNum   = 0
+        TotalClassNum = 0
+        TotalLibNum   = len (Visitor.pyLibs)
         for lib in Visitor.pyLibs:
             libNode = self.AddChild (Root, ApiSpec, "library")
             libNode.setAttribute ('name', lib.Name)
@@ -59,13 +62,15 @@ class ApiSpec ():
             for mdname, md in lib.Modules.items ():
                 mdNode = self.AddChild (Root, libNode, 'module')
                 mdNode.setAttribute ('name', mdname)
-                
+
+                TotalClassNum += len (md.Classes)
                 for clsname, cls in md.Classes.items ():
                     clsNode = self.AddChild (Root, mdNode, "class")
                     clsNode.setAttribute ('name', clsname)
                     clsNode.setAttribute ('init', 'None')
                     clsNode.setAttribute ('args', 'None')
-                    
+
+                    TotalApiNum += len (cls.Apis)
                     for apiname, api in cls.Apis.items ():
                         apiNode = self.AddChild (Root, clsNode, "api")
                         apiNode.setAttribute ('name', apiname)
@@ -75,12 +80,15 @@ class ApiSpec ():
                         self.AddChild (Root, apiNode, "return", str(api.Ret))
                         self.AddChild (Root, apiNode, "dependences", str(api.Dependences))
 
+                TotalApiNum += len (md.Apis)
                 for apiname, api in md.Apis.items ():
                     print ("### API: " + apiname)
         
         with open ('apispec.xml', 'w') as af:
             af.write(Root.toprettyxml(indent="  "))
             af.close()
+
+        print ("\n\n##### COLLECT: lib:%u, class:%u, api:%u #####\n\n" %(TotalLibNum, TotalClassNum, TotalApiNum))
         
     def GenSpec (self):
         AllLibs = self.GetLibs ()
