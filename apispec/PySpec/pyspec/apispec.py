@@ -1,7 +1,8 @@
 
 import os
 from ast import parse
-from .astwalk import AstWalk 
+from .astwalk import AstWalk
+from xml.dom.minidom import Document
 
 class ApiSpec ():
     def __init__ (self, CodeDir):
@@ -34,7 +35,53 @@ class ApiSpec ():
 
                 for apiname, api in md.Apis.items ():
                     print ("### API: " + apiname)
+
+    def SetNodeAttr (self, node, name, value):
+        node.setAttribute(name, value)
     
+    def AddChild (self, Doc, Parent, Child, Value=None):
+        CNode = Doc.createElement(Child)
+        Parent.appendChild(CNode)
+        if Value != None:
+            Val = Doc.createTextNode(Value)
+            CNode.appendChild(Val)
+        return CNode
+    
+    def WriteXml (self, Visitor):
+        Root = Document()  
+        ApiSpec = self.AddChild (Root, Root, 'apisepc')
+        ApiSpec.setAttribute ('version', '1.0')
+    
+        for lib in Visitor.pyLibs:
+            libNode = self.AddChild (Root, ApiSpec, "library")
+            libNode.setAttribute ('name', lib.Name)
+            
+            for mdname, md in lib.Modules.items ():
+                mdNode = self.AddChild (Root, libNode, 'module')
+                mdNode.setAttribute ('name', mdname)
+                
+                for clsname, cls in md.Classes.items ():
+                    clsNode = self.AddChild (Root, mdNode, "class")
+                    clsNode.setAttribute ('name', clsname)
+                    clsNode.setAttribute ('init', 'None')
+                    clsNode.setAttribute ('args', 'None')
+                    
+                    for apiname, api in cls.Apis.items ():
+                        apiNode = self.AddChild (Root, clsNode, "api")
+                        apiNode.setAttribute ('name', apiname)
+
+                        self.AddChild (Root, apiNode, "expr", str(api.Expr))
+                        self.AddChild (Root, apiNode, "parameters", str(api.Parameters))
+                        self.AddChild (Root, apiNode, "return", str(api.Ret))
+                        self.AddChild (Root, apiNode, "dependences", str(api.Dependences))
+
+                for apiname, api in md.Apis.items ():
+                    print ("### API: " + apiname)
+        
+        with open ('apispec.xml', 'w') as af:
+            af.write(Root.toprettyxml(indent="  "))
+            af.close()
+        
     def GenSpec (self):
         AllLibs = self.GetLibs ()
 
@@ -66,4 +113,5 @@ class ApiSpec ():
             break
 
         self.ShowSpec (Visitor)
+        self.WriteXml (Visitor)
                 
