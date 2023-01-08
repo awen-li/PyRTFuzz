@@ -79,6 +79,8 @@ class ApiSpec ():
                         self.AddChild (Root, apiNode, "parameters", str(api.Parameters))
                         self.AddChild (Root, apiNode, "return", str(api.Ret))
                         self.AddChild (Root, apiNode, "dependences", str(api.Dependences))
+                        self.AddChild (Root, apiNode, "posargs", str(api.PosArgs))
+                        self.AddChild (Root, apiNode, "kwoargs", str(api.KwoArgs))
 
                 TotalApiNum += len (md.Apis)
                 for apiname, api in md.Apis.items ():

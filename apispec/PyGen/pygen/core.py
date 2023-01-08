@@ -135,9 +135,9 @@ class Core ():
 
     def Exe (self, exeCmd):
         SlCmd = exeCmd.SlCmd
-        DebugPrint (str(self.LocalValue))
+        DebugPrint ("Local value:" + str(self.LocalValue))
 
-        print ("@@@@ Exe -> " + exeCmd.Cmd + " to " + SlCmd.CmdName + " with " + exeCmd.Para)
+        DebugPrint ("@@@@ Exe -> " + exeCmd.Cmd + " to " + SlCmd.CmdName + " with " + exeCmd.Para)
         Value = self.GetVarValue (exeCmd.Para)
         if Value != None:
             Var, Val = self.Pop ()
@@ -149,6 +149,9 @@ class Core ():
             ExeObj.SetExeCode (ExeCode)
         else:
             ExeCode = self.GetApiInfo (exeCmd.Para)
+            if ExeCode == None:
+                raise Exception("Get tested api fail: " + exeCmd.Para)
+            
             ExeObj = eval (SlCmd.CmdName)      
             ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps, ExeCode.Class)
             if hasattr (ExeObj, 'SetClass') == True:
@@ -164,7 +167,7 @@ class Core ():
             pyApp.write (App)
   
     def Run (self, Script, OutPut='pyapp.py'):
-        print ("@@@@ start run script: " + Script + '\r\n')
+        DebugPrint ("Start run script: " + Script + '\r\n')
         Script = Script.split ('\n')
         for cmd in Script:
             cmd = cmd.strip ()
@@ -173,6 +176,8 @@ class Core ():
 
             Var, exeCmd = self.Decode (cmd)
             Value = self.Exe (exeCmd)
+            if Value == None:
+                raise Exception("Exe fail: " + cmd)
 
             if Var != None:
                 self.Push (Var, Value)

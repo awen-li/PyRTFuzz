@@ -29,7 +29,8 @@ def RunFuzzer (x):
 
     def GenApp (self):
         if self.api == None:
-            return
+            DebugPrint ("[GenApp] api is None...")
+            return None
         
         self.criterion = self.GetWrapF ()
         if self.criterion == None:

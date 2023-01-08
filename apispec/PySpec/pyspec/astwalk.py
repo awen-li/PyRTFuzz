@@ -13,6 +13,9 @@ class PyApi ():
         self.Ret     = Ret
         self.Parameters = Parameters
         self.Dependences = Dependences
+
+        self.PosArgs = []
+        self.KwoArgs = []
         
 class PyCls ():
     def __init__ (self, clsName, Init):
@@ -227,7 +230,9 @@ class AstWalk(NodeVisitor):
             return
             
         Parameters = self.GetFP (node.args)
-        self.CurFunc = PyApi (ApiName, None, None, Parameters, None)
+        # Init arg type
+        AllArgs = [p+':None' for p in Parameters] 
+        self.CurFunc = PyApi (ApiName, None, None, AllArgs, None)
         for stmt in node.body:
             self.visit (stmt)
 

@@ -2,12 +2,14 @@
 <apisepc version="1.0">
     <library name="email">
         <module name="charset">
-            <class name="Charset" init="obj = Charset()" args="">
+            <class name="Charset" init="obj = Charset()" args='[]'>
                 <api name="get_body_encoding">
                         <expr>ret = obj.get_body_encoding()</expr>
                         <parameters>[]</parameters>
                         <return>['ret:base64|7bit']</return>
                         <dependences>  </dependences>
+			<posargs>[]</posargs>
+                        <kwoargs>[]</kwoargs>
                 </api>
 
                 <api name="header_encode">
@@ -15,6 +17,8 @@
                         <parameters>['str:string']</parameters>
                         <return>[]</return>
                         <dependences>  </dependences>
+			<posargs>[]</posargs>
+                        <kwoargs>[]</kwoargs>
                 </api>
             </class>
         </module>
@@ -25,6 +29,8 @@
                 <parameters>['str:string']</parameters>
                 <return>[]</return>
                 <dependences>  </dependences>
+		<posargs>[]</posargs>
+                <kwoargs>[]</kwoargs>
             </api>
         </module >
 
