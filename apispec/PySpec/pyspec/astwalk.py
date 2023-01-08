@@ -68,7 +68,10 @@ class AstWalk(NodeVisitor):
         else:
             self.CurPyLib.Modules [Name] = self.CurPyMod
 
-    def GetFP (self, Args):
+    def GetFP (self,   Args):
+        PosArgs = Args.posonlyargs
+        KwArgs  = Args.kwonlyargs
+        
         ArgList = Args.args
         fp = []
         for arg in ArgList:
@@ -207,17 +210,20 @@ class AstWalk(NodeVisitor):
         self.visit_functiondef (node, ClfName)
     
     def visit_functiondef(self, node, ClfName=None):
-        if self._IsInternal (node.name) == True:
-            return
-
-        if isinstance (node.body[0], Pass):
-            return
 
         if self.CurFunc != None:
             return
 
         ApiName = node.name
         if ApiName[0:4] == 'test':
+            return
+
+        if ApiName == '__init__':
+            # get the specification of the class
+            print (ast.dump (node))
+            return
+
+        if self._IsInternal (node.name) == True or isinstance (node.body[0], Pass):
             return
             
         Parameters = self.GetFP (node.args)
