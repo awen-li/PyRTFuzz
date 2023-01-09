@@ -16,6 +16,9 @@ class PyApi ():
 
         self.PosArgs = PosArgs
         self.KwoArgs = KwoArgs
+
+        self.Defaults = []
+        self.KwDefaults = []
         
 class PyCls ():
     def __init__ (self, clsName, Init):
@@ -71,7 +74,7 @@ class AstWalk(NodeVisitor):
         else:
             self.CurPyLib.Modules [Name] = self.CurPyMod
 
-    def GetFP (self,   Args):
+    def GetFP (self, Args):
         ArgList = Args.args
         fp = []
         for arg in ArgList:
@@ -80,16 +83,18 @@ class AstWalk(NodeVisitor):
             fp.append (arg.arg)
 
         PosArgs = Args.posonlyargs
-        pa = []
-        for arg in PosArgs:
-            pa.append (arg.arg)
+        pa = [arg.arg for arg in PosArgs]
             
         KwArgs  = Args.kwonlyargs
-        ka = []
-        for arg in KwArgs:
-            ka.append (arg.arg)
+        ka = [arg.arg for arg in KwArgs]
+
+        Defaults = Args.defaults
+        defa = [self.visit (val) for val in Defaults]
+
+        KwDefaults = Args.kw_defaults
+        kwdfa = [self.visit (val) for val in KwDefaults]
         
-        return fp, pa, ka
+        return fp, pa, ka, defa, kwdfa
 
     def visit(self, node):
         """Visit a node."""
@@ -128,7 +133,7 @@ class AstWalk(NodeVisitor):
             return None
         
         ret = self.visit(node.value)
-        if ret != None:
+        if ret != None and ret in ['int', 'float', 'string']:
             FuncName = self.CurFunc.ApiName
             RetType  = f'ret:{ret}'
             if self.FuncRetType.get (FuncName) == None:
@@ -166,6 +171,9 @@ class AstWalk(NodeVisitor):
         for s in node.body:
             self.visit(s)
 
+    def visit_constant (self, node):
+        return node.value
+        
     def visit_name (self, node):
         return node.id
 
@@ -219,6 +227,14 @@ class AstWalk(NodeVisitor):
 
     def visit_asyncfunctiondef (self, node, ClfName=None):
         self.visit_functiondef (node, ClfName)
+
+    def init_cfInit (self, node):
+        if node.name != '__init__':
+            return
+
+        print (ast.dump (node))
+        fa, pa, ka, defa, kwdefa = self.GetFP (node.args)
+        print (fa,pa, ka, defa, kwdefa)
     
     def visit_functiondef(self, node, ClfName=None):
 
@@ -231,17 +247,18 @@ class AstWalk(NodeVisitor):
 
         if ApiName == '__init__':
             # get the specification of the class
-            print (ast.dump (node))
+            self.init_cfInit (node)
             return
 
         if self._IsInternal (node.name) == True or isinstance (node.body[0], Pass):
             return
             
-        fa, pa, ka = self.GetFP (node.args)
+        fa, pa, ka, defa, kwdefa = self.GetFP (node.args)
         self.CurFunc = PyApi (ApiName, None, None, None, 
                               [p+':None' for p in fa], 
                               [p+':None' for p in pa], 
                               [p+':None' for p in ka])
+        
         for stmt in node.body:
             self.visit (stmt)
 
