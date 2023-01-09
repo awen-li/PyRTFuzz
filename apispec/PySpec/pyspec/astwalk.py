@@ -7,15 +7,15 @@ from ast import *
 import astunparse
 
 class PyApi ():
-    def __init__ (self, ApiName, Expr, Ret, Parameters, Dependences):
+    def __init__ (self, ApiName, Expr, Ret, Deps, Args, PosArgs, KwoArgs):
         self.ApiName = ApiName
         self.Expr    = Expr
         self.Ret     = Ret
-        self.Parameters = Parameters
-        self.Dependences = Dependences
+        self.Args    = Args
+        self.Deps    = Deps
 
-        self.PosArgs = []
-        self.KwoArgs = []
+        self.PosArgs = PosArgs
+        self.KwoArgs = KwoArgs
         
 class PyCls ():
     def __init__ (self, clsName, Init):
@@ -72,16 +72,24 @@ class AstWalk(NodeVisitor):
             self.CurPyLib.Modules [Name] = self.CurPyMod
 
     def GetFP (self,   Args):
-        PosArgs = Args.posonlyargs
-        KwArgs  = Args.kwonlyargs
-        
         ArgList = Args.args
         fp = []
         for arg in ArgList:
             if arg.arg == 'self':
                 continue
             fp.append (arg.arg)
-        return fp
+
+        PosArgs = Args.posonlyargs
+        pa = []
+        for arg in PosArgs:
+            pa.append (arg.arg)
+            
+        KwArgs  = Args.kwonlyargs
+        ka = []
+        for arg in KwArgs:
+            ka.append (arg.arg)
+        
+        return fp, pa, ka
 
     def visit(self, node):
         """Visit a node."""
@@ -229,10 +237,11 @@ class AstWalk(NodeVisitor):
         if self._IsInternal (node.name) == True or isinstance (node.body[0], Pass):
             return
             
-        Parameters = self.GetFP (node.args)
-        # Init arg type
-        AllArgs = [p+':None' for p in Parameters] 
-        self.CurFunc = PyApi (ApiName, None, None, AllArgs, None)
+        fa, pa, ka = self.GetFP (node.args)
+        self.CurFunc = PyApi (ApiName, None, None, None, 
+                              [p+':None' for p in fa], 
+                              [p+':None' for p in pa], 
+                              [p+':None' for p in ka])
         for stmt in node.body:
             self.visit (stmt)
 
