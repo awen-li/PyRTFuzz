@@ -9,10 +9,10 @@ from .debug import *
 <apisepc version="1.0">
     <library name="email">
         <module name="charset">
-            <class name="Charset" init="obj = Charset()" args="">
+            <class name="Charset" init="obj = Charset()">
                 <api name="get_body_encoding">
                         <expr>ret = get_body_encoding()</expr>
-                        <parameters>[]</parameters>
+                        <args>[]</args>
                         <return>{'ret:base64|7bit'}</return>
                         <dependences>  </dependences>
                         <posargs>[]</posargs>
@@ -33,7 +33,7 @@ from .debug import *
         <module name="contentmanager">
             <api name="header_encode">
                 <expr>header_encode(str)</expr>
-                <parameters>['str:string']</parameters>
+                <args>['str:string']</args>
                 <return>{}</return>
                 <dependences>  </dependences>
                 <posargs>[]</posargs>
@@ -51,15 +51,19 @@ from .debug import *
 </apisepc>
 """
 class PyApi ():
-    def __init__ (self, ApiName, Expr, Ret, Parameters, Dependences):
+    def __init__ (self, ApiName, Expr, Ret, Args, PosArgs, KwoArgs, Defas, DefaKwos, Dependences):
         self.ApiName = ApiName
         self.Expr    = Expr
         self.Ret     = Ret
-        self.Parameters = Parameters
-        self.Dependences = Dependences
+        self.Args    = Args
 
-        self.PosArgs = []
-        self.KwoArgs = []
+        self.PosArgs = PosArgs
+        self.KwoArgs = KwoArgs
+
+        self.Defas   = Defas
+        self.DefaKwos = DefaKwos
+
+        self.Dependences = Dependences
         
 
 class PyCls ():
@@ -103,8 +107,8 @@ class ApiSpec():
         DebugPrint ("apiName = " + apiName)
         expr = xmlApi.getElementsByTagName("expr")[0].childNodes[0].data
         DebugPrint ("\t: expr-> " + expr)
-        parameters = xmlApi.getElementsByTagName("parameters")[0].childNodes[0].data
-        DebugPrint ("\t: parameters-> " +parameters)
+        parameters = xmlApi.getElementsByTagName("args")[0].childNodes[0].data
+        DebugPrint ("\t: args-> " +parameters)
         ret = xmlApi.getElementsByTagName("return")[0].childNodes[0].data
         DebugPrint ("\t: ret-> " + ret)
         dependences = xmlApi.getElementsByTagName("dependences")[0].childNodes[0].data
@@ -115,11 +119,12 @@ class ApiSpec():
         kwoargs = xmlApi.getElementsByTagName("kwoargs")[0].childNodes[0].data
         DebugPrint ("\t: kwoargs-> " + kwoargs)
 
-        PA = PyApi (apiName, expr, eval(ret), eval(parameters), dependences)
-        PA.PosArgs = posagrs
-        PA.KwoArgs = kwoargs
-
-        return PA
+        defas = xmlApi.getElementsByTagName("defa")[0].childNodes[0].data
+        DebugPrint ("\t: default args-> " + defas)
+        kwodefas = xmlApi.getElementsByTagName("kwodefa")[0].childNodes[0].data
+        DebugPrint ("\t: default kwoargs-> " + kwodefas)
+        
+        return PyApi (apiName, expr, eval(ret), eval(parameters), posagrs, kwoargs, defas, kwodefas, dependences)
 
     def ParseExceps (self, pyLib, xmlExp):
         xmlExpList = xmlExp[0].getElementsByTagName("exception")

@@ -68,7 +68,6 @@ class ApiSpec ():
                     clsNode = self.AddChild (Root, mdNode, "class")
                     clsNode.setAttribute ('name', clsname)
                     clsNode.setAttribute ('init', 'None')
-                    clsNode.setAttribute ('args', 'None')
 
                     TotalApiNum += len (cls.Apis)
                     for apiname, api in cls.Apis.items ():
@@ -76,11 +75,14 @@ class ApiSpec ():
                         apiNode.setAttribute ('name', apiname)
 
                         self.AddChild (Root, apiNode, "expr", str(api.Expr))
-                        self.AddChild (Root, apiNode, "parameters", str(api.Args))
+                        self.AddChild (Root, apiNode, "args", str(api.Args))
                         self.AddChild (Root, apiNode, "return", str(api.Ret))
                         self.AddChild (Root, apiNode, "dependences", str(api.Deps))
                         self.AddChild (Root, apiNode, "posargs", str(api.PosArgs))
                         self.AddChild (Root, apiNode, "kwoargs", str(api.KwoArgs))
+                        
+                        self.AddChild (Root, apiNode, "defa", str(api.Defaults))
+                        self.AddChild (Root, apiNode, "kwodefa", str(api.KwDefaults))
 
                 TotalApiNum += len (md.Apis)
                 for apiname, api in md.Apis.items ():

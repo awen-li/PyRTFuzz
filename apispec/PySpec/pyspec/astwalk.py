@@ -105,6 +105,9 @@ class AstWalk(NodeVisitor):
         return visitor(node)
 
     def _IsInternal (self, FuncName):
+        if FuncName == '__init__':
+            return False
+        
         if FuncName[0:1] == "_":
             return True
         else:
@@ -227,14 +230,6 @@ class AstWalk(NodeVisitor):
 
     def visit_asyncfunctiondef (self, node, ClfName=None):
         self.visit_functiondef (node, ClfName)
-
-    def init_cfInit (self, node):
-        if node.name != '__init__':
-            return
-
-        print (ast.dump (node))
-        fa, pa, ka, defa, kwdefa = self.GetFP (node.args)
-        print (fa,pa, ka, defa, kwdefa)
     
     def visit_functiondef(self, node, ClfName=None):
 
@@ -245,11 +240,6 @@ class AstWalk(NodeVisitor):
         if ApiName[0:4] == 'test':
             return
 
-        if ApiName == '__init__':
-            # get the specification of the class
-            self.init_cfInit (node)
-            return
-
         if self._IsInternal (node.name) == True or isinstance (node.body[0], Pass):
             return
             
@@ -258,9 +248,12 @@ class AstWalk(NodeVisitor):
                               [p+':None' for p in fa], 
                               [p+':None' for p in pa], 
                               [p+':None' for p in ka])
-        
-        for stmt in node.body:
-            self.visit (stmt)
+
+        if ApiName != '__init__':
+            for stmt in node.body:
+                self.visit (stmt)
+        else:
+            print (ast.dump (node))
 
         if self.CurClass != None:
             self.CurClass.Apis[ApiName] = self.CurFunc

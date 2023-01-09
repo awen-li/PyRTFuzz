@@ -2,23 +2,27 @@
 <apisepc version="1.0">
     <library name="email">
         <module name="charset">
-            <class name="Charset" init="obj = Charset()" args='[]'>
+            <class name="Charset" init="obj = Charset()">
                 <api name="get_body_encoding">
                         <expr>ret = obj.get_body_encoding()</expr>
-                        <parameters>[]</parameters>
+                        <args>[]</args>
                         <return>['ret:base64|7bit']</return>
                         <dependences>  </dependences>
-			<posargs>[]</posargs>
+						<posargs>[]</posargs>
                         <kwoargs>[]</kwoargs>
+                        <defa>[]</defa>
+                        <kwodefa>[]</kwodefa>
                 </api>
 
                 <api name="header_encode">
                         <expr>Ch.header_encode(str)</expr>
-                        <parameters>['str:string']</parameters>
+                        <args>['str:string']</args>
                         <return>[]</return>
                         <dependences>  </dependences>
-			<posargs>[]</posargs>
+						<posargs>[]</posargs>
                         <kwoargs>[]</kwoargs>
+                        <defa>[]</defa>
+                        <kwodefa>[]</kwodefa>
                 </api>
             </class>
         </module>
@@ -26,11 +30,13 @@
         <module name="contentmanager">
             <api name="header_encode">
                 <expr>header_encode(str)</expr>
-                <parameters>['str:string']</parameters>
+                <args>['str:string']</args>
                 <return>[]</return>
                 <dependences>  </dependences>
-		<posargs>[]</posargs>
+				<posargs>[]</posargs>
                 <kwoargs>[]</kwoargs>
+                <defa>[]</defa>
+                <kwodefa>[]</kwodefa>
             </api>
         </module >
 

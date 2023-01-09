@@ -85,7 +85,7 @@ def RunFuzzer (x):
 
         # override one function
         for apiName, api in self.pyClass.Apis.items ():        
-            paras = [p.split(':')[0] for p in api.Parameters]
+            paras = [p.split(':')[0] for p in api.Args]
             self.ovfunc = self.op_new_functiondef (apiName, paras)
             if not self.ovfunc.name in allFunctions:
                 # sp = super ()
