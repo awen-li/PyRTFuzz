@@ -7,18 +7,18 @@ from ast import *
 import astunparse
 
 class PyApi ():
-    def __init__ (self, ApiName, Expr, Ret, Deps, Args, PosArgs, KwoArgs):
+    def __init__ (self, ApiName, Expr, Ret, Args, PosArgs, KwoArgs, Defas, KwoDefas, Deps):
         self.ApiName = ApiName
         self.Expr    = Expr
         self.Ret     = Ret
         self.Args    = Args
-        self.Deps    = Deps
-
         self.PosArgs = PosArgs
         self.KwoArgs = KwoArgs
 
-        self.Defaults = []
-        self.KwDefaults = []
+        self.Defas = Defas
+        self.KwoDefas = KwoDefas
+
+        self.Deps = Deps
         
 class PyCls ():
     def __init__ (self, clsName, Init):
@@ -243,11 +243,13 @@ class AstWalk(NodeVisitor):
         if self._IsInternal (node.name) == True or isinstance (node.body[0], Pass):
             return
             
-        fa, pa, ka, defa, kwdefa = self.GetFP (node.args)
-        self.CurFunc = PyApi (ApiName, None, None, None, 
+        fa, pa, ka, defas, kwdefas = self.GetFP (node.args)
+        self.CurFunc = PyApi (ApiName, None, None, 
                               [p+':None' for p in fa], 
                               [p+':None' for p in pa], 
-                              [p+':None' for p in ka])
+                              [p+':None' for p in ka],
+                              defas, kwdefas,
+                              None)
 
         if ApiName != '__init__':
             for stmt in node.body:

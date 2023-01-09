@@ -81,8 +81,8 @@ class ApiSpec ():
                         self.AddChild (Root, apiNode, "posargs", str(api.PosArgs))
                         self.AddChild (Root, apiNode, "kwoargs", str(api.KwoArgs))
                         
-                        self.AddChild (Root, apiNode, "defa", str(api.Defaults))
-                        self.AddChild (Root, apiNode, "kwodefa", str(api.KwDefaults))
+                        self.AddChild (Root, apiNode, "defa", str(api.Defas))
+                        self.AddChild (Root, apiNode, "kwodefa", str(api.KwoDefas))
 
                 TotalApiNum += len (md.Apis)
                 for apiname, api in md.Apis.items ():
