@@ -132,18 +132,29 @@ class AstWalk(NodeVisitor):
         pass
   
     def visit_return (self, node):
-        if self.CurFunc == None:
+        if node.value == None:
             return None
         
-        ret = self.visit(node.value)
-        if ret != None and ret in ['int', 'float', 'string']:
-            FuncName = self.CurFunc.ApiName
-            RetType  = f'ret:{ret}'
-            if self.FuncRetType.get (FuncName) == None:
-                self.CurFunc.Ret = RetType
-                print (self.CurFunc.ApiName + " return with type: " + RetType)
+        if self.CurFunc == None:
+            return None
+        FuncName = self.CurFunc.ApiName
+
+        Value = node.value
+        if isinstance (Value, Tuple):
+            pass
+        else:
+            ret = self.visit(node.value)
+            if isinstance (ret, bool):
+                ret = 'bool'
+                
+            if ret != None and ret in ['int', 'float', 'string', 'bool']:               
+                RetType  = f'ret:{ret}'
+                if not RetType in self.CurFunc.Ret:
+                    self.CurFunc.Ret.append (RetType)
+                    self.FuncRetType [FuncName] = self.CurFunc.Ret
             else:
-                self.FuncRetType [FuncName] = RetType
+                self.CurFunc.Ret = ['ret:None']
+                
         return None
         
     def visit_call (self, node):
@@ -244,7 +255,7 @@ class AstWalk(NodeVisitor):
             return
             
         fa, pa, ka, defas, kwdefas = self.GetFP (node.args)
-        self.CurFunc = PyApi (ApiName, None, None, 
+        self.CurFunc = PyApi (ApiName, None, [], 
                               [p+':None' for p in fa], 
                               [p+':None' for p in pa], 
                               [p+':None' for p in ka],
@@ -254,8 +265,6 @@ class AstWalk(NodeVisitor):
         if ApiName != '__init__':
             for stmt in node.body:
                 self.visit (stmt)
-        else:
-            print (ast.dump (node))
 
         if self.CurClass != None:
             self.CurClass.Apis[ApiName] = self.CurFunc
@@ -292,3 +301,4 @@ class AstWalk(NodeVisitor):
         for s in node.body:
             self.visit(s)
         self.Reset ()
+        

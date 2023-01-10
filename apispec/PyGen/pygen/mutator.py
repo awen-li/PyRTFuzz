@@ -69,6 +69,8 @@ def WriteAstPickle (Name, Ast):
     print ("Write pickle of %s to %s" %(Name, PklFile))
     #print (ast.dump (Ast))
 
+    return PklFile, Instance2Ast
+
 def LoadAstPickle (Name):
     PklFile = 'pickle_set/' + Name + ".pkl"
     with open(PklFile, 'rb') as Pkl:

@@ -127,6 +127,10 @@ class ApiSpec():
         return PyApi (apiName, expr, eval(ret), eval(parameters), posagrs, kwoargs, defas, kwodefas, dependences)
 
     def ParseExceps (self, pyLib, xmlExp):
+        if len (xmlExp) == 0:
+            print ("Warning: %s extracted none exceptions!!!\r\n" %pyLib.Name)
+            return
+            
         xmlExpList = xmlExp[0].getElementsByTagName("exception")
         for xExp in xmlExpList:
             exp = xExp.childNodes[0].data
