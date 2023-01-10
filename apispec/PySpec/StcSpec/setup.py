@@ -4,7 +4,7 @@ from setuptools import setup
 from setuptools import find_packages
 
 setup(
-    name="pygen",
+    name="pyspec",
     version="1.0.0",
     author="Wen Li",
     author_email="li.wen@wsu.edu",

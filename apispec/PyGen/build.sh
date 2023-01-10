@@ -4,7 +4,7 @@ export PY_PATH=`pwd`
 echo ""
 echo ""
 echo "@@@@@@@@@@@@@@@ build Python:pygen @@@@@@@@@@@@@@@"
-pip3 install .
+pip install .
 cd -
 
 PyVersion=`python -c 'import platform; major, minor, patch = platform.python_version_tuple(); print(str(major)+"."+str(minor))'`

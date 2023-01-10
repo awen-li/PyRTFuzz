@@ -11,6 +11,8 @@ def InitArgument (parser):
     grp = parser.add_argument_group('Main options', 'One of these (or --report) must be given')
     grp.add_argument('-s', '--source',
                      help='source api spec xml')
+    grp.add_argument('-i', '--include_path',
+                     help='the installation path of the target')
               
     parser.add_argument('filename', nargs='?', help='file to run as main program')
     parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
@@ -47,7 +49,16 @@ def main():
         parser.error('filename is missing: required with the main options')
         
     if opts.source is None:
-        parser.error('please specify the original api spec xml')
+        #parser.error('please specify the original api spec xml')
+        pass
+
+    if opts.include_path is None:
+        default_path = os.path.abspath(r".")
+        sys.path.insert (0, default_path)
+        print ("@@@ add default sys path:", default_path)     
+    else:
+        sys.path.insert (0, opts.include_path)
+        print ("@@@ add sys path:", opts.include_path)
         
     DynTrace (opts.filename, opts.source)
     print ("Run successful.....")
