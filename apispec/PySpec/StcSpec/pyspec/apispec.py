@@ -46,7 +46,18 @@ class ApiSpec ():
             Val = Doc.createTextNode(Value)
             CNode.appendChild(Val)
         return CNode
-    
+
+    def WriteApi (self, Root, apiNode, api):
+        self.AddChild (Root, apiNode, "expr", str(api.Expr))
+        self.AddChild (Root, apiNode, "args", str(api.Args))
+        self.AddChild (Root, apiNode, "return", str(api.Ret))
+        self.AddChild (Root, apiNode, "dependences", str(api.Deps))
+        self.AddChild (Root, apiNode, "posargs", str(api.PosArgs))
+        self.AddChild (Root, apiNode, "kwoargs", str(api.KwoArgs))
+                        
+        self.AddChild (Root, apiNode, "defa", str(api.Defas))
+        self.AddChild (Root, apiNode, "kwodefa", str(api.KwoDefas))
+        
     def WriteXml (self, Visitor):
         Root = Document()  
         ApiSpec = self.AddChild (Root, Root, 'apisepc')
@@ -73,20 +84,13 @@ class ApiSpec ():
                     for apiname, api in cls.Apis.items ():
                         apiNode = self.AddChild (Root, clsNode, "api")
                         apiNode.setAttribute ('name', apiname)
-
-                        self.AddChild (Root, apiNode, "expr", str(api.Expr))
-                        self.AddChild (Root, apiNode, "args", str(api.Args))
-                        self.AddChild (Root, apiNode, "return", str(api.Ret))
-                        self.AddChild (Root, apiNode, "dependences", str(api.Deps))
-                        self.AddChild (Root, apiNode, "posargs", str(api.PosArgs))
-                        self.AddChild (Root, apiNode, "kwoargs", str(api.KwoArgs))
+                        self.WriteApi (Root, apiNode, api)
                         
-                        self.AddChild (Root, apiNode, "defa", str(api.Defas))
-                        self.AddChild (Root, apiNode, "kwodefa", str(api.KwoDefas))
-
                 TotalApiNum += len (md.Apis)
                 for apiname, api in md.Apis.items ():
-                    print ("### API: " + apiname)
+                    apiNode = self.AddChild (Root, mdNode, "api")
+                    apiNode.setAttribute ('name', apiname)
+                    self.WriteApi (Root, apiNode, api)
         
         with open ('apispec.xml', 'w') as af:
             af.write(Root.toprettyxml(indent="  "))
