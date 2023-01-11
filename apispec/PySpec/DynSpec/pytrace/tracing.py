@@ -1,7 +1,9 @@
 
 import os
+import re
 import sys
 import inspect
+from pygen import *
 
 try:
     import threading
@@ -20,10 +22,12 @@ else:
         threading.settrace(None)
 
 class Tracing:
-    def __init__(self, ApiSpecXml='apispec.xml'):
-        self.ApiSpecXml = ApiSpecXml
+    def __init__(self, CurLib, ApiSpecXml='apispec.xml'):
+        self.PyLibs = self.InitPyLibs (ApiSpecXml)
+        self.CurLib = self.PyLibs.get (CurLib)
+        if self.CurLib == None:
+            raise Exception("Tracing: current lib" + CurLib + " not found!")
 
-        self.TracedStmts = 0
         self.SetUp = False
         if os.environ.get ("case_name") == None:
             self.IsSingleCase = False
@@ -40,8 +44,13 @@ class Tracing:
         return self
 
     def __exit__(self, *_):
-        print ("----> __exit__................, TracedStmts = ", self.TracedStmts)
+        print ("----> __exit__................")
         _unsettrace()
+
+    def InitPyLibs (self, apiSpecXml):
+        apiSpec = ApiSpec (apiSpecXml)
+        apiSpec.Parser ()
+        return apiSpec.PyLibs
 
     def GetValue(self, Frame, ValName):
         if ValName in Frame.f_locals:
@@ -68,23 +77,24 @@ class Tracing:
         self.CoName = Code.co_name
 
         _, ScriptName = os.path.split(Code.co_filename)
-        LineNo  = Frame.f_lineno 
+        LineNo  = Frame.f_lineno
+
+        MdName = ScriptName.split('.')[0]
+        Md = self.CurLib.Modules.get (MdName)
+        if Md == None:
+            return self.Tracing
 
         if Event == 'call':    
-            Msg = "[Python]:" + ScriptName + ": " +  str(LineNo) + " : calling " + Code.co_name
-            if Code.co_name == 'add':
-                x = self.GetValue (Frame, 'x')
-                print (type(x))
-
-                y = self.GetValue (Frame, 'y')
-                print (type(y))
-
-            if Code.co_name == 'show':
-                info = self.GetValue (Frame, 'info')
-                print (type(info))
+            ApiSpec = Md.Apis.get (Code.co_name)
+            if ApiSpec != None:
+                for arg in ApiSpec.Args:
+                    para = arg.split(':')[0]
+                    paraVal  = self.GetValue (Frame, para)
+                    paraType = re.findall (r'<class \'(.+?)\'>', str(type(paraVal)))[0]
+                    print (para + ' with type: ' + paraType)
         else:
             Msg = "[Python]:" + ScriptName + ": " +  str(LineNo) + " : " + Code.co_name + " -> EVENT = " + Event
-        print (Msg)
+            print (Msg)
         
         return self.Tracing
 
