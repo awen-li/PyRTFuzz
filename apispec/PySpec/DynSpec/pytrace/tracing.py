@@ -87,22 +87,30 @@ class Tracing:
         if Md == None:
             return self.Tracing
 
-        if Event == 'call':    
-            ApiSpec = Md.Apis.get (Code.co_name)
-            if ApiSpec != None:
-                NewArgs = []
-                for arg in ApiSpec.Args:
-                    para = arg.split(':')[0]
-                    pval = self.GetValue (Frame, para)
-                    ptype = re.findall (r'<class \'(.+?)\'>', str(type(pval)))[0]
-                    NewArgs.append (para + ':' + ptype)
+        if Event == 'call':
+            if Code.co_name == '__init__':
+                sf = self.GetValue (Frame, 'self')
+                if sf != None:
+                    print (dir(sf))
+                    print (Frame.f_locals)
+            else:
+                ApiSpec = Md.Apis.get (Code.co_name)
+                if ApiSpec != None:
+                    NewArgs = []
+                    for arg in ApiSpec.Args:
+                        para = arg.split(':')[0]
+                        pval = self.GetValue (Frame, para)
+                        ptype = re.findall (r'<class \'(.+?)\'>', str(type(pval)))[0]
+                        NewArgs.append (para + ':' + ptype)
 
-                ApiSpec.Args = NewArgs
-                print (NewArgs)
-                
-                self.CurApiSpec = ApiSpec
-        elif Event == 'return' and len (self.CurApiSpec.Ret) > 0:
-            if self.CurApiSpec != None:
+                    ApiSpec.Args = NewArgs
+                    print (NewArgs)
+                else:
+                    print ("### Query %s spec fail!" %Code.co_name)
+                    
+                    self.CurApiSpec = ApiSpec
+        elif Event == 'return':
+            if self.CurApiSpec != None and len (self.CurApiSpec.Ret) > 0:
                 NewRet = []
                 for R in self.CurApiSpec.Ret:
                     ret, rtype = R.split(':')
@@ -117,6 +125,6 @@ class Tracing:
         else:
             Msg = "[Python]:" + ScriptName + ": " +  str(LineNo) + " : " + Code.co_name + " -> EVENT = " + Event
             print (Msg)
-        
+
         return self.Tracing
 
