@@ -21,12 +21,15 @@ else:
         sys.settrace(None)
         threading.settrace(None)
 
+
 class Tracing:
     def __init__(self, CurLib, ApiSpecXml='apispec.xml'):
         self.PyLibs = self.InitPyLibs (ApiSpecXml)
         self.CurLib = self.PyLibs.get (CurLib)
         if self.CurLib == None:
             raise Exception("Tracing: current lib" + CurLib + " not found!")
+
+        self.CurApiSpec = None
 
         self.SetUp = False
         if os.environ.get ("case_name") == None:
@@ -87,11 +90,30 @@ class Tracing:
         if Event == 'call':    
             ApiSpec = Md.Apis.get (Code.co_name)
             if ApiSpec != None:
+                NewArgs = []
                 for arg in ApiSpec.Args:
                     para = arg.split(':')[0]
-                    paraVal  = self.GetValue (Frame, para)
-                    paraType = re.findall (r'<class \'(.+?)\'>', str(type(paraVal)))[0]
-                    print (para + ' with type: ' + paraType)
+                    pval = self.GetValue (Frame, para)
+                    ptype = re.findall (r'<class \'(.+?)\'>', str(type(pval)))[0]
+                    NewArgs.append (para + ':' + ptype)
+
+                ApiSpec.Args = NewArgs
+                print (NewArgs)
+                
+                self.CurApiSpec = ApiSpec
+        elif Event == 'return' and len (self.CurApiSpec.Ret) > 0:
+            if self.CurApiSpec != None:
+                NewRet = []
+                for R in self.CurApiSpec.Ret:
+                    ret, rtype = R.split(':')
+                    if rtype == 'None':
+                        rval = self.GetValue (Frame, ret)
+                        rtype = re.findall (r'<class \'(.+?)\'>', str(type(rval)))[0]
+                        print ("In %s return: %s" %(self.CurApiSpec.ApiName, rtype))
+                    NewRet.append (ret + ':' + rtype)
+                    
+                self.CurApiSpec.Ret = NewRet
+                print (NewRet)
         else:
             Msg = "[Python]:" + ScriptName + ": " +  str(LineNo) + " : " + Code.co_name + " -> EVENT = " + Event
             print (Msg)

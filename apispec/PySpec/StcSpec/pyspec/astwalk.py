@@ -147,8 +147,12 @@ class AstWalk(NodeVisitor):
             if isinstance (ret, bool):
                 ret = 'bool'
                 
-            if ret != None and ret in ['int', 'float', 'string', 'bool']:               
-                RetType  = f'ret:{ret}'
+            if ret != None:
+                if ret in ['int', 'float', 'string', 'bool']:               
+                    RetType  = f'ret:{ret}'
+                else:
+                    RetType  = f'{ret}:None'
+                
                 if not RetType in self.CurFunc.Ret:
                     self.CurFunc.Ret.append (RetType)
                     self.FuncRetType [FuncName] = self.CurFunc.Ret
