@@ -29,8 +29,6 @@ class Tracing:
         if self.CurLib == None:
             raise Exception("Tracing: current lib" + CurLib + " not found!")
 
-        self.CurApiSpec = None
-
         self.SetUp = False
         if os.environ.get ("case_name") == None:
             self.IsSingleCase = False
@@ -68,6 +66,39 @@ class Tracing:
                 return getattr(Frame.f_globals['__builtins__'], ValName)
         return None
 
+    def UpdateApiArgs (self, Frame, ApiSpec):
+        NewArgs = []    
+        for arg in ApiSpec.Args:
+            para = arg.split(':')[0]
+            pval = self.GetValue (Frame, para)
+            ptype = type(pval).__name__
+            NewArgs.append (para + ':' + ptype)
+
+        ApiSpec.Args = NewArgs
+        print ("###Update " +  ApiSpec.ApiName + " arguments: " + str(NewArgs))
+
+    def UpdateApiRets (self, Frame, ApiSpec):
+        NewRet = []
+        for r in ApiSpec.Ret:
+            ret, rtype = r.split(':')
+            if rtype == 'None':
+                rval = self.GetValue (Frame, ret)
+                rtype = type(rval).__name__
+                NewRet.append (ret + ':' + rtype)
+                    
+        ApiSpec.Ret = NewRet
+        print ("###Update " +  ApiSpec.ApiName + " returns: " + str(NewRet))
+
+    def GetApiSpec (self, Frame, CurMd, ApiName):
+        sf = self.GetValue (Frame, 'self')
+        if sf != None:
+            clsname = sf.__class__.__name__
+            cls = CurMd.Classes.get (clsname)
+            if cls != None:
+                return cls.Apis.get (ApiName)
+        else:
+            return CurMd.Apis.get (ApiName)
+
     def Tracing(self, Frame, Event, Arg):
         if self.IsSingleCase and self.SetUp == False:
             Step = os.environ.get ("case_step")
@@ -88,43 +119,19 @@ class Tracing:
             return self.Tracing
 
         if Event == 'call':
-            if Code.co_name == '__init__':
-                sf = self.GetValue (Frame, 'self')
-                if sf != None:
-                    print (dir(sf))
-                    print (Frame.f_locals)
+            ApiSpec = self.GetApiSpec (Frame, Md, Code.co_name)
+            if  ApiSpec != None:
+                self.UpdateApiArgs (Frame, ApiSpec)
             else:
-                ApiSpec = Md.Apis.get (Code.co_name)
-                if ApiSpec != None:
-                    NewArgs = []
-                    for arg in ApiSpec.Args:
-                        para = arg.split(':')[0]
-                        pval = self.GetValue (Frame, para)
-                        ptype = re.findall (r'<class \'(.+?)\'>', str(type(pval)))[0]
-                        NewArgs.append (para + ':' + ptype)
-
-                    ApiSpec.Args = NewArgs
-                    print (NewArgs)
-                else:
-                    print ("### Query %s spec fail!" %Code.co_name)
-                    
-                    self.CurApiSpec = ApiSpec
+                print ("$$$$ Query %s spec fail!" %Code.co_name)
+                                
         elif Event == 'return':
-            if self.CurApiSpec != None and len (self.CurApiSpec.Ret) > 0:
-                NewRet = []
-                for R in self.CurApiSpec.Ret:
-                    ret, rtype = R.split(':')
-                    if rtype == 'None':
-                        rval = self.GetValue (Frame, ret)
-                        rtype = re.findall (r'<class \'(.+?)\'>', str(type(rval)))[0]
-                        print ("In %s return: %s" %(self.CurApiSpec.ApiName, rtype))
-                    NewRet.append (ret + ':' + rtype)
-                    
-                self.CurApiSpec.Ret = NewRet
-                print (NewRet)
+            ApiSpec = self.GetApiSpec (Frame, Md, Code.co_name)
+            if ApiSpec != None and len (ApiSpec.Ret) > 0:
+                self.UpdateApiRets (Frame, ApiSpec)
         else:
             Msg = "[Python]:" + ScriptName + ": " +  str(LineNo) + " : " + Code.co_name + " -> EVENT = " + Event
-            print (Msg)
+            #print (Msg)
 
         return self.Tracing
 
