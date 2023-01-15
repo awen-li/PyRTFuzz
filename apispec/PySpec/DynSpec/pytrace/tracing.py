@@ -118,19 +118,23 @@ class Tracing:
         if Md == None:
             return self.Tracing
 
+        FuncName = Code.co_name
+        if FuncName [0:1] == '_':
+            return self.Tracing
+
         if Event == 'call':
-            ApiSpec = self.GetApiSpec (Frame, Md, Code.co_name)
+            ApiSpec = self.GetApiSpec (Frame, Md, FuncName)
             if  ApiSpec != None:
                 self.UpdateApiArgs (Frame, ApiSpec)
             else:
-                print ("$$$$ Query %s spec fail!" %Code.co_name)
+                print ("$$$$ Query %s spec fail!" %FuncName)
                                 
         elif Event == 'return':
-            ApiSpec = self.GetApiSpec (Frame, Md, Code.co_name)
+            ApiSpec = self.GetApiSpec (Frame, Md, FuncName)
             if ApiSpec != None and len (ApiSpec.Ret) > 0:
                 self.UpdateApiRets (Frame, ApiSpec)
         else:
-            Msg = "[Python]:" + ScriptName + ": " +  str(LineNo) + " : " + Code.co_name + " -> EVENT = " + Event
+            Msg = "[Python]:" + ScriptName + ": " +  str(LineNo) + " : " + FuncName + " -> EVENT = " + Event
             #print (Msg)
 
         return self.Tracing

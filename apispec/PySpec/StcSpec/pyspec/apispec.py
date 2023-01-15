@@ -8,7 +8,7 @@ class ApiSpec ():
     def __init__ (self, CodeDir):
         self.CodeDir = CodeDir
 
-        self.Except = ['__pycache__', 'test', 'site-packages', 'sqlite3', 'distutils', 'importlib']
+        self.Except = ['__pycache__', 'test', 'site-packages', 'importlib']
 
     def IsExcept (self, Path):
         for excp in self.Except:
@@ -97,7 +97,20 @@ class ApiSpec ():
             af.close()
 
         print ("\n\n##### COLLECT: lib:%u, class:%u, api:%u #####\n\n" %(TotalLibNum, TotalClassNum, TotalApiNum))
-        
+
+    def GetModName (self, libName, PyFile):
+        Suffix = PyFile.find (libName)
+        if Suffix == -1:
+            raise Exception(PyFile + " find lib fail -> " + libName)
+        Suffix += len (libName) + 1
+
+        ModName, Ext = PyFile[Suffix:].split ('.')
+        if Ext != 'py':
+            raise Exception("Unsuport ext: " + Ext)
+            
+        ModName = ModName.replace ('/', '.')
+        return ModName
+    
     def GenSpec (self):
         AllLibs = self.GetLibs ()
 
@@ -117,9 +130,11 @@ class ApiSpec ():
                     if Ext != ".py" or Mod[0:1] == '_' or Path.find ("test") != -1:
                         continue
 
-                    print ("## start proc mod: " + Mod)
-                    Visitor.SetPyMod(Mod)
-                    PyFile = os.path.join(Path, py)
+                    PyFile = os.path.join(Path, py)           
+                    ModName = self.GetModName (lib, PyFile)
+                    Visitor.SetPyMod(ModName)
+                    print ("## start proc mod: " + ModName)
+                    
                     with open(PyFile) as PyF:
                         print ("#visit " + PyFile)
                         Ast = parse(PyF.read(), PyFile, 'exec')
