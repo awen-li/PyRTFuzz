@@ -98,7 +98,10 @@ class ApiSpec ():
 
         print ("\n\n##### COLLECT: lib:%u, class:%u, api:%u #####\n\n" %(TotalLibNum, TotalClassNum, TotalApiNum))
 
-    def GetModName (self, libName, PyFile):
+    def GetModName (self, libName, PyFile, Mod):
+        if libName == '.':
+            return Mod
+        
         Suffix = PyFile.find (libName)
         if Suffix == -1:
             raise Exception(PyFile + " find lib fail -> " + libName)
@@ -114,8 +117,7 @@ class ApiSpec ():
     def GenSpec (self):
         AllLibs = self.GetLibs ()
 
-        Visitor = AstWalk()
-        
+        Visitor = AstWalk()  
         for lib in AllLibs:
             libDir = os.path.join(self.CodeDir, lib)
             if self.IsExcept (libDir) == True:
@@ -131,7 +133,7 @@ class ApiSpec ():
                         continue
 
                     PyFile = os.path.join(Path, py)           
-                    ModName = self.GetModName (lib, PyFile)
+                    ModName = self.GetModName (lib, PyFile, Mod)
                     Visitor.SetPyMod(ModName)
                     print ("## start proc mod: " + ModName)
                     
