@@ -66,13 +66,32 @@ class TestProgram(object):
                     testRunner=None, testLoader=loader.defaultTestLoader,
                     exit=True, verbosity=1, failfast=None, catchbreak=None,
                     buffer=None, warnings=None, *, tb_locals=False):
+
+        py_tracing = False
         if isinstance(module, str):
             self.module = __import__(module)
+
+            #wen: for tracing
+            md_info = dir(self.module)
+            print ("###wen md_info = " + str (md_info))
+            if "tracing" in md_info:
+                # to support python -m pyinspect
+                py_tracing = True
+                
+                self.module = None
+                sys.argv = ['python -m unittest'] + sys.argv
+                
+                cur_path = os.path.abspath(r".")
+                sys.path.insert (0, cur_path)
+
+                print ("###wen TestProgram -> set self.module = None, sys.argv = " + str (sys.argv))
+                
             for part in module.split('.')[1:]:
                 self.module = getattr(self.module, part)
         else:
             self.module = module
-        if argv is None:
+            
+        if argv is None or py_tracing is True:
             argv = sys.argv
 
         self.exit = exit
@@ -249,7 +268,6 @@ class TestProgram(object):
         if self.testRunner is None:
             self.testRunner = runner.TextTestRunner
 
-        print ("###wen -> runTests:" + str (self.testRunner))
         if isinstance(self.testRunner, type):
             try:
                 try:
