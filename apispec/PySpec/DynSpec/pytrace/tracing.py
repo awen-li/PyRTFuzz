@@ -131,9 +131,10 @@ class Tracing:
             return MdName
                 
     def GetModule (self, LibName, MdName):
-        Md = self.CurLib.Modules.get (MdName)
-        if Md != None:
-            return Md
+        if self.CurLib != None:
+            Md = self.CurLib.Modules.get (MdName)
+            if Md != None:
+                return Md
 
         self.CurLib = self.PyLibs.get (LibName)
         if self.CurLib == None:
@@ -151,6 +152,9 @@ class Tracing:
         Code = Frame.f_code
         self.CoName = Code.co_name
 
+        # for debug
+        #if Code.co_filename.find ("mail") == -1:
+        #    return self.Tracing
 
         LibFileName = self.GetLibFile (Code.co_filename)
         if LibFileName == None:
