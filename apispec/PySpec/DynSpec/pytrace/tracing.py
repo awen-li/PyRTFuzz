@@ -29,23 +29,22 @@ class Tracing:
         if self.CurLib == None:
             raise Exception("Tracing: current lib" + CurLib + " not found!")
 
-        self.SetUp = False
-        if os.environ.get ("case_name") == None:
-            self.IsSingleCase = False
-        else:
-            self.IsSingleCase = True
-
         self.Debug = False
         if os.environ.get ("pygen_debug") != None:
             self.Debug = True
 
+        self.PyLibPath = os.getenv ("PYTHON_LIBRARY")
+        if self.PyLibPath == None:
+            raise Exception("Please set PYTHON_LIBRARY first!")
+        self.PyLibPathLen = len (self.PyLibPath)
+
     def __enter__(self):
-        print ("----> __enter__................IsSingleCase->", self.IsSingleCase)
+        print ("[Tracing]----> __enter__................")
         _settrace(self.Tracing)
         return self
 
     def __exit__(self, *_):
-        print ("----> __exit__................")
+        print ("[Tracing]----> __exit__................")
         _unsettrace()
 
     def InitPyLibs (self, apiSpecXml):
@@ -103,42 +102,68 @@ class Tracing:
         else:
             return CurMd.Apis.get (ApiName)
 
-    def GetModule (self, MdName):
+    def GetLibFile(self, CoFileName):
+        if self.PyLibPath == None:
+            raise Exception("Please set PYTHON_LIBRARY first!")
+
+        if self.PyLibPath != CoFileName [0:self.PyLibPathLen]:
+            #print (self.PyLibPath + " <----> " + CoFileName)
+            return None
+
+        LibFile = CoFileName [self.PyLibPathLen:]
+        if LibFile[0] == '/':
+            LibFile = LibFile[1:]
+        return LibFile
+
+    def GetLibName (self, LibFileName):
+        Index = LibFileName.find ('/')
+        if Index == -1:
+            return '.'
+        else:
+            return LibFileName [0:Index]
+
+    def GetMdName (self, LibName, LibFileName):
+        LibFileName = LibFileName.split ('.')[0]
+        if LibName == '.':
+            return LibFileName
+        else:
+            MdName = LibFileName[len(LibName)+1:].replace ('/', '.')
+            return MdName
+                
+    def GetModule (self, LibName, MdName):
         Md = self.CurLib.Modules.get (MdName)
         if Md != None:
             return Md
 
-        for libName, lib in self.PyLibs.items ():
-            if libName == self.CurLib.Name:
-                continue
-
-            Md = lib.Modules.get (MdName)
-            if Md != None:
-                self.CurLib = lib
-                return Md
-        
+        self.CurLib = self.PyLibs.get (LibName)
+        if self.CurLib == None:
+            return None
+            
+        Md = self.CurLib.Modules.get (MdName)
+        if Md != None:
+            return Md
+            
         return None
             
         
     def Tracing(self, Frame, Event, Arg):
-        if self.IsSingleCase and self.SetUp == False:
-            Step = os.environ.get ("case_step")
-            if Step == "setup":
-                self.SetUp = True
-            else:
-                return self.Tracing
-        
+   
         Code = Frame.f_code
         self.CoName = Code.co_name
 
-        _, ScriptName = os.path.split(Code.co_filename)
-        LineNo  = Frame.f_lineno
 
-        MdName = ScriptName.split('.')[0]
-        Md = self.GetModule (MdName)
+        LibFileName = self.GetLibFile (Code.co_filename)
+        if LibFileName == None:
+            return self.Tracing
+
+        LibName = self.GetLibName(LibFileName)
+        MdName = self.GetMdName (LibName, LibFileName)
+        if MdName[0:1] == '_':
+            return self.Tracing
+        
+        Md = self.GetModule (LibName, MdName)
         if Md == None:
-            if MdName.find('test') == -1:
-                print ("####GetModule fail -> " + MdName)
+            print ("####GetModule fail -> " + MdName)
             return self.Tracing
 
         FuncName = Code.co_name
@@ -155,7 +180,7 @@ class Tracing:
             if ApiSpec != None and len (ApiSpec.Ret) > 0:
                 self.UpdateApiRets (Frame, ApiSpec)
         else:
-            Msg = "[Python]:" + ScriptName + ": " +  str(LineNo) + " : " + FuncName + " -> EVENT = " + Event
+            Msg = "[Python]:" + Code.co_filename + ": " +  str(Frame.f_lineno) + " : " + FuncName + " -> EVENT = " + Event
             #print (Msg)
 
         return self.Tracing
