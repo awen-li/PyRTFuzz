@@ -67,15 +67,19 @@ class Tracing:
         return None
 
     def UpdateApiArgs (self, Frame, ApiSpec):
-        NewArgs = []    
+        NewArgs = []
+        hasNew  = False
         for arg in ApiSpec.Args:
-            para = arg.split(':')[0]
-            pval = self.GetValue (Frame, para)
-            ptype = type(pval).__name__
+            para, ptype = arg.split(':')
+            if ptype == 'None':
+                hasNew = True
+                pval = self.GetValue (Frame, para)
+                ptype = type(pval).__name__
             NewArgs.append (para + ':' + ptype)
 
         ApiSpec.Args = NewArgs
-        print ("###Update " +  ApiSpec.ApiName + " arguments: " + str(NewArgs))
+        if hasNew == True:
+            print ("###Update " +  ApiSpec.ApiName + " arguments: " + str(NewArgs))
 
     def UpdateApiRets (self, Frame, ApiSpec):
         NewRet = []
@@ -99,6 +103,23 @@ class Tracing:
         else:
             return CurMd.Apis.get (ApiName)
 
+    def GetModule (self, MdName):
+        Md = self.CurLib.Modules.get (MdName)
+        if Md != None:
+            return Md
+
+        for libName, lib in self.PyLibs.items ():
+            if libName == self.CurLib.Name:
+                continue
+
+            Md = lib.Modules.get (MdName)
+            if Md != None:
+                self.CurLib = lib
+                return Md
+        
+        return None
+            
+        
     def Tracing(self, Frame, Event, Arg):
         if self.IsSingleCase and self.SetUp == False:
             Step = os.environ.get ("case_step")
@@ -114,8 +135,10 @@ class Tracing:
         LineNo  = Frame.f_lineno
 
         MdName = ScriptName.split('.')[0]
-        Md = self.CurLib.Modules.get (MdName)
+        Md = self.GetModule (MdName)
         if Md == None:
+            if MdName.find('test') == -1:
+                print ("####GetModule fail -> " + MdName)
             return self.Tracing
 
         FuncName = Code.co_name
@@ -126,8 +149,6 @@ class Tracing:
             ApiSpec = self.GetApiSpec (Frame, Md, FuncName)
             if  ApiSpec != None:
                 self.UpdateApiArgs (Frame, ApiSpec)
-            else:
-                print ("$$$$ Query %s spec fail!" %FuncName)
                                 
         elif Event == 'return':
             ApiSpec = self.GetApiSpec (Frame, Md, FuncName)

@@ -56,7 +56,7 @@ def main():
             parser.error('please specify the original api spec xml')
 
     if opts.lib is None:
-        parser.error('please specify the current tracing lib')
+        opts.lib = '.'
 
     if opts.include_path is None:
         default_path = os.path.abspath(r".")
