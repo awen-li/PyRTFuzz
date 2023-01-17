@@ -189,3 +189,42 @@ class Tracing:
 
         return self.Tracing
 
+
+class IterTracing ():
+    def __init__ (self, ApiSpecXml='apispec.xml'):
+        #self.PyLibs = self.InitPyLibs (ApiSpecXml)
+        pass
+        
+    def Tracing (self, CodeDir):
+        TestNum = 0
+        TestWalk = os.walk(CodeDir)
+        for Path, Dirs, Pys in TestWalk:
+            for py in Pys:
+                if not re.search (r'test.*.py$', py):
+                    continue
+                
+                print (Path + '  --->  ' + py)
+                TestNum += 1
+        
+        print ("###Tacing total %d tests...." %TestNum)
+
+    def DynTrace (EntryScript, CurLib, ApiSpecXml):
+        try:
+            with open(EntryScript) as fp:
+                code = compile(fp.read(), EntryScript, 'exec')
+
+            globs = {
+                '__file__': EntryScript,
+                '__name__': '__main__',
+                '__package__': None,
+                '__cached__': None,
+            }
+            
+            with Tracing (CurLib, ApiSpecXml):
+                exec(code, globs, globs)
+            
+        except OSError as err:
+            sys.exit("Cannot run file %r because: %s" % (sys.argv[0], err))
+        except SystemExit:
+            sys.exit("except SystemExit")
+        

@@ -48,7 +48,7 @@ def main():
     sys.argv = [opts.filename, *opts.arguments]
 
     if opts.filename is None:
-        parser.error('filename is missing: required with the main options')
+        parser.error('filename or dirname is missing: required with the main options')
         
     if opts.source is None:
         opts.source = 'apispec.xml'
@@ -65,8 +65,13 @@ def main():
     else:
         sys.path.insert (0, opts.include_path)
         print ("@@@ add sys path:", opts.include_path)
-        
-    DynTrace (opts.filename, opts.lib, opts.source)
+
+    if os.path.isfile (opts.filename):
+        DynTrace (opts.filename, opts.lib, opts.source)
+    else:
+        IterTc = IterTracing (opts.source)
+        IterTc.Tracing (opts.filename)
+    
     print ("Run successful.....")
 
 if __name__ == "__main__":
