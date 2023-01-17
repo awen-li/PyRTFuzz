@@ -23,11 +23,9 @@ else:
 
 
 class Tracing:
-    def __init__(self, CurLib, ApiSpecXml='apispec.xml'):
-        self.PyLibs = self.InitPyLibs (ApiSpecXml)
-        self.CurLib = self.PyLibs.get (CurLib)
-        if self.CurLib == None:
-            raise Exception("Tracing: current lib" + CurLib + " not found!")
+    def __init__(self, PyLibs):
+        self.PyLibs = PyLibs
+        self.CurLib = None
 
         self.Debug = False
         if os.environ.get ("pygen_debug") != None:
@@ -40,17 +38,12 @@ class Tracing:
 
     def __enter__(self):
         print ("[Tracing]----> __enter__................")
-        _settrace(self.Tracing)
+        _settrace(self.StartTracing)
         return self
 
     def __exit__(self, *_):
         print ("[Tracing]----> __exit__................")
         _unsettrace()
-
-    def InitPyLibs (self, apiSpecXml):
-        apiSpec = ApiSpec (apiSpecXml)
-        apiSpec.Parser ()
-        return apiSpec.PyLibs
 
     def GetValue(self, Frame, ValName):
         if ValName in Frame.f_locals:
@@ -147,7 +140,7 @@ class Tracing:
         return None
             
         
-    def Tracing(self, Frame, Event, Arg):
+    def StartTracing (self, Frame, Event, Arg):
    
         Code = Frame.f_code
         self.CoName = Code.co_name
@@ -158,21 +151,21 @@ class Tracing:
 
         LibFileName = self.GetLibFile (Code.co_filename)
         if LibFileName == None:
-            return self.Tracing
+            return self.StartTracing
 
         LibName = self.GetLibName(LibFileName)
         MdName = self.GetMdName (LibName, LibFileName)
         if MdName[0:1] == '_':
-            return self.Tracing
+            return self.StartTracing
         
         Md = self.GetModule (LibName, MdName)
         if Md == None:
             print ("####GetModule fail -> " + MdName)
-            return self.Tracing
+            return self.StartTracing
 
         FuncName = Code.co_name
         if FuncName [0:1] == '_':
-            return self.Tracing
+            return self.StartTracing
 
         if Event == 'call':
             ApiSpec = self.GetApiSpec (Frame, Md, FuncName)
@@ -187,44 +180,54 @@ class Tracing:
             Msg = "[Python]:" + Code.co_filename + ": " +  str(Frame.f_lineno) + " : " + FuncName + " -> EVENT = " + Event
             #print (Msg)
 
-        return self.Tracing
+        return self.StartTracing
 
 
 class IterTracing ():
     def __init__ (self, ApiSpecXml='apispec.xml'):
-        #self.PyLibs = self.InitPyLibs (ApiSpecXml)
-        pass
-        
-    def Tracing (self, CodeDir):
+        self.PyLibs = self.InitPyLibs (ApiSpecXml)
+
+    def InitPyLibs (self, apiSpecXml):
+        apiSpec = ApiSpec (apiSpecXml)
+        apiSpec.Parser ()
+        return apiSpec.PyLibs
+
+    def DynTrace (self, Entry, PyLibs):
+        try:
+            with open(Entry) as fp:
+                code = compile(fp.read(), Entry, 'exec')
+
+            globs = {
+                '__file__': Entry,
+                '__name__': '__main__',
+                '__package__': None,
+                '__cached__': None,
+            }
+            
+            with Tracing (PyLibs):
+                exec(code, globs, globs)
+            
+        except OSError as err:
+            sys.exit("Cannot run file %r because: %s" % (Entry, err))
+        except SystemExit:
+            sys.exit("except SystemExit")
+
+    def StartTracing (self, CodeDir):
         TestNum = 0
         TestWalk = os.walk(CodeDir)
         for Path, Dirs, Pys in TestWalk:
             for py in Pys:
                 if not re.search (r'test.*.py$', py):
                     continue
-                
+
+                os.chdir (Path)
+                self.DynTrace (py, self.PyLibs)
                 print (Path + '  --->  ' + py)
                 TestNum += 1
         
         print ("###Tacing total %d tests...." %TestNum)
 
-    def DynTrace (EntryScript, CurLib, ApiSpecXml):
-        try:
-            with open(EntryScript) as fp:
-                code = compile(fp.read(), EntryScript, 'exec')
 
-            globs = {
-                '__file__': EntryScript,
-                '__name__': '__main__',
-                '__package__': None,
-                '__cached__': None,
-            }
-            
-            with Tracing (CurLib, ApiSpecXml):
-                exec(code, globs, globs)
-            
-        except OSError as err:
-            sys.exit("Cannot run file %r because: %s" % (sys.argv[0], err))
-        except SystemExit:
-            sys.exit("except SystemExit")
+    def StartTracingSingle (self, Entry):
+        self.DynTrace (Entry, self.PyLibs)
         

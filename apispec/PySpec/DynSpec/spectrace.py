@@ -19,27 +19,6 @@ def InitArgument (parser):
     parser.add_argument('filename', nargs='?', help='file to run as main program')
     parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
 
-def DynTrace (EntryScript, CurLib, ApiSpecXml):
-    try:
-        with open(EntryScript) as fp:
-            code = compile(fp.read(), EntryScript, 'exec')
-
-        globs = {
-            '__file__': EntryScript,
-            '__name__': '__main__',
-            '__package__': None,
-            '__cached__': None,
-        }
-        
-        with Tracing (CurLib, ApiSpecXml):
-            exec(code, globs, globs)
-        
-    except OSError as err:
-        sys.exit("Cannot run file %r because: %s" % (sys.argv[0], err))
-    except SystemExit:
-        sys.exit("except SystemExit")
-
-
 def main():
     parser = argparse.ArgumentParser()
     InitArgument (parser)
@@ -61,16 +40,20 @@ def main():
     if opts.include_path is None:
         default_path = os.path.abspath(r".")
         sys.path.insert (0, default_path)
-        print ("@@@ add default sys path:", default_path)     
+        print ("### add default sys path:", default_path)     
     else:
         sys.path.insert (0, opts.include_path)
-        print ("@@@ add sys path:", opts.include_path)
+        print ("### add sys path:", opts.include_path)
 
     if os.path.isfile (opts.filename):
-        DynTrace (opts.filename, opts.lib, opts.source)
-    else:
         IterTc = IterTracing (opts.source)
-        IterTc.Tracing (opts.filename)
+        IterTc.StartTracingSingle (opts.filename)
+    elif os.path.isdir(opts.filename):
+        IterTc = IterTracing (opts.source)
+        IterTc.StartTracing (opts.filename)
+    else:
+        print ("\n### could not find %s, please make sure run the tool in correct directory!\n" %opts.filename)
+        return
     
     print ("Run successful.....")
 
