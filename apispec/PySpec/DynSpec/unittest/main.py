@@ -73,7 +73,6 @@ class TestProgram(object):
 
             #wen: for tracing
             md_info = dir(self.module)
-            print ("###wen md_info = " + str (md_info))
             if "tracing" in md_info:
                 # to support python -m pyinspect
                 py_tracing = True

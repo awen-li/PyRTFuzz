@@ -186,6 +186,13 @@ class Tracing:
 class IterTracing ():
     def __init__ (self, ApiSpecXml='apispec.xml'):
         self.PyLibs = self.InitPyLibs (ApiSpecXml)
+        self.Except = ['multiprocessing']
+
+    def IsExcept (self, Entry):
+        for e in self.Except:
+            if Entry.find (e) != -1:
+                return True
+        return False
 
     def InitPyLibs (self, apiSpecXml):
         apiSpec = ApiSpec (apiSpecXml)
@@ -203,26 +210,26 @@ class IterTracing ():
                 '__package__': None,
                 '__cached__': None,
             }
-            
+
+            sys.argv = [Entry]
             with Tracing (PyLibs):
                 exec(code, globs, globs)
             
-        except OSError as err:
-            sys.exit("Cannot run file %r because: %s" % (Entry, err))
-        except SystemExit:
-            sys.exit("except SystemExit")
+        except OSError as oserr:
+            sys.exit("Cannot run file %s because: %s" % (Entry, oserr))
+        except SystemExit as sysrr:
+            pass
 
     def StartTracing (self, CodeDir):
         TestNum = 0
         TestWalk = os.walk(CodeDir)
         for Path, Dirs, Pys in TestWalk:
             for py in Pys:
-                if not re.search (r'test.*.py$', py):
+                if not re.search (r'test.*.py$', py) or self.IsExcept (py) == True:
                     continue
 
-                os.chdir (Path)
-                self.DynTrace (py, self.PyLibs)
-                print (Path + '  --->  ' + py)
+                PyFile = os.path.join(Path, py)
+                self.DynTrace (PyFile, self.PyLibs)
                 TestNum += 1
         
         print ("###Tacing total %d tests...." %TestNum)
