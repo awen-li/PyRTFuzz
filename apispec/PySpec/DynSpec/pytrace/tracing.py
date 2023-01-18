@@ -160,7 +160,7 @@ class Tracing:
         
         Md = self.GetModule (LibName, MdName)
         if Md == None:
-            print ("####GetModule fail -> " + MdName)
+            #print ("####GetModule fail -> " + MdName)
             return self.StartTracing
 
         FuncName = Code.co_name
@@ -229,5 +229,10 @@ class IterTracing ():
 
 
     def StartTracingSingle (self, Entry):
+        fIndex = Entry.rfind ('/')
+        if fIndex != -1:
+            Path = Entry [0:fIndex]
+            Entry = Entry [fIndex+1:]
+            os.chdir (Path)
         self.DynTrace (Entry, self.PyLibs)
         
