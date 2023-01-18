@@ -3,6 +3,7 @@ import os
 import re
 import sys
 import inspect
+from multiprocessing import  Process
 from pygen import *
 
 try:
@@ -183,23 +184,19 @@ class Tracing:
         return self.StartTracing
 
 
-class IterTracing ():
-    def __init__ (self, ApiSpecXml='apispec.xml'):
-        self.PyLibs = self.InitPyLibs (ApiSpecXml)
-        self.Except = ['multiprocessing']
-
-    def IsExcept (self, Entry):
-        for e in self.Except:
-            if Entry.find (e) != -1:
-                return True
-        return False
-
-    def InitPyLibs (self, apiSpecXml):
-        apiSpec = ApiSpec (apiSpecXml)
-        apiSpec.Parser ()
-        return apiSpec.PyLibs
+class Task(Process):
+    def __init__(self, Entry, PyLibs):
+        super(Task, self).__init__()
+        self.Entry  = Entry
+        self.PyLibs = PyLibs
 
     def DynTrace (self, Entry, PyLibs):
+        fIndex = Entry.rfind ('/')
+        if fIndex != -1:
+            Path = Entry [0:fIndex]
+            Entry = Entry [fIndex+1:]
+            os.chdir (Path)
+            
         try:
             with open(Entry) as fp:
                 code = compile(fp.read(), Entry, 'exec')
@@ -212,34 +209,68 @@ class IterTracing ():
             }
 
             sys.argv = [Entry]
-            with Tracing (PyLibs):
+            with Tracing (PyLibs) as T:
                 exec(code, globs, globs)
-            
+                self.PyLibs = T.PyLibs
+                
         except OSError as oserr:
             sys.exit("Cannot run file %s because: %s" % (Entry, oserr))
         except SystemExit as sysrr:
             pass
+            
+    def run(self):
+        print ("start run task")
+        self.DynTrace (self.Entry, self.PyLibs)
 
-    def StartTracing (self, CodeDir):
+class IterTracing (Process):
+    def __init__ (self, ApiSpecXml='apispec.xml'):
+        super(IterTracing, self).__init__()
+        self.PyLibs = self.InitPyLibs (ApiSpecXml)
+        self.Except = ['multiprocessing']
+        self.TestNum = 0
+
+    def IsExcept (self, Entry):
+        for e in self.Except:
+            if Entry.find (e) != -1:
+                return True
+        return False
+
+    def InitPyLibs (self, apiSpecXml):
+        apiSpec = ApiSpec (apiSpecXml)
+        apiSpec.Parser ()
+        return apiSpec.PyLibs
+
+    def TracingTask (self, PyFile, Index=0):
+        print ("###[%d/%d]Start tacing %s" %(Index, self.TestNum, PyFile))
+        trcTask = Task (PyFile, self.PyLibs)
+        trcTask.start()
+        trcTask.join()
+        self.PyLibs = trcTask.PyLibs
+        
+
+    def VisitTests (self, CodeDir, HandleHook=None):
         TestNum = 0
         TestWalk = os.walk(CodeDir)
         for Path, Dirs, Pys in TestWalk:
             for py in Pys:
                 if not re.search (r'test.*.py$', py) or self.IsExcept (py) == True:
                     continue
-
-                PyFile = os.path.join(Path, py)
-                self.DynTrace (PyFile, self.PyLibs)
+                
+                PyFile  = os.path.join(Path, py)
+                if HandleHook != None:
+                    HandleHook (PyFile, TestNum)
+                
                 TestNum += 1
+        return TestNum
         
-        print ("###Tacing total %d tests...." %TestNum)
-
+    def StartTracing (self, CodeDir):
+        self.TestNum = self.VisitTests (CodeDir)
+        self.VisitTests (CodeDir, self.TracingTask)
+        
 
     def StartTracingSingle (self, Entry):
-        fIndex = Entry.rfind ('/')
-        if fIndex != -1:
-            Path = Entry [0:fIndex]
-            Entry = Entry [fIndex+1:]
-            os.chdir (Path)
-        self.DynTrace (Entry, self.PyLibs)
+        self.TestNum = 1
+        self.TracingTask (Entry)
+
+
         
