@@ -95,9 +95,24 @@ class ApiSpec():
     def __init__(self, apiSpecXml='apispec.xml'):
         self.apiSpecXml = apiSpecXml
         self.PyLibs = {}
-
         self.apiAddr = {}
 
+    @staticmethod
+    def Show (PyLibs):
+        print ("\n\n=========================== ShowSpec ===========================")
+        for libName, pyLib in PyLibs.items ():
+            print ("# LIB: " + libName)
+            for mdname, md in pyLib.Modules.items ():
+                print ("## MOD: " + mdname)
+                for clsname, cls in md.Classes.items ():
+                    print ("### CLASS: " + clsname)
+                    for apiname, api in cls.Apis.items ():
+                        print ("#### API: " + apiname + " == Args: " + str(api.Args) + " Ret: " + str(api.Ret))
+
+                for apiname, api in md.Apis.items ():
+                    print ("#### API: " + apiname + " == Args: " + str(api.Args) + " Ret: " + str(api.Ret))
+        print ("=========================== ShowSpec end ========================\n\n")
+        
     def AssertAttr (self, node, attr):
         if not node.hasAttribute(attr):
             print ("Node item has no attribute %s!" %attr)

@@ -45,6 +45,7 @@ class Tracing:
     def __exit__(self, *_):
         print ("[Tracing]----> __exit__................")
         _unsettrace()
+        exit (0)
 
     def GetValue(self, Frame, ValName):
         if ValName in Frame.f_locals:
@@ -99,9 +100,12 @@ class Tracing:
     def GetLibFile(self, CoFileName):
         if self.PyLibPath == None:
             raise Exception("Please set PYTHON_LIBRARY first!")
+       
+        if self.PyLibPath == '.':
+            return CoFileName
 
         if self.PyLibPath != CoFileName [0:self.PyLibPathLen]:
-            #print (self.PyLibPath + " <----> " + CoFileName)
+            print (self.PyLibPath + " <----> " + CoFileName)
             return None
 
         LibFile = CoFileName [self.PyLibPathLen:]
@@ -110,6 +114,9 @@ class Tracing:
         return LibFile
 
     def GetLibName (self, LibFileName):
+        if self.PyLibPath == '.':
+            return '.'
+            
         Index = LibFileName.find ('/')
         if Index == -1:
             return '.'
@@ -146,16 +153,19 @@ class Tracing:
         Code = Frame.f_code
         self.CoName = Code.co_name
 
-        # for debug
-        #if Code.co_filename.find ("mail") == -1:
-        #    return self.Tracing
+        if Code.co_filename.find ("pytrace") != -1:
+            return self.StartTracing
 
+        #print (Code.co_filename)
         LibFileName = self.GetLibFile (Code.co_filename)
         if LibFileName == None:
             return self.StartTracing
 
+        #print ("LibFileName = " + LibFileName)
         LibName = self.GetLibName(LibFileName)
+        #print ("LibName = " + LibName)
         MdName = self.GetMdName (LibName, LibFileName)
+        #print ("MdName = " + MdName)
         if MdName[0:1] == '_':
             return self.StartTracing
         
@@ -164,6 +174,7 @@ class Tracing:
             #print ("####GetModule fail -> " + MdName)
             return self.StartTracing
 
+        #print (Code.co_name)
         FuncName = Code.co_name
         if FuncName [0:1] == '_':
             return self.StartTracing
@@ -196,8 +207,10 @@ class Task(Process):
             Path = Entry [0:fIndex]
             Entry = Entry [fIndex+1:]
             os.chdir (Path)
-            
+
+        ApiSpec.Show(PyLibs)
         try:
+            print ("### Trace start -> " + os.getcwd ())   
             with open(Entry) as fp:
                 code = compile(fp.read(), Entry, 'exec')
 
@@ -212,11 +225,13 @@ class Task(Process):
             with Tracing (PyLibs) as T:
                 exec(code, globs, globs)
                 self.PyLibs = T.PyLibs
-                
+            print ("### Trace end -> " + os.getcwd ())   
         except OSError as oserr:
             sys.exit("Cannot run file %s because: %s" % (Entry, oserr))
+
         except SystemExit as sysrr:
-            pass
+            print ("###SystemExit: Trace end -> " + os.getcwd () + ': ' + str(sysrr))
+            ApiSpec.Show(self.PyLibs)
             
     def run(self):
         print ("start run task")
