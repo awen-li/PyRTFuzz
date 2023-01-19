@@ -13,11 +13,10 @@ setPython ()
 
 	ln -s $py python
 	cd -
+	
+	export PYTHON_LIBRARY=$INSTALL_PATH/lib/$PRIMARY_PYTHON
 }
 
-if [ -f "$INSTALL_PATH/bin/python3.8" ]; then
-	PRIMARY_PYTHON=python3.8
-fi
 
 # 1. build libfuzzer
 if [ ! -n "$LLVM_PATH" ]; then
@@ -65,3 +64,8 @@ cd -
 
 # 4. install fuzzwrapper
 cd $BASE_DIR/fuzzwrapper && ./build.sh && cd -
+
+
+
+# 5. install apispec toolkit
+cd $BASE_DIR/apispec && ./build.sh && cd -
