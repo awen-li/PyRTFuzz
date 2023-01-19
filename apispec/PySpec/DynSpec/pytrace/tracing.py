@@ -59,7 +59,7 @@ class Tracing:
                 return getattr(Frame.f_globals['__builtins__'], ValName)
         return None
 
-    def UpdateApiArgs (self, Frame, ApiSpec):
+    def UpdateApiArgs (self, Frame, ApiSpec, LibName, MdName):
         NewArgs = []
         hasNew  = False
         for arg in ApiSpec.Args:
@@ -72,9 +72,9 @@ class Tracing:
 
         ApiSpec.Args = NewArgs
         if hasNew == True:
-            print ("###Update " +  ApiSpec.ApiName + " arguments: " + str(NewArgs))
+            print ("###Update " +  LibName + "." + MdName + "." + ApiSpec.ApiName + " arguments: " + str(NewArgs))
 
-    def UpdateApiRets (self, Frame, ApiSpec):
+    def UpdateApiRets (self, Frame, ApiSpec, LibName, MdName):
         NewRet = []
         for r in ApiSpec.Ret:
             ret, rtype = r.split(':')
@@ -84,7 +84,7 @@ class Tracing:
                 NewRet.append (ret + ':' + rtype)
                     
         ApiSpec.Ret = NewRet
-        print ("###Update " +  ApiSpec.ApiName + " returns: " + str(NewRet))
+        print ("###Update " +  LibName + "." + MdName + "." + ApiSpec.ApiName + " returns: " + str(NewRet))
 
     def GetApiSpec (self, Frame, CurMd, ApiName):
         sf = self.GetValue (Frame, 'self')
@@ -171,12 +171,12 @@ class Tracing:
         if Event == 'call':
             ApiSpec = self.GetApiSpec (Frame, Md, FuncName)
             if  ApiSpec != None:
-                self.UpdateApiArgs (Frame, ApiSpec)
+                self.UpdateApiArgs (Frame, ApiSpec, LibName, MdName)
                                 
         elif Event == 'return':
             ApiSpec = self.GetApiSpec (Frame, Md, FuncName)
             if ApiSpec != None and len (ApiSpec.Ret) > 0:
-                self.UpdateApiRets (Frame, ApiSpec)
+                self.UpdateApiRets (Frame, ApiSpec, LibName, MdName)
         else:
             Msg = "[Python]:" + Code.co_filename + ": " +  str(Frame.f_lineno) + " : " + FuncName + " -> EVENT = " + Event
             #print (Msg)
@@ -226,7 +226,7 @@ class IterTracing (Process):
     def __init__ (self, ApiSpecXml='apispec.xml'):
         super(IterTracing, self).__init__()
         self.PyLibs = self.InitPyLibs (ApiSpecXml)
-        self.Except = ['multiprocessing']
+        self.Except = ['multiprocessing', 'async']
         self.TestNum = 0
 
     def IsExcept (self, Entry):
