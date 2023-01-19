@@ -22,7 +22,7 @@ def main():
     if opts.debug:
         SetDebug (1)
 
-    apis = ApiSpec (opts.dirname)
+    apis = ApiSpecGen (opts.dirname)
     apis.GenSpec ()
     
     print ("Run successful.....")

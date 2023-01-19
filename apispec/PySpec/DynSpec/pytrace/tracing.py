@@ -5,6 +5,8 @@ import sys
 import inspect
 from multiprocessing import  Process
 from pygen import *
+from pyspec import *
+
 
 try:
     import threading
@@ -196,10 +198,23 @@ class Tracing:
 
 
 class Task(Process):
-    def __init__(self, Entry, PyLibs):
+    def __init__(self, Entry,     ApiSpecXml):
         super(Task, self).__init__()
         self.Entry  = Entry
-        self.PyLibs = PyLibs
+        self.ApiSpecXml = ApiSpecXml
+        self.PyLibs = self.InitPyLibs (ApiSpecXml)
+
+    def InitPyLibs (self, apiSpecXml):
+        apiSpec = ApiSpec (apiSpecXml)
+        apiSpec.Parser ()
+        return apiSpec.PyLibs
+
+    def SavePyLibs (self, PyLibs):
+        pyLibs = []
+        for _, lib in PyLibs.items ():
+            pyLibs.append (lib)
+        
+        ApiSpecGen.WriteXml (pyLibs, self.ApiSpecXml)
 
     def DynTrace (self, Entry, PyLibs):
         fIndex = Entry.rfind ('/')
@@ -208,7 +223,6 @@ class Task(Process):
             Entry = Entry [fIndex+1:]
             os.chdir (Path)
 
-        ApiSpec.Show(PyLibs)
         try:
             print ("### Trace start -> " + os.getcwd ())   
             with open(Entry) as fp:
@@ -224,14 +238,15 @@ class Task(Process):
             sys.argv = [Entry]
             with Tracing (PyLibs) as T:
                 exec(code, globs, globs)
-                self.PyLibs = T.PyLibs
-            print ("### Trace end -> " + os.getcwd ())   
+  
         except OSError as oserr:
             sys.exit("Cannot run file %s because: %s" % (Entry, oserr))
 
         except SystemExit as sysrr:
             print ("###SystemExit: Trace end -> " + os.getcwd () + ': ' + str(sysrr))
-            ApiSpec.Show(self.PyLibs)
+            ApiSpec.Show(PyLibs)
+            self.SavePyLibs (PyLibs)
+            
             
     def run(self):
         print ("start run task")
@@ -240,7 +255,7 @@ class Task(Process):
 class IterTracing (Process):
     def __init__ (self, ApiSpecXml='apispec.xml'):
         super(IterTracing, self).__init__()
-        self.PyLibs = self.InitPyLibs (ApiSpecXml)
+        self.ApiSpecXml = ApiSpecXml
         self.Except = ['multiprocessing', 'async']
         self.TestNum = 0
 
@@ -250,17 +265,11 @@ class IterTracing (Process):
                 return True
         return False
 
-    def InitPyLibs (self, apiSpecXml):
-        apiSpec = ApiSpec (apiSpecXml)
-        apiSpec.Parser ()
-        return apiSpec.PyLibs
-
-    def TracingTask (self, PyFile, Index=0):
+    def TracingTask (self, PyFile,      Index=0):
         print ("###[%d/%d]Start tacing %s" %(Index, self.TestNum, PyFile))
-        trcTask = Task (PyFile, self.PyLibs)
+        trcTask = Task (PyFile, self.ApiSpecXml)
         trcTask.start()
         trcTask.join()
-        self.PyLibs = trcTask.PyLibs
         
 
     def VisitTests (self, CodeDir, HandleHook=None):

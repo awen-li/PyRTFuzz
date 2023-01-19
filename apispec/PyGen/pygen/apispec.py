@@ -3,6 +3,7 @@
 from xml.dom.minidom import parse
 import xml.dom.minidom
 from .debug import *
+from pyspec import *
 
 """
 <?xml version="1.0" ?>
@@ -50,46 +51,6 @@ from .debug import *
     </library>
 </apisepc>
 """
-class PyApi ():
-    def __init__ (self, ApiName, Expr, Ret, Args, PosArgs, KwoArgs, Defas, DefaKwos, Dependences):
-        self.ApiName = ApiName
-        self.Expr    = Expr
-        self.Ret     = Ret
-        self.Args    = Args
-
-        self.PosArgs = PosArgs
-        self.KwoArgs = KwoArgs
-
-        self.Defas   = Defas
-        self.DefaKwos = DefaKwos
-
-        self.Dependences = Dependences
-        
-
-class PyCls ():
-    def __init__ (self, clsName, Init):
-        self.clsName = clsName
-        self.clsInit = Init
-        self.Apis = {}
-
-
-class PyMod ():
-    def __init__ (self, mdName):
-        self.mdName  = mdName
-        self.Apis    = {}
-        self.Classes = {}
-
-class PyExcep ():
-    def __init__ (self, exName):
-        self.exName  = exName
-
-        
-class PyLib ():
-    def __init__ (self, Name):
-        self.Name  = Name
-        self.Modules = {}
-        self.Exceptions = []
-
         
 class ApiSpec():
     def __init__(self, apiSpecXml='apispec.xml'):
