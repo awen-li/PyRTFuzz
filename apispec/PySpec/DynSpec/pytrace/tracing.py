@@ -107,7 +107,7 @@ class Tracing:
             return CoFileName
 
         if self.PyLibPath != CoFileName [0:self.PyLibPathLen]:
-            print (self.PyLibPath + " <----> " + CoFileName)
+            #print (self.PyLibPath + " <----> " + CoFileName)
             return None
 
         LibFile = CoFileName [self.PyLibPathLen:]
@@ -224,7 +224,7 @@ class Task(Process):
             os.chdir (Path)
 
         try:
-            print ("### Trace start -> " + os.getcwd ())   
+            print ("### Trace start -> " + os.getcwd () + ": " + Entry)   
             with open(Entry) as fp:
                 code = compile(fp.read(), Entry, 'exec')
 
@@ -243,9 +243,9 @@ class Task(Process):
             sys.exit("Cannot run file %s because: %s" % (Entry, oserr))
 
         except SystemExit as sysrr:
-            print ("###SystemExit: Trace end -> " + os.getcwd () + ': ' + str(sysrr))
-            ApiSpec.Show(PyLibs)
+            #ApiSpec.Show(PyLibs)
             self.SavePyLibs (PyLibs)
+            print ("###SystemExit: Update API spec to " + self.ApiSpecXml)
             
             
     def run(self):
