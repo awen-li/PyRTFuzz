@@ -39,6 +39,8 @@ class Tracing:
             raise Exception("Please set PYTHON_LIBRARY first!")
         self.PyLibPathLen = len (self.PyLibPath)
 
+        self.pass = {"unittest", "importlib._bootstrap", 'pytrace'}
+
     def __enter__(self):
         print ("[Tracing]----> __enter__................")
         _settrace(self.StartTracing)
@@ -148,14 +150,19 @@ class Tracing:
             return Md
             
         return None
-            
+
+    def ByPass (self, FileName):
+        for file in self.pass:
+            if FileName.find (file) != -1:
+                return True
+        return False
         
     def StartTracing (self, Frame, Event, Arg):
    
         Code = Frame.f_code
         self.CoName = Code.co_name
 
-        if Code.co_filename.find ("pytrace") != -1:
+        if self.ByPass(self, Code.co_filename) == True:
             return self.StartTracing
 
         #print (Code.co_filename)

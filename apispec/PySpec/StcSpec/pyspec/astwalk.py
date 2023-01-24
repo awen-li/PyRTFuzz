@@ -282,7 +282,10 @@ class AstWalk(NodeVisitor):
 
         clsname = node.name
         if self.CurClass != None:
-            return 
+            return
+
+        if clsname [0:1] == '_':
+            return
             
         self.CurClass = PyCls (clsname, None)
         self.CurPyMod.Classes [clsname] = self.CurClass
