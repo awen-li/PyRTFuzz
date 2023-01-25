@@ -5,6 +5,8 @@ import xml.dom.minidom
 from .debug import *
 from pyspec import *
 
+DebugFlag = os.environ.get ("PYDEBUG")
+
 """
 <?xml version="1.0" ?>
 <apisepc version="1.0">
@@ -104,7 +106,8 @@ class ApiSpec():
 
     def ParseExceps (self, pyLib, xmlExp):
         if len (xmlExp) == 0:
-            print ("Warning: %s extracted none exceptions!!!\r\n" %pyLib.Name)
+            if DebugFlag != None:
+                print ("Warning: %s extracted none exceptions!!!\r\n" %pyLib.Name)
             return
             
         xmlExpList = xmlExp[0].getElementsByTagName("exception")
