@@ -1,7 +1,7 @@
 # CpyFuzz
 fuzzing on python interpreter
 
-Useable docker image for CpyFuzz: ```docker pull daybreak2019/cpyfuzz:v1.0 ```
+Useable docker image for CpyFuzz: ```docker pull daybreak2019/cpyfuzz:v1.1 ```
 Use the ``` . build.sh ``` to build the whole program.
 
 ```
