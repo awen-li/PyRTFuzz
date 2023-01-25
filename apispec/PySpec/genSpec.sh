@@ -8,10 +8,12 @@ CPYTHON_PATH=`cd ../../cpython/Python-3.9.15/Lib && pwd`
 echo $CPYTHON_PATH
 
 # 1. generate basic spec through static analysis
-python -m specgen $CPYTHON_PATH
 if [ ! -f "apispec.xml" ]; then
-	echo "@@@ Generate apispec.xml fail........."
-	exit 0
+	python -m specgen $CPYTHON_PATH
+	if [ ! -f "apispec.xml" ]; then
+		echo "@@@ Generate apispec.xml fail........."
+		exit 0
+	fi
 fi
 
 
