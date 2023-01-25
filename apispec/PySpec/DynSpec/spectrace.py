@@ -19,6 +19,37 @@ def InitArgument (parser):
     parser.add_argument('filename', nargs='?', help='file to run as main program')
     parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
 
+
+def DynTrace (Entry, ApiSpecXml):
+    fIndex = Entry.rfind ('/')
+    if fIndex != -1:
+        Path = Entry [0:fIndex]
+        Entry = Entry [fIndex+1:]
+        os.chdir (Path)
+
+    try:
+        print ("### Trace start -> " + os.getcwd () + ": " + Entry)   
+        with open(Entry) as fp:
+            code = compile(fp.read(), Entry, 'exec')
+
+        globs = {
+            '__file__': Entry,
+            '__name__': '__main__',
+            '__package__': None,
+            '__cached__': None,
+        }
+
+        sys.argv = [Entry]
+        with Tracing (ApiSpecXml) as T:
+            exec(code, globs, globs)
+  
+    except OSError as oserr:
+        sys.exit("Cannot run file %s because: %s" % (Entry, oserr))
+
+    except SystemExit as sysrr:
+        pass
+
+
 def main():
     parser = argparse.ArgumentParser()
     InitArgument (parser)
@@ -48,8 +79,7 @@ def main():
         print ("### add sys path:", opts.include_path)
 
     if os.path.isfile (opts.filename):
-        IterTc = IterTracing (opts.source)
-        IterTc.StartTracingSingle (opts.filename)
+        DynTrace (opts.filename, opts.source)
     elif os.path.isdir(opts.filename):
         IterTc = IterTracing (opts.source)
         IterTc.StartTracing (opts.filename)

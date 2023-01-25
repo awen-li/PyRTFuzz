@@ -1,6 +1,6 @@
 import os
 
-DEBUG_ENV = 'pygen_debug'
+DEBUG_ENV = 'PYDEBUG'
 
 
 global debugFlag

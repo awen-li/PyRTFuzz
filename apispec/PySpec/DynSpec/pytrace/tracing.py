@@ -7,7 +7,6 @@ from multiprocessing import  Process
 from pygen import *
 from pyspec import *
 
-
 try:
     import threading
 except ImportError:
@@ -26,12 +25,14 @@ else:
 
 
 class Tracing:
-    def __init__(self, PyLibs):
-        self.PyLibs = PyLibs
+    def __init__(self, ApiSpecXml):
+        self.ApiSpecXml = ApiSpecXml
+        
+        self.PyLibs = self.InitPyLibs (ApiSpecXml)
         self.CurLib = None
 
         self.Debug = False
-        if os.environ.get ("pygen_debug") != None:
+        if os.environ.get ("PYDEBUG") != None:
             self.Debug = True
 
         self.PyLibPath = os.getenv ("PYTHON_LIBRARY")
@@ -39,7 +40,7 @@ class Tracing:
             raise Exception("Please set PYTHON_LIBRARY first!")
         self.PyLibPathLen = len (self.PyLibPath)
 
-        self.pass = {"unittest", "importlib._bootstrap", 'pytrace'}
+        self.Passes = ["unittest", "importlib._bootstrap", 'pytrace']
 
     def __enter__(self):
         print ("[Tracing]----> __enter__................")
@@ -49,7 +50,19 @@ class Tracing:
     def __exit__(self, *_):
         print ("[Tracing]----> __exit__................")
         _unsettrace()
-        exit (0)
+        self.SavePyLibs ()
+
+    def InitPyLibs (self, apiSpecXml):
+        apiSpec = ApiSpec (apiSpecXml)
+        apiSpec.Parser ()
+        return apiSpec.PyLibs
+
+    def SavePyLibs (self):
+        pyLibs = []
+        for _, lib in self.PyLibs.items ():
+            pyLibs.append (lib)
+        
+        ApiSpecGen.WriteXml (pyLibs, self.ApiSpecXml)
 
     def GetValue(self, Frame, ValName):
         if ValName in Frame.f_locals:
@@ -151,8 +164,8 @@ class Tracing:
             
         return None
 
-    def ByPass (self, FileName):
-        for file in self.pass:
+    def FilterOut (self, FileName):
+        for file in self.Passes:
             if FileName.find (file) != -1:
                 return True
         return False
@@ -162,19 +175,25 @@ class Tracing:
         Code = Frame.f_code
         self.CoName = Code.co_name
 
-        if self.ByPass(self, Code.co_filename) == True:
+        if self.FilterOut(Code.co_filename) == True:
+            if self.Debug:
+                print ("Bypass -> " + Code.co_filename)
             return self.StartTracing
 
-        #print (Code.co_filename)
         LibFileName = self.GetLibFile (Code.co_filename)
         if LibFileName == None:
             return self.StartTracing
 
-        #print ("LibFileName = " + LibFileName)
+        if self.Debug:
+            print ("LibFileName = " + LibFileName)
         LibName = self.GetLibName(LibFileName)
-        #print ("LibName = " + LibName)
+
+        if self.Debug:
+            print ("LibName = " + LibName)
         MdName = self.GetMdName (LibName, LibFileName)
-        #print ("MdName = " + MdName)
+
+        if self.Debug:
+            print ("MdName = " + MdName)
         if MdName[0:1] == '_':
             return self.StartTracing
         
@@ -183,7 +202,9 @@ class Tracing:
             #print ("####GetModule fail -> " + MdName)
             return self.StartTracing
 
-        #print (Code.co_name)
+        if self.Debug:
+            print (Code.co_name + ' => ' + Event)
+            
         FuncName = Code.co_name
         if FuncName [0:1] == '_':
             return self.StartTracing
@@ -209,21 +230,8 @@ class Task(Process):
         super(Task, self).__init__()
         self.Entry  = Entry
         self.ApiSpecXml = ApiSpecXml
-        self.PyLibs = self.InitPyLibs (ApiSpecXml)
-
-    def InitPyLibs (self, apiSpecXml):
-        apiSpec = ApiSpec (apiSpecXml)
-        apiSpec.Parser ()
-        return apiSpec.PyLibs
-
-    def SavePyLibs (self, PyLibs):
-        pyLibs = []
-        for _, lib in PyLibs.items ():
-            pyLibs.append (lib)
-        
-        ApiSpecGen.WriteXml (pyLibs, self.ApiSpecXml)
-
-    def DynTrace (self, Entry, PyLibs):
+ 
+    def DynTrace (self, Entry, ApiSpecXml):
         fIndex = Entry.rfind ('/')
         if fIndex != -1:
             Path = Entry [0:fIndex]
@@ -243,21 +251,19 @@ class Task(Process):
             }
 
             sys.argv = [Entry]
-            with Tracing (PyLibs) as T:
+            with Tracing (ApiSpecXml) as T:
                 exec(code, globs, globs)
   
         except OSError as oserr:
             sys.exit("Cannot run file %s because: %s" % (Entry, oserr))
 
         except SystemExit as sysrr:
-            #ApiSpec.Show(PyLibs)
-            self.SavePyLibs (PyLibs)
-            print ("###SystemExit: Update API spec to " + self.ApiSpecXml)
+            pass
             
             
     def run(self):
         print ("start run task")
-        self.DynTrace (self.Entry, self.PyLibs)
+        self.DynTrace (self.Entry, self.ApiSpecXml)
 
 class IterTracing (Process):
     def __init__ (self, ApiSpecXml='apispec.xml'):
@@ -294,8 +300,13 @@ class IterTracing (Process):
                 TestNum += 1
         return TestNum
         
+
+    def GetTestNum (self, CodeDir):
+        return self.VisitTests (CodeDir)
+        
+        
     def StartTracing (self, CodeDir):
-        self.TestNum = self.VisitTests (CodeDir)
+        self.TestNum = self.GetTestNum (CodeDir)
         self.VisitTests (CodeDir, self.TracingTask)
         
 
