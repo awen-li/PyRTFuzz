@@ -20,17 +20,28 @@ fi
 # 2. update data types through dynamic tracing
 CPYTHON_TESTS=$CPYTHON_PATH/test
 
+INDEX=1
+CHACHE_FILES="cache.tmp"
+touch $CHACHE_FILES
 ALL_TESTS=`find $CPYTHON_TESTS -name "test*py"`
 for test in $ALL_TESTS
 do
     StartTime=`date '+%s'`
-        
+    
     echo
     echo
-    echo "********************* Tracing the script ---- <$test> ---- *********************"
+    echo "[$INDEX]********************* Tracing the script ---- <$test> ---- *********************"
+    IsExist=`cat $CHACHE_FILES | grep $test`
+    if [ ! "$IsExist" == "" ]; then
+    	let INDEX=$INDEX+1
+    	continue
+    fi
     python -m spectrace $test
         
     EndTime=`date '+%s'`
     TimeCost=`expr $EndTime - $StartTime`
     echo "[$test]@@@@@ time cost: $TimeCost [$StartTime, $EndTime]"
+    
+    let INDEX=$INDEX+1
+    echo $test >> $CHACHE_FILES
 done
