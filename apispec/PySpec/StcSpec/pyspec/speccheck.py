@@ -12,7 +12,29 @@ class ApiSpecCheck ():
         return apiSpec.PyLibs
 
     def CheckApi (self, Api):
-        pass
+        # args
+        for arg in Api.Args:
+            type = arg.split (':')[1]
+            if type == 'None':
+                return False
+
+        for arg in Api.PosArgs:
+            type = arg.split (':')[1]
+            if type == 'None':
+                return False
+
+        for arg in Api.KwoArgs:
+            type = arg.split (':')[1]
+            if type == 'None':
+                return False
+
+        # return
+        for r in Api.Ret:
+            type = r.split (':')[1]
+            if type == 'None':
+                return False
+
+        return True
 
     def Check (self):
         TotalApiNum = 0

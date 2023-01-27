@@ -104,7 +104,7 @@ class ApiSpecLoader():
         kwodefas = xmlApi.getElementsByTagName("kwodefa")[0].childNodes[0].data
         DebugPrint ("\t: default kwoargs-> " + kwodefas)
         
-        return PyApi (apiName, expr, eval(ret), eval(parameters), posagrs, kwoargs, defas, kwodefas, dependences)
+        return PyApi (apiName, expr, eval(ret), eval(parameters), eval(posagrs), eval(kwoargs), eval(defas), eval(kwodefas), dependences)
 
     def ParseExceps (self, pyLib, xmlExp):
         if len (xmlExp) == 0:
