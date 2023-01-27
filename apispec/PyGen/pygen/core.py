@@ -62,6 +62,7 @@ class Core ():
                 for apiName, api in pyMoudle.Apis.items ():
                     absPath = libName + '.' + mdName + '.' + apiName
                     self.ApiList[absPath] = ApiInfo (None, None, api, curExcepts)
+        DebugPrint ("Load API number: " + str (len (self.ApiList)))
                     
     def Push (self, Var, Value):
         self.RunStack.append (Var)
