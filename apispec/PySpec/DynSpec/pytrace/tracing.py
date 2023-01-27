@@ -2,9 +2,10 @@
 import os
 import re
 import sys
+import ast
+from ast import *
 import inspect
 from multiprocessing import  Process
-from pygen import *
 from pyspec import *
 
 try:
@@ -53,7 +54,7 @@ class Tracing:
         self.SavePyLibs ()
 
     def InitPyLibs (self, apiSpecXml):
-        apiSpec = ApiSpec (apiSpecXml)
+        apiSpec = ApiSpecLoader (apiSpecXml)
         apiSpec.Parser ()
         return apiSpec.PyLibs
 

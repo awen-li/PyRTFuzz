@@ -2,10 +2,12 @@
 # _*_ coding:utf-8 _*_
 from xml.dom.minidom import parse
 import xml.dom.minidom
-from .debug import *
-from pyspec import *
+from .apispec import *
 
 DebugFlag = os.environ.get ("PYDEBUG")
+def DebugPrint (Msg, end='\n'):
+    if DebugFlag == True:
+        print ('[DEBUG]' + Msg)
 
 """
 <?xml version="1.0" ?>
@@ -54,7 +56,7 @@ DebugFlag = os.environ.get ("PYDEBUG")
 </apisepc>
 """
         
-class ApiSpec():
+class ApiSpecLoader():
     def __init__(self, apiSpecXml='apispec.xml'):
         self.apiSpecXml = apiSpecXml
         self.PyLibs = {}

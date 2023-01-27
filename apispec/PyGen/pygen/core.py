@@ -1,7 +1,7 @@
 
 import os
 import re
-from .apispec import *
+from pyspec import *
 from .cmd_newoo import *
 from .cmd_newpo import *
 from .cmd_for import *
@@ -76,7 +76,7 @@ class Core ():
         return self.LocalValue.get (Var)
 
     def InitPyLibs (self, apiSpecXml):
-        apiSpec = ApiSpec (apiSpecXml)
+        apiSpec = ApiSpecLoader (apiSpecXml)
         apiSpec.Parser ()
         return apiSpec.PyLibs
 
