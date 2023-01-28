@@ -163,6 +163,12 @@ class AstWalk(NodeVisitor):
             return
         else:
             return self.visit (node.value) + '.' + node.attr
+
+    def AddExcep (self, Excep):
+        if self.CurPyLib.Name != '.':
+            self.CurPyMod.Exceptions.append (Excep)
+        else:
+            self.CurPyLib.Exceptions.append (Excep)
         
     def visit_try(self, node):
         for s in node.body:
@@ -186,8 +192,11 @@ class AstWalk(NodeVisitor):
                 self.GetAttr = False
             else:
                 print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (handler) + " ---> visit_try -> Unsuport type!!!")
-                
-        print (type_names_body)
+
+        for excep in type_names_body:
+            Excep = PyExcep (excep)
+            self.AddExcep (Excep)
+            
     
     def visit_expr(self, node):
         self.visit (node.value)
@@ -264,7 +273,9 @@ class AstWalk(NodeVisitor):
             if self.CurPyLib.Name != '.':
                 ExcepPath += self.CurPyLib.Name
             ExcepPath += self.CurPyMod.mdName + '.' + clfNode.name
-            print (ExcepPath)
+
+            Excep = PyExcep (ExcepPath)
+            self.AddExcep (Excep)
             return True
 
         return False

@@ -63,6 +63,10 @@ class ApiSpecGen ():
                         
         ApiSpecGen.AddChild (Root, apiNode, "defa", str(api.Defas))
         ApiSpecGen.AddChild (Root, apiNode, "kwodefa", str(api.KwoDefas))
+
+    @staticmethod 
+    def WriteErrs (Root, excpNode, excp):
+        ApiSpecGen.AddChild (Root, excpNode, "exception", str(excp.exName))
     
     @staticmethod     
     def WriteXml (pyLibs, ApiSpecXml='apispec.xml'):
@@ -98,6 +102,16 @@ class ApiSpecGen ():
                     apiNode = ApiSpecGen.AddChild (Root, mdNode, "api")
                     apiNode.setAttribute ('name', apiname)
                     ApiSpecGen.WriteApi (Root, apiNode, api)
+
+                if len (md.Exceptions) != 0:
+                    excepNode = ApiSpecGen.AddChild (Root, mdNode, "errors")
+                    for excep in md.Exceptions:  
+                        ApiSpecGen.WriteErrs (Root, excepNode, excep)
+
+            if len (lib.Exceptions) != 0:
+                excepNode = ApiSpecGen.AddChild (Root, libNode, "errors")
+                for excep in lib.Exceptions:         
+                    ApiSpecGen.WriteErrs (Root, excepNode, excep)
         
         with open (ApiSpecXml, 'w') as af:
             af.write(Root.toprettyxml(indent="  "))

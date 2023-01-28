@@ -22,18 +22,17 @@ class PyCls ():
         self.clsInit = Init
         self.Apis = {}
 
+class PyExcep ():
+    def __init__ (self, exName):
+        self.exName  = exName
 
 class PyMod ():
     def __init__ (self, mdName):
         self.mdName  = mdName
         self.Apis    = {}
-        self.Classes = {}
+        self.Classes = {}       
+        self.Exceptions = []
 
-class PyExcep ():
-    def __init__ (self, exName):
-        self.exName  = exName
-
-        
 class PyLib ():
     def __init__ (self, Name):
         self.Name  = Name
