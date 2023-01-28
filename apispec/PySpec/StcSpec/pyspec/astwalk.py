@@ -241,6 +241,35 @@ class AstWalk(NodeVisitor):
 
         return None
 
+    def HandleErrInHerit (self, clfNode):
+        clfBase = clfNode.bases
+        if len (clfBase) == 0:
+            return False
+
+        for base in clfBase:
+            if isinstance (base, Name):
+                errName = base.id
+            elif isinstance (base, Attribute):
+                self.GetAttr = True
+                errName = self.visit_attribute (base)
+                self.GetAttr = False
+            else:
+                print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (base) + " ---> HandleErrInHerit -> Unsuport type!!!")
+                return False
+            
+            if errName.find ('Error') == -1:
+                continue
+
+            ExcepPath = ''
+            if self.CurPyLib.Name != '.':
+                ExcepPath += self.CurPyLib.Name
+            ExcepPath += self.CurPyMod.mdName + '.' + clfNode.name
+            print (ExcepPath)
+            return True
+
+        return False
+            
+
     def visit_classdef(self, node):
 
         clsname = node.name
@@ -248,6 +277,10 @@ class AstWalk(NodeVisitor):
             return
 
         if clsname [0:1] == '_':
+            return
+
+        # check if inherit from error:
+        if self.HandleErrInHerit (node) == True:
             return
             
         self.CurClass = PyCls (clsname, None)

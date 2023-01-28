@@ -36,6 +36,10 @@ class ApiSpecCheck ():
 
         return True
 
+    def LogApiInfo (self, libName, mdName, claName, apiName):
+        with open ("unrecognized_api_spec.txt", "a") as f:
+            print ("[lib]%s, [module]%s, [class]%s, [api]%s" %(libName, mdName, claName, apiName), file=f)
+
     def Check (self):
         TotalApiNum = 0
         TypeKnowns   = 0
@@ -48,12 +52,16 @@ class ApiSpecCheck ():
                         Typed = self.CheckApi (api)
                         if Typed == True:
                             TypeKnowns += 1
+                        else:
+                            self.LogApiInfo (libName, mdName, clsName, apiName)
 
                 TotalApiNum += len (pyMoudle.Apis)
                 for apiName, api in pyMoudle.Apis.items ():
                     Typed = self.CheckApi (api)
                     if Typed == True:
                         TypeKnowns += 1
+                    else:
+                        self.LogApiInfo (libName, mdName, '-', apiName)
                             
         print ("\n#####################   ApiSpecCheck   #####################")
         print ("### TotalApiNum   = %d" %TotalApiNum)

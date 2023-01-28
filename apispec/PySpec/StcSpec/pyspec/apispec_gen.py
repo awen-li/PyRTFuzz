@@ -8,6 +8,8 @@ from .apispec import *
 class ApiSpecGen ():
     def __init__ (self, CodeDir):
         self.CodeDir = CodeDir
+        if self.CodeDir[-1] != '/':
+            self.CodeDir += '/'
 
         self.Except = ['__pycache__', 'test', 'site-packages', 'importlib']
 
@@ -104,18 +106,15 @@ class ApiSpecGen ():
         print ("\n\n##### COLLECT: lib:%u, class:%u, api:%u #####\n\n" %(TotalLibNum, TotalClassNum, TotalApiNum))
 
     def GetModName (self, libName, PyFile, Mod):
-        if libName == '.':
-            return Mod
-        
-        Suffix = PyFile.find (libName)
-        if Suffix == -1:
-            raise Exception(PyFile + " find lib fail -> " + libName)
-        Suffix += len (libName) + 1
+        ModFile = PyFile[len(self.CodeDir):]
 
-        ModName, Ext = PyFile[Suffix:].split ('.')
-        if Ext != 'py':
-            raise Exception("Unsuport ext: " + Ext)
-            
+        if libName == '.':
+            ModFile = ModFile[2:]
+            if ModFile.find ('/') != -1:
+                return None
+            return Mod
+
+        ModName, Ext = ModFile.split ('.')
         ModName = ModName.replace ('/', '.')
         return ModName
     
@@ -139,15 +138,16 @@ class ApiSpecGen ():
 
                     PyFile = os.path.join(Path, py)           
                     ModName = self.GetModName (lib, PyFile, Mod)
+                    if ModName == None:
+                        continue
                     Visitor.SetPyMod(ModName)
                     print ("## start proc mod: " + ModName)
                     
                     with open(PyFile) as PyF:
                         print ("#visit " + PyFile)
-                        Ast = parse(PyF.read(), PyFile, 'exec')
-                        
+                        Ast = parse(PyF.read(), PyFile, 'exec')         
                         Visitor.visit(Ast)
-
+                        
         #self.ShowSpec (Visitor)
         ApiSpecGen.WriteXml (Visitor.pyLibs)
                 
