@@ -115,7 +115,7 @@ class ApiSpecLoader():
         xmlExpList = xmlExp[0].getElementsByTagName("exception")
         for xExp in xmlExpList:
             exp = xExp.childNodes[0].data
-            pyLib.Exceptions.append (exp)
+            pyLib.Exceptions.append (PyExcep(exp))
             DebugPrint (exp)
 
     def ParseClass (self, clsName, clsInit, xmlCls):
@@ -151,8 +151,12 @@ class ApiSpecLoader():
                 continue
             apiName = xmlApi.getAttribute("name")
             curMd.Apis [apiName] = self.ParseApi (apiName, xmlApi)
-
         self.apiAddr = {}
+
+        #exception under module
+        xmlExceps = xmlMd.getElementsByTagName ("errors")
+        self.ParseExceps (curMd, xmlExceps)
+            
         return curMd
             
     def Parser (self):

@@ -49,9 +49,9 @@ class Tracing:
         return self
 
     def __exit__(self, *_):
-        print ("[Tracing]----> __exit__................")
         _unsettrace()
         self.SavePyLibs ()
+        print ("[Tracing]----> __exit__................")   
 
     def InitPyLibs (self, apiSpecXml):
         apiSpec = ApiSpecLoader (apiSpecXml)

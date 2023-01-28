@@ -28,7 +28,7 @@ class PyExcep ():
 
 class PyMod ():
     def __init__ (self, mdName):
-        self.mdName  = mdName
+        self.Name    = mdName
         self.Apis    = {}
         self.Classes = {}       
         self.Exceptions = []

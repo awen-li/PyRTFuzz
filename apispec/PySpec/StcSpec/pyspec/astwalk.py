@@ -190,8 +190,20 @@ class AstWalk(NodeVisitor):
                 self.GetAttr = True
                 type_names_body.append(self.visit_attribute (type))
                 self.GetAttr = False
+            elif isinstance (type, Tuple):
+                for elmt in type.elts:
+                    if isinstance (elmt, Name):
+                        type_names_body.append (elmt.id)
+                    elif isinstance (type, Attribute):
+                        self.GetAttr = True
+                        type_names_body.append(self.visit_attribute (elmt))
+                        self.GetAttr = False
+                    else:
+                        #print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (elmt) + " ---> visit_try-Tuple -> Unsuport type!!!")
+                        pass
             else:
-                print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (handler) + " ---> visit_try -> Unsuport type!!!")
+                #print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (handler) + " ---> visit_try -> Unsuport type!!!")
+                pass
 
         for excep in type_names_body:
             Excep = PyExcep (excep)
@@ -263,7 +275,7 @@ class AstWalk(NodeVisitor):
                 errName = self.visit_attribute (base)
                 self.GetAttr = False
             else:
-                print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (base) + " ---> HandleErrInHerit -> Unsuport type!!!")
+                #print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (base) + " ---> HandleErrInHerit -> Unsuport type!!!")
                 return False
             
             if errName.find ('Error') == -1:
@@ -272,7 +284,7 @@ class AstWalk(NodeVisitor):
             ExcepPath = ''
             if self.CurPyLib.Name != '.':
                 ExcepPath += self.CurPyLib.Name
-            ExcepPath += self.CurPyMod.mdName + '.' + clfNode.name
+            ExcepPath += self.CurPyMod.Name + '.' + clfNode.name
 
             Excep = PyExcep (ExcepPath)
             self.AddExcep (Excep)
