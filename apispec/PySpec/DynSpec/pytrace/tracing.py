@@ -113,7 +113,12 @@ class Tracing:
             if cls != None:
                 return cls.Apis.get (ApiName)
         else:
-            return CurMd.Apis.get (ApiName)
+            # try class name
+            cls = CurMd.Classes.get (ApiName)
+            if cls != None:
+                return cls.Apis.get ('__init__')
+            else:
+                return CurMd.Apis.get (ApiName)
 
     def GetLibFile(self, CoFileName):
         if self.PyLibPath == None:
