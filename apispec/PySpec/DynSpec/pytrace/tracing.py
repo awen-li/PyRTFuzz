@@ -152,7 +152,7 @@ class Tracing:
             return LibFileName
         else:
             MdName = LibFileName[len(LibName)+1:].replace ('/', '.')
-            return MdName
+            return LibName + '.' + MdName
                 
     def GetModule (self, LibName, MdName):
         if self.CurLib != None:
@@ -182,34 +182,26 @@ class Tracing:
         self.CoName = Code.co_name
 
         if self.FilterOut(Code.co_filename) == True:
-            if self.Debug:
-                print ("Bypass -> " + Code.co_filename)
             return self.StartTracing
 
         LibFileName = self.GetLibFile (Code.co_filename)
         if LibFileName == None:
             return self.StartTracing
 
-        if self.Debug:
-            print ("LibFileName = " + LibFileName)
         LibName = self.GetLibName(LibFileName)
-
-        if self.Debug:
-            print ("LibName = " + LibName)
         MdName = self.GetMdName (LibName, LibFileName)
 
         if self.Debug:
-            print ("MdName = " + MdName)
+            print ("LibName = " + LibName + " -> ModuleName = " + MdName + ": " + Code.co_name + ": " + Event)
         if MdName[0:1] == '_':
             return self.StartTracing
         
         Md = self.GetModule (LibName, MdName)
         if Md == None:
-            #print ("####GetModule fail -> " + MdName)
             return self.StartTracing
 
         if self.Debug:
-            print (Code.co_name + ' => ' + Event)
+            print ("[GetModule]" + Code.co_name + ' => ' + Event)
             
         FuncName = Code.co_name
         if FuncName [0:1] == '_':
