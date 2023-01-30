@@ -91,7 +91,7 @@ class Tracing:
 
         ApiSpec.Args = NewArgs
         if hasNew == True:
-            print ("###Update " +  LibName + "." + MdName + "." + ApiSpec.ApiName + " arguments: " + str(NewArgs))
+            print ("###Update " + MdName + "." + ApiSpec.ApiName + " arguments: " + str(NewArgs))
 
     def UpdateApiRets (self, Frame, ApiSpec, LibName, MdName):
         NewRet = []
@@ -103,7 +103,7 @@ class Tracing:
                 NewRet.append (ret + ':' + rtype)
                     
         ApiSpec.Ret = NewRet
-        print ("###Update " +  LibName + "." + MdName + "." + ApiSpec.ApiName + " returns: " + str(NewRet))
+        print ("###Update " + MdName + "." + ApiSpec.ApiName + " returns: " + str(NewRet))
 
     def GetApiSpec (self, Frame, CurMd, ApiName):
         sf = self.GetValue (Frame, 'self')
