@@ -2,9 +2,13 @@
 import os
 from .apispec_load import *
 
+logFileName = "unrecognized_api_spec.txt"
+
 class ApiSpecCheck ():
     def __init__ (self, ApiSpec='apispec.xml'):
         self.PyLibs = self.InitPyLibs (ApiSpec)
+        if os.path.exists (logFileName):
+            os.remove (logFileName)
 
     def InitPyLibs (self, apiSpecXml):
         apiSpec = ApiSpecLoader (apiSpecXml)
@@ -36,9 +40,10 @@ class ApiSpecCheck ():
 
         return True
 
-    def LogApiInfo (self, libName, mdName, claName, apiName):
-        with open ("unrecognized_api_spec.txt", "a") as f:
-            print ("[lib]%s, [module]%s, [class]%s, [api]%s" %(libName, mdName, claName, apiName), file=f)
+    def LogApiInfo (self, libName, mdName, claName, api):
+        with open (logFileName, "a") as f:
+            print ("[lib]%s, [module]%s, [class]%s, [api]Args:%s, PosArgs:%s, KwoArgs:%s, Ret:%s"\
+                %(libName, mdName, claName, str(api.Args), str(api.PosArgs), str(api.KwoArgs), str(api.Ret)), file=f)
 
     def Check (self):
         TotalApiNum = 0
@@ -53,7 +58,7 @@ class ApiSpecCheck ():
                         if Typed == True:
                             TypeKnowns += 1
                         else:
-                            self.LogApiInfo (libName, mdName, clsName, apiName)
+                            self.LogApiInfo (libName, mdName, clsName, api)
 
                 TotalApiNum += len (pyMoudle.Apis)
                 for apiName, api in pyMoudle.Apis.items ():
@@ -61,7 +66,7 @@ class ApiSpecCheck ():
                     if Typed == True:
                         TypeKnowns += 1
                     else:
-                        self.LogApiInfo (libName, mdName, '-', apiName)
+                        self.LogApiInfo (libName, mdName, '-', api)
                             
         print ("\n#####################   ApiSpecCheck   #####################")
         print ("### TotalApiNum   = %d" %TotalApiNum)
