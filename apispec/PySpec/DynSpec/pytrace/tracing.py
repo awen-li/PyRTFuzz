@@ -78,20 +78,40 @@ class Tracing:
                 return getattr(Frame.f_globals['__builtins__'], ValName)
         return None
 
-    def UpdateApiArgs (self, Frame, ApiSpec, LibName, MdName):
+    
+    def UpdateArgs (self, Frame, ArgsList):
         NewArgs = []
         hasNew  = False
-        for arg in ApiSpec.Args:
+        for arg in ArgsList:
             para, ptype = arg.split(':')
             if ptype == 'None':
                 hasNew = True
                 pval = self.GetValue (Frame, para)
                 ptype = type(pval).__name__
             NewArgs.append (para + ':' + ptype)
+        return hasNew, NewArgs
 
-        ApiSpec.Args = NewArgs
-        if hasNew == True:
-            print ("###Update " + MdName + "." + ApiSpec.ApiName + " arguments: " + str(NewArgs))
+    def UpdateApiArgs (self, Frame, ApiSpec, LibName, MdName):
+        # normal args
+        if len (ApiSpec.Args) != 0:
+            hasNew, NewArgs = self.UpdateArgs (Frame, ApiSpec.Args)
+            ApiSpec.Args = NewArgs
+            if hasNew == True:
+                print ("###UpdateArgs " + MdName + "." + ApiSpec.ApiName + " arguments: " + str(NewArgs))
+
+        # pos args
+        if len (ApiSpec.PosArgs) != 0:
+            hasNew, NewArgs = self.UpdateArgs (Frame, ApiSpec.PosArgs)
+            ApiSpec.PosArgs = NewArgs
+            if hasNew == True:
+                print ("###UpdatePosArgs " + MdName + "." + ApiSpec.ApiName + " arguments: " + str(NewArgs))
+
+        # kwo args
+        if len (ApiSpec.KwoArgs) != 0:
+            hasNew, NewArgs = self.UpdateArgs (Frame, ApiSpec.KwoArgs)
+            ApiSpec.KwoArgs = NewArgs
+            if hasNew == True:
+                print ("###UpdateKwoArgs " + MdName + "." + ApiSpec.ApiName + " arguments: " + str(NewArgs))
 
     def UpdateApiRets (self, Frame, ApiSpec, LibName, MdName):
         NewRet = []
