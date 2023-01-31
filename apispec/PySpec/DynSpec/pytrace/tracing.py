@@ -137,7 +137,8 @@ class Tracing:
 
                     apispec = cls.Apis.get (ApiName)
                     if apispec != None:
-                        print ("[GetApiSpec-1][EventCollector]clsname = " + clsname + " and ApiName " + ApiName)
+                        if self.Debug:
+                            print ("[GetApiSpec-1][EventCollector]clsname = " + clsname + " and ApiName " + ApiName)
                         return apispec
                 return None
             else:
