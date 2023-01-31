@@ -129,13 +129,30 @@ class Tracing:
         sf = self.GetValue (Frame, 'self')
         if sf != None:
             clsname = sf.__class__.__name__
-            cls = CurMd.Classes.get (clsname)
-            if cls != None:
-                return cls.Apis.get (ApiName)
+            if clsname.find ('EventCollector') != -1:
+                for clsname, cls in CurMd.Classes.items ():
+                    clsobj = self.GetValue (Frame, clsname)
+                    if clsobj == None:
+                        continue
+
+                    apispec = cls.Apis.get (ApiName)
+                    if apispec != None:
+                        print ("[GetApiSpec-1][EventCollector]clsname = " + clsname + " and ApiName " + ApiName)
+                        return apispec
+                return None
+            else:
+                cls = CurMd.Classes.get (clsname)
+                if self.Debug:
+                    print ("[GetApiSpec-2]clsname = " + clsname + " and cls = " + str (cls) + ' with type = ' + str (type(sf)))
+                
+                if cls != None:
+                    return cls.Apis.get (ApiName)
         else:
             # try class name
             cls = CurMd.Classes.get (ApiName)
             if cls != None:
+                if self.Debug:
+                    print ("[GetApiSpec-3]clsname~apiname = " + ApiName)
                 return cls.Apis.get ('__init__')
             else:
                 return CurMd.Apis.get (ApiName)
@@ -195,11 +212,35 @@ class Tracing:
             if FileName.find (file) != -1:
                 return True
         return False
+
+    def ShowFrame (self, Frame):
+        if not self.Debug:
+            return
+        
+        print ("\n============== ShowFrame =====================")
+
+        Index = 0
+        for key, value in Frame.f_locals.items ():
+            print (str(Index) + '-' + key, end=' -- ')
+            print (value)
+            Index += 1
+
+        Index = 0
+        for key, value in Frame.f_globals.items ():
+            print (str(Index) + '-' + key, end=' -- ')
+            print (value)
+            Index += 1
+
+        print ("================================================\n")
+
         
     def StartTracing (self, Frame, Event, Arg):
    
         Code = Frame.f_code
         self.CoName = Code.co_name
+
+        if Event != 'call' and Event != 'return':
+            return self.StartTracing
 
         if self.FilterOut(Code.co_filename) == True:
             return self.StartTracing
@@ -229,6 +270,8 @@ class Tracing:
 
         if Event == 'call':
             ApiSpec = self.GetApiSpec (Frame, Md, FuncName)
+            if self.Debug:
+                print ("[GetApiSpec]get  " + FuncName + " ApiSpec = " + str (ApiSpec))
             if  ApiSpec != None:
                 self.UpdateApiArgs (Frame, ApiSpec, LibName, MdName)
                                 
@@ -237,9 +280,8 @@ class Tracing:
             if ApiSpec != None and len (ApiSpec.Ret) > 0:
                 self.UpdateApiRets (Frame, ApiSpec, LibName, MdName)
         else:
-            Msg = "[Python]:" + Code.co_filename + ": " +  str(Frame.f_lineno) + " : " + FuncName + " -> EVENT = " + Event
-            #print (Msg)
-
+            pass
+        
         return self.StartTracing
 
 
