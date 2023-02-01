@@ -11,14 +11,6 @@ class ApiSpecGen ():
         if self.CodeDir[-1] != '/':
             self.CodeDir += '/'
 
-        self.Except = ExcepList
-
-    def IsExcept (self, Path):
-        for excp in self.Except:
-            if Path.find (excp) != -1:
-                return True
-        return False
-
     def GetLibs (self):
         AllDirs = os.walk(self.CodeDir)
         for Path, Libs, Pys in AllDirs:
@@ -138,7 +130,7 @@ class ApiSpecGen ():
         Visitor = AstWalk()  
         for lib in AllLibs:
             libDir = os.path.join(self.CodeDir, lib)
-            if self.IsExcept (libDir) == True:
+            if IsExcept (libDir) == True:
                 continue
 
             Visitor.SetPyLib(lib)
@@ -151,7 +143,7 @@ class ApiSpecGen ():
                         continue
 
                     PyFile = os.path.join(Path, py)
-                    if self.IsExcept (PyFile) == True:
+                    if IsExcept (PyFile) == True:
                         continue
                 
                     ModName = self.GetModName (lib, PyFile, Mod)

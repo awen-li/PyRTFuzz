@@ -2,8 +2,14 @@
 # _*_ coding:utf-8 _*_
 import os
 
-ExcepList = ['__pycache__', 'test', 'site-packages', 'importlib', 'concurrent', 'subprocess', 'multiprocessing', 'traceback',
-             'distutils', 'lib2to3', 'turtledemo', 'asyncio', 'pdb', 'pkgutil', 'turtle', 'inspect', 'trace', 'tkinter']
+ExcepList = ['__pycache__', 'test', 'site-packages', 'importlib', 'concurrent', 'subprocess', 'multiprocessing', 'inspect', 'trace', 'traceback',
+             'lib2to3']
+
+def IsExcept (Path):
+    for excp in ExcepList:
+        if Path.find (excp) != -1:
+            return True
+    return False
 
 class PyApi ():
     def __init__ (self, ApiName, Expr, Ret, Args, PosArgs, KwoArgs, Defas, KwoDefas, Deps):
