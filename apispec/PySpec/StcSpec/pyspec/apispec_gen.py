@@ -11,7 +11,7 @@ class ApiSpecGen ():
         if self.CodeDir[-1] != '/':
             self.CodeDir += '/'
 
-        self.Except = ['__pycache__', 'test', 'site-packages', 'importlib']
+        self.Except = ExcepList
 
     def IsExcept (self, Path):
         for excp in self.Except:
@@ -150,7 +150,10 @@ class ApiSpecGen ():
                     if Ext != ".py" or Mod[0:1] == '_' or Path.find ("test") != -1:
                         continue
 
-                    PyFile = os.path.join(Path, py)           
+                    PyFile = os.path.join(Path, py)
+                    if self.IsExcept (PyFile) == True:
+                        continue
+                
                     ModName = self.GetModName (lib, PyFile, Mod)
                     if ModName == None:
                         continue

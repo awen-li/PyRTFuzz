@@ -2,6 +2,9 @@
 # _*_ coding:utf-8 _*_
 import os
 
+ExcepList = ['__pycache__', 'test', 'site-packages', 'importlib', 'concurrent', 'subprocess', 'multiprocessing', 'traceback',
+             'distutils', 'lib2to3', 'turtledemo', 'asyncio', 'pdb', 'pkgutil', 'turtle', 'inspect', 'trace', 'tkinter']
+
 class PyApi ():
     def __init__ (self, ApiName, Expr, Ret, Args, PosArgs, KwoArgs, Defas, KwoDefas, Deps):
         self.ApiName = ApiName
