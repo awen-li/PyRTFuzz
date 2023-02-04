@@ -26,16 +26,9 @@ def main():
     if opts.generate:
         if opts.filename is None:
             parser.error('please specify the apispec file!')
-
-        Script = \
-        """
-        p = OO (email.charset.Charset.get_body_encoding)
-        p = For (p)
-        p = For (p)
-        p = For (p)
-        """     
-        core = Core (opts.filename)
-        core.Run (Script)
+        
+        SG = CodeGen (opts.filename)
+        SG.GenPy ('xyz', 2)
 
         print ("Run successful.....")
     else:

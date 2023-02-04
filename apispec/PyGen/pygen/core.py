@@ -85,6 +85,8 @@ class Core ():
     def GetApiInfo (self, testApi):
         return self.ApiList.get (testApi)
 
+    def GetCmdList (self):
+        return self.CmdList
 
     def InitCmd (self):
         self.CmdList['OO']  = SLCmd ('NewOO ()', 'cmd_newoo', SLCmd.BASE)
