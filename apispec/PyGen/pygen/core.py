@@ -16,12 +16,13 @@ class ApiInfo ():
         self.Exceps  = Exceps
             
 class SLCmd ():
-    Level1 = 1
-    Level2 = 2
+    BASE = 1
+    APP  = 2
     
-    def __init__ (self, CmdName, Module, Level):
+    def __init__ (self, CmdName, Module, Type):
         self.CmdName = CmdName
         self.Module  = Module
+        self.Type    = Type
 
 class CmdOP ():
     def __init__ (self, OpName):
@@ -86,11 +87,11 @@ class Core ():
 
 
     def InitCmd (self):
-        self.CmdList['OO']  = SLCmd ('NewOO ()', 'cmd_newoo', SLCmd.Level1)
-        self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo', SLCmd.Level1)
-        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.Level1)
+        self.CmdList['OO']  = SLCmd ('NewOO ()', 'cmd_newoo', SLCmd.BASE)
+        self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo', SLCmd.BASE)
+        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE)
         
-        self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.Level2)
+        self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP)
         
 
     def InitOp (self):
