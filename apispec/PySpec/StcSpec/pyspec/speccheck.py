@@ -89,7 +89,6 @@ class ApiSpecCheck ():
         TotalApiNum = 0
         TypeKnowns   = 0
         for libName, pyLib in self.PyLibs.items ():
-            curExcepts = pyLib.Exceptions
             for mdName, pyMoudle in pyLib.Modules.items ():
                 for clsName, cls in pyMoudle.Classes.items ():
                     TotalApiNum += len (cls.Apis)
