@@ -14,9 +14,35 @@ class ApiExpr ():
     def GetApiExpr (self, ApiSpec, ApiPath):
         pass
 
+    def DefValue (self, ValueStr, Type):
+        if Type == 'str':
+            return '\'' + ValueStr + '\''
+        elif Type == 'int':
+             return int(ValueStr)
+        else:
+            raise Exception("Unsupport type: " + str(Type))
+
     def GetClsInit (self, ClsSpec, InitSpec, ApiPath):
         print (ClsSpec.clsName + " -> " + str(ClsSpec.clsInit))
+        InitExpr = 'obj = ' + ClsSpec.clsName + '('
         InitSpec.Show ()
+
+        ArgNum = len (InitSpec.Args)
+        DefArgNum = len (InitSpec.Defas)
+        ArgIndex = 0
+        for arg in InitSpec.Args:
+            para, ptype = arg.split(':')
+            InitExpr += para
+            if DefArgNum >= ArgNum-ArgIndex:
+                InitExpr += '=' + self.DefValue (InitSpec.Defas[DefArgNum-(ArgNum-ArgIndex)], ptype)
+
+            ArgIndex += 1
+            if ArgIndex < ArgNum:
+                InitExpr += ','
+            else:
+                InitExpr += ')'
+        print (InitExpr)
+            
 
     def GenExpr (self):
         ApiPath = ''
