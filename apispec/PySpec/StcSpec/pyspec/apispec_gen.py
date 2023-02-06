@@ -81,7 +81,7 @@ class ApiSpecGen ():
                 for clsname, cls in md.Classes.items ():
                     clsNode = ApiSpecGen.AddChild (Root, mdNode, "class")
                     clsNode.setAttribute ('name', clsname)
-                    clsNode.setAttribute ('init', 'None')
+                    clsNode.setAttribute ('init', cls.clsInit)
 
                     TotalApiNum += len (cls.Apis)
                     for apiname, api in cls.Apis.items ():
