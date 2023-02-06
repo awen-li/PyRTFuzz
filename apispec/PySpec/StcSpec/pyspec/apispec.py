@@ -24,6 +24,12 @@ class PyApi ():
         self.KwoDefas = KwoDefas
 
         self.Deps = Deps
+    
+    def Show (self):
+        print (self.ApiName + " (" + str(self.PosArgs) + ")")
+        print ("\t" + str(self.PosArgs))
+        print ("\t" + str(self.KwoArgs))
+        print ("\n")
         
 class PyCls ():
     def __init__ (self, clsName, Init):

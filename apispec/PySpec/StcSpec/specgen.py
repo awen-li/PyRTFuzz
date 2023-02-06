@@ -10,6 +10,7 @@ def InitArgument (parser):
     grp = parser.add_argument_group('Main options', 'One of these (or --report) must be given')
     grp.add_argument('-d', '--debug', action='store_true', help='generate python app')
     grp.add_argument('-c', '--check', action='store_true', help='check the apispec file')
+    grp.add_argument('-e', '--expr', action='store_true', help='generate api expresion')
                      
     parser.add_argument('path', nargs='?', help='source dir or file to process')
     parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
@@ -29,6 +30,12 @@ def main():
             
         apiCheck = ApiSpecCheck (opts.path)
         apiCheck.Check ()
+    elif opts.expr:
+        if opts.path is None:
+            parser.error('please specify the apispec file!')
+            
+        AE = ApiExpr (opts.path)
+        AE.GenExpr ()
     else:
         if opts.path is None:
             parser.error('please specify path for api spec generation!')
