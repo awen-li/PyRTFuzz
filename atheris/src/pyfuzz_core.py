@@ -17,10 +17,20 @@
 import sys
 from .import_hook import instrument_imports
 
-
-def InstrumentLibs ():
+def _InstrumentAll ():
     with instrument_imports():
         import quopri
+
+
+def _SetupPyGen ():
+    pass
+
+def SetupPyFuzz ():
+    # 1. setup the python app generator
+    _SetupPyGen ()
+
+    # 2. instrument all python runtimes
+    _InstrumentAll ()
 
 
 def PyMutation ():
