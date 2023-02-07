@@ -49,6 +49,8 @@ class Core ():
         self.RunStack = []
         self.LocalValue = {}
 
+        self.InitOk = bool(len (self.PyLibs) != 0)
+
     def InitApiList (self):
         for libName, pyLib in self.PyLibs.items ():
             curExcepts = pyLib.Exceptions

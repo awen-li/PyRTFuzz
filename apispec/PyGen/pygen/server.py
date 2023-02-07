@@ -13,26 +13,70 @@ class PyMsg ():
     MSG_WEIGHT_ACK="MSG_WEIGHT_ACK"
 
     MSG_END="MSG_END"
+    MSG_ERR="MSG_ERR"
 
     def __init__ (self):
         self.MsgHandler = {}
         self.InitMsgHandle ()
+
+        self.Generator = None
 
     def InitMsgHandle (self):
         self.MsgHandler[PyMsg.MSG_START_REQ] = self.HandleStartReq
         self.MsgHandler[PyMsg.MSG_GENPY_REQ] = self.HandleGenPyReq
         self.MsgHandler[PyMsg.MSG_WEIGHT_REQ] = self.HandleWeightReq
         self.MsgHandler[PyMsg.MSG_END] = self.HandleEnd
-
-    # "MSG_START_REQ:(hello,)"
-    def HandleStartReq (self, data):
-        return (PyMsg.MSG_GENPY_ACK+":(hello,)")
     
-    # "MSG_GENPY_REQ:(initialization, /home/wen)|
+    def MsgSend (self, Msg)
+        self.Socket.send (Msg)
+
+    def DecodeMsg (self, Msg):
+        MsgData = Msg.replace ('(', '')\
+                     .replace (')', '')       
+        Action, Data = MsgData.split (',')
+
+        Action = Action.strip ()
+        Data   = Data.strip ()
+        if len (Action) == 0 or len (Data) == 0:
+            self.MsgSend (PyMsg.MSG_ERR+":(error,empty field)")
+            return None, None
+        return Action, Data
+
+    # "MSG_START_REQ:(hello,/path/apispec.xml)"
+    def HandleStartReq (self, data):
+        Action, SpecPath = self.DecodeMsg (data)
+        if Action == None or SpecPath == None:
+            return None
+        
+        if Action != 'hello':
+            self.MsgSend (PyMsg.MSG_GENPY_ACK+":(hello, Unknown action)")
+            return None
+
+        Generator = CodeGen (SpecPath)
+        if not Generator.IsCoreUp ():
+            self.MsgSend (PyMsg.MSG_GENPY_ACK+":(hello, Core start fail with " + SpecPath + ")")
+            return None
+        self.Generator = Generator
+
+        return (PyMsg.MSG_GENPY_ACK+":(hello, Done)")
+    
+    # "MSG_GENPY_REQ:(initial, /home/wen)|
     #                (random, /home/wen)|
     #                (weighted, /home/wen)"
     def HandleGenPyReq (self, data):
-        pass
+        Action, Dir = self.DecodeMsg (data)
+        if Action == None or Dir == None:
+            return None
+
+        if Action == 'initial':
+            pass
+        elif Action == 'random':
+            pass
+        elif Action == 'weighted':
+            pass
+        else:
+            pass
+
     
     # "MSG_WEIGHT_REQ:(update,libname, modulename, apiname)"
     def HandleWeightReq (self, data):
@@ -67,7 +111,7 @@ class CodeServer ():
             RevBuf = in_connection.recv (1024)
             SendBuf = self.MsgColver.Handle (RevBuf)
             if SendBuf != None:
-                self.Socket.send (SendBuf)
+                self.MsgSend (SendBuf)
             else:
                 print ("Process msg[%s] fail!", str(RevBuf))
         except KeyboardInterrupt:

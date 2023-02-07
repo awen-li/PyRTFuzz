@@ -24,6 +24,9 @@ class CodeGen ():
         self.Core        = Core (ApiSpec)
         self.InitCmdList (self.Core.GetCmdList ())
 
+    def IsCoreUp (self):
+        return self.Core.InitOk
+
     def InitCmdList (self, SlCmdList):
         for CmdName, SlCmd in SlCmdList.items ():
             WtCmd = WtSLCmd (CmdName, SlCmd)
@@ -98,4 +101,7 @@ class CodeGen ():
         print (Script)
 
         self.Core.Run (Script, OutPut=PyFile)
+
+    def GenInitialPy (self):
+        pass
 
