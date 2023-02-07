@@ -111,3 +111,6 @@ class CodeGen ():
     def GenWeightedPy (self, Dir):
         pass
 
+    def UpdateWeight (self, Case):
+        pass
+
