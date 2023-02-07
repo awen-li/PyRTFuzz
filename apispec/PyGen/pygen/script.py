@@ -102,6 +102,12 @@ class CodeGen ():
 
         self.Core.Run (Script, OutPut=PyFile)
 
-    def GenInitialPy (self):
+    def GenInitPy (self, Dir):
+        pass
+
+    def GenRandomPy (self, Dir):
+        pass
+
+    def GenWeightedPy (self, Dir):
         pass
 

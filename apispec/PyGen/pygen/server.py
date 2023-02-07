@@ -49,42 +49,53 @@ class PyMsg ():
             return None
         
         if Action != 'hello':
-            self.MsgSend (PyMsg.MSG_GENPY_ACK+":(hello, Unknown action)")
+            self.MsgSend (PyMsg.MSG_GENPY_ACK+":(hello, unknown action)")
             return None
 
         Generator = CodeGen (SpecPath)
         if not Generator.IsCoreUp ():
-            self.MsgSend (PyMsg.MSG_GENPY_ACK+":(hello, Core start fail with " + SpecPath + ")")
+            self.MsgSend (PyMsg.MSG_GENPY_ACK+":(hello, core start fail with " + SpecPath + ")")
             return None
         self.Generator = Generator
 
-        return (PyMsg.MSG_GENPY_ACK+":(hello, Done)")
+        return (PyMsg.MSG_GENPY_ACK+":(hello, done)")
     
     # "MSG_GENPY_REQ:(initial, /home/wen)|
     #                (random, /home/wen)|
     #                (weighted, /home/wen)"
     def HandleGenPyReq (self, data):
+        if self.Generator == None:
+            self.MsgSend (PyMsg.MSG_ERR+":(error, Server has not been initialized yet!)")
+            return None
+
         Action, Dir = self.DecodeMsg (data)
         if Action == None or Dir == None:
             return None
 
         if Action == 'initial':
-            pass
+            self.Generator.GenInitPy (Dir)
+            return (PyMsg.MSG_GENPY_ACK+":(initial, done)")
         elif Action == 'random':
-            pass
+            self.Generator.GenRandomPy (Dir)
+            return (PyMsg.MSG_GENPY_ACK+":(random, done)")
         elif Action == 'weighted':
-            pass
+            self.Generator.GenWeightedPy (Dir)
+            return (PyMsg.MSG_GENPY_ACK+":(weighted, done)")
         else:
-            pass
+            return (PyMsg.MSG_ERR+":(error, unknow action for MSG_GENPY_REQ)")
 
     
     # "MSG_WEIGHT_REQ:(update,libname, modulename, apiname)"
     def HandleWeightReq (self, data):
-        pass
+        if self.Generator == None:
+            self.MsgSend (PyMsg.MSG_ERR+":(error, Server has not been initialized yet!)")
+            return None
 
     # "MSG_END:(end,)"
     def HandleEnd (self, data):
-        pass
+        if self.Generator == None:
+            self.MsgSend (PyMsg.MSG_ERR+":(error, Server has not been initialized yet!)")
+            return None
 
     def Handle (self, MsgBuf):
         MsgType, MsgData = MsgBuf.split (':')
