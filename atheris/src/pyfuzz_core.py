@@ -71,20 +71,75 @@ def _GetSocket ():
     
     return Socket
 
-def SendMsg (Socket, Msg):
-    pass
+def DecodeMsg (self, Msg):
+    MsgData = Msg.replace ('(', '')\
+                 .replace (')', '')       
+    Action, Data = MsgData.split (',')
 
-def RecvMsg (Socket, Msg):
-    pass
+    Action = Action.strip ()
+    Data   = Data.strip ()
+    if len (Action) == 0 or len (Data) == 0:
+        self.MsgSend (PyMsg.MSG_ERR+":(error,empty field)")
+        return None, None
+    return Action, Data
 
+# "MSG_START_REQ:(hello,/path/apispec.xml)"
 def _SendStartReq (SpecXml):
     req = f"MSG_START_REQ:(hello,{SpecXml})"
 
     Socket = _GetSocket ()
-    SendMsg (Socket, req)
 
-    ack = RecvMsg (Socket)
-    print (ack)
+    Socket.send (req)
+    ack = Socket.recv (1024)
+    Type, Data = Ack.split (':')
+    if Type == MSG_ERR:
+        print (ack)
+        sys.exit (0)
+
+# "MSG_GENPY_REQ:(initial, /home/wen)|
+#                (random, /home/wen)|
+#                (weighted, /home/wen)"
+def SendGenReq (Action, Dir):
+    req = f"MSG_START_REQ:({Action},{Dir})"
+
+    Socket = _GetSocket () 
+    Socket.send (req)
+
+    Ack = Socket.recv (1024)
+    Type, Data = Ack.split (':')
+    if Type == MSG_ERR:
+        return ""
+
+    _, Case = DecodeMsg (Data)
+    if Action == 'initial':
+        return
+    elif Action == 'random':
+        return Case
+    elif Action == 'weighted':
+        return Case
+    else:
+        return ""
+
+# "MSG_WEIGHT_REQ:(update, case)"
+def SendWeightedReq (Action, Case):
+    req = f"MSG_START_REQ:({Action},{Case})"
+
+    Socket = _GetSocket ()  
+    Socket.send (req)
+
+    Ack = Socket.recv (1024)
+    Type, Data = Ack.split (':')
+    if Type == MSG_ERR:
+        return
+    else:
+        pass
+
+# "MSG_END:(end,)"
+def SendEndReq ():
+    req = "MSG_END:(end,)"
+    Socket = _GetSocket ()  
+    Socket.send (req)
+
 
 def PyMutation ():
     pass
