@@ -122,9 +122,20 @@ class CodeServer ():
 
     def InitServer (self):
         Address = ("", self.Port)
-        Socket = socket.socket (socket.AF_INET, socket.SOCKK_STREAM)
-        Socket.bind (Address)
-        Socket.listen (1)
+        try:
+            Socket = socket.socket (socket.AF_INET, socket.SOCKK_STREAM)
+        except OSError as msg:
+            print ("Create socket with fail: %s" %(msg))
+            exit (0)
+        
+        try:
+            Socket.bind (Address)
+            Socket.listen (1)
+        except OSError as msg:
+            Socket.close()
+            print ("Bind socket with port[%d] fail: %s" %(self.Port, msg))
+            exit (0)
+        
         return Socket
 
     def OneConnect (self, in_connection, in_address):
