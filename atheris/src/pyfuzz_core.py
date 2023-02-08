@@ -72,7 +72,7 @@ def _GetSocket ():
     
     return Socket
 
-def DecodeMsg (self, Msg):
+def DecodeMsg (Msg):
     MsgData = Msg.replace ('(', '')\
                  .replace (')', '')       
     Action, Data = MsgData.split (',')
@@ -98,7 +98,9 @@ def _SendStartReq (SpecXml):
     if Type == MSG_ERR:
         print (Ack)
         sys.exit (0)
-    print ("[SendStartReq]" + Ack)
+    else:
+        _, Ret = DecodeMsg (Data)
+        return Ret
 
 # "MSG_GENPY_REQ:(initial, /home/wen)|
 #                (random, /home/wen)|
@@ -106,7 +108,7 @@ def _SendStartReq (SpecXml):
 def SendGenReq (Action, Dir):
     Socket = _GetSocket ()
 
-    Req = f"MSG_START_REQ:({Action},{Dir})" 
+    Req = f"MSG_GENPY_REQ:({Action},{Dir})" 
     RepBytes = bytes(Req, 'utf-8')
     Socket.send (RepBytes)
 
@@ -114,31 +116,26 @@ def SendGenReq (Action, Dir):
     Type, Data = Ack.split (':')
     if Type == MSG_ERR:
         return ""
-
-    _, Case = DecodeMsg (Data)
-    if Action == 'initial':
-        return
-    elif Action == 'random':
-        return Case
-    elif Action == 'weighted':
-        return Case
     else:
-        return ""
+        _, Ret = DecodeMsg (Data)
+        print ("[SendGenReq]Ret = " + Ret)
+        return Ret
 
 # "MSG_WEIGHT_REQ:(update, case)"
 def SendWeightedReq (Action, Case):
     Socket = _GetSocket ()
 
-    Req = f"MSG_START_REQ:({Action},{Case})"
+    Req = f"MSG_WEIGHT_REQ:({Action},{Case})"
     RepBytes = bytes(Req, 'utf-8')
     Socket.send (RepBytes)
 
     Ack = Socket.recv (1024).decode("utf-8") 
     Type, Data = Ack.split (':')
     if Type == MSG_ERR:
-        return
+        return ""
     else:
-        pass
+        _, Ret = DecodeMsg (Data)
+        return Ret
 
 # "MSG_END:(end,)"
 def SendEndReq ():

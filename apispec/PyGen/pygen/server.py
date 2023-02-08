@@ -108,7 +108,6 @@ class PyMsg ():
         self.ShutDown ()
 
     def Handle (self, MsgBuf):
-        MsgBuf = MsgBuf.decode("utf-8") 
         MsgType, MsgData = MsgBuf.split (':')
         print ("[Handle](MsgType, MsgData) = (%s, %s)" %(MsgType, MsgData))
         MsgHandle = self.MsgHandler.get (MsgType)
@@ -153,7 +152,7 @@ class CodeServer ():
     def OneConnect (self, InSocket, InAddress):
         self.InSocket = InSocket
         try:
-            RevBuf = InSocket.recv (1024)
+            RevBuf = InSocket.recv (1024).decode("utf-8") 
             SendBuf = self.MsgColver.Handle (RevBuf)
             if SendBuf != None:
                 self.MsgSend (SendBuf)
