@@ -16,11 +16,12 @@ class PyMsg ():
     MSG_END="MSG_END"
     MSG_ERR="MSG_ERR"
 
-    def __init__ (self, Socket):
+    def __init__ (self, MsgSend, ShutDown):
         self.MsgHandler = {}
         self.InitMsgHandle ()
 
-        self.Socket = Socket
+        self.MsgSend  = MsgSend
+        self.ShutDown = ShutDown
         self.Generator = None
 
     def InitMsgHandle (self):
@@ -29,9 +30,6 @@ class PyMsg ():
         self.MsgHandler[PyMsg.MSG_WEIGHT_REQ] = self.HandleWeightReq
         self.MsgHandler[PyMsg.MSG_END] = self.HandleEnd
     
-    def MsgSend (self, Msg):
-        self.Socket.send (Msg)
-
     def DecodeMsg (self, Msg):
         MsgData = Msg.replace ('(', '')\
                      .replace (')', '')       
@@ -42,12 +40,14 @@ class PyMsg ():
         if len (Action) == 0 or len (Data) == 0:
             self.MsgSend (PyMsg.MSG_ERR+":(error,empty field)")
             return None, None
+        print ("[DecodeMsg]Action = %s, Data = %s" %(Action, Data))
         return Action, Data
 
     # "MSG_START_REQ:(hello,/path/apispec.xml)"
     def HandleStartReq (self, data):
         Action, SpecPath = self.DecodeMsg (data)
         if Action == None or SpecPath == None:
+            print ("[HandleStartReq]DecodeMsg fail: %s - %s" %(str(Action), str(SpecPath)))
             return None
         
         if Action != 'hello':
@@ -78,11 +78,11 @@ class PyMsg ():
             self.Generator.GenInitPy (Dir)
             return (PyMsg.MSG_GENPY_ACK+":(initial, done)")
         elif Action == 'random':
-            self.Generator.GenRandomPy (Dir)
-            return (PyMsg.MSG_GENPY_ACK+":(random, done)")
+            Case = self.Generator.GenRandomPy (Dir)
+            return (PyMsg.MSG_GENPY_ACK+":(random, {Case})")
         elif Action == 'weighted':
-            self.Generator.GenWeightedPy (Dir)
-            return (PyMsg.MSG_GENPY_ACK+":(weighted, done)")
+            Case = self.Generator.GenWeightedPy (Dir)
+            return (PyMsg.MSG_GENPY_ACK+":(weighted, {Case})")
         else:
             return (PyMsg.MSG_ERR+":(error, unknow action for MSG_GENPY_REQ)")
 
@@ -99,16 +99,18 @@ class PyMsg ():
 
         if Action == 'update':
             self.Generator.UpdateWeight (Case)
+            return (PyMsg.MSG_WEIGHT_ACK+":(update, done)")
         else:
             return (PyMsg.MSG_ERR+":(error, unknow action for MSG_WEIGHT_REQ)")
 
     # "MSG_END:(end,)"
     def HandleEnd (self, data):
-        self.Socket.close ()
-        sys.exit (0)
+        self.ShutDown ()
 
     def Handle (self, MsgBuf):
+        MsgBuf = MsgBuf.decode("utf-8") 
         MsgType, MsgData = MsgBuf.split (':')
+        print ("[Handle](MsgType, MsgData) = (%s, %s)" %(MsgType, MsgData))
         MsgHandle = self.MsgHandler.get (MsgType)
         if MsgHandle == None:
             return None
@@ -116,14 +118,24 @@ class PyMsg ():
 
 class CodeServer ():
     def __init__ (self, Port):
-        self.Port = Port
-        self.Socket = self.InitServer ()
-        self.MsgColver = PyMsg (self.Socket)
+        self.Port      = Port
+        self.Socket    = self.InitServer ()
+        self.InSocket  = None
+        self.MsgColver = PyMsg (self.MsgSend, self.ShutDown)
+
+    def MsgSend (self, Msg):
+        Msg = bytes(Msg, 'utf-8')
+        self.InSocket.send (Msg)
+
+    def ShutDown (self):
+        self.Socket.close ()
+        self.InSocket.close ()
+        sys.exit (0)
 
     def InitServer (self):
         Address = ("", self.Port)
         try:
-            Socket = socket.socket (socket.AF_INET, socket.SOCKK_STREAM)
+            Socket = socket.socket (socket.AF_INET, socket.SOCK_STREAM)
         except OSError as msg:
             print ("Create socket with fail: %s" %(msg))
             exit (0)
@@ -138,31 +150,30 @@ class CodeServer ():
         
         return Socket
 
-    def OneConnect (self, in_connection, in_address):
+    def OneConnect (self, InSocket, InAddress):
+        self.InSocket = InSocket
         try:
-            RevBuf = in_connection.recv (1024)
+            RevBuf = InSocket.recv (1024)
             SendBuf = self.MsgColver.Handle (RevBuf)
             if SendBuf != None:
                 self.MsgSend (SendBuf)
+                self.InSocket.close ()
+                self.InSocket = None
             else:
-                print ("Process msg[%s] fail!", str(RevBuf))
-                pass
-        except KeyboardInterrupt:
-                raise
+                print ("Process msg[%s] fail!" %str(RevBuf))
+                self.InSocket.close ()
+                self.InSocket = None
         except:
-            traceback.print_exc ()
-            pass
+            self.InSocket.close ()
+            self.InSocket = None
 
     def Start (self):
         while True:
             try:
-                in_connection, in_address = self.Socket.accept ()
-            except KeyboardInterrupt:
-                raise
+                InSocket, InAddress = self.Socket.accept ()
             except:
-                traceback.print_exc ()
-                continue
+                break
 
-            self.OneConnect (in_connection, in_address)
+            self.OneConnect (InSocket, InAddress)
 
 

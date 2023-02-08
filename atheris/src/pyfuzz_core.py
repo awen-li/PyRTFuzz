@@ -15,6 +15,7 @@
 
 import sys
 import socket
+import time
 from multiprocessing import Process
 from .import_hook import instrument_imports
 from pygen import *
@@ -65,8 +66,8 @@ def _GetSocket ():
             Socket.connect (SrvAddress)
             break
         except OSError as msg:
-            Socket.close()
             print ("Connect to server with port[%d] fail: %s" %(SERVER_PORT, msg))
+            time.sleep (1)
             continue
     
     return Socket
@@ -85,27 +86,31 @@ def DecodeMsg (self, Msg):
 
 # "MSG_START_REQ:(hello,/path/apispec.xml)"
 def _SendStartReq (SpecXml):
-    req = f"MSG_START_REQ:(hello,{SpecXml})"
-
     Socket = _GetSocket ()
 
-    Socket.send (req)
-    ack = Socket.recv (1024)
+    Req = f"MSG_START_REQ:(hello,{SpecXml})"
+    print ("[SendStartReq]" + Req)
+    RepBytes = bytes(Req, 'utf-8')
+    Socket.send (RepBytes)
+
+    Ack = Socket.recv (1024).decode("utf-8") 
     Type, Data = Ack.split (':')
     if Type == MSG_ERR:
-        print (ack)
+        print (Ack)
         sys.exit (0)
+    print ("[SendStartReq]" + Ack)
 
 # "MSG_GENPY_REQ:(initial, /home/wen)|
 #                (random, /home/wen)|
 #                (weighted, /home/wen)"
 def SendGenReq (Action, Dir):
-    req = f"MSG_START_REQ:({Action},{Dir})"
+    Socket = _GetSocket ()
 
-    Socket = _GetSocket () 
-    Socket.send (req)
+    Req = f"MSG_START_REQ:({Action},{Dir})" 
+    RepBytes = bytes(Req, 'utf-8')
+    Socket.send (RepBytes)
 
-    Ack = Socket.recv (1024)
+    Ack = Socket.recv (1024).decode("utf-8") 
     Type, Data = Ack.split (':')
     if Type == MSG_ERR:
         return ""
@@ -122,12 +127,13 @@ def SendGenReq (Action, Dir):
 
 # "MSG_WEIGHT_REQ:(update, case)"
 def SendWeightedReq (Action, Case):
-    req = f"MSG_START_REQ:({Action},{Case})"
+    Socket = _GetSocket ()
 
-    Socket = _GetSocket ()  
-    Socket.send (req)
+    Req = f"MSG_START_REQ:({Action},{Case})"
+    RepBytes = bytes(Req, 'utf-8')
+    Socket.send (RepBytes)
 
-    Ack = Socket.recv (1024)
+    Ack = Socket.recv (1024).decode("utf-8") 
     Type, Data = Ack.split (':')
     if Type == MSG_ERR:
         return
@@ -136,9 +142,11 @@ def SendWeightedReq (Action, Case):
 
 # "MSG_END:(end,)"
 def SendEndReq ():
-    req = "MSG_END:(end,)"
-    Socket = _GetSocket ()  
-    Socket.send (req)
+    Socket = _GetSocket ()
+
+    Req = "MSG_END:(end,)"
+    RepBytes = bytes(Req, 'utf-8')  
+    Socket.send (RepBytes)
 
 
 def PyMutation ():
@@ -154,13 +162,16 @@ def _StartPyGenServer (Port):
     CS = CodeServer (Port)
     CS.Start ()
 
-def SetupPyFuzz (Port=19163):
+def SetupPyFuzz (ApiSpecXml, Port=19163):
+    global SERVER_PORT
     SERVER_PORT = Port
 
     # 1. setup the python app generator
     server = Process(target=_StartPyGenServer, args=(Port,))
     server.start()
-    _SendStartReq ()
+    
+    _SendStartReq (ApiSpecXml)
 
     # 2. instrument all python runtimes
     _InstrumentAll ()
+    return True
