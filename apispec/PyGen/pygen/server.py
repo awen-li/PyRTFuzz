@@ -79,10 +79,10 @@ class PyMsg ():
             return (PyMsg.MSG_GENPY_ACK+":(initial, done)")
         elif Action == 'random':
             Case = self.Generator.GenRandomPy (Dir)
-            return (PyMsg.MSG_GENPY_ACK+":(random, {Case})")
+            return (PyMsg.MSG_GENPY_ACK + f":(random, {Case})")
         elif Action == 'weighted':
             Case = self.Generator.GenWeightedPy (Dir)
-            return (PyMsg.MSG_GENPY_ACK+":(weighted, {Case})")
+            return (PyMsg.MSG_GENPY_ACK + f":(weighted, {Case})")
         else:
             return (PyMsg.MSG_ERR+":(error, unknow action for MSG_GENPY_REQ)")
 

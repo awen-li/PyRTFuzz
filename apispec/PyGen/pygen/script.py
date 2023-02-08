@@ -103,13 +103,13 @@ class CodeGen ():
         self.Core.Run (Script, OutPut=PyFile)
 
     def GenInitPy (self, Dir):
-        pass
+        return Dir
 
     def GenRandomPy (self, Dir):
-        pass
+        return Dir
 
     def GenWeightedPy (self, Dir):
-        pass
+        return Dir
 
     def UpdateWeight (self, Case):
         pass
