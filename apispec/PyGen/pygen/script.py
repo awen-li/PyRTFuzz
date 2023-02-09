@@ -118,7 +118,7 @@ class CodeGen ():
         InitStatNum = 1
         pbar = ProgressBar()
         for ApiPath, ApiInfo in pbar(ApiList.items ()):
-            PyFile  = Dir + '/' + str(InitStatNum) + '_' + ApiPath.replace('.', '_') + '.py'
+            PyFile  = Dir + '/' + str(InitStatNum) + '#' + ApiPath.replace('.', '#') + '.py'
             #print ("### Generating " + PyFile)
             try:
                 self.GenPy (ApiPath, InitStatNum, PyFile, ApiInfo.Class != None)
@@ -136,7 +136,7 @@ class CodeGen ():
             ApiInfo = self.Core.ApiList.get (RandomApi)
 
             StateNum = random.randint(0, StateNum)
-            PyFile  = Dir + '/' + str(StateNum) + '_' + RandomApi.replace('.', '_') + '.py'
+            PyFile  = Dir + '/' + str(StateNum) + '#' + RandomApi.replace('.', '#') + '.py'
 
             self.GenPy (RandomApi, StateNum, PyFile, ApiInfo.Class != None)
         except Exception as e:     
@@ -146,9 +146,26 @@ class CodeGen ():
         print ("Get random API as:" + RandomApi)
         return PyFile
 
-    def GenWeightedPy (self, Dir):
-        return Dir
+    def GenSpecifiedPy (self, Case, StateNum=16):
+        try:
+            Path, Ext = os.path.splitext(Case)
 
-    def UpdateWeight (self, Case):
+            ApiIndex = Path.find ('#')
+            ApiPath = Path [ApiIndex+1:].replace ('#', '.')
+            print ("ApiPath is " + ApiPath)
+            ApiInfo = self.Core.ApiList.get (ApiPath)
+            
+            PathPrefix = Path.rfind ('/')
+            StateNum = random.randint(0, StateNum)
+            PyFile  = Path[0:PathPrefix+1] + str(StateNum) + '#' + ApiPath.replace('.', '#') + '.py'
+
+            self.GenPy (ApiPath, StateNum, PyFile, ApiInfo.Class != None)
+        except Exception as e:     
+            traceback.print_exc ()
+            return None
+        
+        return PyFile
+
+    def UpdateWeight (self, Case, Weight):
         pass
 

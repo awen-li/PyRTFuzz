@@ -66,7 +66,7 @@ def _GetSocket ():
             Socket.connect (SrvAddress)
             break
         except OSError as msg:
-            print ("Connect to server with port[%d] fail: %s" %(SERVER_PORT, msg))
+            #print ("Connect to server with port[%d] fail: %s" %(SERVER_PORT, msg))
             time.sleep (1)
             continue
     
@@ -104,7 +104,7 @@ def _SendStartReq (SpecXml):
 
 # "MSG_GENPY_REQ:(initial, /home/wen)|
 #                (random, /home/wen)|
-#                (weighted, /home/wen)"
+#                (specify, /home/wen)"
 def SendGenReq (Action, Dir):
     Socket = _GetSocket ()
 
@@ -115,10 +115,10 @@ def SendGenReq (Action, Dir):
     Ack = Socket.recv (1024).decode("utf-8") 
     Type, Data = Ack.split (':')
     if Type == MSG_ERR:
+        print ("[SendGenReq]Error return:" + Ack)
         return ""
     else:
         _, Ret = DecodeMsg (Data)
-        print ("[SendGenReq]Ret = " + Ret)
         return Ret
 
 # "MSG_WEIGHT_REQ:(update, case)"

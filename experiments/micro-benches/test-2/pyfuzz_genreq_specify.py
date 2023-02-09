@@ -12,11 +12,11 @@ else:
     atheris.SendEndReq ()
     sys.exit (0)
     
-Ret = atheris.SendGenReq ('weighted', '/home/wen/CpyFuzz/experiments/seeds')
+Ret = atheris.SendGenReq ('specify', '/home/wen/CpyFuzz/experiments/seeds/1#xml#dom#minidom#Node#isSameNode.py')
 if os.path.exists (Ret):
-	print ("atheris.SendGenReq success with Action: weighted -> " + Ret)
+	print ("atheris.SendGenReq success with Action: specify -> " + Ret)
 else:
-    print ("atheris.SendGenReq fail with Action: weighted")
+    print ("atheris.SendGenReq fail with Action: specify")
     
 atheris.SendEndReq ()
 sys.exit (0)

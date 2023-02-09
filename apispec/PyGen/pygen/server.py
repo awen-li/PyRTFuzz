@@ -40,7 +40,7 @@ class PyMsg ():
         if len (Action) == 0 or len (Data) == 0:
             self.MsgSend (PyMsg.MSG_ERR+":(error,empty field)")
             return None, None
-        print ("[DecodeMsg]Action = %s, Data = %s" %(Action, Data))
+        #print ("[DecodeMsg]Action = %s, Data = %s" %(Action, Data))
         return Action, Data
 
     # "MSG_START_REQ:(hello,/path/apispec.xml)"
@@ -64,34 +64,34 @@ class PyMsg ():
     
     # "MSG_GENPY_REQ:(initial, /home/wen)|
     #                (random, /home/wen)|
-    #                (weighted, /home/wen)"
+    #                (specify, /home/wen)"
     def HandleGenPyReq (self, data):
         if self.Generator == None:
             self.MsgSend (PyMsg.MSG_ERR+":(error, Server has not been initialized yet!)")
             return None
 
-        Action, Dir = self.DecodeMsg (data)
-        if Action == None or Dir == None:
+        Action, Path = self.DecodeMsg (data)
+        if Action == None or Path == None:
             return None
 
         if Action == 'initial':
-            Ret = self.Generator.GenInitPy (Dir)
+            Ret = self.Generator.GenInitPy (Path)
             if Ret != None:
                 return (PyMsg.MSG_GENPY_ACK+":(initial, done)")
             else:
                 return (PyMsg.MSG_ERR+":(initial, MSG_GENPY_REQ fail)")
         elif Action == 'random':
-            Case = self.Generator.GenRandomPy (Dir)
+            Case = self.Generator.GenRandomPy (Path)
             if Case != None:
                 return (PyMsg.MSG_GENPY_ACK + f":(random, {Case})")
             else:
                 return (PyMsg.MSG_ERR+":(random, MSG_GENPY_REQ fail)")
-        elif Action == 'weighted':
-            Case = self.Generator.GenWeightedPy (Dir)
+        elif Action == 'specify':
+            Case = self.Generator.GenSpecifiedPy (Path)
             if Case != None:
-                return (PyMsg.MSG_GENPY_ACK + f":(weighted, {Case})")
+                return (PyMsg.MSG_GENPY_ACK + f":(specify, {Case})")
             else:
-                return (PyMsg.MSG_ERR+":(weighted, MSG_GENPY_REQ fail)")
+                return (PyMsg.MSG_ERR+":(specify, MSG_GENPY_REQ fail)")
         else:
             return (PyMsg.MSG_ERR+":(error, unknow action for MSG_GENPY_REQ)")
 
@@ -107,7 +107,7 @@ class PyMsg ():
             return None
 
         if Action == 'update':
-            self.Generator.UpdateWeight (Case)
+            self.Generator.UpdateWeight (Case, 16)
             return (PyMsg.MSG_WEIGHT_ACK+":(update, done)")
         else:
             return (PyMsg.MSG_ERR+":(error, unknow action for MSG_WEIGHT_REQ)")
