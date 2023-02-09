@@ -9,19 +9,19 @@ else:
     atheris.SendEndReq ()
     sys.exit (0)
 
-Ret = atheris.SendGenReq ('initial', '/home/wen')
+Ret = atheris.SendGenReq ('initial', '/home/wen/CpyFuzz/experiments/seeds')
 if Ret == 'done':
 	print ("atheris.SendGenReq success with Action: initial")
 else:
     print ("atheris.SendGenReq fail with Action: initial")
     
-Ret = atheris.SendGenReq ('random', '/home/wen')
+Ret = atheris.SendGenReq ('random', '/home/wen/CpyFuzz/experiments/seeds')
 if os.path.exists (Ret):
 	print ("atheris.SendGenReq success with Action: random -> " + Ret)
 else:
     print ("atheris.SendGenReq fail with Action: random")
     
-Ret = atheris.SendGenReq ('weighted', '/home/wen')
+Ret = atheris.SendGenReq ('weighted', '/home/wen/CpyFuzz/experiments/seeds')
 if os.path.exists (Ret):
 	print ("atheris.SendGenReq success with Action: weighted -> " + Ret)
 else:
