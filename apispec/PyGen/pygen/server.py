@@ -162,6 +162,10 @@ class CodeServer ():
                 print ("Process msg[%s] fail!" %str(RevBuf))
                 self.InSocket.close ()
                 self.InSocket = None
+        except OSError as msg:
+            self.InSocket.close ()
+            self.InSocket = None
+            traceback.print_exe ()
         except:
             self.InSocket.close ()
             self.InSocket = None

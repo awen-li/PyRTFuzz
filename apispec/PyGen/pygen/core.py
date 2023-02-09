@@ -1,6 +1,7 @@
 
 import os
 import re
+from progressbar import ProgressBar
 from pyspec import *
 from .cmd_newoo import *
 from .cmd_newpo import *
@@ -20,10 +21,11 @@ class SLCmd ():
     BASE = 1
     APP  = 2
     
-    def __init__ (self, CmdName, Module, Type):
+    def __init__ (self, CmdName, Module, Type, OORequired=False):
         self.CmdName = CmdName
         self.Module  = Module
         self.Type    = Type
+        self.OORequired = OORequired
 
 class CmdOP ():
     def __init__ (self, OpName):
@@ -53,7 +55,8 @@ class Core ():
         self.InitOk = bool(len (self.PyLibs) != 0)
 
     def InitApiList (self):
-        for libName, pyLib in self.PyLibs.items ():
+        par = ProgressBar ()
+        for libName, pyLib in par(self.PyLibs.items ()):
             LibExcepts = [e.exName for e in pyLib.Exceptions if e.exName not in LibExcepts]
             for mdName, pyMoudle in pyLib.Modules.items ():
                 MdExcepts  = LibExcepts
@@ -104,7 +107,7 @@ class Core ():
     def InitCmd (self):
         self.CmdList['OO']  = SLCmd ('NewOO ()', 'cmd_newoo', SLCmd.BASE)
         self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo', SLCmd.BASE)
-        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE)
+        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE, True)
         
         self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP)
         
@@ -203,6 +206,6 @@ class Core ():
             
         
         Var, App = self.Pop ()
-        print (App)
+        DebugPrint (App)
         self.Write (App, OutPut)
 

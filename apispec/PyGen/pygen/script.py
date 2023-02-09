@@ -2,6 +2,7 @@ import os
 import sys
 import random
 import traceback
+from progressbar import ProgressBar
 from .core import SLCmd, Core
 
 class WtSLCmd ():
@@ -84,11 +85,16 @@ class CodeGen ():
             Script = f.read()
             return Script
 
-    def GenSL (self, ApiExpr, StatNum, Output='script.sl'):
+    def GenSL (self, ApiExpr, StatNum, Output='script.sl', OOFlag=False):
         self.InitSlHandle (Output)
 
         # 1. select a BASE CMD
-        BaseCmd = self.SelectCmd (SLCmd.BASE)
+        while True:
+            BaseCmd = self.SelectCmd (SLCmd.BASE)
+            if OOFlag == False and BaseCmd.slCmd.OORequired == True:
+                continue
+            else:
+                break
         Ret = self.WriteScript (BaseCmd, ApiExpr)
 
         # 2. SELECT a set of APP CMD
@@ -101,7 +107,7 @@ class CodeGen ():
         self.CloseSlHandle ()
         return self.LoadSl (Output)
 
-    def GenPy (self, ApiExpr, StatNum, PyFile='pyapp.py'):
+    def GenPy (self, ApiExpr, StatNum, PyFile, OOFlag=False):
         ScriptFile = 'script.sl'
         Script = self.GenSL (ApiExpr, StatNum, ScriptFile)
         #print (Script)
@@ -110,11 +116,12 @@ class CodeGen ():
     def GenInitPy (self, Dir):
         ApiList = self.Core.ApiList
         InitStatNum = 1
-        for ApiPath, ApiInfo in ApiList.items ():
+        pbar = ProgressBar()
+        for ApiPath, ApiInfo in pbar(ApiList.items ()):
             PyFile  = Dir + '/' + str(InitStatNum) + '_' + ApiPath.replace('.', '_') + '.py'
             #print ("### Generating " + PyFile)
             try:
-                self.GenPy (ApiPath, InitStatNum, PyFile)
+                self.GenPy (ApiPath, InitStatNum, PyFile, ApiInfo.Class != None)
             except Exception as e:     
                 traceback.print_exc ()
                 break
