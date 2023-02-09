@@ -75,14 +75,23 @@ class PyMsg ():
             return None
 
         if Action == 'initial':
-            self.Generator.GenInitPy (Dir)
-            return (PyMsg.MSG_GENPY_ACK+":(initial, done)")
+            Ret = self.Generator.GenInitPy (Dir)
+            if Ret != None:
+                return (PyMsg.MSG_GENPY_ACK+":(initial, done)")
+            else:
+                return (PyMsg.MSG_ERR+":(initial, MSG_GENPY_REQ fail)")
         elif Action == 'random':
             Case = self.Generator.GenRandomPy (Dir)
-            return (PyMsg.MSG_GENPY_ACK + f":(random, {Case})")
+            if Case != None:
+                return (PyMsg.MSG_GENPY_ACK + f":(random, {Case})")
+            else:
+                return (PyMsg.MSG_ERR+":(random, MSG_GENPY_REQ fail)")
         elif Action == 'weighted':
             Case = self.Generator.GenWeightedPy (Dir)
-            return (PyMsg.MSG_GENPY_ACK + f":(weighted, {Case})")
+            if Case != None:
+                return (PyMsg.MSG_GENPY_ACK + f":(weighted, {Case})")
+            else:
+                return (PyMsg.MSG_ERR+":(weighted, MSG_GENPY_REQ fail)")
         else:
             return (PyMsg.MSG_ERR+":(error, unknow action for MSG_GENPY_REQ)")
 

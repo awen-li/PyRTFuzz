@@ -11,12 +11,12 @@ if True == atheris.SetupPyFuzz('/home/wen/CpyFuzz/apispec/PySpec/apispec.xml', S
 else:
     atheris.SendEndReq ()
     sys.exit (0)
-
-Ret = atheris.SendWeightedReq ('update', '/home/wen')
-if Ret == 'done':
-	print ("atheris.SendWeightedReq success")
+  
+Ret = atheris.SendGenReq ('random', '/home/wen/CpyFuzz/experiments/seeds')
+if os.path.exists (Ret):
+	print ("atheris.SendGenReq success with Action: random -> " + Ret)
 else:
-    print ("atheris.SendWeightedReq fail")
+    print ("atheris.SendGenReq fail with Action: random")
     
 atheris.SendEndReq ()
 sys.exit (0)

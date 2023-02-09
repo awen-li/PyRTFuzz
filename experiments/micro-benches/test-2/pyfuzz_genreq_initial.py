@@ -12,11 +12,11 @@ else:
     atheris.SendEndReq ()
     sys.exit (0)
 
-Ret = atheris.SendWeightedReq ('update', '/home/wen')
+Ret = atheris.SendGenReq ('initial', '/home/wen/CpyFuzz/experiments/seeds')
 if Ret == 'done':
-	print ("atheris.SendWeightedReq success")
+	print ("atheris.SendGenReq success with Action: initial")
 else:
-    print ("atheris.SendWeightedReq fail")
+    print ("atheris.SendGenReq fail with Action: initial")
     
 atheris.SendEndReq ()
 sys.exit (0)

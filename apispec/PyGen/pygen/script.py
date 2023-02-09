@@ -124,11 +124,27 @@ class CodeGen ():
                 self.GenPy (ApiPath, InitStatNum, PyFile, ApiInfo.Class != None)
             except Exception as e:     
                 traceback.print_exc ()
-                break
+                return None
         return Dir
 
-    def GenRandomPy (self, Dir):
-        return Dir
+    def GenRandomPy (self, Dir, StateNum=16):
+        try:
+            ApiList = list (self.Core.ApiList.keys())
+            ApiIndex = random.randint(0, len (ApiList)-1)
+
+            RandomApi = ApiList[ApiIndex]
+            ApiInfo = self.Core.ApiList.get (RandomApi)
+
+            StateNum = random.randint(0, StateNum)
+            PyFile  = Dir + '/' + str(StateNum) + '_' + RandomApi.replace('.', '_') + '.py'
+
+            self.GenPy (RandomApi, StateNum, PyFile, ApiInfo.Class != None)
+        except Exception as e:     
+            traceback.print_exc ()
+            return None
+
+        print ("Get random API as:" + RandomApi)
+        return PyFile
 
     def GenWeightedPy (self, Dir):
         return Dir
