@@ -14,6 +14,7 @@ class ApiInfo ():
         self.Class   = Cls
         self.Api     = Api
         self.Exceps  = Exceps
+        self.Weight  = 1
             
 class SLCmd ():
     BASE = 1
@@ -53,18 +54,28 @@ class Core ():
 
     def InitApiList (self):
         for libName, pyLib in self.PyLibs.items ():
-            curExcepts = pyLib.Exceptions
+            LibExcepts = [e.exName for e in pyLib.Exceptions if e.exName not in LibExcepts]
             for mdName, pyMoudle in pyLib.Modules.items ():
+                MdExcepts  = LibExcepts
+                MdExcepts += [e.exName for e in pyMoudle.Exceptions]
+                MdExcepts  = list (set (MdExcepts))
+                
                 for clsName, cls in pyMoudle.Classes.items ():
                     for apiName, api in cls.Apis.items ():
-                        absPath = libName + '.' + mdName + '.' + clsName + '.' + apiName
-                        apiInfo = ApiInfo (cls.clsInit, clsName, api, curExcepts)
+                        if apiName == '__init__':
+                            continue
+
+                        absPath = mdName + '.' + clsName + '.' + apiName
+                        ClsInit = cls.clsInit
+                        if ClsInit == 'None':
+                            ClsInit = None
+                        apiInfo = ApiInfo (ClsInit, clsName, api, MdExcepts)
                         self.ApiList[absPath] = apiInfo
                     self.ClassInfo [clsName] = cls
 
                 for apiName, api in pyMoudle.Apis.items ():
-                    absPath = libName + '.' + mdName + '.' + apiName
-                    self.ApiList[absPath] = ApiInfo (None, None, api, curExcepts)
+                    absPath = mdName + '.' + apiName
+                    self.ApiList[absPath] = ApiInfo (None, None, api, MdExcepts)
         DebugPrint ("Load API number: " + str (len (self.ApiList)))
                     
     def Push (self, Var, Value):

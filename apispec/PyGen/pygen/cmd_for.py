@@ -81,7 +81,7 @@ def RunFuzzer (x):
                 return
             
             self.criterion.View()
-            DebugPrint ("GenApp -> api: " + self.init + "  " + self.api.Expr)
+            DebugPrint ("GenApp -> api: " + str(self.init) + "  " + self.api.Expr)
             
             astApp = ast.parse(PyFor.ForTmpt)
             new = self.visit(astApp)

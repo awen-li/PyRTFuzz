@@ -1,5 +1,7 @@
 import os
+import sys
 import random
+import traceback
 from .core import SLCmd, Core
 
 class WtSLCmd ():
@@ -21,7 +23,11 @@ class CodeGen ():
         self.AppCmdList  = []
         self.Strategy    = Strategy
         self.SlHandle    = None
-        self.Core        = Core (ApiSpec)
+        try:
+            self.Core    = Core (ApiSpec)
+        except:
+            traceback.print_exc ()
+            sys.exit (0)
         self.InitCmdList (self.Core.GetCmdList ())
 
     def IsCoreUp (self):
@@ -98,11 +104,20 @@ class CodeGen ():
     def GenPy (self, ApiExpr, StatNum, PyFile='pyapp.py'):
         ScriptFile = 'script.sl'
         Script = self.GenSL (ApiExpr, StatNum, ScriptFile)
-        print (Script)
-
+        #print (Script)
         self.Core.Run (Script, OutPut=PyFile)
 
     def GenInitPy (self, Dir):
+        ApiList = self.Core.ApiList
+        InitStatNum = 1
+        for ApiPath, ApiInfo in ApiList.items ():
+            PyFile  = Dir + '/' + str(InitStatNum) + '_' + ApiPath.replace('.', '_') + '.py'
+            #print ("### Generating " + PyFile)
+            try:
+                self.GenPy (ApiPath, InitStatNum, PyFile)
+            except Exception as e:     
+                traceback.print_exc ()
+                break
         return Dir
 
     def GenRandomPy (self, Dir):
