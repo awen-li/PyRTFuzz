@@ -112,7 +112,7 @@ class PyMsg ():
         else:
             return (PyMsg.MSG_ERR+":(error, unknow action for MSG_WEIGHT_REQ)")
 
-    # "MSG_END:(end,)"
+    # "MSG_END:(end,done)"
     def HandleEnd (self, data):
         self.ShutDown ()
 

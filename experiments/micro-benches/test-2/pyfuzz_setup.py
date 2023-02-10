@@ -2,9 +2,12 @@
 import os
 import sys
 import importlib
+import random
 import atheris
 
-if True == atheris.SetupPyFuzz('/home/wen/CpyFuzz/apispec/PySpec/apispec.xml', 19163):
+SrvPort = random.randint(10000, 65531) 
+
+if True == atheris.SetupPyFuzz('/home/wen/CpyFuzz/apispec/PySpec/apispec.xml', SrvPort):
     print ("atheris.SetupPyFuzz setup success")
 else:
     print ("atheris.SetupPyFuzz setup Fail")

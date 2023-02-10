@@ -137,11 +137,11 @@ def SendWeightedReq (Action, Case):
         _, Ret = DecodeMsg (Data)
         return Ret
 
-# "MSG_END:(end,)"
+# "MSG_END:(end,done)"
 def SendEndReq ():
     Socket = _GetSocket ()
 
-    Req = "MSG_END:(end,)"
+    Req = "MSG_END:(end,done)"
     RepBytes = bytes(Req, 'utf-8')  
     Socket.send (RepBytes)
 
