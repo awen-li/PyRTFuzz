@@ -13,6 +13,7 @@
 # limitations under the License.
 """Two-level fuzzing for python interpreter and runtime libraries"""
 
+import os
 import sys
 import socket
 import time
@@ -151,7 +152,19 @@ def _SendEndReq ():
 Interface: generate initial seeds for fuzzing
 """
 def GetInitialSeeds (Dir):
-    return _SendGenReq (GEN_INITIAL, Dir)
+    if not os.path.exits (Dir):
+        os.mkdir (Dir)
+    
+    DoneFlag = Dir+'/initial_done'
+    if os.path.exits (DoneFlag):
+        print ("Initialization is already done!")
+        return
+    else:
+        Ret = _SendGenReq (GEN_INITIAL, Dir)
+        if Ret == 'done':
+            with open (DoneFlag, 'w'):
+                pass
+        return Ret
 
 """
 Interface: generate a random seed for fuzzing
@@ -188,6 +201,10 @@ def _StartPyGenServer (Port):
 def SetupPyFuzz (ApiSpecXml, Port=19163):
     global SERVER_PORT
     SERVER_PORT = Port
+
+    if not os.path.exists (ApiSpecXml):
+        print ("Can not find %s, please copy it to current directory!" %ApiSpecXml)
+        sys.exit (0)
 
     # 1. setup the python app generator
     server = Process(target=_StartPyGenServer, args=(Port,))

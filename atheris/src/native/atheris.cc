@@ -50,6 +50,18 @@ std::function<void(std::string script)>& test_one_script_global =
       std::cerr << "You must call SetupCore() before Fuzz()." << std::endl;
       _exit(-1);
     });
+
+std::function<std::string(std::string script)>& get_random_script_global =
+    *new std::function<std::string(std::string dir)>([](std::string script) -> std::string {
+      std::cerr << "You must call SetupCore() before Fuzz()." << std::endl;
+      _exit(-1);
+    });
+
+std::function<std::string(std::string script)>& get_specified_script_global =
+    *new std::function<std::string(std::string seed)>([](std::string script) -> std::string {
+      std::cerr << "You must call SetupCore() before Fuzz()." << std::endl;
+      _exit(-1);
+    });
     
 
 std::function<py::bytes(py::bytes data, size_t max_size, unsigned int seed)>
@@ -157,17 +169,22 @@ std::vector<std::string> Setup(
 std::vector<std::string> SetupCore(
     const std::vector<std::string>& args,
     const std::function<void(std::string script_name)>& test_one_script,
+    const std::function<std::string(std::string dir)>& get_random_script,
+    const std::function<std::string(std::string seed)>& get_specified_script,
     py::kwargs kwargs)
 {
     std::vector<std::string> ret = Setup (args, NULL, kwargs);
-    test_one_script_global = test_one_script;
+
+    test_one_script_global      = test_one_script;
+    get_random_script_global    = get_random_script;
+    get_specified_script_global = get_specified_script;
 
     return ret;
 }
 
 
 NO_SANITIZE
-void SetLv2Driver(    const std::function<void(py::bytes data)>& test_one_input, std::string test_input)
+void SetLv2Driver(const std::function<void(py::bytes data)>& test_one_input, std::string test_input)
 {
     test_one_input_global = test_one_input;
 
@@ -341,7 +358,9 @@ void FuzzLv1(int time_budget) {
   atheris.attr("_trace_branch") = core.attr("_trace_branch");
   atheris.attr("_reserve_counter") = core.attr("_reserve_counter");
 
-  core.attr("start_fuzzing_core")(args_global, test_one_script_global);
+  core.attr("start_fuzzing_core")(args_global, test_one_script_global,
+                                  get_random_script_global,
+                                  get_specified_script_global);
 }
 
 

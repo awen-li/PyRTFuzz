@@ -1,11 +1,16 @@
-#!/usr/bin/python
+
 import os
 import sys
 import importlib
+import random
 import atheris
 
-atheris.InstrumentLibs()
-
+SrvPort = random.randint(10000, 65531)
+try:
+    atheris.SetupPyFuzz('apispec.xml', SrvPort)
+    atheris.GetInitialSeeds ('seeds')
+except:
+    sys.exit (0)
 
 def PyCoreFuzz (script):
 
@@ -29,7 +34,11 @@ def PyCoreFuzz (script):
 
     
 if __name__ == '__main__':
-    atheris.SetupCore(sys.argv, PyCoreFuzz, enable_python_coverage=True)
+    atheris.SetupCore(sys.argv,
+                      PyCoreFuzz,
+                      atheris.GetRandomSeed,
+                      atheris.GetSpecifiedSeed,
+                      enable_python_coverage=True)
     atheris.FuzzLv1(300)
-
-    
+    atheris.Done ()
+ 

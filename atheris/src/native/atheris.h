@@ -42,6 +42,8 @@ std::vector<std::string> Setup(
 std::vector<std::string> SetupCore(
     const std::vector<std::string>& args,
     const std::function<void(std::string script_name)>& test_one_script,
+    const std::function<std::string(std::string dir)>& get_random_script,
+    const std::function<std::string(std::string seed)>& get_specified_script,
     py::kwargs kwargs);
 
 

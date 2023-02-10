@@ -14,7 +14,9 @@ else:
 
 Ret = atheris.GetInitialSeeds ('../../../experiments/seeds')
 if Ret == 'done':
-	print ("atheris.GetInitialSeeds success with Action: initial")
+    if not os.path.exists ('../../../experiments/seeds/initial_done'):
+        print ("### Warning: Initialization Flag Missing!")
+    print ("atheris.GetInitialSeeds success with Action: initial")
 else:
     print ("atheris.GetInitialSeeds fail with Action: initial")
     

@@ -90,6 +90,18 @@ std::function<void(std::string script)>& test_one_script_global =
       std::cerr << "You must call SetupCore() before FuzzLv1()." << std::endl;
       throw std::runtime_error("You must call SetupCore() before FuzzLv1().");
     });
+
+std::function<std::string(std::string script)>& get_random_script_global =
+    *new std::function<std::string(std::string script)>([](std::string dir) -> std::string {
+      std::cerr << "get_random_seed not initialized, you must call SetupCore() before FuzzLv1()." << std::endl;
+      throw std::runtime_error("You must call SetupCore() before FuzzLv1().");
+    });
+
+std::function<std::string(std::string script)>& get_specified_script_global =
+    *new std::function<std::string(std::string script)>([](std::string seed) -> std::string {
+      std::cerr << "get_specified_seed not initialized, you must call SetupCore() before FuzzLv1()." << std::endl;
+      throw std::runtime_error("You must call SetupCore() before FuzzLv1().");
+    });
     
 static bool py_core_fuzzing = false;
 
@@ -313,10 +325,14 @@ int TestOneScript(const char* Script) {
 
 NO_SANITIZE
 void start_fuzzing_core(const std::vector<std::string>& args,
-                                 const std::function<void(std::string script)>& test_one_script) {
+                        const std::function<void(std::string script)>& test_one_script,
+                        std::function<std::string(std::string script)>& get_random_script,
+                        std::function<std::string(std::string script)>& get_specified_script) {
   printf ("@@@ start_fuzzing_core\r\n");
   
-  test_one_script_global = test_one_script;
+  test_one_script_global      = test_one_script;
+  get_random_script_global    = get_random_script;
+  get_specified_script_global = get_specified_script;
   py_core_fuzzing = true;
 
   bool registered_alarm = SetupPythonSigaction();
