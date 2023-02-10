@@ -163,11 +163,17 @@ class AstOp (NodeTransformer):
         return node
 
     def op_insert_apiinvoke (self, node, InitStmt, CallStmt):
-        if self.IsBlankBody (node.body):
-            node.body = InitStmt.body
+        if InitStmt != None:
+            if self.IsBlankBody (node.body):
+                node.body = InitStmt.body
+            else:
+                node.body += InitStmt.body
+            node.body += CallStmt.body
         else:
-            node.body += InitStmt.body
-        node.body += CallStmt.body
+            if self.IsBlankBody (node.body):
+                node.body = CallStmt.body
+            else:
+                node.body += CallStmt.body
         return node
     
     def op_functiondef (self, node):
@@ -178,9 +184,12 @@ class AstOp (NodeTransformer):
             return node
 
         # translate api code into ast
-        InitStmt = ast.parse(self.init)
-        if self.HasArgs (InitStmt.body[0]):
-            raise Exception("Warning: unsopport parameters in construction function!")
+        InitStmt = None
+        if self.init != None:
+            InitStmt = ast.parse(self.init)
+            if self.HasArgs (InitStmt.body[0]):
+                #raise Exception("Warning: unsopport parameters in construction function!")
+                pass
         CallStmt = ast.parse(self.api.Expr)
 
         # get the FP of current node

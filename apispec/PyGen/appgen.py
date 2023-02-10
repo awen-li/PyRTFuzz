@@ -10,6 +10,7 @@ def InitArgument (parser):
     grp = parser.add_argument_group('Main options', 'One of these (or --report) must be given')
     grp.add_argument('-g', '--generate', action='store_true', help='generate python app')
     grp.add_argument('-d', '--debug', action='store_true', help='generate python app')
+    grp.add_argument('-s', '--server', help='run in server mode, listenning on specified port')
                      
     parser.add_argument('filename', nargs='?', help='apispec file path')
     parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
@@ -24,6 +25,8 @@ def main():
         SetDebug (1)
 
     if opts.generate:
+        pass
+    elif opts.generate:
         if opts.filename is None:
             parser.error('please specify the apispec file!')
         

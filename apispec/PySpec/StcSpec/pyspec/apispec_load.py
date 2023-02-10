@@ -1,7 +1,7 @@
 
-# _*_ coding:utf-8 _*_
-from xml.dom.minidom import parse
+import os
 import xml.dom.minidom
+from xml.dom.minidom import parse
 from .apispec import *
 
 DebugFlag = os.environ.get ("PYDEBUG")
@@ -160,6 +160,9 @@ class ApiSpecLoader():
         return curMd
             
     def Parser (self):
+        if os.path.exists (self.apiSpecXml) == False:
+            return
+        
         DOMTree = xml.dom.minidom.parse(self.apiSpecXml)
         De = DOMTree.documentElement
         self.AssertAttr (De, "version")     

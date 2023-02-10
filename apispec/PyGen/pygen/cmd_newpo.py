@@ -37,7 +37,7 @@ def RunFuzzer (x):
             DebugPrint ("[GenApp] get the insert point fail!...")
             return
         self.criterion.View()
-        DebugPrint ("GenApp -> api: " + self.init + "  " + self.api.Expr)
+        DebugPrint ("GenApp -> api: " + str(self.init) + "  " + self.api.Expr)
         
         astApp = ast.parse(NewPO.POTmpt)
         new = self.visit(astApp)

@@ -73,3 +73,9 @@ do
     let INDEX=$INDEX+1
     echo $test >> $CHACHE_FILES
 done
+
+# 3. update api expr
+python -m specgen -e apispec.xml
+
+# 4. output the statistic
+python -m specgen -c apispec.xml

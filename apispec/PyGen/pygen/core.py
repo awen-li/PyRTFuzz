@@ -1,6 +1,7 @@
 
 import os
 import re
+from progressbar import ProgressBar
 from pyspec import *
 from .cmd_newoo import *
 from .cmd_newpo import *
@@ -14,15 +15,17 @@ class ApiInfo ():
         self.Class   = Cls
         self.Api     = Api
         self.Exceps  = Exceps
+        self.Weight  = 1
             
 class SLCmd ():
     BASE = 1
     APP  = 2
     
-    def __init__ (self, CmdName, Module, Type):
+    def __init__ (self, CmdName, Module, Type, OORequired=False):
         self.CmdName = CmdName
         self.Module  = Module
         self.Type    = Type
+        self.OORequired = OORequired
 
 class CmdOP ():
     def __init__ (self, OpName):
@@ -49,20 +52,33 @@ class Core ():
         self.RunStack = []
         self.LocalValue = {}
 
+        self.InitOk = bool(len (self.PyLibs) != 0)
+
     def InitApiList (self):
-        for libName, pyLib in self.PyLibs.items ():
-            curExcepts = pyLib.Exceptions
+        par = ProgressBar ()
+        for libName, pyLib in par(self.PyLibs.items ()):
+            LibExcepts = [e.exName for e in pyLib.Exceptions if e.exName not in LibExcepts]
             for mdName, pyMoudle in pyLib.Modules.items ():
+                MdExcepts  = LibExcepts
+                MdExcepts += [e.exName for e in pyMoudle.Exceptions]
+                MdExcepts  = list (set (MdExcepts))
+                
                 for clsName, cls in pyMoudle.Classes.items ():
                     for apiName, api in cls.Apis.items ():
-                        absPath = libName + '.' + mdName + '.' + clsName + '.' + apiName
-                        apiInfo = ApiInfo (cls.clsInit, clsName, api, curExcepts)
+                        if apiName == '__init__':
+                            continue
+
+                        absPath = mdName + '.' + clsName + '.' + apiName
+                        ClsInit = cls.clsInit
+                        if ClsInit == 'None':
+                            ClsInit = None
+                        apiInfo = ApiInfo (ClsInit, clsName, api, MdExcepts)
                         self.ApiList[absPath] = apiInfo
                     self.ClassInfo [clsName] = cls
 
                 for apiName, api in pyMoudle.Apis.items ():
-                    absPath = libName + '.' + mdName + '.' + apiName
-                    self.ApiList[absPath] = ApiInfo (None, None, api, curExcepts)
+                    absPath = mdName + '.' + apiName
+                    self.ApiList[absPath] = ApiInfo (None, None, api, MdExcepts)
         DebugPrint ("Load API number: " + str (len (self.ApiList)))
                     
     def Push (self, Var, Value):
@@ -91,7 +107,7 @@ class Core ():
     def InitCmd (self):
         self.CmdList['OO']  = SLCmd ('NewOO ()', 'cmd_newoo', SLCmd.BASE)
         self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo', SLCmd.BASE)
-        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE)
+        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE, True)
         
         self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP)
         
@@ -190,6 +206,6 @@ class Core ():
             
         
         Var, App = self.Pop ()
-        print (App)
+        DebugPrint (App)
         self.Write (App, OutPut)
 

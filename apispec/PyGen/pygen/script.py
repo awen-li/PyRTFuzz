@@ -1,5 +1,8 @@
 import os
+import sys
 import random
+import traceback
+from progressbar import ProgressBar
 from .core import SLCmd, Core
 
 class WtSLCmd ():
@@ -21,8 +24,15 @@ class CodeGen ():
         self.AppCmdList  = []
         self.Strategy    = Strategy
         self.SlHandle    = None
-        self.Core        = Core (ApiSpec)
+        try:
+            self.Core    = Core (ApiSpec)
+        except:
+            traceback.print_exc ()
+            sys.exit (0)
         self.InitCmdList (self.Core.GetCmdList ())
+
+    def IsCoreUp (self):
+        return self.Core.InitOk
 
     def InitCmdList (self, SlCmdList):
         for CmdName, SlCmd in SlCmdList.items ():
@@ -75,11 +85,16 @@ class CodeGen ():
             Script = f.read()
             return Script
 
-    def GenSL (self, ApiExpr, StatNum, Output='script.sl'):
+    def GenSL (self, ApiExpr, StatNum, Output='script.sl', OOFlag=False):
         self.InitSlHandle (Output)
 
         # 1. select a BASE CMD
-        BaseCmd = self.SelectCmd (SLCmd.BASE)
+        while True:
+            BaseCmd = self.SelectCmd (SLCmd.BASE)
+            if OOFlag == False and BaseCmd.slCmd.OORequired == True:
+                continue
+            else:
+                break
         Ret = self.WriteScript (BaseCmd, ApiExpr)
 
         # 2. SELECT a set of APP CMD
@@ -92,10 +107,65 @@ class CodeGen ():
         self.CloseSlHandle ()
         return self.LoadSl (Output)
 
-    def GenPy (self, ApiExpr, StatNum, PyFile='pyapp.py'):
+    def GenPy (self, ApiExpr, StatNum, PyFile, OOFlag=False):
         ScriptFile = 'script.sl'
         Script = self.GenSL (ApiExpr, StatNum, ScriptFile)
-        print (Script)
-
+        #print (Script)
         self.Core.Run (Script, OutPut=PyFile)
+
+    def GenInitPy (self, Dir):
+        ApiList = self.Core.ApiList
+        InitStatNum = 1
+        pbar = ProgressBar()
+        for ApiPath, ApiInfo in pbar(ApiList.items ()):
+            PyFile  = Dir + '/' + str(InitStatNum) + '#' + ApiPath.replace('.', '#') + '.py'
+            #print ("### Generating " + PyFile)
+            try:
+                self.GenPy (ApiPath, InitStatNum, PyFile, ApiInfo.Class != None)
+            except Exception as e:     
+                traceback.print_exc ()
+                return None
+        return Dir
+
+    def GenRandomPy (self, Dir, StateNum=16):
+        try:
+            ApiList = list (self.Core.ApiList.keys())
+            ApiIndex = random.randint(0, len (ApiList)-1)
+
+            RandomApi = ApiList[ApiIndex]
+            ApiInfo = self.Core.ApiList.get (RandomApi)
+
+            StateNum = random.randint(0, StateNum)
+            PyFile  = Dir + '/' + str(StateNum) + '#' + RandomApi.replace('.', '#') + '.py'
+
+            self.GenPy (RandomApi, StateNum, PyFile, ApiInfo.Class != None)
+        except Exception as e:     
+            traceback.print_exc ()
+            return None
+
+        print ("Get random API as:" + RandomApi)
+        return PyFile
+
+    def GenSpecifiedPy (self, Case, StateNum=16):
+        try:
+            Path, Ext = os.path.splitext(Case)
+
+            ApiIndex = Path.find ('#')
+            ApiPath = Path [ApiIndex+1:].replace ('#', '.')
+            print ("ApiPath is " + ApiPath)
+            ApiInfo = self.Core.ApiList.get (ApiPath)
+            
+            PathPrefix = Path.rfind ('/')
+            StateNum = random.randint(0, StateNum)
+            PyFile  = Path[0:PathPrefix+1] + str(StateNum) + '#' + ApiPath.replace('.', '#') + '.py'
+
+            self.GenPy (ApiPath, StateNum, PyFile, ApiInfo.Class != None)
+        except Exception as e:     
+            traceback.print_exc ()
+            return None
+        
+        return PyFile
+
+    def UpdateWeight (self, Case, Weight):
+        pass
 
