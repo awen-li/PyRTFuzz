@@ -12,7 +12,7 @@ if True == atheris.SetupPyFuzz('../../../apispec/PySpec/apispec.xml', SrvPort):
 else:
     print ("atheris.SetupPyFuzz setup Fail")
 
-atheris.SendEndReq ()
+atheris.Done ()
 sys.exit (0)
 
 

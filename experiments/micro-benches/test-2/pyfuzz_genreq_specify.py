@@ -12,13 +12,13 @@ else:
     atheris.SendEndReq ()
     sys.exit (0)
     
-Ret = atheris.SendGenReq ('specify', '../../../experiments/seeds/1#xml#dom#minidom#Node#isSameNode.py')
+Ret = atheris.GetSpecifiedSeed ('../../../experiments/seeds/1#xml#dom#minidom#Node#isSameNode.py')
 if os.path.exists (Ret):
-	print ("atheris.SendGenReq success with Action: specify -> " + Ret)
+	print ("atheris.GetSpecifiedSeed success with Action: specify -> " + Ret)
 else:
-    print ("atheris.SendGenReq fail with Action: specify")
+    print ("atheris.GetSpecifiedSeed fail with Action: specify")
     
-atheris.SendEndReq ()
+atheris.Done ()
 sys.exit (0)
 
 

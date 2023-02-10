@@ -24,10 +24,10 @@ from .instrument_bytecode import patch_code
 from .utils import path
 
 from .pyfuzz_core import SetupPyFuzz
-from .pyfuzz_core import SendGenReq
-from .pyfuzz_core import SendWeightedReq
-from .pyfuzz_core import SendEndReq
-from .pyfuzz_core import PyMutation
+from .pyfuzz_core import GetInitialSeeds
+from .pyfuzz_core import GetRandomSeed
+from .pyfuzz_core import GetSpecifiedSeed
+from .pyfuzz_core import Done
 
 from .native import FuzzLv1   
 from .native import FuzzLv2   

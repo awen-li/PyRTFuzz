@@ -72,7 +72,7 @@ def _GetSocket ():
     
     return Socket
 
-def DecodeMsg (Msg):
+def _DecodeMsg (Msg):
     MsgData = Msg.replace ('(', '')\
                  .replace (')', '')       
     Action, Data = MsgData.split (',')
@@ -80,7 +80,6 @@ def DecodeMsg (Msg):
     Action = Action.strip ()
     Data   = Data.strip ()
     if len (Action) == 0 or len (Data) == 0:
-        self.MsgSend (PyMsg.MSG_ERR+":(error,empty field)")
         return None, None
     return Action, Data
 
@@ -99,13 +98,16 @@ def _SendStartReq (SpecXml):
         print (Ack)
         sys.exit (0)
     else:
-        _, Ret = DecodeMsg (Data)
+        _, Ret = _DecodeMsg (Data)
         return Ret
 
 # "MSG_GENPY_REQ:(initial, /home/wen)|
 #                (random, /home/wen)|
 #                (specify, /home/wen)"
-def SendGenReq (Action, Dir):
+GEN_INITIAL = 'initial'
+GEN_RANDOM  = 'random'
+GEN_SPECIFY = 'specify'
+def _SendGenReq (Action, Dir):
     Socket = _GetSocket ()
 
     Req = f"MSG_GENPY_REQ:({Action},{Dir})" 
@@ -118,11 +120,11 @@ def SendGenReq (Action, Dir):
         print ("[SendGenReq]Error return:" + Ack)
         return ""
     else:
-        _, Ret = DecodeMsg (Data)
+        _, Ret = _DecodeMsg (Data)
         return Ret
 
 # "MSG_WEIGHT_REQ:(update, case)"
-def SendWeightedReq (Action, Case):
+def _SendWeightedReq (Action, Case):
     Socket = _GetSocket ()
 
     Req = f"MSG_WEIGHT_REQ:({Action},{Case})"
@@ -134,27 +136,51 @@ def SendWeightedReq (Action, Case):
     if Type == MSG_ERR:
         return ""
     else:
-        _, Ret = DecodeMsg (Data)
+        _, Ret = _DecodeMsg (Data)
         return Ret
 
 # "MSG_END:(end,done)"
-def SendEndReq ():
+def _SendEndReq ():
     Socket = _GetSocket ()
 
     Req = "MSG_END:(end,done)"
     RepBytes = bytes(Req, 'utf-8')  
     Socket.send (RepBytes)
 
+"""
+Interface: generate initial seeds for fuzzing
+"""
+def GetInitialSeeds (Dir):
+    return _SendGenReq (GEN_INITIAL, Dir)
 
-def PyMutation ():
-    pass
-    
+"""
+Interface: generate a random seed for fuzzing
+"""
+def GetRandomSeed (Dir):
+    return _SendGenReq (GEN_RANDOM, Dir)
+
+"""
+Interface: generate a seed of specified run-time API for fuzzing
+"""
+def GetSpecifiedSeed (Case):
+    return _SendGenReq (GEN_SPECIFY, Case)
+
+"""
+Interface: inform the server to end
+"""
+def Done ():
+    _SendEndReq ()
+    time.sleep (1)
+
 
 #######################################################################
 #
 # setup app gen server
 #
 #######################################################################
+"""
+Individual process: python application generation service for fuzzing
+"""
 def _StartPyGenServer (Port):
     CS = CodeServer (Port)
     CS.Start ()

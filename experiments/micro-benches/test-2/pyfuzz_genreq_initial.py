@@ -12,13 +12,13 @@ else:
     atheris.SendEndReq ()
     sys.exit (0)
 
-Ret = atheris.SendGenReq ('initial', '../../../experiments/seeds')
+Ret = atheris.GetInitialSeeds ('../../../experiments/seeds')
 if Ret == 'done':
-	print ("atheris.SendGenReq success with Action: initial")
+	print ("atheris.GetInitialSeeds success with Action: initial")
 else:
-    print ("atheris.SendGenReq fail with Action: initial")
+    print ("atheris.GetInitialSeeds fail with Action: initial")
     
-atheris.SendEndReq ()
+atheris.Done ()
 sys.exit (0)
 
 
