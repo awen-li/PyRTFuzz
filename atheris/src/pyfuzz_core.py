@@ -152,11 +152,11 @@ def _SendEndReq ():
 Interface: generate initial seeds for fuzzing
 """
 def GetInitialSeeds (Dir):
-    if not os.path.exits (Dir):
+    if not os.path.exists (Dir):
         os.mkdir (Dir)
     
     DoneFlag = Dir+'/initial_done'
-    if os.path.exits (DoneFlag):
+    if os.path.exists (DoneFlag):
         print ("Initialization is already done!")
         return
     else:
