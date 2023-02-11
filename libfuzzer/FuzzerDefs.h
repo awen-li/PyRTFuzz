@@ -62,6 +62,8 @@ typedef Vector<uint8_t> Unit;
 typedef Vector<Unit> UnitVector;
 typedef int (*UserCallback)(const uint8_t *Data, size_t Size);
 typedef int (*UserCallbackCore)(const char *Script);
+typedef const char* (*GetRandomSeed) (const char *Dir);
+typedef const char* (*GetSpecifiedSeed) (const char *Seed);
 
 
 int FuzzerDriver(int *argc, char ***argv, UserCallback Callback);

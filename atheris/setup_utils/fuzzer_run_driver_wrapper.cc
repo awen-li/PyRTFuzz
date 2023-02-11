@@ -20,9 +20,14 @@
 namespace fuzzer {
 typedef int (*UserCallback)(const uint8_t *Data, std::size_t Size);
 typedef int (*UserCallbackCore)(const char *Script);
+typedef const char* (*GetRandomSeed) (const char *Dir);
+typedef const char* (*GetSpecifiedSeed) (const char *Seed);
 
 int FuzzerDriver(int *argc, char ***argv, UserCallback Callback);
-int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback);
+int FuzzerDriverPyCore(int *argc, char ***argv, 
+                       UserCallbackCore Callback,
+                       GetRandomSeed CbRandom,
+                       GetSpecifiedSeed CbSpecified);
 
 }  // namespace fuzzer
 
@@ -36,7 +41,10 @@ extern "C" __attribute__((visibility("default"))) int LLVMFuzzerRunDriver(
 
 
 extern "C" __attribute__((visibility("default"))) int LLVMFuzzerRunDriverPyCore(
-    int *argc, char ***argv, int (*UserCb)(const char *Script)) {
-  return fuzzer::FuzzerDriverPyCore(argc, argv, UserCb);
+    int *argc, char ***argv, 
+    int (*UserCb)(const char *Script),
+    const char* (*CbRandom) (const char *Dir),
+    const char* (*CbSpecified) (const char *Seed)) {
+  return fuzzer::FuzzerDriverPyCore(argc, argv, UserCb, CbRandom, CbSpecified);
 }
 

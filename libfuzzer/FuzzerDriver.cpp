@@ -922,7 +922,10 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
 }
 
 
-int FuzzerDriverPyCore(int *argc, char ***argv, UserCallbackCore Callback) {
+int FuzzerDriverPyCore(int *argc, char ***argv, 
+                       UserCallbackCore Callback,
+                       GetRandomSeed CbRandom,
+                       GetSpecifiedSeed CbSpecified) {
 
   printf ("@@@Lv1 ========> FuzzerDriverPyCore\r\n");
   using namespace fuzzer;

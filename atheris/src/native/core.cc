@@ -44,7 +44,9 @@ int LLVMFuzzerRunDriver(int* argc, char*** argv,
                         int (*UserCb)(const uint8_t* Data, size_t Size));
 
 int LLVMFuzzerRunDriverPyCore(int* argc, char*** argv,
-                        int (*UserCb)(const char *Script));
+                              int (*UserCb)(const char *Script),
+                              const char* (*CbRandom) (const char *Dir),
+                              const char* (*CbSpecified) (const char *Seed));
 
 size_t LLVMFuzzerMutate(uint8_t* Data, size_t Size, size_t MaxSize);
 void __sanitizer_cov_8bit_counters_init(uint8_t* start, uint8_t* stop);
@@ -322,6 +324,17 @@ int TestOneScript(const char* Script) {
   return 0;
 }
 
+NO_SANITIZE
+const char* GetRandomSeed(const char* Dir) {
+  std::string NewSeed = get_random_script_global (Dir);
+  return NewSeed.c_str();
+}
+
+NO_SANITIZE
+const char* GetSpecifiedSeed(const char* Seed) {
+  std::string NewSeed = get_specified_script_global (Seed);
+  return NewSeed.c_str();
+}
 
 NO_SANITIZE
 void start_fuzzing_core(const std::vector<std::string>& args,
@@ -376,7 +389,11 @@ void start_fuzzing_core(const std::vector<std::string>& args,
                           std::chrono::system_clock::now().time_since_epoch())
                           .count();
 
-  GracefulExit(LLVMFuzzerRunDriverPyCore(&args_size, &args_ptr, &TestOneScript));
+  int Ret = LLVMFuzzerRunDriverPyCore(&args_size, &args_ptr, 
+                                      &TestOneScript,
+                                      &GetRandomSeed,
+                                      &GetSpecifiedSeed);
+  GracefulExit(Ret);
 }
 
 
