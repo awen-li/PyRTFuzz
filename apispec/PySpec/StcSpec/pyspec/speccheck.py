@@ -11,11 +11,17 @@ class ApiSpecCheck ():
         if os.path.exists (logFileName):
             os.remove (logFileName)
         self.Types = {}
+        self.Imports = []
 
     def InitPyLibs (self, apiSpecXml):
         apiSpec = ApiSpecLoader (apiSpecXml)
         apiSpec.Parser ()
         return apiSpec.PyLibs
+
+    def GenInports (self, Target):
+        Import = 'import ' + Target
+        if not Import in self.Imports:
+            self.Imports.append (Import)
 
     def UpdateType (self, Type):
         num = self.Types.get (Type)
@@ -84,13 +90,24 @@ class ApiSpecCheck ():
             Index += 1
         print ("############################################################\n")
             
-        
+    def LogImportInfo (self, logFileName='ImportList.txt'):
+        if os.path.exists (logFileName):
+            os.remove (logFileName)
+
+        for Import in self.Imports:
+            with open (logFileName, "a") as f:
+                print (Import, file=f)
+
     def Check (self):
         TotalApiNum = 0
         TypeKnowns   = 0
         for libName, pyLib in self.PyLibs.items ():
+            if libName != '.':
+                self.GenInports (libName)
             for mdName, pyMoudle in pyLib.Modules.items ():
+                self.GenInports (mdName)
                 for clsName, cls in pyMoudle.Classes.items ():
+                    self.GenInports (mdName + '.' + clsName)
                     TotalApiNum += len (cls.Apis)
                     for apiName, api in cls.Apis.items ():
                         self.CheckTypes (api)
@@ -116,4 +133,5 @@ class ApiSpecCheck ():
         print ("############################################################\n")
     
         self.LogTypeInfo ()
+        self.LogImportInfo ()
                 

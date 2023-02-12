@@ -29,7 +29,7 @@ def PyCoreFuzz (script):
     pyScriptCorpus = absDir + '/' + md
 
     # set Lv2Driver
-    atheris.SetLv2Driver (lib.RunFuzz, pyScriptCorpus)
+    atheris.SetLv2Driver (lib.RunFuzzer, pyScriptCorpus)
     atheris.FuzzLv2()
 
     

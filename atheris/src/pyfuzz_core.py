@@ -29,6 +29,10 @@ from pygen import *
 def _InstrumentAll ():
     with instrument_imports():
         import quopri
+        import sqlite3
+        import sqlite3.dbapi2
+        import html
+        import html.entities
 
 
 
