@@ -20,6 +20,8 @@ class ApiSpecCheck ():
 
     def GenInports (self, Target):
         Import = 'import ' + Target
+        if IsExcept (Target):
+            return
         if not Import in self.Imports:
             self.Imports.append (Import)
 
@@ -93,7 +95,7 @@ class ApiSpecCheck ():
     def LogImportInfo (self, logFileName='ImportList.txt'):
         if os.path.exists (logFileName):
             os.remove (logFileName)
-
+        print ("Start LogImportInfo.")
         for Import in self.Imports:
             with open (logFileName, "a") as f:
                 print (Import, file=f)
@@ -107,7 +109,7 @@ class ApiSpecCheck ():
             for mdName, pyMoudle in pyLib.Modules.items ():
                 self.GenInports (mdName)
                 for clsName, cls in pyMoudle.Classes.items ():
-                    self.GenInports (mdName + '.' + clsName)
+                    #self.GenInports (mdName + '.' + clsName)
                     TotalApiNum += len (cls.Apis)
                     for apiName, api in cls.Apis.items ():
                         self.CheckTypes (api)

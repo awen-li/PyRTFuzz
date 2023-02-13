@@ -3,7 +3,8 @@
 import os
 
 ExcepList = ['__pycache__', 'test', 'site-packages', 'importlib', 'concurrent', 'subprocess', 'multiprocessing', 'inspect', 'trace', 'traceback',
-             'lib2to3']
+             'lib2to3', 'idlelib', 'dbm.ndbm', 'dbm.gnu', 'encodings.oem', 'encodings.mbcs', 'distutils.msvc9compiler', 'distutils.msvccompiler',
+             'distutils.command.bdist_msi', 'msilib', 'asyncio.windows_events', 'asyncio.windows_utils', 'antigravity']
 
 def IsExcept (Path):
     for excp in ExcepList:
