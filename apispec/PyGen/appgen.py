@@ -11,6 +11,7 @@ def InitArgument (parser):
     grp.add_argument('-g', '--generate', action='store_true', help='generate python app')
     grp.add_argument('-d', '--debug', action='store_true', help='generate python app')
     grp.add_argument('-s', '--server', help='run in server mode, listenning on specified port')
+    grp.add_argument('-a', '--api', help='target api for app generation')
                      
     parser.add_argument('filename', nargs='?', help='apispec file path')
     parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
@@ -24,14 +25,17 @@ def main():
     if opts.debug:
         SetDebug (1)
 
-    if opts.generate:
+    if opts.server:
         pass
     elif opts.generate:
         if opts.filename is None:
             parser.error('please specify the apispec file!')
+
+        if opts.api is None:
+            parser.error('please specify the api!')
         
         SG = CodeGen (opts.filename)
-        SG.GenPy ('xyz', 2)
+        SG.GenPyApp (opts.api)
 
         print ("Run successful.....")
     else:

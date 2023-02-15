@@ -363,7 +363,6 @@ def _InstrumentAll ():
         import secrets
         import nturl2path
         import profile
-        import this
         import gzip
         import calendar
         import smtplib
@@ -414,7 +413,6 @@ def _InstrumentAll ():
         import zipfile
         import stat
         import pyclbr
-        import antigravity
         import keyword
         import graphlib
         import modulefinder
@@ -442,7 +440,7 @@ def _InstrumentAll ():
         import configparser
         import symbol
         import cmd
-        import crypt
+        #import crypt
         import functools
         import imp
         import sre_compile

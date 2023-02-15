@@ -384,7 +384,6 @@ import bdb
 import zipfile
 import stat
 import pyclbr
-import antigravity
 import keyword
 import graphlib
 import modulefinder

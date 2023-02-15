@@ -76,6 +76,8 @@ class ApiSpecGen ():
             for mdname, md in lib.Modules.items ():
                 mdNode = ApiSpecGen.AddChild (Root, libNode, 'module')
                 mdNode.setAttribute ('name', mdname)
+                if IsExcept(mdname) == True:
+                    continue
 
                 TotalClassNum += len (md.Classes)
                 for clsname, cls in md.Classes.items ():

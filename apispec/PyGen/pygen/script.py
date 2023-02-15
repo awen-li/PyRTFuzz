@@ -169,3 +169,14 @@ class CodeGen ():
     def UpdateWeight (self, Case, Weight):
         pass
 
+    def GenPyApp (self, ApiPath, StateNum=16):
+        ApiInfo = self.Core.ApiList.get (ApiPath)
+        if ApiInfo == None:
+            print ("Fail to find %s in API spec list!" %ApiPath)
+            return
+        
+        StateNum = random.randint(0, StateNum)
+        PyFile   = ApiPath.replace ('.', '#')
+        self.GenPy (ApiPath, StateNum, PyFile, ApiInfo.Class != None)
+        return
+
