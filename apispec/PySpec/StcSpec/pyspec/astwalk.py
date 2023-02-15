@@ -67,14 +67,11 @@ class AstWalk(NodeVisitor):
         visitor = getattr(self, method, self.generic_visit)
         return visitor(node)
 
-    def _IsInternal (self, FuncName):
-        if FuncName == '__init__':
-            return False
-        
-        if FuncName[0:1] == "_":
-            return True
-        else:
-            return False
+    def visit_importfrom (self, node):
+        print (ast.dump(node))
+
+    def visit_import (self, node):
+        print (ast.dump (node))
 
     def visit_unaryop (self, node):
         if isinstance (node.operand, Constant):
@@ -165,10 +162,7 @@ class AstWalk(NodeVisitor):
             return self.visit (node.value) + '.' + node.attr
 
     def AddExcep (self, Excep):
-        if self.CurPyLib.Name != '.':
-            self.CurPyMod.Exceptions.append (Excep)
-        else:
-            self.CurPyLib.Exceptions.append (Excep)
+        self.CurPyMod.Exceptions.append (Excep)
         
     def visit_try(self, node):
         for s in node.body:
@@ -239,7 +233,7 @@ class AstWalk(NodeVisitor):
         if ApiName[0:4] == 'test':
             return
 
-        if self._IsInternal (node.name) == True or isinstance (node.body[0], Pass):
+        if isinstance (node.body[0], Pass):
             return
             
         fa, pa, ka, defas, kwdefas = self.GetFP (node.args)
@@ -297,9 +291,6 @@ class AstWalk(NodeVisitor):
 
         clsname = node.name
         if self.CurClass != None:
-            return
-
-        if clsname [0:1] == '_':
             return
 
         # check if inherit from error:

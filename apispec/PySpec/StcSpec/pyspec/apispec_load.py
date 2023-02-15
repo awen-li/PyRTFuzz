@@ -184,9 +184,6 @@ class ApiSpecLoader():
                 curMod = self.ParseMod (mdName, xmlMd)
                 curLib.Modules [mdName] = curMod
 
-            # exception under library
-            xmlExceps = xmlLib.getElementsByTagName ("errors")
-            self.ParseExceps (curLib, xmlExceps)
                 
                
 

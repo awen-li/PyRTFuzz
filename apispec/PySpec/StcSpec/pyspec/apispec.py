@@ -48,9 +48,11 @@ class PyMod ():
         self.Apis    = {}
         self.Classes = {}       
         self.Exceptions = []
+        self.Imports = []
+        self.ImportFrom = []
 
 class PyLib ():
     def __init__ (self, Name):
         self.Name  = Name
         self.Modules = {}
-        self.Exceptions = []
+

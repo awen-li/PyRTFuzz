@@ -79,20 +79,29 @@ class ApiSpecGen ():
                 if IsExcept(mdname) == True:
                     continue
 
-                TotalClassNum += len (md.Classes)
                 for clsname, cls in md.Classes.items ():
+                    if clsname[0:1] == '_':
+                        continue
+                    
+                    TotalClassNum += 1
                     clsNode = ApiSpecGen.AddChild (Root, mdNode, "class")
                     clsNode.setAttribute ('name', clsname)
                     clsNode.setAttribute ('init', cls.clsInit)
 
-                    TotalApiNum += len (cls.Apis)
                     for apiname, api in cls.Apis.items ():
+                        if apiname[0:1] == '_' and apiname != '__init__':
+                            continue
+                        
+                        TotalApiNum += 1
                         apiNode = ApiSpecGen.AddChild (Root, clsNode, "api")
                         apiNode.setAttribute ('name', apiname)
                         ApiSpecGen.WriteApi (Root, apiNode, api)
                         
-                TotalApiNum += len (md.Apis)
                 for apiname, api in md.Apis.items ():
+                    if apiname[0:1] == '_':
+                        continue
+                    
+                    TotalApiNum += 1
                     apiNode = ApiSpecGen.AddChild (Root, mdNode, "api")
                     apiNode.setAttribute ('name', apiname)
                     ApiSpecGen.WriteApi (Root, apiNode, api)
@@ -101,11 +110,6 @@ class ApiSpecGen ():
                     excepNode = ApiSpecGen.AddChild (Root, mdNode, "errors")
                     for excep in md.Exceptions:  
                         ApiSpecGen.WriteErrs (Root, excepNode, excep)
-
-            if len (lib.Exceptions) != 0:
-                excepNode = ApiSpecGen.AddChild (Root, libNode, "errors")
-                for excep in lib.Exceptions:         
-                    ApiSpecGen.WriteErrs (Root, excepNode, excep)
         
         with open (ApiSpecXml, 'w') as af:
             af.write(Root.toprettyxml(indent="  "))
@@ -137,6 +141,7 @@ class ApiSpecGen ():
 
             Visitor.SetPyLib(lib)
             print ("# start proc lib: " + lib)
+
             ModDir = os.walk(libDir)
             for Path, Dirs, Pys in ModDir:      
                 for py in Pys:
