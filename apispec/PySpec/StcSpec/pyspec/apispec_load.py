@@ -181,7 +181,13 @@ class ApiSpecLoader():
             
                 self.AssertAttr (xmlMd, "name")
                 mdName = xmlMd.getAttribute("name")
+                Imports = xmlMd.getAttribute("imports")
+                ImportFrom = xmlMd.getAttribute("importfrom")
+
                 curMod = self.ParseMod (mdName, xmlMd)
+                curMod.Imports = eval (Imports)
+                curMod.ImportFrom = eval (ImportFrom)
+                
                 curLib.Modules [mdName] = curMod
 
                 

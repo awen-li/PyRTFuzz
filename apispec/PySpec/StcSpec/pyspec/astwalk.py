@@ -67,11 +67,30 @@ class AstWalk(NodeVisitor):
         visitor = getattr(self, method, self.generic_visit)
         return visitor(node)
 
+    #ImportFrom(module='enum', names=[alias(name='Enum')], level=0)
     def visit_importfrom (self, node):
-        print (ast.dump(node))
+        #print (ast.dump(node))
+        Module = node.module
+        Names = node.names
+        for al in Names:
+            if al.name[0:1] == '_':
+                continue
+            Ifm = Module+':'+al.name
+            if not Ifm in self.CurPyMod.ImportFrom:
+                self.CurPyMod.ImportFrom.append (Ifm)
+        #print (self.CurPyMod.ImportFrom)
 
+    #Import(names=[alias(name='io'), alias(name='os'), alias(name='shutil'), alias(name='subprocess')])
     def visit_import (self, node):
-        print (ast.dump (node))
+        #print (ast.dump (node))
+        Names = node.names
+        for al in Names:
+            if al.name[0:1] == '_':
+                continue
+            if al.name in self.CurPyMod.Imports:
+                continue
+            self.CurPyMod.Imports.append (al.name)
+        #print (self.CurPyMod.Imports)
 
     def visit_unaryop (self, node):
         if isinstance (node.operand, Constant):

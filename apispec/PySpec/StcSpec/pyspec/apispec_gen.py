@@ -74,10 +74,13 @@ class ApiSpecGen ():
             libNode.setAttribute ('name', lib.Name)
             
             for mdname, md in lib.Modules.items ():
-                mdNode = ApiSpecGen.AddChild (Root, libNode, 'module')
-                mdNode.setAttribute ('name', mdname)
                 if IsExcept(mdname) == True:
                     continue
+
+                mdNode = ApiSpecGen.AddChild (Root, libNode, 'module')
+                mdNode.setAttribute ('name', mdname)
+                mdNode.setAttribute ('imports', str(md.Imports))
+                mdNode.setAttribute ('importfrom', str(md.ImportFrom))
 
                 for clsname, cls in md.Classes.items ():
                     if clsname[0:1] == '_':
