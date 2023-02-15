@@ -71,6 +71,8 @@ class AstWalk(NodeVisitor):
     def visit_importfrom (self, node):
         #print (ast.dump(node))
         Module = node.module
+        if Module == None:
+            return
         Names = node.names
         for al in Names:
             if al.name[0:1] == '_':
