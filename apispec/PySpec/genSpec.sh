@@ -14,7 +14,7 @@ Wait ()
 	process=$1
 	while true
 	do
-		count=`ps -ef | grep $process | grep -v "grep" | wc -l`
+		count=`ps -ef | grep "$process" | grep -v "grep" | wc -l`
 		if [ 0 == $count ];then
 			break
 		else
@@ -64,7 +64,7 @@ do
     fi
     python -m spectrace $test &
     
-    Wait python
+    Wait "python -m spectrace"
         
     EndTime=`date '+%s'`
     TimeCost=`expr $EndTime - $StartTime`
