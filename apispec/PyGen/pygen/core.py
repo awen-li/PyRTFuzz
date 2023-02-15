@@ -7,6 +7,7 @@ from .cmd_newoo import *
 from .cmd_newpo import *
 from .cmd_for import *
 from .cmd_inherit import *
+from .cmd_import import *
 from .debug import *
 
 class ApiInfo ():
@@ -51,6 +52,7 @@ class Core ():
 
         self.RunStack = []
         self.LocalValue = {}
+        self.Imports = []
 
         self.InitOk = bool(len (self.PyLibs) != 0)
 
@@ -110,7 +112,6 @@ class Core ():
         self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE, True)
         
         self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP)
-        
 
     def InitOp (self):
         self.OpList ['in'] = CmdOP ('in')
@@ -129,7 +130,7 @@ class Core ():
     def DePara (self, Stmt):
         Para = re.findall (r"\((.+?)\)", Stmt)
         if len (Para) == 0:
-            raise Exception("No parameter in " + Cmd)
+            raise Exception("No parameter in " + Stmt)
         Para = Para[0].strip ()
         return Para
 
@@ -172,6 +173,9 @@ class Core ():
             if ExeCode == None:
                 raise Exception("Get tested api fail: " + exeCmd.Para)
             
+            #cache for import
+            self.Imports.append (exeCmd.Para)
+            
             ExeObj = eval (SlCmd.CmdName)      
             ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps, ExeCode.Class)
             if hasattr (ExeObj, 'SetClass') == True:
@@ -181,6 +185,13 @@ class Core ():
                 ExeObj.SetClass (clsInfo)
             
         return ExeObj.GenApp ()
+
+    def RunImport (self, App):
+        for Impt in self.Imports:
+            PyImpt = PyImport (Impt)
+            App = PyImpt.GenApp () + '\n' + App
+        self.Imports = []
+        return App
 
     def Write(self, App, OutPut):
         with open (OutPut, "w") as pyApp:
@@ -206,6 +217,7 @@ class Core ():
             
         
         Var, App = self.Pop ()
+        App = self.RunImport (App)
         DebugPrint (App)
         self.Write (App, OutPut)
 

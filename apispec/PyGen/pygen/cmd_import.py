@@ -1,13 +1,12 @@
-import random
-import string
+
 import astunparse
 import ast
-from ast import *
-from .astop import *
-from .debug import *
 
-class PyImport(AstOp):
-    Tmpt = "from x import *"
-    def __init__(self):
-        super(PyImport, self).__init__(PyImport.Tmpt)
-        pass
+class PyImport():
+    def __init__(self, ApiPath):
+        self.ApiPath = ApiPath
+
+    def GenApp (self):
+        Module = self.ApiPath.split ('.')[0]
+        Impt = f"from {Module} import *"
+        return Impt
