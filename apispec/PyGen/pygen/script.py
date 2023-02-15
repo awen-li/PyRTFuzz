@@ -176,7 +176,7 @@ class CodeGen ():
             return
         
         StateNum = random.randint(0, StateNum)
-        PyFile   = ApiPath.replace ('.', '#')
+        PyFile   = ApiPath.replace ('.', '#')+'.py'
         self.GenPy (ApiPath, StateNum, PyFile, ApiInfo.Class != None)
         return
 
