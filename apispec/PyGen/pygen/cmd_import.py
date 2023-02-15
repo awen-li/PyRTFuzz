@@ -3,10 +3,21 @@ import astunparse
 import ast
 
 class PyImport():
-    def __init__(self, ApiPath):
-        self.ApiPath = ApiPath
+    def __init__(self, PyModule):
+        self.PyModule = PyModule
 
-    def GenApp (self):
-        Module = self.ApiPath.split ('.')[0]
-        Impt = f"from {Module} import *"
-        return Impt
+    def GenImport (self):
+        # self module
+        Imports = "from " + self.PyModule.Name + " import *"
+
+        # Imports
+        for Impt in self.PyModule.Imports:
+            Imports += '\n' + "import " + Impt
+
+        # Importfrom
+        for ImptFrom in self.PyModule.ImportFrom:
+            md, al = ImptFrom.split (':')
+            Imports += '\n' + "from " + md + ' import ' + al
+
+        Imports += '\n'
+        return Imports

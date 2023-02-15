@@ -11,7 +11,8 @@ from .cmd_import import *
 from .debug import *
 
 class ApiInfo ():
-    def __init__ (self, ClsInit, Cls, Api, Exceps):
+    def __init__ (self, Module, ClsInit, Cls, Api, Exceps):
+        self.Module  = Module
         self.ClsInit = ClsInit
         self.Class   = Cls
         self.Api     = Api
@@ -52,18 +53,16 @@ class Core ():
 
         self.RunStack = []
         self.LocalValue = {}
-        self.Imports = []
+        self.ExeModule = None
 
         self.InitOk = bool(len (self.PyLibs) != 0)
 
     def InitApiList (self):
         par = ProgressBar ()
         for libName, pyLib in par(self.PyLibs.items ()):
-            LibExcepts = [e.exName for e in pyLib.Exceptions if e.exName not in LibExcepts]
             for mdName, pyMoudle in pyLib.Modules.items ():
-                MdExcepts  = LibExcepts
-                MdExcepts += [e.exName for e in pyMoudle.Exceptions]
-                MdExcepts  = list (set (MdExcepts))
+                MdExcepts = [e.exName for e in pyMoudle.Exceptions]
+                MdExcepts = list (set (MdExcepts))
                 
                 for clsName, cls in pyMoudle.Classes.items ():
                     for apiName, api in cls.Apis.items ():
@@ -74,13 +73,13 @@ class Core ():
                         ClsInit = cls.clsInit
                         if ClsInit == 'None':
                             ClsInit = None
-                        apiInfo = ApiInfo (ClsInit, clsName, api, MdExcepts)
+                        apiInfo = ApiInfo (pyMoudle, ClsInit, clsName, api, MdExcepts)
                         self.ApiList[absPath] = apiInfo
                     self.ClassInfo [clsName] = cls
 
                 for apiName, api in pyMoudle.Apis.items ():
                     absPath = mdName + '.' + apiName
-                    self.ApiList[absPath] = ApiInfo (None, None, api, MdExcepts)
+                    self.ApiList[absPath] = ApiInfo (pyMoudle, None, None, api, MdExcepts)
         DebugPrint ("Load API number: " + str (len (self.ApiList)))
                     
     def Push (self, Var, Value):
@@ -174,7 +173,7 @@ class Core ():
                 raise Exception("Get tested api fail: " + exeCmd.Para)
             
             #cache for import
-            self.Imports.append (exeCmd.Para)
+            self.ExeModule = ExeCode.Module
             
             ExeObj = eval (SlCmd.CmdName)      
             ExeObj.SetUp (ExeCode.ClsInit, ExeCode.Api, ExeCode.Exceps, ExeCode.Class)
@@ -187,10 +186,12 @@ class Core ():
         return ExeObj.GenApp ()
 
     def RunImport (self, App):
-        for Impt in self.Imports:
-            PyImpt = PyImport (Impt)
-            App = PyImpt.GenApp () + '\n' + App
-        self.Imports = []
+        if self.ExeModule == None:
+            raise Exception("Fail to obtain current executed module!")
+
+        PyImpt = PyImport (self.ExeModule)
+        App = PyImpt.GenImport () + App
+        self.ExeModule = None
         return App
 
     def Write(self, App, OutPut):
