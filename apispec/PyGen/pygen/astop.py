@@ -101,8 +101,11 @@ class AstOp (NodeTransformer):
         return Tuple(elts=[self.op_new_value (i) for i in list])
 
     def op_new_excep_handler (self, excepList):
-        excepTuple = self.op_new_tuple (excepList)
-        return ExceptHandler(type=excepTuple)
+        if len (excepList) == 0:
+            return ExceptHandler ()
+        else:
+            excepTuple = self.op_new_tuple (excepList)
+            return ExceptHandler(type=excepTuple)
 
     def op_new_attribute (self, name, attr):
         return Attribute(value=self.op_new_value (name), attr=attr, ctx=Load())

@@ -32,16 +32,6 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
-      <api name="register_adapters_and_converters">
-        <expr>register_adapters_and_converters()</expr>
-        <args>[]</args>
-        <return>[]</return>
-        <dependences>None</dependences>
-        <posargs>[]</posargs>
-        <kwoargs>[]</kwoargs>
-        <defa>[]</defa>
-        <kwodefa>[]</kwodefa>
-      </api>
     </module>
     <module name="sqlite3.dump" imports="[]" importfrom="[]"/>
   </library>
