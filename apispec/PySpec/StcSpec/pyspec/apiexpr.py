@@ -66,7 +66,10 @@ class ApiExpr ():
     def GetClsInit (self, ClsSpec, InitSpec, ApiPath):
         #print ("[CLASS]" + ClsSpec.clsName)
         InitExpr = 'obj = ' + ClsSpec.clsName
-        InitExpr = self.GetExpr (InitExpr, InitSpec)
+        if InitSpec == None:
+            InitExpr += '()'
+        else:
+            InitExpr = self.GetExpr (InitExpr, InitSpec)
         #print (InitExpr)
         return InitExpr     
 
@@ -78,11 +81,16 @@ class ApiExpr ():
             for mdName, pyMoudle in pyLib.Modules.items ():
                 ApiPath += '.' + mdName
                 for clsName, cls in pyMoudle.Classes.items ():
+                    hasInit = False
                     for apiName, api in cls.Apis.items ():
                         if apiName == '__init__':
+                            hasInit = True
                             cls.clsInit = self.GetClsInit (cls, api, ApiPath+'.'+clsName)
                         else:
                             api.Expr = self.GetApiExpr (api, ApiPath+'.'+clsName, 'obj.')
+                    
+                    if hasInit == False:
+                        cls.clsInit = self.GetClsInit (cls, None, None)
 
                 for apiName, api in pyMoudle.Apis.items ():
                     api.Expr = self.GetApiExpr (api, ApiPath)
