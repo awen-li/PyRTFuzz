@@ -73,6 +73,9 @@ class AstWalk(NodeVisitor):
         Module = node.module
         if Module == None:
             return
+        if Module[0:1] == '_':
+            return
+            
         Names = node.names
         for al in Names:
             if al.name[0:1] == '_':
