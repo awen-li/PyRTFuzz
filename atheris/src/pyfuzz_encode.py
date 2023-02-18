@@ -34,6 +34,26 @@ SuportTypes = ['NoneType', 'str', 'int', 'bool', 'bytes', 'list', 'memoryview', 
                'Profile', '_PlainTextDoc', 'Call', '_SocketWriter']
 TypeLen = len (SuportTypes)
 
+def RandomStr ():
+    Length = random.randint(0, 256)
+    StrCtx = ''
+    for i in range (0, Length):
+        StrCtx += random.choice('1234567890QWERTYUIOPASDFGHJKLZXCVBNMabcdefghijklmnopqrstuvwxyz!@#$%^&*()')
+    return StrCtx
+
+def RandomInt ():
+    return random.randint(0, 4294967295)
+
+def RandomBool ():
+    rd = random.randint(0, 2)
+    if rd == 1:
+        return True
+    else:
+        return False
+
+def RandomFloat ():
+    return random.uniform(0, 4294967295)
+
 def DataProvider (type):
     if type == 'NoneType':
         TypeIndex = random.randint(0, TypeLen-1)
@@ -42,13 +62,14 @@ def DataProvider (type):
         else:
             return DataProvider (SuportTypes [TypeIndex])
     elif type == 'str':
-        pass
+        return RandomStr ()
     elif type == 'int':
-        pass
+        return RandomInt ()
     elif type == 'bool':
-        pass
+        return RandomBool ()
     elif type == 'bytes':
-        pass
+        Str = RandomStr ()
+        return bytes (Str, encoding='utf8')
     elif type == 'list':
         pass
     elif type == 'memoryview':
@@ -58,7 +79,7 @@ def DataProvider (type):
     elif type == 'dict':
         pass
     elif type == 'float':
-        pass
+        return RandomFloat ()
     elif type == 'function':
         pass
     elif type == 'Request':
