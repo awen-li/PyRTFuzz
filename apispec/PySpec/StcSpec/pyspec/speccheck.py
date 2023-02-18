@@ -83,13 +83,17 @@ class ApiSpecCheck ():
 
     def LogTypeInfo (self):
         SortedTypes = sorted (self.Types.items (), key=lambda x:x[1], reverse=True)
+        TypeList = []
 
         print ("\n\n")
         print ("##############       Type statistic     ####################\n")
         Index = 1
         for TypeName, Type in SortedTypes:
             print ("[%-4d] Type: %-32s, Number: %-8s" %(Index, TypeName, Type))
+            TypeList.append(TypeName)
             Index += 1
+        print ("\n")
+        print (TypeList)
         print ("############################################################\n")
             
     def LogImportInfo (self, logFileName='ImportList.txt'):

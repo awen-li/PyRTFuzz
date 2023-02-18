@@ -27,7 +27,11 @@ from .pyfuzz_core import SetupPyFuzz
 from .pyfuzz_core import GetInitialSeeds
 from .pyfuzz_core import GetRandomSeed
 from .pyfuzz_core import GetSpecifiedSeed
+from .pyfuzz_core import UpdateWeight
 from .pyfuzz_core import Done
+
+from .pyfuzz_encode import DataProvider
+from .pyfuzz_encode import DataProviderTest
 
 from .native import FuzzLv1   
 from .native import FuzzLv2   

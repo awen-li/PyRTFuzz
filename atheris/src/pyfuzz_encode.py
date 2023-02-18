@@ -35,13 +35,18 @@ SuportTypes = ['NoneType', 'str', 'int', 'bool', 'bytes', 'list', 'memoryview', 
 TypeLen = len (SuportTypes)
 
 class DataProvider ():
-    def __init__ (self, Depth=1024):
+    def __init__ (self, Depth=32):
         self.MaxDepth = Depth
         self.CurDepth = 0
 
-    def RandomType (self):
-        TypeIndex = random.randint(0, TypeLen-1)
-        return SuportTypes [TypeIndex]
+    def RandomType (self, Excep=[]):
+        Type = None
+        while True:
+            TypeIndex = random.randint(0, 10) #/*TypeLen-1*/
+            Type = SuportTypes [TypeIndex]
+            if not Type in Excep:
+                break
+        return Type
 
     def RandomStr (self, Length=256):
         Length = random.randint(0, Length)
@@ -95,13 +100,9 @@ class DataProvider ():
         return set (RdList)
 
     def RandomMemView (self):
-        Type = self.RandomType ()
-        if Type == 'memoryview':
-            Barry = bytearray('RandomMemView','utf-8')
-            return memoryview(Barry)
-        else:
-            Val = self.GetData (Type)
-            return memoryview(Val)
+        RdStr = self.RandomStr ()
+        Barry = bytearray(RdStr,'utf-8')
+        return memoryview(Barry)
 
     def GetData (self, type):
         self.CurDepth += 1
@@ -113,7 +114,7 @@ class DataProvider ():
             if TypeIndex%2 == 0:
                 return None
             else:
-                return DataProvider (SuportTypes [TypeIndex])
+                return self.GetData (SuportTypes [TypeIndex])
         elif type == 'str':
             return self.RandomStr ()
         elif type == 'int':
@@ -185,3 +186,24 @@ class DataProvider ():
 
     def DeEncode (self, ByteStream):
         pass
+
+
+class DataProviderTest ():
+    def AssertType (self, Value, Type):
+        if Value.__class__.__name__ != Type:
+            print ("Value type: %s, expected: %s" %(Value.__class__.__name__, Type))
+            return False
+        else:
+            print ("Generate Value type: %s success" %(Type))
+            return True
+
+    def TestEntry (self):
+        self.AssertType (DataProvider ().RandomStr (), 'str')
+        self.AssertType (DataProvider ().RandomInt (), 'int')
+        self.AssertType (DataProvider ().RandomBool (), 'bool')
+        self.AssertType (DataProvider ().RandomFloat (), 'float')
+        self.AssertType (DataProvider ().RandomBytes (), 'bytes')
+        self.AssertType (DataProvider ().RandomList (), 'list')
+        self.AssertType (DataProvider ().RandomDict (), 'dict')
+        self.AssertType (DataProvider ().RandomTuple (), 'tuple')
+        self.AssertType (DataProvider ().RandomMemView (), 'memoryview')

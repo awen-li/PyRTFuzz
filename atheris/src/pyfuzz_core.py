@@ -627,7 +627,7 @@ def GetInitialSeeds (Dir):
     DoneFlag = Dir+'/initial_done'
     if os.path.exists (DoneFlag):
         print ("Initialization is already done!")
-        return
+        return 'done'
     else:
         Ret = _SendGenReq (GEN_INITIAL, Dir)
         if Ret == 'done':
@@ -646,6 +646,12 @@ Interface: generate a seed of specified run-time API for fuzzing
 """
 def GetSpecifiedSeed (Case):
     return _SendGenReq (GEN_SPECIFY, Case)
+
+"""
+Interface: generate a seed of specified run-time API for fuzzing
+"""
+def UpdateWeight (Case):
+    return _SendWeightedReq ('update', Case)
 
 """
 Interface: inform the server to end
