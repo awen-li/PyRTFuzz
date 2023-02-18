@@ -300,8 +300,8 @@ class AstWalk(NodeVisitor):
                 continue
 
             ExcepPath = ''
-            if self.CurPyLib.Name != '.':
-                ExcepPath += self.CurPyLib.Name
+            #if self.CurPyLib.Name != '.':
+            #    ExcepPath += self.CurPyLib.Name
             ExcepPath += self.CurPyMod.Name + '.' + clfNode.name
 
             Excep = PyExcep (ExcepPath)
