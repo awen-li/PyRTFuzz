@@ -115,6 +115,11 @@ def RunFuzzer (x):
 
         astApp = ast.parse(PyInherit.Tmpt)
         new = self.visit(astApp)
+
+        # add api type list
+        if self.api != None:
+            TypeList = GetArgTypeList (self.api)
+            new.body = [self.op_new_argtypes (TypeList)] + new.body
             
         DebugPrint (astunparse.unparse(new))
         self.pG.ShowPg ()

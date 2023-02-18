@@ -26,7 +26,10 @@ from pygen import *
 # before fuzzing, instrument all runtimes
 #
 #######################################################################
-def _InstrumentAll ():
+def _InstrumentAll (ProbAll=True):
+    if ProbAll == False:
+        return
+    
     with instrument_imports():
         import sqlite3
         import sqlite3.dbapi2
@@ -664,7 +667,7 @@ def _StartPyGenServer (Port):
     CS = CodeServer (Port)
     CS.Start ()
 
-def SetupPyFuzz (ApiSpecXml, Port=19163):
+def SetupPyFuzz (ApiSpecXml, Port, ProbAll=True):
     global SERVER_PORT
     SERVER_PORT = Port
 
@@ -679,5 +682,5 @@ def SetupPyFuzz (ApiSpecXml, Port=19163):
     _SendStartReq (ApiSpecXml)
 
     # 2. instrument all python runtimes
-    _InstrumentAll ()
+    _InstrumentAll (ProbAll)
     return True

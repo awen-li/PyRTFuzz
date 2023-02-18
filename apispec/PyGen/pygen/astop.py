@@ -5,6 +5,13 @@ from ast import *
 from .propgraph import *
 from .debug import *
 
+def GetArgTypeList (Spec):
+    TypeList = []
+    for arg in Spec.Args:
+        para, ptype = arg.split(':')
+        TypeList.append (ptype)
+    return TypeList
+
 def GetWrapF (pgNode):
     DebugPrint ("GetWrapF -> [%d]%s - %d" %(pgNode.Id, pgNode.Name, pgNode.Type))
     # must be a STMT
@@ -81,6 +88,9 @@ class AstOp (NodeTransformer):
         operator = getattr(self, method, self.generic_visit)        
         return operator(node)
 
+    def op_new_constant (self, val):
+        return Constant(value=val)
+
     def op_new_load  (self, name):
         return Name(id=name, ctx=Load())
 
@@ -99,6 +109,9 @@ class AstOp (NodeTransformer):
         
     def op_new_tuple (self, list):
         return Tuple(elts=[self.op_new_value (i) for i in list])
+
+    def op_new_const_list (self, list):
+        return List(elts=[self.op_new_constant (i) for i in list], ctx=Load())
 
     def op_new_excep_handler (self, excepList):
         if len (excepList) == 0:
@@ -140,6 +153,9 @@ class AstOp (NodeTransformer):
 
     def op_new_return (self, ret):
         return Return(value=ret)
+
+    def op_new_argtypes (self, TypeList):
+        return Assign(targets=[self.op_new_store ('TYPE_LIST')], value=self.op_new_const_list(TypeList))
         
     def op_value (self, node):
         return node
@@ -157,7 +173,8 @@ class AstOp (NodeTransformer):
         for tg in node.targets:
             self.visit (tg)
         
-        return self.visit (node.value)
+        self.visit (node.value)
+        return node
 
     def op_atrribute (self, node):
         return node

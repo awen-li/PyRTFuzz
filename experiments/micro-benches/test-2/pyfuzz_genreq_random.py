@@ -6,7 +6,7 @@ import atheris
 
 SrvPort = random.randint(10000, 65531) 
 
-if True == atheris.SetupPyFuzz('../../../apispec/PySpec/apispec.xml', SrvPort):
+if True == atheris.SetupPyFuzz('../../../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False):
     print ("atheris.SetupPyFuzz setup success")
 else:
     atheris.SendEndReq ()
