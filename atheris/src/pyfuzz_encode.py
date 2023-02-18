@@ -34,100 +34,154 @@ SuportTypes = ['NoneType', 'str', 'int', 'bool', 'bytes', 'list', 'memoryview', 
                'Profile', '_PlainTextDoc', 'Call', '_SocketWriter']
 TypeLen = len (SuportTypes)
 
-def RandomStr ():
-    Length = random.randint(0, 256)
-    StrCtx = ''
-    for i in range (0, Length):
-        StrCtx += random.choice('1234567890QWERTYUIOPASDFGHJKLZXCVBNMabcdefghijklmnopqrstuvwxyz!@#$%^&*()')
-    return StrCtx
+class DataProvider ():
+    def __init__ (self, Depth=1024):
+        self.MaxDepth = Depth
+        self.CurDepth = 0
 
-def RandomInt ():
-    return random.randint(0, 4294967295)
-
-def RandomBool ():
-    rd = random.randint(0, 2)
-    if rd == 1:
-        return True
-    else:
-        return False
-
-def RandomFloat ():
-    return random.uniform(0, 4294967295)
-
-def DataProvider (type):
-    if type == 'NoneType':
+    def RandomType (self):
         TypeIndex = random.randint(0, TypeLen-1)
-        if TypeIndex%2 == 0:
-            return None
+        return SuportTypes [TypeIndex]
+
+    def RandomStr (self, Length=256):
+        Length = random.randint(0, Length)
+        StrCtx = ''
+        for i in range (0, Length):
+            StrCtx += random.choice('1234567890QWERTYUIOPASDFGHJKLZXCVBNMabcdefghijklmnopqrstuvwxyz!@#$%^&*()')
+        return StrCtx
+
+    def RandomInt (self, Value=4294967295):
+        return random.randint(0, Value)
+
+    def RandomBool (self):
+        rd = random.randint(0, 2)
+        if rd == 1:
+            return True
         else:
-            return DataProvider (SuportTypes [TypeIndex])
-    elif type == 'str':
-        return RandomStr ()
-    elif type == 'int':
-        return RandomInt ()
-    elif type == 'bool':
-        return RandomBool ()
-    elif type == 'bytes':
-        Str = RandomStr ()
+            return False
+
+    def RandomFloat (self, Value=4294967295):
+        return random.uniform(0, Value)
+
+    def RandomBytes (self):
+        Str = self.RandomStr ()
         return bytes (Str, encoding='utf8')
-    elif type == 'list':
-        pass
-    elif type == 'memoryview':
-        pass
-    elif type == 'tuple':
-        pass
-    elif type == 'dict':
-        pass
-    elif type == 'float':
-        return RandomFloat ()
-    elif type == 'function':
-        pass
-    elif type == 'Request':
-        pass
-    elif type == 'BytesIO':
-        pass
-    elif type == 'type':
-        pass
-    elif type == 'builtin_function_or_method':
-        pass
-    elif type == 'Mock':
-        pass
-    elif type == 'C':
-        pass
-    elif type == 'Cookie':
-        pass
-    elif type == 'BufferedReader':
-        pass
-    elif type == 'object':
-        pass
-    elif type == 'StringIO':
-        pass
-    elif type == 'Element':
-        pass
-    elif type == 'EmailMessage':
-        pass
-    elif type == 'method':
-        pass
-    elif type == '_UnixSelectorEventLoop':
-        pass
-    elif type == 'EnumMeta':
-        pass
-    elif type == 'coroutine':
-        pass
-    elif type == 'complex':
-        pass
-    elif type == 'method-wrapper':
-        pass
-    elif type == 'ConfigParser':
-        pass
-    else:
+
+    def RandomList (self, Length=256):
+        Length = random.randint(0, Length)
+        List = []
+        for i in range (0, Length):
+            Type = self.RandomType ()
+            Val = self.GetData (Type)
+            List.append (Val)
+        return List
+
+    def RandomDict (self, Length=256):
+        Length = random.randint(0, Length)
+        Dict = {}
+        for i in range (0, Length):
+            Type = self.RandomType ()
+            Val = self.GetData (Type)
+            Key = self.RandomInt ()
+            Dict [Key] = Val
+        return Dict
+
+    def RandomTuple (self, Length=256):
+        RdList = self.RandomList (Length)
+        return tuple (RdList)
+
+    def RandomSet (self, Length=256):
+        RdList = self.RandomList (Length)
+        return set (RdList)
+
+    def RandomMemView (self):
+        Type = self.RandomType ()
+        if Type == 'memoryview':
+            Barry = bytearray('RandomMemView','utf-8')
+            return memoryview(Barry)
+        else:
+            Val = self.GetData (Type)
+            return memoryview(Val)
+
+    def GetData (self, type):
+        self.CurDepth += 1
+        if self.CurDepth >= self.MaxDepth:
+            return None
+        
+        if type == 'NoneType':
+            TypeIndex = random.randint(0, TypeLen-1)
+            if TypeIndex%2 == 0:
+                return None
+            else:
+                return DataProvider (SuportTypes [TypeIndex])
+        elif type == 'str':
+            return self.RandomStr ()
+        elif type == 'int':
+            return self.RandomInt ()
+        elif type == 'bool':
+            return self.RandomBool ()
+        elif type == 'bytes':
+            return self.RandomBytes ()
+        elif type == 'list':
+            return self.RandomList ()
+        elif type == 'memoryview':
+            return self.RandomMemView ()
+        elif type == 'tuple':
+            return self.RandomTuple ()
+        elif type == 'dict':
+            return self.RandomDict ()
+        elif type == 'float':
+            return self.RandomFloat ()
+        elif type == 'function':
+            pass
+        elif type == 'Request':
+            pass
+        elif type == 'BytesIO':
+            pass
+        elif type == 'type':
+            pass
+        elif type == 'builtin_function_or_method':
+            pass
+        elif type == 'Mock':
+            pass
+        elif type == 'C':
+            pass
+        elif type == 'Cookie':
+            pass
+        elif type == 'BufferedReader':
+            pass
+        elif type == 'object':
+            pass
+        elif type == 'StringIO':
+            pass
+        elif type == 'Element':
+            pass
+        elif type == 'EmailMessage':
+            pass
+        elif type == 'method':
+            pass
+        elif type == '_UnixSelectorEventLoop':
+            pass
+        elif type == 'EnumMeta':
+            pass
+        elif type == 'coroutine':
+            pass
+        elif type == 'complex':
+            pass
+        elif type == 'method-wrapper':
+            pass
+        elif type == 'ConfigParser':
+            pass
+        elif type == 'set':
+            pass
+        else:
+            pass
+
+
+    def Encode (self, DataList):
         pass
 
 
-def Encode (DataList):
-    pass
 
-
-
-def DeEncode (ByteStream):
-    pass
+    def DeEncode (self, ByteStream):
+        pass
