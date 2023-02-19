@@ -44,8 +44,7 @@ def RunFuzzer (x):
 
         # add api type list
         if self.api != None:
-            TypeList = GetArgTypeList (self.api)
-            new.body = [self.op_new_argtypes (TypeList)] + new.body
+            new = self.op_type_list (new, self.api.Expr, self.init)
         
         DebugPrint (astunparse.unparse(new))
         self.pG.ShowPg ()

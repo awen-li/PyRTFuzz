@@ -35,6 +35,7 @@ class ApiExpr ():
 
     def GetExpr (self, Expr, Spec):
         #Spec.Show ()
+        TypeList = []
         Expr += '('
 
         ArgNum = len (Spec.Args)
@@ -43,6 +44,7 @@ class ApiExpr ():
         for arg in Spec.Args:
             para, ptype = arg.split(':')
             Expr += para
+            TypeList.append (ptype)
             #if DefArgNum >= ArgNum-ArgIndex:
             #    Expr += '=' + self.DefValue (Spec.Defas[DefArgNum-(ArgNum-ArgIndex)], ptype)
 
@@ -51,7 +53,7 @@ class ApiExpr ():
                 Expr += ','
 
         Expr += ')'          
-        return Expr
+        return Expr, TypeList
 
     def GetApiExpr (self, ApiSpec, ApiPath, Obj=''):
         #print ("[API]" + ApiSpec.ApiName)
@@ -59,19 +61,20 @@ class ApiExpr ():
         if len (ApiSpec.Ret) != 0:
             ApiExpr += 'ret = '
         ApiExpr += ApiSpec.ApiName
-        ApiExpr = self.GetExpr (ApiExpr, ApiSpec)
+        ApiExpr, TypeList = self.GetExpr (ApiExpr, ApiSpec)
         #print (ApiExpr)
-        return ApiExpr
+        return ApiExpr + '%%' + str(TypeList)
 
     def GetClsInit (self, ClsSpec, InitSpec, ApiPath):
         #print ("[CLASS]" + ClsSpec.clsName)
         InitExpr = 'obj = ' + ClsSpec.clsName
         if InitSpec == None:
             InitExpr += '()'
+            TypeList  = []
         else:
-            InitExpr = self.GetExpr (InitExpr, InitSpec)
+            InitExpr, TypeList = self.GetExpr (InitExpr, InitSpec)
         #print (InitExpr)
-        return InitExpr     
+        return InitExpr + '%%' + str(TypeList)   
 
     def GenExpr (self):
         ApiPath = ''

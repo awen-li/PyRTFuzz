@@ -5,12 +5,9 @@ from ast import *
 from .propgraph import *
 from .debug import *
 
-def GetArgTypeList (Spec):
-    TypeList = []
-    for arg in Spec.Args:
-        para, ptype = arg.split(':')
-        TypeList.append (ptype)
-    return TypeList
+def EXPR2TYPE (Expr):
+    Expr, TypeList = Expr.split('%%')
+    return Expr, eval(TypeList)
 
 def GetWrapF (pgNode):
     DebugPrint ("GetWrapF -> [%d]%s - %d" %(pgNode.Id, pgNode.Name, pgNode.Type))
@@ -36,6 +33,9 @@ def GetWrapF (pgNode):
     return None
 
 class AstOp (NodeTransformer):
+    ApiTypeList = 'API_TYPE_LIST'
+    ClsTypeList = 'CLS_TYPE_LIST'
+
     def __init__(self, Tmpt, Main='RunFuzzer'):
         self.Tmpt   = Tmpt
         self.pG     = PropGraph ()
@@ -154,8 +154,8 @@ class AstOp (NodeTransformer):
     def op_new_return (self, ret):
         return Return(value=ret)
 
-    def op_new_argtypes (self, TypeList):
-        return Assign(targets=[self.op_new_store ('TYPE_LIST')], value=self.op_new_const_list(TypeList))
+    def op_new_argtypes (self, Name, TypeList):
+        return Assign(targets=[self.op_new_store (Name)], value=self.op_new_const_list(TypeList))
         
     def op_value (self, node):
         return node
@@ -206,11 +206,14 @@ class AstOp (NodeTransformer):
         # translate api code into ast
         InitStmt = None
         if self.init != None:
-            InitStmt = ast.parse(self.init)
+            Init, _ = EXPR2TYPE (self.init)
+            InitStmt = ast.parse(Init)
             if self.HasArgs (InitStmt.body[0]):
                 #raise Exception("Warning: unsopport parameters in construction function!")
                 pass
-        CallStmt = ast.parse(self.api.Expr)
+        
+        Expr, _ = EXPR2TYPE (self.api.Expr)
+        CallStmt = ast.parse(Expr)
 
         # get the FP of current node
         if self.criterion.NodeVal == None or self.criterion.NodeVal.Attr != NodeVal.NodeAttr_FP:
@@ -249,6 +252,17 @@ class AstOp (NodeTransformer):
         tryStmt.handlers.append (handler)
 
         return [tryStmt]
+
+    def op_type_list (self, CurAst, ApiExpr, InitExpr):
+        if ApiExpr != None:
+            _, TypeList = EXPR2TYPE (ApiExpr)
+            CurAst.body = [self.op_new_argtypes (AstOp.ApiTypeList, TypeList)] + CurAst.body
+
+        if InitExpr != None:
+            _, TypeList = EXPR2TYPE (InitExpr)
+            CurAst.body = [self.op_new_argtypes (AstOp.ClsTypeList, TypeList)] + CurAst.body
+        
+        return CurAst
 
     def GenApp (self):
         print ("GenApp Default!")
