@@ -183,7 +183,7 @@ class AstOp (NodeTransformer):
     def op_call(self, node):
         return node
 
-    def op_insert_apiinvoke (self, node, InitStmt, CallStmt):
+    def op_insert_invocation (self, node, InitStmt, CallStmt):
         if InitStmt != None:
             if self.IsBlankBody (node.body):
                 node.body = InitStmt.body
@@ -205,6 +205,28 @@ class AstOp (NodeTransformer):
         else:
             return Assign(targets=[Tuple(elts=[self.op_new_store (arg) for arg in ArgName], ctx=Store())],
                           value=self.op_new_call (AstOp.ArgDeCode, None, InFp))
+
+    def op_new_invoke_api (self, api, Fp):
+        Expr, _ = EXPR2TYPE (api.Expr)
+        CallStmt = ast.parse(Expr)
+        if self.HasArgs (CallStmt.body[0]):
+            DeStmt = self.op_new_decoding (CallStmt.body[0].value.args, [AstOp.ApiTypeList, Fp[0]])
+            CallStmt.body = [DeStmt] + CallStmt.body
+
+        # update the graph
+        for Stmt in CallStmt.body:
+            self.pG.pg_call (Stmt.value, self.criterion)      
+        return CallStmt
+
+    def op_new_invoke_constructor (self, init):
+        if init != None:
+            Init, _ = EXPR2TYPE (self.init)
+            InitStmt = ast.parse(Init)
+            if self.HasArgs (InitStmt.body[0]):
+                #raise Exception("Warning: unsopport parameters in construction function!")
+                pass
+        else:
+            return None
     
     def op_functiondef (self, node):
         if self.criterion == None:
@@ -213,37 +235,20 @@ class AstOp (NodeTransformer):
         if node.name != self.criterion.Name:
             return node
 
-        # translate api code into ast
-        InitStmt = None
-        if self.init != None:
-            Init, _ = EXPR2TYPE (self.init)
-            InitStmt = ast.parse(Init)
-            if self.HasArgs (InitStmt.body[0]):
-                #raise Exception("Warning: unsopport parameters in construction function!")
-                pass
-
         # get the FP of current node
         if self.criterion.NodeVal == None or self.criterion.NodeVal.Attr != NodeVal.NodeAttr_FP:
             raise Exception("Unspected value type!")
         fp = self.criterion.NodeVal.Val
         DebugPrint (self.criterion.Name + " formal paras: " + str(fp))
 
-        # first edit the ast for invocation of the API
-        Expr, _ = EXPR2TYPE (self.api.Expr)
-        CallStmt = ast.parse(Expr)
-        if self.HasArgs (CallStmt.body[0]):
-            DeStmt = self.op_new_decoding (CallStmt.body[0].value.args, [AstOp.ApiTypeList, fp[0]])
-            # data flow into the parameter 1 by default
-            CallStmt.body = [DeStmt] + CallStmt.body
-            #[0].value.args[0] = self.op_new_value (fp[0])
-
-        # then update the graph
-        #print (ast.dump (CallStmt))
-        for Stmt in CallStmt.body:
-            self.pG.pg_call (Stmt.value, self.criterion)
+        # Obtain the ast for constructor of the API
+        InitStmt = self.op_new_invoke_constructor (self.init)
+        
+        # Obtain the ast for invocation of the API
+        CallStmt = self.op_new_invoke_api (self.api, fp)
 
         # encode new body
-        node = self.op_insert_apiinvoke (node, InitStmt, CallStmt)
+        node = self.op_insert_invocation (node, InitStmt, CallStmt)
 
         node.body = self.op_try_wrapper (node.body, self.excepts)
         

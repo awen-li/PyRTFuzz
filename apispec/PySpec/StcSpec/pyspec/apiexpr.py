@@ -33,7 +33,7 @@ class ApiExpr ():
         else:
             raise Exception("Unsupport type: " + str(Type))
 
-    def GetExpr (self, Expr, Spec):
+    def GetExpr (self, Expr, Spec, SetDefault=False):
         #Spec.Show ()
         TypeList = []
         Expr += '('
@@ -43,7 +43,13 @@ class ApiExpr ():
         ArgIndex = 0
         for arg in Spec.Args:
             para, ptype = arg.split(':')
-            Expr += para
+            if SetDefault == False:
+                Expr += para
+            else:
+                if ArgIndex >= len (Spec.Defas):
+                    Expr += 'None'
+                else:
+                    Expr += str(Spec.Defas[ArgIndex])
             TypeList.append (ptype)
             #if DefArgNum >= ArgNum-ArgIndex:
             #    Expr += '=' + self.DefValue (Spec.Defas[DefArgNum-(ArgNum-ArgIndex)], ptype)
@@ -72,7 +78,7 @@ class ApiExpr ():
             InitExpr += '()'
             TypeList  = []
         else:
-            InitExpr, TypeList = self.GetExpr (InitExpr, InitSpec)
+            InitExpr, TypeList = self.GetExpr (InitExpr, InitSpec, SetDefault=True)
         #print (InitExpr)
         return InitExpr + '%%' + str(TypeList)   
 

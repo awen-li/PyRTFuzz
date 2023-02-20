@@ -45,7 +45,7 @@ def RunFuzzer (x):
         self.api  = api
         self.excepts = excepts
 
-    def op_insert_apiinvoke (self, node, InitStmt, CallStmt):
+    def op_insert_invocation (self, node, InitStmt, CallStmt):
         pyFor = node.body[0]
         DebugPrint (ast.dump (pyFor))
         if not isinstance (pyFor, For):

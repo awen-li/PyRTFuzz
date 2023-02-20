@@ -59,7 +59,7 @@ def RunFuzzer (x):
     
         return [base]
 
-    def op_insert_apiinvoke (self, node, InitStmt, CallStmt):
+    def op_insert_invocation (self, node, InitStmt, CallStmt):
         if self.IsBlankBody (node.body):
             node.body = CallStmt.body
         else:
