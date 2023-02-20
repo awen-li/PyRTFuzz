@@ -195,6 +195,11 @@ class AstOp (NodeTransformer):
             else:
                 node.body += CallStmt.body
         return node
+
+    def op_new_decoding (self, CallArgs, InFp):
+        ArgName = [arg.id for arg in CallArgs]
+        return Assign(targets=[self.op_new_store (arg) for arg in ArgName], 
+                      value=self.op_new_call ('DeEncode', None, [InFp]))
     
     def op_functiondef (self, node):
         if self.criterion == None:
@@ -223,11 +228,15 @@ class AstOp (NodeTransformer):
 
         # first edit the ast
         if self.HasArgs (CallStmt.body[0]):
+            DeStmt = self.op_new_decoding (CallStmt.body[0].value.args, fp[0])
             # data flow into the parameter 1 by default
-            CallStmt.body[0].value.args[0] = self.op_new_value (fp[0])
+            CallStmt.body = [DeStmt] + CallStmt.body
+            #[0].value.args[0] = self.op_new_value (fp[0])
 
         # then update the graph
-        self.pG.pg_call (CallStmt.body[0].value, self.criterion)
+        print (ast.dump (CallStmt))
+        for Stmt in CallStmt.body:
+            self.pG.pg_call (Stmt.value, self.criterion)
 
         # encode new body
         node = self.op_insert_apiinvoke (node, InitStmt, CallStmt)
