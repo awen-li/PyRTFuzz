@@ -35,6 +35,7 @@ def GetWrapF (pgNode):
 class AstOp (NodeTransformer):
     ApiTypeList = 'API_TYPE_LIST'
     ClsTypeList = 'CLS_TYPE_LIST'
+    ArgDeCode   = 'DeEncode'
 
     def __init__(self, Tmpt, Main='RunFuzzer'):
         self.Tmpt   = Tmpt
@@ -198,8 +199,12 @@ class AstOp (NodeTransformer):
 
     def op_new_decoding (self, CallArgs, InFp):
         ArgName = [arg.id for arg in CallArgs]
-        return Assign(targets=[Tuple(elts=[self.op_new_store (arg) for arg in ArgName], ctx=Store())],
-                      value=self.op_new_call ('DeEncode', None, [InFp]))
+        if len (ArgName) == 1:
+            return Assign(targets=[self.op_new_store (arg) for arg in ArgName],
+                          value=self.op_new_call (AstOp.ArgDeCode, None, InFp))
+        else:
+            return Assign(targets=[Tuple(elts=[self.op_new_store (arg) for arg in ArgName], ctx=Store())],
+                          value=self.op_new_call (AstOp.ArgDeCode, None, InFp))
     
     def op_functiondef (self, node):
         if self.criterion == None:
@@ -216,9 +221,6 @@ class AstOp (NodeTransformer):
             if self.HasArgs (InitStmt.body[0]):
                 #raise Exception("Warning: unsopport parameters in construction function!")
                 pass
-        
-        Expr, _ = EXPR2TYPE (self.api.Expr)
-        CallStmt = ast.parse(Expr)
 
         # get the FP of current node
         if self.criterion.NodeVal == None or self.criterion.NodeVal.Attr != NodeVal.NodeAttr_FP:
@@ -226,9 +228,11 @@ class AstOp (NodeTransformer):
         fp = self.criterion.NodeVal.Val
         DebugPrint (self.criterion.Name + " formal paras: " + str(fp))
 
-        # first edit the ast
+        # first edit the ast for invocation of the API
+        Expr, _ = EXPR2TYPE (self.api.Expr)
+        CallStmt = ast.parse(Expr)
         if self.HasArgs (CallStmt.body[0]):
-            DeStmt = self.op_new_decoding (CallStmt.body[0].value.args, fp[0])
+            DeStmt = self.op_new_decoding (CallStmt.body[0].value.args, [AstOp.ApiTypeList, fp[0]])
             # data flow into the parameter 1 by default
             CallStmt.body = [DeStmt] + CallStmt.body
             #[0].value.args[0] = self.op_new_value (fp[0])
