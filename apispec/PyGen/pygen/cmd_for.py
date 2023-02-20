@@ -17,12 +17,12 @@ class PyFor(AstOp):
     
     ForTmpt = \
 f"""
-def demoFunc1(arg1):
+def demoFunc(arg):
     for {ForVar} in range (0, {ForRange}):
         pass
 
 def RunFuzzer (x):
-    demoFunc1 (x)
+    demoFunc (x)
 """
     def __init__(self):
         self.init = None

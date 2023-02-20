@@ -13,12 +13,12 @@ class demoCls:
     def __init__(self):
         pass
 
-    def demoFunc1(self, arg1):
+    def demoFunc(self, arg):
         pass
 
 def RunFuzzer (x):
     dc = demoCls ()
-    dc.demoFunc1 (x)
+    dc.demoFunc (x)
 """
     def __init__(self):
         super(NewOO, self).__init__(NewOO.OOTmpt)
