@@ -198,7 +198,7 @@ class AstOp (NodeTransformer):
 
     def op_new_decoding (self, CallArgs, InFp):
         ArgName = [arg.id for arg in CallArgs]
-        return Assign(targets=[self.op_new_store (arg) for arg in ArgName], 
+        return Assign(targets=[Tuple(elts=[self.op_new_store (arg) for arg in ArgName], ctx=Store())],
                       value=self.op_new_call ('DeEncode', None, [InFp]))
     
     def op_functiondef (self, node):
@@ -234,7 +234,7 @@ class AstOp (NodeTransformer):
             #[0].value.args[0] = self.op_new_value (fp[0])
 
         # then update the graph
-        print (ast.dump (CallStmt))
+        #print (ast.dump (CallStmt))
         for Stmt in CallStmt.body:
             self.pG.pg_call (Stmt.value, self.criterion)
 
