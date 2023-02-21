@@ -179,14 +179,13 @@ class DataProvider ():
             pass
 
 
-def PyfEncode (self, DataList):
+def PyfEncode (DataList):
     pass
 
 
 
-def PyfDecode (self, ByteStream):
+def PyfDecode (ByteStream):
     pass
-
 
 class DataProviderTest ():
     def AssertType (self, Value, Type):
