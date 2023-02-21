@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <apisepc version="1.0">
   <library name="sqlite3">
-    <module name="sqlite3.dbapi2" imports="['datetime', 'time', 'collections.abc']" importfrom="['_sqlite3:*']">
+    <module name="sqlite3.dbapi2" imports="['datetime', 'time', 'collections.abc']" importfrom="[]">
       <api name="DateFromTicks">
         <expr>ret = DateFromTicks(ticks)%%['int']</expr>
         <args>['ticks:int']</args>
@@ -847,9 +847,9 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>xmlrpcxmlrpc.client.ProtocolError</exception>
-        <exception>xmlrpcxmlrpc.client.ResponseError</exception>
-        <exception>xmlrpcxmlrpc.client.Fault</exception>
+        <exception>xmlrpc.client.ProtocolError</exception>
+        <exception>xmlrpc.client.ResponseError</exception>
+        <exception>xmlrpc.client.Fault</exception>
         <exception>ValueError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
@@ -2639,12 +2639,12 @@
       <class name="ObsoleteHeaderDefect" init="obj = ObsoleteHeaderDefect()%%[]"/>
       <class name="NonASCIILocalPartDefect" init="obj = NonASCIILocalPartDefect()%%[]"/>
       <errors>
-        <exception>emailemail.errors.MessageParseError</exception>
-        <exception>emailemail.errors.HeaderParseError</exception>
-        <exception>emailemail.errors.BoundaryError</exception>
-        <exception>emailemail.errors.MultipartConversionError</exception>
-        <exception>emailemail.errors.CharsetError</exception>
-        <exception>emailemail.errors.MessageDefect</exception>
+        <exception>email.errors.MessageParseError</exception>
+        <exception>email.errors.HeaderParseError</exception>
+        <exception>email.errors.BoundaryError</exception>
+        <exception>email.errors.MultipartConversionError</exception>
+        <exception>email.errors.CharsetError</exception>
+        <exception>email.errors.MessageDefect</exception>
       </errors>
     </module>
     <module name="email.quoprimime" imports="['re']" importfrom="['string:ascii_letters', 'string:digits', 'string:hexdigits']">
@@ -3697,7 +3697,7 @@
         <exception>UnicodeEncodeError</exception>
         <exception>ConnectionError</exception>
         <exception>ImportError</exception>
-        <exception>httphttp.client.RemoteDisconnected</exception>
+        <exception>http.client.RemoteDisconnected</exception>
       </errors>
     </module>
     <module name="http.server" imports="['copy', 'datetime', 'email.utils', 'html', 'http.client', 'io', 'mimetypes', 'os', 'posixpath', 'select', 'shutil', 'socket', 'socketserver', 'sys', 'time', 'urllib.parse', 'pwd', 'base64', 'binascii', 'subprocess', 'argparse', 'contextlib']" importfrom="['http:HTTPStatus']">
@@ -4630,7 +4630,7 @@
         <exception>KeyError</exception>
         <exception>Exception</exception>
         <exception>Exception</exception>
-        <exception>httphttp.cookiejar.LoadError</exception>
+        <exception>http.cookiejar.LoadError</exception>
         <exception>OSError</exception>
         <exception>OSError</exception>
         <exception>Exception</exception>
@@ -11562,7 +11562,7 @@
         <exception>AttributeError</exception>
       </errors>
     </module>
-    <module name="xml.sax.xmlreader" imports="[]" importfrom="['_exceptions:SAXNotSupportedException', '_exceptions:SAXNotRecognizedException']">
+    <module name="xml.sax.xmlreader" imports="[]" importfrom="[]">
       <class name="XMLReader" init="obj = XMLReader()%%[]">
         <api name="__init__">
           <expr>None</expr>
@@ -14070,7 +14070,7 @@
       </errors>
     </module>
     <module name="xml.etree.cElementTree" imports="[]" importfrom="['xml.etree.ElementTree:*']"/>
-    <module name="xml.etree.ElementTree" imports="['sys', 're', 'warnings', 'io', 'collections', 'collections.abc', 'contextlib']" importfrom="['_elementtree:*']">
+    <module name="xml.etree.ElementTree" imports="['sys', 're', 'warnings', 'io', 'collections', 'collections.abc', 'contextlib']" importfrom="[]">
       <class name="Element" init="obj = Element(None,None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -14457,7 +14457,7 @@
         <kwodefa>[None, None]</kwodefa>
       </api>
       <errors>
-        <exception>xmlxml.etree.ElementTree.ParseError</exception>
+        <exception>xml.etree.ElementTree.ParseError</exception>
         <exception>AttributeError</exception>
         <exception>AttributeError</exception>
         <exception>NameError</exception>
@@ -14503,8 +14503,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>xmlxml.etree.ElementInclude.FatalIncludeError</exception>
-        <exception>xmlxml.etree.ElementInclude.LimitedRecursiveIncludeError</exception>
+        <exception>xml.etree.ElementInclude.FatalIncludeError</exception>
+        <exception>xml.etree.ElementInclude.LimitedRecursiveIncludeError</exception>
       </errors>
     </module>
     <module name="xml.etree.ElementPath" imports="['re']" importfrom="[]">
@@ -15611,7 +15611,7 @@
         <exception>DistutilsExecError</exception>
       </errors>
     </module>
-    <module name="distutils.util" imports="['os', 're', 'importlib.util', 'string', 'sys', 'distutils.sysconfig', 'pwd', 'subprocess']" importfrom="['distutils.errors:DistutilsPlatformError', 'distutils.dep_util:newer', 'distutils.spawn:spawn', 'distutils:log', 'distutils.errors:DistutilsByteCompileError', '_aix_support:aix_platform', 'tempfile:mkstemp', 'py_compile:compile', 'lib2to3.refactor:RefactoringTool', 'lib2to3.refactor:get_fixers_from_package', 'distutils.dir_util:mkpath', 'distutils.file_util:copy_file', 'distutils.filelist:FileList']">
+    <module name="distutils.util" imports="['os', 're', 'importlib.util', 'string', 'sys', 'distutils.sysconfig', 'pwd', 'subprocess']" importfrom="['distutils.errors:DistutilsPlatformError', 'distutils.dep_util:newer', 'distutils.spawn:spawn', 'distutils:log', 'distutils.errors:DistutilsByteCompileError', 'tempfile:mkstemp', 'py_compile:compile', 'lib2to3.refactor:RefactoringTool', 'lib2to3.refactor:get_fixers_from_package', 'distutils.dir_util:mkpath', 'distutils.file_util:copy_file', 'distutils.filelist:FileList']">
       <class name="DistutilsRefactoringTool" init="obj = DistutilsRefactoringTool()%%[]"/>
       <class name="Mixin2to3" init="obj = Mixin2to3()%%[]"/>
       <api name="get_host_platform">
@@ -16025,23 +16025,23 @@
       <class name="DistutilsError" init="obj = DistutilsError()%%[]"/>
       <class name="CCompilerError" init="obj = CCompilerError()%%[]"/>
       <errors>
-        <exception>distutilsdistutils.errors.DistutilsModuleError</exception>
-        <exception>distutilsdistutils.errors.DistutilsClassError</exception>
-        <exception>distutilsdistutils.errors.DistutilsGetoptError</exception>
-        <exception>distutilsdistutils.errors.DistutilsArgError</exception>
-        <exception>distutilsdistutils.errors.DistutilsFileError</exception>
-        <exception>distutilsdistutils.errors.DistutilsOptionError</exception>
-        <exception>distutilsdistutils.errors.DistutilsSetupError</exception>
-        <exception>distutilsdistutils.errors.DistutilsPlatformError</exception>
-        <exception>distutilsdistutils.errors.DistutilsExecError</exception>
-        <exception>distutilsdistutils.errors.DistutilsInternalError</exception>
-        <exception>distutilsdistutils.errors.DistutilsTemplateError</exception>
-        <exception>distutilsdistutils.errors.DistutilsByteCompileError</exception>
-        <exception>distutilsdistutils.errors.PreprocessError</exception>
-        <exception>distutilsdistutils.errors.CompileError</exception>
-        <exception>distutilsdistutils.errors.LibError</exception>
-        <exception>distutilsdistutils.errors.LinkError</exception>
-        <exception>distutilsdistutils.errors.UnknownFileError</exception>
+        <exception>distutils.errors.DistutilsModuleError</exception>
+        <exception>distutils.errors.DistutilsClassError</exception>
+        <exception>distutils.errors.DistutilsGetoptError</exception>
+        <exception>distutils.errors.DistutilsArgError</exception>
+        <exception>distutils.errors.DistutilsFileError</exception>
+        <exception>distutils.errors.DistutilsOptionError</exception>
+        <exception>distutils.errors.DistutilsSetupError</exception>
+        <exception>distutils.errors.DistutilsPlatformError</exception>
+        <exception>distutils.errors.DistutilsExecError</exception>
+        <exception>distutils.errors.DistutilsInternalError</exception>
+        <exception>distutils.errors.DistutilsTemplateError</exception>
+        <exception>distutils.errors.DistutilsByteCompileError</exception>
+        <exception>distutils.errors.PreprocessError</exception>
+        <exception>distutils.errors.CompileError</exception>
+        <exception>distutils.errors.LibError</exception>
+        <exception>distutils.errors.LinkError</exception>
+        <exception>distutils.errors.UnknownFileError</exception>
       </errors>
     </module>
     <module name="distutils.dist" imports="['sys', 'os', 're', 'warnings', 'distutils.command', 'distutils.versionpredicate']" importfrom="['email:message_from_file', 'distutils.errors:*', 'distutils.fancy_getopt:FancyGetopt', 'distutils.fancy_getopt:translate_longopt', 'distutils.util:check_environ', 'distutils.util:strtobool', 'distutils.util:rfc822_escape', 'distutils:log', 'distutils.debug:DEBUG', 'pprint:pformat', 'configparser:ConfigParser', 'distutils.cmd:Command', 'distutils.core:gen_usage']">
@@ -18569,7 +18569,7 @@
     </module>
   </library>
   <library name="json">
-    <module name="json.scanner" imports="['re']" importfrom="['_json:make_scanner']">
+    <module name="json.scanner" imports="['re']" importfrom="[]">
       <api name="py_make_scanner">
         <expr>py_make_scanner(context)%%['JSONDecoder']</expr>
         <args>['context:JSONDecoder']</args>
@@ -18584,7 +18584,7 @@
         <exception>ImportError</exception>
       </errors>
     </module>
-    <module name="json.encoder" imports="['re']" importfrom="['_json:encode_basestring_ascii', '_json:encode_basestring', '_json:make_encoder']">
+    <module name="json.encoder" imports="['re']" importfrom="[]">
       <class name="JSONEncoder" init="obj = JSONEncoder()%%[]">
         <api name="__init__">
           <expr>None</expr>
@@ -18643,7 +18643,7 @@
         <exception>ImportError</exception>
       </errors>
     </module>
-    <module name="json.decoder" imports="['re']" importfrom="['json:scanner', '_json:scanstring']">
+    <module name="json.decoder" imports="['re']" importfrom="['json:scanner']">
       <class name="JSONDecoder" init="obj = JSONDecoder()%%[]">
         <api name="__init__">
           <expr>None</expr>
@@ -18698,7 +18698,7 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>jsonjson.decoder.JSONDecodeError</exception>
+        <exception>json.decoder.JSONDecodeError</exception>
         <exception>ValueError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
@@ -18728,14 +18728,14 @@
     </module>
   </library>
   <library name="collections">
-    <module name="collections.abc" imports="[]" importfrom="['_collections_abc:*']"/>
+    <module name="collections.abc" imports="[]" importfrom="[]"/>
   </library>
   <library name="urllib">
     <module name="urllib.error" imports="['urllib.response']" importfrom="[]">
       <errors>
-        <exception>urlliburllib.error.URLError</exception>
-        <exception>urlliburllib.error.HTTPError</exception>
-        <exception>urlliburllib.error.ContentTooShortError</exception>
+        <exception>urllib.error.URLError</exception>
+        <exception>urllib.error.HTTPError</exception>
+        <exception>urllib.error.ContentTooShortError</exception>
       </errors>
     </module>
     <module name="urllib.request" imports="['base64', 'bisect', 'email', 'hashlib', 'http.client', 'io', 'os', 'posixpath', 're', 'socket', 'string', 'sys', 'time', 'tempfile', 'contextlib', 'warnings', 'ssl', 'email.utils', 'mimetypes', 'ftplib', 'getpass', 'winreg']" importfrom="['urllib.error:URLError', 'urllib.error:HTTPError', 'urllib.error:ContentTooShortError', 'urllib.parse:urlparse', 'urllib.parse:urlsplit', 'urllib.parse:urljoin', 'urllib.parse:unwrap', 'urllib.parse:quote', 'urllib.parse:unquote', 'urllib.parse:unquote_to_bytes', 'urllib.parse:urlunparse', 'urllib.response:addinfourl', 'urllib.response:addclosehook', 'nturl2path:url2pathname', 'nturl2path:pathname2url', 'fnmatch:fnmatch']">
@@ -22238,7 +22238,7 @@
         <exception>OSError</exception>
       </errors>
     </module>
-    <module name="asyncio.events" imports="['contextvars', 'os', 'socket', 'subprocess', 'sys', 'threading']" importfrom="['_asyncio:get_running_loop', '_asyncio:get_event_loop']">
+    <module name="asyncio.events" imports="['contextvars', 'os', 'socket', 'subprocess', 'sys', 'threading']" importfrom="[]">
       <class name="Handle" init="obj = Handle(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -23708,8 +23708,8 @@
         </api>
       </class>
       <errors>
-        <exception>asyncioasyncio.exceptions.SendfileNotAvailableError</exception>
-        <exception>asyncioasyncio.exceptions.IncompleteReadError</exception>
+        <exception>asyncio.exceptions.SendfileNotAvailableError</exception>
+        <exception>asyncio.exceptions.IncompleteReadError</exception>
       </errors>
     </module>
     <module name="asyncio.threads" imports="['functools', 'contextvars']" importfrom="[]">
@@ -24061,7 +24061,7 @@
         <kwodefa>[]</kwodefa>
       </api>
     </module>
-    <module name="asyncio.base_futures" imports="['reprlib']" importfrom="['_thread:get_ident']">
+    <module name="asyncio.base_futures" imports="['reprlib']" importfrom="[]">
       <api name="isfuture">
         <expr>isfuture(obj)%%['coroutine']</expr>
         <args>['obj:coroutine']</args>
@@ -28401,7 +28401,7 @@
         <exception>curses.error</exception>
       </errors>
     </module>
-    <module name="curses.panel" imports="[]" importfrom="['_curses_panel:*']"/>
+    <module name="curses.panel" imports="[]" importfrom="[]"/>
     <module name="curses.has_key" imports="[]" importfrom="[]">
       <api name="has_key">
         <expr>ret = has_key(ch)%%['None']</expr>
@@ -28416,7 +28416,7 @@
     </module>
   </library>
   <library name=".">
-    <module name="operator" imports="[]" importfrom="['builtins:abs', 'functools:partial', '_operator:*']">
+    <module name="operator" imports="[]" importfrom="['builtins:abs', 'functools:partial']">
       <class name="attrgetter" init="obj = attrgetter(None)%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -29466,7 +29466,7 @@
         <exception>OSError</exception>
       </errors>
     </module>
-    <module name="opcode" imports="[]" importfrom="['_opcode:stack_effect']">
+    <module name="opcode" imports="[]" importfrom="[]">
       <api name="def_op">
         <expr>def_op(name,op)%%['None', 'None']</expr>
         <args>['name:None', 'op:None']</args>
@@ -29511,7 +29511,7 @@
         <exception>ImportError</exception>
       </errors>
     </module>
-    <module name="random" imports="['os']" importfrom="['warnings:warn', 'math:log', 'math:exp', 'math:pi', 'math:e', 'math:ceil', 'math:sqrt', 'math:acos', 'math:cos', 'math:sin', 'math:tau', 'math:floor', 'os:urandom', '_collections_abc:Set', '_collections_abc:Sequence', 'itertools:accumulate', 'itertools:repeat', 'bisect:bisect', '_sha512:sha512', 'statistics:stdev', 'statistics:fmean', 'time:perf_counter']">
+    <module name="random" imports="['os']" importfrom="['warnings:warn', 'math:log', 'math:exp', 'math:pi', 'math:e', 'math:ceil', 'math:sqrt', 'math:acos', 'math:cos', 'math:sin', 'math:tau', 'math:floor', 'os:urandom', 'itertools:accumulate', 'itertools:repeat', 'bisect:bisect', 'statistics:stdev', 'statistics:fmean', 'time:perf_counter']">
       <class name="Random" init="obj = Random(None)%%['None']">
         <api name="__init__">
           <expr>None</expr>
@@ -33237,7 +33237,7 @@
         <exception>OSError</exception>
       </errors>
     </module>
-    <module name="pathlib" imports="['fnmatch', 'functools', 'io', 'ntpath', 'os', 'posixpath', 're', 'sys', 'nt', 'pwd', 'grp']" importfrom="['_collections_abc:Sequence', 'errno:EINVAL', 'errno:ENOENT', 'errno:ENOTDIR', 'errno:EBADF', 'errno:ELOOP', 'operator:attrgetter', 'stat:S_ISDIR', 'stat:S_ISLNK', 'stat:S_ISREG', 'stat:S_ISSOCK', 'stat:S_ISBLK', 'stat:S_ISCHR', 'stat:S_ISFIFO', 'urllib.parse:quote_from_bytes']">
+    <module name="pathlib" imports="['fnmatch', 'functools', 'io', 'ntpath', 'os', 'posixpath', 're', 'sys', 'nt', 'pwd', 'grp']" importfrom="['errno:EINVAL', 'errno:ENOENT', 'errno:ENOTDIR', 'errno:EBADF', 'errno:ELOOP', 'operator:attrgetter', 'stat:S_ISDIR', 'stat:S_ISLNK', 'stat:S_ISREG', 'stat:S_ISSOCK', 'stat:S_ISBLK', 'stat:S_ISCHR', 'stat:S_ISFIFO', 'urllib.parse:quote_from_bytes']">
       <class name="PurePath" init="obj = PurePath()%%[]">
         <api name="as_posix">
           <expr>obj.ret = as_posix()%%[]</expr>
@@ -36414,7 +36414,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="datetime" imports="['time', 'math', 'sys', 'warnings']" importfrom="['_datetime:*']">
+    <module name="datetime" imports="['time', 'math', 'sys', 'warnings']" importfrom="[]">
       <class name="timedelta" init="obj = timedelta()%%[]">
         <api name="total_seconds">
           <expr>obj.ret = total_seconds()%%[]</expr>
@@ -36882,7 +36882,7 @@
         <exception>ImportError</exception>
       </errors>
     </module>
-    <module name="io" imports="['abc']" importfrom="['_io:DEFAULT_BUFFER_SIZE', '_io:BlockingIOError', '_io:UnsupportedOperation', '_io:open', '_io:open_code', '_io:FileIO', '_io:BytesIO', '_io:StringIO', '_io:BufferedReader', '_io:BufferedWriter', '_io:BufferedRWPair', '_io:BufferedRandom', '_io:IncrementalNewlineDecoder', '_io:TextIOWrapper']">
+    <module name="io" imports="['abc']" importfrom="[]">
       <class name="IOBase" init="obj = IOBase()%%[]"/>
       <class name="RawIOBase" init="obj = RawIOBase()%%[]"/>
       <class name="BufferedIOBase" init="obj = BufferedIOBase()%%[]"/>
@@ -37170,7 +37170,7 @@
         <exception>binascii.Incomplete</exception>
       </errors>
     </module>
-    <module name="bisect" imports="[]" importfrom="['_bisect:*']">
+    <module name="bisect" imports="[]" importfrom="[]">
       <api name="insort_right">
         <expr>insort_right(a,x,lo,hi)%%['list', 'int', 'int', 'int']</expr>
         <args>['a:list', 'x:int', 'lo:int', 'hi:int']</args>
@@ -37826,7 +37826,7 @@
         <exception>ImportError</exception>
       </errors>
     </module>
-    <module name="weakref" imports="['sys', 'itertools', 'gc']" importfrom="['_weakref:getweakrefcount', '_weakref:getweakrefs', '_weakref:ref', '_weakref:proxy', '_weakref:CallableProxyType', '_weakref:ProxyType', '_weakref:ReferenceType', '_weakrefset:WeakSet', 'copy:deepcopy']">
+    <module name="weakref" imports="['sys', 'itertools', 'gc']" importfrom="['copy:deepcopy']">
       <class name="WeakMethod" init="obj = WeakMethod()%%[]"/>
       <class name="WeakValueDictionary" init="obj = WeakValueDictionary()%%[]">
         <api name="__init__">
@@ -38019,7 +38019,7 @@
         <exception>Exception</exception>
       </errors>
     </module>
-    <module name="os" imports="['abc', 'sys', 'stat', 'posixpath', 'posix', 'ntpath', 'nt', 'warnings', 'subprocess', 'io']" importfrom="['posix:*', 'nt:*', 'os.path:curdir', 'os.path:pardir', 'os.path:sep', 'os.path:pathsep', 'os.path:defpath', 'os.path:extsep', 'os.path:altsep', 'os.path:devnull', '_collections_abc:MutableMapping', '_collections_abc:Mapping']">
+    <module name="os" imports="['abc', 'sys', 'stat', 'posixpath', 'posix', 'ntpath', 'nt', 'warnings', 'subprocess', 'io']" importfrom="['posix:*', 'nt:*', 'os.path:curdir', 'os.path:pardir', 'os.path:sep', 'os.path:pathsep', 'os.path:defpath', 'os.path:extsep', 'os.path:altsep', 'os.path:devnull']">
       <class name="PathLike" init="obj = PathLike()%%[]"/>
       <api name="makedirs">
         <expr>makedirs(name,mode,exist_ok)%%['str', 'int', 'bool']</expr>
@@ -39312,7 +39312,7 @@
         <kwodefa>[]</kwodefa>
       </api>
     </module>
-    <module name="sysconfig" imports="['os', 'sys', 're', 'pprint', 'types', 'warnings']" importfrom="['os.path:pardir', 'os.path:realpath', '_aix_support:aix_platform']">
+    <module name="sysconfig" imports="['os', 'sys', 're', 'pprint', 'types', 'warnings']" importfrom="['os.path:pardir', 'os.path:realpath']">
       <api name="is_python_build">
         <expr>is_python_build(check_home)%%['bool']</expr>
         <args>['check_home:bool']</args>
@@ -40022,7 +40022,7 @@
         <exception>AttributeError</exception>
       </errors>
     </module>
-    <module name="queue" imports="['threading', 'types']" importfrom="['collections:deque', 'heapq:heappush', 'heapq:heappop', 'time:monotonic', '_queue:SimpleQueue', '_queue:Empty']">
+    <module name="queue" imports="['threading', 'types']" importfrom="['collections:deque', 'heapq:heappush', 'heapq:heappop', 'time:monotonic']">
       <class name="Full" init="obj = Full()%%[]"/>
       <class name="Queue" init="obj = Queue(0)%%['NoneType']">
         <api name="__init__">
@@ -40880,7 +40880,7 @@
         <exception>OSError</exception>
       </errors>
     </module>
-    <module name="stat" imports="[]" importfrom="['_stat:*']">
+    <module name="stat" imports="[]" importfrom="[]">
       <api name="S_IMODE">
         <expr>S_IMODE(mode)%%['int']</expr>
         <args>['mode:int']</args>
@@ -41268,7 +41268,7 @@
         <exception>OSError</exception>
       </errors>
     </module>
-    <module name="symtable" imports="['weakref', 'os', 'sys']" importfrom="['_symtable:USE', '_symtable:DEF_GLOBAL', '_symtable:DEF_NONLOCAL', '_symtable:DEF_LOCAL', '_symtable:DEF_PARAM', '_symtable:DEF_IMPORT', '_symtable:DEF_BOUND', '_symtable:DEF_ANNOT', '_symtable:SCOPE_OFF', '_symtable:SCOPE_MASK', '_symtable:FREE', '_symtable:LOCAL', '_symtable:GLOBAL_IMPLICIT', '_symtable:GLOBAL_EXPLICIT', '_symtable:CELL']">
+    <module name="symtable" imports="['weakref', 'os', 'sys']" importfrom="[]">
       <class name="SymbolTableFactory" init="obj = SymbolTableFactory()%%[]">
         <api name="__init__">
           <expr>None</expr>
@@ -42195,7 +42195,7 @@
         <exception>BrokenPipeError</exception>
       </errors>
     </module>
-    <module name="warnings" imports="['sys', 'linecache', 'tracemalloc', 're', 'builtins', 'traceback']" importfrom="['_warnings:filters', '_warnings:warn', '_warnings:warn_explicit']">
+    <module name="warnings" imports="['sys', 'linecache', 'tracemalloc', 're', 'builtins', 'traceback']" importfrom="[]">
       <class name="WarningMessage" init="obj = WarningMessage(None,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -42308,7 +42308,7 @@
         <exception>ImportError</exception>
       </errors>
     </module>
-    <module name="pickle" imports="['sys', 're', 'io', 'codecs', 'doctest', 'argparse', 'pprint']" importfrom="['types:FunctionType', 'copyreg:dispatch_table', 'itertools:islice', 'functools:partial', 'sys:maxsize', 'struct:pack', 'struct:unpack', '_pickle:PickleBuffer', 'org.python.core:PyStringMap', '_pickle:PickleError', '_pickle:PicklingError', '_pickle:UnpicklingError', '_pickle:Pickler', '_pickle:Unpickler', '_pickle:dump', '_pickle:dumps', '_pickle:load', '_pickle:loads']">
+    <module name="pickle" imports="['sys', 're', 'io', 'codecs', 'doctest', 'argparse', 'pprint']" importfrom="['types:FunctionType', 'copyreg:dispatch_table', 'itertools:islice', 'functools:partial', 'sys:maxsize', 'struct:pack', 'struct:unpack', 'org.python.core:PyStringMap']">
       <class name="PickleError" init="obj = PickleError()%%[]"/>
       <api name="whichmodule">
         <expr>whichmodule(obj,name)%%['type', 'str']</expr>
@@ -42363,7 +42363,7 @@
         <exception>ImportError</exception>
       </errors>
     </module>
-    <module name="threading" imports="['os', 'sys', 'functools']" importfrom="['time:monotonic', '_weakrefset:WeakSet', 'itertools:islice', 'itertools:count', '_collections:deque', '_thread:stack_size']">
+    <module name="threading" imports="['os', 'sys', 'functools']" importfrom="['time:monotonic', 'itertools:islice', 'itertools:count']">
       <class name="Condition" init="obj = Condition(None)%%['None']">
         <api name="__init__">
           <expr>None</expr>
@@ -43464,7 +43464,7 @@
         <exception>socket.error</exception>
       </errors>
     </module>
-    <module name="decimal" imports="[]" importfrom="['_decimal:*']">
+    <module name="decimal" imports="[]" importfrom="[]">
       <errors>
         <exception>ImportError</exception>
       </errors>
@@ -43933,7 +43933,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="codecs" imports="['builtins', 'sys', 'encodings']" importfrom="['_codecs:*']">
+    <module name="codecs" imports="['builtins', 'sys', 'encodings']" importfrom="[]">
       <class name="CodecInfo" init="obj = CodecInfo()%%[]"/>
       <class name="Codec" init="obj = Codec()%%[]">
         <api name="encode">
@@ -45024,7 +45024,7 @@
         <exception>OSError</exception>
       </errors>
     </module>
-    <module name="functools" imports="['types', 'weakref']" importfrom="['abc:get_cache_token', 'collections:namedtuple', 'reprlib:recursive_repr', '_thread:RLock', 'types:GenericAlias', '_functools:cmp_to_key', '_functools:reduce', '_functools:partial']">
+    <module name="functools" imports="['types', 'weakref']" importfrom="['abc:get_cache_token', 'collections:namedtuple', 'reprlib:recursive_repr', 'types:GenericAlias']">
       <class name="K" init="obj = K()%%[]"/>
       <class name="partial" init="obj = partial()%%[]"/>
       <class name="partialmethod" init="obj = partialmethod()%%[]">
@@ -45155,7 +45155,7 @@
         <exception>TypeError</exception>
       </errors>
     </module>
-    <module name="imp" imports="['importlib', 'os', 'sys', 'tokenize', 'types', 'warnings', 'importlib.machinery']" importfrom="['_imp:lock_held', '_imp:acquire_lock', '_imp:release_lock', '_imp:get_frozen_object', '_imp:is_frozen_package', '_imp:init_frozen', '_imp:is_builtin', '_imp:is_frozen', '_imp:create_dynamic', 'importlib._bootstrap_external:SourcelessFileLoader', 'importlib:machinery', 'importlib:util']">
+    <module name="imp" imports="['importlib', 'os', 'sys', 'tokenize', 'types', 'warnings', 'importlib.machinery']" importfrom="['importlib._bootstrap_external:SourcelessFileLoader', 'importlib:machinery', 'importlib:util']">
       <class name="NullImporter" init="obj = NullImporter(None)%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -45584,7 +45584,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="socket" imports="['os', 'sys', 'io', 'selectors', 'errno', 'array']" importfrom="['_socket:*', 'enum:IntEnum', 'enum:IntFlag']">
+    <module name="socket" imports="['os', 'sys', 'io', 'selectors', 'errno', 'array']" importfrom="['enum:IntEnum', 'enum:IntFlag']">
       <class name="socket" init="obj = socket(int,int,int,None)%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
@@ -45840,7 +45840,7 @@
         <exception>error</exception>
       </errors>
     </module>
-    <module name="ssl" imports="['sys', 'os', 'socket', 'base64', 'errno', 'warnings']" importfrom="['collections:namedtuple', 'enum:Enum', 'enum:IntEnum', 'enum:IntFlag', '_ssl:OPENSSL_VERSION_NUMBER', '_ssl:OPENSSL_VERSION_INFO', '_ssl:OPENSSL_VERSION', '_ssl:MemoryBIO', '_ssl:SSLSession', '_ssl:SSLError', '_ssl:SSLZeroReturnError', '_ssl:SSLWantReadError', '_ssl:SSLWantWriteError', '_ssl:SSLSyscallError', '_ssl:SSLEOFError', '_ssl:SSLCertVerificationError', '_ssl:txt2obj', '_ssl:nid2obj', '_ssl:RAND_status', '_ssl:RAND_add', '_ssl:RAND_bytes', '_ssl:RAND_pseudo_bytes', '_ssl:RAND_egd', '_ssl:HAS_SNI', '_ssl:HAS_ECDH', '_ssl:HAS_NPN', '_ssl:HAS_ALPN', '_ssl:HAS_SSLv2', '_ssl:HAS_SSLv3', '_ssl:HAS_TLSv1', '_ssl:HAS_TLSv1_1', '_ssl:HAS_TLSv1_2', '_ssl:HAS_TLSv1_3', '_ssl:enum_certificates', '_ssl:enum_crls', 'socket:socket', 'socket:SOCK_STREAM', 'socket:create_connection', 'socket:SOL_SOCKET', 'socket:SO_TYPE', 'time:strptime', 'calendar:timegm']">
+    <module name="ssl" imports="['sys', 'os', 'socket', 'base64', 'errno', 'warnings']" importfrom="['collections:namedtuple', 'enum:Enum', 'enum:IntEnum', 'enum:IntFlag', 'socket:socket', 'socket:SOCK_STREAM', 'socket:create_connection', 'socket:SOL_SOCKET', 'socket:SO_TYPE', 'time:strptime', 'calendar:timegm']">
       <class name="TLSVersion" init="obj = TLSVersion()%%[]"/>
       <class name="Purpose" init="obj = Purpose()%%[]"/>
       <class name="SSLContext" init="obj = SSLContext()%%[]">
@@ -47491,7 +47491,7 @@
         <exception>IndexError</exception>
       </errors>
     </module>
-    <module name="abc" imports="[]" importfrom="['_abc:get_cache_token']">
+    <module name="abc" imports="[]" importfrom="[]">
       <class name="abstractclassmethod" init="obj = abstractclassmethod(None)%%['None']">
         <api name="__init__">
           <expr>None</expr>
@@ -47640,7 +47640,7 @@
         <exception>AttributeError</exception>
       </errors>
     </module>
-    <module name="signal" imports="[]" importfrom="['_signal:*', 'enum:IntEnum']">
+    <module name="signal" imports="[]" importfrom="['enum:IntEnum']">
       <api name="signal">
         <expr>signal(signalnum,handler)%%['Signals', 'function']</expr>
         <args>['signalnum:Signals', 'handler:function']</args>
@@ -47795,7 +47795,7 @@
         <exception>AttributeError</exception>
       </errors>
     </module>
-    <module name="reprlib" imports="['builtins']" importfrom="['itertools:islice', '_thread:get_ident']">
+    <module name="reprlib" imports="['builtins']" importfrom="['itertools:islice']">
       <class name="Repr" init="obj = Repr()%%[]">
         <api name="__init__">
           <expr>None</expr>
@@ -47913,7 +47913,7 @@
         <exception>Exception</exception>
       </errors>
     </module>
-    <module name="contextvars" imports="[]" importfrom="['_contextvars:Context', '_contextvars:ContextVar', '_contextvars:Token', '_contextvars:copy_context']"/>
+    <module name="contextvars" imports="[]" importfrom="[]"/>
     <module name="numbers" imports="[]" importfrom="['abc:ABCMeta', 'abc:abstractmethod']">
       <class name="Number" init="obj = Number()%%[]"/>
       <class name="Complex" init="obj = Complex()%%[]">
@@ -48025,7 +48025,7 @@
         </api>
       </class>
     </module>
-    <module name="hashlib" imports="[]" importfrom="['_hashlib:pbkdf2_hmac', '_hashlib:scrypt']">
+    <module name="hashlib" imports="[]" importfrom="[]">
       <errors>
         <exception>ImportError</exception>
         <exception>AttributeError</exception>
@@ -48125,8 +48125,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="open">
-        <expr>open(filename)%%['PosixPath']</expr>
-        <args>['filename:PosixPath']</args>
+        <expr>open(filename)%%['str']</expr>
+        <args>['filename:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -48175,7 +48175,7 @@
         <exception>Exception</exception>
       </errors>
     </module>
-    <module name="csv" imports="['re']" importfrom="['_csv:Error', '_csv:writer', '_csv:reader', '_csv:register_dialect', '_csv:unregister_dialect', '_csv:get_dialect', '_csv:list_dialects', '_csv:field_size_limit', '_csv:QUOTE_MINIMAL', '_csv:QUOTE_ALL', '_csv:QUOTE_NONNUMERIC', '_csv:QUOTE_NONE', '_csv:Dialect', 'io:StringIO']">
+    <module name="csv" imports="['re']" importfrom="['io:StringIO']">
       <class name="Dialect" init="obj = Dialect()%%[]">
         <api name="__init__">
           <expr>None</expr>
@@ -49623,7 +49623,7 @@
         <exception>ImportError</exception>
       </errors>
     </module>
-    <module name="bz2" imports="['io', 'os']" importfrom="['builtins:open', 'threading:RLock', '_bz2:BZ2Compressor', '_bz2:BZ2Decompressor']">
+    <module name="bz2" imports="['io', 'os']" importfrom="['builtins:open', 'threading:RLock']">
       <class name="BZ2File" init="obj = BZ2File(r,None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
@@ -50014,7 +50014,7 @@
         <exception>Exception</exception>
       </errors>
     </module>
-    <module name="lzma" imports="['builtins', 'io', 'os']" importfrom="['_lzma:*']">
+    <module name="lzma" imports="['builtins', 'io', 'os']" importfrom="[]">
       <class name="LZMAFile" init="obj = LZMAFile(None,r)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
@@ -50101,7 +50101,7 @@
         <exception>LZMAError</exception>
       </errors>
     </module>
-    <module name="sre_constants" imports="[]" importfrom="['_sre:MAXREPEAT', '_sre:MAXGROUPS']">
+    <module name="sre_constants" imports="[]" importfrom="[]">
       <class name="error" init="obj = error(None,None,None)%%['None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
@@ -51061,7 +51061,7 @@
         <exception>error_proto</exception>
       </errors>
     </module>
-    <module name="heapq" imports="['doctest']" importfrom="['_heapq:*']">
+    <module name="heapq" imports="['doctest']" importfrom="[]">
       <api name="heappush">
         <expr>heappush(heap,item)%%['list', 'int']</expr>
         <args>['heap:list', 'item:int']</args>
@@ -52695,7 +52695,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="locale" imports="['sys', 'encodings', 'encodings.aliases', 're', 'functools', 'warnings', 'os']" importfrom="['builtins:str', '_locale:*']">
+    <module name="locale" imports="['sys', 'encodings', 'encodings.aliases', 're', 'functools', 'warnings', 'os']" importfrom="['builtins:str']">
       <api name="localeconv">
         <expr>localeconv()%%[]</expr>
         <args>[]</args>
@@ -52847,7 +52847,7 @@
         <exception>NameError</exception>
       </errors>
     </module>
-    <module name="ast" imports="['sys', 'inspect', 'warnings', 'argparse']" importfrom="['_ast:*', 'contextlib:contextmanager', 'contextlib:nullcontext', 'enum:IntEnum', 'enum:auto', 'collections:deque']">
+    <module name="ast" imports="['sys', 'inspect', 'warnings', 'argparse']" importfrom="['contextlib:contextmanager', 'contextlib:nullcontext', 'enum:IntEnum', 'enum:auto', 'collections:deque']">
       <class name="NodeVisitor" init="obj = NodeVisitor()%%[]">
         <api name="visit_Constant">
           <expr>obj.ret = visit_Constant(node)%%['None']</expr>
@@ -53299,7 +53299,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="struct" imports="[]" importfrom="['_struct:*']"/>
+    <module name="struct" imports="[]" importfrom="[]"/>
     <module name="token" imports="[]" importfrom="[]">
       <api name="ISTERMINAL">
         <expr>ret = ISTERMINAL(x)%%['None']</expr>

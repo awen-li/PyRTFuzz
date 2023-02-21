@@ -32,6 +32,8 @@ from .pyfuzz_core import Done
 
 from .pyfuzz_encode import DataProvider
 from .pyfuzz_encode import DataProviderTest
+from .pyfuzz_encode import PyfEncode
+from .pyfuzz_encode import PyfDecode
 
 from .native import FuzzLv1   
 from .native import FuzzLv2   

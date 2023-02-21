@@ -12,9 +12,13 @@ else:
     atheris.SendEndReq ()
     sys.exit (0)
 
+InitFlag = '../experiments/seeds/initial_done'
+if os.path.exists (InitFlag):
+    os.remove (InitFlag)
+
 Ret = atheris.GetInitialSeeds ('../experiments/seeds')
 if Ret == 'done':
-    if not os.path.exists ('../experiments/seeds/initial_done'):
+    if not os.path.exists (InitFlag):
         print ("### Warning: Initialization Flag Missing!")
     print ("atheris.GetInitialSeeds success with Action: initial")
 else:

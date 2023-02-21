@@ -190,7 +190,7 @@ class Core ():
             raise Exception("Fail to obtain current executed module!")
 
         PyImpt = PyImport (self.ExeModule)
-        App = PyImpt.GenImport () + App
+        App = PyImpt.GenImport (App) + App
         self.ExeModule = None
         return App
 
