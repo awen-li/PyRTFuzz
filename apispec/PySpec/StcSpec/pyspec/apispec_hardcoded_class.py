@@ -3,6 +3,7 @@
 class HardcodedCls ():
     def __init__ (self):
         self.HdcCls = {}
+        self.SetUp ()
 
     def GetDefaults (self, ClsPath):
         return self.HdcCls.get (ClsPath)
