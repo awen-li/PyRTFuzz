@@ -49,7 +49,10 @@ class ApiExpr ():
                 if ArgIndex >= len (Spec.Defas):
                     Expr += 'None'
                 else:
-                    Expr += str(Spec.Defas[ArgIndex])
+                    if Spec.Defas[ArgIndex] == '':
+                        Expr += '\'\''
+                    else:
+                        Expr += str(Spec.Defas[ArgIndex])
             TypeList.append (ptype)
             #if DefArgNum >= ArgNum-ArgIndex:
             #    Expr += '=' + self.DefValue (Spec.Defas[DefArgNum-(ArgNum-ArgIndex)], ptype)
