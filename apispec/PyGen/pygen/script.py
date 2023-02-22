@@ -113,18 +113,31 @@ class CodeGen ():
         #print (Script)
         self.Core.Run (Script, OutPut=PyFile)
 
+    def DefaultNumber (self):
+        Number = os.env.get ("INIT_SEED_NUM")
+        if Number == None:
+            return 0xffffff
+        else:
+            return int (Number)
+
     def GenInitPy (self, Dir):
         ApiList = self.Core.ApiList
         InitStatNum = 1
         pbar = ProgressBar()
+        PyNum = 0
+        MaxNumber = self.DefaultNumber ()
         for ApiPath, ApiInfo in pbar(ApiList.items ()):
             PyFile  = Dir + '/' + str(InitStatNum) + '#' + ApiPath.replace('.', '#') + '.py'
-            #print ("### Generating " + PyFile)
+            
             try:
                 self.GenPy (ApiPath, InitStatNum, PyFile, ApiInfo.Class != None)
             except Exception as e:     
                 traceback.print_exc ()
                 return None
+            PyNum += 1
+            if PyNum >= MaxNumber:
+                break
+        print ("### Generating %d seeds..." %PyNum)
         return Dir
 
     def GenRandomPy (self, Dir, StateNum=16):

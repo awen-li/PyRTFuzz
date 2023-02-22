@@ -35,7 +35,7 @@ def GetWrapF (pgNode):
 class AstOp (NodeTransformer):
     ApiTypeList = 'API_TYPE_LIST'
     ClsTypeList = 'CLS_TYPE_LIST'
-    ArgDeCode   = 'DeEncode'
+    ArgDeCode   = 'PyDecode'
 
     def __init__(self, Tmpt, Main='RunFuzzer'):
         self.Tmpt   = Tmpt
@@ -210,8 +210,8 @@ class AstOp (NodeTransformer):
         Expr, _ = EXPR2TYPE (api.Expr)
         CallStmt = ast.parse(Expr)
         if self.HasArgs (CallStmt.body[0]):
-            DeStmt = self.op_new_decoding (CallStmt.body[0].value.args, [AstOp.ApiTypeList, Fp[0]])
-            CallStmt.body = [DeStmt] + CallStmt.body
+            DefStmt = self.op_new_decoding (CallStmt.body[0].value.args, [AstOp.ApiTypeList, Fp[0]])
+            CallStmt.body = [DefStmt] + CallStmt.body
 
         # update the graph
         for Stmt in CallStmt.body:
@@ -222,9 +222,7 @@ class AstOp (NodeTransformer):
         if init != None:
             Init, _ = EXPR2TYPE (self.init)
             InitStmt = ast.parse(Init)
-            if self.HasArgs (InitStmt.body[0]):
-                #raise Exception("Warning: unsopport parameters in construction function!")
-                pass
+            return InitStmt
         else:
             return None
     
