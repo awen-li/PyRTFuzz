@@ -78,8 +78,8 @@ class ApiSpecCheck ():
 
     def LogApiInfo (self, libName, mdName, claName, api):
         with open (logFileName, "a") as f:
-            print ("[lib]%s, [module]%s, [class]%s, [api]Args:%s, PosArgs:%s, KwoArgs:%s, Ret:%s"\
-                %(libName, mdName, claName, str(api.Args), str(api.PosArgs), str(api.KwoArgs), str(api.Ret)), file=f)
+            print ("[lib]%s, [module]%s, [class]%s, [api]%s -- Args:%s, PosArgs:%s, KwoArgs:%s, Ret:%s"\
+                %(libName, mdName, claName, api.ApiName, str(api.Args), str(api.PosArgs), str(api.KwoArgs), str(api.Ret)), file=f)
 
     def LogTypeInfo (self):
         SortedTypes = sorted (self.Types.items (), key=lambda x:x[1], reverse=True)

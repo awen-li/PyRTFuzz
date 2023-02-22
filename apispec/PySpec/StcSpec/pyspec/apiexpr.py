@@ -44,16 +44,16 @@ class ApiExpr ():
         else:
             return 'None'
 
-    def LogExprExcept (self, Expr):
+    def LogExprExcept (self, ApiPath, Expr):
         with open (self.ExprExcept, 'a') as log:
-            print ("%s" %Expr, file=log)
+            print ("%s -- %s" %(ApiPath, Expr), file=log)
 
-    def GetExpr (self, Expr, Spec, SetDefault=False, Log=False):
+    def GetExpr (self, ApiPath, Expr, Spec, SetDefault=False, Log=False):
         #Spec.Show ()    
         ArgNum = len (Spec.Args)
         DefArgNum = len (Spec.Defas)
         if ArgNum != DefArgNum and Log == True:
-            self.LogExprExcept (Expr)
+            self.LogExprExcept (ApiPath, Expr)
 
         TypeList = []
         Expr += '('
@@ -87,7 +87,7 @@ class ApiExpr ():
         if len (ApiSpec.Ret) != 0:
             ApiExpr += 'ret = '
         ApiExpr += ApiSpec.ApiName
-        ApiExpr, TypeList = self.GetExpr (ApiExpr, ApiSpec)
+        ApiExpr, TypeList = self.GetExpr (ApiPath, ApiExpr, ApiSpec)
         #print (ApiExpr)
         return ApiExpr + '%%' + str(TypeList)
 
@@ -98,17 +98,14 @@ class ApiExpr ():
             InitExpr += '()'
             TypeList  = []
         else:
-            InitExpr, TypeList = self.GetExpr (InitExpr, InitSpec, SetDefault=True, Log=True)
+            InitExpr, TypeList = self.GetExpr (ApiPath, InitExpr, InitSpec, SetDefault=True, Log=True)
         #print (InitExpr)
         return InitExpr + '%%' + str(TypeList)   
 
     def GenExpr (self):
-        ApiPath = ''
         for libName, pyLib in self.PyLibs.items ():
-            if libName != '.':
-                ApiPath = libName
             for mdName, pyMoudle in pyLib.Modules.items ():
-                ApiPath += '.' + mdName
+                ApiPath = mdName
                 for clsName, cls in pyMoudle.Classes.items ():
                     hasInit = False
                     for apiName, api in cls.Apis.items ():
