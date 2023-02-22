@@ -293,7 +293,7 @@
   <library name="xmlrpc">
     <module name="xmlrpc.client" imports="['base64', 'sys', 'time', 'http.client', 'urllib.parse', 'errno', 'gzip']" importfrom="['datetime:datetime', 'decimal:Decimal', 'xml.parsers:expat', 'io:BytesIO']">
       <class name="Error" init="obj = Error()%%[]"/>
-      <class name="DateTime" init="obj = DateTime(0)%%['NoneType']">
+      <class name="DateTime" init="obj = DateTime()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['value:NoneType']</args>
@@ -325,7 +325,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Binary" init="obj = Binary(None)%%['NoneType']">
+      <class name="Binary" init="obj = Binary()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['data:NoneType']</args>
@@ -379,7 +379,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Marshaller" init="obj = Marshaller(None,False)%%['NoneType', 'NoneType']">
+      <class name="Marshaller" init="obj = Marshaller()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['encoding:NoneType', 'allow_none:NoneType']</args>
@@ -491,7 +491,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Unmarshaller" init="obj = Unmarshaller(False,False)%%['NoneType', 'NoneType']">
+      <class name="Unmarshaller" init="obj = Unmarshaller()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['use_datetime:NoneType', 'use_builtin_types:NoneType']</args>
@@ -739,7 +739,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Transport" init="obj = Transport(False,False)%%['NoneType', 'NoneType']">
+      <class name="Transport" init="obj = Transport()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['use_datetime:NoneType', 'use_builtin_types:NoneType']</args>
@@ -761,7 +761,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="SafeTransport" init="obj = SafeTransport(False,False)%%['NoneType', 'NoneType']">
+      <class name="SafeTransport" init="obj = SafeTransport()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['use_datetime:NoneType', 'use_builtin_types:NoneType']</args>
@@ -773,7 +773,7 @@
           <kwodefa>[None, None]</kwodefa>
         </api>
       </class>
-      <class name="ServerProxy" init="obj = ServerProxy(None,None,False,False,False,False,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="ServerProxy" init="obj = ServerProxy(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['uri:NoneType', 'transport:NoneType', 'encoding:NoneType', 'verbose:NoneType', 'allow_none:NoneType', 'use_datetime:NoneType', 'use_builtin_types:NoneType']</args>
@@ -865,7 +865,7 @@
       </errors>
     </module>
     <module name="xmlrpc.server" imports="['html', 'http.server', 'socketserver', 'sys', 'os', 're', 'pydoc', 'traceback', 'fcntl', 'datetime']" importfrom="['xmlrpc.client:Fault', 'xmlrpc.client:dumps', 'xmlrpc.client:loads', 'xmlrpc.client:gzip_encode', 'xmlrpc.client:gzip_decode', 'http.server:BaseHTTPRequestHandler', 'functools:partial', 'inspect:signature']">
-      <class name="SimpleXMLRPCDispatcher" init="obj = SimpleXMLRPCDispatcher(False,None,False)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="SimpleXMLRPCDispatcher" init="obj = SimpleXMLRPCDispatcher()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['allow_none:NoneType', 'encoding:NoneType', 'use_builtin_types:NoneType']</args>
@@ -989,7 +989,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="SimpleXMLRPCServer" init="obj = SimpleXMLRPCServer(SimpleXMLRPCRequestHandler,True,False,None,True,False,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SimpleXMLRPCServer" init="obj = SimpleXMLRPCServer(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['addr:NoneType', 'requestHandler:NoneType', 'logRequests:NoneType', 'allow_none:NoneType', 'encoding:NoneType', 'bind_and_activate:NoneType', 'use_builtin_types:NoneType']</args>
@@ -1001,7 +1001,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="MultiPathXMLRPCServer" init="obj = MultiPathXMLRPCServer(SimpleXMLRPCRequestHandler,True,False,None,True,False,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="MultiPathXMLRPCServer" init="obj = MultiPathXMLRPCServer(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['addr:NoneType', 'requestHandler:NoneType', 'logRequests:NoneType', 'allow_none:NoneType', 'encoding:NoneType', 'bind_and_activate:NoneType', 'use_builtin_types:NoneType']</args>
@@ -1033,7 +1033,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="CGIXMLRPCRequestHandler" init="obj = CGIXMLRPCRequestHandler(False,None,False)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="CGIXMLRPCRequestHandler" init="obj = CGIXMLRPCRequestHandler()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['allow_none:NoneType', 'encoding:NoneType', 'use_builtin_types:NoneType']</args>
@@ -1141,7 +1141,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DocXMLRPCServer" init="obj = DocXMLRPCServer(DocXMLRPCRequestHandler,True,False,None,True,False,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="DocXMLRPCServer" init="obj = DocXMLRPCServer(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['addr:NoneType', 'requestHandler:NoneType', 'logRequests:NoneType', 'allow_none:NoneType', 'encoding:NoneType', 'bind_and_activate:NoneType', 'use_builtin_types:NoneType']</args>
@@ -1281,7 +1281,7 @@
       </class>
     </module>
     <module name="email.message" imports="['re', 'uu', 'quopri']" importfrom="['io:BytesIO', 'io:StringIO', 'email:utils', 'email:errors', 'email._policybase:Policy', 'email._policybase:compat32', 'email:charset', 'email._encoded_words:decode_b', 'email.generator:Generator', 'email.generator:BytesGenerator']">
-      <class name="Message" init="obj = Message(compat32)%%['NoneType']">
+      <class name="Message" init="obj = Message()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['policy:NoneType']</args>
@@ -1513,7 +1513,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="MIMEPart" init="obj = MIMEPart(None)%%['NoneType']">
+      <class name="MIMEPart" init="obj = MIMEPart()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['policy:NoneType']</args>
@@ -1799,7 +1799,7 @@
       </errors>
     </module>
     <module name="email.charset" imports="['email.base64mime', 'email.quoprimime']" importfrom="['functools:partial', 'email:errors', 'email.encoders:encode_7or8bit']">
-      <class name="Charset" init="obj = Charset(DEFAULT_CHARSET)%%['NoneType']">
+      <class name="Charset" init="obj = Charset()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['input_charset:NoneType']</args>
@@ -1925,7 +1925,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FeedParser" init="obj = FeedParser(None)%%['NoneType']">
+      <class name="FeedParser" init="obj = FeedParser()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['_factory:NoneType']</args>
@@ -1953,7 +1953,7 @@
       </errors>
     </module>
     <module name="email.generator" imports="['re', 'sys', 'time', 'random']" importfrom="['copy:deepcopy', 'io:StringIO', 'io:BytesIO']">
-      <class name="Generator" init="obj = Generator(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Generator" init="obj = Generator(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['outfp:NoneType', 'mangle_from_:NoneType', 'maxheaderlen:NoneType']</args>
@@ -1966,7 +1966,7 @@
         </api>
       </class>
       <class name="BytesGenerator" init="obj = BytesGenerator()%%[]"/>
-      <class name="DecodedGenerator" init="obj = DecodedGenerator(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="DecodedGenerator" init="obj = DecodedGenerator(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['outfp:NoneType', 'mangle_from_:NoneType', 'maxheaderlen:NoneType', 'fmt:NoneType']</args>
@@ -1980,7 +1980,7 @@
       </class>
     </module>
     <module name="email.parser" imports="[]" importfrom="['io:StringIO', 'io:TextIOWrapper', 'email.feedparser:FeedParser', 'email.feedparser:BytesFeedParser', 'email._policybase:compat32']">
-      <class name="Parser" init="obj = Parser(None)%%['NoneType']">
+      <class name="Parser" init="obj = Parser()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['_class:NoneType']</args>
@@ -2243,7 +2243,7 @@
       </api>
     </module>
     <module name="email.headerregistry" imports="[]" importfrom="['types:MappingProxyType', 'email:utils', 'email:errors']">
-      <class name="Address" init="obj = Address('','','',None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Address" init="obj = Address()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['display_name:NoneType', 'username:NoneType', 'domain:NoneType', 'addr_spec:NoneType']</args>
@@ -2295,7 +2295,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Group" init="obj = Group(None,None)%%['NoneType', 'NoneType']">
+      <class name="Group" init="obj = Group()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['display_name:NoneType', 'addresses:NoneType']</args>
@@ -2501,7 +2501,7 @@
         </api>
       </class>
       <class name="MessageIDHeader" init="obj = MessageIDHeader()%%[]"/>
-      <class name="HeaderRegistry" init="obj = HeaderRegistry(BaseHeader,UnstructuredHeader,True)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="HeaderRegistry" init="obj = HeaderRegistry()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['base_class:NoneType', 'default_class:NoneType', 'use_default_map:NoneType']</args>
@@ -2525,7 +2525,7 @@
       </class>
     </module>
     <module name="email.header" imports="['re', 'binascii', 'email.quoprimime', 'email.base64mime']" importfrom="['email.errors:HeaderParseError', 'email:charset']">
-      <class name="Header" init="obj = Header(None,None,None,None, ,strict)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Header" init="obj = Header()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['s:NoneType', 'charset:NoneType', 'maxlinelen:NoneType', 'header_name:NoneType', 'continuation_ws:NoneType', 'errors:NoneType']</args>
@@ -2764,7 +2764,7 @@
       </class>
     </module>
     <module name="email.mime.message" imports="[]" importfrom="['email:message', 'email.mime.nonmultipart:MIMENonMultipart']">
-      <class name="MIMEMessage" init="obj = MIMEMessage(rfc822,None)%%['NoneType', 'NoneType']">
+      <class name="MIMEMessage" init="obj = MIMEMessage(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['_msg:NoneType', '_subtype:NoneType']</args>
@@ -2778,7 +2778,7 @@
       </class>
     </module>
     <module name="email.mime.text" imports="[]" importfrom="['email.charset:Charset', 'email.mime.nonmultipart:MIMENonMultipart']">
-      <class name="MIMEText" init="obj = MIMEText(plain,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="MIMEText" init="obj = MIMEText(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['_text:NoneType', '_subtype:NoneType', '_charset:NoneType']</args>
@@ -2792,7 +2792,7 @@
       </class>
     </module>
     <module name="email.mime.application" imports="[]" importfrom="['email:encoders', 'email.mime.nonmultipart:MIMENonMultipart']">
-      <class name="MIMEApplication" init="obj = MIMEApplication(octet-stream,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="MIMEApplication" init="obj = MIMEApplication(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['_data:NoneType', '_subtype:NoneType', '_encoder:NoneType']</args>
@@ -2820,7 +2820,7 @@
       </class>
     </module>
     <module name="email.mime.audio" imports="['sndhdr']" importfrom="['io:BytesIO', 'email:encoders', 'email.mime.nonmultipart:MIMENonMultipart']">
-      <class name="MIMEAudio" init="obj = MIMEAudio(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="MIMEAudio" init="obj = MIMEAudio(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['_audiodata:NoneType', '_subtype:NoneType', '_encoder:NoneType']</args>
@@ -2834,7 +2834,7 @@
       </class>
     </module>
     <module name="email.mime.image" imports="['imghdr']" importfrom="['email:encoders', 'email.mime.nonmultipart:MIMENonMultipart']">
-      <class name="MIMEImage" init="obj = MIMEImage(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="MIMEImage" init="obj = MIMEImage(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['_imagedata:NoneType', '_subtype:NoneType', '_encoder:NoneType']</args>
@@ -2848,7 +2848,7 @@
       </class>
     </module>
     <module name="email.mime.multipart" imports="[]" importfrom="['email.mime.base:MIMEBase']">
-      <class name="MIMEMultipart" init="obj = MIMEMultipart(mixed,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="MIMEMultipart" init="obj = MIMEMultipart()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['_subtype:NoneType', 'boundary:NoneType', '_subparts:NoneType']</args>
@@ -2943,7 +2943,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="SimpleHandler" init="obj = SimpleHandler(True,False,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SimpleHandler" init="obj = SimpleHandler(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stdin:NoneType', 'stdout:NoneType', 'stderr:NoneType', 'environ:NoneType', 'multithread:NoneType', 'multiprocess:NoneType']</args>
@@ -3291,7 +3291,7 @@
       </api>
     </module>
     <module name="wsgiref.headers" imports="['re']" importfrom="[]">
-      <class name="Headers" init="obj = Headers(None)%%['NoneType']">
+      <class name="Headers" init="obj = Headers()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['headers:NoneType']</args>
@@ -3365,7 +3365,7 @@
       </class>
     </module>
     <module name="wsgiref.util" imports="['posixpath', 'warnings']" importfrom="['urllib.parse:quote', 'io:StringIO', 'io:BytesIO']">
-      <class name="FileWrapper" init="obj = FileWrapper(8192,None)%%['NoneType', 'NoneType']">
+      <class name="FileWrapper" init="obj = FileWrapper(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filelike:NoneType', 'blksize:NoneType']</args>
@@ -3454,7 +3454,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="HTTPResponse" init="obj = HTTPResponse(0,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="HTTPResponse" init="obj = HTTPResponse(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['sock:NoneType', 'debuglevel:NoneType', 'method:NoneType', 'url:NoneType']</args>
@@ -3546,7 +3546,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="HTTPConnection" init="obj = HTTPConnection(None,None,None,8192,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="HTTPConnection" init="obj = HTTPConnection(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'timeout:NoneType', 'source_address:NoneType', 'blocksize:NoneType']</args>
@@ -3598,7 +3598,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="HTTPSConnection" init="obj = HTTPSConnection(None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="HTTPSConnection" init="obj = HTTPSConnection(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'key_file:NoneType', 'cert_file:NoneType', 'timeout:NoneType', 'source_address:NoneType']</args>
@@ -3627,7 +3627,7 @@
       </class>
       <class name="UnknownTransferEncoding" init="obj = UnknownTransferEncoding()%%[]"/>
       <class name="UnimplementedFileMode" init="obj = UnimplementedFileMode()%%[]"/>
-      <class name="IncompleteRead" init="obj = IncompleteRead(None,None)%%['NoneType', 'NoneType']">
+      <class name="IncompleteRead" init="obj = IncompleteRead(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['partial:NoneType', 'expected:NoneType']</args>
@@ -3905,7 +3905,7 @@
       </errors>
     </module>
     <module name="http.cookiejar" imports="['os', 'copy', 'datetime', 're', 'time', 'urllib.parse', 'urllib.request', 'threading', 'http.client', 'logging', 'io', 'warnings', 'traceback']" importfrom="['calendar:timegm']">
-      <class name="Cookie" init="obj = Cookie(False,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Cookie" init="obj = Cookie(None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['version:NoneType', 'name:NoneType', 'value:NoneType', 'port:NoneType', 'port_specified:NoneType', 'domain:NoneType', 'domain_specified:NoneType', 'domain_initial_dot:NoneType', 'path:NoneType', 'path_specified:NoneType', 'secure:NoneType', 'expires:NoneType', 'discard:NoneType', 'comment:NoneType', 'comment_url:NoneType', 'rest:NoneType', 'rfc2109:NoneType']</args>
@@ -3999,7 +3999,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DefaultCookiePolicy" init="obj = DefaultCookiePolicy(None,None,True,False,None,False,False,True,False,DomainLiberal,False,False,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="DefaultCookiePolicy" init="obj = DefaultCookiePolicy()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['blocked_domains:NoneType', 'allowed_domains:NoneType', 'netscape:NoneType', 'rfc2965:NoneType', 'rfc2109_as_netscape:NoneType', 'hide_cookie2:NoneType', 'strict_domain:NoneType', 'strict_rfc2965_unverifiable:NoneType', 'strict_ns_unverifiable:NoneType', 'strict_ns_domain:NoneType', 'strict_ns_set_initial_dollar:NoneType', 'strict_ns_set_path:NoneType', 'secure_protocols:NoneType']</args>
@@ -4232,7 +4232,7 @@
         </api>
       </class>
       <class name="Absent" init="obj = Absent()%%[]"/>
-      <class name="CookieJar" init="obj = CookieJar(None)%%['NoneType']">
+      <class name="CookieJar" init="obj = CookieJar()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['policy:NoneType']</args>
@@ -4304,7 +4304,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FileCookieJar" init="obj = FileCookieJar(None,False,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="FileCookieJar" init="obj = FileCookieJar()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:NoneType', 'delayload:NoneType', 'policy:NoneType']</args>
@@ -4742,7 +4742,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="BaseCookie" init="obj = BaseCookie(None)%%['builtin_function_or_method']">
+      <class name="BaseCookie" init="obj = BaseCookie()%%['builtin_function_or_method']">
         <api name="value_decode">
           <expr>obj.value_decode(val)%%['None']</expr>
           <args>['val:None']</args>
@@ -5790,7 +5790,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalEncoder" init="obj = IncrementalEncoder(strict)%%['NoneType']">
+      <class name="IncrementalEncoder" init="obj = IncrementalEncoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -5822,7 +5822,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalDecoder" init="obj = IncrementalDecoder(strict)%%['NoneType']">
+      <class name="IncrementalDecoder" init="obj = IncrementalDecoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -5970,7 +5970,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalEncoder" init="obj = IncrementalEncoder(strict)%%['NoneType']">
+      <class name="IncrementalEncoder" init="obj = IncrementalEncoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -6002,7 +6002,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalDecoder" init="obj = IncrementalDecoder(strict)%%['NoneType']">
+      <class name="IncrementalDecoder" init="obj = IncrementalDecoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -6187,7 +6187,7 @@
       </api>
     </module>
     <module name="encodings.utf_16" imports="['codecs', 'sys']" importfrom="[]">
-      <class name="IncrementalEncoder" init="obj = IncrementalEncoder(strict)%%['NoneType']">
+      <class name="IncrementalEncoder" init="obj = IncrementalEncoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -6229,7 +6229,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalDecoder" init="obj = IncrementalDecoder(strict)%%['NoneType']">
+      <class name="IncrementalDecoder" init="obj = IncrementalDecoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -6251,7 +6251,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamWriter" init="obj = StreamWriter(strict,None)%%['NoneType', 'NoneType']">
+      <class name="StreamWriter" init="obj = StreamWriter(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stream:NoneType', 'errors:NoneType']</args>
@@ -7888,7 +7888,7 @@
       </api>
     </module>
     <module name="encodings.utf_8_sig" imports="['codecs']" importfrom="[]">
-      <class name="IncrementalEncoder" init="obj = IncrementalEncoder(strict)%%['NoneType']">
+      <class name="IncrementalEncoder" init="obj = IncrementalEncoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -7930,7 +7930,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalDecoder" init="obj = IncrementalDecoder(strict)%%['NoneType']">
+      <class name="IncrementalDecoder" init="obj = IncrementalDecoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -8570,7 +8570,7 @@
       </api>
     </module>
     <module name="encodings.utf_32" imports="['codecs', 'sys']" importfrom="[]">
-      <class name="IncrementalEncoder" init="obj = IncrementalEncoder(strict)%%['NoneType']">
+      <class name="IncrementalEncoder" init="obj = IncrementalEncoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -8612,7 +8612,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalDecoder" init="obj = IncrementalDecoder(strict)%%['NoneType']">
+      <class name="IncrementalDecoder" init="obj = IncrementalDecoder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType']</args>
@@ -8634,7 +8634,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamWriter" init="obj = StreamWriter(strict,None)%%['NoneType', 'NoneType']">
+      <class name="StreamWriter" init="obj = StreamWriter(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stream:NoneType', 'errors:NoneType']</args>
@@ -10359,7 +10359,7 @@
     </module>
     <module name="encodings.charmap" imports="['codecs']" importfrom="[]">
       <class name="Codec" init="obj = Codec()%%[]"/>
-      <class name="IncrementalEncoder" init="obj = IncrementalEncoder(strict,None)%%['NoneType', 'NoneType']">
+      <class name="IncrementalEncoder" init="obj = IncrementalEncoder()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType', 'mapping:NoneType']</args>
@@ -10381,7 +10381,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalDecoder" init="obj = IncrementalDecoder(strict,None)%%['NoneType', 'NoneType']">
+      <class name="IncrementalDecoder" init="obj = IncrementalDecoder()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:NoneType', 'mapping:NoneType']</args>
@@ -10403,7 +10403,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamWriter" init="obj = StreamWriter(strict,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="StreamWriter" init="obj = StreamWriter(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stream:NoneType', 'errors:NoneType', 'mapping:NoneType']</args>
@@ -10415,7 +10415,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamReader" init="obj = StreamReader(strict,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="StreamReader" init="obj = StreamReader(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stream:NoneType', 'errors:NoneType', 'mapping:NoneType']</args>
@@ -11134,7 +11134,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ExpatParser" init="obj = ExpatParser(0,int)%%['NoneType', 'NoneType']">
+      <class name="ExpatParser" init="obj = ExpatParser()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['namespaceHandling:NoneType', 'bufsize:NoneType']</args>
@@ -11364,7 +11364,7 @@
       </errors>
     </module>
     <module name="xml.sax.saxutils" imports="['os', 'urllib.parse', 'urllib.request', 'io', 'codecs', 'sys']" importfrom="[]">
-      <class name="XMLGenerator" init="obj = XMLGenerator(None,iso-8859-1,False)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="XMLGenerator" init="obj = XMLGenerator()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['out:NoneType', 'encoding:NoneType', 'short_empty_elements:NoneType']</args>
@@ -11486,7 +11486,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="XMLFilterBase" init="obj = XMLFilterBase(None)%%['NoneType']">
+      <class name="XMLFilterBase" init="obj = XMLFilterBase()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['parent:NoneType']</args>
@@ -11715,7 +11715,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalParser" init="obj = IncrementalParser(int)%%['NoneType']">
+      <class name="IncrementalParser" init="obj = IncrementalParser()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['bufsize:NoneType']</args>
@@ -11789,7 +11789,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="InputSource" init="obj = InputSource(None)%%['NoneType']">
+      <class name="InputSource" init="obj = InputSource()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['system_id:NoneType']</args>
@@ -12416,7 +12416,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Attr" init="obj = Attr(EMPTY_NAMESPACE,None,None,None)%%['None', 'None', 'None', 'None']">
+      <class name="Attr" init="obj = Attr(None)%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['qName:None', 'namespaceURI:None', 'localName:None', 'prefix:None']</args>
@@ -12522,7 +12522,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Element" init="obj = Element(EMPTY_NAMESPACE,None,None,None)%%['None', 'None', 'None', 'None']">
+      <class name="Element" init="obj = Element(None)%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['tagName:None', 'namespaceURI:None', 'prefix:None', 'localName:None']</args>
@@ -12795,7 +12795,7 @@
         </api>
       </class>
       <class name="CDATASection" init="obj = CDATASection()%%[]"/>
-      <class name="ReadOnlySequentialNamedNodeMap" init="obj = ReadOnlySequentialNamedNodeMap(None)%%['None']">
+      <class name="ReadOnlySequentialNamedNodeMap" init="obj = ReadOnlySequentialNamedNodeMap()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['seq:None']</args>
@@ -13173,7 +13173,7 @@
       </errors>
     </module>
     <module name="xml.dom.expatbuilder" imports="[]" importfrom="['xml.dom:xmlbuilder', 'xml.dom:minidom', 'xml.dom:Node', 'xml.dom:EMPTY_NAMESPACE', 'xml.dom:EMPTY_PREFIX', 'xml.dom:XMLNS_NAMESPACE', 'xml.parsers:expat', 'xml.dom.NodeFilter:NodeFilter']">
-      <class name="ElementInfo" init="obj = ElementInfo(None,None)%%['None', 'None']">
+      <class name="ElementInfo" init="obj = ElementInfo(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['tagName:None', 'model:None']</args>
@@ -13235,7 +13235,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ExpatBuilder" init="obj = ExpatBuilder(None)%%['None']">
+      <class name="ExpatBuilder" init="obj = ExpatBuilder()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['options:None']</args>
@@ -13475,7 +13475,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FragmentBuilder" init="obj = FragmentBuilder(None,None)%%['None', 'None']">
+      <class name="FragmentBuilder" init="obj = FragmentBuilder(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['context:None', 'options:None']</args>
@@ -13642,7 +13642,7 @@
       </api>
     </module>
     <module name="xml.dom.pulldom" imports="['xml.sax', 'xml.sax.handler', 'xml.dom.minidom', 'warnings']" importfrom="['io:StringIO']">
-      <class name="PullDOM" init="obj = PullDOM(None)%%['NoneType']">
+      <class name="PullDOM" init="obj = PullDOM()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['documentFactory:NoneType']</args>
@@ -14071,7 +14071,7 @@
     </module>
     <module name="xml.etree.cElementTree" imports="[]" importfrom="['xml.etree.ElementTree:*']"/>
     <module name="xml.etree.ElementTree" imports="['sys', 're', 'warnings', 'io', 'collections', 'collections.abc', 'contextlib']" importfrom="[]">
-      <class name="Element" init="obj = Element(None,None)%%['NoneType', 'NoneType']">
+      <class name="Element" init="obj = Element(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['tag:NoneType', 'attrib:NoneType']</args>
@@ -14113,7 +14113,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="QName" init="obj = QName(None,None)%%['NoneType', 'NoneType']">
+      <class name="QName" init="obj = QName(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['text_or_uri:NoneType', 'tag:NoneType']</args>
@@ -14125,7 +14125,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ElementTree" init="obj = ElementTree(None,None)%%['NoneType', 'NoneType']">
+      <class name="ElementTree" init="obj = ElementTree()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['element:NoneType', 'file:NoneType']</args>
@@ -14168,7 +14168,7 @@
         </api>
       </class>
       <class name="IterParseIterator" init="obj = IterParseIterator()%%[]"/>
-      <class name="XMLPullParser" init="obj = XMLPullParser(None)%%['NoneType']">
+      <class name="XMLPullParser" init="obj = XMLPullParser()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['events:NoneType']</args>
@@ -14190,7 +14190,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TreeBuilder" init="obj = TreeBuilder(None)%%['NoneType']">
+      <class name="TreeBuilder" init="obj = TreeBuilder()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['element_factory:NoneType']</args>
@@ -14696,7 +14696,7 @@
       </errors>
     </module>
     <module name="distutils.text_file" imports="['sys', 'io']" importfrom="[]">
-      <class name="TextFile" init="obj = TextFile(None,None)%%['NoneType', 'NoneType']">
+      <class name="TextFile" init="obj = TextFile()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:NoneType', 'file:NoneType']</args>
@@ -14794,7 +14794,7 @@
       </api>
     </module>
     <module name="distutils.bcppcompiler" imports="['os']" importfrom="['distutils.errors:DistutilsExecError', 'distutils.errors:CompileError', 'distutils.errors:LibError', 'distutils.errors:LinkError', 'distutils.errors:UnknownFileError', 'distutils.ccompiler:CCompiler', 'distutils.ccompiler:gen_preprocess_options', 'distutils.file_util:write_file', 'distutils.dep_util:newer', 'distutils:log']">
-      <class name="BCPPCompiler" init="obj = BCPPCompiler(0,0,0)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="BCPPCompiler" init="obj = BCPPCompiler()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['verbose:NoneType', 'dry_run:NoneType', 'force:NoneType']</args>
@@ -14898,7 +14898,7 @@
       </api>
     </module>
     <module name="distutils.cygwinccompiler" imports="['os', 'sys', 'copy', 're']" importfrom="['subprocess:Popen', 'subprocess:PIPE', 'subprocess:check_output', 'distutils.unixccompiler:UnixCCompiler', 'distutils.file_util:write_file', 'distutils.errors:DistutilsExecError', 'distutils.errors:CCompilerError', 'distutils.errors:CompileError', 'distutils.errors:UnknownFileError', 'distutils.version:LooseVersion', 'distutils.spawn:find_executable', 'distutils:sysconfig']">
-      <class name="CygwinCCompiler" init="obj = CygwinCCompiler(0,0,0)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="CygwinCCompiler" init="obj = CygwinCCompiler()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['verbose:NoneType', 'dry_run:NoneType', 'force:NoneType']</args>
@@ -14920,7 +14920,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Mingw32CCompiler" init="obj = Mingw32CCompiler(0,0,0)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Mingw32CCompiler" init="obj = Mingw32CCompiler()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['verbose:NoneType', 'dry_run:NoneType', 'force:NoneType']</args>
@@ -14980,7 +14980,7 @@
     </module>
     <module name="distutils.debug" imports="['os']" importfrom="[]"/>
     <module name="distutils.filelist" imports="['os', 're', 'fnmatch', 'functools']" importfrom="['distutils.util:convert_path', 'distutils.errors:DistutilsTemplateError', 'distutils.errors:DistutilsInternalError', 'distutils:log', 'distutils.debug:DEBUG']">
-      <class name="FileList" init="obj = FileList(None,None)%%['NoneType', 'NoneType']">
+      <class name="FileList" init="obj = FileList()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['warn:NoneType', 'debug_print:NoneType']</args>
@@ -15084,7 +15084,7 @@
       </api>
     </module>
     <module name="distutils.extension" imports="['os', 'warnings']" importfrom="['distutils.sysconfig:parse_makefile', 'distutils.sysconfig:expand_makefile_vars', 'distutils.text_file:TextFile', 'distutils.util:split_quoted']">
-      <class name="Extension" init="obj = Extension(None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Extension" init="obj = Extension(None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['name:NoneType', 'sources:NoneType', 'include_dirs:NoneType', 'define_macros:NoneType', 'undef_macros:NoneType', 'library_dirs:NoneType', 'libraries:NoneType', 'runtime_library_dirs:NoneType', 'extra_objects:NoneType', 'extra_compile_args:NoneType', 'extra_link_args:NoneType', 'export_symbols:NoneType', 'swig_opts:NoneType', 'depends:NoneType', 'language:NoneType', 'optional:NoneType']</args>
@@ -15135,7 +15135,7 @@
       </errors>
     </module>
     <module name="distutils.log" imports="['sys']" importfrom="[]">
-      <class name="Log" init="obj = Log(WARN)%%['NoneType']">
+      <class name="Log" init="obj = Log()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['threshold:NoneType']</args>
@@ -15232,7 +15232,7 @@
       </errors>
     </module>
     <module name="distutils.fancy_getopt" imports="['sys', 'string', 're', 'getopt']" importfrom="['distutils.errors:*']">
-      <class name="FancyGetopt" init="obj = FancyGetopt(None)%%['NoneType']">
+      <class name="FancyGetopt" init="obj = FancyGetopt()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['option_table:NoneType']</args>
@@ -15324,7 +15324,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="OptionDummy" init="obj = OptionDummy(None)%%['NoneType']">
+      <class name="OptionDummy" init="obj = OptionDummy()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['options:NoneType']</args>
@@ -15971,7 +15971,7 @@
       </errors>
     </module>
     <module name="distutils.version" imports="['re']" importfrom="[]">
-      <class name="Version" init="obj = Version(None)%%['NoneType']">
+      <class name="Version" init="obj = Version()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['vstring:NoneType']</args>
@@ -15995,7 +15995,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="LooseVersion" init="obj = LooseVersion(None)%%['NoneType']">
+      <class name="LooseVersion" init="obj = LooseVersion()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['vstring:NoneType']</args>
@@ -16570,7 +16570,7 @@
       </errors>
     </module>
     <module name="distutils.ccompiler" imports="['sys', 'os', 're', 'tempfile']" importfrom="['distutils.errors:*', 'distutils.spawn:spawn', 'distutils.file_util:move_file', 'distutils.dir_util:mkpath', 'distutils.dep_util:newer_group', 'distutils.util:split_quoted', 'distutils.util:execute', 'distutils:log', 'distutils.debug:DEBUG', 'distutils.fancy_getopt:FancyGetopt']">
-      <class name="CCompiler" init="obj = CCompiler(0,0,0)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="CCompiler" init="obj = CCompiler()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['verbose:NoneType', 'dry_run:NoneType', 'force:NoneType']</args>
@@ -16968,7 +16968,7 @@
       </class>
     </module>
     <module name="distutils.command.check" imports="[]" importfrom="['distutils.core:Command', 'distutils.errors:DistutilsSetupError', 'docutils.utils:Reporter', 'docutils.parsers.rst:Parser', 'docutils:frontend', 'docutils:nodes']">
-      <class name="SilentReporter" init="obj = SilentReporter(None,0,ascii,replace,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SilentReporter" init="obj = SilentReporter(None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['source:NoneType', 'report_level:NoneType', 'halt_level:NoneType', 'stream:NoneType', 'debug:NoneType', 'encoding:NoneType', 'error_handler:NoneType']</args>
@@ -18095,7 +18095,7 @@
   </library>
   <library name="logging">
     <module name="logging.handlers" imports="['logging', 'socket', 'os', 'pickle', 'struct', 'time', 're', 'queue', 'threading', 'copy', 'smtplib', 'email.utils', 'http.client', 'urllib.parse', 'base64']" importfrom="['stat:ST_DEV', 'stat:ST_INO', 'stat:ST_MTIME', 'email.message:EmailMessage']">
-      <class name="BaseRotatingHandler" init="obj = BaseRotatingHandler(None,False,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="BaseRotatingHandler" init="obj = BaseRotatingHandler(None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:NoneType', 'mode:NoneType', 'encoding:NoneType', 'delay:NoneType', 'errors:NoneType']</args>
@@ -18127,7 +18127,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="RotatingFileHandler" init="obj = RotatingFileHandler(a,0,0,None,False,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="RotatingFileHandler" init="obj = RotatingFileHandler(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:NoneType', 'mode:NoneType', 'maxBytes:NoneType', 'backupCount:NoneType', 'encoding:NoneType', 'delay:NoneType', 'errors:NoneType']</args>
@@ -18149,7 +18149,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TimedRotatingFileHandler" init="obj = TimedRotatingFileHandler(h,1,0,None,False,False,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="TimedRotatingFileHandler" init="obj = TimedRotatingFileHandler(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:NoneType', 'when:NoneType', 'interval:NoneType', 'backupCount:NoneType', 'encoding:NoneType', 'delay:NoneType', 'utc:NoneType', 'atTime:NoneType', 'errors:NoneType']</args>
@@ -18181,7 +18181,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="WatchedFileHandler" init="obj = WatchedFileHandler(a,None,False,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="WatchedFileHandler" init="obj = WatchedFileHandler(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:NoneType', 'mode:NoneType', 'encoding:NoneType', 'delay:NoneType', 'errors:NoneType']</args>
@@ -18217,7 +18217,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="SysLogHandler" init="obj = SysLogHandler(None,LOG_USER,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="SysLogHandler" init="obj = SysLogHandler()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['address:NoneType', 'facility:NoneType', 'socktype:NoneType']</args>
@@ -18249,7 +18249,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="SMTPHandler" init="obj = SMTPHandler(None,None,5.0,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SMTPHandler" init="obj = SMTPHandler(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['mailhost:NoneType', 'fromaddr:NoneType', 'toaddrs:NoneType', 'subject:NoneType', 'credentials:NoneType', 'secure:NoneType', 'timeout:NoneType']</args>
@@ -18261,7 +18261,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="NTEventLogHandler" init="obj = NTEventLogHandler(None,Application,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="NTEventLogHandler" init="obj = NTEventLogHandler(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['appname:NoneType', 'dllname:NoneType', 'logtype:NoneType']</args>
@@ -18273,7 +18273,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="HTTPHandler" init="obj = HTTPHandler(GET,False,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="HTTPHandler" init="obj = HTTPHandler(None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'url:NoneType', 'method:NoneType', 'secure:NoneType', 'credentials:NoneType', 'context:NoneType']</args>
@@ -18317,7 +18317,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="MemoryHandler" init="obj = MemoryHandler(None,None,True,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="MemoryHandler" init="obj = MemoryHandler(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['capacity:NoneType', 'flushLevel:NoneType', 'target:NoneType', 'flushOnClose:NoneType']</args>
@@ -18739,7 +18739,7 @@
       </errors>
     </module>
     <module name="urllib.request" imports="['base64', 'bisect', 'email', 'hashlib', 'http.client', 'io', 'os', 'posixpath', 're', 'socket', 'string', 'sys', 'time', 'tempfile', 'contextlib', 'warnings', 'ssl', 'email.utils', 'mimetypes', 'ftplib', 'getpass', 'winreg']" importfrom="['urllib.error:URLError', 'urllib.error:HTTPError', 'urllib.error:ContentTooShortError', 'urllib.parse:urlparse', 'urllib.parse:urlsplit', 'urllib.parse:urljoin', 'urllib.parse:unwrap', 'urllib.parse:quote', 'urllib.parse:unquote', 'urllib.parse:unquote_to_bytes', 'urllib.parse:urlunparse', 'urllib.response:addinfourl', 'urllib.response:addclosehook', 'nturl2path:url2pathname', 'nturl2path:pathname2url', 'fnmatch:fnmatch']">
-      <class name="Request" init="obj = Request(None,None,None,False,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Request" init="obj = Request(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['url:NoneType', 'data:NoneType', 'headers:NoneType', 'origin_req_host:NoneType', 'unverifiable:NoneType', 'method:NoneType']</args>
@@ -18920,7 +18920,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ProxyHandler" init="obj = ProxyHandler(None)%%['NoneType']">
+      <class name="ProxyHandler" init="obj = ProxyHandler()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['proxies:NoneType']</args>
@@ -19007,7 +19007,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="AbstractBasicAuthHandler" init="obj = AbstractBasicAuthHandler(None)%%['NoneType']">
+      <class name="AbstractBasicAuthHandler" init="obj = AbstractBasicAuthHandler()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['password_mgr:NoneType']</args>
@@ -19073,7 +19073,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="AbstractDigestAuthHandler" init="obj = AbstractDigestAuthHandler(None)%%['NoneType']">
+      <class name="AbstractDigestAuthHandler" init="obj = AbstractDigestAuthHandler()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['passwd:NoneType']</args>
@@ -19119,7 +19119,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="AbstractHTTPHandler" init="obj = AbstractHTTPHandler(0)%%['NoneType']">
+      <class name="AbstractHTTPHandler" init="obj = AbstractHTTPHandler()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['debuglevel:NoneType']</args>
@@ -19173,7 +19173,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="HTTPSHandler" init="obj = HTTPSHandler(0,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="HTTPSHandler" init="obj = HTTPSHandler()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['debuglevel:NoneType', 'context:NoneType', 'check_hostname:NoneType']</args>
@@ -19195,7 +19195,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="HTTPCookieProcessor" init="obj = HTTPCookieProcessor(None)%%['NoneType']">
+      <class name="HTTPCookieProcessor" init="obj = HTTPCookieProcessor()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['cookiejar:NoneType']</args>
@@ -19327,7 +19327,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="URLopener" init="obj = URLopener(None)%%['NoneType']">
+      <class name="URLopener" init="obj = URLopener()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['proxies:NoneType']</args>
@@ -19491,7 +19491,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ftpwrapper" init="obj = ftpwrapper(None,True,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="ftpwrapper" init="obj = ftpwrapper(None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['user:NoneType', 'passwd:NoneType', 'host:NoneType', 'port:NoneType', 'dirs:NoneType', 'timeout:NoneType', 'persistent:NoneType']</args>
@@ -19780,7 +19780,7 @@
       </errors>
     </module>
     <module name="urllib.robotparser" imports="['collections', 'urllib.parse', 'urllib.request', 'time']" importfrom="[]">
-      <class name="RobotFileParser" init="obj = RobotFileParser('')%%['NoneType']">
+      <class name="RobotFileParser" init="obj = RobotFileParser()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['url:NoneType']</args>
@@ -20323,7 +20323,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="addinfourl" init="obj = addinfourl(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="addinfourl" init="obj = addinfourl(None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['fp:NoneType', 'headers:NoneType', 'url:NoneType', 'code:NoneType']</args>
@@ -21981,7 +21981,7 @@
       </errors>
     </module>
     <module name="asyncio.coroutines" imports="['collections.abc', 'functools', 'inspect', 'os', 'sys', 'traceback', 'types', 'warnings']" importfrom="['log:logger']">
-      <class name="CoroWrapper" init="obj = CoroWrapper(None,None)%%['NoneType', 'NoneType']">
+      <class name="CoroWrapper" init="obj = CoroWrapper(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['gen:NoneType', 'func:NoneType']</args>
@@ -22139,7 +22139,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Condition" init="obj = Condition(None)%%['NoneType']">
+      <class name="Condition" init="obj = Condition()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['lock:NoneType']</args>
@@ -22161,7 +22161,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Semaphore" init="obj = Semaphore(1)%%['NoneType']">
+      <class name="Semaphore" init="obj = Semaphore()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['value:NoneType']</args>
@@ -22183,7 +22183,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="BoundedSemaphore" init="obj = BoundedSemaphore(1)%%['NoneType']">
+      <class name="BoundedSemaphore" init="obj = BoundedSemaphore()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['value:NoneType']</args>
@@ -22239,7 +22239,7 @@
       </errors>
     </module>
     <module name="asyncio.events" imports="['contextvars', 'os', 'socket', 'subprocess', 'sys', 'threading']" importfrom="[]">
-      <class name="Handle" init="obj = Handle(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Handle" init="obj = Handle(None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['callback:NoneType', 'args:NoneType', 'loop:NoneType', 'context:NoneType']</args>
@@ -22271,7 +22271,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TimerHandle" init="obj = TimerHandle(None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="TimerHandle" init="obj = TimerHandle(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['when:NoneType', 'callback:NoneType', 'args:NoneType', 'loop:NoneType', 'context:NoneType']</args>
@@ -22782,7 +22782,7 @@
     <module name="asyncio.base_tasks" imports="['linecache', 'traceback']" importfrom="[]"/>
     <module name="asyncio.constants" imports="['enum']" importfrom="[]"/>
     <module name="asyncio.transports" imports="[]" importfrom="[]">
-      <class name="BaseTransport" init="obj = BaseTransport(None)%%['NoneType']">
+      <class name="BaseTransport" init="obj = BaseTransport()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['extra:NoneType']</args>
@@ -23333,7 +23333,7 @@
       </errors>
     </module>
     <module name="asyncio.streams" imports="['socket', 'sys', 'warnings', 'weakref']" importfrom="['log:logger', 'tasks:sleep']">
-      <class name="FlowControlMixin" init="obj = FlowControlMixin(None)%%['NoneType']">
+      <class name="FlowControlMixin" init="obj = FlowControlMixin()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['loop:NoneType']</args>
@@ -23375,7 +23375,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamReaderProtocol" init="obj = StreamReaderProtocol(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="StreamReaderProtocol" init="obj = StreamReaderProtocol(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stream_reader:NoneType', 'client_connected_cb:NoneType', 'loop:NoneType']</args>
@@ -23439,7 +23439,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamReader" init="obj = StreamReader(_DEFAULT_LIMIT,None)%%['NoneType', 'NoneType']">
+      <class name="StreamReader" init="obj = StreamReader()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['limit:NoneType', 'loop:NoneType']</args>
@@ -23616,7 +23616,7 @@
     <module name="asyncio.queues" imports="['collections', 'heapq', 'warnings']" importfrom="['types:GenericAlias']">
       <class name="QueueEmpty" init="obj = QueueEmpty()%%[]"/>
       <class name="QueueFull" init="obj = QueueFull()%%[]"/>
-      <class name="Queue" init="obj = Queue(0)%%['NoneType']">
+      <class name="Queue" init="obj = Queue()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['maxsize:NoneType']</args>
@@ -23877,7 +23877,7 @@
       </class>
     </module>
     <module name="asyncio.sslproto" imports="['collections', 'warnings', 'ssl']" importfrom="['log:logger']">
-      <class name="SSLProtocol" init="obj = SSLProtocol(False,None,True,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SSLProtocol" init="obj = SSLProtocol(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['loop:NoneType', 'app_protocol:NoneType', 'sslcontext:NoneType', 'waiter:NoneType', 'server_side:NoneType', 'server_hostname:NoneType', 'call_connection_made:NoneType', 'ssl_handshake_timeout:NoneType']</args>
@@ -23917,7 +23917,7 @@
       </errors>
     </module>
     <module name="asyncio.selector_events" imports="['collections', 'errno', 'functools', 'selectors', 'socket', 'warnings', 'weakref', 'ssl']" importfrom="['log:logger']">
-      <class name="BaseSelectorEventLoop" init="obj = BaseSelectorEventLoop(None)%%['NoneType']">
+      <class name="BaseSelectorEventLoop" init="obj = BaseSelectorEventLoop()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['selector:NoneType']</args>
@@ -24076,7 +24076,7 @@
   </library>
   <library name="tkinter">
     <module name="tkinter.commondialog" imports="[]" importfrom="['tkinter:Frame']">
-      <class name="Dialog" init="obj = Dialog(None)%%['NoneType']">
+      <class name="Dialog" init="obj = Dialog()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -24116,7 +24116,7 @@
       </errors>
     </module>
     <module name="tkinter.dialog" imports="[]" importfrom="['tkinter:Widget', 'tkinter:TclError', 'tkinter:Button', 'tkinter:Pack']">
-      <class name="Dialog" init="obj = Dialog(None,None)%%['NoneType', 'NoneType']">
+      <class name="Dialog" init="obj = Dialog()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24296,7 +24296,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Tk" init="obj = Tk(None,None,Tix)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Tk" init="obj = Tk()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['screenName:NoneType', 'baseName:NoneType', 'className:NoneType']</args>
@@ -24370,7 +24370,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TixWidget" init="obj = TixWidget(None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="TixWidget" init="obj = TixWidget()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'widgetName:NoneType', 'static_options:NoneType', 'cnf:NoneType', 'kw:NoneType']</args>
@@ -24442,7 +24442,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TixSubWidget" init="obj = TixSubWidget(1,1,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="TixSubWidget" init="obj = TixSubWidget(None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'name:NoneType', 'destroy_physically:NoneType', 'check_intermediate:NoneType']</args>
@@ -24454,7 +24454,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DisplayStyle" init="obj = DisplayStyle(None,None)%%['NoneType', 'NoneType']">
+      <class name="DisplayStyle" init="obj = DisplayStyle(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['itemtype:NoneType', 'cnf:NoneType']</args>
@@ -24486,7 +24486,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Balloon" init="obj = Balloon(None,None)%%['NoneType', 'NoneType']">
+      <class name="Balloon" init="obj = Balloon()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24518,7 +24518,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ButtonBox" init="obj = ButtonBox(None,None)%%['NoneType', 'NoneType']">
+      <class name="ButtonBox" init="obj = ButtonBox()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24550,7 +24550,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ComboBox" init="obj = ComboBox(None,None)%%['NoneType', 'NoneType']">
+      <class name="ComboBox" init="obj = ComboBox()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24602,7 +24602,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Control" init="obj = Control(None,None)%%['NoneType', 'NoneType']">
+      <class name="Control" init="obj = Control()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24654,7 +24654,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DirList" init="obj = DirList(None,None)%%['NoneType', 'NoneType']">
+      <class name="DirList" init="obj = DirList(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24676,7 +24676,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DirTree" init="obj = DirTree(None,None)%%['NoneType', 'NoneType']">
+      <class name="DirTree" init="obj = DirTree(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24698,7 +24698,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DirSelectBox" init="obj = DirSelectBox(None,None)%%['NoneType', 'NoneType']">
+      <class name="DirSelectBox" init="obj = DirSelectBox(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24710,7 +24710,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ExFileSelectBox" init="obj = ExFileSelectBox(None,None)%%['NoneType', 'NoneType']">
+      <class name="ExFileSelectBox" init="obj = ExFileSelectBox(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24742,7 +24742,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DirSelectDialog" init="obj = DirSelectDialog(None,None)%%['NoneType', 'NoneType']">
+      <class name="DirSelectDialog" init="obj = DirSelectDialog(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24774,7 +24774,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ExFileSelectDialog" init="obj = ExFileSelectDialog(None,None)%%['NoneType', 'NoneType']">
+      <class name="ExFileSelectDialog" init="obj = ExFileSelectDialog(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24806,7 +24806,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FileSelectBox" init="obj = FileSelectBox(None,None)%%['NoneType', 'NoneType']">
+      <class name="FileSelectBox" init="obj = FileSelectBox(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24838,7 +24838,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FileSelectDialog" init="obj = FileSelectDialog(None,None)%%['NoneType', 'NoneType']">
+      <class name="FileSelectDialog" init="obj = FileSelectDialog(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24870,7 +24870,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FileEntry" init="obj = FileEntry(None,None)%%['NoneType', 'NoneType']">
+      <class name="FileEntry" init="obj = FileEntry(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -24892,7 +24892,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="HList" init="obj = HList(None,None)%%['NoneType', 'NoneType']">
+      <class name="HList" init="obj = HList()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25414,7 +25414,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="InputOnly" init="obj = InputOnly(None,None)%%['NoneType', 'NoneType']">
+      <class name="InputOnly" init="obj = InputOnly()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25426,7 +25426,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="LabelEntry" init="obj = LabelEntry(None,None)%%['NoneType', 'NoneType']">
+      <class name="LabelEntry" init="obj = LabelEntry()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25438,7 +25438,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="LabelFrame" init="obj = LabelFrame(None,None)%%['NoneType', 'NoneType']">
+      <class name="LabelFrame" init="obj = LabelFrame()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25450,7 +25450,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ListNoteBook" init="obj = ListNoteBook(None,None)%%['NoneType', 'NoneType']">
+      <class name="ListNoteBook" init="obj = ListNoteBook(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25502,7 +25502,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Meter" init="obj = Meter(None,None)%%['NoneType', 'NoneType']">
+      <class name="Meter" init="obj = Meter()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25514,7 +25514,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="NoteBook" init="obj = NoteBook(None,None)%%['NoneType', 'NoneType']">
+      <class name="NoteBook" init="obj = NoteBook()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25587,7 +25587,7 @@
         </api>
       </class>
       <class name="NoteBookFrame" init="obj = NoteBookFrame()%%[]"/>
-      <class name="OptionMenu" init="obj = OptionMenu(None,None)%%['NoneType', 'NoneType']">
+      <class name="OptionMenu" init="obj = OptionMenu(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25649,7 +25649,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="PanedWindow" init="obj = PanedWindow(None,None)%%['NoneType', 'NoneType']">
+      <class name="PanedWindow" init="obj = PanedWindow(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25721,7 +25721,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="PopupMenu" init="obj = PopupMenu(None,None)%%['NoneType', 'NoneType']">
+      <class name="PopupMenu" init="obj = PopupMenu(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25763,7 +25763,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ResizeHandle" init="obj = ResizeHandle(None,None)%%['NoneType', 'NoneType']">
+      <class name="ResizeHandle" init="obj = ResizeHandle(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25815,7 +25815,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ScrolledHList" init="obj = ScrolledHList(None,None)%%['NoneType', 'NoneType']">
+      <class name="ScrolledHList" init="obj = ScrolledHList(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25827,7 +25827,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ScrolledListBox" init="obj = ScrolledListBox(None,None)%%['NoneType', 'NoneType']">
+      <class name="ScrolledListBox" init="obj = ScrolledListBox(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25839,7 +25839,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ScrolledText" init="obj = ScrolledText(None,None)%%['NoneType', 'NoneType']">
+      <class name="ScrolledText" init="obj = ScrolledText(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25851,7 +25851,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ScrolledTList" init="obj = ScrolledTList(None,None)%%['NoneType', 'NoneType']">
+      <class name="ScrolledTList" init="obj = ScrolledTList(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25863,7 +25863,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ScrolledWindow" init="obj = ScrolledWindow(None,None)%%['NoneType', 'NoneType']">
+      <class name="ScrolledWindow" init="obj = ScrolledWindow(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25875,7 +25875,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Select" init="obj = Select(None,None)%%['NoneType', 'NoneType']">
+      <class name="Select" init="obj = Select(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25907,7 +25907,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Shell" init="obj = Shell(None,None)%%['NoneType', 'NoneType']">
+      <class name="Shell" init="obj = Shell()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25919,7 +25919,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DialogShell" init="obj = DialogShell(None,None)%%['NoneType', 'NoneType']">
+      <class name="DialogShell" init="obj = DialogShell()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25961,7 +25961,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StdButtonBox" init="obj = StdButtonBox(None,None)%%['NoneType', 'NoneType']">
+      <class name="StdButtonBox" init="obj = StdButtonBox()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -25983,7 +25983,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TList" init="obj = TList(None,None)%%['NoneType', 'NoneType']">
+      <class name="TList" init="obj = TList()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -26225,7 +26225,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Tree" init="obj = Tree(None,None)%%['NoneType', 'NoneType']">
+      <class name="Tree" init="obj = Tree()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -26287,7 +26287,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="CheckList" init="obj = CheckList(None,None)%%['NoneType', 'NoneType']">
+      <class name="CheckList" init="obj = CheckList()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -26370,7 +26370,7 @@
         </api>
       </class>
       <class name="CObjView" init="obj = CObjView()%%[]"/>
-      <class name="Grid" init="obj = Grid(None,None)%%['NoneType', 'NoneType']">
+      <class name="Grid" init="obj = Grid()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -26562,7 +26562,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ScrolledGrid" init="obj = ScrolledGrid(None,None)%%['NoneType', 'NoneType']">
+      <class name="ScrolledGrid" init="obj = ScrolledGrid()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'cnf:NoneType']</args>
@@ -26601,7 +26601,7 @@
       </errors>
     </module>
     <module name="tkinter.scrolledtext" imports="[]" importfrom="['tkinter:Frame', 'tkinter:Text', 'tkinter:Scrollbar', 'tkinter:Pack', 'tkinter:Grid', 'tkinter:Place', 'tkinter.constants:RIGHT', 'tkinter.constants:LEFT', 'tkinter.constants:Y', 'tkinter.constants:BOTH', 'tkinter.constants:END']">
-      <class name="ScrolledText" init="obj = ScrolledText(None)%%['NoneType']">
+      <class name="ScrolledText" init="obj = ScrolledText()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -26625,7 +26625,7 @@
       </api>
     </module>
     <module name="tkinter.simpledialog" imports="[]" importfrom="['tkinter:*', 'tkinter:messagebox']">
-      <class name="SimpleDialog" init="obj = SimpleDialog('',None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SimpleDialog" init="obj = SimpleDialog(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'text:NoneType', 'buttons:NoneType', 'default:NoneType', 'cancel:NoneType', 'title:NoneType', 'class_:NoneType']</args>
@@ -26667,7 +26667,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Dialog" init="obj = Dialog(None,None)%%['NoneType', 'NoneType']">
+      <class name="Dialog" init="obj = Dialog(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['parent:NoneType', 'title:NoneType']</args>
@@ -26754,7 +26754,7 @@
       </errors>
     </module>
     <module name="tkinter.ttk" imports="['tkinter', 'os']" importfrom="[]">
-      <class name="Style" init="obj = Style(None)%%['NoneType']">
+      <class name="Style" init="obj = Style()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -26876,7 +26876,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Widget" init="obj = Widget(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Widget" init="obj = Widget(None,None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'widgetname:NoneType', 'kw:NoneType']</args>
@@ -26918,7 +26918,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Button" init="obj = Button(None)%%['NoneType']">
+      <class name="Button" init="obj = Button()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -26940,7 +26940,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Checkbutton" init="obj = Checkbutton(None)%%['NoneType']">
+      <class name="Checkbutton" init="obj = Checkbutton()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -26962,7 +26962,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Entry" init="obj = Entry(None,None)%%['NoneType', 'NoneType']">
+      <class name="Entry" init="obj = Entry()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'widget:NoneType']</args>
@@ -27004,7 +27004,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Combobox" init="obj = Combobox(None)%%['NoneType']">
+      <class name="Combobox" init="obj = Combobox()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27036,7 +27036,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Frame" init="obj = Frame(None)%%['NoneType']">
+      <class name="Frame" init="obj = Frame()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27048,7 +27048,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Label" init="obj = Label(None)%%['NoneType']">
+      <class name="Label" init="obj = Label()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27060,7 +27060,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Labelframe" init="obj = Labelframe(None)%%['NoneType']">
+      <class name="Labelframe" init="obj = Labelframe()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27072,7 +27072,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Menubutton" init="obj = Menubutton(None)%%['NoneType']">
+      <class name="Menubutton" init="obj = Menubutton()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27084,7 +27084,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Notebook" init="obj = Notebook(None)%%['NoneType']">
+      <class name="Notebook" init="obj = Notebook()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27196,7 +27196,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Panedwindow" init="obj = Panedwindow(None)%%['NoneType']">
+      <class name="Panedwindow" init="obj = Panedwindow()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27238,7 +27238,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Progressbar" init="obj = Progressbar(None)%%['NoneType']">
+      <class name="Progressbar" init="obj = Progressbar()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27280,7 +27280,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Radiobutton" init="obj = Radiobutton(None)%%['NoneType']">
+      <class name="Radiobutton" init="obj = Radiobutton()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27302,7 +27302,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Scale" init="obj = Scale(None)%%['NoneType']">
+      <class name="Scale" init="obj = Scale()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27314,7 +27314,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Scrollbar" init="obj = Scrollbar(None)%%['NoneType']">
+      <class name="Scrollbar" init="obj = Scrollbar()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27326,7 +27326,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Separator" init="obj = Separator(None)%%['NoneType']">
+      <class name="Separator" init="obj = Separator()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27338,7 +27338,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Sizegrip" init="obj = Sizegrip(None)%%['NoneType']">
+      <class name="Sizegrip" init="obj = Sizegrip()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27350,7 +27350,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Spinbox" init="obj = Spinbox(None)%%['NoneType']">
+      <class name="Spinbox" init="obj = Spinbox()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27372,7 +27372,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Treeview" init="obj = Treeview(None)%%['NoneType']">
+      <class name="Treeview" init="obj = Treeview()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType']</args>
@@ -27684,7 +27684,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="LabeledScale" init="obj = LabeledScale(None,None,0,10)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="LabeledScale" init="obj = LabeledScale()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'variable:NoneType', 'from_:NoneType', 'to:NoneType']</args>
@@ -27706,7 +27706,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="OptionMenu" init="obj = OptionMenu(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="OptionMenu" init="obj = OptionMenu(None,None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'variable:NoneType', 'default:NoneType']</args>
@@ -27888,7 +27888,7 @@
       </errors>
     </module>
     <module name="tkinter.font" imports="['itertools', 'tkinter']" importfrom="[]">
-      <class name="Font" init="obj = Font(None,None,None,False)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Font" init="obj = Font()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['root:NoneType', 'font:NoneType', 'name:NoneType', 'exists:NoneType']</args>
@@ -27985,7 +27985,7 @@
       </errors>
     </module>
     <module name="tkinter.filedialog" imports="['fnmatch', 'os']" importfrom="['tkinter:Frame', 'tkinter:LEFT', 'tkinter:YES', 'tkinter:BOTTOM', 'tkinter:Entry', 'tkinter:TOP', 'tkinter:Button', 'tkinter:Tk', 'tkinter:X', 'tkinter:Toplevel', 'tkinter:RIGHT', 'tkinter:Y', 'tkinter:END', 'tkinter:Listbox', 'tkinter:BOTH', 'tkinter:Scrollbar', 'tkinter.dialog:Dialog', 'tkinter:commondialog']">
-      <class name="FileDialog" init="obj = FileDialog(None,None)%%['NoneType', 'NoneType']">
+      <class name="FileDialog" init="obj = FileDialog(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'title:NoneType']</args>
@@ -28355,7 +28355,7 @@
       </api>
     </module>
     <module name="curses.textpad" imports="['curses', 'curses.ascii']" importfrom="[]">
-      <class name="Textbox" init="obj = Textbox(False,None)%%['NoneType', 'NoneType']">
+      <class name="Textbox" init="obj = Textbox(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['win:NoneType', 'insert_mode:NoneType']</args>
@@ -28961,7 +28961,7 @@
       </errors>
     </module>
     <module name="cgitb" imports="['inspect', 'keyword', 'linecache', 'os', 'pydoc', 'sys', 'tempfile', 'time', 'tokenize', 'traceback']" importfrom="[]">
-      <class name="Hook" init="obj = Hook(1,None,5,None,html)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method']">
+      <class name="Hook" init="obj = Hook()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method']">
         <api name="__init__">
           <expr>None</expr>
           <args>['display:NoneType', 'logdir:NoneType', 'context:NoneType', 'file:NoneType', 'format:builtin_function_or_method']</args>
@@ -29077,7 +29077,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FieldStorage" init="obj = FieldStorage(None,None,b'',None,0,0,None,utf-8,replace,None,&amp;)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="FieldStorage" init="obj = FieldStorage()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['fp:NoneType', 'headers:NoneType', 'outerboundary:NoneType', 'environ:NoneType', 'keep_blank_values:NoneType', 'strict_parsing:NoneType', 'limit:NoneType', 'encoding:NoneType', 'errors:NoneType', 'max_num_fields:NoneType', 'separator:NoneType']</args>
@@ -29512,7 +29512,7 @@
       </errors>
     </module>
     <module name="random" imports="['os']" importfrom="['warnings:warn', 'math:log', 'math:exp', 'math:pi', 'math:e', 'math:ceil', 'math:sqrt', 'math:acos', 'math:cos', 'math:sin', 'math:tau', 'math:floor', 'os:urandom', 'itertools:accumulate', 'itertools:repeat', 'bisect:bisect', 'statistics:stdev', 'statistics:fmean', 'time:perf_counter']">
-      <class name="Random" init="obj = Random(None)%%['None']">
+      <class name="Random" init="obj = Random()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['x:None']</args>
@@ -29838,7 +29838,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IPv4Network" init="obj = IPv4Network(True,None)%%['None', 'None']">
+      <class name="IPv4Network" init="obj = IPv4Network(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['address:None', 'strict:None']</args>
@@ -30074,7 +30074,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IPv6Network" init="obj = IPv6Network(True,None)%%['None', 'None']">
+      <class name="IPv6Network" init="obj = IPv6Network(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['address:None', 'strict:None']</args>
@@ -30395,7 +30395,7 @@
       </errors>
     </module>
     <module name="getopt" imports="['os', 'sys']" importfrom="['gettext:gettext']">
-      <class name="GetoptError" init="obj = GetoptError('',None)%%['None', 'None']">
+      <class name="GetoptError" init="obj = GetoptError(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['msg:None', 'opt:None']</args>
@@ -30473,7 +30473,7 @@
       </errors>
     </module>
     <module name="textwrap" imports="['re']" importfrom="[]">
-      <class name="TextWrapper" init="obj = TextWrapper(70,'','',True,True,False,True,True,True,8)%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
+      <class name="TextWrapper" init="obj = TextWrapper()%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['width:None', 'initial_indent:None', 'subsequent_indent:None', 'expand_tabs:None', 'replace_whitespace:None', 'fix_sentence_endings:None', 'break_long_words:None', 'drop_whitespace:None', 'break_on_hyphens:None', 'tabsize:None']</args>
@@ -30904,7 +30904,7 @@
       </api>
     </module>
     <module name="profile" imports="['sys', 'time', 'marshal', 'pstats', 'os', 'runpy']" importfrom="['optparse:OptionParser']">
-      <class name="Profile" init="obj = Profile(None,None)%%['NoneType', 'NoneType']">
+      <class name="Profile" init="obj = Profile()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['timer:NoneType', 'bias:NoneType']</args>
@@ -31044,7 +31044,7 @@
     </module>
     <module name="this" imports="[]" importfrom="[]"/>
     <module name="gzip" imports="['struct', 'sys', 'time', 'os', 'zlib', 'builtins', 'io', 'warnings', 'errno']" importfrom="['argparse:ArgumentParser']">
-      <class name="GzipFile" init="obj = GzipFile(None,None,_COMPRESS_LEVEL_BEST,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="GzipFile" init="obj = GzipFile()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:NoneType', 'mode:NoneType', 'compresslevel:NoneType', 'fileobj:NoneType', 'mtime:NoneType']</args>
@@ -31182,7 +31182,7 @@
       </errors>
     </module>
     <module name="calendar" imports="['sys', 'datetime', 'locale', 'argparse']" importfrom="['itertools:repeat']">
-      <class name="Calendar" init="obj = Calendar(0)%%['NoneType']">
+      <class name="Calendar" init="obj = Calendar()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['firstweekday:NoneType']</args>
@@ -31460,7 +31460,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="LocaleTextCalendar" init="obj = LocaleTextCalendar(0,None)%%['NoneType', 'NoneType']">
+      <class name="LocaleTextCalendar" init="obj = LocaleTextCalendar()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['firstweekday:NoneType', 'locale:NoneType']</args>
@@ -31482,7 +31482,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="LocaleHTMLCalendar" init="obj = LocaleHTMLCalendar(0,None)%%['NoneType', 'NoneType']">
+      <class name="LocaleHTMLCalendar" init="obj = LocaleHTMLCalendar()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['firstweekday:NoneType', 'locale:NoneType']</args>
@@ -31642,7 +31642,7 @@
       <class name="SMTPConnectError" init="obj = SMTPConnectError()%%[]"/>
       <class name="SMTPHeloError" init="obj = SMTPHeloError()%%[]"/>
       <class name="SMTPAuthenticationError" init="obj = SMTPAuthenticationError()%%[]"/>
-      <class name="SMTP" init="obj = SMTP('',0,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SMTP" init="obj = SMTP()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'local_hostname:NoneType', 'timeout:NoneType', 'source_address:NoneType']</args>
@@ -31804,7 +31804,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="SMTP_SSL" init="obj = SMTP_SSL('',0,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SMTP_SSL" init="obj = SMTP_SSL()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'local_hostname:NoneType', 'keyfile:NoneType', 'certfile:NoneType', 'timeout:NoneType', 'source_address:NoneType', 'context:NoneType']</args>
@@ -31816,7 +31816,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="LMTP" init="obj = LMTP('',LMTP_PORT,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="LMTP" init="obj = LMTP()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'local_hostname:NoneType', 'source_address:NoneType', 'timeout:NoneType']</args>
@@ -32379,7 +32379,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IndentedHelpFormatter" init="obj = IndentedHelpFormatter(2,24,None,1)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="IndentedHelpFormatter" init="obj = IndentedHelpFormatter()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['indent_increment:NoneType', 'max_help_position:NoneType', 'width:NoneType', 'short_first:NoneType']</args>
@@ -32411,7 +32411,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TitledHelpFormatter" init="obj = TitledHelpFormatter(0,24,None,0)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="TitledHelpFormatter" init="obj = TitledHelpFormatter()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['indent_increment:NoneType', 'max_help_position:NoneType', 'width:NoneType', 'short_first:NoneType']</args>
@@ -32485,7 +32485,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Values" init="obj = Values(None)%%['NoneType']">
+      <class name="Values" init="obj = Values()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['defaults:NoneType']</args>
@@ -32639,7 +32639,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="OptionGroup" init="obj = OptionGroup(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="OptionGroup" init="obj = OptionGroup(None,None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['parser:NoneType', 'title:NoneType', 'description:NoneType']</args>
@@ -32661,7 +32661,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="OptionParser" init="obj = OptionParser(None,None,Option,None,error,None,None,True,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="OptionParser" init="obj = OptionParser()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['usage:NoneType', 'option_list:NoneType', 'option_class:NoneType', 'version:NoneType', 'conflict_handler:NoneType', 'description:NoneType', 'formatter:NoneType', 'add_help_option:NoneType', 'prog:NoneType', 'epilog:NoneType']</args>
@@ -33055,7 +33055,7 @@
       </errors>
     </module>
     <module name="shlex" imports="['os', 're', 'sys', 'warnings']" importfrom="['collections:deque', 'io:StringIO']">
-      <class name="shlex" init="obj = shlex(None,None,False,False)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="shlex" init="obj = shlex()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['instream:NoneType', 'infile:NoneType', 'posix:NoneType', 'punctuation_chars:NoneType']</args>
@@ -33129,7 +33129,7 @@
       </api>
     </module>
     <module name="filecmp" imports="['os', 'stat', 'sys', 'getopt']" importfrom="['itertools:filterfalse', 'types:GenericAlias']">
-      <class name="dircmp" init="obj = dircmp(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="dircmp" init="obj = dircmp(None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['a:NoneType', 'b:NoneType', 'ignore:NoneType', 'hide:NoneType']</args>
@@ -33673,7 +33673,7 @@
     </module>
     <module name="webbrowser" imports="['os', 'shlex', 'shutil', 'sys', 'subprocess', 'threading', 'copy', 'glob', 'pwd', 'socket', 'tempfile', 'getopt']" importfrom="[]">
       <class name="Error" init="obj = Error()%%[]"/>
-      <class name="BaseBrowser" init="obj = BaseBrowser('')%%['NoneType']">
+      <class name="BaseBrowser" init="obj = BaseBrowser()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['name:NoneType']</args>
@@ -34197,7 +34197,7 @@
       </errors>
     </module>
     <module name="formatter" imports="['sys', 'warnings']" importfrom="[]">
-      <class name="NullFormatter" init="obj = NullFormatter(None)%%['NoneType']">
+      <class name="NullFormatter" init="obj = NullFormatter()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['writer:NoneType']</args>
@@ -34423,7 +34423,7 @@
       </class>
       <class name="NullWriter" init="obj = NullWriter()%%[]"/>
       <class name="AbstractWriter" init="obj = AbstractWriter()%%[]"/>
-      <class name="DumbWriter" init="obj = DumbWriter(None,72)%%['NoneType', 'NoneType']">
+      <class name="DumbWriter" init="obj = DumbWriter()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['file:NoneType', 'maxcol:NoneType']</args>
@@ -34447,7 +34447,7 @@
       </class>
     </module>
     <module name="gettext" imports="['os', 're', 'sys', 'warnings', 'locale', 'builtins', 'copy']" importfrom="['struct:unpack', 'errno:ENOENT']">
-      <class name="NullTranslations" init="obj = NullTranslations(None)%%['None']">
+      <class name="NullTranslations" init="obj = NullTranslations()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['fp:None']</args>
@@ -34716,7 +34716,7 @@
       </errors>
     </module>
     <module name="imaplib" imports="['binascii', 'errno', 'random', 're', 'socket', 'subprocess', 'sys', 'time', 'calendar', 'ssl', 'hmac', 'getopt', 'getpass']" importfrom="['datetime:datetime', 'datetime:timezone', 'datetime:timedelta', 'io:DEFAULT_BUFFER_SIZE']">
-      <class name="IMAP4" init="obj = IMAP4('',IMAP4_PORT,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="IMAP4" init="obj = IMAP4()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'timeout:NoneType']</args>
@@ -35128,7 +35128,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IMAP4_SSL" init="obj = IMAP4_SSL('',IMAP4_SSL_PORT,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="IMAP4_SSL" init="obj = IMAP4_SSL()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'keyfile:NoneType', 'certfile:NoneType', 'ssl_context:NoneType', 'timeout:NoneType']</args>
@@ -35487,7 +35487,7 @@
       </errors>
     </module>
     <module name="chunk" imports="[]" importfrom="[]">
-      <class name="Chunk" init="obj = Chunk(True,True,False,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Chunk" init="obj = Chunk(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['file:NoneType', 'align:NoneType', 'bigendian:NoneType', 'inclheader:NoneType']</args>
@@ -35554,7 +35554,7 @@
       </errors>
     </module>
     <module name="mailbox" imports="['os', 'time', 'calendar', 'socket', 'errno', 'copy', 'warnings', 'email', 'email.message', 'email.generator', 'io', 'contextlib', 'fcntl']" importfrom="['types:GenericAlias']">
-      <class name="Mailbox" init="obj = Mailbox(None,True,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Mailbox" init="obj = Mailbox(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['path:NoneType', 'factory:NoneType', 'create:NoneType']</args>
@@ -35726,7 +35726,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Maildir" init="obj = Maildir(None,True,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Maildir" init="obj = Maildir(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['dirname:NoneType', 'factory:NoneType', 'create:NoneType']</args>
@@ -35848,7 +35848,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="mbox" init="obj = mbox(None,True,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="mbox" init="obj = mbox(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['path:NoneType', 'factory:NoneType', 'create:NoneType']</args>
@@ -35860,7 +35860,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="MMDF" init="obj = MMDF(None,True,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="MMDF" init="obj = MMDF(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['path:NoneType', 'factory:NoneType', 'create:NoneType']</args>
@@ -35872,7 +35872,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="MH" init="obj = MH(None,True,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="MH" init="obj = MH(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['path:NoneType', 'factory:NoneType', 'create:NoneType']</args>
@@ -35964,7 +35964,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Babyl" init="obj = Babyl(None,True,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Babyl" init="obj = Babyl(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['path:NoneType', 'factory:NoneType', 'create:NoneType']</args>
@@ -35996,7 +35996,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Message" init="obj = Message(None)%%['NoneType']">
+      <class name="Message" init="obj = Message()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['message:NoneType']</args>
@@ -36008,7 +36008,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="MaildirMessage" init="obj = MaildirMessage(None)%%['NoneType']">
+      <class name="MaildirMessage" init="obj = MaildirMessage()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['message:NoneType']</args>
@@ -36061,7 +36061,7 @@
         </api>
       </class>
       <class name="mboxMessage" init="obj = mboxMessage()%%[]"/>
-      <class name="MHMessage" init="obj = MHMessage(None)%%['NoneType']">
+      <class name="MHMessage" init="obj = MHMessage()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['message:NoneType']</args>
@@ -36083,7 +36083,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="BabylMessage" init="obj = BabylMessage(None)%%['NoneType']">
+      <class name="BabylMessage" init="obj = BabylMessage()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['message:NoneType']</args>
@@ -36179,7 +36179,7 @@
       </errors>
     </module>
     <module name="netrc" imports="['os', 'shlex', 'stat', 'pwd']" importfrom="[]">
-      <class name="NetrcParseError" init="obj = NetrcParseError(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="NetrcParseError" init="obj = NetrcParseError(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['msg:NoneType', 'filename:NoneType', 'lineno:NoneType']</args>
@@ -36191,7 +36191,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="netrc" init="obj = netrc(None)%%['NoneType']">
+      <class name="netrc" init="obj = netrc()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['file:NoneType']</args>
@@ -36219,7 +36219,7 @@
       </errors>
     </module>
     <module name="argparse" imports="['os', 're', 'sys', 'copy', 'textwrap']" importfrom="['gettext:gettext', 'gettext:ngettext', 'warnings:warn']">
-      <class name="HelpFormatter" init="obj = HelpFormatter(2,24,None,None)%%['None', 'None', 'None', 'None']">
+      <class name="HelpFormatter" init="obj = HelpFormatter(None)%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['prog:None', 'indent_increment:None', 'max_help_position:None', 'width:None']</args>
@@ -36298,7 +36298,7 @@
         </api>
       </class>
       <class name="ArgumentTypeError" init="obj = ArgumentTypeError()%%[]"/>
-      <class name="Action" init="obj = Action(None,None,None,None,None,False,None,None,None,None)%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
+      <class name="Action" init="obj = Action(None,None)%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['option_strings:None', 'dest:None', 'nargs:None', 'const:None', 'default:None', 'type:None', 'choices:None', 'required:None', 'help:None', 'metavar:None']</args>
@@ -36310,7 +36310,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="BooleanOptionalAction" init="obj = BooleanOptionalAction(None,None,None,False,None,None,None,None)%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
+      <class name="BooleanOptionalAction" init="obj = BooleanOptionalAction(None,None)%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['option_strings:None', 'dest:None', 'default:None', 'type:None', 'choices:None', 'required:None', 'help:None', 'metavar:None']</args>
@@ -36322,7 +36322,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FileType" init="obj = FileType(r,int,None,None)%%['None', 'None', 'None', 'None']">
+      <class name="FileType" init="obj = FileType()%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['mode:None', 'bufsize:None', 'encoding:None', 'errors:None']</args>
@@ -36346,7 +36346,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ArgumentParser" init="obj = ArgumentParser(None,None,None,None,None,HelpFormatter,-,None,None,error,True,True,True)%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
+      <class name="ArgumentParser" init="obj = ArgumentParser()%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['prog:None', 'usage:None', 'description:None', 'epilog:None', 'parents:None', 'formatter_class:None', 'prefix_chars:None', 'fromfile_prefix_chars:None', 'argument_default:None', 'conflict_handler:None', 'add_help:None', 'allow_abbrev:None', 'exit_on_error:None']</args>
@@ -36892,7 +36892,7 @@
       </errors>
     </module>
     <module name="types" imports="['sys', 'functools']" importfrom="[]">
-      <class name="DynamicClassAttribute" init="obj = DynamicClassAttribute(None,None,None,None)%%['None', 'None', 'None', 'None']">
+      <class name="DynamicClassAttribute" init="obj = DynamicClassAttribute()%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['fget:None', 'fset:None', 'fdel:None', 'doc:None']</args>
@@ -37021,7 +37021,7 @@
       </api>
     </module>
     <module name="timeit" imports="['gc', 'sys', 'time', 'itertools', 'linecache', 'traceback', 'getopt', 'os', 'warnings']" importfrom="[]">
-      <class name="Timer" init="obj = Timer(pass,pass,default_timer,None)%%['NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method']">
+      <class name="Timer" init="obj = Timer()%%['NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stmt:NoneType', 'setup:NoneType', 'timer:NoneType', 'globals:builtin_function_or_method']</args>
@@ -37216,7 +37216,7 @@
       </errors>
     </module>
     <module name="typing" imports="['collections', 'collections.abc', 'contextlib', 'functools', 'operator', 're', 'sys', 'types']" importfrom="['abc:abstractmethod', 'abc:ABCMeta', 'types:WrapperDescriptorType', 'types:MethodWrapperType', 'types:MethodDescriptorType', 'types:GenericAlias']">
-      <class name="ForwardRef" init="obj = ForwardRef(True,None,None)%%['None', 'None', 'None']">
+      <class name="ForwardRef" init="obj = ForwardRef(None)%%['None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['arg:None', 'is_argument:None', 'module:None']</args>
@@ -37788,7 +37788,7 @@
       </errors>
     </module>
     <module name="rlcompleter" imports="['atexit', 'builtins', 'keyword', 're', 'readline']" importfrom="[]">
-      <class name="Completer" init="obj = Completer(None)%%['NoneType']">
+      <class name="Completer" init="obj = Completer()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['namespace:NoneType']</args>
@@ -37912,7 +37912,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="WeakKeyDictionary" init="obj = WeakKeyDictionary(None)%%['None']">
+      <class name="WeakKeyDictionary" init="obj = WeakKeyDictionary()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['dict:None']</args>
@@ -38360,7 +38360,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TarInfo" init="obj = TarInfo('')%%['NoneType']">
+      <class name="TarInfo" init="obj = TarInfo()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['name:NoneType']</args>
@@ -38502,7 +38502,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TarFile" init="obj = TarFile(None,r,None,None,None,None,None,None,surrogateescape,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="TarFile" init="obj = TarFile()%%['NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['name:NoneType', 'mode:NoneType', 'fileobj:NoneType', 'format:builtin_function_or_method', 'tarinfo:NoneType', 'dereference:NoneType', 'ignore_zeros:NoneType', 'encoding:NoneType', 'errors:NoneType', 'pax_headers:NoneType', 'debug:NoneType', 'errorlevel:NoneType', 'copybufsize:NoneType']</args>
@@ -39446,7 +39446,7 @@
     </module>
     <module name="asyncore" imports="['select', 'socket', 'sys', 'time', 'warnings', 'os']" importfrom="['errno:EALREADY', 'errno:EINPROGRESS', 'errno:EWOULDBLOCK', 'errno:ECONNRESET', 'errno:EINVAL', 'errno:ENOTCONN', 'errno:ESHUTDOWN', 'errno:EISCONN', 'errno:EBADF', 'errno:ECONNABORTED', 'errno:EPIPE', 'errno:EAGAIN', 'errno:errorcode']">
       <class name="ExitNow" init="obj = ExitNow()%%[]"/>
-      <class name="dispatcher" init="obj = dispatcher(None,None)%%['NoneType', 'type']">
+      <class name="dispatcher" init="obj = dispatcher()%%['NoneType', 'type']">
         <api name="__init__">
           <expr>None</expr>
           <args>['sock:NoneType', 'map:type']</args>
@@ -39508,7 +39508,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="dispatcher_with_send" init="obj = dispatcher_with_send(None,None)%%['NoneType', 'type']">
+      <class name="dispatcher_with_send" init="obj = dispatcher_with_send()%%['NoneType', 'type']">
         <api name="__init__">
           <expr>None</expr>
           <args>['sock:NoneType', 'map:type']</args>
@@ -39532,7 +39532,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="file_dispatcher" init="obj = file_dispatcher(None,None)%%['NoneType', 'type']">
+      <class name="file_dispatcher" init="obj = file_dispatcher(None)%%['NoneType', 'type']">
         <api name="__init__">
           <expr>None</expr>
           <args>['fd:NoneType', 'map:type']</args>
@@ -39830,7 +39830,7 @@
       </errors>
     </module>
     <module name="tempfile" imports="['functools', 'warnings', 'io', 'os', 'shutil', 'errno', 'sys', 'types', 'weakref']" importfrom="['random:Random']">
-      <class name="SpooledTemporaryFile" init="obj = SpooledTemporaryFile(0,w+b,int,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method']">
+      <class name="SpooledTemporaryFile" init="obj = SpooledTemporaryFile()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method']">
         <api name="__init__">
           <expr>None</expr>
           <args>['max_size:NoneType', 'mode:NoneType', 'buffering:NoneType', 'encoding:NoneType', 'newline:NoneType', 'suffix:NoneType', 'prefix:NoneType', 'dir:builtin_function_or_method']</args>
@@ -39902,7 +39902,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TemporaryDirectory" init="obj = TemporaryDirectory(None,None,None)%%['NoneType', 'NoneType', 'builtin_function_or_method']">
+      <class name="TemporaryDirectory" init="obj = TemporaryDirectory()%%['NoneType', 'NoneType', 'builtin_function_or_method']">
         <api name="__init__">
           <expr>None</expr>
           <args>['suffix:NoneType', 'prefix:NoneType', 'dir:builtin_function_or_method']</args>
@@ -40024,7 +40024,7 @@
     </module>
     <module name="queue" imports="['threading', 'types']" importfrom="['collections:deque', 'heapq:heappush', 'heapq:heappop', 'time:monotonic']">
       <class name="Full" init="obj = Full()%%[]"/>
-      <class name="Queue" init="obj = Queue(0)%%['NoneType']">
+      <class name="Queue" init="obj = Queue()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['maxsize:NoneType']</args>
@@ -40143,7 +40143,7 @@
     </module>
     <module name="bdb" imports="['fnmatch', 'sys', 'os', 'linecache', 'reprlib']" importfrom="['inspect:CO_GENERATOR', 'inspect:CO_COROUTINE', 'inspect:CO_ASYNC_GENERATOR']">
       <class name="BdbQuit" init="obj = BdbQuit()%%[]"/>
-      <class name="Bdb" init="obj = Bdb(None)%%['NoneType']">
+      <class name="Bdb" init="obj = Bdb()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['skip:NoneType']</args>
@@ -40405,7 +40405,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Breakpoint" init="obj = Breakpoint(False,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Breakpoint" init="obj = Breakpoint(None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['file:NoneType', 'line:NoneType', 'temporary:NoneType', 'cond:NoneType', 'funcname:NoneType']</args>
@@ -40520,7 +40520,7 @@
     <module name="zipfile" imports="['binascii', 'importlib.util', 'io', 'itertools', 'os', 'posixpath', 'shutil', 'stat', 'struct', 'sys', 'threading', 'time', 'contextlib', 'zlib', 'bz2', 'lzma', 'warnings', 'argparse']" importfrom="[]">
       <class name="BadZipFile" init="obj = BadZipFile()%%[]"/>
       <class name="LargeZipFile" init="obj = LargeZipFile()%%[]"/>
-      <class name="ZipInfo" init="obj = ZipInfo(NoName,None)%%['NoneType', 'NoneType']">
+      <class name="ZipInfo" init="obj = ZipInfo()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:NoneType', 'date_time:NoneType']</args>
@@ -40576,7 +40576,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ZipExtFile" init="obj = ZipExtFile(None,False,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="ZipExtFile" init="obj = ZipExtFile(None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['fileobj:NoneType', 'mode:NoneType', 'zipinfo:NoneType', 'pwd:NoneType', 'close_fileobj:NoneType']</args>
@@ -40628,7 +40628,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ZipFile" init="obj = ZipFile(r,ZIP_STORED,True,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="ZipFile" init="obj = ZipFile(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['file:NoneType', 'mode:NoneType', 'compression:NoneType', 'allowZip64:NoneType', 'compresslevel:NoneType']</args>
@@ -40720,7 +40720,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="PyZipFile" init="obj = PyZipFile(r,ZIP_STORED,True,int,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="PyZipFile" init="obj = PyZipFile(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['file:NoneType', 'mode:NoneType', 'compression:NoneType', 'allowZip64:NoneType', 'optimize:NoneType']</args>
@@ -40755,7 +40755,7 @@
         </api>
       </class>
       <class name="FastLookup" init="obj = FastLookup()%%[]"/>
-      <class name="Path" init="obj = Path('',None)%%['NoneType', 'NoneType']">
+      <class name="Path" init="obj = Path(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['root:NoneType', 'at:NoneType']</args>
@@ -41016,7 +41016,7 @@
       </errors>
     </module>
     <module name="pyclbr" imports="['io', 'sys', 'importlib.util', 'tokenize', 'os']" importfrom="['token:NAME', 'token:DEDENT', 'token:OP']">
-      <class name="Function" init="obj = Function(None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Function" init="obj = Function(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['module:NoneType', 'name:NoneType', 'file:NoneType', 'lineno:NoneType', 'parent:NoneType']</args>
@@ -41028,7 +41028,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Class" init="obj = Class(None,None,None,None,None,None)%%['NoneType', 'NoneType', 'type', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Class" init="obj = Class(None,None,None,None,None)%%['NoneType', 'NoneType', 'type', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['module:NoneType', 'name:NoneType', 'super:type', 'file:NoneType', 'lineno:NoneType', 'parent:NoneType']</args>
@@ -41069,7 +41069,7 @@
     </module>
     <module name="keyword" imports="[]" importfrom="[]"/>
     <module name="graphlib" imports="[]" importfrom="[]">
-      <class name="TopologicalSorter" init="obj = TopologicalSorter(None)%%['NoneType']">
+      <class name="TopologicalSorter" init="obj = TopologicalSorter()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['graph:NoneType']</args>
@@ -41097,7 +41097,7 @@
       </errors>
     </module>
     <module name="modulefinder" imports="['dis', 'importlib._bootstrap_external', 'importlib.machinery', 'marshal', 'os', 'io', 'sys']" importfrom="[]">
-      <class name="Module" init="obj = Module(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Module" init="obj = Module(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['name:NoneType', 'file:NoneType', 'path:NoneType']</args>
@@ -41109,7 +41109,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ModuleFinder" init="obj = ModuleFinder(None,0,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="ModuleFinder" init="obj = ModuleFinder()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['path:NoneType', 'debug:NoneType', 'excludes:NoneType', 'replace_paths:NoneType']</args>
@@ -41447,7 +41447,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Symbol" init="obj = Symbol(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Symbol" init="obj = Symbol(None,None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['name:NoneType', 'flags:NoneType', 'namespaces:NoneType']</args>
@@ -41895,7 +41895,7 @@
     </module>
     <module name="smtpd" imports="['sys', 'os', 'errno', 'getopt', 'time', 'socket', 'asyncore', 'asynchat', 'collections', 'smtplib', 'pwd']" importfrom="['warnings:warn', 'email._header_value_parser:get_addr_spec', 'email._header_value_parser:get_angle_addr', 'io:StringIO', 'Mailman:Utils', 'Mailman:Message', 'Mailman:MailList']">
       <class name="Devnull" init="obj = Devnull()%%[]"/>
-      <class name="SMTPChannel" init="obj = SMTPChannel(DATA_SIZE_DEFAULT,None,False,False,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'type', 'NoneType', 'NoneType']">
+      <class name="SMTPChannel" init="obj = SMTPChannel(None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'type', 'NoneType', 'NoneType']">
         <api name="max_command_size_limit">
           <expr>obj.max_command_size_limit()%%[]</expr>
           <args>[]</args>
@@ -42047,7 +42047,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="SMTPServer" init="obj = SMTPServer(DATA_SIZE_DEFAULT,None,False,False,None,None)%%['NoneType', 'NoneType', 'NoneType', 'type', 'NoneType', 'NoneType']">
+      <class name="SMTPServer" init="obj = SMTPServer(None,None)%%['NoneType', 'NoneType', 'NoneType', 'type', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['localaddr:NoneType', 'remoteaddr:NoneType', 'data_size_limit:NoneType', 'map:type', 'enable_SMTPUTF8:NoneType', 'decode_data:NoneType']</args>
@@ -42196,7 +42196,7 @@
       </errors>
     </module>
     <module name="warnings" imports="['sys', 'linecache', 'tracemalloc', 're', 'builtins', 'traceback']" importfrom="[]">
-      <class name="WarningMessage" init="obj = WarningMessage(None,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="WarningMessage" init="obj = WarningMessage(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['message:NoneType', 'category:NoneType', 'filename:NoneType', 'lineno:NoneType', 'file:NoneType', 'line:NoneType', 'source:NoneType']</args>
@@ -42364,7 +42364,7 @@
       </errors>
     </module>
     <module name="threading" imports="['os', 'sys', 'functools']" importfrom="['time:monotonic', 'itertools:islice', 'itertools:count']">
-      <class name="Condition" init="obj = Condition(None)%%['None']">
+      <class name="Condition" init="obj = Condition()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['lock:None']</args>
@@ -42396,7 +42396,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Semaphore" init="obj = Semaphore(1)%%['None']">
+      <class name="Semaphore" init="obj = Semaphore()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['value:None']</args>
@@ -42408,7 +42408,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="BoundedSemaphore" init="obj = BoundedSemaphore(1)%%['None']">
+      <class name="BoundedSemaphore" init="obj = BoundedSemaphore()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['value:None']</args>
@@ -42452,7 +42452,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Barrier" init="obj = Barrier(None,None,None)%%['None', 'None', 'None']">
+      <class name="Barrier" init="obj = Barrier(None)%%['None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['parties:None', 'action:None', 'timeout:None']</args>
@@ -42514,7 +42514,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Thread" init="obj = Thread(None,None,None,None,None)%%['None', 'None', 'None', 'None', 'None']">
+      <class name="Thread" init="obj = Thread()%%['None', 'None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['group:None', 'target:None', 'name:None', 'args:None', 'kwargs:None']</args>
@@ -42616,7 +42616,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Timer" init="obj = Timer(None,None,None,None)%%['None', 'None', 'None', 'None']">
+      <class name="Timer" init="obj = Timer(None,None)%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['interval:None', 'function:None', 'args:None', 'kwargs:None']</args>
@@ -42725,7 +42725,7 @@
       </errors>
     </module>
     <module name="asynchat" imports="['asyncore']" importfrom="['collections:deque']">
-      <class name="async_chat" init="obj = async_chat(None,None)%%['NoneType', 'type']">
+      <class name="async_chat" init="obj = async_chat()%%['NoneType', 'type']">
         <api name="__init__">
           <expr>None</expr>
           <args>['sock:NoneType', 'map:type']</args>
@@ -42827,7 +42827,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="simple_producer" init="obj = simple_producer(512,None)%%['NoneType', 'NoneType']">
+      <class name="simple_producer" init="obj = simple_producer(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['data:NoneType', 'buffer_size:NoneType']</args>
@@ -42868,7 +42868,7 @@
     </module>
     <module name="re" imports="['enum', 'sre_compile', 'sre_parse', 'functools', 'copyreg']" importfrom="[]">
       <class name="RegexFlag" init="obj = RegexFlag()%%[]"/>
-      <class name="Scanner" init="obj = Scanner(0,None)%%['None', 'None']">
+      <class name="Scanner" init="obj = Scanner(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['lexicon:None', 'flags:None']</args>
@@ -43047,7 +43047,7 @@
       </errors>
     </module>
     <module name="shelve" imports="['collections.abc']" importfrom="['pickle:Pickler', 'pickle:Unpickler', 'io:BytesIO']">
-      <class name="Shelf" init="obj = Shelf(None,False,utf-8,None)%%['type', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Shelf" init="obj = Shelf(None)%%['type', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['dict:type', 'protocol:NoneType', 'writeback:NoneType', 'keyencoding:NoneType']</args>
@@ -43069,7 +43069,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="BsdDbShelf" init="obj = BsdDbShelf(None,False,utf-8,None)%%['type', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="BsdDbShelf" init="obj = BsdDbShelf(None)%%['type', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['dict:type', 'protocol:NoneType', 'writeback:NoneType', 'keyencoding:NoneType']</args>
@@ -43081,7 +43081,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DbfilenameShelf" init="obj = DbfilenameShelf(c,None,False,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="DbfilenameShelf" init="obj = DbfilenameShelf(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:NoneType', 'flag:NoneType', 'protocol:NoneType', 'writeback:NoneType']</args>
@@ -43110,7 +43110,7 @@
       </errors>
     </module>
     <module name="telnetlib" imports="['sys', 'socket', 'selectors', 're']" importfrom="['time:monotonic']">
-      <class name="Telnet" init="obj = Telnet(None,0,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Telnet" init="obj = Telnet()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'timeout:NoneType']</args>
@@ -43341,7 +43341,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TCPServer" init="obj = TCPServer(True,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="TCPServer" init="obj = TCPServer(None,None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['server_address:NoneType', 'RequestHandlerClass:NoneType', 'bind_and_activate:NoneType']</args>
@@ -43791,7 +43791,7 @@
       </errors>
     </module>
     <module name="fileinput" imports="['sys', 'os', 'warnings', 'gzip', 'bz2', 'getopt']" importfrom="['types:GenericAlias']">
-      <class name="FileInput" init="obj = FileInput(None,False,'')%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="FileInput" init="obj = FileInput()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['files:NoneType', 'inplace:NoneType', 'backup:NoneType']</args>
@@ -43957,7 +43957,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalEncoder" init="obj = IncrementalEncoder(strict)%%['None']">
+      <class name="IncrementalEncoder" init="obj = IncrementalEncoder()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:None']</args>
@@ -44009,7 +44009,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="BufferedIncrementalEncoder" init="obj = BufferedIncrementalEncoder(strict)%%['None']">
+      <class name="BufferedIncrementalEncoder" init="obj = BufferedIncrementalEncoder()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:None']</args>
@@ -44051,7 +44051,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IncrementalDecoder" init="obj = IncrementalDecoder(strict)%%['None']">
+      <class name="IncrementalDecoder" init="obj = IncrementalDecoder()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:None']</args>
@@ -44093,7 +44093,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="BufferedIncrementalDecoder" init="obj = BufferedIncrementalDecoder(strict)%%['None']">
+      <class name="BufferedIncrementalDecoder" init="obj = BufferedIncrementalDecoder()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['errors:None']</args>
@@ -44135,7 +44135,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamWriter" init="obj = StreamWriter(strict,None)%%['None', 'None']">
+      <class name="StreamWriter" init="obj = StreamWriter(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stream:None', 'errors:None']</args>
@@ -44157,7 +44157,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamReader" init="obj = StreamReader(strict,None)%%['None', 'None']">
+      <class name="StreamReader" init="obj = StreamReader(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stream:None', 'errors:None']</args>
@@ -44179,7 +44179,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamReaderWriter" init="obj = StreamReaderWriter(strict,None,None,None)%%['None', 'None', 'None', 'None']">
+      <class name="StreamReaderWriter" init="obj = StreamReaderWriter(None,None,None)%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stream:None', 'Reader:None', 'Writer:None', 'errors:None']</args>
@@ -44191,7 +44191,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="StreamRecoder" init="obj = StreamRecoder(strict,None,None,None,None,None)%%['None', 'None', 'None', 'None', 'None', 'None']">
+      <class name="StreamRecoder" init="obj = StreamRecoder(None,None,None,None,None)%%['None', 'None', 'None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['stream:None', 'encode:None', 'decode:None', 'Reader:None', 'Writer:None', 'errors:None']</args>
@@ -44365,7 +44365,7 @@
       </errors>
     </module>
     <module name="mimetypes" imports="['os', 'sys', 'posixpath', 'urllib.parse', 'winreg', 'getopt']" importfrom="[]">
-      <class name="MimeTypes" init="obj = MimeTypes(None,True)%%['NoneType', 'NoneType']">
+      <class name="MimeTypes" init="obj = MimeTypes()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filenames:NoneType', 'strict:NoneType']</args>
@@ -44551,7 +44551,7 @@
       </errors>
     </module>
     <module name="configparser" imports="['functools', 'io', 'itertools', 'os', 're', 'sys', 'warnings']" importfrom="['collections.abc:MutableMapping', 'collections:ChainMap']">
-      <class name="Error" init="obj = Error('')%%['NoneType']">
+      <class name="Error" init="obj = Error()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['msg:NoneType']</args>
@@ -44671,7 +44671,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="RawConfigParser" init="obj = RawConfigParser(None,_default_dict,False)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="RawConfigParser" init="obj = RawConfigParser()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['defaults:NoneType', 'dict_type:NoneType', 'allow_no_value:NoneType']</args>
@@ -44916,7 +44916,7 @@
     </module>
     <module name="symbol" imports="['warnings']" importfrom="[]"/>
     <module name="cmd" imports="['string', 'sys', 'readline']" importfrom="[]">
-      <class name="Cmd" init="obj = Cmd(tab,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Cmd" init="obj = Cmd()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['completekey:NoneType', 'stdin:NoneType', 'stdout:NoneType']</args>
@@ -45360,7 +45360,7 @@
     </module>
     <module name="uuid" imports="['os', 'sys', 'platform', 'io', 'shutil', 'subprocess', 'socket', 'random', 'time']" importfrom="['enum:Enum', 'hashlib:md5', 'hashlib:sha1']">
       <class name="SafeUUID" init="obj = SafeUUID()%%[]"/>
-      <class name="UUID" init="obj = UUID(None,None,None,None,None,None)%%['builtin_function_or_method', 'type', 'NoneType', 'NoneType', 'type', 'NoneType']">
+      <class name="UUID" init="obj = UUID()%%['builtin_function_or_method', 'type', 'NoneType', 'NoneType', 'type', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['hex:builtin_function_or_method', 'bytes:type', 'bytes_le:NoneType', 'fields:NoneType', 'int:type', 'version:NoneType']</args>
@@ -45585,7 +45585,7 @@
       </errors>
     </module>
     <module name="socket" imports="['os', 'sys', 'io', 'selectors', 'errno', 'array']" importfrom="['enum:IntEnum', 'enum:IntFlag']">
-      <class name="socket" init="obj = socket(int,int,int,None)%%['None', 'None', 'None', 'None']">
+      <class name="socket" init="obj = socket()%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['family:None', 'type:None', 'proto:None', 'fileno:None']</args>
@@ -46354,7 +46354,7 @@
       </errors>
     </module>
     <module name="pprint" imports="['collections', 're', 'sys', 'types', 'time']" importfrom="['io:StringIO']">
-      <class name="PrettyPrinter" init="obj = PrettyPrinter(1,80,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="PrettyPrinter" init="obj = PrettyPrinter()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['indent:NoneType', 'width:NoneType', 'depth:NoneType', 'stream:NoneType']</args>
@@ -46453,7 +46453,7 @@
       </errors>
     </module>
     <module name="difflib" imports="['re', 'doctest', 'difflib']" importfrom="['heapq:nlargest', 'collections:namedtuple', 'types:GenericAlias']">
-      <class name="SequenceMatcher" init="obj = SequenceMatcher(None,'','',True)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SequenceMatcher" init="obj = SequenceMatcher()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['isjunk:NoneType', 'a:NoneType', 'b:NoneType', 'autojunk:NoneType']</args>
@@ -46525,7 +46525,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Differ" init="obj = Differ(None,None)%%['NoneType', 'NoneType']">
+      <class name="Differ" init="obj = Differ()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['linejunk:NoneType', 'charjunk:NoneType']</args>
@@ -46547,7 +46547,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="HtmlDiff" init="obj = HtmlDiff(8,None,None,IS_CHARACTER_JUNK)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="HtmlDiff" init="obj = HtmlDiff()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['tabsize:NoneType', 'wrapcolumn:NoneType', 'linejunk:NoneType', 'charjunk:NoneType']</args>
@@ -46668,7 +46668,7 @@
       </errors>
     </module>
     <module name="statistics" imports="['math', 'numbers', 'random']" importfrom="['fractions:Fraction', 'decimal:Decimal', 'itertools:groupby', 'bisect:bisect_left', 'bisect:bisect_right', 'math:hypot', 'math:sqrt', 'math:fabs', 'math:exp', 'math:erf', 'math:tau', 'math:log', 'math:fsum', 'operator:itemgetter', 'collections:Counter']">
-      <class name="NormalDist" init="obj = NormalDist(0.0,1.0)%%['NoneType', 'NoneType']">
+      <class name="NormalDist" init="obj = NormalDist()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['mu:NoneType', 'sigma:NoneType']</args>
@@ -46961,7 +46961,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="NNTP" init="obj = NNTP(NNTP_PORT,None,None,None,False,_GLOBAL_DEFAULT_TIMEOUT,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="NNTP" init="obj = NNTP(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'user:NoneType', 'password:NoneType', 'readermode:NoneType', 'usenetrc:NoneType', 'timeout:NoneType']</args>
@@ -47193,7 +47193,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="NNTP_SSL" init="obj = NNTP_SSL(NNTP_SSL_PORT,None,None,None,None,False,_GLOBAL_DEFAULT_TIMEOUT,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="NNTP_SSL" init="obj = NNTP_SSL(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'user:NoneType', 'password:NoneType', 'ssl_context:NoneType', 'readermode:NoneType', 'usenetrc:NoneType', 'timeout:NoneType']</args>
@@ -47244,7 +47244,7 @@
       </errors>
     </module>
     <module name="py_compile" imports="['enum', 'importlib._bootstrap_external', 'importlib.machinery', 'importlib.util', 'os', 'os.path', 'sys', 'traceback']" importfrom="[]">
-      <class name="PyCompileError" init="obj = PyCompileError('',None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="PyCompileError" init="obj = PyCompileError(None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['exc_type:NoneType', 'exc_value:NoneType', 'file:NoneType', 'msg:NoneType']</args>
@@ -47349,7 +47349,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="SubPattern" init="obj = SubPattern(None,None)%%['None', 'None']">
+      <class name="SubPattern" init="obj = SubPattern(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['state:None', 'data:None']</args>
@@ -47597,7 +47597,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="nullcontext" init="obj = nullcontext(None)%%['None']">
+      <class name="nullcontext" init="obj = nullcontext()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['enter_result:None']</args>
@@ -48191,7 +48191,7 @@
       <class name="excel" init="obj = excel()%%[]"/>
       <class name="excel_tab" init="obj = excel_tab()%%[]"/>
       <class name="unix_dialect" init="obj = unix_dialect()%%[]"/>
-      <class name="DictReader" init="obj = DictReader(None,None,None,excel,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="DictReader" init="obj = DictReader(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['f:NoneType', 'fieldnames:NoneType', 'restkey:NoneType', 'restval:NoneType', 'dialect:NoneType']</args>
@@ -48213,7 +48213,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DictWriter" init="obj = DictWriter('',raise,excel,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="DictWriter" init="obj = DictWriter(None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['f:NoneType', 'fieldnames:NoneType', 'restval:NoneType', 'extrasaction:NoneType', 'dialect:NoneType']</args>
@@ -48281,7 +48281,7 @@
     </module>
     <module name="sched" imports="['time', 'heapq', 'threading']" importfrom="['collections:namedtuple', 'time:monotonic']">
       <class name="Event" init="obj = Event()%%[]"/>
-      <class name="scheduler" init="obj = scheduler(_time,None)%%['NoneType', 'NoneType']">
+      <class name="scheduler" init="obj = scheduler()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['timefunc:NoneType', 'delayfunc:NoneType']</args>
@@ -48477,7 +48477,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ScrolledCanvas" init="obj = ScrolledCanvas(500,350,600,500,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="ScrolledCanvas" init="obj = ScrolledCanvas(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'width:NoneType', 'height:NoneType', 'canvwidth:NoneType', 'canvheight:NoneType']</args>
@@ -48543,7 +48543,7 @@
       </class>
       <class name="Terminator" init="obj = Terminator()%%[]"/>
       <class name="TurtleGraphicsError" init="obj = TurtleGraphicsError()%%[]"/>
-      <class name="Shape" init="obj = Shape(None,None)%%['NoneType', 'NoneType']">
+      <class name="Shape" init="obj = Shape(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['type_:NoneType', 'data:NoneType']</args>
@@ -48565,7 +48565,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Tbuffer" init="obj = Tbuffer(10)%%['NoneType']">
+      <class name="Tbuffer" init="obj = Tbuffer()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['bufsize:NoneType']</args>
@@ -48607,7 +48607,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TurtleScreen" init="obj = TurtleScreen(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="TurtleScreen" init="obj = TurtleScreen(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['cv:NoneType', 'mode:NoneType', 'colormode:NoneType', 'delay:NoneType']</args>
@@ -48759,7 +48759,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TNavigator" init="obj = TNavigator(DEFAULT_MODE)%%['NoneType']">
+      <class name="TNavigator" init="obj = TNavigator()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['mode:NoneType']</args>
@@ -48931,7 +48931,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TPen" init="obj = TPen(None)%%['NoneType']">
+      <class name="TPen" init="obj = TPen()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['resizemode:NoneType']</args>
@@ -49053,7 +49053,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="RawTurtle" init="obj = RawTurtle(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="RawTurtle" init="obj = RawTurtle()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['canvas:NoneType', 'shape:NoneType', 'undobuffersize:NoneType', 'visible:NoneType']</args>
@@ -49305,7 +49305,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Turtle" init="obj = Turtle(None,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="Turtle" init="obj = Turtle()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['shape:NoneType', 'undobuffersize:NoneType', 'visible:NoneType']</args>
@@ -49424,7 +49424,7 @@
       </errors>
     </module>
     <module name="hmac" imports="['warnings', 'hashlib']" importfrom="[]">
-      <class name="HMAC" init="obj = HMAC(None,'',None)%%['None', 'None', 'None']">
+      <class name="HMAC" init="obj = HMAC(None)%%['None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['key:None', 'msg:None', 'digestmod:None']</args>
@@ -49536,7 +49536,7 @@
       </errors>
     </module>
     <module name="code" imports="['sys', 'traceback', 'readline', 'argparse']" importfrom="['codeop:CommandCompiler', 'codeop:compile_command']">
-      <class name="InteractiveInterpreter" init="obj = InteractiveInterpreter(None)%%['builtin_function_or_method']">
+      <class name="InteractiveInterpreter" init="obj = InteractiveInterpreter()%%['builtin_function_or_method']">
         <api name="__init__">
           <expr>None</expr>
           <args>['locals:builtin_function_or_method']</args>
@@ -49578,7 +49578,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="InteractiveConsole" init="obj = InteractiveConsole(None,&lt;console&gt;)%%['builtin_function_or_method', 'NoneType']">
+      <class name="InteractiveConsole" init="obj = InteractiveConsole()%%['builtin_function_or_method', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['locals:builtin_function_or_method', 'filename:NoneType']</args>
@@ -49624,7 +49624,7 @@
       </errors>
     </module>
     <module name="bz2" imports="['io', 'os']" importfrom="['builtins:open', 'threading:RLock']">
-      <class name="BZ2File" init="obj = BZ2File(r,None)%%['None', 'None']">
+      <class name="BZ2File" init="obj = BZ2File(None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:None', 'mode:None']</args>
@@ -49777,7 +49777,7 @@
       </api>
     </module>
     <module name="pkgutil" imports="['importlib', 'importlib.util', 'importlib.machinery', 'os', 'os.path', 're', 'sys', 'warnings', 'marshal', 'inspect', 'zipimport']" importfrom="['collections:namedtuple', 'functools:singledispatch', 'types:ModuleType', 'zipimport:zipimporter']">
-      <class name="ImpImporter" init="obj = ImpImporter(None)%%['None']">
+      <class name="ImpImporter" init="obj = ImpImporter()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['path:None']</args>
@@ -50015,7 +50015,7 @@
       </errors>
     </module>
     <module name="lzma" imports="['builtins', 'io', 'os']" importfrom="[]">
-      <class name="LZMAFile" init="obj = LZMAFile(None,r)%%['None', 'None']">
+      <class name="LZMAFile" init="obj = LZMAFile()%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['filename:None', 'mode:None']</args>
@@ -50102,7 +50102,7 @@
       </errors>
     </module>
     <module name="sre_constants" imports="[]" importfrom="[]">
-      <class name="error" init="obj = error(None,None,None)%%['None', 'None', 'None']">
+      <class name="error" init="obj = error(None)%%['None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['msg:None', 'pattern:None', 'pos:None']</args>
@@ -50127,7 +50127,7 @@
     </module>
     <module name="pdb" imports="['os', 'io', 're', 'sys', 'cmd', 'bdb', 'dis', 'code', 'glob', 'pprint', 'signal', 'inspect', 'tokenize', 'traceback', 'linecache', 'shlex', 'runpy', 'pydoc', 'getopt', 'pdb']" importfrom="[]">
       <class name="Restart" init="obj = Restart()%%[]"/>
-      <class name="Pdb" init="obj = Pdb(tab,None,None,None,False,True)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Pdb" init="obj = Pdb()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['completekey:NoneType', 'stdin:NoneType', 'stdout:NoneType', 'skip:NoneType', 'nosigint:NoneType', 'readrc:NoneType']</args>
@@ -50851,7 +50851,7 @@
     </module>
     <module name="poplib" imports="['errno', 're', 'socket', 'sys', 'ssl', 'hashlib']" importfrom="[]">
       <class name="error_proto" init="obj = error_proto()%%[]"/>
-      <class name="POP3" init="obj = POP3(POP3_PORT,None,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="POP3" init="obj = POP3(None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'timeout:NoneType']</args>
@@ -51033,7 +51033,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="POP3_SSL" init="obj = POP3_SSL(POP3_SSL_PORT,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="POP3_SSL" init="obj = POP3_SSL(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'keyfile:NoneType', 'certfile:NoneType', 'timeout:NoneType', 'context:NoneType']</args>
@@ -51285,7 +51285,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ProfileBrowser" init="obj = ProfileBrowser(None)%%['None']">
+      <class name="ProfileBrowser" init="obj = ProfileBrowser()%%['None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['profile:None']</args>
@@ -52096,7 +52096,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="Helper" init="obj = Helper(None,None)%%['builtin_function_or_method', 'NoneType']">
+      <class name="Helper" init="obj = Helper()%%['builtin_function_or_method', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['input:builtin_function_or_method', 'output:NoneType']</args>
@@ -53334,7 +53334,7 @@
     </module>
     <module name="ftplib" imports="['sys', 'socket', 'ssl', 're']" importfrom="[]">
       <class name="Error" init="obj = Error()%%[]"/>
-      <class name="FTP" init="obj = FTP('','','','',_GLOBAL_DEFAULT_TIMEOUT,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="FTP" init="obj = FTP()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'user:NoneType', 'passwd:NoneType', 'acct:NoneType', 'timeout:NoneType', 'source_address:NoneType']</args>
@@ -53586,7 +53586,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FTP_TLS" init="obj = FTP_TLS('','','','',None,None,None,_GLOBAL_DEFAULT_TIMEOUT,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="FTP_TLS" init="obj = FTP_TLS()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'user:NoneType', 'passwd:NoneType', 'acct:NoneType', 'keyfile:NoneType', 'certfile:NoneType', 'context:NoneType', 'timeout:NoneType', 'source_address:NoneType']</args>
