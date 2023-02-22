@@ -15,6 +15,8 @@ namespace py = pybind11;
 void _set_custom_mutator(
     const std::function<py::bytes(py::bytes data, size_t max_size,
                                   unsigned int seed)>& custom_mutator_func);
+extern "C" size_t LLVMFuzzerCustomMutator(uint8_t* data, size_t size,
+                                          size_t max_size, unsigned int seed);
 }  // namespace atheris
 
 #endif  // ATHERIS_CUSTOM_MUTATOR_H_

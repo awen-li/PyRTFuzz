@@ -22,12 +22,14 @@ typedef int (*UserCallback)(const uint8_t *Data, std::size_t Size);
 typedef int (*UserCallbackCore)(const char *Script);
 typedef const char* (*GetRandomSeed) (const char *Dir);
 typedef const char* (*GetSpecifiedSeed) (const char *Seed);
+typedef std::size_t (*UserMutator)(uint8_t* data, std::size_t size, std::size_t max_size, unsigned int seed);
 
 int FuzzerDriver(int *argc, char ***argv, UserCallback Callback);
 int FuzzerDriverPyCore(int *argc, char ***argv, 
                        UserCallbackCore Callback,
                        GetRandomSeed CbRandom,
-                       GetSpecifiedSeed CbSpecified);
+                       GetSpecifiedSeed CbSpecified,
+                       UserMutator CbUserMutator);
 
 }  // namespace fuzzer
 
@@ -44,7 +46,8 @@ extern "C" __attribute__((visibility("default"))) int LLVMFuzzerRunDriverPyCore(
     int *argc, char ***argv, 
     int (*UserCb)(const char *Script),
     const char* (*CbRandom) (const char *Dir),
-    const char* (*CbSpecified) (const char *Seed)) {
-  return fuzzer::FuzzerDriverPyCore(argc, argv, UserCb, CbRandom, CbSpecified);
+    const char* (*CbSpecified) (const char *Seed),
+    std::size_t (*CbUserMutator)(uint8_t* data, std::size_t size, std::size_t max_size, unsigned int seed)) {
+  return fuzzer::FuzzerDriverPyCore(argc, argv, UserCb, CbRandom, CbSpecified, CbUserMutator);
 }
 

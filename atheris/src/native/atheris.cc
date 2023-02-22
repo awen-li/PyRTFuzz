@@ -263,8 +263,6 @@ int ReservePendingCounter() { return ++pending_counters; }
 
 NO_SANITIZE
 void Fuzz() {
-  printf ("@@@ Fuzz \r\n");
-  
   if (!setup_called) {
     std::cerr << Colorize(STDERR_FILENO,
                           "Setup() must be called before Fuzz() can be called.")
@@ -314,7 +312,6 @@ void Fuzz() {
 
 NO_SANITIZE
 void FuzzLv1(int time_budget) {
-  printf ("@@@ FuzzLv1 \r\n");
   if (!setup_called) {
     std::cerr << Colorize(STDERR_FILENO,
                           "Setup() must be called before Fuzz() can be called.")
@@ -366,8 +363,6 @@ void FuzzLv1(int time_budget) {
 
 NO_SANITIZE
 void FuzzLv2() {
-    printf ("@@@@ FuzzLv2\r\n");
-    
     py::module core = LoadCoreModule();
     core.attr("start_fuzzing")(args_global, test_one_input_global);
 

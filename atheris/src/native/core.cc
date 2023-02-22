@@ -36,6 +36,7 @@
 #include "timeout.h"
 #include "tracer.h"
 #include "util.h"
+#include "custom_mutator.h"
 
 using UserCb = int (*)(const uint8_t* Data, size_t Size);
 
@@ -46,7 +47,8 @@ int LLVMFuzzerRunDriver(int* argc, char*** argv,
 int LLVMFuzzerRunDriverPyCore(int* argc, char*** argv,
                               int (*UserCb)(const char *Script),
                               const char* (*CbRandom) (const char *Dir),
-                              const char* (*CbSpecified) (const char *Seed));
+                              const char* (*CbSpecified) (const char *Seed),
+                              std::size_t (*CbUserMutator)(uint8_t* data, std::size_t size, std::size_t max_size, unsigned int seed));
 
 size_t LLVMFuzzerMutate(uint8_t* Data, size_t Size, size_t MaxSize);
 void __sanitizer_cov_8bit_counters_init(uint8_t* start, uint8_t* stop);
@@ -110,7 +112,6 @@ static bool py_core_fuzzing = false;
 int64_t runs = -1;  // Default from libFuzzer, means infinite
 int64_t completed_runs = 0;
 int64_t fuzzer_start_time;
-
 
 NO_SANITIZE
 void Init() {
@@ -272,9 +273,6 @@ void start_fuzzing(const std::vector<std::string>& args,
 
 NO_SANITIZE
 int TestOneScript(const char* Script) {
-
-  printf ("@@@ TestOneScript -> %s \r\n", Script);
-
   (void)OnFirstTestOneInput();
   RefreshTimeout();
   
@@ -341,8 +339,6 @@ void start_fuzzing_core(const std::vector<std::string>& args,
                         const std::function<void(std::string script)>& test_one_script,
                         std::function<std::string(std::string script)>& get_random_script,
                         std::function<std::string(std::string script)>& get_specified_script) {
-  printf ("@@@ start_fuzzing_core\r\n");
-  
   test_one_script_global      = test_one_script;
   get_random_script_global    = get_random_script;
   get_specified_script_global = get_specified_script;
@@ -392,7 +388,8 @@ void start_fuzzing_core(const std::vector<std::string>& args,
   int Ret = LLVMFuzzerRunDriverPyCore(&args_size, &args_ptr, 
                                       &TestOneScript,
                                       &GetRandomSeed,
-                                      &GetSpecifiedSeed);
+                                      &GetSpecifiedSeed,
+                                      &LLVMFuzzerCustomMutator);
   GracefulExit(Ret);
 }
 

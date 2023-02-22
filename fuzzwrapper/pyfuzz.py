@@ -10,13 +10,13 @@ PYFUZZ_SCRIPT_API_TYPE = 'PYFUZZ_SCRIPT_API_TYPE'
 
 SrvPort = random.randint(10000, 65531)
 try:
-    atheris.SetupPyFuzz('apispec.xml', SrvPort)
+    atheris.SetupPyFuzz('apispec.xml', SrvPort, ProbAll=False)
     atheris.GetInitialSeeds ('seeds')
 except:
     sys.exit (0)
 
-def PyLv2Mutate (Data, MaxSize):
-    print ("@@@[%s] PYFUZZ_SCRIPT_API_TYPE = %s" %(os.environ[PYFUZZ_SCRIPT], os.environ[PYFUZZ_SCRIPT_API_TYPE]))
+def PyLv2Mutate (Data, MaxSize, Seed):
+    #print ("[%s] PYFUZZ_SCRIPT_API_TYPE = %s" %(os.environ[PYFUZZ_SCRIPT], os.environ[PYFUZZ_SCRIPT_API_TYPE]))
     Length = len (Data)
     if Length != 0:
         try:
@@ -37,7 +37,6 @@ def PyCoreFuzz (script):
     absPath  = os.path.abspath (script)
     absDir   = os.path.dirname (absPath)
     baseName = os.path.basename (script)
-    print ("@@@ PyCoreFuzz -> " + absDir + "  --->  " + baseName)
 
     if absDir not in sys.path:
         sys.path.insert(0, absDir)
@@ -53,7 +52,6 @@ def PyCoreFuzz (script):
     os.environ[PYFUZZ_SCRIPT_API_TYPE] = str(FuzzMd.API_TYPE_LIST)
 
     # set Lv2Driver
-    print ("@@@@LV2 fuzzing:API TYPE = %s" %str(FuzzMd.API_TYPE_LIST))
     atheris.SetLv2Driver (FuzzMd.RunFuzzer, pyScriptCorpus)
     atheris.FuzzLv2()
 
@@ -65,7 +63,6 @@ if __name__ == '__main__':
                       atheris.GetSpecifiedSeed,
                       enable_python_coverage=True,
                       custom_mutator=PyLv2Mutate)
-    print ("@@@@START: current process ID = %d" %os. getpid())
     atheris.FuzzLv1(300)
     atheris.Done ()
  
