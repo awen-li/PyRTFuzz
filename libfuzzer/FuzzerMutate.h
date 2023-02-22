@@ -92,6 +92,8 @@ public:
 
   Random &GetRand() { return Rand; }
 
+  size_t GetMutatorNum () { return Mutators.size(); }
+
  private:
   struct Mutator {
     size_t (MutationDispatcher::*Fn)(uint8_t *Data, size_t Size, size_t Max);

@@ -180,7 +180,6 @@ Fuzzer::Fuzzer(UserCallbackCore CBCore, InputCorpus *Corpus, MutationDispatcher 
 
 void Fuzzer::SetFuzzer (UserCallback CB, InputCorpus *Corpus)
 {
-    printf ("#### SetFuzzer -> this->Corpus = %p, this->PyCorpus = %p\r\n", this->Corpus, this->PyCorpus);
     if (this->Corpus != this->PyCorpus)
     {
         delete this->Corpus;

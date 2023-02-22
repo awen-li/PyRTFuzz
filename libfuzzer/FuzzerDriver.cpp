@@ -609,7 +609,6 @@ static Vector<SizedFile> ReadCorpora(const Vector<std::string> &CorpusDirs,
 }
 
 int FuzzerDriverOrigin(int *argc, char ***argv, UserCallback Callback) {
-  printf ("@@@Lv2 ========> FuzzerDriver\r\n");
   using namespace fuzzer;
   assert(argc && argv && "Argument pointers cannot be nullptr");
   std::string Argv0((*argv)[0]);
@@ -867,7 +866,6 @@ int FuzzerDriverPyCoreLv2 (int *argc, char ***argv, UserCallback Callback) {
   ParseFlags(Args, EF);
   Options.OutputCorpus = (*Inputs)[0];
   Options.MaxTotalTimeSec = Options.Lv2TimeBudgetSec;
-  printf ("@@@Lv2 ========> FuzzerDriver, Options.OutputCorpus = %s\r\n", Options.OutputCorpus.c_str());
 
   bool RunIndividualFiles = AllInputsAreFiles();
 
@@ -925,13 +923,14 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
 int FuzzerDriverPyCore(int *argc, char ***argv, 
                        UserCallbackCore Callback,
                        GetRandomSeed CbRandom,
-                       GetSpecifiedSeed CbSpecified) {
-
-  printf ("@@@Lv1 ========> FuzzerDriverPyCore\r\n");
+                       GetSpecifiedSeed CbSpecified,
+                       UserMutator CbUserMutator) {
   using namespace fuzzer;
   assert(argc && argv && "Argument pointers cannot be nullptr");
   std::string Argv0((*argv)[0]);
   EF = new ExternalFunctions();
+  EF->LLVMFuzzerCustomMutator = CbUserMutator;
+
   if (EF->LLVMFuzzerInitialize)
     EF->LLVMFuzzerInitialize(argc, argv);
   if (EF->__msan_scoped_disable_interceptor_checks)
@@ -1047,7 +1046,6 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
   auto *Corpus = new InputCorpus (Options.OutputCorpus, Entropic);
   auto *F = new Fuzzer(Callback, Corpus, *MD, Options);
   TwoLvFuzzing = true;
-  printf ("@@@ Wen ----> entry FuzzerDriverPyCore with F = %p\r\n", F);
 
   Options.HandleAbrt = Flags.handle_abrt;
   Options.HandleBus = Flags.handle_bus;
