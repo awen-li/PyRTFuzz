@@ -2243,7 +2243,7 @@
       </api>
     </module>
     <module name="email.headerregistry" imports="[]" importfrom="['types:MappingProxyType', 'email:utils', 'email:errors']">
-      <class name="Address" init="obj = Address(,,,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="Address" init="obj = Address('','','',None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['display_name:NoneType', 'username:NoneType', 'domain:NoneType', 'addr_spec:NoneType']</args>
@@ -19780,7 +19780,7 @@
       </errors>
     </module>
     <module name="urllib.robotparser" imports="['collections', 'urllib.parse', 'urllib.request', 'time']" importfrom="[]">
-      <class name="RobotFileParser" init="obj = RobotFileParser()%%['NoneType']">
+      <class name="RobotFileParser" init="obj = RobotFileParser('')%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['url:NoneType']</args>
@@ -26625,7 +26625,7 @@
       </api>
     </module>
     <module name="tkinter.simpledialog" imports="[]" importfrom="['tkinter:*', 'tkinter:messagebox']">
-      <class name="SimpleDialog" init="obj = SimpleDialog(,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SimpleDialog" init="obj = SimpleDialog('',None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['master:NoneType', 'text:NoneType', 'buttons:NoneType', 'default:NoneType', 'cancel:NoneType', 'title:NoneType', 'class_:NoneType']</args>
@@ -30395,7 +30395,7 @@
       </errors>
     </module>
     <module name="getopt" imports="['os', 'sys']" importfrom="['gettext:gettext']">
-      <class name="GetoptError" init="obj = GetoptError(,None)%%['None', 'None']">
+      <class name="GetoptError" init="obj = GetoptError('',None)%%['None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['msg:None', 'opt:None']</args>
@@ -30473,7 +30473,7 @@
       </errors>
     </module>
     <module name="textwrap" imports="['re']" importfrom="[]">
-      <class name="TextWrapper" init="obj = TextWrapper(70,,,True,True,False,True,True,True,8)%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
+      <class name="TextWrapper" init="obj = TextWrapper(70,'','',True,True,False,True,True,True,8)%%['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['width:None', 'initial_indent:None', 'subsequent_indent:None', 'expand_tabs:None', 'replace_whitespace:None', 'fix_sentence_endings:None', 'break_long_words:None', 'drop_whitespace:None', 'break_on_hyphens:None', 'tabsize:None']</args>
@@ -31642,7 +31642,7 @@
       <class name="SMTPConnectError" init="obj = SMTPConnectError()%%[]"/>
       <class name="SMTPHeloError" init="obj = SMTPHeloError()%%[]"/>
       <class name="SMTPAuthenticationError" init="obj = SMTPAuthenticationError()%%[]"/>
-      <class name="SMTP" init="obj = SMTP(,0,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SMTP" init="obj = SMTP('',0,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'local_hostname:NoneType', 'timeout:NoneType', 'source_address:NoneType']</args>
@@ -31804,7 +31804,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="SMTP_SSL" init="obj = SMTP_SSL(,0,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SMTP_SSL" init="obj = SMTP_SSL('',0,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'local_hostname:NoneType', 'keyfile:NoneType', 'certfile:NoneType', 'timeout:NoneType', 'source_address:NoneType', 'context:NoneType']</args>
@@ -31816,7 +31816,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="LMTP" init="obj = LMTP(,LMTP_PORT,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="LMTP" init="obj = LMTP('',LMTP_PORT,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'local_hostname:NoneType', 'source_address:NoneType', 'timeout:NoneType']</args>
@@ -33673,7 +33673,7 @@
     </module>
     <module name="webbrowser" imports="['os', 'shlex', 'shutil', 'sys', 'subprocess', 'threading', 'copy', 'glob', 'pwd', 'socket', 'tempfile', 'getopt']" importfrom="[]">
       <class name="Error" init="obj = Error()%%[]"/>
-      <class name="BaseBrowser" init="obj = BaseBrowser()%%['NoneType']">
+      <class name="BaseBrowser" init="obj = BaseBrowser('')%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['name:NoneType']</args>
@@ -34716,7 +34716,7 @@
       </errors>
     </module>
     <module name="imaplib" imports="['binascii', 'errno', 'random', 're', 'socket', 'subprocess', 'sys', 'time', 'calendar', 'ssl', 'hmac', 'getopt', 'getpass']" importfrom="['datetime:datetime', 'datetime:timezone', 'datetime:timedelta', 'io:DEFAULT_BUFFER_SIZE']">
-      <class name="IMAP4" init="obj = IMAP4(,IMAP4_PORT,None)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="IMAP4" init="obj = IMAP4('',IMAP4_PORT,None)%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'timeout:NoneType']</args>
@@ -35128,7 +35128,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IMAP4_SSL" init="obj = IMAP4_SSL(,IMAP4_SSL_PORT,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="IMAP4_SSL" init="obj = IMAP4_SSL('',IMAP4_SSL_PORT,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'port:NoneType', 'keyfile:NoneType', 'certfile:NoneType', 'ssl_context:NoneType', 'timeout:NoneType']</args>
@@ -38360,7 +38360,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="TarInfo" init="obj = TarInfo()%%['NoneType']">
+      <class name="TarInfo" init="obj = TarInfo('')%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['name:NoneType']</args>
@@ -40755,7 +40755,7 @@
         </api>
       </class>
       <class name="FastLookup" init="obj = FastLookup()%%[]"/>
-      <class name="Path" init="obj = Path(,None)%%['NoneType', 'NoneType']">
+      <class name="Path" init="obj = Path('',None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['root:NoneType', 'at:NoneType']</args>
@@ -43791,7 +43791,7 @@
       </errors>
     </module>
     <module name="fileinput" imports="['sys', 'os', 'warnings', 'gzip', 'bz2', 'getopt']" importfrom="['types:GenericAlias']">
-      <class name="FileInput" init="obj = FileInput(None,False,)%%['NoneType', 'NoneType', 'NoneType']">
+      <class name="FileInput" init="obj = FileInput(None,False,'')%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['files:NoneType', 'inplace:NoneType', 'backup:NoneType']</args>
@@ -44551,7 +44551,7 @@
       </errors>
     </module>
     <module name="configparser" imports="['functools', 'io', 'itertools', 'os', 're', 'sys', 'warnings']" importfrom="['collections.abc:MutableMapping', 'collections:ChainMap']">
-      <class name="Error" init="obj = Error()%%['NoneType']">
+      <class name="Error" init="obj = Error('')%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['msg:NoneType']</args>
@@ -46453,7 +46453,7 @@
       </errors>
     </module>
     <module name="difflib" imports="['re', 'doctest', 'difflib']" importfrom="['heapq:nlargest', 'collections:namedtuple', 'types:GenericAlias']">
-      <class name="SequenceMatcher" init="obj = SequenceMatcher(None,,,True)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="SequenceMatcher" init="obj = SequenceMatcher(None,'','',True)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['isjunk:NoneType', 'a:NoneType', 'b:NoneType', 'autojunk:NoneType']</args>
@@ -47244,7 +47244,7 @@
       </errors>
     </module>
     <module name="py_compile" imports="['enum', 'importlib._bootstrap_external', 'importlib.machinery', 'importlib.util', 'os', 'os.path', 'sys', 'traceback']" importfrom="[]">
-      <class name="PyCompileError" init="obj = PyCompileError(,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="PyCompileError" init="obj = PyCompileError('',None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['exc_type:NoneType', 'exc_value:NoneType', 'file:NoneType', 'msg:NoneType']</args>
@@ -48213,7 +48213,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="DictWriter" init="obj = DictWriter(,raise,excel,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="DictWriter" init="obj = DictWriter('',raise,excel,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['f:NoneType', 'fieldnames:NoneType', 'restval:NoneType', 'extrasaction:NoneType', 'dialect:NoneType']</args>
@@ -49424,7 +49424,7 @@
       </errors>
     </module>
     <module name="hmac" imports="['warnings', 'hashlib']" importfrom="[]">
-      <class name="HMAC" init="obj = HMAC(None,,None)%%['None', 'None', 'None']">
+      <class name="HMAC" init="obj = HMAC(None,'',None)%%['None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
           <args>['key:None', 'msg:None', 'digestmod:None']</args>
@@ -53334,7 +53334,7 @@
     </module>
     <module name="ftplib" imports="['sys', 'socket', 'ssl', 're']" importfrom="[]">
       <class name="Error" init="obj = Error()%%[]"/>
-      <class name="FTP" init="obj = FTP(,,,,_GLOBAL_DEFAULT_TIMEOUT,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="FTP" init="obj = FTP('','','','',_GLOBAL_DEFAULT_TIMEOUT,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'user:NoneType', 'passwd:NoneType', 'acct:NoneType', 'timeout:NoneType', 'source_address:NoneType']</args>
@@ -53586,7 +53586,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="FTP_TLS" init="obj = FTP_TLS(,,,,None,None,None,_GLOBAL_DEFAULT_TIMEOUT,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
+      <class name="FTP_TLS" init="obj = FTP_TLS('','','','',None,None,None,_GLOBAL_DEFAULT_TIMEOUT,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
           <args>['host:NoneType', 'user:NoneType', 'passwd:NoneType', 'acct:NoneType', 'keyfile:NoneType', 'certfile:NoneType', 'context:NoneType', 'timeout:NoneType', 'source_address:NoneType']</args>
