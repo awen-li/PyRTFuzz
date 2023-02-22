@@ -114,7 +114,7 @@ class CodeGen ():
         self.Core.Run (Script, OutPut=PyFile)
 
     def DefaultNumber (self):
-        Number = os.env.get ("INIT_SEED_NUM")
+        Number = os.environ.get ("INIT_SEED_NUM")
         if Number == None:
             return 0xffffff
         else:

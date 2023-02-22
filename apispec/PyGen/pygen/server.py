@@ -2,6 +2,9 @@ import sys
 import socket
 import traceback
 from .script import CodeGen
+from .debug import *
+
+DebugFlag = os.environ.get (DEBUG_ENV)
 
 class PyMsg ():
     MSG_START_REQ="MSG_START_REQ"
@@ -40,7 +43,10 @@ class PyMsg ():
         if len (Action) == 0 or len (Data) == 0:
             self.MsgSend (PyMsg.MSG_ERR+":(error,empty field)")
             return None, None
-        #print ("[DecodeMsg]Action = %s, Data = %s" %(Action, Data))
+
+        if DebugFlag != None:
+            print ("[DecodeMsg]Action = %s, Data = %s" %(Action, Data))
+        
         return Action, Data
 
     # "MSG_START_REQ:(hello,/path/apispec.xml)"
@@ -73,6 +79,9 @@ class PyMsg ():
         Action, Path = self.DecodeMsg (data)
         if Action == None or Path == None:
             return None
+
+        if DebugFlag != None:
+            print ('[HandleGenPyReq]:' + Action + ' - ' + Path)
 
         if Action == 'initial':
             Ret = self.Generator.GenInitPy (Path)
