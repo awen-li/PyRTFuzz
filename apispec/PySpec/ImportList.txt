@@ -449,7 +449,6 @@ import pkgutil
 import enum
 import lzma
 import sre_constants
-import pdb
 import plistlib
 import poplib
 import heapq
