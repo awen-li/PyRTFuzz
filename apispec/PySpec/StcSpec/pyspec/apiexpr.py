@@ -83,9 +83,11 @@ class ApiExpr ():
 
     def GetApiExpr (self, ApiSpec, ApiPath, Obj=''):
         #print ("[API]" + ApiSpec.ApiName)
-        ApiExpr = Obj
+        ApiExpr = ''
         if len (ApiSpec.Ret) != 0:
             ApiExpr += 'ret = '
+        ApiExpr += Obj
+        
         ApiExpr += ApiSpec.ApiName
         ApiExpr, TypeList = self.GetExpr (ApiPath, ApiExpr, ApiSpec)
         #print (ApiExpr)
