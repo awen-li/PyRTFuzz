@@ -8,15 +8,44 @@ import subprocess
 from threading import Timer
 
 SubProc = None
-RunResult = False
+RunResult = 'False'
+ErrorTypes = {}
 
 def TimeOut ():
     if SubProc != None:
         os.kill(SubProc.pid, signal.SIGTERM)
         os.kill(SubProc.pid+1, signal.SIGTERM)
     global RunResult
-    RunResult = False
+    RunResult = 'TimeOut'
+    LogError (RunResult)
     
+def LogError (Err):
+    ErrNum = ErrorTypes.get (Err)
+    if ErrNum == None:
+        ErrorTypes[Err] = 1
+    else:
+        ErrorTypes[Err] = ErrNum+1
+
+def ShowError ():
+    print ("\n################## ERROR details ##################")
+    for err, num in ErrorTypes.items ():
+        print ("### Error Type: %-16s, Number:%-4d" %(err, num))
+    print ("###################################################\n")
+
+def FilterOut (Cmd, Ret, SuccessNum, TotalNum):
+    if RunResult == 'True':
+        SuccessNum += 1
+    
+    if len (sys.argv) == 1:
+        if RunResult != 'True':
+            print ("[%d]Execute: %s ----> Fail (%d/%2.1f%%)" %(TotalNum, Cmd, SuccessNum, SuccessNum*100.0/TotalNum))
+        else:
+            print ("[%d]Execute: %s ----> Success (%d/%2.1f%%)" %(TotalNum, Cmd, SuccessNum, SuccessNum*100.0/TotalNum))
+    else:
+        Filter = sys.argv[1]
+        if RunResult == Filter:
+            print ("[%d]Execute: %s ----> Result: %s" %(TotalNum, Cmd, RunResult))
+    return SuccessNum
 
 def RunProcess (Cmd):
     global SubProc
@@ -24,25 +53,29 @@ def RunProcess (Cmd):
 
     SubProc = subprocess.Popen(Cmd, shell=True, stdout=subprocess.PIPE, stderr = subprocess.STDOUT)
 
+    Ret = None
     while True:
         try:
             Line = SubProc.stdout.readline()
         except:
             print ("Except happened.......")
+        
         if not Line: break
         Ret = Line.decode("utf-8").replace ("\n", "")
-        if Ret != 'True':       
-            RunResult = False
-        else:
-            RunResult = True
-        break
+    
+    if Ret == None:
+        return
+    
+    if Ret != 'True':       
+        RunResult = Ret
+        LogError (Ret)
+    else:
+        RunResult = 'True'
     return
 
 def GetTests (Path):
     AllTests = []
     ModDir = os.walk(Path)
-    TotalNum = 0
-    SuccessNum = 0
     for Path, Dirs, Pys in ModDir:      
         for py in Pys:
             Mod, Ext = os.path.splitext(py)
@@ -69,15 +102,13 @@ for PyFile in AllTests:
  
     RunProcess (Cmd)
     TotalNum += 1
-
     sTimer.cancel ()
-    if RunResult == False:
-        print ("[%d]Execute: %s ----> Fail (%d/%.2f)" %(TotalNum, Cmd, SuccessNum, SuccessNum*1.0/TotalNum))
-    else:
-        SuccessNum += 1
-        print ("[%d]Execute: %s ----> Success (%d/%.2f)" %(TotalNum, Cmd, SuccessNum, SuccessNum*1.0/TotalNum))       
 
-print ("\n###Done, Success rate: [%d/%d]%.2f" %(SuccessNum, TotalNum, SuccessNum*1.0/TotalNum))
+    SuccessNum = FilterOut (Cmd, RunResult, SuccessNum, TotalNum)
+
+print ("\n###Done, Success rate: %2.1f%%[%d/%d]" %(SuccessNum*100.0/TotalNum, SuccessNum, TotalNum))
+ShowError ()
+
 sys.exit (0)
 
 
