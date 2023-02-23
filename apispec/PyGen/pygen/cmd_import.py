@@ -6,6 +6,13 @@ class PyImport():
     def __init__(self, PyModule):
         self.PyModule = PyModule
 
+    def IsRef (self, App, Name):
+        Ref = Name + '.'
+        if App.find (Ref) == -1:
+            return False
+        else:
+            return True
+
     def GenImport (self, App):
         PMd = self.PyModule.Name.split ('.')[0]
 
@@ -21,12 +28,12 @@ class PyImport():
 
             if Impt.find (':') == -1:
                 Name = Impt
-                if App.find (Name) == -1:
+                if self.IsRef (App, Name) == False:
                     continue
                 Imports += '\n' + "import " + Name
             else:
                 Name, AsName = Impt.split (':')
-                if App.find (Name) == -1 and App.find (AsName) == -1:
+                if self.IsRef (App, Name) == False and self.IsRef (App, AsName) == False:
                     continue
                 Imports += '\n' + "import " + Name + ' as ' + AsName
 
@@ -35,7 +42,7 @@ class PyImport():
             md, al = ImptFrom.split (':')
             if md[0:1] == '_':
                 continue
-            if App.find (md) == -1 and App.find (al) == -1:
+            if self.IsRef (App, md) == False and self.IsRef (App, al) == False:
                 continue
             Imports += '\n' + "from " + md + ' import ' + al
 
