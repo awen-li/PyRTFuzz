@@ -3,6 +3,7 @@ import os
 import sys
 import argparse
 import importlib
+import traceback
 
 def InitArgument (parser):
     parser.add_argument('--version', action='version', version='appgen 1.0')
@@ -16,7 +17,6 @@ def RunScript (script):
     absPath  = os.path.abspath (script)
     absDir   = os.path.dirname (absPath)
     baseName = os.path.basename (script)
-    print ("@@@ PyCoreFuzz -> " + absDir + "  --->  " + baseName)
 
     if absDir not in sys.path:
         sys.path.insert(0, absDir)
@@ -24,7 +24,13 @@ def RunScript (script):
     md  = baseName.split('.')[0]
     lib = importlib.import_module(md)
     
-    lib.RunFuzzer ('0')
+    try:
+        lib.RunFuzzer ('0000000000')
+    except:
+        traceback.print_exc()
+        return False
+    
+    return True
 
     
 def main():
@@ -36,7 +42,10 @@ def main():
     if opts.filename is None:
         parser.error('please specify the script file!')
 
-    RunScript (opts.filename)
+    if RunScript (opts.filename) == True:
+        print ('True')
+    else:
+        print ('False')
 
 if __name__ == "__main__":
    main()

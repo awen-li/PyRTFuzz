@@ -48464,7 +48464,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="turtle" imports="['tkinter', 'types', 'math', 'time', 'inspect', 'sys', 're']" importfrom="['os.path:isfile', 'os.path:split', 'os.path:join', 'copy:deepcopy', 'tkinter:simpledialog']">
+    <module name="turtle" imports="['tkinter:TK', 'types', 'math', 'time', 'inspect', 'sys', 're']" importfrom="['os.path:isfile', 'os.path:split', 'os.path:join', 'copy:deepcopy', 'tkinter:simpledialog']">
       <class name="Vec2D" init="obj = Vec2D()%%[]">
         <api name="rotate">
           <expr>obj.rotate(angle)%%['float']</expr>

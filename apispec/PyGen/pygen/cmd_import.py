@@ -18,9 +18,17 @@ class PyImport():
         for Impt in self.PyModule.Imports:
             if Impt[0:1] == '_':
                 continue
-            if App.find (Impt) == -1:
-                continue
-            Imports += '\n' + "import " + Impt
+
+            if Impt.find (':') == -1:
+                Name = Impt
+                if App.find (Name) == -1:
+                    continue
+                Imports += '\n' + "import " + Name
+            else:
+                Name, AsName = Impt.split (':')
+                if App.find (Name) == -1 and App.find (AsName) == -1:
+                    continue
+                Imports += '\n' + "import " + Name + ' as ' + AsName
 
         # Importfrom
         for ImptFrom in self.PyModule.ImportFrom:

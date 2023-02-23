@@ -94,7 +94,10 @@ class AstWalk(NodeVisitor):
                 continue
             if al.name in self.CurPyMod.Imports:
                 continue
-            self.CurPyMod.Imports.append (al.name)
+            if al.asname == None:
+                self.CurPyMod.Imports.append (al.name)
+            else:
+                self.CurPyMod.Imports.append (al.name + ':' + str(al.asname))
         #print (self.CurPyMod.Imports)
 
     def visit_unaryop (self, node):
