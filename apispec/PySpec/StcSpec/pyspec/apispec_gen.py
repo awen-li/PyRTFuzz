@@ -111,8 +111,12 @@ class ApiSpecGen ():
 
                 if len (md.Exceptions) != 0:
                     excepNode = ApiSpecGen.AddChild (Root, mdNode, "errors")
-                    for excep in md.Exceptions:  
+                    ExcList = []
+                    for excep in md.Exceptions:
+                        if excep.exName in ExcList:
+                            continue
                         ApiSpecGen.WriteErrs (Root, excepNode, excep)
+                        ExcList.append (excep.exName)
         
         with open (ApiSpecXml, 'w') as af:
             af.write(Root.toprettyxml(indent="  "))

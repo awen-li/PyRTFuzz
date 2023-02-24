@@ -80,6 +80,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AssertionError</exception>
+      </errors>
     </module>
   </library>
   <library name="ctypes">
@@ -851,6 +854,11 @@
         <exception>Fault</exception>
         <exception>Exception</exception>
         <exception>Error</exception>
+        <exception>TypeError</exception>
+        <exception>OverflowError</exception>
+        <exception>ResponseError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>ProtocolError</exception>
       </errors>
     </module>
     <module name="xmlrpc.server" imports="['html', 'http.server', 'socketserver', 'sys', 'os', 're', 'pydoc', 'traceback', 'fcntl', 'datetime']" importfrom="['xmlrpc.client:Fault', 'xmlrpc.client:dumps', 'xmlrpc.client:loads', 'xmlrpc.client:gzip_encode', 'xmlrpc.client:gzip_decode', 'http.server:BaseHTTPRequestHandler', 'functools:partial', 'inspect:signature']">
@@ -1263,6 +1271,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.message" imports="['re', 'uu', 'quopri']" importfrom="['io:BytesIO', 'io:StringIO', 'email:utils', 'email:errors', 'email._policybase:Policy', 'email._policybase:compat32', 'email:charset', 'email._encoded_words:decode_b', 'email.generator:Generator', 'email.generator:BytesGenerator']">
       <class name="Message" init="obj = Message()%%['NoneType']">
@@ -1638,6 +1649,7 @@
         <exception>uu.Error</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
+        <exception>errors.HeaderParseError</exception>
       </errors>
     </module>
     <module name="email.utils" imports="['os', 're', 'time', 'random', 'socket', 'datetime', 'urllib.parse']" importfrom="['email._parseaddr:quote', 'email._parseaddr:AddressList', 'email._parseaddr:mktime_tz', 'email._parseaddr:parsedate', 'email._parseaddr:parsedate_tz', 'email.charset:Charset']">
@@ -1775,6 +1787,7 @@
         <exception>UnicodeEncodeError</exception>
         <exception>LookupError</exception>
         <exception>AttributeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="email.charset" imports="['email.base64mime', 'email.quoprimime']" importfrom="['functools:partial', 'email:errors', 'email.encoders:encode_7or8bit']">
@@ -1840,6 +1853,9 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.feedparser" imports="['re']" importfrom="['email:errors', 'email._policybase:compat32', 'collections:deque', 'io:StringIO']">
       <class name="BufferedSubFile" init="obj = BufferedSubFile()%%[]">
@@ -1957,6 +1973,9 @@
           <kwodefa>[None]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>TypeError</exception>
+      </errors>
     </module>
     <module name="email.parser" imports="[]" importfrom="['io:StringIO', 'io:TextIOWrapper', 'email.feedparser:FeedParser', 'email.feedparser:BytesFeedParser', 'email._policybase:compat32']">
       <class name="Parser" init="obj = Parser()%%['NoneType']">
@@ -2177,6 +2196,10 @@
       <errors>
         <exception>email.errors.HeaderDefect</exception>
         <exception>UnicodeDecodeError</exception>
+        <exception>KeyError</exception>
+        <exception>TypeError</exception>
+        <exception>header.defects[0]</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="email.base64mime" imports="[]" importfrom="['base64:b64encode', 'binascii:b2a_base64', 'binascii:a2b_base64']">
@@ -2502,6 +2525,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.header" imports="['re', 'binascii', 'email.quoprimime', 'email.base64mime']" importfrom="['email.errors:HeaderParseError', 'email:charset']">
       <class name="Header" init="obj = Header()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
@@ -2540,6 +2566,8 @@
         <exception>binascii.Error</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>IndexError</exception>
+        <exception>AssertionError</exception>
+        <exception>HeaderParseError</exception>
       </errors>
     </module>
     <module name="email.iterators" imports="['sys']" importfrom="['io:StringIO']">
@@ -2726,6 +2754,9 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.mime.nonmultipart" imports="[]" importfrom="['email:errors', 'email.mime.base:MIMEBase']">
       <class name="MIMENonMultipart" init="obj = MIMENonMultipart()%%[]">
@@ -2740,6 +2771,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>errors.MultipartConversionError</exception>
+      </errors>
     </module>
     <module name="email.mime.message" imports="[]" importfrom="['email:message', 'email.mime.nonmultipart:MIMENonMultipart']">
       <class name="MIMEMessage" init="obj = MIMEMessage(None)%%['NoneType', 'NoneType']">
@@ -2856,6 +2890,8 @@
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
+        <exception>error</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
   </library>
@@ -2979,6 +3015,8 @@
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>NotImplementedError</exception>
+        <exception>exc_info[0]</exception>
+        <exception>AssertionError</exception>
       </errors>
     </module>
     <module name="wsgiref.validate" imports="['re', 'sys', 'warnings']" importfrom="[]">
@@ -3183,6 +3221,9 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AssertionError</exception>
+      </errors>
     </module>
     <module name="wsgiref.simple_server" imports="['sys', 'urllib.parse', 'webbrowser']" importfrom="['http.server:BaseHTTPRequestHandler', 'http.server:HTTPServer', 'wsgiref.handlers:SimpleHandler', 'platform:python_implementation', 'io:StringIO']">
       <class name="ServerHandler" init="obj = ServerHandler()%%[]"/>
@@ -3334,6 +3375,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AssertionError</exception>
+      </errors>
     </module>
     <module name="wsgiref.util" imports="['posixpath', 'warnings']" importfrom="['urllib.parse:quote', 'io:StringIO', 'io:BytesIO']">
       <class name="FileWrapper" init="obj = FileWrapper(None)%%['NoneType', 'NoneType']">
@@ -3408,6 +3452,10 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>IndexError</exception>
+        <exception>StopIteration</exception>
+      </errors>
     </module>
   </library>
   <library name="zoneinfo"/>
@@ -3657,6 +3705,17 @@
         <exception>ConnectionError</exception>
         <exception>ImportError</exception>
         <exception>http.client.RemoteDisconnected</exception>
+        <exception>LineTooLong</exception>
+        <exception>HTTPException</exception>
+        <exception>RemoteDisconnected</exception>
+        <exception>BadStatusLine</exception>
+        <exception>UnknownProtocol</exception>
+        <exception>ResponseNotReady</exception>
+        <exception>RuntimeError</exception>
+        <exception>NotConnected</exception>
+        <exception>CannotSendRequest</exception>
+        <exception>InvalidURL</exception>
+        <exception>CannotSendHeader</exception>
       </errors>
     </module>
     <module name="http.server" imports="['copy', 'datetime', 'email.utils', 'html', 'http.client', 'io', 'mimetypes', 'os', 'posixpath', 'select', 'shutil', 'socket', 'socketserver', 'sys', 'time', 'urllib.parse', 'pwd', 'base64', 'binascii', 'subprocess', 'argparse', 'contextlib']" importfrom="['http:HTTPStatus']">
@@ -4578,6 +4637,8 @@
         <exception>Exception</exception>
         <exception>http.cookiejar.LoadError</exception>
         <exception>OSError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>LoadError</exception>
       </errors>
     </module>
     <module name="http.cookies" imports="['re', 'string', 'types']" importfrom="['time:gmtime', 'time:time']">
@@ -4748,6 +4809,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>CookieError</exception>
+      </errors>
     </module>
   </library>
   <library name="encodings">
@@ -6246,6 +6310,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>UnicodeError</exception>
       </errors>
     </module>
     <module name="encodings.latin_1" imports="['codecs']" importfrom="[]">
@@ -6895,6 +6960,9 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>UnicodeError</exception>
+      </errors>
     </module>
     <module name="encodings.base64_codec" imports="['codecs', 'base64']" importfrom="[]">
       <class name="Codec" init="obj = Codec()%%[]">
@@ -7307,6 +7375,7 @@
       </api>
       <errors>
         <exception>IndexError</exception>
+        <exception>UnicodeError</exception>
       </errors>
     </module>
     <module name="encodings.quopri_codec" imports="['codecs', 'quopri']" importfrom="['io:BytesIO']">
@@ -8628,6 +8697,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>UnicodeError</exception>
       </errors>
     </module>
     <module name="encodings.palmos" imports="['codecs']" importfrom="[]">
@@ -10457,6 +10527,7 @@
       </api>
       <errors>
         <exception>binascii.Error</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="encodings.mac_iceland" imports="['codecs']" importfrom="[]">
@@ -11298,6 +11369,9 @@
         <exception>ImportError</exception>
         <exception>expat.error</exception>
         <exception>AttributeError</exception>
+        <exception>SAXReaderNotAvailable</exception>
+        <exception>SAXNotRecognizedException</exception>
+        <exception>SAXNotSupportedException</exception>
       </errors>
     </module>
     <module name="xml.sax.saxutils" imports="['os', 'urllib.parse', 'urllib.request', 'io', 'codecs', 'sys']" importfrom="[]">
@@ -12012,6 +12086,12 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>NotImplementedError</exception>
+        <exception>SAXNotSupportedException</exception>
+        <exception>SAXNotRecognizedException</exception>
+        <exception>KeyError</exception>
+      </errors>
     </module>
     <module name="xml.sax.handler" imports="[]" importfrom="[]">
       <class name="ErrorHandler" init="obj = ErrorHandler()%%[]">
@@ -12222,6 +12302,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>exception</exception>
+      </errors>
     </module>
     <module name="xml.dom.domreg" imports="['sys', 'os']" importfrom="[]">
       <api name="registerDOMImplementation">
@@ -12246,6 +12329,8 @@
       </api>
       <errors>
         <exception>Exception</exception>
+        <exception>ImportError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="xml.dom.minidom" imports="['io', 'xml.dom']" importfrom="['xml.dom:EMPTY_NAMESPACE', 'xml.dom:EMPTY_PREFIX', 'xml.dom:XMLNS_NAMESPACE', 'xml.dom:domreg', 'xml.dom.minicompat:*', 'xml.dom.xmlbuilder:DOMImplementationLS', 'xml.dom.xmlbuilder:DocumentLS', 'xml.dom:expatbuilder', 'xml.dom:pulldom']">
@@ -13092,6 +13177,16 @@
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>IndexError</exception>
+        <exception>xml.dom.HierarchyRequestErr</exception>
+        <exception>xml.dom.NamespaceErr</exception>
+        <exception>TypeError</exception>
+        <exception>xml.dom.NotFoundErr</exception>
+        <exception>xml.dom.InuseAttributeErr</exception>
+        <exception>xml.dom.NoModificationAllowedErr</exception>
+        <exception>xml.dom.IndexSizeErr</exception>
+        <exception>xml.dom.WrongDocumentErr</exception>
+        <exception>xml.dom.InvalidCharacterErr</exception>
+        <exception>xml.dom.NotSupportedErr</exception>
       </errors>
     </module>
     <module name="xml.dom.expatbuilder" imports="[]" importfrom="['xml.dom:xmlbuilder', 'xml.dom:minidom', 'xml.dom:Node', 'xml.dom:EMPTY_NAMESPACE', 'xml.dom:EMPTY_PREFIX', 'xml.dom:XMLNS_NAMESPACE', 'xml.parsers:expat', 'xml.dom.NodeFilter:NodeFilter']">
@@ -13508,6 +13603,7 @@
       </api>
       <errors>
         <exception>ParseEscape</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="xml.dom.NodeFilter" imports="[]" importfrom="[]">
@@ -13523,6 +13619,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>NotImplementedError</exception>
+      </errors>
     </module>
     <module name="xml.dom.minicompat" imports="['xml.dom']" importfrom="[]">
       <class name="NodeList" init="obj = NodeList()%%[]">
@@ -13559,6 +13658,9 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>xml.dom.NoModificationAllowedErr</exception>
+      </errors>
     </module>
     <module name="xml.dom.pulldom" imports="['xml.sax', 'xml.sax.handler', 'xml.dom.minidom', 'warnings']" importfrom="['io:StringIO']">
       <class name="PullDOM" init="obj = PullDOM()%%['NoneType']">
@@ -13798,6 +13900,12 @@
         <defa>[None]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AssertionError</exception>
+        <exception>exception</exception>
+        <exception>IndexError</exception>
+        <exception>StopIteration</exception>
+      </errors>
     </module>
     <module name="xml.dom.xmlbuilder" imports="['copy', 'xml.dom', 'urllib.request', 'xml.dom.expatbuilder', 'posixpath', 'urllib.parse']" importfrom="['xml.dom.NodeFilter:NodeFilter']">
       <class name="Options" init="obj = Options()%%[]"/>
@@ -13985,6 +14093,11 @@
       <errors>
         <exception>KeyError</exception>
         <exception>AttributeError</exception>
+        <exception>xml.dom.NotFoundErr</exception>
+        <exception>ValueError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>xml.dom.NotSupportedErr</exception>
+        <exception>xml.dom.WrongDocumentErr</exception>
       </errors>
     </module>
     <module name="xml.etree.cElementTree" imports="[]" importfrom="['xml.etree.ElementTree:*']"/>
@@ -14383,6 +14496,9 @@
         <exception>KeyError</exception>
         <exception>self._error</exception>
         <exception>ImportError</exception>
+        <exception>ValueError</exception>
+        <exception>event</exception>
+        <exception>err</exception>
       </errors>
     </module>
     <module name="xml.etree.ElementInclude" imports="['copy']" importfrom="['urllib.parse:urljoin']">
@@ -14409,6 +14525,9 @@
       <errors>
         <exception>xml.etree.ElementInclude.FatalIncludeError</exception>
         <exception>xml.etree.ElementInclude.LimitedRecursiveIncludeError</exception>
+        <exception>ValueError</exception>
+        <exception>FatalIncludeError</exception>
+        <exception>LimitedRecursiveIncludeError</exception>
       </errors>
     </module>
     <module name="xml.etree.ElementPath" imports="['re']" importfrom="[]">
@@ -14536,6 +14655,8 @@
         <exception>KeyError</exception>
         <exception>StopIteration</exception>
         <exception>ValueError</exception>
+        <exception>RuntimeError</exception>
+        <exception>SyntaxError</exception>
       </errors>
     </module>
   </library>
@@ -14590,6 +14711,7 @@
         <exception>KeyError</exception>
         <exception>DistutilsExecError</exception>
         <exception>RuntimeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.text_file" imports="['sys', 'io']" importfrom="[]">
@@ -14645,6 +14767,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="distutils.versionpredicate" imports="['re', 'distutils.version', 'operator']" importfrom="[]">
       <class name="VersionPredicate" init="obj = VersionPredicate(None)%%['NoneType']">
@@ -14689,6 +14814,9 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="distutils.bcppcompiler" imports="['os']" importfrom="['distutils.errors:DistutilsExecError', 'distutils.errors:CompileError', 'distutils.errors:LibError', 'distutils.errors:LinkError', 'distutils.errors:UnknownFileError', 'distutils.ccompiler:CCompiler', 'distutils.ccompiler:gen_preprocess_options', 'distutils.file_util:write_file', 'distutils.dep_util:newer', 'distutils:log']">
       <class name="BCPPCompiler" init="obj = BCPPCompiler()%%['NoneType', 'NoneType', 'NoneType']">
@@ -14756,6 +14884,7 @@
       <errors>
         <exception>KeyError</exception>
         <exception>DistutilsExecError</exception>
+        <exception>UnknownFileError</exception>
       </errors>
     </module>
     <module name="distutils.dep_util" imports="['os']" importfrom="['distutils.errors:DistutilsFileError', 'stat:ST_MTIME']">
@@ -14789,6 +14918,10 @@
         <defa>['error']</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>DistutilsFileError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="distutils.cygwinccompiler" imports="['os', 'sys', 'copy', 're']" importfrom="['subprocess:Popen', 'subprocess:PIPE', 'subprocess:check_output', 'distutils.unixccompiler:UnixCCompiler', 'distutils.file_util:write_file', 'distutils.errors:DistutilsExecError', 'distutils.errors:CCompilerError', 'distutils.errors:CompileError', 'distutils.errors:UnknownFileError', 'distutils.version:LooseVersion', 'distutils.spawn:find_executable', 'distutils:sysconfig']">
       <class name="CygwinCCompiler" init="obj = CygwinCCompiler()%%['NoneType', 'NoneType', 'NoneType']">
@@ -14868,6 +15001,8 @@
       <errors>
         <exception>DistutilsExecError</exception>
         <exception>OSError</exception>
+        <exception>ValueError</exception>
+        <exception>UnknownFileError</exception>
       </errors>
     </module>
     <module name="distutils.debug" imports="['os']" importfrom="[]"/>
@@ -14974,6 +15109,10 @@
         <defa>[1, None, 0]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>DistutilsTemplateError</exception>
+        <exception>DistutilsInternalError</exception>
+      </errors>
     </module>
     <module name="distutils.extension" imports="['os', 'warnings']" importfrom="['distutils.sysconfig:parse_makefile', 'distutils.sysconfig:expand_makefile_vars', 'distutils.text_file:TextFile', 'distutils.util:split_quoted']">
       <class name="Extension" init="obj = Extension(None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
@@ -15024,6 +15163,8 @@
         <exception>OSError</exception>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
+        <exception>DistutilsPlatformError</exception>
+        <exception>DistutilsExecError</exception>
       </errors>
     </module>
     <module name="distutils.log" imports="['sys']" importfrom="[]">
@@ -15121,6 +15262,7 @@
       </api>
       <errors>
         <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.fancy_getopt" imports="['sys', 'string', 're', 'getopt']" importfrom="['distutils.errors:*']">
@@ -15260,6 +15402,9 @@
       </api>
       <errors>
         <exception>getopt.error</exception>
+        <exception>DistutilsGetoptError</exception>
+        <exception>ValueError</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="distutils.file_util" imports="['os', 'errno']" importfrom="['distutils.errors:DistutilsFileError', 'distutils:log', 'distutils.dep_util:newer', 'stat:ST_ATIME', 'stat:ST_MTIME', 'stat:ST_MODE', 'stat:S_IMODE', 'os.path:exists', 'os.path:isfile', 'os.path:isdir', 'os.path:basename', 'os.path:dirname']">
@@ -15296,6 +15441,7 @@
       <errors>
         <exception>OSError</exception>
         <exception>KeyError</exception>
+        <exception>DistutilsFileError</exception>
       </errors>
     </module>
     <module name="distutils.sysconfig" imports="['os', 're', 'sys', 'warnings']" importfrom="['errors:DistutilsPlatformError', 'distutils.text_file:TextFile']">
@@ -15412,6 +15558,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
+        <exception>DistutilsPlatformError</exception>
       </errors>
     </module>
     <module name="distutils.unixccompiler" imports="['os', 'sys', 're']" importfrom="['distutils:sysconfig', 'distutils.dep_util:newer', 'distutils.ccompiler:CCompiler', 'distutils.ccompiler:gen_preprocess_options', 'distutils.ccompiler:gen_lib_options', 'distutils.errors:DistutilsExecError', 'distutils.errors:CompileError', 'distutils.errors:LibError', 'distutils.errors:LinkError', 'distutils:log']">
@@ -15489,6 +15636,7 @@
       </class>
       <errors>
         <exception>DistutilsExecError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="distutils.util" imports="['os', 're', 'importlib.util', 'string', 'sys', 'distutils.sysconfig', 'pwd', 'subprocess']" importfrom="['distutils.errors:DistutilsPlatformError', 'distutils.dep_util:newer', 'distutils.spawn:spawn', 'distutils:log', 'distutils.errors:DistutilsByteCompileError', 'tempfile:mkstemp', 'py_compile:compile', 'lib2to3.refactor:RefactoringTool', 'lib2to3.refactor:get_fixers_from_package', 'distutils.dir_util:mkpath', 'distutils.file_util:copy_file', 'distutils.filelist:FileList']">
@@ -15637,6 +15785,10 @@
       <errors>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>ValueError</exception>
+        <exception>DistutilsPlatformError</exception>
+        <exception>RuntimeError</exception>
+        <exception>DistutilsByteCompileError</exception>
       </errors>
     </module>
     <module name="distutils.config" imports="['os', 'cgi']" importfrom="['configparser:RawConfigParser', 'distutils.cmd:Command']">
@@ -15806,6 +15958,12 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>RuntimeError</exception>
+        <exception>DistutilsOptionError</exception>
+        <exception>TypeError</exception>
+      </errors>
     </module>
     <module name="distutils.core" imports="['os', 'sys']" importfrom="['distutils.debug:DEBUG', 'distutils.errors:*', 'distutils.dist:Distribution', 'distutils.cmd:Command', 'distutils.config:PyPIRCCommand', 'distutils.extension:Extension']">
       <api name="gen_usage">
@@ -15846,6 +16004,8 @@
         <exception>DistutilsError</exception>
         <exception>CCompilerError</exception>
         <exception>SystemExit</exception>
+        <exception>ValueError</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="distutils.version" imports="['re']" importfrom="[]">
@@ -16382,6 +16542,10 @@
         <exception>ValueError</exception>
         <exception>DistutilsModuleError</exception>
         <exception>AttributeError</exception>
+        <exception>DistutilsArgError</exception>
+        <exception>SystemExit</exception>
+        <exception>DistutilsClassError</exception>
+        <exception>DistutilsOptionError</exception>
       </errors>
     </module>
     <module name="distutils.dir_util" imports="['os', 'errno']" importfrom="['distutils.errors:DistutilsFileError', 'distutils.errors:DistutilsInternalError', 'distutils:log', 'distutils.file_util:copy_file']">
@@ -16437,6 +16601,8 @@
       </api>
       <errors>
         <exception>OSError</exception>
+        <exception>DistutilsInternalError</exception>
+        <exception>DistutilsFileError</exception>
       </errors>
     </module>
     <module name="distutils.ccompiler" imports="['sys', 'os', 're', 'tempfile']" importfrom="['distutils.errors:*', 'distutils.spawn:spawn', 'distutils.file_util:move_file', 'distutils.dir_util:mkpath', 'distutils.dep_util:newer_group', 'distutils.util:split_quoted', 'distutils.util:execute', 'distutils:log', 'distutils.debug:DEBUG', 'distutils.fancy_getopt:FancyGetopt']">
@@ -16799,6 +16965,8 @@
         <exception>LinkError</exception>
         <exception>TypeError</exception>
         <exception>ImportError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>UnknownFileError</exception>
       </errors>
     </module>
     <module name="distutils.command.bdist_rpm" imports="['subprocess', 'sys', 'os']" importfrom="['distutils.core:Command', 'distutils.debug:DEBUG', 'distutils.file_util:write_file', 'distutils.errors:*', 'distutils.sysconfig:get_python_version', 'distutils:log']">
@@ -16834,6 +17002,12 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>DistutilsOptionError</exception>
+        <exception>DistutilsPlatformError</exception>
+        <exception>DistutilsFileError</exception>
+        <exception>DistutilsExecError</exception>
+      </errors>
     </module>
     <module name="distutils.command.check" imports="[]" importfrom="['distutils.core:Command', 'distutils.errors:DistutilsSetupError', 'docutils.utils:Reporter', 'docutils.parsers.rst:Parser', 'docutils:frontend', 'docutils:nodes']">
       <class name="SilentReporter" init="obj = SilentReporter(None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
@@ -16873,6 +17047,7 @@
       <errors>
         <exception>Exception</exception>
         <exception>AttributeError</exception>
+        <exception>DistutilsSetupError</exception>
       </errors>
     </module>
     <module name="distutils.command.build_scripts" imports="['os', 're', 'tokenize']" importfrom="['stat:ST_MODE', 'distutils:sysconfig', 'distutils.core:Command', 'distutils.dep_util:newer', 'distutils.util:convert_path', 'distutils.util:Mixin2to3', 'distutils:log']">
@@ -16969,6 +17144,7 @@
       </api>
       <errors>
         <exception>ValueError</exception>
+        <exception>DistutilsOptionError</exception>
       </errors>
     </module>
     <module name="distutils.command.upload" imports="['os', 'io', 'hashlib']" importfrom="['base64:standard_b64encode', 'urllib.error:HTTPError', 'urllib.request:urlopen', 'urllib.request:Request', 'urllib.parse:urlparse', 'distutils.errors:DistutilsError', 'distutils.errors:DistutilsOptionError', 'distutils.core:PyPIRCCommand', 'distutils.spawn:spawn', 'distutils:log']">
@@ -16988,6 +17164,9 @@
         <exception>ValueError</exception>
         <exception>HTTPError</exception>
         <exception>OSError</exception>
+        <exception>DistutilsOptionError</exception>
+        <exception>AssertionError</exception>
+        <exception>DistutilsError</exception>
       </errors>
     </module>
     <module name="distutils.command.build_clib" imports="['os']" importfrom="['distutils.core:Command', 'distutils.errors:*', 'distutils.sysconfig:customize_compiler', 'distutils:log', 'distutils.ccompiler:show_compilers', 'distutils.ccompiler:new_compiler']">
@@ -17053,6 +17232,9 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>DistutilsSetupError</exception>
+      </errors>
     </module>
     <module name="distutils.command.register" imports="['getpass', 'io', 'urllib.parse', 'urllib.request']" importfrom="['warnings:warn', 'distutils.core:PyPIRCCommand', 'distutils.errors:*', 'distutils:log']">
       <class name="register" init="obj = register()%%[]">
@@ -17080,6 +17262,7 @@
       <errors>
         <exception>urllib.error.HTTPError</exception>
         <exception>urllib.error.URLError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.install" imports="['sys', 'os']" importfrom="['distutils:log', 'distutils.core:Command', 'distutils.debug:DEBUG', 'distutils.sysconfig:get_config_vars', 'distutils.errors:DistutilsPlatformError', 'distutils.file_util:write_file', 'distutils.util:convert_path', 'distutils.util:subst_vars', 'distutils.util:change_root', 'distutils.util:get_platform', 'distutils.errors:DistutilsOptionError', 'site:USER_BASE', 'site:USER_SITE', 'pprint:pprint', 'distutils.fancy_getopt:longopt_xlate']">
@@ -17148,6 +17331,8 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>DistutilsOptionError</exception>
+        <exception>DistutilsPlatformError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_scripts" imports="['os']" importfrom="['distutils.core:Command', 'distutils:log', 'stat:ST_MODE']">
@@ -17270,6 +17455,7 @@
       <errors>
         <exception>DistutilsTemplateError</exception>
         <exception>ValueError</exception>
+        <exception>DistutilsOptionError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_data" imports="['os']" importfrom="['distutils.core:Command', 'distutils.util:change_root', 'distutils.util:convert_path']">
@@ -17556,6 +17742,7 @@
       </class>
       <errors>
         <exception>KeyError</exception>
+        <exception>DistutilsPlatformError</exception>
       </errors>
     </module>
     <module name="distutils.command.clean" imports="['os']" importfrom="['distutils.core:Command', 'distutils.dir_util:remove_tree', 'distutils:log']">
@@ -17640,6 +17827,8 @@
       </class>
       <errors>
         <exception>ImportError</exception>
+        <exception>DistutilsOptionError</exception>
+        <exception>DistutilsPlatformError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_headers" imports="[]" importfrom="['distutils.core:Command']">
@@ -17870,6 +18059,8 @@
         <exception>DistutilsError</exception>
         <exception>CompileError</exception>
         <exception>UnicodeEncodeError</exception>
+        <exception>DistutilsSetupError</exception>
+        <exception>DistutilsPlatformError</exception>
       </errors>
     </module>
     <module name="distutils.command.build_py" imports="['os', 'importlib.util', 'sys', 'glob']" importfrom="['distutils.core:Command', 'distutils.errors:*', 'distutils.util:convert_path', 'distutils.util:Mixin2to3', 'distutils:log', 'distutils.util:byte_compile']">
@@ -17951,6 +18142,8 @@
         <exception>ValueError</exception>
         <exception>AssertionError</exception>
         <exception>KeyError</exception>
+        <exception>DistutilsFileError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
   </library>
@@ -18400,6 +18593,7 @@
         <exception>ImportError</exception>
         <exception>TypeError</exception>
         <exception>Exception</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
   </library>
@@ -18474,6 +18668,7 @@
       </api>
       <errors>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="json.decoder" imports="['re']" importfrom="['json:scanner']">
@@ -18536,6 +18731,7 @@
         <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>StopIteration</exception>
+        <exception>JSONDecodeError</exception>
       </errors>
     </module>
     <module name="json.tool" imports="['argparse', 'json', 'sys']" importfrom="['pathlib:Path']">
@@ -19584,6 +19780,7 @@
         <exception>KeyboardInterrupt</exception>
         <exception>ftplib.error_perm</exception>
         <exception>TypeError</exception>
+        <exception>ContentTooShortError</exception>
       </errors>
     </module>
     <module name="urllib.robotparser" imports="['collections', 'urllib.parse', 'urllib.request', 'time']" importfrom="[]">
@@ -20169,6 +20366,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
   </library>
   <library name="turtledemo">
@@ -21280,6 +21480,9 @@
         <defa>[]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
+      <errors>
+        <exception>d.exception</exception>
+      </errors>
     </module>
     <module name="asyncio.unix_events" imports="['errno', 'io', 'itertools', 'os', 'selectors', 'signal', 'socket', 'stat', 'subprocess', 'sys', 'threading', 'warnings']" importfrom="['log:logger']">
       <class name="AbstractChildWatcher" init="obj = AbstractChildWatcher()%%[]">
@@ -21536,6 +21739,9 @@
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
         <exception>ChildProcessError</exception>
+        <exception>ImportError</exception>
+        <exception>TypeError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="asyncio.tasks" imports="['concurrent.futures', 'contextvars', 'functools', 'inspect', 'itertools', 'types', 'warnings', 'weakref']" importfrom="['types:GenericAlias', 'queues:Queue']">
@@ -21740,6 +21946,9 @@
         <exception>SystemExit</exception>
         <exception>BaseException</exception>
         <exception>ImportError</exception>
+        <exception>exceptions.InvalidStateError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="asyncio.coroutines" imports="['collections.abc', 'functools', 'inspect', 'os', 'sys', 'traceback', 'types', 'warnings']" importfrom="['log:logger']">
@@ -21959,6 +22168,8 @@
       </class>
       <errors>
         <exception>StopIteration</exception>
+        <exception>RuntimeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="asyncio.proactor_events" imports="['io', 'os', 'socket', 'warnings', 'signal', 'threading', 'collections']" importfrom="['log:logger']">
@@ -21984,6 +22195,10 @@
         <exception>OSError</exception>
         <exception>exceptions.CancelledError</exception>
         <exception>Exception</exception>
+        <exception>TypeError</exception>
+        <exception>RuntimeError</exception>
+        <exception>ValueError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="asyncio.events" imports="['contextvars', 'os', 'socket', 'subprocess', 'sys', 'threading']" importfrom="[]">
@@ -22524,6 +22739,8 @@
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
         <exception>ImportError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="asyncio.log" imports="['logging']" importfrom="[]"/>
@@ -22785,6 +23002,8 @@
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
+        <exception>NotImplementedError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="asyncio.runners" imports="[]" importfrom="[]">
@@ -22798,6 +23017,10 @@
         <defa>[]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
+      <errors>
+        <exception>RuntimeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="asyncio.base_events" imports="['collections', 'collections.abc', 'concurrent.futures', 'functools', 'heapq', 'itertools', 'os', 'socket', 'stat', 'subprocess', 'threading', 'time', 'traceback', 'sys', 'warnings', 'weakref', 'ssl']" importfrom="['log:logger']">
       <class name="Server" init="obj = Server(None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
@@ -22993,6 +23216,8 @@
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
+        <exception>RuntimeError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="asyncio.trsock" imports="['socket', 'warnings']" importfrom="[]">
@@ -23070,6 +23295,8 @@
       </class>
       <errors>
         <exception>socket.error</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="asyncio.streams" imports="['socket', 'sys', 'warnings', 'weakref']" importfrom="['log:logger', 'tasks:sleep']">
@@ -23351,6 +23578,12 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>ValueError</exception>
+        <exception>RuntimeError</exception>
+        <exception>exc</exception>
+        <exception>exceptions.InvalidStateError</exception>
+        <exception>self._exception</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="asyncio.queues" imports="['collections', 'heapq', 'warnings']" importfrom="['types:GenericAlias']">
@@ -23430,6 +23663,11 @@
       </class>
       <class name="PriorityQueue" init="obj = PriorityQueue()%%[]"/>
       <class name="LifoQueue" init="obj = LifoQueue()%%[]"/>
+      <errors>
+        <exception>QueueFull</exception>
+        <exception>QueueEmpty</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="asyncio.exceptions" imports="[]" importfrom="[]">
       <class name="CancelledError" init="obj = CancelledError()%%[]"/>
@@ -23615,6 +23853,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>RuntimeError</exception>
+      </errors>
     </module>
     <module name="asyncio.sslproto" imports="['collections', 'warnings', 'ssl']" importfrom="['log:logger']">
       <class name="SSLProtocol" init="obj = SSLProtocol(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
@@ -23645,6 +23886,10 @@
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
+        <exception>ValueError</exception>
+        <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
+        <exception>handshake_exc</exception>
       </errors>
     </module>
     <module name="asyncio.selector_events" imports="['collections', 'errno', 'functools', 'selectors', 'socket', 'warnings', 'weakref', 'ssl']" importfrom="['log:logger']">
@@ -23693,6 +23938,7 @@
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="asyncio.format_helpers" imports="['functools', 'inspect', 'reprlib', 'sys', 'traceback']" importfrom="[]">
@@ -26242,6 +26488,7 @@
       </api>
       <errors>
         <exception>TclError</exception>
+        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="tkinter.scrolledtext" imports="[]" importfrom="['tkinter:Frame', 'tkinter:Text', 'tkinter:Scrollbar', 'tkinter:Pack', 'tkinter:Grid', 'tkinter:Place', 'tkinter.constants:RIGHT', 'tkinter.constants:LEFT', 'tkinter.constants:Y', 'tkinter.constants:BOTH', 'tkinter.constants:END']">
@@ -28597,6 +28844,7 @@
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="cgitb" imports="['inspect', 'keyword', 'linecache', 'os', 'pydoc', 'sys', 'tempfile', 'time', 'tokenize', 'traceback']" importfrom="[]">
@@ -28922,6 +29170,8 @@
         <exception>OSError</exception>
         <exception>KeyError</exception>
         <exception>AttributeError</exception>
+        <exception>ValueError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="compileall" imports="['os', 'sys', 'importlib.util', 'py_compile', 'struct', 'filecmp', 'argparse', 're']" importfrom="['functools:partial', 'pathlib:Path', 'concurrent.futures:ProcessPoolExecutor']">
@@ -28972,6 +29222,7 @@
         <exception>SyntaxError</exception>
         <exception>UnicodeError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="imghdr" imports="[]" importfrom="['os:PathLike']">
@@ -29326,6 +29577,7 @@
         <exception>ValueError</exception>
         <exception>TypeError</exception>
         <exception>ZeroDivisionError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="ipaddress" imports="['functools', 're']" importfrom="[]">
@@ -29829,6 +30081,10 @@
         <exception>OverflowError</exception>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
+        <exception>TypeError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>IndexError</exception>
+        <exception>AssertionError</exception>
       </errors>
     </module>
     <module name="tabnanny" imports="['os', 'sys', 'tokenize', 'getopt']" importfrom="[]">
@@ -30002,6 +30258,7 @@
         <exception>tokenize.TokenError</exception>
         <exception>IndentationError</exception>
         <exception>NannyNag</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="getopt" imports="['os', 'sys']" importfrom="['gettext:gettext']">
@@ -30080,6 +30337,7 @@
       <errors>
         <exception>ImportError</exception>
         <exception>ValueError</exception>
+        <exception>GetoptError</exception>
       </errors>
     </module>
     <module name="textwrap" imports="['re']" importfrom="[]">
@@ -30165,6 +30423,9 @@
         <defa>[None]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="sunau" imports="['audioop']" importfrom="['collections:namedtuple']">
       <class name="Error" init="obj = Error()%%[]"/>
@@ -30445,6 +30706,8 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
+        <exception>EOFError</exception>
+        <exception>Error</exception>
       </errors>
     </module>
     <module name="secrets" imports="['base64', 'binascii']" importfrom="['hmac:compare_digest', 'random:SystemRandom']">
@@ -30488,6 +30751,9 @@
         <defa>[None]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="nturl2path" imports="['string', 'urllib.parse']" importfrom="[]">
       <api name="url2pathname">
@@ -30510,6 +30776,9 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>OSError</exception>
+      </errors>
     </module>
     <module name="profile" imports="['sys', 'time', 'marshal', 'pstats', 'os', 'runpy']" importfrom="['optparse:OptionParser']">
       <class name="Profile" init="obj = Profile()%%['NoneType', 'NoneType']">
@@ -30647,6 +30916,8 @@
       <errors>
         <exception>SystemExit</exception>
         <exception>BrokenPipeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="this" imports="[]" importfrom="[]"/>
@@ -30786,6 +31057,11 @@
       <errors>
         <exception>gzip.BadGzipFile</exception>
         <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
+        <exception>TypeError</exception>
+        <exception>OSError</exception>
+        <exception>EOFError</exception>
+        <exception>BadGzipFile</exception>
       </errors>
     </module>
     <module name="calendar" imports="['sys', 'datetime', 'locale', 'argparse']" importfrom="['itertools:repeat']">
@@ -31204,6 +31480,8 @@
       <errors>
         <exception>calendar.IllegalMonthError</exception>
         <exception>calendar.IllegalWeekdayError</exception>
+        <exception>IllegalMonthError</exception>
+        <exception>IllegalWeekdayError</exception>
       </errors>
     </module>
     <module name="smtplib" imports="['socket', 'io', 're', 'email.utils', 'email.message', 'email.generator', 'base64', 'hmac', 'copy', 'datetime', 'sys', 'ssl', 'warnings']" importfrom="['email.base64mime:body_encode']">
@@ -31473,6 +31751,15 @@
         <exception>OSError</exception>
         <exception>SMTPAuthenticationError</exception>
         <exception>UnicodeEncodeError</exception>
+        <exception>SMTPResponseException</exception>
+        <exception>SMTPNotSupportedError</exception>
+        <exception>SMTPDataError</exception>
+        <exception>SMTPHeloError</exception>
+        <exception>SMTPException</exception>
+        <exception>last_exception</exception>
+        <exception>RuntimeError</exception>
+        <exception>SMTPSenderRefused</exception>
+        <exception>SMTPRecipientsRefused</exception>
       </errors>
     </module>
     <module name="linecache" imports="['functools', 'sys', 'os', 'tokenize']" importfrom="[]">
@@ -31862,6 +32149,7 @@
         <exception>struct.error</exception>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
+        <exception>Error</exception>
       </errors>
     </module>
     <module name="optparse" imports="['sys', 'os', 'textwrap']" importfrom="['gettext:gettext', 'gettext:ngettext']">
@@ -32443,6 +32731,11 @@
         <exception>ValueError</exception>
         <exception>BadOptionError</exception>
         <exception>OptionValueError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
+        <exception>OptionError</exception>
+        <exception>OptionConflictError</exception>
+        <exception>AmbiguousOptionError</exception>
       </errors>
     </module>
     <module name="site" imports="['sys', 'os', 'builtins', 'io', 'sitecustomize', 'usercustomize', 'textwrap']" importfrom="[]">
@@ -32717,6 +33010,10 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>ValueError</exception>
+        <exception>StopIteration</exception>
+      </errors>
     </module>
     <module name="filecmp" imports="['os', 'stat', 'sys', 'getopt']" importfrom="['itertools:filterfalse', 'types:GenericAlias']">
       <class name="dircmp" init="obj = dircmp(None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
@@ -32823,6 +33120,8 @@
       </api>
       <errors>
         <exception>OSError</exception>
+        <exception>AttributeError</exception>
+        <exception>getopt.GetoptError</exception>
       </errors>
     </module>
     <module name="pathlib" imports="['fnmatch', 'functools', 'io', 'ntpath', 'os', 'posixpath', 're', 'sys', 'nt', 'pwd', 'grp']" importfrom="['errno:EINVAL', 'errno:ENOENT', 'errno:ENOTDIR', 'errno:EBADF', 'errno:ELOOP', 'operator:attrgetter', 'stat:S_ISDIR', 'stat:S_ISLNK', 'stat:S_ISREG', 'stat:S_ISSOCK', 'stat:S_ISBLK', 'stat:S_ISCHR', 'stat:S_ISFIFO', 'urllib.parse:quote_from_bytes']">
@@ -33224,6 +33523,9 @@
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
         <exception>TypeError</exception>
+        <exception>RuntimeError</exception>
+        <exception>IndexError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="webbrowser" imports="['os', 'shlex', 'shutil', 'sys', 'subprocess', 'threading', 'copy', 'glob', 'pwd', 'socket', 'tempfile', 'getopt']" importfrom="[]">
@@ -33395,6 +33697,8 @@
         <exception>PermissionError</exception>
         <exception>NotADirectoryError</exception>
         <exception>getopt.error</exception>
+        <exception>Error</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="aifc" imports="['struct', 'builtins', 'warnings', 'math', 'audioop', 'sys']" importfrom="['chunk:Chunk', 'collections:namedtuple']">
@@ -33738,6 +34042,8 @@
         <exception>EOFError</exception>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
+        <exception>ValueError</exception>
+        <exception>Error</exception>
       </errors>
     </module>
     <module name="formatter" imports="['sys', 'warnings']" importfrom="[]">
@@ -34250,6 +34556,8 @@
         <exception>RecursionError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
+        <exception>_error</exception>
+        <exception>FileNotFoundError</exception>
       </errors>
     </module>
     <module name="imaplib" imports="['binascii', 'errno', 'random', 're', 'socket', 'subprocess', 'sys', 'time', 'calendar', 'ssl', 'hmac', 'getopt', 'getpass']" importfrom="['datetime:datetime', 'datetime:timezone', 'datetime:timedelta', 'io:DEFAULT_BUFFER_SIZE']">
@@ -34746,6 +35054,10 @@
         <exception>self.error</exception>
         <exception>AttributeError</exception>
         <exception>getopt.error</exception>
+        <exception>ValueError</exception>
+        <exception>IMAP4.error</exception>
+        <exception>self.readonly</exception>
+        <exception>dat[0]</exception>
       </errors>
     </module>
     <module name="platform" imports="['collections', 'os', 're', 'sys', 'subprocess', 'functools', 'itertools', 'winreg', 'plistlib', 'java.lang', 'socket', 'struct', 'vms_lib']" importfrom="['sys:getwindowsversion', 'java.lang:System']">
@@ -34996,6 +35308,7 @@
         <exception>AttributeError</exception>
         <exception>OSError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="chunk" imports="[]" importfrom="[]">
@@ -35063,6 +35376,9 @@
       </class>
       <errors>
         <exception>OSError</exception>
+        <exception>ValueError</exception>
+        <exception>RuntimeError</exception>
+        <exception>EOFError</exception>
       </errors>
     </module>
     <module name="mailbox" imports="['os', 'time', 'calendar', 'socket', 'errno', 'copy', 'warnings', 'email', 'email.message', 'email.generator', 'io', 'contextlib', 'fcntl']" importfrom="['types:GenericAlias']">
@@ -35656,6 +35972,10 @@
         <exception>mailbox.NotEmptyError</exception>
         <exception>mailbox.ExternalClashError</exception>
         <exception>mailbox.FormatError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
+        <exception>NotEmptyError</exception>
+        <exception>ExternalClashError</exception>
       </errors>
     </module>
     <module name="netrc" imports="['os', 'shlex', 'stat', 'pwd']" importfrom="[]">
@@ -35695,6 +36015,7 @@
       </class>
       <errors>
         <exception>KeyError</exception>
+        <exception>NetrcParseError</exception>
       </errors>
     </module>
     <module name="argparse" imports="['os', 're', 'sys', 'copy', 'textwrap']" importfrom="['gettext:gettext', 'gettext:ngettext', 'warnings:warn']">
@@ -35885,6 +36206,7 @@
         <exception>OSError</exception>
         <exception>ArgumentError</exception>
         <exception>ArgumentTypeError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="datetime" imports="['time', 'math', 'sys', 'warnings']" importfrom="[]">
@@ -36348,6 +36670,9 @@
         <exception>Exception</exception>
         <exception>ValueError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
+        <exception>OverflowError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="io" imports="['abc']" importfrom="[]">
@@ -36444,6 +36769,7 @@
       </api>
       <errors>
         <exception>TypeError</exception>
+        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="fnmatch" imports="['os', 'posixpath', 're', 'functools']" importfrom="['itertools:count']">
@@ -36636,6 +36962,7 @@
       </api>
       <errors>
         <exception>binascii.Incomplete</exception>
+        <exception>Error</exception>
       </errors>
     </module>
     <module name="bisect" imports="[]" importfrom="[]">
@@ -36681,6 +37008,7 @@
       </api>
       <errors>
         <exception>ImportError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="typing" imports="['collections', 'collections.abc', 'contextlib', 'functools', 'operator', 're', 'sys', 'types']" importfrom="['abc:abstractmethod', 'abc:ABCMeta', 'types:WrapperDescriptorType', 'types:MethodWrapperType', 'types:MethodDescriptorType', 'types:GenericAlias']">
@@ -36918,6 +37246,7 @@
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="ntpath" imports="['os', 'sys', 'stat', 'genericpath', 'string']" importfrom="['genericpath:*', 'nt:readlink']">
@@ -37220,6 +37549,8 @@
       <errors>
         <exception>dataclasses.FrozenInstanceError</exception>
         <exception>AttributeError</exception>
+        <exception>ValueError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="rlcompleter" imports="['atexit', 'builtins', 'keyword', 're', 'readline']" importfrom="[]">
@@ -37711,6 +38042,10 @@
         <exception>NotADirectoryError</exception>
         <exception>TypeError</exception>
         <exception>KeyError</exception>
+        <exception>saved_exc</exception>
+        <exception>last_exc</exception>
+        <exception>ValueError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="fractions" imports="['math', 'numbers', 'operator', 're', 'sys']" importfrom="['decimal:Decimal']">
@@ -37758,6 +38093,8 @@
       </class>
       <errors>
         <exception>ValueError</exception>
+        <exception>TypeError</exception>
+        <exception>ZeroDivisionError</exception>
       </errors>
     </module>
     <module name="tarfile" imports="['sys', 'os', 'io', 'shutil', 'stat', 'time', 'struct', 'copy', 're', 'pwd', 'grp', 'argparse']" importfrom="['builtins:open', 'gzip:GzipFile', 'bz2:BZ2File', 'lzma:LZMAFile', 'lzma:LZMAError']">
@@ -38102,6 +38439,8 @@
         <exception>SubsequentHeaderError</exception>
         <exception>Exception</exception>
         <exception>TarError</exception>
+        <exception>exception</exception>
+        <exception>StreamError</exception>
       </errors>
     </module>
     <module name="stringprep" imports="[]" importfrom="['unicodedata:ucd_3_2_0']">
@@ -38690,6 +39029,10 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="sysconfig" imports="['os', 'sys', 're', 'pprint', 'types', 'warnings']" importfrom="['os.path:pardir', 'os.path:realpath']">
       <api name="is_python_build">
@@ -39016,6 +39359,8 @@
         <exception>_reraised_exceptions</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
+        <exception>AssertionError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="sndhdr" imports="[]" importfrom="['collections:namedtuple']">
@@ -39178,6 +39523,8 @@
         <exception>KeyError</exception>
         <exception>InterruptedError</exception>
         <exception>OSError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="tempfile" imports="['functools', 'warnings', 'io', 'os', 'shutil', 'errno', 'sys', 'types', 'weakref']" importfrom="['random:Random']">
@@ -39362,6 +39709,9 @@
         <exception>PermissionError</exception>
         <exception>BaseException</exception>
         <exception>IsADirectoryError</exception>
+        <exception>TypeError</exception>
+        <exception>FileNotFoundError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="queue" imports="['threading', 'types']" importfrom="['collections:deque', 'heapq:heappush', 'heapq:heappop', 'time:monotonic']">
@@ -39452,6 +39802,9 @@
       <class name="LifoQueue" init="obj = LifoQueue()%%[]"/>
       <errors>
         <exception>ImportError</exception>
+        <exception>ValueError</exception>
+        <exception>Full</exception>
+        <exception>Empty</exception>
       </errors>
     </module>
     <module name="copy" imports="['types', 'weakref']" importfrom="['copyreg:dispatch_table', 'org.python.core:PyStringMap']">
@@ -39479,6 +39832,7 @@
       <errors>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>Error</exception>
       </errors>
     </module>
     <module name="bdb" imports="['fnmatch', 'sys', 'os', 'linecache', 'reprlib']" importfrom="['inspect:CO_GENERATOR', 'inspect:CO_COROUTINE', 'inspect:CO_ASYNC_GENERATOR']">
@@ -39852,6 +40206,7 @@
         <exception>ValueError</exception>
         <exception>IndexError</exception>
         <exception>BdbQuit</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="zipfile" imports="['binascii', 'importlib.util', 'io', 'itertools', 'os', 'posixpath', 'shutil', 'stat', 'struct', 'sys', 'threading', 'time', 'contextlib', 'zlib', 'bz2', 'lzma', 'warnings', 'argparse']" importfrom="[]">
@@ -40209,6 +40564,15 @@
         <exception>OSError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>struct.error</exception>
+        <exception>BadZipFile</exception>
+        <exception>LargeZipFile</exception>
+        <exception>RuntimeError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>ValueError</exception>
+        <exception>EOFError</exception>
+        <exception>io.UnsupportedOperation</exception>
+        <exception>KeyError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="stat" imports="[]" importfrom="[]">
@@ -40395,6 +40759,7 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>StopIteration</exception>
+        <exception>ModuleNotFoundError</exception>
       </errors>
     </module>
     <module name="keyword" imports="[]" importfrom="[]"/>
@@ -40424,6 +40789,8 @@
       <errors>
         <exception>graphlib.CycleError</exception>
         <exception>StopIteration</exception>
+        <exception>ValueError</exception>
+        <exception>CycleError</exception>
       </errors>
     </module>
     <module name="modulefinder" imports="['dis', 'importlib._bootstrap_external', 'importlib.machinery', 'marshal', 'os', 'io', 'sys']" importfrom="[]">
@@ -40527,6 +40894,7 @@
         <exception>ImportError</exception>
         <exception>SyntaxError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="symtable" imports="['weakref', 'os', 'sys']" importfrom="[]">
@@ -40870,6 +41238,9 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="xdrlib" imports="['struct']" importfrom="['io:BytesIO', 'functools:wraps']">
       <class name="Error" init="obj = Error(None)%%['NoneType']">
@@ -41151,6 +41522,10 @@
       <errors>
         <exception>xdrlib.ConversionError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>Error</exception>
+        <exception>EOFError</exception>
+        <exception>ConversionError</exception>
       </errors>
     </module>
     <module name="smtpd" imports="['sys', 'os', 'errno', 'getopt', 'time', 'socket', 'asyncore', 'asynchat', 'collections', 'smtplib', 'pwd']" importfrom="['warnings:warn', 'email._header_value_parser:get_addr_spec', 'email._header_value_parser:get_angle_addr', 'io:StringIO', 'Mailman:Utils', 'Mailman:Message', 'Mailman:MailList']">
@@ -41383,6 +41758,7 @@
         <exception>ImportError</exception>
         <exception>PermissionError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="cProfile" imports="['profile', 'pstats', 'marshal', 'os', 'sys', 'runpy']" importfrom="['optparse:OptionParser']">
@@ -41557,6 +41933,9 @@
         <exception>OverflowError</exception>
         <exception>ImportError</exception>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>message</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="pickle" imports="['sys', 're', 'io', 'codecs', 'doctest', 'argparse', 'pprint']" importfrom="['types:FunctionType', 'copyreg:dispatch_table', 'itertools:islice', 'functools:partial', 'sys:maxsize', 'struct:pack', 'struct:unpack', 'org.python.core:PyStringMap']">
@@ -41602,6 +41981,10 @@
         <exception>UnicodeDecodeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
+        <exception>UnpicklingError</exception>
+        <exception>PicklingError</exception>
+        <exception>EOFError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="threading" imports="['os', 'sys', 'functools']" importfrom="['time:monotonic', 'itertools:islice', 'itertools:count']">
@@ -41957,6 +42340,7 @@
         <exception>RuntimeError</exception>
         <exception>threading.BrokenBarrierError</exception>
         <exception>Exception</exception>
+        <exception>BrokenBarrierError</exception>
       </errors>
     </module>
     <module name="asynchat" imports="['asyncore']" importfrom="['collections:deque']">
@@ -42098,6 +42482,8 @@
         <exception>BlockingIOError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="re" imports="['enum', 'sre_compile', 'sre_parse', 'functools', 'copyreg']" importfrom="[]">
@@ -42249,6 +42635,8 @@
         <exception>KeyError</exception>
         <exception>StopIteration</exception>
         <exception>RuntimeError</exception>
+        <exception>ValueError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="uu" imports="['binascii', 'os', 'sys']" importfrom="[]">
@@ -42277,6 +42665,7 @@
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
         <exception>binascii.Error</exception>
+        <exception>Error</exception>
       </errors>
     </module>
     <module name="shelve" imports="['collections.abc']" importfrom="['pickle:Pickler', 'pickle:Unpickler', 'io:BytesIO']">
@@ -42339,6 +42728,7 @@
       <errors>
         <exception>KeyError</exception>
         <exception>AttributeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="telnetlib" imports="['sys', 'socket', 'selectors', 're']" importfrom="['time:monotonic']">
@@ -43152,6 +43542,7 @@
         <exception>AttributeError</exception>
         <exception>OSError</exception>
         <exception>ValueError</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="codecs" imports="['builtins', 'sys', 'encodings']" importfrom="[]">
@@ -43548,6 +43939,8 @@
         <exception>ImportError</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>LookupError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>StopIteration</exception>
       </errors>
     </module>
     <module name="runpy" imports="['sys', 'importlib.machinery', 'importlib.util', 'io', 'types', 'os']" importfrom="['pkgutil:read_code', 'pkgutil:get_importer', 'warnings:warn']">
@@ -43579,6 +43972,7 @@
         <exception>ValueError</exception>
         <exception>error</exception>
         <exception>_Error</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="mimetypes" imports="['os', 'sys', 'posixpath', 'urllib.parse', 'winreg', 'getopt']" importfrom="[]">
@@ -44114,6 +44508,11 @@
         <exception>DuplicateSectionError</exception>
         <exception>ValueError</exception>
         <exception>TypeError</exception>
+        <exception>InterpolationDepthError</exception>
+        <exception>InterpolationSyntaxError</exception>
+        <exception>DuplicateOptionError</exception>
+        <exception>MissingSectionHeaderError</exception>
+        <exception>e</exception>
       </errors>
     </module>
     <module name="symbol" imports="['warnings']" importfrom="[]"/>
@@ -44195,6 +44594,7 @@
         <exception>EOFError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="crypt" imports="['sys', 'errno', 'string']" importfrom="['random:SystemRandom', 'collections:namedtuple']">
@@ -44221,6 +44621,8 @@
       <errors>
         <exception>ModuleNotFoundError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="functools" imports="['types', 'weakref']" importfrom="['abc:get_cache_token', 'collections:namedtuple', 'reprlib:recursive_repr', 'types:GenericAlias']">
@@ -44347,6 +44749,8 @@
         <exception>ImportError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="imp" imports="['importlib', 'os', 'sys', 'tokenize', 'types', 'warnings', 'importlib.machinery']" importfrom="['importlib._bootstrap_external:SourcelessFileLoader', 'importlib:machinery', 'importlib:util']">
@@ -44514,6 +44918,9 @@
       </api>
       <errors>
         <exception>ImportError</exception>
+        <exception>ValueError</exception>
+        <exception>TypeError</exception>
+        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="sre_compile" imports="['sre_parse', 'sys']" importfrom="['sre_constants:*']">
@@ -44549,6 +44956,7 @@
       </api>
       <errors>
         <exception>IndexError</exception>
+        <exception>error</exception>
       </errors>
     </module>
     <module name="uuid" imports="['os', 'sys', 'platform', 'io', 'shutil', 'subprocess', 'socket', 'random', 'time']" importfrom="['enum:Enum', 'hashlib:md5', 'hashlib:sha1']">
@@ -44770,6 +45178,7 @@
         <exception>ValueError</exception>
         <exception>IndexError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="socket" imports="['os', 'sys', 'io', 'selectors', 'errno', 'array']" importfrom="['enum:IntEnum', 'enum:IntFlag']">
@@ -45016,6 +45425,9 @@
         <exception>NameError</exception>
         <exception>InterruptedError</exception>
         <exception>timeout</exception>
+        <exception>TypeError</exception>
+        <exception>OSError</exception>
+        <exception>err</exception>
       </errors>
     </module>
     <module name="ssl" imports="['sys', 'os', 'socket', 'base64', 'errno', 'warnings']" importfrom="['collections:namedtuple', 'enum:Enum', 'enum:IntEnum', 'enum:IntFlag', 'socket:socket', 'socket:SOCK_STREAM', 'socket:create_connection', 'socket:SOL_SOCKET', 'socket:SO_TYPE', 'time:strptime', 'calendar:timegm']">
@@ -45374,6 +45786,9 @@
         <exception>ValueError</exception>
         <exception>PermissionError</exception>
         <exception>SSLError</exception>
+        <exception>CertificateError</exception>
+        <exception>TypeError</exception>
+        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="quopri" imports="['sys', 'getopt']" importfrom="['binascii:a2b_qp', 'binascii:b2a_qp', 'io:BytesIO']">
@@ -45521,6 +45936,8 @@
         <exception>UnicodeEncodeError</exception>
         <exception>ImportError</exception>
         <exception>AttributeError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>EOFError</exception>
       </errors>
     </module>
     <module name="pprint" imports="['collections', 're', 'sys', 'types', 'time']" importfrom="['io:StringIO']">
@@ -45832,6 +46249,7 @@
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>KeyError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="statistics" imports="['math', 'numbers', 'random']" importfrom="['fractions:Fraction', 'decimal:Decimal', 'itertools:groupby', 'bisect:bisect_left', 'bisect:bisect_right', 'math:hypot', 'math:sqrt', 'math:fabs', 'math:exp', 'math:erf', 'math:tau', 'math:log', 'math:fsum', 'operator:itemgetter', 'collections:Counter']">
@@ -46106,6 +46524,7 @@
         <exception>ZeroDivisionError</exception>
         <exception>IndexError</exception>
         <exception>ImportError</exception>
+        <exception>StatisticsError</exception>
       </errors>
     </module>
     <module name="nntplib" imports="['re', 'socket', 'collections', 'datetime', 'sys', 'ssl', 'netrc', 'argparse']" importfrom="['email.header:decode_header']">
@@ -46397,6 +46816,11 @@
         <exception>NNTPPermanentError</exception>
         <exception>NNTPTemporaryError</exception>
         <exception>AttributeError</exception>
+        <exception>NNTPDataError</exception>
+        <exception>ValueError</exception>
+        <exception>NNTPProtocolError</exception>
+        <exception>NNTPReplyError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="py_compile" imports="['enum', 'importlib._bootstrap_external', 'importlib.machinery', 'importlib.util', 'os', 'os.path', 'sys', 'traceback']" importfrom="[]">
@@ -46635,6 +47059,11 @@
         <exception>ValueError</exception>
         <exception>error</exception>
         <exception>Verbose</exception>
+        <exception>source.error</exception>
+        <exception>self.error</exception>
+        <exception>OverflowError</exception>
+        <exception>AssertionError</exception>
+        <exception>s.error</exception>
       </errors>
     </module>
     <module name="abc" imports="[]" importfrom="[]">
@@ -46780,6 +47209,7 @@
         <exception>RuntimeError</exception>
         <exception>BaseException</exception>
         <exception>AttributeError</exception>
+        <exception>exc_details[1]</exception>
       </errors>
     </module>
     <module name="signal" imports="[]" importfrom="['enum:IntEnum']">
@@ -46934,6 +47364,8 @@
       <errors>
         <exception>NameError</exception>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="reprlib" imports="['builtins']" importfrom="['itertools:islice']">
@@ -47164,6 +47596,9 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>NotImplementedError</exception>
+      </errors>
     </module>
     <module name="hashlib" imports="[]" importfrom="[]">
       <errors>
@@ -47308,6 +47743,7 @@
         <exception>OSError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>Exception</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="csv" imports="['re']" importfrom="['io:StringIO']">
@@ -47409,6 +47845,7 @@
         <exception>KeyError</exception>
         <exception>ValueError</exception>
         <exception>OverflowError</exception>
+        <exception>Error</exception>
       </errors>
     </module>
     <module name="sched" imports="['time', 'heapq', 'threading']" importfrom="['collections:namedtuple', 'time:monotonic']">
@@ -47590,6 +48027,7 @@
       <errors>
         <exception>OSError</exception>
         <exception>ValueError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="turtle" imports="['tkinter:TK', 'types', 'math', 'time', 'inspect', 'sys', 're']" importfrom="['os.path:isfile', 'os.path:split', 'os.path:join', 'copy:deepcopy', 'tkinter:simpledialog']">
@@ -48542,6 +48980,8 @@
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>TurtleGraphicsError</exception>
+        <exception>Terminator</exception>
       </errors>
     </module>
     <module name="hmac" imports="['warnings', 'hashlib']" importfrom="[]">
@@ -48654,6 +49094,8 @@
       </api>
       <errors>
         <exception>zipapp.ZipAppError</exception>
+        <exception>ZipAppError</exception>
+        <exception>SystemExit</exception>
       </errors>
     </module>
     <module name="code" imports="['sys', 'traceback', 'readline', 'argparse']" importfrom="['codeop:CommandCompiler', 'codeop:compile_command']">
@@ -48827,6 +49269,8 @@
       </api>
       <errors>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="string" imports="['re']" importfrom="['collections:ChainMap']">
@@ -48894,6 +49338,9 @@
         <defa>[None]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="pkgutil" imports="['importlib', 'importlib.util', 'importlib.machinery', 'os', 'os.path', 're', 'sys', 'warnings', 'marshal', 'inspect', 'zipimport']" importfrom="['collections:namedtuple', 'functools:singledispatch', 'types:ModuleType', 'zipimport:zipimporter']">
       <class name="ImpImporter" init="obj = ImpImporter()%%['None']">
@@ -49114,6 +49561,8 @@
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
         <exception>Exception</exception>
+        <exception>ve_exc</exception>
+        <exception>exc</exception>
       </errors>
     </module>
     <module name="lzma" imports="['builtins', 'io', 'os']" importfrom="[]">
@@ -49201,6 +49650,7 @@
       </api>
       <errors>
         <exception>LZMAError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="sre_constants" imports="[]" importfrom="[]">
@@ -49289,6 +49739,7 @@
         <exception>TypeError</exception>
         <exception>struct.error</exception>
         <exception>UnicodeEncodeError</exception>
+        <exception>InvalidFileException</exception>
       </errors>
     </module>
     <module name="poplib" imports="['errno', 're', 'socket', 'sys', 'ssl', 'hashlib']" importfrom="[]">
@@ -49501,6 +49952,7 @@
         <exception>ImportError</exception>
         <exception>OSError</exception>
         <exception>error_proto</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="heapq" imports="['doctest']" importfrom="[]">
@@ -50028,6 +50480,7 @@
         <exception>ValueError</exception>
         <exception>OSError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="colorsys" imports="[]" importfrom="[]">
@@ -50289,6 +50742,8 @@
         <exception>KeyError</exception>
         <exception>struct.error</exception>
         <exception>getopt.error</exception>
+        <exception>binascii.Error</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="pydoc" imports="['builtins', 'importlib._bootstrap', 'importlib._bootstrap_external', 'importlib.machinery', 'importlib.util', 'inspect', 'io', 'os', 'pkgutil', 'platform', 're', 'sys', 'sysconfig', 'time', 'tokenize', 'types', 'urllib.parse', 'warnings', 'tempfile', 'subprocess', 'tty', 'pydoc_data.topics', 'textwrap', 'http.server', 'email.message', 'select', 'threading', 'webbrowser', 'getopt']" importfrom="['collections:deque', 'reprlib:Repr', 'traceback:format_exception_only']">
@@ -50953,6 +51408,7 @@
       </api>
       <errors>
         <exception>SyntaxError</exception>
+        <exception>err1</exception>
       </errors>
     </module>
     <module name="zipimport" imports="['marshal', 'sys', 'time']" importfrom="['importlib.abc:ResourceReader', 'zlib:decompress', 'io:BytesIO', 'pathlib:Path']">
@@ -51069,6 +51525,8 @@
         <exception>IndexError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
+        <exception>EOFError</exception>
+        <exception>FileNotFoundError</exception>
       </errors>
     </module>
     <module name="locale" imports="['sys', 'encodings', 'encodings.aliases', 're', 'functools', 'warnings', 'os']" importfrom="['builtins:str']">
@@ -51381,6 +51839,7 @@
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="shutil" imports="['os', 'sys', 'stat', 'fnmatch', 'collections', 'errno', 'zlib', 'bz2', 'lzma', 'posix', 'nt', 'tarfile', 'zipfile']" importfrom="['pwd:getpwnam', 'grp:getgrnam']">
@@ -51622,6 +52081,12 @@
         <exception>tarfile.TarError</exception>
         <exception>ValueError</exception>
         <exception>AttributeError</exception>
+        <exception>SameFileError</exception>
+        <exception>SpecialFileError</exception>
+        <exception>TypeError</exception>
+        <exception>RegistryError</exception>
+        <exception>ReadError</exception>
+        <exception>LookupError</exception>
       </errors>
     </module>
     <module name="struct" imports="[]" importfrom="[]"/>
@@ -52032,6 +52497,11 @@
         <exception>EOFError</exception>
         <exception>error_perm</exception>
         <exception>ImportError</exception>
+        <exception>ValueError</exception>
+        <exception>Error</exception>
+        <exception>error_temp</exception>
+        <exception>error_proto</exception>
+        <exception>error_reply</exception>
       </errors>
     </module>
   </library>

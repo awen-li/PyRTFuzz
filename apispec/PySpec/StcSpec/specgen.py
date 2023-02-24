@@ -10,7 +10,9 @@ def InitArgument (parser):
     grp = parser.add_argument_group('Main options', 'One of these (or --report) must be given')
     grp.add_argument('-d', '--debug', action='store_true', help='generate python app')
     grp.add_argument('-c', '--check', action='store_true', help='check the apispec file')
-    grp.add_argument('-e', '--expr', action='store_true', help='generate api expresion')
+    grp.add_argument('-e', '--expr',  action='store_true', help='generate api expresion')
+    grp.add_argument('-m', '--merge', help='merge the fromspec to tospec with filed')
+    grp.add_argument('-f', '--fromspec', help='the fromspec')
                      
     parser.add_argument('path', nargs='?', help='source dir or file to process')
     parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
@@ -36,6 +38,15 @@ def main():
             
         AE = ApiExpr (opts.path)
         AE.GenExpr ()
+    elif opts.merge:
+        if opts.fromspec is None:
+            parser.error('please specify the from spec file!')
+        
+        if opts.path is None:
+            parser.error('please specify the to spec file!')
+        
+        Asm = ApiSpecMerge (opts.path, opts.fromspec, opts.merge)
+        Asm.Merge ()
     else:
         if opts.path is None:
             parser.error('please specify path for api spec generation!')

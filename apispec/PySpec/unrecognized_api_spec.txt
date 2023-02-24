@@ -1110,7 +1110,6 @@
 [lib]., [module]modulefinder, [class]ModuleFinder, [api]any_missing -- Args:[], PosArgs:[], KwoArgs:[], Ret:['ret:None']
 [lib]., [module]modulefinder, [class]-, [api]AddPackagePath -- Args:['packagename:None', 'path:None'], PosArgs:[], KwoArgs:[], Ret:[]
 [lib]., [module]modulefinder, [class]-, [api]ReplacePackage -- Args:['oldname:None', 'newname:None'], PosArgs:[], KwoArgs:[], Ret:[]
-[lib]., [module]pty, [class]-, [api]spawn -- Args:['argv:None', 'master_read:None', 'stdin_read:None'], PosArgs:[], KwoArgs:[], Ret:['ret:None']
 [lib]., [module]symtable, [class]SymbolTable, [api]get_id -- Args:[], PosArgs:[], KwoArgs:[], Ret:['ret:None']
 [lib]., [module]xdrlib, [class]Unpacker, [api]get_buffer -- Args:[], PosArgs:[], KwoArgs:[], Ret:['ret:None']
 [lib]., [module]xdrlib, [class]Unpacker, [api]unpack_hyper -- Args:[], PosArgs:[], KwoArgs:[], Ret:['x:None']
