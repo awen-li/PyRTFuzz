@@ -128,12 +128,6 @@
         <exception>ValueError</exception>
         <exception>OSError</exception>
         <exception>FileNotFoundError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>Exception</exception>
       </errors>
     </module>
@@ -273,7 +267,6 @@
       <errors>
         <exception>ImportError</exception>
         <exception>NotImplementedError</exception>
-        <exception>ValueError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -853,14 +846,10 @@
         <exception>ValueError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>OSError</exception>
         <exception>http.client.RemoteDisconnected</exception>
-        <exception>OSError</exception>
         <exception>Fault</exception>
         <exception>Exception</exception>
-        <exception>Error</exception>
         <exception>Error</exception>
       </errors>
     </module>
@@ -1201,16 +1190,11 @@
         <exception>ImportError</exception>
         <exception>Fault</exception>
         <exception>AttributeError</exception>
-        <exception>Fault</exception>
         <exception>KeyError</exception>
-        <exception>AttributeError</exception>
         <exception>NotImplementedError</exception>
         <exception>Exception</exception>
-        <exception>NotImplementedError</exception>
-        <exception>ValueError</exception>
         <exception>ValueError</exception>
         <exception>TypeError</exception>
-        <exception>AttributeError</exception>
         <exception>KeyboardInterrupt</exception>
       </errors>
     </module>
@@ -1654,10 +1638,6 @@
         <exception>uu.Error</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>LookupError</exception>
-        <exception>UnicodeError</exception>
-        <exception>UnicodeError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="email.utils" imports="['os', 're', 'time', 'random', 'socket', 'datetime', 'urllib.parse']" importfrom="['email._parseaddr:quote', 'email._parseaddr:AddressList', 'email._parseaddr:mktime_tz', 'email._parseaddr:parsedate', 'email._parseaddr:parsedate_tz', 'email.charset:Charset']">
@@ -1792,7 +1772,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>UnicodeEncodeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>LookupError</exception>
         <exception>AttributeError</exception>
@@ -2561,7 +2540,6 @@
         <exception>binascii.Error</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>IndexError</exception>
-        <exception>IndexError</exception>
       </errors>
     </module>
     <module name="email.iterators" imports="['sys']" importfrom="['io:StringIO']">
@@ -2876,13 +2854,6 @@
       </api>
       <errors>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>TypeError</exception>
-        <exception>TypeError</exception>
-        <exception>TypeError</exception>
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
       </errors>
@@ -3680,21 +3651,9 @@
       <errors>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>IncompleteRead</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>IncompleteRead</exception>
-        <exception>IncompleteRead</exception>
         <exception>IncompleteRead</exception>
         <exception>TypeError</exception>
-        <exception>ValueError</exception>
         <exception>OSError</exception>
-        <exception>TypeError</exception>
-        <exception>TypeError</exception>
-        <exception>UnicodeEncodeError</exception>
-        <exception>UnicodeEncodeError</exception>
         <exception>ConnectionError</exception>
         <exception>ImportError</exception>
         <exception>http.client.RemoteDisconnected</exception>
@@ -3890,18 +3849,10 @@
         <exception>KeyError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
-        <exception>IndexError</exception>
         <exception>OverflowError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>UnicodeDecodeError</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>ImportError</exception>
-        <exception>KeyError</exception>
         <exception>UnicodeError</exception>
-        <exception>OSError</exception>
-        <exception>TypeError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="http.cookiejar" imports="['os', 'copy', 'datetime', 're', 'time', 'urllib.parse', 'urllib.request', 'threading', 'http.client', 'logging', 'io', 'warnings', 'traceback']" importfrom="['calendar:timegm']">
@@ -4622,20 +4573,11 @@
       </api>
       <errors>
         <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
         <exception>KeyError</exception>
-        <exception>Exception</exception>
         <exception>Exception</exception>
         <exception>http.cookiejar.LoadError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
       </errors>
     </module>
     <module name="http.cookies" imports="['re', 'string', 'types']" importfrom="['time:gmtime', 'time:time']">
@@ -5451,9 +5393,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>UnicodeError</exception>
-        <exception>UnicodeError</exception>
-        <exception>UnicodeError</exception>
         <exception>UnicodeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>UnicodeDecodeError</exception>
@@ -7986,7 +7925,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>AttributeError</exception>
         <exception>AttributeError</exception>
       </errors>
     </module>
@@ -11358,7 +11296,6 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
         <exception>expat.error</exception>
         <exception>AttributeError</exception>
       </errors>
@@ -13152,24 +13089,9 @@
       </api>
       <errors>
         <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
         <exception>AttributeError</exception>
-        <exception>KeyError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>IndexError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>AttributeError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>KeyError</exception>
         <exception>IndexError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="xml.dom.expatbuilder" imports="[]" importfrom="['xml.dom:xmlbuilder', 'xml.dom:minidom', 'xml.dom:Node', 'xml.dom:EMPTY_NAMESPACE', 'xml.dom:EMPTY_PREFIX', 'xml.dom:XMLNS_NAMESPACE', 'xml.parsers:expat', 'xml.dom.NodeFilter:NodeFilter']">
@@ -13585,9 +13507,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ParseEscape</exception>
-        <exception>ParseEscape</exception>
-        <exception>ParseEscape</exception>
         <exception>ParseEscape</exception>
       </errors>
     </module>
@@ -14066,7 +13985,6 @@
       <errors>
         <exception>KeyError</exception>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="xml.etree.cElementTree" imports="[]" importfrom="['xml.etree.ElementTree:*']"/>
@@ -14459,25 +14377,11 @@
       <errors>
         <exception>xml.etree.ElementTree.ParseError</exception>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
         <exception>NameError</exception>
         <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
         <exception>SyntaxError</exception>
         <exception>KeyError</exception>
-        <exception>AttributeError</exception>
-        <exception>KeyError</exception>
         <exception>self._error</exception>
-        <exception>self._error</exception>
-        <exception>AttributeError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
         <exception>ImportError</exception>
       </errors>
     </module>
@@ -14631,10 +14535,7 @@
       <errors>
         <exception>KeyError</exception>
         <exception>StopIteration</exception>
-        <exception>StopIteration</exception>
         <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>StopIteration</exception>
       </errors>
     </module>
   </library>
@@ -14686,13 +14587,9 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>KeyError</exception>
         <exception>KeyError</exception>
         <exception>DistutilsExecError</exception>
         <exception>RuntimeError</exception>
-        <exception>KeyError</exception>
       </errors>
     </module>
     <module name="distutils.text_file" imports="['sys', 'io']" importfrom="[]">
@@ -14859,10 +14756,6 @@
       <errors>
         <exception>KeyError</exception>
         <exception>DistutilsExecError</exception>
-        <exception>DistutilsExecError</exception>
-        <exception>DistutilsExecError</exception>
-        <exception>DistutilsExecError</exception>
-        <exception>DistutilsExecError</exception>
       </errors>
     </module>
     <module name="distutils.dep_util" imports="['os']" importfrom="['distutils.errors:DistutilsFileError', 'stat:ST_MTIME']">
@@ -14973,7 +14866,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>DistutilsExecError</exception>
         <exception>DistutilsExecError</exception>
         <exception>OSError</exception>
       </errors>
@@ -15403,14 +15295,7 @@
       </api>
       <errors>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
       </errors>
     </module>
     <module name="distutils.sysconfig" imports="['os', 're', 'sys', 'warnings']" importfrom="['errors:DistutilsPlatformError', 'distutils.text_file:TextFile']">
@@ -15527,8 +15412,6 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.unixccompiler" imports="['os', 'sys', 're']" importfrom="['distutils:sysconfig', 'distutils.dep_util:newer', 'distutils.ccompiler:CCompiler', 'distutils.ccompiler:gen_preprocess_options', 'distutils.ccompiler:gen_lib_options', 'distutils.errors:DistutilsExecError', 'distutils.errors:CompileError', 'distutils.errors:LibError', 'distutils.errors:LinkError', 'distutils:log']">
@@ -15605,9 +15488,6 @@
         </api>
       </class>
       <errors>
-        <exception>DistutilsExecError</exception>
-        <exception>DistutilsExecError</exception>
-        <exception>DistutilsExecError</exception>
         <exception>DistutilsExecError</exception>
       </errors>
     </module>
@@ -15757,8 +15637,6 @@
       <errors>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>ImportError</exception>
       </errors>
     </module>
     <module name="distutils.config" imports="['os', 'cgi']" importfrom="['configparser:RawConfigParser', 'distutils.cmd:Command']">
@@ -16504,12 +16382,6 @@
         <exception>ValueError</exception>
         <exception>DistutilsModuleError</exception>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>ImportError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.dir_util" imports="['os', 'errno']" importfrom="['distutils.errors:DistutilsFileError', 'distutils.errors:DistutilsInternalError', 'distutils:log', 'distutils.file_util:copy_file']">
@@ -16564,8 +16436,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>OSError</exception>
       </errors>
     </module>
@@ -16928,9 +16798,7 @@
         <exception>CompileError</exception>
         <exception>LinkError</exception>
         <exception>TypeError</exception>
-        <exception>KeyError</exception>
         <exception>ImportError</exception>
-        <exception>KeyError</exception>
       </errors>
     </module>
     <module name="distutils.command.bdist_rpm" imports="['subprocess', 'sys', 'os']" importfrom="['distutils.core:Command', 'distutils.debug:DEBUG', 'distutils.file_util:write_file', 'distutils.errors:*', 'distutils.sysconfig:get_python_version', 'distutils:log']">
@@ -17053,7 +16921,6 @@
       <class name="build_scripts_2to3" init="obj = build_scripts_2to3()%%[]"/>
       <errors>
         <exception>OSError</exception>
-        <exception>UnicodeDecodeError</exception>
         <exception>UnicodeDecodeError</exception>
       </errors>
     </module>
@@ -17504,7 +17371,6 @@
       </api>
       <errors>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
       </errors>
     </module>
     <module name="distutils.command.config" imports="['os', 're']" importfrom="['distutils.core:Command', 'distutils.errors:DistutilsExecError', 'distutils.sysconfig:customize_compiler', 'distutils:log', 'distutils.ccompiler:CCompiler', 'distutils.ccompiler:new_compiler', 'distutils.ccompiler:CompileError', 'distutils.ccompiler:LinkError']">
@@ -17602,10 +17468,6 @@
       </api>
       <errors>
         <exception>OSError</exception>
-        <exception>CompileError</exception>
-        <exception>CompileError</exception>
-        <exception>CompileError</exception>
-        <exception>LinkError</exception>
         <exception>CompileError</exception>
         <exception>LinkError</exception>
         <exception>DistutilsExecError</exception>
@@ -18089,7 +17951,6 @@
         <exception>ValueError</exception>
         <exception>AssertionError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
       </errors>
     </module>
   </library>
@@ -18397,16 +18258,6 @@
         <exception>Exception</exception>
         <exception>FileNotFoundError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
         <exception>queue.Empty</exception>
       </errors>
     </module>
@@ -18545,24 +18396,8 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
         <exception>NameError</exception>
-        <exception>AttributeError</exception>
         <exception>ImportError</exception>
-        <exception>TypeError</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>TypeError</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
         <exception>TypeError</exception>
         <exception>Exception</exception>
       </errors>
@@ -18639,8 +18474,6 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
       </errors>
     </module>
     <module name="json.decoder" imports="['re']" importfrom="['json:scanner']">
@@ -18702,11 +18535,6 @@
         <exception>ValueError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
-        <exception>IndexError</exception>
-        <exception>StopIteration</exception>
-        <exception>IndexError</exception>
-        <exception>StopIteration</exception>
-        <exception>IndexError</exception>
         <exception>StopIteration</exception>
       </errors>
     </module>
@@ -19748,35 +19576,14 @@
         <exception>OSError</exception>
         <exception>ValueError</exception>
         <exception>KeyError</exception>
-        <exception>OSError</exception>
         <exception>socket.gaierror</exception>
-        <exception>OSError</exception>
-        <exception>socket.gaierror</exception>
-        <exception>OSError</exception>
         <exception>ftplib.all_errors</exception>
-        <exception>OSError</exception>
         <exception>HTTPError</exception>
         <exception>URLError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>http.client.BadStatusLine</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>KeyboardInterrupt</exception>
-        <exception>socket.gaierror</exception>
-        <exception>ftplib.all_errors</exception>
         <exception>ftplib.error_perm</exception>
-        <exception>ftplib.error_perm</exception>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>TypeError</exception>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
       </errors>
     </module>
     <module name="urllib.robotparser" imports="['collections', 'urllib.parse', 'urllib.request', 'time']" importfrom="[]">
@@ -20269,11 +20076,8 @@
         <exception>ValueError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>TypeError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="urllib.response" imports="['tempfile']" importfrom="[]">
@@ -21725,45 +21529,9 @@
       <errors>
         <exception>ValueError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
         <exception>BlockingIOError</exception>
         <exception>InterruptedError</exception>
-        <exception>OSError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>OSError</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>ChildProcessError</exception>
-        <exception>KeyError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>KeyError</exception>
-        <exception>ChildProcessError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>ChildProcessError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>ChildProcessError</exception>
-        <exception>KeyError</exception>
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
@@ -21965,18 +21733,12 @@
       </api>
       <errors>
         <exception>RuntimeError</exception>
-        <exception>RuntimeError</exception>
         <exception>AttributeError</exception>
         <exception>StopIteration</exception>
         <exception>exceptions.CancelledError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>SystemExit</exception>
         <exception>BaseException</exception>
-        <exception>BaseException</exception>
-        <exception>ImportError</exception>
-        <exception>exceptions.CancelledError</exception>
-        <exception>exceptions.CancelledError</exception>
-        <exception>exceptions.CancelledError</exception>
         <exception>ImportError</exception>
       </errors>
     </module>
@@ -22214,10 +21976,6 @@
       </class>
       <errors>
         <exception>socket.error</exception>
-        <exception>socket.error</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
@@ -22225,17 +21983,7 @@
         <exception>ConnectionResetError</exception>
         <exception>OSError</exception>
         <exception>exceptions.CancelledError</exception>
-        <exception>ConnectionResetError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>Exception</exception>
-        <exception>OSError</exception>
-        <exception>exceptions.CancelledError</exception>
-        <exception>exceptions.CancelledError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>OSError</exception>
       </errors>
     </module>
     <module name="asyncio.events" imports="['contextvars', 'os', 'socket', 'subprocess', 'sys', 'threading']" importfrom="[]">
@@ -23037,9 +22785,6 @@
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
       </errors>
     </module>
     <module name="asyncio.runners" imports="[]" importfrom="[]">
@@ -23244,11 +22989,7 @@
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>OSError</exception>
         <exception>Exception</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
@@ -23328,7 +23069,6 @@
         </api>
       </class>
       <errors>
-        <exception>socket.error</exception>
         <exception>socket.error</exception>
       </errors>
     </module>
@@ -23905,15 +23645,6 @@
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
       </errors>
     </module>
     <module name="asyncio.selector_events" imports="['collections', 'errno', 'functools', 'selectors', 'socket', 'warnings', 'weakref', 'ssl']" importfrom="['log:logger']">
@@ -23955,95 +23686,10 @@
         <exception>InterruptedError</exception>
         <exception>BlockingIOError</exception>
         <exception>OSError</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
         <exception>ConnectionAbortedError</exception>
-        <exception>OSError</exception>
         <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>OSError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>OSError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>OSError</exception>
         <exception>SystemExit</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
@@ -26596,8 +26242,6 @@
       </api>
       <errors>
         <exception>TclError</exception>
-        <exception>TclError</exception>
-        <exception>TclError</exception>
       </errors>
     </module>
     <module name="tkinter.scrolledtext" imports="[]" importfrom="['tkinter:Frame', 'tkinter:Text', 'tkinter:Scrollbar', 'tkinter:Pack', 'tkinter:Grid', 'tkinter:Place', 'tkinter.constants:RIGHT', 'tkinter.constants:LEFT', 'tkinter.constants:Y', 'tkinter.constants:BOTH', 'tkinter.constants:END']">
@@ -27752,7 +27396,6 @@
         <exception>ValueError</exception>
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="tkinter.dnd" imports="['tkinter']" importfrom="[]">
@@ -27883,7 +27526,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>AttributeError</exception>
         <exception>AttributeError</exception>
       </errors>
     </module>
@@ -28154,9 +27796,7 @@
       </api>
       <errors>
         <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>KeyError</exception>
-        <exception>AttributeError</exception>
         <exception>AttributeError</exception>
       </errors>
     </module>
@@ -28956,7 +28596,6 @@
       <errors>
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
-        <exception>TypeError</exception>
         <exception>ImportError</exception>
       </errors>
     </module>
@@ -29283,7 +28922,6 @@
         <exception>OSError</exception>
         <exception>KeyError</exception>
         <exception>AttributeError</exception>
-        <exception>OSError</exception>
       </errors>
     </module>
     <module name="compileall" imports="['os', 'sys', 'importlib.util', 'py_compile', 'struct', 'filecmp', 'argparse', 're']" importfrom="['functools:partial', 'pathlib:Path', 'concurrent.futures:ProcessPoolExecutor']">
@@ -29330,12 +28968,9 @@
       <errors>
         <exception>OSError</exception>
         <exception>ImportError</exception>
-        <exception>OSError</exception>
         <exception>py_compile.PyCompileError</exception>
         <exception>SyntaxError</exception>
         <exception>UnicodeError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>KeyboardInterrupt</exception>
       </errors>
     </module>
@@ -30191,34 +29826,9 @@
         <exception>ipaddress.NetmaskValueError</exception>
         <exception>AddressValueError</exception>
         <exception>NetmaskValueError</exception>
-        <exception>AddressValueError</exception>
-        <exception>NetmaskValueError</exception>
-        <exception>AddressValueError</exception>
-        <exception>NetmaskValueError</exception>
-        <exception>AddressValueError</exception>
-        <exception>NetmaskValueError</exception>
-        <exception>AddressValueError</exception>
-        <exception>NetmaskValueError</exception>
-        <exception>AddressValueError</exception>
-        <exception>NetmaskValueError</exception>
-        <exception>OverflowError</exception>
         <exception>OverflowError</exception>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
-        <exception>AddressValueError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>NetmaskValueError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>AddressValueError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="tabnanny" imports="['os', 'sys', 'tokenize', 'getopt']" importfrom="[]">
@@ -30835,8 +30445,6 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
-        <exception>AttributeError</exception>
-        <exception>OSError</exception>
       </errors>
     </module>
     <module name="secrets" imports="['base64', 'binascii']" importfrom="['hmac:compare_digest', 'random:SystemRandom']">
@@ -31037,7 +30645,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>SystemExit</exception>
         <exception>SystemExit</exception>
         <exception>BrokenPipeError</exception>
       </errors>
@@ -31864,12 +31471,8 @@
         <exception>SMTPServerDisconnected</exception>
         <exception>ValueError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>SMTPServerDisconnected</exception>
         <exception>SMTPAuthenticationError</exception>
         <exception>UnicodeEncodeError</exception>
-        <exception>OSError</exception>
       </errors>
     </module>
     <module name="linecache" imports="['functools', 'sys', 'os', 'tokenize']" importfrom="[]">
@@ -31935,8 +31538,6 @@
       </api>
       <errors>
         <exception>MemoryError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>OSError</exception>
       </errors>
     </module>
@@ -32258,7 +31859,6 @@
       </api>
       <errors>
         <exception>EOFError</exception>
-        <exception>struct.error</exception>
         <exception>struct.error</exception>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
@@ -33039,19 +32639,9 @@
       <errors>
         <exception>OSError</exception>
         <exception>AttributeError</exception>
-        <exception>OSError</exception>
         <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>OSError</exception>
-        <exception>TypeError</exception>
-        <exception>TypeError</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
-        <exception>Exception</exception>
       </errors>
     </module>
     <module name="shlex" imports="['os', 're', 'sys', 'warnings']" importfrom="['collections:deque', 'io:StringIO']">
@@ -33232,8 +32822,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>OSError</exception>
       </errors>
     </module>
@@ -33630,45 +33218,12 @@
       <errors>
         <exception>FileNotFoundError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>ImportError</exception>
         <exception>ImportError</exception>
         <exception>PermissionError</exception>
         <exception>OSError</exception>
-        <exception>PermissionError</exception>
-        <exception>OSError</exception>
-        <exception>PermissionError</exception>
-        <exception>PermissionError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
-        <exception>AttributeError</exception>
         <exception>TypeError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>OSError</exception>
-        <exception>FileNotFoundError</exception>
-        <exception>OSError</exception>
-        <exception>FileNotFoundError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="webbrowser" imports="['os', 'shlex', 'shutil', 'sys', 'subprocess', 'threading', 'copy', 'glob', 'pwd', 'socket', 'tempfile', 'getopt']" importfrom="[]">
@@ -33834,18 +33389,11 @@
       </api>
       <errors>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
         <exception>OSError</exception>
         <exception>subprocess.TimeoutExpired</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>FileNotFoundError</exception>
         <exception>PermissionError</exception>
         <exception>NotADirectoryError</exception>
-        <exception>OSError</exception>
         <exception>getopt.error</exception>
       </errors>
     </module>
@@ -34187,10 +33735,6 @@
       </api>
       <errors>
         <exception>struct.error</exception>
-        <exception>struct.error</exception>
-        <exception>struct.error</exception>
-        <exception>struct.error</exception>
-        <exception>EOFError</exception>
         <exception>EOFError</exception>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
@@ -34705,13 +34249,6 @@
         <exception>TypeError</exception>
         <exception>RecursionError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>OSError</exception>
       </errors>
     </module>
@@ -35205,12 +34742,8 @@
       <errors>
         <exception>ImportError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>self.abort</exception>
         <exception>self.error</exception>
-        <exception>self.abort</exception>
         <exception>AttributeError</exception>
         <exception>getopt.error</exception>
       </errors>
@@ -35461,29 +34994,8 @@
       <errors>
         <exception>ValueError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>OSError</exception>
         <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>AttributeError</exception>
-        <exception>ImportError</exception>
-        <exception>ValueError</exception>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="chunk" imports="[]" importfrom="[]">
@@ -36130,48 +35642,16 @@
       <errors>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>UnicodeError</exception>
         <exception>BaseException</exception>
         <exception>AttributeError</exception>
         <exception>PermissionError</exception>
         <exception>OSError</exception>
-        <exception>KeyError</exception>
         <exception>FileNotFoundError</exception>
-        <exception>KeyError</exception>
-        <exception>FileNotFoundError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>StopIteration</exception>
-        <exception>KeyError</exception>
         <exception>FileExistsError</exception>
-        <exception>KeyError</exception>
-        <exception>BaseException</exception>
-        <exception>BaseException</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>PermissionError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>ValueError</exception>
         <exception>OverflowError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>AttributeError</exception>
-        <exception>PermissionError</exception>
-        <exception>FileExistsError</exception>
         <exception>mailbox.NoSuchMailboxError</exception>
         <exception>mailbox.NotEmptyError</exception>
         <exception>mailbox.ExternalClashError</exception>
@@ -36214,7 +35694,6 @@
         </api>
       </class>
       <errors>
-        <exception>KeyError</exception>
         <exception>KeyError</exception>
       </errors>
     </module>
@@ -36404,14 +35883,8 @@
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
         <exception>ArgumentError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>ArgumentTypeError</exception>
-        <exception>TypeError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="datetime" imports="['time', 'math', 'sys', 'warnings']" importfrom="[]">
@@ -36871,13 +36344,8 @@
       <errors>
         <exception>KeyError</exception>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>Exception</exception>
-        <exception>UnicodeEncodeError</exception>
-        <exception>Exception</exception>
-        <exception>UnicodeEncodeError</exception>
-        <exception>ValueError</exception>
         <exception>ValueError</exception>
         <exception>ImportError</exception>
       </errors>
@@ -37449,13 +36917,6 @@
       <errors>
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -37646,35 +37107,9 @@
         <exception>BytesWarning</exception>
         <exception>OSError</exception>
         <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
-        <exception>TypeError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>BytesWarning</exception>
         <exception>DeprecationWarning</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>ImportError</exception>
       </errors>
     </module>
     <module name="dataclasses" imports="['re', 'sys', 'copy', 'types', 'inspect', 'keyword', 'builtins', 'functools']" importfrom="['types:GenericAlias']">
@@ -38010,11 +37445,6 @@
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>IndexError</exception>
-        <exception>KeyError</exception>
         <exception>TypeError</exception>
         <exception>Exception</exception>
       </errors>
@@ -38274,29 +37704,13 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
         <exception>FileExistsError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>StopIteration</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>FileNotFoundError</exception>
         <exception>NotADirectoryError</exception>
-        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>KeyError</exception>
-        <exception>TypeError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="fractions" imports="['math', 'numbers', 'operator', 're', 'sys']" importfrom="['decimal:Decimal']">
@@ -38656,7 +38070,6 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
         <exception>NameError</exception>
         <exception>ValueError</exception>
         <exception>tarfile.ExtractError</exception>
@@ -38671,36 +38084,17 @@
         <exception>tarfile.SubsequentHeaderError</exception>
         <exception>self.exception</exception>
         <exception>UnicodeEncodeError</exception>
-        <exception>UnicodeEncodeError</exception>
-        <exception>ValueError</exception>
         <exception>HeaderError</exception>
-        <exception>ValueError</exception>
-        <exception>HeaderError</exception>
-        <exception>ValueError</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>ReadError</exception>
         <exception>CompressionError</exception>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
         <exception>OSError</exception>
         <exception>EOFError</exception>
-        <exception>ImportError</exception>
         <exception>LZMAError</exception>
-        <exception>EOFError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>ExtractError</exception>
-        <exception>OSError</exception>
         <exception>ExtractError</exception>
         <exception>FileExistsError</exception>
         <exception>symlink_exception</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>EOFHeaderError</exception>
         <exception>InvalidHeaderError</exception>
         <exception>EmptyHeaderError</exception>
@@ -39219,23 +38613,8 @@
         <exception>BytesWarning</exception>
         <exception>OSError</exception>
         <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>BytesWarning</exception>
         <exception>DeprecationWarning</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="pipes" imports="['re', 'os', 'tempfile']" importfrom="['shlex:quote']">
@@ -39437,10 +38816,6 @@
         <exception>OSError</exception>
         <exception>KeyError</exception>
         <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>AttributeError</exception>
       </errors>
     </module>
@@ -39638,21 +39013,9 @@
         <exception>NameError</exception>
         <exception>ValueError</exception>
         <exception>OverflowError</exception>
-        <exception>NameError</exception>
         <exception>_reraised_exceptions</exception>
-        <exception>_reraised_exceptions</exception>
-        <exception>_reraised_exceptions</exception>
-        <exception>OSError</exception>
-        <exception>_reraised_exceptions</exception>
-        <exception>TypeError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>_reraised_exceptions</exception>
       </errors>
     </module>
     <module name="sndhdr" imports="[]" importfrom="['collections:namedtuple']">
@@ -39813,18 +39176,6 @@
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>InterruptedError</exception>
-        <exception>OSError</exception>
-        <exception>KeyError</exception>
-        <exception>InterruptedError</exception>
-        <exception>InterruptedError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>InterruptedError</exception>
         <exception>OSError</exception>
       </errors>
@@ -40007,19 +39358,10 @@
       <errors>
         <exception>OSError</exception>
         <exception>AttributeError</exception>
-        <exception>OSError</exception>
-        <exception>FileExistsError</exception>
-        <exception>PermissionError</exception>
-        <exception>OSError</exception>
-        <exception>FileExistsError</exception>
-        <exception>PermissionError</exception>
         <exception>FileExistsError</exception>
         <exception>PermissionError</exception>
         <exception>BaseException</exception>
         <exception>IsADirectoryError</exception>
-        <exception>OSError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="queue" imports="['threading', 'types']" importfrom="['collections:deque', 'heapq:heappush', 'heapq:heappop', 'time:monotonic']">
@@ -40110,7 +39452,6 @@
       <class name="LifoQueue" init="obj = LifoQueue()%%[]"/>
       <errors>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
       </errors>
     </module>
     <module name="copy" imports="['types', 'weakref']" importfrom="['copyreg:dispatch_table', 'org.python.core:PyStringMap']">
@@ -40137,7 +39478,6 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>KeyError</exception>
         <exception>KeyError</exception>
       </errors>
     </module>
@@ -40510,10 +39850,7 @@
       </api>
       <errors>
         <exception>ValueError</exception>
-        <exception>ValueError</exception>
         <exception>IndexError</exception>
-        <exception>BdbQuit</exception>
-        <exception>BdbQuit</exception>
         <exception>BdbQuit</exception>
       </errors>
     </module>
@@ -40869,15 +40206,9 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>OSError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>struct.error</exception>
-        <exception>OSError</exception>
       </errors>
     </module>
     <module name="stat" imports="[]" importfrom="[]">
@@ -41063,7 +40394,6 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
         <exception>StopIteration</exception>
       </errors>
     </module>
@@ -41194,9 +40524,6 @@
       <errors>
         <exception>OSError</exception>
         <exception>KeyError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
         <exception>ImportError</exception>
         <exception>SyntaxError</exception>
         <exception>KeyboardInterrupt</exception>
@@ -41824,7 +41151,6 @@
       <errors>
         <exception>xdrlib.ConversionError</exception>
         <exception>TypeError</exception>
-        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="smtpd" imports="['sys', 'os', 'errno', 'getopt', 'time', 'socket', 'asyncore', 'asynchat', 'collections', 'smtplib', 'pwd']" importfrom="['warnings:warn', 'email._header_value_parser:get_addr_spec', 'email._header_value_parser:get_angle_addr', 'io:StringIO', 'Mailman:Utils', 'Mailman:Message', 'Mailman:MailList']">
@@ -42054,8 +41380,6 @@
         <exception>smtplib.SMTPRecipientsRefused</exception>
         <exception>OSError</exception>
         <exception>getopt.error</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
         <exception>ImportError</exception>
         <exception>PermissionError</exception>
         <exception>KeyboardInterrupt</exception>
@@ -42227,19 +41551,12 @@
       <errors>
         <exception>OSError</exception>
         <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>NameError</exception>
         <exception>NameError</exception>
         <exception>ValueError</exception>
         <exception>_OptionError</exception>
-        <exception>ValueError</exception>
         <exception>OverflowError</exception>
         <exception>ImportError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>ImportError</exception>
       </errors>
     </module>
     <module name="pickle" imports="['sys', 're', 'io', 'codecs', 'doctest', 'argparse', 'pprint']" importfrom="['types:FunctionType', 'copyreg:dispatch_table', 'itertools:islice', 'functools:partial', 'sys:maxsize', 'struct:pack', 'struct:unpack', 'org.python.core:PyStringMap']">
@@ -42278,23 +41595,13 @@
         <exception>ImportError</exception>
         <exception>pickle.PicklingError</exception>
         <exception>pickle.UnpicklingError</exception>
-        <exception>ImportError</exception>
-        <exception>AttributeError</exception>
         <exception>AttributeError</exception>
         <exception>UnicodeEncodeError</exception>
-        <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>AttributeError</exception>
-        <exception>UnicodeEncodeError</exception>
         <exception>_Stop</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>AttributeError</exception>
-        <exception>ImportError</exception>
       </errors>
     </module>
     <module name="threading" imports="['os', 'sys', 'functools']" importfrom="['time:monotonic', 'itertools:islice', 'itertools:count']">
@@ -42645,17 +41952,11 @@
       <errors>
         <exception>ImportError</exception>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>ValueError</exception>
         <exception>RuntimeError</exception>
-        <exception>ValueError</exception>
         <exception>threading.BrokenBarrierError</exception>
         <exception>Exception</exception>
-        <exception>ImportError</exception>
-        <exception>KeyError</exception>
-        <exception>ImportError</exception>
-        <exception>KeyError</exception>
       </errors>
     </module>
     <module name="asynchat" imports="['asyncore']" importfrom="['collections:deque']">
@@ -42797,7 +42098,6 @@
         <exception>BlockingIOError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
-        <exception>OSError</exception>
       </errors>
     </module>
     <module name="re" imports="['enum', 'sre_compile', 'sre_parse', 'functools', 'copyreg']" importfrom="[]">
@@ -42949,7 +42249,6 @@
         <exception>KeyError</exception>
         <exception>StopIteration</exception>
         <exception>RuntimeError</exception>
-        <exception>KeyError</exception>
       </errors>
     </module>
     <module name="uu" imports="['binascii', 'os', 'sys']" importfrom="[]">
@@ -43038,7 +42337,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>KeyError</exception>
         <exception>KeyError</exception>
         <exception>AttributeError</exception>
       </errors>
@@ -43197,8 +42495,6 @@
         </api>
       </class>
       <errors>
-        <exception>EOFError</exception>
-        <exception>EOFError</exception>
         <exception>EOFError</exception>
       </errors>
     </module>
@@ -43388,13 +42684,7 @@
       <errors>
         <exception>OSError</exception>
         <exception>Exception</exception>
-        <exception>OSError</exception>
         <exception>ChildProcessError</exception>
-        <exception>OSError</exception>
-        <exception>ChildProcessError</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
         <exception>socket.error</exception>
       </errors>
     </module>
@@ -43861,9 +43151,6 @@
         <exception>StopIteration</exception>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -44287,15 +43574,11 @@
       <errors>
         <exception>KeyError</exception>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
         <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>error</exception>
-        <exception>ImportError</exception>
         <exception>_Error</exception>
-        <exception>ImportError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="mimetypes" imports="['os', 'sys', 'posixpath', 'urllib.parse', 'winreg', 'getopt']" importfrom="[]">
@@ -44414,7 +43697,6 @@
       <errors>
         <exception>ImportError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>getopt.error</exception>
       </errors>
     </module>
@@ -44480,7 +43762,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
         <exception>OSError</exception>
       </errors>
     </module>
@@ -44826,26 +44107,13 @@
         <exception>configparser.ParsingError</exception>
         <exception>configparser.MissingSectionHeaderError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>NoSectionError</exception>
         <exception>NoOptionError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>OSError</exception>
         <exception>AttributeError</exception>
         <exception>DuplicateSectionError</exception>
         <exception>ValueError</exception>
-        <exception>NoSectionError</exception>
-        <exception>KeyError</exception>
-        <exception>NoSectionError</exception>
-        <exception>NoOptionError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>TypeError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="symbol" imports="['warnings']" importfrom="[]"/>
@@ -44925,11 +44193,8 @@
       <errors>
         <exception>ImportError</exception>
         <exception>EOFError</exception>
-        <exception>ImportError</exception>
-        <exception>AttributeError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="crypt" imports="['sys', 'errno', 'string']" importfrom="['random:SystemRandom', 'collections:namedtuple']">
@@ -45081,11 +44346,6 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>StopIteration</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>AttributeError</exception>
-        <exception>ImportError</exception>
-        <exception>AttributeError</exception>
         <exception>TypeError</exception>
       </errors>
     </module>
@@ -45253,7 +44513,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
         <exception>ImportError</exception>
       </errors>
     </module>
@@ -45510,12 +44769,7 @@
         <exception>OSError</exception>
         <exception>ValueError</exception>
         <exception>IndexError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>IndexError</exception>
-        <exception>OSError</exception>
         <exception>ImportError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="socket" imports="['os', 'sys', 'io', 'selectors', 'errno', 'array']" importfrom="['enum:IntEnum', 'enum:IntFlag']">
@@ -45757,21 +45011,11 @@
         <exception>ImportError</exception>
         <exception>ValueError</exception>
         <exception>error</exception>
-        <exception>error</exception>
         <exception>BlockingIOError</exception>
         <exception>_GiveupOnSendfile</exception>
         <exception>NameError</exception>
-        <exception>BlockingIOError</exception>
         <exception>InterruptedError</exception>
         <exception>timeout</exception>
-        <exception>error</exception>
-        <exception>error</exception>
-        <exception>error</exception>
-        <exception>error</exception>
-        <exception>error</exception>
-        <exception>error</exception>
-        <exception>error</exception>
-        <exception>error</exception>
       </errors>
     </module>
     <module name="ssl" imports="['sys', 'os', 'socket', 'base64', 'errno', 'warnings']" importfrom="['collections:namedtuple', 'enum:Enum', 'enum:IntEnum', 'enum:IntFlag', 'socket:socket', 'socket:SOCK_STREAM', 'socket:create_connection', 'socket:SOL_SOCKET', 'socket:SO_TYPE', 'time:strptime', 'calendar:timegm']">
@@ -46126,18 +45370,10 @@
       <errors>
         <exception>ImportError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
         <exception>PermissionError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>SSLError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="quopri" imports="['sys', 'getopt']" importfrom="['binascii:a2b_qp', 'binascii:b2a_qp', 'io:BytesIO']">
@@ -46383,7 +45619,6 @@
       <errors>
         <exception>TypeError</exception>
         <exception>StopIteration</exception>
-        <exception>StopIteration</exception>
       </errors>
     </module>
     <module name="difflib" imports="['re', 'doctest', 'difflib']" importfrom="['heapq:nlargest', 'collections:namedtuple', 'types:GenericAlias']">
@@ -46595,8 +45830,6 @@
       </api>
       <errors>
         <exception>StopIteration</exception>
-        <exception>StopIteration</exception>
-        <exception>TypeError</exception>
         <exception>TypeError</exception>
         <exception>KeyError</exception>
       </errors>
@@ -46867,18 +46100,11 @@
       <errors>
         <exception>statistics.StatisticsError</exception>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
         <exception>OverflowError</exception>
         <exception>ValueError</exception>
         <exception>TypeError</exception>
-        <exception>TypeError</exception>
         <exception>ZeroDivisionError</exception>
-        <exception>ValueError</exception>
-        <exception>ZeroDivisionError</exception>
-        <exception>TypeError</exception>
         <exception>IndexError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
         <exception>ImportError</exception>
       </errors>
     </module>
@@ -47171,10 +46397,6 @@
         <exception>NNTPPermanentError</exception>
         <exception>NNTPTemporaryError</exception>
         <exception>AttributeError</exception>
-        <exception>NNTPPermanentError</exception>
-        <exception>OSError</exception>
-        <exception>NNTPPermanentError</exception>
-        <exception>NNTPTemporaryError</exception>
       </errors>
     </module>
     <module name="py_compile" imports="['enum', 'importlib._bootstrap_external', 'importlib.machinery', 'importlib.util', 'os', 'os.path', 'sys', 'traceback']" importfrom="[]">
@@ -47216,7 +46438,6 @@
         <exception>FileExistsError</exception>
         <exception>PyCompileError</exception>
         <exception>OSError</exception>
-        <exception>PyCompileError</exception>
       </errors>
     </module>
     <module name="sre_parse" imports="['unicodedata', 'warnings']" importfrom="['sre_constants:*']">
@@ -47409,20 +46630,11 @@
       </api>
       <errors>
         <exception>IndexError</exception>
-        <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>TypeError</exception>
-        <exception>ValueError</exception>
         <exception>ValueError</exception>
         <exception>error</exception>
         <exception>Verbose</exception>
-        <exception>KeyError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>IndexError</exception>
       </errors>
     </module>
     <module name="abc" imports="[]" importfrom="[]">
@@ -47565,11 +46777,7 @@
       </api>
       <errors>
         <exception>StopIteration</exception>
-        <exception>StopIteration</exception>
-        <exception>StopIteration</exception>
         <exception>RuntimeError</exception>
-        <exception>BaseException</exception>
-        <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>AttributeError</exception>
       </errors>
@@ -47636,7 +46844,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>ValueError</exception>
         <exception>TypeError</exception>
       </errors>
@@ -47844,7 +47051,6 @@
       </api>
       <errors>
         <exception>Exception</exception>
-        <exception>Exception</exception>
       </errors>
     </module>
     <module name="contextvars" imports="[]" importfrom="[]"/>
@@ -47963,11 +47169,6 @@
       <errors>
         <exception>ImportError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -48206,11 +47407,8 @@
         <exception>StopIteration</exception>
         <exception>NameError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>ValueError</exception>
         <exception>OverflowError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="sched" imports="['time', 'heapq', 'threading']" importfrom="['collections:namedtuple', 'time:monotonic']">
@@ -48390,10 +47588,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>OSError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -49343,18 +48537,11 @@
       </api>
       <errors>
         <exception>ValueError</exception>
-        <exception>ValueError</exception>
-        <exception>Exception</exception>
         <exception>Exception</exception>
         <exception>TK.TclError</exception>
         <exception>TypeError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>ValueError</exception>
         <exception>AttributeError</exception>
-        <exception>Exception</exception>
         <exception>ImportError</exception>
-        <exception>Exception</exception>
       </errors>
     </module>
     <module name="hmac" imports="['warnings', 'hashlib']" importfrom="[]">
@@ -49549,8 +48736,6 @@
         <exception>SyntaxError</exception>
         <exception>ValueError</exception>
         <exception>SystemExit</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>KeyboardInterrupt</exception>
@@ -49880,20 +49065,9 @@
         <exception>ImportError</exception>
         <exception>Exception</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>ImportError</exception>
-        <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>AttributeError</exception>
-        <exception>OSError</exception>
-        <exception>ImportError</exception>
       </errors>
     </module>
     <module name="enum" imports="['sys', 'warnings']" importfrom="['types:MappingProxyType', 'types:DynamicClassAttribute']">
@@ -49939,12 +49113,6 @@
         <exception>KeyError</exception>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>TypeError</exception>
-        <exception>KeyError</exception>
-        <exception>TypeError</exception>
-        <exception>Exception</exception>
-        <exception>TypeError</exception>
         <exception>Exception</exception>
       </errors>
     </module>
@@ -50418,16 +49586,8 @@
       </api>
       <errors>
         <exception>StopIteration</exception>
-        <exception>StopIteration</exception>
-        <exception>StopIteration</exception>
-        <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
         <exception>ImportError</exception>
       </errors>
     </module>
@@ -50866,10 +50026,7 @@
         <exception>re.error</exception>
         <exception>ImportError</exception>
         <exception>ValueError</exception>
-        <exception>ValueError</exception>
         <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
         <exception>KeyboardInterrupt</exception>
       </errors>
     </module>
@@ -51131,9 +50288,6 @@
         <exception>TypeError</exception>
         <exception>KeyError</exception>
         <exception>struct.error</exception>
-        <exception>TypeError</exception>
-        <exception>struct.error</exception>
-        <exception>TypeError</exception>
         <exception>getopt.error</exception>
       </errors>
     </module>
@@ -51749,49 +50903,16 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>TypeError</exception>
         <exception>TypeError</exception>
         <exception>OSError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>TypeError</exception>
         <exception>Exception</exception>
-        <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>TypeError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
         <exception>KeyboardInterrupt</exception>
-        <exception>OSError</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>ImportError</exception>
-        <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>ErrorDuringImport</exception>
-        <exception>ImportError</exception>
-        <exception>ErrorDuringImport</exception>
-        <exception>KeyboardInterrupt</exception>
         <exception>EOFError</exception>
-        <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>ImportError</exception>
         <exception>SyntaxError</exception>
-        <exception>Exception</exception>
-        <exception>ImportError</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>EOFError</exception>
-        <exception>ErrorDuringImport</exception>
         <exception>BadUsage</exception>
       </errors>
     </module>
@@ -51831,8 +50952,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>SyntaxError</exception>
-        <exception>SyntaxError</exception>
         <exception>SyntaxError</exception>
       </errors>
     </module>
@@ -51942,30 +51061,13 @@
       <errors>
         <exception>zipimport.ZipImportError</exception>
         <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>ZipImportError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>OSError</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>Exception</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>KeyError</exception>
         <exception>IndexError</exception>
         <exception>TypeError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -52114,10 +51216,8 @@
         <exception>ImportError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>ImportError</exception>
         <exception>AttributeError</exception>
         <exception>Error</exception>
-        <exception>NameError</exception>
         <exception>NameError</exception>
       </errors>
     </module>
@@ -52278,9 +51378,6 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
-        <exception>AttributeError</exception>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
         <exception>StopIteration</exception>
@@ -52510,10 +51607,6 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
-        <exception>ImportError</exception>
         <exception>shutil.Error</exception>
         <exception>shutil.SameFileError</exception>
         <exception>shutil.SpecialFileError</exception>
@@ -52521,56 +51614,14 @@
         <exception>shutil.ReadError</exception>
         <exception>Exception</exception>
         <exception>OSError</exception>
-        <exception>Exception</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>_GiveupOnFastCopy</exception>
         <exception>_GiveupOnFastCopy</exception>
         <exception>IsADirectoryError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
         <exception>NotImplementedError</exception>
-        <exception>OSError</exception>
         <exception>Error</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
-        <exception>Exception</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>OSError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
         <exception>KeyError</exception>
         <exception>tarfile.TarError</exception>
-        <exception>KeyError</exception>
-        <exception>KeyError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
         <exception>ValueError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>AttributeError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="struct" imports="[]" importfrom="[]"/>
