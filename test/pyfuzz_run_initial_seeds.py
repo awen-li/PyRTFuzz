@@ -20,6 +20,8 @@ def TimeOut ():
     LogError (RunResult)
     
 def LogError (Err):
+    if len (Err) > 32:
+        Err = 'Other'
     ErrNum = ErrorTypes.get (Err)
     if ErrNum == None:
         ErrorTypes[Err] = 1

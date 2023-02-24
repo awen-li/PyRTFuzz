@@ -387,7 +387,6 @@ import pyclbr
 import keyword
 import graphlib
 import modulefinder
-import pty
 import symtable
 import xdrlib
 import smtpd

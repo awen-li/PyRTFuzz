@@ -100,6 +100,20 @@ class AstWalk(NodeVisitor):
                 self.CurPyMod.Imports.append (al.name + ':' + str(al.asname))
         #print (self.CurPyMod.Imports)
 
+    def visit_raise(self, node):
+        RaiseExpr = astunparse.unparse (node)
+        Exc = re.findall (r'raise (.+?)\(', RaiseExpr)
+        if len(Exc) != 0:
+            Excep = PyExcep (Exc[0])
+            self.AddExcep (Excep)
+        else:
+            Exc = re.findall (r'raise (.+?)$', RaiseExpr)
+            if len(Exc) != 0:
+                Excep = PyExcep (Exc[0])
+                self.AddExcep (Excep)
+            else:
+                print (RaiseExpr + ' --> ' + str(Exc))
+    
     def visit_unaryop (self, node):
         if isinstance (node.operand, Constant):
             return 'int'
