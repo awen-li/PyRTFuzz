@@ -16,6 +16,10 @@ class HardcodedApi ():
         self.HdcApi[ApiPath] = TypeList
     
     def SetUp (self):
-        self.AddHdcApi ('ctypes.macholib.dyld.dyld_env ', ['env:list', 'var:str'])
+        self.AddHdcApi ('ctypes.wintypes.RGB', ['red:int', 'green:int', 'blue:int'])
+        self.AddHdcApi ('ctypes.util.find_msvcrt', [])
+        self.AddHdcApi ('ctypes.macholib.framework.framework_info', ['filename:str'])
+        self.AddHdcApi ('ctypes.macholib.dyld.dyld_env', ['env:dict', 'var:str'])
+        self.AddHdcApi ('ctypes.macholib.dyld.dyld_image_suffix', ['env:dict'])
 
         
