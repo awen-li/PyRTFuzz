@@ -177,6 +177,13 @@ class DataProvider ():
             pass
         else:
             pass
+    
+    def GetDataList (self, TypeList):
+        ValueList = []
+        for type in TypeList:
+            Value = DataProvider ().GetData (type)
+            ValueList.append (Value)
+        return ValueList
 
 
 def PyEncode (DataList):
@@ -185,7 +192,9 @@ def PyEncode (DataList):
 
 
 def PyDecode (TypeList, ByteStream):
-    pass
+    # only for test
+    ValueList = DataProvider ().GetDataList (TypeList)
+    return tuple (ValueList)
 
 class DataProviderTest ():
     def AssertType (self, Value, Type):
@@ -195,8 +204,27 @@ class DataProviderTest ():
         else:
             print ("Generate Value type: %s success" %(Type))
             return True
+        
+    def AssertListEqual (self, SList, DList):
+        if len (SList) != len (DList):
+            print ("AssertListEqual Fail: SList = %s while DList = %s" %(str(SList), str(DList)))
+            return False
+        else:
+            for s in SList:
+                if not s in DList:
+                    print ("AssertListEqual Fail: SList = %s while DList = %s" %(str(SList), str(DList)))
+                    return False
+            
+            for d in DList:
+                if not d in SList:
+                    print ("AssertListEqual Fail: SList = %s while DList = %s" %(str(SList), str(DList)))
+                    return False
+                
+            print ("AssertListEqual Success on TypeList: %s" %(str(SList)))
+            return True
 
     def TestEntry (self):
+        # single type testing
         self.AssertType (DataProvider ().RandomStr (), 'str')
         self.AssertType (DataProvider ().RandomInt (), 'int')
         self.AssertType (DataProvider ().RandomBool (), 'bool')
@@ -206,3 +234,24 @@ class DataProviderTest ():
         self.AssertType (DataProvider ().RandomDict (), 'dict')
         self.AssertType (DataProvider ().RandomTuple (), 'tuple')
         self.AssertType (DataProvider ().RandomMemView (), 'memoryview')
+
+        # multiple type testing
+        TL = ['str', 'int']
+        ValueList = DataProvider ().GetDataList (TL)
+        TypeList  = [v.__class__.__name__ for v in ValueList]
+        self.AssertListEqual (TypeList, TL)
+
+        TL = ['str', 'int', 'float', 'bool']
+        ValueList = DataProvider ().GetDataList (TL)
+        TypeList  = [v.__class__.__name__ for v in ValueList]
+        self.AssertListEqual (TypeList, TL)
+
+        TL = ['bytes', 'list', 'tuple']
+        ValueList = DataProvider ().GetDataList (TL)
+        TypeList  = [v.__class__.__name__ for v in ValueList]
+        self.AssertListEqual (TypeList, TL)
+
+        TL = ['memoryview', 'dict']
+        ValueList = DataProvider ().GetDataList (TL)
+        TypeList  = [v.__class__.__name__ for v in ValueList]
+        self.AssertListEqual (TypeList, TL)
