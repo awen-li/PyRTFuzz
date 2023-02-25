@@ -99,17 +99,28 @@ class AstWalk(NodeVisitor):
             else:
                 self.CurPyMod.Imports.append (al.name + ':' + str(al.asname))
         #print (self.CurPyMod.Imports)
+    
+    def IsSelfDef (self, Exc):
+        for claname, cls in self.CurPyMod.Classes.items ():
+            if Exc == claname:
+                return True
+        return False
 
     def visit_raise(self, node):
+        Prefix = ''
         RaiseExpr = astunparse.unparse (node)
         Exc = re.findall (r'raise (.+?)\(', RaiseExpr)
         if len(Exc) != 0:
-            Excep = PyExcep (Exc[0])
+            if self.IsSelfDef (Exc[0]) == True:
+                Prefix = self.CurPyMod.Name + '.'
+            Excep = PyExcep (Prefix + Exc[0])
             self.AddExcep (Excep)
         else:
             Exc = re.findall (r'raise (.+?)$', RaiseExpr)
             if len(Exc) != 0:
-                Excep = PyExcep (Exc[0])
+                if self.IsSelfDef (Exc[0]) == True:
+                    Prefix = self.CurPyMod.Name + '.'
+                Excep = PyExcep (Prefix + Exc[0])
                 self.AddExcep (Excep)
             else:
                 print (RaiseExpr + ' --> ' + str(Exc))

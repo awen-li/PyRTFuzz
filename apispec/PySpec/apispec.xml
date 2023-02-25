@@ -4810,7 +4810,7 @@
         </api>
       </class>
       <errors>
-        <exception>CookieError</exception>
+        <exception>http.cookies.CookieError</exception>
       </errors>
     </module>
   </library>
@@ -13602,8 +13602,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ParseEscape</exception>
         <exception>ValueError</exception>
+        <exception>xml.dom.expatbuilder.ParseEscape</exception>
       </errors>
     </module>
     <module name="xml.dom.NodeFilter" imports="[]" importfrom="[]">
@@ -23664,9 +23664,9 @@
       <class name="PriorityQueue" init="obj = PriorityQueue()%%[]"/>
       <class name="LifoQueue" init="obj = LifoQueue()%%[]"/>
       <errors>
-        <exception>QueueFull</exception>
-        <exception>QueueEmpty</exception>
         <exception>ValueError</exception>
+        <exception>asyncio.queues.QueueFull</exception>
+        <exception>asyncio.queues.QueueEmpty</exception>
       </errors>
     </module>
     <module name="asyncio.exceptions" imports="[]" importfrom="[]">
@@ -30257,8 +30257,8 @@
         <exception>OSError</exception>
         <exception>tokenize.TokenError</exception>
         <exception>IndentationError</exception>
-        <exception>NannyNag</exception>
         <exception>ValueError</exception>
+        <exception>tabnanny.NannyNag</exception>
       </errors>
     </module>
     <module name="getopt" imports="['os', 'sys']" importfrom="['gettext:gettext']">
@@ -30337,7 +30337,7 @@
       <errors>
         <exception>ImportError</exception>
         <exception>ValueError</exception>
-        <exception>GetoptError</exception>
+        <exception>getopt.GetoptError</exception>
       </errors>
     </module>
     <module name="textwrap" imports="['re']" importfrom="[]">
@@ -30707,7 +30707,7 @@
         <exception>AttributeError</exception>
         <exception>OSError</exception>
         <exception>EOFError</exception>
-        <exception>Error</exception>
+        <exception>sunau.Error</exception>
       </errors>
     </module>
     <module name="secrets" imports="['base64', 'binascii']" importfrom="['hmac:compare_digest', 'random:SystemRandom']">
@@ -31751,15 +31751,16 @@
         <exception>OSError</exception>
         <exception>SMTPAuthenticationError</exception>
         <exception>UnicodeEncodeError</exception>
-        <exception>SMTPResponseException</exception>
-        <exception>SMTPNotSupportedError</exception>
-        <exception>SMTPDataError</exception>
-        <exception>SMTPHeloError</exception>
-        <exception>SMTPException</exception>
         <exception>last_exception</exception>
         <exception>RuntimeError</exception>
-        <exception>SMTPSenderRefused</exception>
-        <exception>SMTPRecipientsRefused</exception>
+        <exception>smtplib.SMTPResponseException</exception>
+        <exception>smtplib.SMTPServerDisconnected</exception>
+        <exception>smtplib.SMTPNotSupportedError</exception>
+        <exception>smtplib.SMTPDataError</exception>
+        <exception>smtplib.SMTPHeloError</exception>
+        <exception>smtplib.SMTPAuthenticationError</exception>
+        <exception>smtplib.SMTPSenderRefused</exception>
+        <exception>smtplib.SMTPRecipientsRefused</exception>
       </errors>
     </module>
     <module name="linecache" imports="['functools', 'sys', 'os', 'tokenize']" importfrom="[]">
@@ -32149,7 +32150,7 @@
         <exception>struct.error</exception>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
-        <exception>Error</exception>
+        <exception>wave.Error</exception>
       </errors>
     </module>
     <module name="optparse" imports="['sys', 'os', 'textwrap']" importfrom="['gettext:gettext', 'gettext:ngettext']">
@@ -33697,8 +33698,8 @@
         <exception>PermissionError</exception>
         <exception>NotADirectoryError</exception>
         <exception>getopt.error</exception>
-        <exception>Error</exception>
         <exception>NotImplementedError</exception>
+        <exception>webbrowser.Error</exception>
       </errors>
     </module>
     <module name="aifc" imports="['struct', 'builtins', 'warnings', 'math', 'audioop', 'sys']" importfrom="['chunk:Chunk', 'collections:namedtuple']">
@@ -34043,7 +34044,7 @@
         <exception>AttributeError</exception>
         <exception>OSError</exception>
         <exception>ValueError</exception>
-        <exception>Error</exception>
+        <exception>aifc.Error</exception>
       </errors>
     </module>
     <module name="formatter" imports="['sys', 'warnings']" importfrom="[]">
@@ -36015,7 +36016,7 @@
       </class>
       <errors>
         <exception>KeyError</exception>
-        <exception>NetrcParseError</exception>
+        <exception>netrc.NetrcParseError</exception>
       </errors>
     </module>
     <module name="argparse" imports="['os', 're', 'sys', 'copy', 'textwrap']" importfrom="['gettext:gettext', 'gettext:ngettext', 'warnings:warn']">
@@ -36204,9 +36205,9 @@
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
-        <exception>ArgumentError</exception>
         <exception>ArgumentTypeError</exception>
         <exception>NotImplementedError</exception>
+        <exception>argparse.ArgumentError</exception>
       </errors>
     </module>
     <module name="datetime" imports="['time', 'math', 'sys', 'warnings']" importfrom="[]">
@@ -36962,7 +36963,7 @@
       </api>
       <errors>
         <exception>binascii.Incomplete</exception>
-        <exception>Error</exception>
+        <exception>binhex.Error</exception>
       </errors>
     </module>
     <module name="bisect" imports="[]" importfrom="[]">
@@ -39803,8 +39804,8 @@
       <errors>
         <exception>ImportError</exception>
         <exception>ValueError</exception>
-        <exception>Full</exception>
         <exception>Empty</exception>
+        <exception>queue.Full</exception>
       </errors>
     </module>
     <module name="copy" imports="['types', 'weakref']" importfrom="['copyreg:dispatch_table', 'org.python.core:PyStringMap']">
@@ -39832,7 +39833,7 @@
       <errors>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>Error</exception>
+        <exception>copy.Error</exception>
       </errors>
     </module>
     <module name="bdb" imports="['fnmatch', 'sys', 'os', 'linecache', 'reprlib']" importfrom="['inspect:CO_GENERATOR', 'inspect:CO_COROUTINE', 'inspect:CO_ASYNC_GENERATOR']">
@@ -40205,8 +40206,8 @@
       <errors>
         <exception>ValueError</exception>
         <exception>IndexError</exception>
-        <exception>BdbQuit</exception>
         <exception>NotImplementedError</exception>
+        <exception>bdb.BdbQuit</exception>
       </errors>
     </module>
     <module name="zipfile" imports="['binascii', 'importlib.util', 'io', 'itertools', 'os', 'posixpath', 'shutil', 'stat', 'struct', 'sys', 'threading', 'time', 'contextlib', 'zlib', 'bz2', 'lzma', 'warnings', 'argparse']" importfrom="[]">
@@ -40564,8 +40565,6 @@
         <exception>OSError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>struct.error</exception>
-        <exception>BadZipFile</exception>
-        <exception>LargeZipFile</exception>
         <exception>RuntimeError</exception>
         <exception>NotImplementedError</exception>
         <exception>ValueError</exception>
@@ -40573,6 +40572,8 @@
         <exception>io.UnsupportedOperation</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
+        <exception>zipfile.BadZipFile</exception>
+        <exception>zipfile.LargeZipFile</exception>
       </errors>
     </module>
     <module name="stat" imports="[]" importfrom="[]">
@@ -41523,9 +41524,9 @@
         <exception>xdrlib.ConversionError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>Error</exception>
         <exception>EOFError</exception>
         <exception>ConversionError</exception>
+        <exception>xdrlib.Error</exception>
       </errors>
     </module>
     <module name="smtpd" imports="['sys', 'os', 'errno', 'getopt', 'time', 'socket', 'asyncore', 'asynchat', 'collections', 'smtplib', 'pwd']" importfrom="['warnings:warn', 'email._header_value_parser:get_addr_spec', 'email._header_value_parser:get_angle_addr', 'io:StringIO', 'Mailman:Utils', 'Mailman:Message', 'Mailman:MailList']">
@@ -41929,13 +41930,13 @@
         <exception>Exception</exception>
         <exception>NameError</exception>
         <exception>ValueError</exception>
-        <exception>_OptionError</exception>
         <exception>OverflowError</exception>
         <exception>ImportError</exception>
         <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>message</exception>
         <exception>RuntimeError</exception>
+        <exception>warnings._OptionError</exception>
       </errors>
     </module>
     <module name="pickle" imports="['sys', 're', 'io', 'codecs', 'doctest', 'argparse', 'pprint']" importfrom="['types:FunctionType', 'copyreg:dispatch_table', 'itertools:islice', 'functools:partial', 'sys:maxsize', 'struct:pack', 'struct:unpack', 'org.python.core:PyStringMap']">
@@ -41977,7 +41978,6 @@
         <exception>AttributeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>KeyError</exception>
-        <exception>_Stop</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -41985,6 +41985,7 @@
         <exception>PicklingError</exception>
         <exception>EOFError</exception>
         <exception>ValueError</exception>
+        <exception>pickle._Stop</exception>
       </errors>
     </module>
     <module name="threading" imports="['os', 'sys', 'functools']" importfrom="['time:monotonic', 'itertools:islice', 'itertools:count']">
@@ -42665,7 +42666,7 @@
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
         <exception>binascii.Error</exception>
-        <exception>Error</exception>
+        <exception>uu.Error</exception>
       </errors>
     </module>
     <module name="shelve" imports="['collections.abc']" importfrom="['pickle:Pickler', 'pickle:Unpickler', 'io:BytesIO']">
@@ -47058,12 +47059,12 @@
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>error</exception>
-        <exception>Verbose</exception>
         <exception>source.error</exception>
         <exception>self.error</exception>
         <exception>OverflowError</exception>
         <exception>AssertionError</exception>
         <exception>s.error</exception>
+        <exception>sre_parse.Verbose</exception>
       </errors>
     </module>
     <module name="abc" imports="[]" importfrom="[]">
@@ -47738,12 +47739,12 @@
         <exception>AttributeError</exception>
         <exception>StopIteration</exception>
         <exception>IndentationError</exception>
-        <exception>TokenError</exception>
         <exception>SyntaxError</exception>
         <exception>OSError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>Exception</exception>
         <exception>ValueError</exception>
+        <exception>tokenize.TokenError</exception>
       </errors>
     </module>
     <module name="csv" imports="['re']" importfrom="['io:StringIO']">
@@ -48980,8 +48981,8 @@
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
-        <exception>TurtleGraphicsError</exception>
-        <exception>Terminator</exception>
+        <exception>turtle.TurtleGraphicsError</exception>
+        <exception>turtle.Terminator</exception>
       </errors>
     </module>
     <module name="hmac" imports="['warnings', 'hashlib']" importfrom="[]">
@@ -49951,8 +49952,8 @@
       <errors>
         <exception>ImportError</exception>
         <exception>OSError</exception>
-        <exception>error_proto</exception>
         <exception>ValueError</exception>
+        <exception>poplib.error_proto</exception>
       </errors>
     </module>
     <module name="heapq" imports="['doctest']" importfrom="[]">
@@ -51368,7 +51369,7 @@
         <exception>EOFError</exception>
         <exception>KeyError</exception>
         <exception>SyntaxError</exception>
-        <exception>BadUsage</exception>
+        <exception>pydoc.BadUsage</exception>
       </errors>
     </module>
     <module name="codeop" imports="['warnings']" importfrom="[]">
@@ -52084,9 +52085,9 @@
         <exception>SameFileError</exception>
         <exception>SpecialFileError</exception>
         <exception>TypeError</exception>
-        <exception>RegistryError</exception>
         <exception>ReadError</exception>
         <exception>LookupError</exception>
+        <exception>shutil.RegistryError</exception>
       </errors>
     </module>
     <module name="struct" imports="[]" importfrom="[]"/>
@@ -52498,10 +52499,10 @@
         <exception>error_perm</exception>
         <exception>ImportError</exception>
         <exception>ValueError</exception>
-        <exception>Error</exception>
         <exception>error_temp</exception>
         <exception>error_proto</exception>
         <exception>error_reply</exception>
+        <exception>ftplib.Error</exception>
       </errors>
     </module>
   </library>
