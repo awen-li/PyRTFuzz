@@ -30,6 +30,17 @@ class ApiSpecGen ():
 
                 for apiname, api in md.Apis.items ():
                     print ("### API: " + apiname)
+    
+    @staticmethod
+    def IsAbnormalExc (exc):
+        if exc.find ('.') != -1:
+            md = exc.split ('.')[0]
+            if md in ['self', 's', 'source', 'd', 'header']:
+                return True
+        else:
+            if exc.islower ():
+                return True
+        return False
 
     @staticmethod 
     def SetNodeAttr (node, name, value):
@@ -113,7 +124,7 @@ class ApiSpecGen ():
                     excepNode = ApiSpecGen.AddChild (Root, mdNode, "errors")
                     ExcList = []
                     for excep in md.Exceptions:
-                        if excep.exName in ExcList:
+                        if excep.exName in ExcList or ApiSpecGen.IsAbnormalExc (excep.exName):
                             continue
                         ApiSpecGen.WriteErrs (Root, excepNode, excep)
                         ExcList.append (excep.exName)

@@ -39,9 +39,7 @@ class ApiSpecMerge ():
         for libName, pyLib in par(self.ToSpec.items ()):
             for mdName, pyMoudle in pyLib.Modules.items ():
                 FMD = self.GetModule (self.FromSpec, libName, mdName)
-                for exc in FMD.Exceptions:
-                    if not exc in pyMoudle.Exceptions:
-                        pyMoudle.Exceptions.append (exc)    
+                pyMoudle.Exceptions += FMD.Exceptions
     
     def Merge (self):
         if self.MergeField == 'exc':

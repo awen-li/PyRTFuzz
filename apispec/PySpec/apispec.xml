@@ -2198,7 +2198,6 @@
         <exception>UnicodeDecodeError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
-        <exception>header.defects[0]</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -12300,7 +12299,6 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <errors/>
     </module>
     <module name="xml.dom.domreg" imports="['sys', 'os']" importfrom="[]">
       <api name="registerDOMImplementation">
@@ -21473,9 +21471,7 @@
         <defa>[]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
-      <errors>
-        <exception>d.exception</exception>
-      </errors>
+      <errors/>
     </module>
     <module name="asyncio.unix_events" imports="['errno', 'io', 'itertools', 'os', 'selectors', 'signal', 'socket', 'stat', 'subprocess', 'sys', 'threading', 'warnings']" importfrom="['log:logger']">
       <class name="AbstractChildWatcher" init="obj = AbstractChildWatcher()%%[]">
@@ -47035,10 +47031,8 @@
         <exception>KeyError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>source.error</exception>
         <exception>OverflowError</exception>
         <exception>AssertionError</exception>
-        <exception>s.error</exception>
         <exception>sre_parse.Verbose</exception>
         <exception>Verbose</exception>
       </errors>
