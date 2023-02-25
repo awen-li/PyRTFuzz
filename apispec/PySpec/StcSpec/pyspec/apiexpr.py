@@ -95,7 +95,7 @@ class ApiExpr ():
 
     def GetClsInit (self, ClsSpec, InitSpec, ApiPath):
         #print ("[CLASS]" + ClsSpec.clsName)
-        InitExpr = 'obj = ' + ClsSpec.clsName
+        InitExpr = 'obj = ' + ApiPath
         if InitSpec == None:
             InitExpr += '()'
             TypeList  = []
@@ -118,7 +118,7 @@ class ApiExpr ():
                             api.Expr = self.GetApiExpr (api, ApiPath+'.'+clsName, 'obj.')
                     
                     if hasInit == False:
-                        cls.clsInit = self.GetClsInit (cls, None, None)
+                        cls.clsInit = self.GetClsInit (cls, None, ApiPath+'.'+clsName)
 
                 for apiName, api in pyMoudle.Apis.items ():
                     api.Expr = self.GetApiExpr (api, ApiPath)
