@@ -21471,7 +21471,6 @@
         <defa>[]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
-      <errors/>
     </module>
     <module name="asyncio.unix_events" imports="['errno', 'io', 'itertools', 'os', 'selectors', 'signal', 'socket', 'stat', 'subprocess', 'sys', 'threading', 'warnings']" importfrom="['log:logger']">
       <class name="AbstractChildWatcher" init="obj = AbstractChildWatcher()%%[]">
@@ -21731,6 +21730,9 @@
         <exception>ImportError</exception>
         <exception>TypeError</exception>
         <exception>NotImplementedError</exception>
+        <exception>RuntimeError</exception>
+        <exception>FileNotFoundError</exception>
+        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="asyncio.tasks" imports="['concurrent.futures', 'contextvars', 'functools', 'inspect', 'itertools', 'types', 'warnings', 'weakref']" importfrom="['types:GenericAlias', 'queues:Queue']">
@@ -22159,6 +22161,7 @@
         <exception>StopIteration</exception>
         <exception>RuntimeError</exception>
         <exception>ValueError</exception>
+        <exception>exceptions.CancelledError</exception>
       </errors>
     </module>
     <module name="asyncio.proactor_events" imports="['io', 'os', 'socket', 'warnings', 'signal', 'threading', 'collections']" importfrom="['log:logger']">
@@ -22188,6 +22191,7 @@
         <exception>RuntimeError</exception>
         <exception>ValueError</exception>
         <exception>NotImplementedError</exception>
+        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="asyncio.events" imports="['contextvars', 'os', 'socket', 'subprocess', 'sys', 'threading']" importfrom="[]">
@@ -23207,6 +23211,11 @@
         <exception>BaseException</exception>
         <exception>RuntimeError</exception>
         <exception>NotImplementedError</exception>
+        <exception>ConnectionError</exception>
+        <exception>exceptions.CancelledError</exception>
+        <exception>exceptions.SendfileNotAvailableError</exception>
+        <exception>FileNotFoundError</exception>
+        <exception>socket.error</exception>
       </errors>
     </module>
     <module name="asyncio.trsock" imports="['socket', 'warnings']" importfrom="[]">
@@ -23459,6 +23468,12 @@
       </api>
       <errors>
         <exception>NotImplementedError</exception>
+        <exception>ConnectionResetError</exception>
+        <exception>RuntimeError</exception>
+        <exception>exceptions.IncompleteReadError</exception>
+        <exception>exceptions.LimitOverrunError</exception>
+        <exception>ValueError</exception>
+        <exception>StopAsyncIteration</exception>
       </errors>
     </module>
     <module name="asyncio.futures" imports="['concurrent.futures', 'contextvars', 'logging', 'sys']" importfrom="['types:GenericAlias']">
@@ -41914,7 +41929,6 @@
         <exception>TypeError</exception>
         <exception>RuntimeError</exception>
         <exception>warnings._OptionError</exception>
-        <exception>_OptionError</exception>
       </errors>
     </module>
     <module name="pickle" imports="['sys', 're', 'io', 'codecs', 'doctest', 'argparse', 'pprint']" importfrom="['types:FunctionType', 'copyreg:dispatch_table', 'itertools:islice', 'functools:partial', 'sys:maxsize', 'struct:pack', 'struct:unpack', 'org.python.core:PyStringMap']">
@@ -41964,7 +41978,6 @@
         <exception>EOFError</exception>
         <exception>ValueError</exception>
         <exception>pickle._Stop</exception>
-        <exception>_Stop</exception>
       </errors>
     </module>
     <module name="threading" imports="['os', 'sys', 'functools']" importfrom="['time:monotonic', 'itertools:islice', 'itertools:count']">
@@ -43950,7 +43963,6 @@
         <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>_Error</exception>
         <exception>RuntimeError</exception>
       </errors>
     </module>
@@ -45397,11 +45409,12 @@
         <exception>ImportError</exception>
         <exception>ValueError</exception>
         <exception>BlockingIOError</exception>
-        <exception>_GiveupOnSendfile</exception>
         <exception>NameError</exception>
         <exception>InterruptedError</exception>
         <exception>TypeError</exception>
         <exception>OSError</exception>
+        <exception>AttributeError</exception>
+        <exception>socket._GiveupOnSendfile</exception>
       </errors>
     </module>
     <module name="ssl" imports="['sys', 'os', 'socket', 'base64', 'errno', 'warnings']" importfrom="['collections:namedtuple', 'enum:Enum', 'enum:IntEnum', 'enum:IntFlag', 'socket:socket', 'socket:SOCK_STREAM', 'socket:create_connection', 'socket:SOL_SOCKET', 'socket:SO_TYPE', 'time:strptime', 'calendar:timegm']">
@@ -46795,6 +46808,7 @@
         <exception>NNTPProtocolError</exception>
         <exception>NNTPReplyError</exception>
         <exception>TypeError</exception>
+        <exception>nntplib.NNTPError</exception>
       </errors>
     </module>
     <module name="py_compile" imports="['enum', 'importlib._bootstrap_external', 'importlib.machinery', 'importlib.util', 'os', 'os.path', 'sys', 'traceback']" importfrom="[]">
@@ -47180,6 +47194,7 @@
         <exception>RuntimeError</exception>
         <exception>BaseException</exception>
         <exception>AttributeError</exception>
+        <exception>StopAsyncIteration</exception>
       </errors>
     </module>
     <module name="signal" imports="[]" importfrom="['enum:IntEnum']">
@@ -52042,7 +52057,6 @@
         <exception>shutil.ReadError</exception>
         <exception>Exception</exception>
         <exception>OSError</exception>
-        <exception>_GiveupOnFastCopy</exception>
         <exception>IsADirectoryError</exception>
         <exception>NotImplementedError</exception>
         <exception>Error</exception>

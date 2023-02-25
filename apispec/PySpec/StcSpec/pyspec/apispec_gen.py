@@ -33,6 +33,9 @@ class ApiSpecGen ():
     
     @staticmethod
     def IsAbnormalExc (exc):
+        if exc[0:1] == '_':
+            return True
+
         if exc.find ('.') != -1:
             md = exc.split ('.')[0]
             if md in ['self', 's', 'source', 'd', 'header']:

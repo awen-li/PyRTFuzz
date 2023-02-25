@@ -269,8 +269,7 @@ class AstWalk(NodeVisitor):
         self.visit (node.value)
 
     def visit_annassign(self, node):
-        for tgt in node.targets:
-            self.visit (tgt)
+        self.visit (node.target)
         self.visit (node.value)
 
     def visit_asyncfunctiondef (self, node, ClfName=None):
@@ -353,10 +352,11 @@ class AstWalk(NodeVisitor):
         self.CurPyMod.Classes [clsname] = self.CurClass
         
         Body = node.body
-        for Fdef in Body:
-            if not isinstance (Fdef, FunctionDef):
-                continue         
-            self.visit_functiondef (Fdef, node.name)
+        for stmt in Body:
+            if isinstance (stmt, FunctionDef):   
+                self.visit_functiondef (stmt, node.name)
+            else:
+                self.visit (stmt)
 
         # check whether the function is invoked
         for api,_ in self.FuncCalled.items ():
