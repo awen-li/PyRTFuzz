@@ -2890,7 +2890,6 @@
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
-        <exception>error</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -3015,7 +3014,6 @@
         <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>NotImplementedError</exception>
-        <exception>exc_info[0]</exception>
         <exception>AssertionError</exception>
       </errors>
     </module>
@@ -12302,9 +12300,7 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <errors>
-        <exception>exception</exception>
-      </errors>
+      <errors/>
     </module>
     <module name="xml.dom.domreg" imports="['sys', 'os']" importfrom="[]">
       <api name="registerDOMImplementation">
@@ -13604,6 +13600,7 @@
       <errors>
         <exception>ValueError</exception>
         <exception>xml.dom.expatbuilder.ParseEscape</exception>
+        <exception>ParseEscape</exception>
       </errors>
     </module>
     <module name="xml.dom.NodeFilter" imports="[]" importfrom="[]">
@@ -13902,7 +13899,6 @@
       </api>
       <errors>
         <exception>AssertionError</exception>
-        <exception>exception</exception>
         <exception>IndexError</exception>
         <exception>StopIteration</exception>
       </errors>
@@ -14494,11 +14490,8 @@
         <exception>TypeError</exception>
         <exception>SyntaxError</exception>
         <exception>KeyError</exception>
-        <exception>self._error</exception>
         <exception>ImportError</exception>
         <exception>ValueError</exception>
-        <exception>event</exception>
-        <exception>err</exception>
       </errors>
     </module>
     <module name="xml.etree.ElementInclude" imports="['copy']" importfrom="['urllib.parse:urljoin']">
@@ -23580,9 +23573,7 @@
         <exception>ImportError</exception>
         <exception>ValueError</exception>
         <exception>RuntimeError</exception>
-        <exception>exc</exception>
         <exception>exceptions.InvalidStateError</exception>
-        <exception>self._exception</exception>
         <exception>TypeError</exception>
       </errors>
     </module>
@@ -23889,7 +23880,6 @@
         <exception>ValueError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
-        <exception>handshake_exc</exception>
       </errors>
     </module>
     <module name="asyncio.selector_events" imports="['collections', 'errno', 'functools', 'selectors', 'socket', 'warnings', 'weakref', 'ssl']" importfrom="['log:logger']">
@@ -30259,6 +30249,7 @@
         <exception>IndentationError</exception>
         <exception>ValueError</exception>
         <exception>tabnanny.NannyNag</exception>
+        <exception>NannyNag</exception>
       </errors>
     </module>
     <module name="getopt" imports="['os', 'sys']" importfrom="['gettext:gettext']">
@@ -31751,7 +31742,6 @@
         <exception>OSError</exception>
         <exception>SMTPAuthenticationError</exception>
         <exception>UnicodeEncodeError</exception>
-        <exception>last_exception</exception>
         <exception>RuntimeError</exception>
         <exception>smtplib.SMTPResponseException</exception>
         <exception>smtplib.SMTPServerDisconnected</exception>
@@ -31761,6 +31751,7 @@
         <exception>smtplib.SMTPAuthenticationError</exception>
         <exception>smtplib.SMTPSenderRefused</exception>
         <exception>smtplib.SMTPRecipientsRefused</exception>
+        <exception>SMTPException</exception>
       </errors>
     </module>
     <module name="linecache" imports="['functools', 'sys', 'os', 'tokenize']" importfrom="[]">
@@ -34557,7 +34548,6 @@
         <exception>RecursionError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
-        <exception>_error</exception>
         <exception>FileNotFoundError</exception>
       </errors>
     </module>
@@ -35051,14 +35041,10 @@
       <errors>
         <exception>ImportError</exception>
         <exception>OSError</exception>
-        <exception>self.abort</exception>
-        <exception>self.error</exception>
         <exception>AttributeError</exception>
         <exception>getopt.error</exception>
         <exception>ValueError</exception>
         <exception>IMAP4.error</exception>
-        <exception>self.readonly</exception>
-        <exception>dat[0]</exception>
       </errors>
     </module>
     <module name="platform" imports="['collections', 'os', 're', 'sys', 'subprocess', 'functools', 'itertools', 'winreg', 'plistlib', 'java.lang', 'socket', 'struct', 'vms_lib']" importfrom="['sys:getwindowsversion', 'java.lang:System']">
@@ -36208,6 +36194,7 @@
         <exception>ArgumentTypeError</exception>
         <exception>NotImplementedError</exception>
         <exception>argparse.ArgumentError</exception>
+        <exception>ArgumentError</exception>
       </errors>
     </module>
     <module name="datetime" imports="['time', 'math', 'sys', 'warnings']" importfrom="[]">
@@ -38043,8 +38030,6 @@
         <exception>NotADirectoryError</exception>
         <exception>TypeError</exception>
         <exception>KeyError</exception>
-        <exception>saved_exc</exception>
-        <exception>last_exc</exception>
         <exception>ValueError</exception>
         <exception>NotImplementedError</exception>
       </errors>
@@ -38420,7 +38405,6 @@
         <exception>tarfile.EOFHeaderError</exception>
         <exception>tarfile.InvalidHeaderError</exception>
         <exception>tarfile.SubsequentHeaderError</exception>
-        <exception>self.exception</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>HeaderError</exception>
         <exception>UnicodeDecodeError</exception>
@@ -38432,7 +38416,6 @@
         <exception>KeyError</exception>
         <exception>ExtractError</exception>
         <exception>FileExistsError</exception>
-        <exception>symlink_exception</exception>
         <exception>EOFHeaderError</exception>
         <exception>InvalidHeaderError</exception>
         <exception>EmptyHeaderError</exception>
@@ -38440,7 +38423,6 @@
         <exception>SubsequentHeaderError</exception>
         <exception>Exception</exception>
         <exception>TarError</exception>
-        <exception>exception</exception>
         <exception>StreamError</exception>
       </errors>
     </module>
@@ -39357,7 +39339,6 @@
         <exception>NameError</exception>
         <exception>ValueError</exception>
         <exception>OverflowError</exception>
-        <exception>_reraised_exceptions</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>AssertionError</exception>
@@ -40208,6 +40189,7 @@
         <exception>IndexError</exception>
         <exception>NotImplementedError</exception>
         <exception>bdb.BdbQuit</exception>
+        <exception>BdbQuit</exception>
       </errors>
     </module>
     <module name="zipfile" imports="['binascii', 'importlib.util', 'io', 'itertools', 'os', 'posixpath', 'shutil', 'stat', 'struct', 'sys', 'threading', 'time', 'contextlib', 'zlib', 'bz2', 'lzma', 'warnings', 'argparse']" importfrom="[]">
@@ -41934,9 +41916,9 @@
         <exception>ImportError</exception>
         <exception>AttributeError</exception>
         <exception>TypeError</exception>
-        <exception>message</exception>
         <exception>RuntimeError</exception>
         <exception>warnings._OptionError</exception>
+        <exception>_OptionError</exception>
       </errors>
     </module>
     <module name="pickle" imports="['sys', 're', 'io', 'codecs', 'doctest', 'argparse', 'pprint']" importfrom="['types:FunctionType', 'copyreg:dispatch_table', 'itertools:islice', 'functools:partial', 'sys:maxsize', 'struct:pack', 'struct:unpack', 'org.python.core:PyStringMap']">
@@ -41986,6 +41968,7 @@
         <exception>EOFError</exception>
         <exception>ValueError</exception>
         <exception>pickle._Stop</exception>
+        <exception>_Stop</exception>
       </errors>
     </module>
     <module name="threading" imports="['os', 'sys', 'functools']" importfrom="['time:monotonic', 'itertools:islice', 'itertools:count']">
@@ -43971,7 +43954,6 @@
         <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>error</exception>
         <exception>_Error</exception>
         <exception>RuntimeError</exception>
       </errors>
@@ -44513,7 +44495,6 @@
         <exception>InterpolationSyntaxError</exception>
         <exception>DuplicateOptionError</exception>
         <exception>MissingSectionHeaderError</exception>
-        <exception>e</exception>
       </errors>
     </module>
     <module name="symbol" imports="['warnings']" importfrom="[]"/>
@@ -44957,7 +44938,6 @@
       </api>
       <errors>
         <exception>IndexError</exception>
-        <exception>error</exception>
       </errors>
     </module>
     <module name="uuid" imports="['os', 'sys', 'platform', 'io', 'shutil', 'subprocess', 'socket', 'random', 'time']" importfrom="['enum:Enum', 'hashlib:md5', 'hashlib:sha1']">
@@ -45420,15 +45400,12 @@
       <errors>
         <exception>ImportError</exception>
         <exception>ValueError</exception>
-        <exception>error</exception>
         <exception>BlockingIOError</exception>
         <exception>_GiveupOnSendfile</exception>
         <exception>NameError</exception>
         <exception>InterruptedError</exception>
-        <exception>timeout</exception>
         <exception>TypeError</exception>
         <exception>OSError</exception>
-        <exception>err</exception>
       </errors>
     </module>
     <module name="ssl" imports="['sys', 'os', 'socket', 'base64', 'errno', 'warnings']" importfrom="['collections:namedtuple', 'enum:Enum', 'enum:IntEnum', 'enum:IntFlag', 'socket:socket', 'socket:SOCK_STREAM', 'socket:create_connection', 'socket:SOL_SOCKET', 'socket:SO_TYPE', 'time:strptime', 'calendar:timegm']">
@@ -47058,13 +47035,12 @@
         <exception>KeyError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>error</exception>
         <exception>source.error</exception>
-        <exception>self.error</exception>
         <exception>OverflowError</exception>
         <exception>AssertionError</exception>
         <exception>s.error</exception>
         <exception>sre_parse.Verbose</exception>
+        <exception>Verbose</exception>
       </errors>
     </module>
     <module name="abc" imports="[]" importfrom="[]">
@@ -47210,7 +47186,6 @@
         <exception>RuntimeError</exception>
         <exception>BaseException</exception>
         <exception>AttributeError</exception>
-        <exception>exc_details[1]</exception>
       </errors>
     </module>
     <module name="signal" imports="[]" importfrom="['enum:IntEnum']">
@@ -47745,6 +47720,7 @@
         <exception>Exception</exception>
         <exception>ValueError</exception>
         <exception>tokenize.TokenError</exception>
+        <exception>TokenError</exception>
       </errors>
     </module>
     <module name="csv" imports="['re']" importfrom="['io:StringIO']">
@@ -49562,8 +49538,6 @@
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
         <exception>Exception</exception>
-        <exception>ve_exc</exception>
-        <exception>exc</exception>
       </errors>
     </module>
     <module name="lzma" imports="['builtins', 'io', 'os']" importfrom="[]">
@@ -51370,6 +51344,7 @@
         <exception>KeyError</exception>
         <exception>SyntaxError</exception>
         <exception>pydoc.BadUsage</exception>
+        <exception>BadUsage</exception>
       </errors>
     </module>
     <module name="codeop" imports="['warnings']" importfrom="[]">
@@ -51409,7 +51384,6 @@
       </api>
       <errors>
         <exception>SyntaxError</exception>
-        <exception>err1</exception>
       </errors>
     </module>
     <module name="zipimport" imports="['marshal', 'sys', 'time']" importfrom="['importlib.abc:ResourceReader', 'zlib:decompress', 'io:BytesIO', 'pathlib:Path']">
@@ -52496,12 +52470,8 @@
         <exception>ftplib.error_proto</exception>
         <exception>OSError</exception>
         <exception>EOFError</exception>
-        <exception>error_perm</exception>
         <exception>ImportError</exception>
         <exception>ValueError</exception>
-        <exception>error_temp</exception>
-        <exception>error_proto</exception>
-        <exception>error_reply</exception>
         <exception>ftplib.Error</exception>
       </errors>
     </module>
