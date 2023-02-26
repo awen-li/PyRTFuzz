@@ -115,6 +115,7 @@ class PropGraph (NodeVisitor):
         self.ClsList  = {}
 
         self.debugFlag = LoadFlag ()
+        self.Name = None
 
     def VisitGp (self, Hook, Root, Type=None):
         N = Root
@@ -134,13 +135,16 @@ class PropGraph (NodeVisitor):
                     queue.append (oe.DstNd)
         return None
 
-    def AddFunc (self):
-        Cls = ''
-        if self.CurClass != None:
-            Cls = self.CurClass.Name + '.'
+    def AddFunc (self, FuncNode=None):
+        if FuncNode == None:
+            Cls = ''
+            if self.CurClass != None:
+                Cls = self.CurClass.Name + '.'
 
-        FuncName = Cls + self.CurFunc.Name
-        self.FuncList [FuncName] = self.CurFunc
+            FuncName = Cls + self.CurFunc.Name
+            self.FuncList [FuncName] = self.CurFunc
+        else:
+            self.FuncList [FuncNode.Name] = FuncNode
 
     def GetFunc (self, FuncName):
         Def = self.FuncList.get (FuncName)
@@ -175,8 +179,13 @@ class PropGraph (NodeVisitor):
             
         return NodeVal (ap, NodeVal.NodeAttr_AP)
 
-    def GetId (self, name):
-        return name.id
+    def GetId (self, node):
+        self.Name = ''
+        self.VisitAst (node)
+        CurName = self.Name
+        self.Name = None
+
+        return CurName
 
     def AddNode (self, Type, Name='node'):
          Nd = PgNode (self.NodeId, Type, Name) 
@@ -222,6 +231,23 @@ class PropGraph (NodeVisitor):
         method = 'pg_' + node.__class__.__name__.lower()
         operator = getattr(self, method, self.generic_visit)        
         return operator(node)
+    
+    def pg_attribute(self, node):
+        if self.Name == None:
+            return node
+        if self.Name == '':
+            self.Name = node.attr
+        else:  
+            self.Name = node.attr + '.' + self.Name
+        self.VisitAst (node.value)
+
+    def pg_name(self, node, getName=False):
+        if self.Name == None:
+            return node
+        if self.Name == '':
+            self.Name = node.id
+        else:  
+            self.Name = node.id + '.' + self.Name
 
     def pg_assign(self, node):
         lefts = node.targets

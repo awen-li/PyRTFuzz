@@ -86,7 +86,11 @@ class ApiExpr ():
         ApiExpr = ''
         if len (ApiSpec.Ret) != 0:
             ApiExpr += 'ret = '
-        ApiExpr += Obj
+        
+        if Obj == '':
+            ApiExpr += ApiPath + '.'
+        else:
+            ApiExpr += Obj
         
         ApiExpr += ApiSpec.ApiName
         ApiExpr, TypeList = self.GetExpr (ApiPath, ApiExpr, ApiSpec)
