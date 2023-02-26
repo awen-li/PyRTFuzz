@@ -7,8 +7,7 @@ class PyImport():
         self.PyModule = PyModule
 
     def IsRef (self, App, Name):
-        Ref = Name + '.'
-        if App.find (Ref) == -1:
+        if App.find (Name) == -1:
             return False
         else:
             return True

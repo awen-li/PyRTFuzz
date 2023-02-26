@@ -119,6 +119,16 @@ class CodeGen ():
             return 0xffffff
         else:
             return int (Number)
+        
+    def IsHoleApi (self, ApiInfo):
+        ApiSpec = ApiInfo.Api
+        if len (ApiSpec.Args) == 0 and\
+           len (ApiSpec.PosArgs) == 0 and\
+           len (ApiSpec.KwoArgs) == 0 and\
+           len (ApiSpec.Ret) == 0:
+            return True
+        else:
+            return False
 
     def GenInitPy (self, Dir):
         ApiList = self.Core.ApiList
@@ -127,9 +137,11 @@ class CodeGen ():
         PyNum = 0
         MaxNumber = self.DefaultNumber ()
         for ApiPath, ApiInfo in pbar(ApiList.items ()):
-            PyFile  = Dir + '/' + str(InitStatNum) + '#' + ApiPath.replace('.', '#') + '.py'
-            
             try:
+                if self.IsHoleApi (ApiInfo) == True:
+                    continue
+
+                PyFile  = Dir + '/' + str(InitStatNum) + '#' + ApiPath.replace('.', '#') + '.py'
                 self.GenPy (ApiPath, InitStatNum, PyFile, ApiInfo.Class != None)
             except Exception as e:     
                 traceback.print_exc ()

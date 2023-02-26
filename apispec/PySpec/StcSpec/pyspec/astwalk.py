@@ -252,7 +252,10 @@ class AstWalk(NodeVisitor):
                 pass
 
         for excep in type_names_body:
-            Excep = PyExcep (excep)
+            Prefix = ''
+            if self.IsSelfDef (excep):
+                Prefix = self.CurPyMod.Name + '.'
+            Excep = PyExcep (Prefix+excep)
             self.AddExcep (Excep)
             
     
@@ -341,7 +344,7 @@ class AstWalk(NodeVisitor):
     def visit_classdef(self, node):
 
         clsname = node.name
-        if self.CurClass != None:
+        if self.CurClass != None or self.CurFunc != None:
             return
 
         # check if inherit from error:

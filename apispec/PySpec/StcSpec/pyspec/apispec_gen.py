@@ -35,6 +35,9 @@ class ApiSpecGen ():
     def IsAbnormalExc (exc):
         if exc[0:1] == '_':
             return True
+        
+        if exc in ['ftplib.all_errors', 'BadUsage']:
+            return True
 
         if exc.find ('.') != -1:
             md = exc.split ('.')[0]

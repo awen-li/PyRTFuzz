@@ -859,6 +859,7 @@
         <exception>ResponseError</exception>
         <exception>NotImplementedError</exception>
         <exception>ProtocolError</exception>
+        <exception>xmlrpc.client.Error</exception>
       </errors>
     </module>
     <module name="xmlrpc.server" imports="['html', 'http.server', 'socketserver', 'sys', 'os', 're', 'pydoc', 'traceback', 'fcntl', 'datetime']" importfrom="['xmlrpc.client:Fault', 'xmlrpc.client:dumps', 'xmlrpc.client:loads', 'xmlrpc.client:gzip_encode', 'xmlrpc.client:gzip_decode', 'http.server:BaseHTTPRequestHandler', 'functools:partial', 'inspect:signature']">
@@ -19764,7 +19765,6 @@
         <exception>ValueError</exception>
         <exception>KeyError</exception>
         <exception>socket.gaierror</exception>
-        <exception>ftplib.all_errors</exception>
         <exception>HTTPError</exception>
         <exception>URLError</exception>
         <exception>http.client.BadStatusLine</exception>
@@ -36206,6 +36206,7 @@
         <exception>NotImplementedError</exception>
         <exception>argparse.ArgumentError</exception>
         <exception>ArgumentError</exception>
+        <exception>argparse.ArgumentTypeError</exception>
       </errors>
     </module>
     <module name="datetime" imports="['time', 'math', 'sys', 'warnings']" importfrom="[]">
@@ -38435,6 +38436,7 @@
         <exception>Exception</exception>
         <exception>TarError</exception>
         <exception>StreamError</exception>
+        <exception>tarfile.TarError</exception>
       </errors>
     </module>
     <module name="stringprep" imports="[]" importfrom="['unicodedata:ucd_3_2_0']">
@@ -43964,6 +43966,7 @@
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>RuntimeError</exception>
+        <exception>runpy._Error</exception>
       </errors>
     </module>
     <module name="mimetypes" imports="['os', 'sys', 'posixpath', 'urllib.parse', 'winreg', 'getopt']" importfrom="[]">
@@ -46850,6 +46853,7 @@
         <exception>FileExistsError</exception>
         <exception>PyCompileError</exception>
         <exception>OSError</exception>
+        <exception>py_compile.PyCompileError</exception>
       </errors>
     </module>
     <module name="sre_parse" imports="['unicodedata', 'warnings']" importfrom="['sre_constants:*']">
@@ -50989,7 +50993,6 @@
       <class name="DocHandler" init="obj = pydoc.DocHandler()%%[]"/>
       <class name="DocServer" init="obj = pydoc.DocServer()%%[]"/>
       <class name="ServerThread" init="obj = pydoc.ServerThread()%%[]"/>
-      <class name="BadUsage" init="obj = pydoc.BadUsage()%%[]"/>
       <api name="pathdirs">
         <expr>ret = pathdirs()%%[]</expr>
         <args>[]</args>
@@ -51352,8 +51355,7 @@
         <exception>EOFError</exception>
         <exception>KeyError</exception>
         <exception>SyntaxError</exception>
-        <exception>pydoc.BadUsage</exception>
-        <exception>BadUsage</exception>
+        <exception>pydoc.ErrorDuringImport</exception>
       </errors>
     </module>
     <module name="codeop" imports="['warnings']" importfrom="[]">
@@ -52070,6 +52072,7 @@
         <exception>ReadError</exception>
         <exception>LookupError</exception>
         <exception>shutil.RegistryError</exception>
+        <exception>shutil._GiveupOnFastCopy</exception>
       </errors>
     </module>
     <module name="struct" imports="[]" importfrom="[]"/>

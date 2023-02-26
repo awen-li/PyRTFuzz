@@ -12,6 +12,7 @@ class ApiSpecCheck ():
             os.remove (logFileName)
         self.Types = {}
         self.Imports = []
+        self.Excps = {}
 
     def InitPyLibs (self, apiSpecXml):
         apiSpec = ApiSpecLoader (apiSpecXml)
@@ -104,6 +105,22 @@ class ApiSpecCheck ():
             with open (logFileName, "a") as f:
                 print (Import, file=f)
 
+    def CheckExcp (self, PyExcpList):
+        for pye in PyExcpList:
+            exc = pye.exName
+            Num = self.Excps.get (exc)
+            if Num == None:
+                self.Excps[exc] = 1
+            else:
+                self.Excps[exc] = Num + 1
+
+    def LogExcps (self):
+        Excps = dict(sorted(self.Excps.items(), key = lambda kv:(kv[1], kv[0]), reverse=True))
+        F = open ('ExcepList.txt', 'w')
+        for exc, num in Excps.items ():
+            print ("%-32s%-4d" %(exc, num), file=F)
+        F.close ()
+
     def Check (self):
         TotalApiNum = 0
         TypeKnowns   = 0
@@ -131,6 +148,8 @@ class ApiSpecCheck ():
                         TypeKnowns += 1
                     else:
                         self.LogApiInfo (libName, mdName, '-', api)
+
+                self.CheckExcp (pyMoudle.Exceptions)
                             
         print ("\n#####################   ApiSpecCheck   #####################")
         print ("### TotalApiNum   = %d" %TotalApiNum)
@@ -140,4 +159,5 @@ class ApiSpecCheck ():
     
         self.LogTypeInfo ()
         self.LogImportInfo ()
+        self.LogExcps ()
                 
