@@ -851,14 +851,10 @@
         <exception>KeyError</exception>
         <exception>OSError</exception>
         <exception>http.client.RemoteDisconnected</exception>
-        <exception>Fault</exception>
         <exception>Exception</exception>
-        <exception>Error</exception>
         <exception>TypeError</exception>
         <exception>OverflowError</exception>
-        <exception>ResponseError</exception>
         <exception>NotImplementedError</exception>
-        <exception>ProtocolError</exception>
         <exception>xmlrpc.client.Error</exception>
       </errors>
     </module>
@@ -3705,7 +3701,6 @@
         <exception>http.client.RemoteDisconnected</exception>
         <exception>LineTooLong</exception>
         <exception>HTTPException</exception>
-        <exception>RemoteDisconnected</exception>
         <exception>BadStatusLine</exception>
         <exception>UnknownProtocol</exception>
         <exception>ResponseNotReady</exception>
@@ -4636,7 +4631,6 @@
         <exception>http.cookiejar.LoadError</exception>
         <exception>OSError</exception>
         <exception>NotImplementedError</exception>
-        <exception>LoadError</exception>
       </errors>
     </module>
     <module name="http.cookies" imports="['re', 'string', 'types']" importfrom="['time:gmtime', 'time:time']">
@@ -13599,7 +13593,6 @@
       <errors>
         <exception>ValueError</exception>
         <exception>xml.dom.expatbuilder.ParseEscape</exception>
-        <exception>ParseEscape</exception>
       </errors>
     </module>
     <module name="xml.dom.NodeFilter" imports="[]" importfrom="[]">
@@ -14518,8 +14511,6 @@
         <exception>xml.etree.ElementInclude.FatalIncludeError</exception>
         <exception>xml.etree.ElementInclude.LimitedRecursiveIncludeError</exception>
         <exception>ValueError</exception>
-        <exception>FatalIncludeError</exception>
-        <exception>LimitedRecursiveIncludeError</exception>
       </errors>
     </module>
     <module name="xml.etree.ElementPath" imports="['re']" importfrom="[]">
@@ -18723,7 +18714,6 @@
         <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>StopIteration</exception>
-        <exception>JSONDecodeError</exception>
       </errors>
     </module>
     <module name="json.tool" imports="['argparse', 'json', 'sys']" importfrom="['pathlib:Path']">
@@ -30077,8 +30067,6 @@
       <errors>
         <exception>ipaddress.AddressValueError</exception>
         <exception>ipaddress.NetmaskValueError</exception>
-        <exception>AddressValueError</exception>
-        <exception>NetmaskValueError</exception>
         <exception>OverflowError</exception>
         <exception>AttributeError</exception>
         <exception>ValueError</exception>
@@ -30260,7 +30248,6 @@
         <exception>IndentationError</exception>
         <exception>ValueError</exception>
         <exception>tabnanny.NannyNag</exception>
-        <exception>NannyNag</exception>
       </errors>
     </module>
     <module name="getopt" imports="['os', 'sys']" importfrom="['gettext:gettext']">
@@ -31063,7 +31050,6 @@
         <exception>TypeError</exception>
         <exception>OSError</exception>
         <exception>EOFError</exception>
-        <exception>BadGzipFile</exception>
       </errors>
     </module>
     <module name="calendar" imports="['sys', 'datetime', 'locale', 'argparse']" importfrom="['itertools:repeat']">
@@ -31482,8 +31468,6 @@
       <errors>
         <exception>calendar.IllegalMonthError</exception>
         <exception>calendar.IllegalWeekdayError</exception>
-        <exception>IllegalMonthError</exception>
-        <exception>IllegalWeekdayError</exception>
       </errors>
     </module>
     <module name="smtplib" imports="['socket', 'io', 're', 'email.utils', 'email.message', 'email.generator', 'base64', 'hmac', 'copy', 'datetime', 'sys', 'ssl', 'warnings']" importfrom="['email.base64mime:body_encode']">
@@ -31748,10 +31732,8 @@
       <errors>
         <exception>smtplib.SMTPException</exception>
         <exception>ImportError</exception>
-        <exception>SMTPServerDisconnected</exception>
         <exception>ValueError</exception>
         <exception>OSError</exception>
-        <exception>SMTPAuthenticationError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>RuntimeError</exception>
         <exception>smtplib.SMTPResponseException</exception>
@@ -31762,7 +31744,6 @@
         <exception>smtplib.SMTPAuthenticationError</exception>
         <exception>smtplib.SMTPSenderRefused</exception>
         <exception>smtplib.SMTPRecipientsRefused</exception>
-        <exception>SMTPException</exception>
       </errors>
     </module>
     <module name="linecache" imports="['functools', 'sys', 'os', 'tokenize']" importfrom="[]">
@@ -32732,13 +32713,8 @@
         <exception>optparse.BadOptionError</exception>
         <exception>optparse.AmbiguousOptionError</exception>
         <exception>ValueError</exception>
-        <exception>BadOptionError</exception>
-        <exception>OptionValueError</exception>
         <exception>NotImplementedError</exception>
         <exception>TypeError</exception>
-        <exception>OptionError</exception>
-        <exception>OptionConflictError</exception>
-        <exception>AmbiguousOptionError</exception>
       </errors>
     </module>
     <module name="site" imports="['sys', 'os', 'builtins', 'io', 'sitecustomize', 'usercustomize', 'textwrap']" importfrom="[]">
@@ -35972,8 +35948,6 @@
         <exception>mailbox.FormatError</exception>
         <exception>NotImplementedError</exception>
         <exception>TypeError</exception>
-        <exception>NotEmptyError</exception>
-        <exception>ExternalClashError</exception>
       </errors>
     </module>
     <module name="netrc" imports="['os', 'shlex', 'stat', 'pwd']" importfrom="[]">
@@ -36202,10 +36176,8 @@
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
-        <exception>ArgumentTypeError</exception>
         <exception>NotImplementedError</exception>
         <exception>argparse.ArgumentError</exception>
-        <exception>ArgumentError</exception>
         <exception>argparse.ArgumentTypeError</exception>
       </errors>
     </module>
@@ -38418,24 +38390,13 @@
         <exception>tarfile.InvalidHeaderError</exception>
         <exception>tarfile.SubsequentHeaderError</exception>
         <exception>UnicodeEncodeError</exception>
-        <exception>HeaderError</exception>
         <exception>UnicodeDecodeError</exception>
-        <exception>ReadError</exception>
-        <exception>CompressionError</exception>
         <exception>OSError</exception>
         <exception>EOFError</exception>
         <exception>LZMAError</exception>
         <exception>KeyError</exception>
-        <exception>ExtractError</exception>
         <exception>FileExistsError</exception>
-        <exception>EOFHeaderError</exception>
-        <exception>InvalidHeaderError</exception>
-        <exception>EmptyHeaderError</exception>
-        <exception>TruncatedHeaderError</exception>
-        <exception>SubsequentHeaderError</exception>
         <exception>Exception</exception>
-        <exception>TarError</exception>
-        <exception>StreamError</exception>
         <exception>tarfile.TarError</exception>
       </errors>
     </module>
@@ -40202,7 +40163,6 @@
         <exception>IndexError</exception>
         <exception>NotImplementedError</exception>
         <exception>bdb.BdbQuit</exception>
-        <exception>BdbQuit</exception>
       </errors>
     </module>
     <module name="zipfile" imports="['binascii', 'importlib.util', 'io', 'itertools', 'os', 'posixpath', 'shutil', 'stat', 'struct', 'sys', 'threading', 'time', 'contextlib', 'zlib', 'bz2', 'lzma', 'warnings', 'argparse']" importfrom="[]">
@@ -40786,7 +40746,6 @@
         <exception>graphlib.CycleError</exception>
         <exception>StopIteration</exception>
         <exception>ValueError</exception>
-        <exception>CycleError</exception>
       </errors>
     </module>
     <module name="modulefinder" imports="['dis', 'importlib._bootstrap_external', 'importlib.machinery', 'marshal', 'os', 'io', 'sys']" importfrom="[]">
@@ -41520,7 +41479,6 @@
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>EOFError</exception>
-        <exception>ConversionError</exception>
         <exception>xdrlib.Error</exception>
       </errors>
     </module>
@@ -41975,8 +41933,6 @@
         <exception>UnicodeDecodeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
-        <exception>UnpicklingError</exception>
-        <exception>PicklingError</exception>
         <exception>EOFError</exception>
         <exception>ValueError</exception>
         <exception>pickle._Stop</exception>
@@ -42335,7 +42291,6 @@
         <exception>RuntimeError</exception>
         <exception>threading.BrokenBarrierError</exception>
         <exception>Exception</exception>
-        <exception>BrokenBarrierError</exception>
       </errors>
     </module>
     <module name="asynchat" imports="['asyncore']" importfrom="['collections:deque']">
@@ -44495,17 +44450,10 @@
         <exception>configparser.ParsingError</exception>
         <exception>configparser.MissingSectionHeaderError</exception>
         <exception>KeyError</exception>
-        <exception>NoSectionError</exception>
-        <exception>NoOptionError</exception>
         <exception>OSError</exception>
         <exception>AttributeError</exception>
-        <exception>DuplicateSectionError</exception>
         <exception>ValueError</exception>
         <exception>TypeError</exception>
-        <exception>InterpolationDepthError</exception>
-        <exception>InterpolationSyntaxError</exception>
-        <exception>DuplicateOptionError</exception>
-        <exception>MissingSectionHeaderError</exception>
       </errors>
     </module>
     <module name="symbol" imports="['warnings']" importfrom="[]"/>
@@ -46514,7 +46462,6 @@
         <exception>ZeroDivisionError</exception>
         <exception>IndexError</exception>
         <exception>ImportError</exception>
-        <exception>StatisticsError</exception>
       </errors>
     </module>
     <module name="nntplib" imports="['re', 'socket', 'collections', 'datetime', 'sys', 'ssl', 'netrc', 'argparse']" importfrom="['email.header:decode_header']">
@@ -46803,13 +46750,8 @@
         <exception>nntplib.NNTPDataError</exception>
         <exception>OSError</exception>
         <exception>EOFError</exception>
-        <exception>NNTPPermanentError</exception>
-        <exception>NNTPTemporaryError</exception>
         <exception>AttributeError</exception>
-        <exception>NNTPDataError</exception>
         <exception>ValueError</exception>
-        <exception>NNTPProtocolError</exception>
-        <exception>NNTPReplyError</exception>
         <exception>TypeError</exception>
         <exception>nntplib.NNTPError</exception>
       </errors>
@@ -46851,7 +46793,6 @@
       <errors>
         <exception>Exception</exception>
         <exception>FileExistsError</exception>
-        <exception>PyCompileError</exception>
         <exception>OSError</exception>
         <exception>py_compile.PyCompileError</exception>
       </errors>
@@ -47052,7 +46993,6 @@
         <exception>OverflowError</exception>
         <exception>AssertionError</exception>
         <exception>sre_parse.Verbose</exception>
-        <exception>Verbose</exception>
       </errors>
     </module>
     <module name="abc" imports="[]" importfrom="[]">
@@ -47733,7 +47673,6 @@
         <exception>Exception</exception>
         <exception>ValueError</exception>
         <exception>tokenize.TokenError</exception>
-        <exception>TokenError</exception>
       </errors>
     </module>
     <module name="csv" imports="['re']" importfrom="['io:StringIO']">
@@ -49084,7 +49023,6 @@
       </api>
       <errors>
         <exception>zipapp.ZipAppError</exception>
-        <exception>ZipAppError</exception>
         <exception>SystemExit</exception>
       </errors>
     </module>
@@ -49727,7 +49665,6 @@
         <exception>TypeError</exception>
         <exception>struct.error</exception>
         <exception>UnicodeEncodeError</exception>
-        <exception>InvalidFileException</exception>
       </errors>
     </module>
     <module name="poplib" imports="['errno', 're', 'socket', 'sys', 'ssl', 'hashlib']" importfrom="[]">
@@ -51502,7 +51439,6 @@
       <errors>
         <exception>zipimport.ZipImportError</exception>
         <exception>KeyError</exception>
-        <exception>ZipImportError</exception>
         <exception>OSError</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>Exception</exception>
@@ -52060,15 +51996,11 @@
         <exception>OSError</exception>
         <exception>IsADirectoryError</exception>
         <exception>NotImplementedError</exception>
-        <exception>Error</exception>
         <exception>KeyError</exception>
         <exception>tarfile.TarError</exception>
         <exception>ValueError</exception>
         <exception>AttributeError</exception>
-        <exception>SameFileError</exception>
-        <exception>SpecialFileError</exception>
         <exception>TypeError</exception>
-        <exception>ReadError</exception>
         <exception>LookupError</exception>
         <exception>shutil.RegistryError</exception>
         <exception>shutil._GiveupOnFastCopy</exception>

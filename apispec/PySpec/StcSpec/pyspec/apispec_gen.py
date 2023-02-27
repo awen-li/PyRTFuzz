@@ -47,6 +47,31 @@ class ApiSpecGen ():
             if exc.islower ():
                 return True
         return False
+    
+    @staticmethod
+    def RemoveRedundantExc (Exceptions):
+        ExcList = []
+        for exc in Exceptions:
+            if ApiSpecGen.IsAbnormalExc (exc.exName):
+                continue
+            ExcList.append (exc.exName)
+        ExcList = list (set (ExcList))
+
+        OptList = []
+        for exc in ExcList:
+            SubFlag = False
+            for exc2 in ExcList:
+                if exc2 == exc:
+                    continue
+                if exc2.find ('.') == -1:
+                    continue
+                SubExcs = exc2.split ('.')
+                if exc in SubExcs:
+                    SubFlag = True
+                    break
+            if SubFlag == False:
+                OptList.append (exc)
+        return OptList
 
     @staticmethod 
     def SetNodeAttr (node, name, value):
@@ -128,12 +153,11 @@ class ApiSpecGen ():
 
                 if len (md.Exceptions) != 0:
                     excepNode = ApiSpecGen.AddChild (Root, mdNode, "errors")
-                    ExcList = []
+                    ExcList = ApiSpecGen.RemoveRedundantExc (md.Exceptions)
                     for excep in md.Exceptions:
-                        if excep.exName in ExcList or ApiSpecGen.IsAbnormalExc (excep.exName):
+                        if not excep.exName in ExcList:
                             continue
                         ApiSpecGen.WriteErrs (Root, excepNode, excep)
-                        ExcList.append (excep.exName)
         
         with open (ApiSpecXml, 'w') as af:
             af.write(Root.toprettyxml(indent="  "))
