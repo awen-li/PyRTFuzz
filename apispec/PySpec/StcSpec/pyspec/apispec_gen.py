@@ -71,6 +71,7 @@ class ApiSpecGen ():
                     break
             if SubFlag == False:
                 OptList.append (exc)
+        OptList.sort ()
         return OptList
 
     @staticmethod 
@@ -100,7 +101,7 @@ class ApiSpecGen ():
 
     @staticmethod 
     def WriteErrs (Root, excpNode, excp):
-        ApiSpecGen.AddChild (Root, excpNode, "exception", str(excp.exName))
+        ApiSpecGen.AddChild (Root, excpNode, "exception", str(excp))
     
     @staticmethod     
     def WriteXml (pyLibs, ApiSpecXml='apispec.xml'):
@@ -154,9 +155,7 @@ class ApiSpecGen ():
                 if len (md.Exceptions) != 0:
                     excepNode = ApiSpecGen.AddChild (Root, mdNode, "errors")
                     ExcList = ApiSpecGen.RemoveRedundantExc (md.Exceptions)
-                    for excep in md.Exceptions:
-                        if not excep.exName in ExcList:
-                            continue
+                    for excep in ExcList:
                         ApiSpecGen.WriteErrs (Root, excepNode, excep)
         
         with open (ApiSpecXml, 'w') as af:

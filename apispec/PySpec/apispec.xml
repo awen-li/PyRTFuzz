@@ -32,6 +32,16 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <api name="register_adapters_and_converters">
+        <expr>sqlite3.dbapi2.register_adapters_and_converters()%%[]</expr>
+        <args>[]</args>
+        <return>[]</return>
+        <dependences>None</dependences>
+        <posargs>[]</posargs>
+        <kwoargs>[]</kwoargs>
+        <defa>[]</defa>
+        <kwodefa>[]</kwodefa>
+      </api>
     </module>
     <module name="sqlite3.dump" imports="[]" importfrom="[]"/>
   </library>
@@ -128,10 +138,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>FileNotFoundError</exception>
         <exception>Exception</exception>
+        <exception>FileNotFoundError</exception>
+        <exception>OSError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="ctypes.macholib.framework" imports="['re']" importfrom="[]">
@@ -842,20 +852,20 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>KeyError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>OverflowError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>http.client.RemoteDisconnected</exception>
+        <exception>xmlrpc.client.Error</exception>
+        <exception>xmlrpc.client.Fault</exception>
         <exception>xmlrpc.client.ProtocolError</exception>
         <exception>xmlrpc.client.ResponseError</exception>
-        <exception>xmlrpc.client.Fault</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>http.client.RemoteDisconnected</exception>
-        <exception>Exception</exception>
-        <exception>TypeError</exception>
-        <exception>OverflowError</exception>
-        <exception>NotImplementedError</exception>
-        <exception>xmlrpc.client.Error</exception>
       </errors>
     </module>
     <module name="xmlrpc.server" imports="['html', 'http.server', 'socketserver', 'sys', 'os', 're', 'pydoc', 'traceback', 'fcntl', 'datetime']" importfrom="['xmlrpc.client:Fault', 'xmlrpc.client:dumps', 'xmlrpc.client:loads', 'xmlrpc.client:gzip_encode', 'xmlrpc.client:gzip_decode', 'http.server:BaseHTTPRequestHandler', 'functools:partial', 'inspect:signature']">
@@ -1192,15 +1202,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>Fault</exception>
         <exception>AttributeError</exception>
-        <exception>KeyError</exception>
-        <exception>NotImplementedError</exception>
         <exception>Exception</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
+        <exception>Fault</exception>
+        <exception>ImportError</exception>
+        <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
   </library>
@@ -1248,8 +1258,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="header_fetch_parse">
-          <expr>obj.header_fetch_parse(name,value)%%['str', '_ContentTypeHeader']</expr>
-          <args>['name:str', 'value:_ContentTypeHeader']</args>
+          <expr>obj.header_fetch_parse(name,value)%%['str', '_UniqueAddressHeader']</expr>
+          <args>['name:str', 'value:_UniqueAddressHeader']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -1272,7 +1282,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="email.message" imports="['re', 'uu', 'quopri']" importfrom="['io:BytesIO', 'io:StringIO', 'email:utils', 'email:errors', 'email._policybase:Policy', 'email._policybase:compat32', 'email:charset', 'email._encoded_words:decode_b', 'email.generator:Generator', 'email.generator:BytesGenerator']">
+    <module name="email.message" imports="['re', 'uu', 'quopri']" importfrom="['io:BytesIO', 'io:StringIO', 'email:utils', 'email:errors', 'email._policybase:Policy', 'email._policybase:compat32', 'email:charset', 'email._encoded_words:decode_b', 'email.generator:Generator', 'email.generator:BytesGenerator', 'email.iterators:walk']">
       <class name="Message" init="obj = email.message.Message()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -1639,14 +1649,14 @@
       </class>
       <class name="EmailMessage" init="obj = email.message.EmailMessage()%%[]"/>
       <errors>
-        <exception>UnicodeEncodeError</exception>
         <exception>AttributeError</exception>
         <exception>LookupError</exception>
-        <exception>UnicodeError</exception>
-        <exception>uu.Error</exception>
         <exception>TypeError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>UnicodeError</exception>
         <exception>ValueError</exception>
         <exception>errors.HeaderParseError</exception>
+        <exception>uu.Error</exception>
       </errors>
     </module>
     <module name="email.utils" imports="['os', 're', 'time', 'random', 'socket', 'datetime', 'urllib.parse']" importfrom="['email._parseaddr:quote', 'email._parseaddr:AddressList', 'email._parseaddr:mktime_tz', 'email._parseaddr:parsedate', 'email._parseaddr:parsedate_tz', 'email.charset:Charset']">
@@ -1771,8 +1781,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="localtime">
-        <expr>email.utils.localtime(dt,isdst)%%['NoneType', 'int']</expr>
-        <args>['dt:NoneType', 'isdst:int']</args>
+        <expr>email.utils.localtime(dt,isdst)%%['datetime', 'int']</expr>
+        <args>['dt:datetime', 'isdst:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -1781,9 +1791,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>UnicodeEncodeError</exception>
-        <exception>LookupError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
+        <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -2191,11 +2201,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>email.errors.HeaderDefect</exception>
-        <exception>UnicodeDecodeError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
+        <exception>UnicodeDecodeError</exception>
         <exception>ValueError</exception>
+        <exception>email.errors.HeaderDefect</exception>
       </errors>
     </module>
     <module name="email.base64mime" imports="[]" importfrom="['base64:b64encode', 'binascii:b2a_base64', 'binascii:a2b_base64']">
@@ -2559,11 +2569,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>binascii.Error</exception>
-        <exception>UnicodeEncodeError</exception>
-        <exception>IndexError</exception>
         <exception>AssertionError</exception>
         <exception>HeaderParseError</exception>
+        <exception>IndexError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>binascii.Error</exception>
       </errors>
     </module>
     <module name="email.iterators" imports="['sys']" importfrom="['io:StringIO']">
@@ -2641,12 +2651,12 @@
       <class name="ObsoleteHeaderDefect" init="obj = email.errors.ObsoleteHeaderDefect()%%[]"/>
       <class name="NonASCIILocalPartDefect" init="obj = email.errors.NonASCIILocalPartDefect()%%[]"/>
       <errors>
-        <exception>email.errors.MessageParseError</exception>
-        <exception>email.errors.HeaderParseError</exception>
         <exception>email.errors.BoundaryError</exception>
-        <exception>email.errors.MultipartConversionError</exception>
         <exception>email.errors.CharsetError</exception>
+        <exception>email.errors.HeaderParseError</exception>
         <exception>email.errors.MessageDefect</exception>
+        <exception>email.errors.MessageParseError</exception>
+        <exception>email.errors.MultipartConversionError</exception>
       </errors>
     </module>
     <module name="email.quoprimime" imports="['re']" importfrom="['string:ascii_letters', 'string:digits', 'string:hexdigits']">
@@ -2871,7 +2881,7 @@
     </module>
   </library>
   <library name="dbm">
-    <module name="dbm.dumb" imports="['ast', 'io', 'os', 'collections.abc']" importfrom="[]">
+    <module name="dbm.dumb" imports="['ast:_ast', 'io:_io', 'os:_os', 'collections.abc']" importfrom="[]">
       <api name="open">
         <expr>dbm.dumb.open(file,flag,mode)%%['str', 'str', 'int']</expr>
         <args>['file:str', 'flag:str', 'mode:int']</args>
@@ -2883,9 +2893,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
-        <exception>AttributeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -3003,14 +3013,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>LookupError</exception>
-        <exception>ConnectionAbortedError</exception>
-        <exception>BrokenPipeError</exception>
-        <exception>ConnectionResetError</exception>
-        <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>NotImplementedError</exception>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
+        <exception>BrokenPipeError</exception>
+        <exception>ConnectionAbortedError</exception>
+        <exception>ConnectionResetError</exception>
+        <exception>LookupError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="wsgiref.validate" imports="['re', 'sys', 'warnings']" importfrom="[]">
@@ -3691,24 +3701,24 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>UnicodeEncodeError</exception>
-        <exception>ValueError</exception>
-        <exception>IncompleteRead</exception>
-        <exception>TypeError</exception>
-        <exception>OSError</exception>
-        <exception>ConnectionError</exception>
-        <exception>ImportError</exception>
-        <exception>http.client.RemoteDisconnected</exception>
-        <exception>LineTooLong</exception>
-        <exception>HTTPException</exception>
         <exception>BadStatusLine</exception>
-        <exception>UnknownProtocol</exception>
+        <exception>CannotSendHeader</exception>
+        <exception>CannotSendRequest</exception>
+        <exception>ConnectionError</exception>
+        <exception>HTTPException</exception>
+        <exception>ImportError</exception>
+        <exception>IncompleteRead</exception>
+        <exception>InvalidURL</exception>
+        <exception>LineTooLong</exception>
+        <exception>NotConnected</exception>
+        <exception>OSError</exception>
         <exception>ResponseNotReady</exception>
         <exception>RuntimeError</exception>
-        <exception>NotConnected</exception>
-        <exception>CannotSendRequest</exception>
-        <exception>InvalidURL</exception>
-        <exception>CannotSendHeader</exception>
+        <exception>TypeError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>UnknownProtocol</exception>
+        <exception>ValueError</exception>
+        <exception>http.client.RemoteDisconnected</exception>
       </errors>
     </module>
     <module name="http.server" imports="['copy', 'datetime', 'email.utils', 'html', 'http.client', 'io', 'mimetypes', 'os', 'posixpath', 'select', 'shutil', 'socket', 'socketserver', 'sys', 'time', 'urllib.parse', 'pwd', 'base64', 'binascii', 'subprocess', 'argparse', 'contextlib']" importfrom="['http:HTTPStatus']">
@@ -3893,21 +3903,21 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
+        <exception>ImportError</exception>
         <exception>IndexError</exception>
-        <exception>http.client.LineTooLong</exception>
-        <exception>http.client.HTTPException</exception>
-        <exception>socket.timeout</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
-        <exception>TypeError</exception>
         <exception>OverflowError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
-        <exception>ImportError</exception>
         <exception>UnicodeError</exception>
+        <exception>ValueError</exception>
+        <exception>http.client.HTTPException</exception>
+        <exception>http.client.LineTooLong</exception>
+        <exception>socket.timeout</exception>
       </errors>
     </module>
-    <module name="http.cookiejar" imports="['os', 'copy', 'datetime', 're', 'time', 'urllib.parse', 'urllib.request', 'threading', 'http.client', 'logging', 'io', 'warnings', 'traceback']" importfrom="['calendar:timegm']">
+    <module name="http.cookiejar" imports="['os', 'copy', 'datetime', 're', 'time', 'urllib.parse', 'urllib.request', 'threading:_threading', 'http.client', 'logging', 'io', 'warnings', 'traceback']" importfrom="['calendar:timegm']">
       <class name="Cookie" init="obj = http.cookiejar.Cookie(None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -4624,13 +4634,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>AttributeError</exception>
-        <exception>KeyError</exception>
         <exception>Exception</exception>
-        <exception>http.cookiejar.LoadError</exception>
-        <exception>OSError</exception>
+        <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>ValueError</exception>
+        <exception>http.cookiejar.LoadError</exception>
       </errors>
     </module>
     <module name="http.cookies" imports="['re', 'string', 'types']" importfrom="['time:gmtime', 'time:time']">
@@ -5449,9 +5459,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>UnicodeError</exception>
-        <exception>UnicodeEncodeError</exception>
         <exception>UnicodeDecodeError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>UnicodeError</exception>
       </errors>
     </module>
     <module name="encodings.cp1252" imports="['codecs']" importfrom="[]">
@@ -10518,8 +10528,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>binascii.Error</exception>
         <exception>ValueError</exception>
+        <exception>binascii.Error</exception>
       </errors>
     </module>
     <module name="encodings.mac_iceland" imports="['codecs']" importfrom="[]">
@@ -11358,12 +11368,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>expat.error</exception>
         <exception>AttributeError</exception>
-        <exception>SAXReaderNotAvailable</exception>
+        <exception>ImportError</exception>
         <exception>SAXNotRecognizedException</exception>
         <exception>SAXNotSupportedException</exception>
+        <exception>SAXReaderNotAvailable</exception>
+        <exception>expat.error</exception>
       </errors>
     </module>
     <module name="xml.sax.saxutils" imports="['os', 'urllib.parse', 'urllib.request', 'io', 'codecs', 'sys']" importfrom="[]">
@@ -12079,10 +12089,10 @@
         </api>
       </class>
       <errors>
-        <exception>NotImplementedError</exception>
-        <exception>SAXNotSupportedException</exception>
-        <exception>SAXNotRecognizedException</exception>
         <exception>KeyError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>SAXNotRecognizedException</exception>
+        <exception>SAXNotSupportedException</exception>
       </errors>
     </module>
     <module name="xml.sax.handler" imports="[]" importfrom="[]">
@@ -13162,20 +13172,20 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>AttributeError</exception>
-        <exception>KeyError</exception>
         <exception>IndexError</exception>
-        <exception>xml.dom.HierarchyRequestErr</exception>
-        <exception>xml.dom.NamespaceErr</exception>
+        <exception>KeyError</exception>
         <exception>TypeError</exception>
-        <exception>xml.dom.NotFoundErr</exception>
-        <exception>xml.dom.InuseAttributeErr</exception>
-        <exception>xml.dom.NoModificationAllowedErr</exception>
+        <exception>ValueError</exception>
+        <exception>xml.dom.HierarchyRequestErr</exception>
         <exception>xml.dom.IndexSizeErr</exception>
-        <exception>xml.dom.WrongDocumentErr</exception>
+        <exception>xml.dom.InuseAttributeErr</exception>
         <exception>xml.dom.InvalidCharacterErr</exception>
+        <exception>xml.dom.NamespaceErr</exception>
+        <exception>xml.dom.NoModificationAllowedErr</exception>
+        <exception>xml.dom.NotFoundErr</exception>
         <exception>xml.dom.NotSupportedErr</exception>
+        <exception>xml.dom.WrongDocumentErr</exception>
       </errors>
     </module>
     <module name="xml.dom.expatbuilder" imports="[]" importfrom="['xml.dom:xmlbuilder', 'xml.dom:minidom', 'xml.dom:Node', 'xml.dom:EMPTY_NAMESPACE', 'xml.dom:EMPTY_PREFIX', 'xml.dom:XMLNS_NAMESPACE', 'xml.parsers:expat', 'xml.dom.NodeFilter:NodeFilter']">
@@ -13507,6 +13517,16 @@
         <api name="start_namespace_decl_handler">
           <expr>obj.start_namespace_decl_handler(prefix,uri)%%['None', 'None']</expr>
           <args>['prefix:None', 'uri:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="end_element_handler">
+          <expr>obj.end_element_handler(name)%%['None']</expr>
+          <args>['name:None']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -14079,11 +14099,11 @@
         </api>
       </class>
       <errors>
-        <exception>KeyError</exception>
         <exception>AttributeError</exception>
-        <exception>xml.dom.NotFoundErr</exception>
-        <exception>ValueError</exception>
+        <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
+        <exception>ValueError</exception>
+        <exception>xml.dom.NotFoundErr</exception>
         <exception>xml.dom.NotSupportedErr</exception>
         <exception>xml.dom.WrongDocumentErr</exception>
       </errors>
@@ -14186,7 +14206,6 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="IterParseIterator" init="obj = xml.etree.ElementTree.IterParseIterator()%%[]"/>
       <class name="XMLPullParser" init="obj = xml.etree.ElementTree.XMLPullParser()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -14476,14 +14495,14 @@
         <kwodefa>[None, None]</kwodefa>
       </api>
       <errors>
-        <exception>xml.etree.ElementTree.ParseError</exception>
         <exception>AttributeError</exception>
-        <exception>NameError</exception>
-        <exception>TypeError</exception>
-        <exception>SyntaxError</exception>
-        <exception>KeyError</exception>
         <exception>ImportError</exception>
+        <exception>KeyError</exception>
+        <exception>NameError</exception>
+        <exception>SyntaxError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
+        <exception>xml.etree.ElementTree.ParseError</exception>
       </errors>
     </module>
     <module name="xml.etree.ElementInclude" imports="['copy']" importfrom="['urllib.parse:urljoin']">
@@ -14508,9 +14527,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>ValueError</exception>
         <exception>xml.etree.ElementInclude.FatalIncludeError</exception>
         <exception>xml.etree.ElementInclude.LimitedRecursiveIncludeError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="xml.etree.ElementPath" imports="['re']" importfrom="[]">
@@ -14636,10 +14655,10 @@
       </api>
       <errors>
         <exception>KeyError</exception>
-        <exception>StopIteration</exception>
-        <exception>ValueError</exception>
         <exception>RuntimeError</exception>
+        <exception>StopIteration</exception>
         <exception>SyntaxError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
   </library>
@@ -14690,9 +14709,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>DistutilsExecError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>DistutilsExecError</exception>
         <exception>RuntimeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -14865,8 +14884,8 @@
         </api>
       </class>
       <errors>
-        <exception>KeyError</exception>
         <exception>DistutilsExecError</exception>
+        <exception>KeyError</exception>
         <exception>UnknownFileError</exception>
       </errors>
     </module>
@@ -14984,8 +15003,8 @@
       <errors>
         <exception>DistutilsExecError</exception>
         <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>UnknownFileError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.debug" imports="['os']" importfrom="[]"/>
@@ -15093,8 +15112,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>DistutilsTemplateError</exception>
         <exception>DistutilsInternalError</exception>
+        <exception>DistutilsTemplateError</exception>
       </errors>
     </module>
     <module name="distutils.extension" imports="['os', 'warnings']" importfrom="['distutils.sysconfig:parse_makefile', 'distutils.sysconfig:expand_makefile_vars', 'distutils.text_file:TextFile', 'distutils.util:split_quoted']">
@@ -15143,11 +15162,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>DistutilsPlatformError</exception>
         <exception>DistutilsExecError</exception>
+        <exception>DistutilsPlatformError</exception>
+        <exception>OSError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.log" imports="['sys']" importfrom="[]">
@@ -15384,10 +15403,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>getopt.error</exception>
         <exception>DistutilsGetoptError</exception>
-        <exception>ValueError</exception>
         <exception>RuntimeError</exception>
+        <exception>ValueError</exception>
+        <exception>getopt.error</exception>
       </errors>
     </module>
     <module name="distutils.file_util" imports="['os', 'errno']" importfrom="['distutils.errors:DistutilsFileError', 'distutils:log', 'distutils.dep_util:newer', 'stat:ST_ATIME', 'stat:ST_MTIME', 'stat:ST_MODE', 'stat:S_IMODE', 'os.path:exists', 'os.path:isfile', 'os.path:isdir', 'os.path:basename', 'os.path:dirname']">
@@ -15422,9 +15441,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>KeyError</exception>
         <exception>DistutilsFileError</exception>
+        <exception>KeyError</exception>
+        <exception>OSError</exception>
       </errors>
     </module>
     <module name="distutils.sysconfig" imports="['os', 're', 'sys', 'warnings']" importfrom="['errors:DistutilsPlatformError', 'distutils.text_file:TextFile']">
@@ -15540,8 +15559,8 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.unixccompiler" imports="['os', 'sys', 're']" importfrom="['distutils:sysconfig', 'distutils.dep_util:newer', 'distutils.ccompiler:CCompiler', 'distutils.ccompiler:gen_preprocess_options', 'distutils.ccompiler:gen_lib_options', 'distutils.errors:DistutilsExecError', 'distutils.errors:CompileError', 'distutils.errors:LibError', 'distutils.errors:LinkError', 'distutils:log']">
@@ -15623,7 +15642,6 @@
       </errors>
     </module>
     <module name="distutils.util" imports="['os', 're', 'importlib.util', 'string', 'sys', 'distutils.sysconfig', 'pwd', 'subprocess']" importfrom="['distutils.errors:DistutilsPlatformError', 'distutils.dep_util:newer', 'distutils.spawn:spawn', 'distutils:log', 'distutils.errors:DistutilsByteCompileError', 'tempfile:mkstemp', 'py_compile:compile', 'lib2to3.refactor:RefactoringTool', 'lib2to3.refactor:get_fixers_from_package', 'distutils.dir_util:mkpath', 'distutils.file_util:copy_file', 'distutils.filelist:FileList']">
-      <class name="DistutilsRefactoringTool" init="obj = distutils.util.DistutilsRefactoringTool()%%[]"/>
       <class name="Mixin2to3" init="obj = distutils.util.Mixin2to3()%%[]"/>
       <api name="get_host_platform">
         <expr>distutils.util.get_host_platform()%%[]</expr>
@@ -15766,12 +15784,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>DistutilsByteCompileError</exception>
+        <exception>DistutilsPlatformError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>ValueError</exception>
-        <exception>DistutilsPlatformError</exception>
         <exception>RuntimeError</exception>
-        <exception>DistutilsByteCompileError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.config" imports="['os', 'cgi']" importfrom="['configparser:RawConfigParser', 'distutils.cmd:Command']">
@@ -15943,8 +15961,8 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
-        <exception>RuntimeError</exception>
         <exception>DistutilsOptionError</exception>
+        <exception>RuntimeError</exception>
         <exception>TypeError</exception>
       </errors>
     </module>
@@ -15980,15 +15998,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>DistutilsSetupError</exception>
+        <exception>CCompilerError</exception>
         <exception>DistutilsArgError</exception>
+        <exception>DistutilsError</exception>
+        <exception>DistutilsSetupError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>OSError</exception>
-        <exception>DistutilsError</exception>
-        <exception>CCompilerError</exception>
+        <exception>RuntimeError</exception>
         <exception>SystemExit</exception>
         <exception>ValueError</exception>
-        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="distutils.version" imports="['re']" importfrom="[]">
@@ -16046,22 +16064,22 @@
       <class name="DistutilsError" init="obj = distutils.errors.DistutilsError()%%[]"/>
       <class name="CCompilerError" init="obj = distutils.errors.CCompilerError()%%[]"/>
       <errors>
-        <exception>distutils.errors.DistutilsModuleError</exception>
-        <exception>distutils.errors.DistutilsClassError</exception>
-        <exception>distutils.errors.DistutilsGetoptError</exception>
-        <exception>distutils.errors.DistutilsArgError</exception>
-        <exception>distutils.errors.DistutilsFileError</exception>
-        <exception>distutils.errors.DistutilsOptionError</exception>
-        <exception>distutils.errors.DistutilsSetupError</exception>
-        <exception>distutils.errors.DistutilsPlatformError</exception>
-        <exception>distutils.errors.DistutilsExecError</exception>
-        <exception>distutils.errors.DistutilsInternalError</exception>
-        <exception>distutils.errors.DistutilsTemplateError</exception>
-        <exception>distutils.errors.DistutilsByteCompileError</exception>
-        <exception>distutils.errors.PreprocessError</exception>
         <exception>distutils.errors.CompileError</exception>
+        <exception>distutils.errors.DistutilsArgError</exception>
+        <exception>distutils.errors.DistutilsByteCompileError</exception>
+        <exception>distutils.errors.DistutilsClassError</exception>
+        <exception>distutils.errors.DistutilsExecError</exception>
+        <exception>distutils.errors.DistutilsFileError</exception>
+        <exception>distutils.errors.DistutilsGetoptError</exception>
+        <exception>distutils.errors.DistutilsInternalError</exception>
+        <exception>distutils.errors.DistutilsModuleError</exception>
+        <exception>distutils.errors.DistutilsOptionError</exception>
+        <exception>distutils.errors.DistutilsPlatformError</exception>
+        <exception>distutils.errors.DistutilsSetupError</exception>
+        <exception>distutils.errors.DistutilsTemplateError</exception>
         <exception>distutils.errors.LibError</exception>
         <exception>distutils.errors.LinkError</exception>
+        <exception>distutils.errors.PreprocessError</exception>
         <exception>distutils.errors.UnknownFileError</exception>
       </errors>
     </module>
@@ -16521,14 +16539,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>ValueError</exception>
-        <exception>DistutilsModuleError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsArgError</exception>
-        <exception>SystemExit</exception>
         <exception>DistutilsClassError</exception>
+        <exception>DistutilsModuleError</exception>
         <exception>DistutilsOptionError</exception>
+        <exception>ImportError</exception>
+        <exception>SystemExit</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.dir_util" imports="['os', 'errno']" importfrom="['distutils.errors:DistutilsFileError', 'distutils.errors:DistutilsInternalError', 'distutils:log', 'distutils.file_util:copy_file']">
@@ -16583,9 +16601,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>DistutilsInternalError</exception>
         <exception>DistutilsFileError</exception>
+        <exception>DistutilsInternalError</exception>
+        <exception>OSError</exception>
       </errors>
     </module>
     <module name="distutils.ccompiler" imports="['sys', 'os', 're', 'tempfile']" importfrom="['distutils.errors:*', 'distutils.spawn:spawn', 'distutils.file_util:move_file', 'distutils.dir_util:mkpath', 'distutils.dep_util:newer_group', 'distutils.util:split_quoted', 'distutils.util:execute', 'distutils:log', 'distutils.debug:DEBUG', 'distutils.fancy_getopt:FancyGetopt']">
@@ -16942,14 +16960,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
         <exception>CompileError</exception>
-        <exception>LinkError</exception>
-        <exception>TypeError</exception>
         <exception>ImportError</exception>
+        <exception>KeyError</exception>
+        <exception>LinkError</exception>
         <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
         <exception>UnknownFileError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.bdist_rpm" imports="['subprocess', 'sys', 'os']" importfrom="['distutils.core:Command', 'distutils.debug:DEBUG', 'distutils.file_util:write_file', 'distutils.errors:*', 'distutils.sysconfig:get_python_version', 'distutils:log']">
@@ -16986,10 +17004,10 @@
         </api>
       </class>
       <errors>
+        <exception>DistutilsExecError</exception>
+        <exception>DistutilsFileError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
-        <exception>DistutilsFileError</exception>
-        <exception>DistutilsExecError</exception>
       </errors>
     </module>
     <module name="distutils.command.check" imports="[]" importfrom="['distutils.core:Command', 'distutils.errors:DistutilsSetupError', 'docutils.utils:Reporter', 'docutils.parsers.rst:Parser', 'docutils:frontend', 'docutils:nodes']">
@@ -17028,9 +17046,9 @@
         </api>
       </class>
       <errors>
-        <exception>Exception</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsSetupError</exception>
+        <exception>Exception</exception>
       </errors>
     </module>
     <module name="distutils.command.build_scripts" imports="['os', 're', 'tokenize']" importfrom="['stat:ST_MODE', 'distutils:sysconfig', 'distutils.core:Command', 'distutils.dep_util:newer', 'distutils.util:convert_path', 'distutils.util:Mixin2to3', 'distutils:log']">
@@ -17126,8 +17144,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>DistutilsOptionError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.upload" imports="['os', 'io', 'hashlib']" importfrom="['base64:standard_b64encode', 'urllib.error:HTTPError', 'urllib.request:urlopen', 'urllib.request:Request', 'urllib.parse:urlparse', 'distutils.errors:DistutilsError', 'distutils.errors:DistutilsOptionError', 'distutils.core:PyPIRCCommand', 'distutils.spawn:spawn', 'distutils:log']">
@@ -17144,12 +17162,12 @@
         </api>
       </class>
       <errors>
-        <exception>ValueError</exception>
-        <exception>HTTPError</exception>
-        <exception>OSError</exception>
-        <exception>DistutilsOptionError</exception>
         <exception>AssertionError</exception>
         <exception>DistutilsError</exception>
+        <exception>DistutilsOptionError</exception>
+        <exception>HTTPError</exception>
+        <exception>OSError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.build_clib" imports="['os']" importfrom="['distutils.core:Command', 'distutils.errors:*', 'distutils.sysconfig:customize_compiler', 'distutils:log', 'distutils.ccompiler:show_compilers', 'distutils.ccompiler:new_compiler']">
@@ -17243,9 +17261,9 @@
         </api>
       </class>
       <errors>
+        <exception>ValueError</exception>
         <exception>urllib.error.HTTPError</exception>
         <exception>urllib.error.URLError</exception>
-        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.install" imports="['sys', 'os']" importfrom="['distutils:log', 'distutils.core:Command', 'distutils.debug:DEBUG', 'distutils.sysconfig:get_config_vars', 'distutils.errors:DistutilsPlatformError', 'distutils.file_util:write_file', 'distutils.util:convert_path', 'distutils.util:subst_vars', 'distutils.util:change_root', 'distutils.util:get_platform', 'distutils.errors:DistutilsOptionError', 'site:USER_BASE', 'site:USER_SITE', 'pprint:pprint', 'distutils.fancy_getopt:longopt_xlate']">
@@ -17313,9 +17331,9 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
-        <exception>KeyError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>KeyError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_scripts" imports="['os']" importfrom="['distutils.core:Command', 'distutils:log', 'stat:ST_MODE']">
@@ -17436,9 +17454,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>DistutilsOptionError</exception>
         <exception>DistutilsTemplateError</exception>
         <exception>ValueError</exception>
-        <exception>DistutilsOptionError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_data" imports="['os']" importfrom="['distutils.core:Command', 'distutils.util:change_root', 'distutils.util:convert_path']">
@@ -17636,10 +17654,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
         <exception>CompileError</exception>
-        <exception>LinkError</exception>
         <exception>DistutilsExecError</exception>
+        <exception>LinkError</exception>
+        <exception>OSError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_lib" imports="['os', 'importlib.util', 'sys']" importfrom="['distutils.core:Command', 'distutils.errors:DistutilsOptionError', 'distutils.util:byte_compile']">
@@ -17686,8 +17704,8 @@
         </api>
       </class>
       <errors>
-        <exception>ValueError</exception>
         <exception>AssertionError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.bdist_dumb" imports="['os']" importfrom="['distutils.core:Command', 'distutils.util:get_platform', 'distutils.dir_util:remove_tree', 'distutils.dir_util:ensure_relative', 'distutils.errors:*', 'distutils.sysconfig:get_python_version', 'distutils:log']">
@@ -17724,8 +17742,8 @@
         </api>
       </class>
       <errors>
-        <exception>KeyError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>KeyError</exception>
       </errors>
     </module>
     <module name="distutils.command.clean" imports="['os']" importfrom="['distutils.core:Command', 'distutils.dir_util:remove_tree', 'distutils:log']">
@@ -17809,9 +17827,9 @@
         </api>
       </class>
       <errors>
-        <exception>ImportError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>ImportError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_headers" imports="[]" importfrom="['distutils.core:Command']">
@@ -18036,14 +18054,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
-        <exception>ImportError</exception>
         <exception>CCompilerError</exception>
-        <exception>DistutilsError</exception>
         <exception>CompileError</exception>
-        <exception>UnicodeEncodeError</exception>
-        <exception>DistutilsSetupError</exception>
+        <exception>DistutilsError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>DistutilsSetupError</exception>
+        <exception>ImportError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.build_py" imports="['os', 'importlib.util', 'sys', 'glob']" importfrom="['distutils.core:Command', 'distutils.errors:*', 'distutils.util:convert_path', 'distutils.util:Mixin2to3', 'distutils:log', 'distutils.util:byte_compile']">
@@ -18122,11 +18140,11 @@
         </api>
       </class>
       <errors>
-        <exception>ValueError</exception>
         <exception>AssertionError</exception>
-        <exception>KeyError</exception>
         <exception>DistutilsFileError</exception>
+        <exception>KeyError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
   </library>
@@ -18176,9 +18194,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="shouldRollover">
-          <expr>obj.shouldRollover(record)%%['LogRecord']</expr>
-          <args>['record:LogRecord']</args>
-          <return>[]</return>
+          <expr>ret = obj.shouldRollover(record)%%['None']</expr>
+          <args>['record:None']</args>
+          <return>['ret:bool']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -18198,9 +18216,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="shouldRollover">
-          <expr>obj.shouldRollover(record)%%['LogRecord']</expr>
-          <args>['record:LogRecord']</args>
-          <return>[]</return>
+          <expr>ret = obj.shouldRollover(record)%%['None']</expr>
+          <args>['record:None']</args>
+          <return>['ret:bool']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -18208,9 +18226,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="getFilesToDelete">
-          <expr>obj.getFilesToDelete()%%[]</expr>
+          <expr>ret = obj.getFilesToDelete()%%[]</expr>
           <args>[]</args>
-          <return>[]</return>
+          <return>['result:None']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -18517,9 +18535,6 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
-      <class name="ConfigStreamHandler" init="obj = logging.config.ConfigStreamHandler()%%[]"/>
-      <class name="ConfigSocketReceiver" init="obj = logging.config.ConfigSocketReceiver()%%[]"/>
-      <class name="Server" init="obj = logging.config.Server()%%[]"/>
       <api name="fileConfig">
         <expr>logging.config.fileConfig(fname,defaults,disable_existing_loggers)%%['StringIO', 'NoneType', 'bool']</expr>
         <args>['fname:StringIO', 'defaults:NoneType', 'disable_existing_loggers:bool']</args>
@@ -18572,10 +18587,10 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>NameError</exception>
-        <exception>ImportError</exception>
-        <exception>TypeError</exception>
         <exception>Exception</exception>
+        <exception>ImportError</exception>
+        <exception>NameError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -18709,11 +18724,11 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>json.decoder.JSONDecodeError</exception>
-        <exception>ValueError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>StopIteration</exception>
+        <exception>ValueError</exception>
+        <exception>json.decoder.JSONDecodeError</exception>
       </errors>
     </module>
     <module name="json.tool" imports="['argparse', 'json', 'sys']" importfrom="['pathlib:Path']">
@@ -18728,8 +18743,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>BrokenPipeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
   </library>
@@ -18739,9 +18754,9 @@
   <library name="urllib">
     <module name="urllib.error" imports="['urllib.response']" importfrom="[]">
       <errors>
-        <exception>urllib.error.URLError</exception>
-        <exception>urllib.error.HTTPError</exception>
         <exception>urllib.error.ContentTooShortError</exception>
+        <exception>urllib.error.HTTPError</exception>
+        <exception>urllib.error.URLError</exception>
       </errors>
     </module>
     <module name="urllib.request" imports="['base64', 'bisect', 'email', 'hashlib', 'http.client', 'io', 'os', 'posixpath', 're', 'socket', 'string', 'sys', 'time', 'tempfile', 'contextlib', 'warnings', 'ssl', 'email.utils', 'mimetypes', 'ftplib', 'getpass', 'winreg']" importfrom="['urllib.error:URLError', 'urllib.error:HTTPError', 'urllib.error:ContentTooShortError', 'urllib.parse:urlparse', 'urllib.parse:urlsplit', 'urllib.parse:urljoin', 'urllib.parse:unwrap', 'urllib.parse:quote', 'urllib.parse:unquote', 'urllib.parse:unquote_to_bytes', 'urllib.parse:urlunparse', 'urllib.response:addinfourl', 'urllib.response:addclosehook', 'nturl2path:url2pathname', 'nturl2path:pathname2url', 'fnmatch:fnmatch']">
@@ -19374,6 +19389,16 @@
           <defa>[None]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="open_https">
+          <expr>ret = obj.open_https(url,data)%%['None', 'None']</expr>
+          <args>['url:None', 'data:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[None]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
         <api name="open_file">
           <expr>ret = obj.open_file(url)%%['None']</expr>
           <args>['url:None']</args>
@@ -19750,18 +19775,18 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>socket.gaierror</exception>
-        <exception>HTTPError</exception>
-        <exception>URLError</exception>
-        <exception>http.client.BadStatusLine</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>ftplib.error_perm</exception>
-        <exception>TypeError</exception>
         <exception>ContentTooShortError</exception>
+        <exception>HTTPError</exception>
+        <exception>ImportError</exception>
+        <exception>KeyError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>URLError</exception>
+        <exception>ValueError</exception>
+        <exception>ftplib.error_perm</exception>
+        <exception>http.client.BadStatusLine</exception>
+        <exception>socket.gaierror</exception>
       </errors>
     </module>
     <module name="urllib.robotparser" imports="['collections', 'urllib.parse', 'urllib.request', 'time']" importfrom="[]">
@@ -20251,11 +20276,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="urllib.response" imports="['tempfile']" importfrom="[]">
@@ -21464,16 +21489,6 @@
     </module>
     <module name="asyncio.unix_events" imports="['errno', 'io', 'itertools', 'os', 'selectors', 'signal', 'socket', 'stat', 'subprocess', 'sys', 'threading', 'warnings']" importfrom="['log:logger']">
       <class name="AbstractChildWatcher" init="obj = asyncio.unix_events.AbstractChildWatcher()%%[]">
-        <api name="add_child_handler">
-          <expr>obj.add_child_handler(pid,callback)%%['Mock', 'Mock']</expr>
-          <args>['pid:Mock', 'callback:Mock']</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
         <api name="remove_child_handler">
           <expr>obj.remove_child_handler(pid)%%['Mock']</expr>
           <args>['pid:Mock']</args>
@@ -21526,16 +21541,6 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="add_child_handler">
-          <expr>obj.add_child_handler(pid,callback)%%['None', 'None']</expr>
-          <args>['pid:None', 'callback:None']</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
         <api name="remove_child_handler">
           <expr>ret = obj.remove_child_handler(pid)%%['None']</expr>
           <args>['pid:None']</args>
@@ -21570,16 +21575,6 @@
         </api>
       </class>
       <class name="SafeChildWatcher" init="obj = asyncio.unix_events.SafeChildWatcher()%%[]">
-        <api name="add_child_handler">
-          <expr>obj.add_child_handler(pid,callback)%%['int', 'method']</expr>
-          <args>['pid:int', 'callback:method']</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
         <api name="remove_child_handler">
           <expr>obj.remove_child_handler(pid)%%['int']</expr>
           <args>['pid:int']</args>
@@ -21595,16 +21590,6 @@
         <api name="__init__">
           <expr>None</expr>
           <args>[]</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
-        <api name="add_child_handler">
-          <expr>obj.add_child_handler(pid,callback)%%['int', 'method']</expr>
-          <args>['pid:int', 'callback:method']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -21644,16 +21629,6 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="add_child_handler">
-          <expr>obj.add_child_handler(pid,callback)%%['None', 'None']</expr>
-          <args>['pid:None', 'callback:None']</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
         <api name="remove_child_handler">
           <expr>ret = obj.remove_child_handler(pid)%%['None']</expr>
           <args>['pid:None']</args>
@@ -21686,16 +21661,6 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="add_child_handler">
-          <expr>obj.add_child_handler(pid,callback)%%['int', 'method']</expr>
-          <args>['pid:int', 'callback:method']</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
         <api name="remove_child_handler">
           <expr>ret = obj.remove_child_handler(pid)%%['None']</expr>
           <args>['pid:None']</args>
@@ -21708,21 +21673,21 @@
         </api>
       </class>
       <errors>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
-        <exception>KeyError</exception>
-        <exception>BlockingIOError</exception>
-        <exception>InterruptedError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>ChildProcessError</exception>
-        <exception>ImportError</exception>
-        <exception>TypeError</exception>
-        <exception>NotImplementedError</exception>
-        <exception>RuntimeError</exception>
-        <exception>FileNotFoundError</exception>
         <exception>AttributeError</exception>
+        <exception>BaseException</exception>
+        <exception>BlockingIOError</exception>
+        <exception>ChildProcessError</exception>
+        <exception>FileNotFoundError</exception>
+        <exception>ImportError</exception>
+        <exception>InterruptedError</exception>
+        <exception>KeyError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>RuntimeError</exception>
+        <exception>SystemExit</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="asyncio.tasks" imports="['concurrent.futures', 'contextvars', 'functools', 'inspect', 'itertools', 'types', 'warnings', 'weakref']" importfrom="['types:GenericAlias', 'queues:Queue']">
@@ -21919,17 +21884,17 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>RuntimeError</exception>
         <exception>AttributeError</exception>
-        <exception>StopIteration</exception>
-        <exception>exceptions.CancelledError</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>SystemExit</exception>
         <exception>BaseException</exception>
         <exception>ImportError</exception>
-        <exception>exceptions.InvalidStateError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>RuntimeError</exception>
+        <exception>StopIteration</exception>
+        <exception>SystemExit</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
+        <exception>exceptions.CancelledError</exception>
+        <exception>exceptions.InvalidStateError</exception>
       </errors>
     </module>
     <module name="asyncio.coroutines" imports="['collections.abc', 'functools', 'inspect', 'os', 'sys', 'traceback', 'types', 'warnings']" importfrom="['log:logger']">
@@ -22038,16 +22003,6 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="release">
-          <expr>obj.release()%%[]</expr>
-          <args>[]</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
       </class>
       <class name="Event" init="obj = asyncio.locks.Event()%%[]">
         <api name="__init__">
@@ -22090,6 +22045,16 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="wait">
+          <expr>obj.wait()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
       </class>
       <class name="Condition" init="obj = asyncio.locks.Condition()%%['NoneType']">
         <api name="__init__">
@@ -22101,6 +22066,16 @@
           <kwoargs>['loop:NoneType']</kwoargs>
           <defa>[None]</defa>
           <kwodefa>[None]</kwodefa>
+        </api>
+        <api name="wait_for">
+          <expr>obj.wait_for(predicate)%%['function']</expr>
+          <args>['predicate:function']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
         </api>
         <api name="notify_all">
           <expr>obj.notify_all()%%[]</expr>
@@ -22124,16 +22099,6 @@
           <defa>[1]</defa>
           <kwodefa>[None]</kwodefa>
         </api>
-        <api name="release">
-          <expr>obj.release()%%[]</expr>
-          <args>[]</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
       </class>
       <class name="BoundedSemaphore" init="obj = asyncio.locks.BoundedSemaphore()%%['NoneType']">
         <api name="__init__">
@@ -22148,8 +22113,8 @@
         </api>
       </class>
       <errors>
-        <exception>StopIteration</exception>
         <exception>RuntimeError</exception>
+        <exception>StopIteration</exception>
         <exception>ValueError</exception>
         <exception>exceptions.CancelledError</exception>
       </errors>
@@ -22166,22 +22131,72 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="sock_recv">
+          <expr>ret = obj.sock_recv(sock,n)%%['None', 'None']</expr>
+          <args>['sock:None', 'n:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_recv_into">
+          <expr>ret = obj.sock_recv_into(sock,buf)%%['None', 'None']</expr>
+          <args>['sock:None', 'buf:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_sendall">
+          <expr>ret = obj.sock_sendall(sock,data)%%['None', 'None']</expr>
+          <args>['sock:None', 'data:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_connect">
+          <expr>ret = obj.sock_connect(sock,address)%%['None', 'None']</expr>
+          <args>['sock:None', 'address:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_accept">
+          <expr>ret = obj.sock_accept(sock)%%['None']</expr>
+          <args>['sock:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
       </class>
       <errors>
-        <exception>socket.error</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
+        <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>ConnectionAbortedError</exception>
         <exception>ConnectionResetError</exception>
-        <exception>OSError</exception>
-        <exception>exceptions.CancelledError</exception>
         <exception>Exception</exception>
-        <exception>TypeError</exception>
-        <exception>RuntimeError</exception>
-        <exception>ValueError</exception>
+        <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
-        <exception>AttributeError</exception>
+        <exception>OSError</exception>
+        <exception>RuntimeError</exception>
+        <exception>SystemExit</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>exceptions.CancelledError</exception>
+        <exception>socket.error</exception>
       </errors>
     </module>
     <module name="asyncio.events" imports="['contextvars', 'os', 'socket', 'subprocess', 'sys', 'threading']" importfrom="[]">
@@ -22240,16 +22255,6 @@
         </api>
       </class>
       <class name="AbstractServer" init="obj = asyncio.events.AbstractServer()%%[]">
-        <api name="close">
-          <expr>obj.close()%%[]</expr>
-          <args>[]</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
         <api name="get_loop">
           <expr>obj.get_loop()%%[]</expr>
           <args>[]</args>
@@ -22262,6 +22267,26 @@
         </api>
         <api name="is_serving">
           <expr>obj.is_serving()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="start_serving">
+          <expr>obj.start_serving()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="serve_forever">
+          <expr>obj.serve_forever()%%[]</expr>
           <args>[]</args>
           <return>[]</return>
           <dependences>None</dependences>
@@ -22322,8 +22347,18 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="close">
-          <expr>obj.close()%%[]</expr>
+        <api name="shutdown_asyncgens">
+          <expr>obj.shutdown_asyncgens()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="shutdown_default_executor">
+          <expr>obj.shutdown_default_executor()%%[]</expr>
           <args>[]</args>
           <return>[]</return>
           <dependences>None</dependences>
@@ -22412,6 +22447,136 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="getaddrinfo">
+          <expr>obj.getaddrinfo(host,port)%%['str', 'int']</expr>
+          <args>['host:str', 'port:int']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['family:int', 'type:int', 'proto:int', 'flags:int']</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[0, 0, 0, 0]</kwodefa>
+        </api>
+        <api name="getnameinfo">
+          <expr>obj.getnameinfo(sockaddr,flags)%%['tuple', 'int']</expr>
+          <args>['sockaddr:tuple', 'flags:int']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[0]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="create_connection">
+          <expr>obj.create_connection(protocol_factory,host,port)%%['Mock', 'NoneType', 'NoneType']</expr>
+          <args>['protocol_factory:Mock', 'host:NoneType', 'port:NoneType']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['ssl:NoneType', 'family:int', 'proto:int', 'flags:int', 'sock:NoneType', 'local_addr:NoneType', 'server_hostname:NoneType', 'ssl_handshake_timeout:NoneType', 'happy_eyeballs_delay:NoneType', 'interleave:NoneType']</kwoargs>
+          <defa>[None, None]</defa>
+          <kwodefa>[None, 0, 0, 0, None, None, None, None, None, None]</kwodefa>
+        </api>
+        <api name="create_server">
+          <expr>obj.create_server(protocol_factory,host,port)%%['Mock', 'NoneType', 'NoneType']</expr>
+          <args>['protocol_factory:Mock', 'host:NoneType', 'port:NoneType']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['family:AddressFamily', 'flags:AddressInfo', 'sock:NoneType', 'backlog:int', 'ssl:NoneType', 'reuse_address:NoneType', 'reuse_port:NoneType', 'ssl_handshake_timeout:NoneType', 'start_serving:bool']</kwoargs>
+          <defa>[None, None]</defa>
+          <kwodefa>[None, None, None, 100, None, None, None, None, True]</kwodefa>
+        </api>
+        <api name="sendfile">
+          <expr>obj.sendfile(transport,file,offset,count)%%['Mock', 'Mock', 'int', 'NoneType']</expr>
+          <args>['transport:Mock', 'file:Mock', 'offset:int', 'count:NoneType']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['fallback:bool']</kwoargs>
+          <defa>[0, None]</defa>
+          <kwodefa>[True]</kwodefa>
+        </api>
+        <api name="start_tls">
+          <expr>obj.start_tls(transport,protocol,sslcontext)%%['None', 'None', 'None']</expr>
+          <args>['transport:None', 'protocol:None', 'sslcontext:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['server_side:None', 'server_hostname:None', 'ssl_handshake_timeout:None']</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[False, None, None]</kwodefa>
+        </api>
+        <api name="create_unix_connection">
+          <expr>obj.create_unix_connection(protocol_factory,path)%%['None', 'None']</expr>
+          <args>['protocol_factory:None', 'path:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['ssl:None', 'sock:None', 'server_hostname:None', 'ssl_handshake_timeout:None']</kwoargs>
+          <defa>[None]</defa>
+          <kwodefa>[None, None, None, None]</kwodefa>
+        </api>
+        <api name="create_unix_server">
+          <expr>obj.create_unix_server(protocol_factory,path)%%['None', 'None']</expr>
+          <args>['protocol_factory:None', 'path:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['sock:None', 'backlog:None', 'ssl:None', 'ssl_handshake_timeout:None', 'start_serving:None']</kwoargs>
+          <defa>[None]</defa>
+          <kwodefa>[None, 100, None, None, True]</kwodefa>
+        </api>
+        <api name="create_datagram_endpoint">
+          <expr>obj.create_datagram_endpoint(protocol_factory,local_addr,remote_addr)%%['Mock', 'NoneType', 'NoneType']</expr>
+          <args>['protocol_factory:Mock', 'local_addr:NoneType', 'remote_addr:NoneType']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['family:int', 'proto:int', 'flags:int', 'reuse_address:NoneType', 'reuse_port:NoneType', 'allow_broadcast:NoneType', 'sock:NoneType']</kwoargs>
+          <defa>[None, None]</defa>
+          <kwodefa>[0, 0, 0, None, None, None, None]</kwodefa>
+        </api>
+        <api name="connect_read_pipe">
+          <expr>obj.connect_read_pipe(protocol_factory,pipe)%%['Mock', '_SentinelObject']</expr>
+          <args>['protocol_factory:Mock', 'pipe:_SentinelObject']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="connect_write_pipe">
+          <expr>obj.connect_write_pipe(protocol_factory,pipe)%%['Mock', '_SentinelObject']</expr>
+          <args>['protocol_factory:Mock', 'pipe:_SentinelObject']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="subprocess_shell">
+          <expr>obj.subprocess_shell(protocol_factory,cmd)%%['Mock', '_Sentinel']</expr>
+          <args>['protocol_factory:Mock', 'cmd:_Sentinel']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['stdin:int', 'stdout:int', 'stderr:int']</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[None, None, None]</kwodefa>
+        </api>
+        <api name="subprocess_exec">
+          <expr>obj.subprocess_exec(protocol_factory)%%['Mock']</expr>
+          <args>['protocol_factory:Mock']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['stdin:int', 'stdout:int', 'stderr:int']</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[None, None, None]</kwodefa>
+        </api>
         <api name="add_reader">
           <expr>obj.add_reader(fd,callback)%%['int', 'Mock']</expr>
           <args>['fd:int', 'callback:Mock']</args>
@@ -22451,6 +22616,66 @@
           <kwoargs>[]</kwoargs>
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_recv">
+          <expr>obj.sock_recv(sock,nbytes)%%['Mock', 'int']</expr>
+          <args>['sock:Mock', 'nbytes:int']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_recv_into">
+          <expr>obj.sock_recv_into(sock,buf)%%['Mock', 'int']</expr>
+          <args>['sock:Mock', 'buf:int']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_sendall">
+          <expr>obj.sock_sendall(sock,data)%%['Mock', 'int']</expr>
+          <args>['sock:Mock', 'data:int']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_connect">
+          <expr>obj.sock_connect(sock,address)%%['Mock', 'Mock']</expr>
+          <args>['sock:Mock', 'address:Mock']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_accept">
+          <expr>obj.sock_accept(sock)%%['Mock']</expr>
+          <args>['sock:Mock']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_sendfile">
+          <expr>obj.sock_sendfile(sock,file,offset,count)%%['Mock', 'Mock', 'int', 'NoneType']</expr>
+          <args>['sock:Mock', 'file:Mock', 'offset:int', 'count:NoneType']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['fallback:NoneType']</kwoargs>
+          <defa>[0, None]</defa>
+          <kwodefa>[None]</kwodefa>
         </api>
         <api name="add_signal_handler">
           <expr>obj.add_signal_handler(sig,callback)%%['int', 'Mock']</expr>
@@ -22718,12 +22943,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
         <exception>ImportError</exception>
+        <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
         <exception>RuntimeError</exception>
+        <exception>SystemExit</exception>
       </errors>
     </module>
     <module name="asyncio.log" imports="['logging']" importfrom="[]"/>
@@ -22982,10 +23207,10 @@
         </api>
       </class>
       <errors>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
+        <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
+        <exception>SystemExit</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -23057,6 +23282,36 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="start_serving">
+          <expr>obj.start_serving()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="serve_forever">
+          <expr>obj.serve_forever()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="wait_closed">
+          <expr>obj.wait_closed()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
       </class>
       <class name="BaseEventLoop" init="obj = asyncio.base_events.BaseEventLoop()%%[]">
         <api name="__init__">
@@ -23099,6 +23354,26 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="shutdown_asyncgens">
+          <expr>obj.shutdown_asyncgens()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="shutdown_default_executor">
+          <expr>obj.shutdown_default_executor()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
         <api name="run_until_complete">
           <expr>obj.run_until_complete(future)%%['coroutine']</expr>
           <args>['future:coroutine']</args>
@@ -23119,26 +23394,6 @@
           <defa>[]</defa>
           <kwodefa>[None]</kwodefa>
         </api>
-        <api name="call_soon">
-          <expr>obj.call_soon(callback)%%['function']</expr>
-          <args>['callback:function']</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>['context:NoneType']</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[None]</kwodefa>
-        </api>
-        <api name="run_in_executor">
-          <expr>ret = obj.run_in_executor(executor,func)%%['NoneType', 'function']</expr>
-          <args>['executor:NoneType', 'func:function']</args>
-          <return>['ret:NoneType']</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
         <api name="set_default_executor">
           <expr>obj.set_default_executor(executor)%%['DummyExecutor']</expr>
           <args>['executor:DummyExecutor']</args>
@@ -23148,6 +23403,126 @@
           <kwoargs>[]</kwoargs>
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
+        </api>
+        <api name="getnameinfo">
+          <expr>ret = obj.getnameinfo(sockaddr,flags)%%['None', 'None']</expr>
+          <args>['sockaddr:None', 'flags:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[0]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_sendfile">
+          <expr>ret = obj.sock_sendfile(sock,file,offset,count)%%['None', 'None', 'None', 'None']</expr>
+          <args>['sock:None', 'file:None', 'offset:None', 'count:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['fallback:None']</kwoargs>
+          <defa>[0, None]</defa>
+          <kwodefa>[True]</kwodefa>
+        </api>
+        <api name="create_connection">
+          <expr>obj.create_connection(protocol_factory,host,port)%%['None', 'None', 'None']</expr>
+          <args>['protocol_factory:None', 'host:None', 'port:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['ssl:None', 'family:None', 'proto:None', 'flags:None', 'sock:None', 'local_addr:None', 'server_hostname:None', 'ssl_handshake_timeout:None', 'happy_eyeballs_delay:None', 'interleave:None']</kwoargs>
+          <defa>[None, None]</defa>
+          <kwodefa>[None, 0, 0, 0, None, None, None, None, None, None]</kwodefa>
+        </api>
+        <api name="sendfile">
+          <expr>ret = obj.sendfile(transport,file,offset,count)%%['None', 'None', 'None', 'None']</expr>
+          <args>['transport:None', 'file:None', 'offset:None', 'count:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['fallback:None']</kwoargs>
+          <defa>[0, None]</defa>
+          <kwodefa>[True]</kwodefa>
+        </api>
+        <api name="start_tls">
+          <expr>ret = obj.start_tls(transport,protocol,sslcontext)%%['None', 'None', 'None']</expr>
+          <args>['transport:None', 'protocol:None', 'sslcontext:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['server_side:None', 'server_hostname:None', 'ssl_handshake_timeout:None']</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[False, None, None]</kwodefa>
+        </api>
+        <api name="create_datagram_endpoint">
+          <expr>obj.create_datagram_endpoint(protocol_factory,local_addr,remote_addr)%%['None', 'None', 'None']</expr>
+          <args>['protocol_factory:None', 'local_addr:None', 'remote_addr:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['family:None', 'proto:None', 'flags:None', 'reuse_address:None', 'reuse_port:None', 'allow_broadcast:None', 'sock:None']</kwoargs>
+          <defa>[None, None]</defa>
+          <kwodefa>[0, 0, 0, '_unset', None, None, None]</kwodefa>
+        </api>
+        <api name="create_server">
+          <expr>ret = obj.create_server(protocol_factory,host,port)%%['None', 'None', 'None']</expr>
+          <args>['protocol_factory:None', 'host:None', 'port:None']</args>
+          <return>['server:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['family:None', 'flags:None', 'sock:None', 'backlog:None', 'ssl:None', 'reuse_address:None', 'reuse_port:None', 'ssl_handshake_timeout:None', 'start_serving:None']</kwoargs>
+          <defa>[None, None]</defa>
+          <kwodefa>[None, None, None, 100, None, None, None, None, True]</kwodefa>
+        </api>
+        <api name="connect_accepted_socket">
+          <expr>obj.connect_accepted_socket(protocol_factory,sock)%%['None', 'None']</expr>
+          <args>['protocol_factory:None', 'sock:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['ssl:None', 'ssl_handshake_timeout:None']</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[None, None]</kwodefa>
+        </api>
+        <api name="connect_read_pipe">
+          <expr>obj.connect_read_pipe(protocol_factory,pipe)%%['None', 'None']</expr>
+          <args>['protocol_factory:None', 'pipe:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="connect_write_pipe">
+          <expr>obj.connect_write_pipe(protocol_factory,pipe)%%['None', 'None']</expr>
+          <args>['protocol_factory:None', 'pipe:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="subprocess_shell">
+          <expr>obj.subprocess_shell(protocol_factory,cmd)%%['None', 'None']</expr>
+          <args>['protocol_factory:None', 'cmd:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['stdin:None', 'stdout:None', 'stderr:None', 'universal_newlines:None', 'shell:None', 'bufsize:None', 'encoding:None', 'errors:None', 'text:None']</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[None, None, None, False, True, 0, None, None, None]</kwodefa>
+        </api>
+        <api name="subprocess_exec">
+          <expr>obj.subprocess_exec(protocol_factory,program)%%['None', 'None']</expr>
+          <args>['protocol_factory:None', 'program:None']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>['stdin:None', 'stdout:None', 'stderr:None', 'universal_newlines:None', 'shell:None', 'bufsize:None', 'encoding:None', 'errors:None', 'text:None']</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[None, None, None, False, False, 0, None, None, None]</kwodefa>
         </api>
         <api name="get_exception_handler">
           <expr>obj.get_exception_handler()%%[]</expr>
@@ -23169,16 +23544,6 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="call_exception_handler">
-          <expr>obj.call_exception_handler(context)%%['dict']</expr>
-          <args>['context:dict']</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
         <api name="set_debug">
           <expr>obj.set_debug(enabled)%%['bool']</expr>
           <args>['enabled:bool']</args>
@@ -23191,20 +23556,20 @@
         </api>
       </class>
       <errors>
+        <exception>BaseException</exception>
+        <exception>ConnectionError</exception>
+        <exception>Exception</exception>
+        <exception>FileNotFoundError</exception>
         <exception>ImportError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>NotImplementedError</exception>
         <exception>OSError</exception>
+        <exception>RuntimeError</exception>
+        <exception>SystemExit</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>Exception</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>RuntimeError</exception>
-        <exception>NotImplementedError</exception>
-        <exception>ConnectionError</exception>
         <exception>exceptions.CancelledError</exception>
         <exception>exceptions.SendfileNotAvailableError</exception>
-        <exception>FileNotFoundError</exception>
         <exception>socket.error</exception>
       </errors>
     </module>
@@ -23282,9 +23647,9 @@
         </api>
       </class>
       <errors>
-        <exception>socket.error</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
+        <exception>socket.error</exception>
       </errors>
     </module>
     <module name="asyncio.streams" imports="['socket', 'sys', 'warnings', 'weakref']" importfrom="['log:logger', 'tasks:sleep']">
@@ -23393,6 +23758,26 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="wait_closed">
+          <expr>obj.wait_closed()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="drain">
+          <expr>obj.drain()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
       </class>
       <class name="StreamReader" init="obj = asyncio.streams.StreamReader()%%['NoneType', 'NoneType']">
         <api name="__init__">
@@ -23408,6 +23793,16 @@
         <api name="at_eof">
           <expr>obj.at_eof()%%[]</expr>
           <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="readexactly">
+          <expr>obj.readexactly(n)%%['int']</expr>
+          <args>['n:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -23457,13 +23852,13 @@
         <kwodefa>[None, '_DEFAULT_LIMIT']</kwodefa>
       </api>
       <errors>
-        <exception>NotImplementedError</exception>
         <exception>ConnectionResetError</exception>
+        <exception>NotImplementedError</exception>
         <exception>RuntimeError</exception>
+        <exception>StopAsyncIteration</exception>
+        <exception>ValueError</exception>
         <exception>exceptions.IncompleteReadError</exception>
         <exception>exceptions.LimitOverrunError</exception>
-        <exception>ValueError</exception>
-        <exception>StopAsyncIteration</exception>
       </errors>
     </module>
     <module name="asyncio.futures" imports="['concurrent.futures', 'contextvars', 'logging', 'sys']" importfrom="['types:GenericAlias']">
@@ -23572,10 +23967,10 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
-        <exception>ValueError</exception>
         <exception>RuntimeError</exception>
-        <exception>exceptions.InvalidStateError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>exceptions.InvalidStateError</exception>
       </errors>
     </module>
     <module name="asyncio.queues" imports="['collections', 'heapq', 'warnings']" importfrom="['types:GenericAlias']">
@@ -23622,9 +24017,9 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="put_nowait">
-          <expr>obj.put_nowait(item)%%['tuple']</expr>
-          <args>['item:tuple']</args>
+        <api name="put">
+          <expr>obj.put(item)%%['int']</expr>
+          <args>['item:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -23632,8 +24027,8 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="get_nowait">
-          <expr>obj.get_nowait()%%[]</expr>
+        <api name="get">
+          <expr>obj.get()%%[]</expr>
           <args>[]</args>
           <return>[]</return>
           <dependences>None</dependences>
@@ -23652,13 +24047,23 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="join">
+          <expr>obj.join()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
       </class>
       <class name="PriorityQueue" init="obj = asyncio.queues.PriorityQueue()%%[]"/>
       <class name="LifoQueue" init="obj = asyncio.queues.LifoQueue()%%[]"/>
       <errors>
         <exception>ValueError</exception>
-        <exception>asyncio.queues.QueueFull</exception>
         <exception>asyncio.queues.QueueEmpty</exception>
+        <exception>asyncio.queues.QueueFull</exception>
       </errors>
     </module>
     <module name="asyncio.exceptions" imports="[]" importfrom="[]">
@@ -23678,8 +24083,8 @@
         </api>
       </class>
       <errors>
-        <exception>asyncio.exceptions.SendfileNotAvailableError</exception>
         <exception>asyncio.exceptions.IncompleteReadError</exception>
+        <exception>asyncio.exceptions.SendfileNotAvailableError</exception>
       </errors>
     </module>
     <module name="asyncio.threads" imports="['functools', 'contextvars']" importfrom="[]">
@@ -23873,14 +24278,14 @@
         </api>
       </class>
       <errors>
-        <exception>ImportError</exception>
-        <exception>ssl.SSLError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
         <exception>BaseException</exception>
-        <exception>ValueError</exception>
+        <exception>ImportError</exception>
+        <exception>KeyboardInterrupt</exception>
         <exception>RuntimeError</exception>
+        <exception>SystemExit</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>ssl.SSLError</exception>
       </errors>
     </module>
     <module name="asyncio.selector_events" imports="['collections', 'errno', 'functools', 'selectors', 'socket', 'warnings', 'weakref', 'ssl']" importfrom="['log:logger']">
@@ -23915,21 +24320,71 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="sock_recv">
+          <expr>ret = obj.sock_recv(sock,n)%%['None', 'None']</expr>
+          <args>['sock:None', 'n:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_recv_into">
+          <expr>ret = obj.sock_recv_into(sock,buf)%%['None', 'None']</expr>
+          <args>['sock:None', 'buf:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_sendall">
+          <expr>obj.sock_sendall(sock,data)%%['socket', 'memoryview']</expr>
+          <args>['sock:socket', 'data:memoryview']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_connect">
+          <expr>obj.sock_connect(sock,address)%%['socket', 'tuple']</expr>
+          <args>['sock:socket', 'address:tuple']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="sock_accept">
+          <expr>ret = obj.sock_accept(sock)%%['None']</expr>
+          <args>['sock:None']</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
       </class>
       <errors>
-        <exception>ImportError</exception>
-        <exception>KeyError</exception>
-        <exception>InterruptedError</exception>
-        <exception>BlockingIOError</exception>
-        <exception>OSError</exception>
-        <exception>ConnectionAbortedError</exception>
         <exception>AttributeError</exception>
+        <exception>BaseException</exception>
+        <exception>BlockingIOError</exception>
+        <exception>ConnectionAbortedError</exception>
+        <exception>ImportError</exception>
+        <exception>InterruptedError</exception>
+        <exception>KeyError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
+        <exception>RuntimeError</exception>
+        <exception>SystemExit</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>SystemExit</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>BaseException</exception>
-        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="asyncio.format_helpers" imports="['functools', 'inspect', 'reprlib', 'sys', 'traceback']" importfrom="[]">
@@ -26478,8 +26933,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>TclError</exception>
         <exception>AttributeError</exception>
+        <exception>TclError</exception>
       </errors>
     </module>
     <module name="tkinter.scrolledtext" imports="[]" importfrom="['tkinter:Frame', 'tkinter:Text', 'tkinter:Scrollbar', 'tkinter:Pack', 'tkinter:Grid', 'tkinter:Place', 'tkinter.constants:RIGHT', 'tkinter.constants:LEFT', 'tkinter.constants:Y', 'tkinter.constants:BOTH', 'tkinter.constants:END']">
@@ -27631,9 +28086,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="tkinter.dnd" imports="['tkinter']" importfrom="[]">
@@ -28033,9 +28488,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>KeyError</exception>
         <exception>AttributeError</exception>
+        <exception>KeyError</exception>
+        <exception>OSError</exception>
       </errors>
     </module>
   </library>
@@ -28832,9 +29287,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -29158,11 +29613,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>KeyError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
+        <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="compileall" imports="['os', 'sys', 'importlib.util', 'py_compile', 'struct', 'filecmp', 'argparse', 're']" importfrom="['functools:partial', 'pathlib:Path', 'concurrent.futures:ProcessPoolExecutor']">
@@ -29207,13 +29662,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
         <exception>ImportError</exception>
-        <exception>py_compile.PyCompileError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
         <exception>SyntaxError</exception>
         <exception>UnicodeError</exception>
-        <exception>KeyboardInterrupt</exception>
         <exception>ValueError</exception>
+        <exception>py_compile.PyCompileError</exception>
       </errors>
     </module>
     <module name="imghdr" imports="[]" importfrom="['os:PathLike']">
@@ -29388,7 +29843,7 @@
         <exception>ImportError</exception>
       </errors>
     </module>
-    <module name="random" imports="['os']" importfrom="['warnings:warn', 'math:log', 'math:exp', 'math:pi', 'math:e', 'math:ceil', 'math:sqrt', 'math:acos', 'math:cos', 'math:sin', 'math:tau', 'math:floor', 'os:urandom', 'itertools:accumulate', 'itertools:repeat', 'bisect:bisect', 'statistics:stdev', 'statistics:fmean', 'time:perf_counter']">
+    <module name="random" imports="['os:_os']" importfrom="['warnings:warn', 'math:log', 'math:exp', 'math:pi', 'math:e', 'math:ceil', 'math:sqrt', 'math:acos', 'math:cos', 'math:sin', 'math:tau', 'math:floor', 'os:urandom', 'itertools:accumulate', 'itertools:repeat', 'bisect:bisect', 'statistics:stdev', 'statistics:fmean', 'time:perf_counter']">
       <class name="Random" init="obj = random.Random()%%['None']">
         <api name="__init__">
           <expr>None</expr>
@@ -29565,10 +30020,10 @@
       </class>
       <errors>
         <exception>ImportError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>ZeroDivisionError</exception>
         <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>ZeroDivisionError</exception>
       </errors>
     </module>
     <module name="ipaddress" imports="['functools', 're']" importfrom="[]">
@@ -30065,15 +30520,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
+        <exception>IndexError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>OverflowError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>ipaddress.AddressValueError</exception>
         <exception>ipaddress.NetmaskValueError</exception>
-        <exception>OverflowError</exception>
-        <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>NotImplementedError</exception>
-        <exception>IndexError</exception>
-        <exception>AssertionError</exception>
       </errors>
     </module>
     <module name="tabnanny" imports="['os', 'sys', 'tokenize', 'getopt']" importfrom="[]">
@@ -30242,12 +30697,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>getopt.error</exception>
-        <exception>OSError</exception>
-        <exception>tokenize.TokenError</exception>
         <exception>IndentationError</exception>
+        <exception>OSError</exception>
         <exception>ValueError</exception>
+        <exception>getopt.error</exception>
         <exception>tabnanny.NannyNag</exception>
+        <exception>tokenize.TokenError</exception>
       </errors>
     </module>
     <module name="getopt" imports="['os', 'sys']" importfrom="['gettext:gettext']">
@@ -30694,8 +31149,8 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>OSError</exception>
         <exception>EOFError</exception>
+        <exception>OSError</exception>
         <exception>sunau.Error</exception>
       </errors>
     </module>
@@ -30903,8 +31358,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>SystemExit</exception>
         <exception>BrokenPipeError</exception>
+        <exception>SystemExit</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -31044,15 +31499,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>gzip.BadGzipFile</exception>
+        <exception>EOFError</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>OSError</exception>
-        <exception>EOFError</exception>
+        <exception>gzip.BadGzipFile</exception>
       </errors>
     </module>
-    <module name="calendar" imports="['sys', 'datetime', 'locale', 'argparse']" importfrom="['itertools:repeat']">
+    <module name="calendar" imports="['sys', 'datetime', 'locale:_locale', 'argparse']" importfrom="['itertools:repeat']">
       <class name="Calendar" init="obj = calendar.Calendar()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -31655,8 +32110,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="send_message">
-          <expr>obj.send_message(msg,from_addr,to_addrs,mail_options,rcpt_options)%%['EmailMessage', 'NoneType', 'NoneType', 'tuple', 'tuple']</expr>
-          <args>['msg:EmailMessage', 'from_addr:NoneType', 'to_addrs:NoneType', 'mail_options:tuple', 'rcpt_options:tuple']</args>
+          <expr>obj.send_message(msg,from_addr,to_addrs,mail_options,rcpt_options)%%['MIMEText', 'str', 'str', 'tuple', 'tuple']</expr>
+          <args>['msg:MIMEText', 'from_addr:str', 'to_addrs:str', 'mail_options:tuple', 'rcpt_options:tuple']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -31730,20 +32185,20 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>smtplib.SMTPException</exception>
         <exception>ImportError</exception>
-        <exception>ValueError</exception>
         <exception>OSError</exception>
-        <exception>UnicodeEncodeError</exception>
         <exception>RuntimeError</exception>
-        <exception>smtplib.SMTPResponseException</exception>
-        <exception>smtplib.SMTPServerDisconnected</exception>
-        <exception>smtplib.SMTPNotSupportedError</exception>
-        <exception>smtplib.SMTPDataError</exception>
-        <exception>smtplib.SMTPHeloError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
         <exception>smtplib.SMTPAuthenticationError</exception>
-        <exception>smtplib.SMTPSenderRefused</exception>
+        <exception>smtplib.SMTPDataError</exception>
+        <exception>smtplib.SMTPException</exception>
+        <exception>smtplib.SMTPHeloError</exception>
+        <exception>smtplib.SMTPNotSupportedError</exception>
         <exception>smtplib.SMTPRecipientsRefused</exception>
+        <exception>smtplib.SMTPResponseException</exception>
+        <exception>smtplib.SMTPSenderRefused</exception>
+        <exception>smtplib.SMTPServerDisconnected</exception>
       </errors>
     </module>
     <module name="linecache" imports="['functools', 'sys', 'os', 'tokenize']" importfrom="[]">
@@ -32129,10 +32584,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>EOFError</exception>
-        <exception>struct.error</exception>
         <exception>AttributeError</exception>
+        <exception>EOFError</exception>
         <exception>OSError</exception>
+        <exception>struct.error</exception>
         <exception>wave.Error</exception>
       </errors>
     </module>
@@ -32707,14 +33162,14 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>optparse.OptionError</exception>
-        <exception>optparse.OptionConflictError</exception>
-        <exception>optparse.OptionValueError</exception>
-        <exception>optparse.BadOptionError</exception>
-        <exception>optparse.AmbiguousOptionError</exception>
-        <exception>ValueError</exception>
         <exception>NotImplementedError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>optparse.AmbiguousOptionError</exception>
+        <exception>optparse.BadOptionError</exception>
+        <exception>optparse.OptionConflictError</exception>
+        <exception>optparse.OptionError</exception>
+        <exception>optparse.OptionValueError</exception>
       </errors>
     </module>
     <module name="site" imports="['sys', 'os', 'builtins', 'io', 'sitecustomize', 'usercustomize', 'textwrap']" importfrom="[]">
@@ -32909,11 +33364,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
         <exception>AttributeError</exception>
-        <exception>TypeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="shlex" imports="['os', 're', 'sys', 'warnings']" importfrom="['collections:deque', 'io:StringIO']">
@@ -32990,8 +33445,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>StopIteration</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="filecmp" imports="['os', 'stat', 'sys', 'getopt']" importfrom="['itertools:filterfalse', 'types:GenericAlias']">
@@ -33098,8 +33553,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>getopt.GetoptError</exception>
       </errors>
     </module>
@@ -33494,17 +33949,17 @@
         </api>
       </class>
       <errors>
-        <exception>FileNotFoundError</exception>
-        <exception>KeyError</exception>
-        <exception>ImportError</exception>
-        <exception>PermissionError</exception>
-        <exception>OSError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>RuntimeError</exception>
+        <exception>FileNotFoundError</exception>
+        <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>PermissionError</exception>
+        <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="webbrowser" imports="['os', 'shlex', 'shutil', 'sys', 'subprocess', 'threading', 'copy', 'glob', 'pwd', 'socket', 'tempfile', 'getopt']" importfrom="[]">
@@ -33669,14 +34124,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>subprocess.TimeoutExpired</exception>
         <exception>FileNotFoundError</exception>
-        <exception>PermissionError</exception>
+        <exception>KeyError</exception>
         <exception>NotADirectoryError</exception>
-        <exception>getopt.error</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>PermissionError</exception>
+        <exception>getopt.error</exception>
+        <exception>subprocess.TimeoutExpired</exception>
         <exception>webbrowser.Error</exception>
       </errors>
     </module>
@@ -34017,12 +34472,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>struct.error</exception>
-        <exception>EOFError</exception>
         <exception>AttributeError</exception>
+        <exception>EOFError</exception>
         <exception>OSError</exception>
         <exception>ValueError</exception>
         <exception>aifc.Error</exception>
+        <exception>struct.error</exception>
       </errors>
     </module>
     <module name="formatter" imports="['sys', 'warnings']" importfrom="[]">
@@ -34530,12 +34985,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>RecursionError</exception>
+        <exception>FileNotFoundError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
-        <exception>FileNotFoundError</exception>
+        <exception>RecursionError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="imaplib" imports="['binascii', 'errno', 'random', 're', 'socket', 'subprocess', 'sys', 'time', 'calendar', 'ssl', 'hmac', 'getopt', 'getpass']" importfrom="['datetime:datetime', 'datetime:timezone', 'datetime:timedelta', 'io:DEFAULT_BUFFER_SIZE']">
@@ -34950,6 +35405,16 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="print_log">
+          <expr>obj.print_log()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
       </class>
       <class name="IMAP4_SSL" init="obj = imaplib.IMAP4_SSL()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
@@ -35026,12 +35491,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>IMAP4.error</exception>
         <exception>ImportError</exception>
         <exception>OSError</exception>
-        <exception>AttributeError</exception>
-        <exception>getopt.error</exception>
         <exception>ValueError</exception>
-        <exception>IMAP4.error</exception>
+        <exception>getopt.error</exception>
       </errors>
     </module>
     <module name="platform" imports="['collections', 'os', 're', 'sys', 'subprocess', 'functools', 'itertools', 'winreg', 'plistlib', 'java.lang', 'socket', 'struct', 'vms_lib']" importfrom="['sys:getwindowsversion', 'java.lang:System']">
@@ -35278,11 +35743,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>AttributeError</exception>
-        <exception>OSError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="chunk" imports="[]" importfrom="[]">
@@ -35349,10 +35814,10 @@
         </api>
       </class>
       <errors>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>RuntimeError</exception>
         <exception>EOFError</exception>
+        <exception>OSError</exception>
+        <exception>RuntimeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="mailbox" imports="['os', 'time', 'calendar', 'socket', 'errno', 'copy', 'warnings', 'email', 'email.message', 'email.generator', 'io', 'contextlib', 'fcntl']" importfrom="['types:GenericAlias']">
@@ -35930,24 +36395,24 @@
       <class name="MMDFMessage" init="obj = mailbox.MMDFMessage()%%[]"/>
       <class name="Error" init="obj = mailbox.Error()%%[]"/>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>BaseException</exception>
+        <exception>FileExistsError</exception>
+        <exception>FileNotFoundError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>UnicodeError</exception>
-        <exception>BaseException</exception>
-        <exception>AttributeError</exception>
-        <exception>PermissionError</exception>
+        <exception>NotImplementedError</exception>
         <exception>OSError</exception>
-        <exception>FileNotFoundError</exception>
-        <exception>StopIteration</exception>
-        <exception>FileExistsError</exception>
-        <exception>ValueError</exception>
         <exception>OverflowError</exception>
-        <exception>mailbox.NoSuchMailboxError</exception>
-        <exception>mailbox.NotEmptyError</exception>
+        <exception>PermissionError</exception>
+        <exception>StopIteration</exception>
+        <exception>TypeError</exception>
+        <exception>UnicodeError</exception>
+        <exception>ValueError</exception>
         <exception>mailbox.ExternalClashError</exception>
         <exception>mailbox.FormatError</exception>
-        <exception>NotImplementedError</exception>
-        <exception>TypeError</exception>
+        <exception>mailbox.NoSuchMailboxError</exception>
+        <exception>mailbox.NotEmptyError</exception>
       </errors>
     </module>
     <module name="netrc" imports="['os', 'shlex', 'stat', 'pwd']" importfrom="[]">
@@ -35990,7 +36455,7 @@
         <exception>netrc.NetrcParseError</exception>
       </errors>
     </module>
-    <module name="argparse" imports="['os', 're', 'sys', 'copy', 'textwrap']" importfrom="['gettext:gettext', 'gettext:ngettext', 'warnings:warn']">
+    <module name="argparse" imports="['os:_os', 're:_re', 'sys:_sys', 'copy', 'textwrap']" importfrom="['gettext:gettext', 'gettext:ngettext', 'warnings:warn']">
       <class name="HelpFormatter" init="obj = argparse.HelpFormatter(None)%%['None', 'None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
@@ -36171,17 +36636,17 @@
         </api>
       </class>
       <errors>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
-        <exception>OSError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>argparse.ArgumentError</exception>
         <exception>argparse.ArgumentTypeError</exception>
       </errors>
     </module>
-    <module name="datetime" imports="['time', 'math', 'sys', 'warnings']" importfrom="[]">
+    <module name="datetime" imports="['time:_time', 'math:_math', 'sys', 'warnings']" importfrom="[]">
       <class name="timedelta" init="obj = datetime.timedelta()%%[]">
         <api name="total_seconds">
           <expr>ret = obj.total_seconds()%%[]</expr>
@@ -36636,15 +37101,15 @@
       </class>
       <class name="timezone" init="obj = datetime.timezone()%%[]"/>
       <errors>
-        <exception>KeyError</exception>
         <exception>AttributeError</exception>
-        <exception>UnicodeEncodeError</exception>
         <exception>Exception</exception>
-        <exception>ValueError</exception>
         <exception>ImportError</exception>
-        <exception>TypeError</exception>
-        <exception>OverflowError</exception>
+        <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OverflowError</exception>
+        <exception>TypeError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="io" imports="['abc']" importfrom="[]">
@@ -36740,8 +37205,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>TypeError</exception>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="fnmatch" imports="['os', 'posixpath', 're', 'functools']" importfrom="['itertools:count']">
@@ -36983,7 +37448,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="typing" imports="['collections', 'collections.abc', 'contextlib', 'functools', 'operator', 're', 'sys', 'types']" importfrom="['abc:abstractmethod', 'abc:ABCMeta', 'types:WrapperDescriptorType', 'types:MethodWrapperType', 'types:MethodDescriptorType', 'types:GenericAlias']">
+    <module name="typing" imports="['collections', 'collections.abc', 'contextlib', 'functools', 'operator', 're:stdlib_re', 'sys', 'types']" importfrom="['abc:abstractmethod', 'abc:ABCMeta', 'types:WrapperDescriptorType', 'types:MethodWrapperType', 'types:MethodDescriptorType', 'types:GenericAlias']">
       <class name="ForwardRef" init="obj = typing.ForwardRef(None)%%['None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
@@ -37215,10 +37680,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>TypeError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
         <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="ntpath" imports="['os', 'sys', 'stat', 'genericpath', 'string']" importfrom="['genericpath:*', 'nt:readlink']">
@@ -37403,14 +37868,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>BytesWarning</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
+        <exception>DeprecationWarning</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>DeprecationWarning</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="dataclasses" imports="['re', 'sys', 'copy', 'types', 'inspect', 'keyword', 'builtins', 'functools']" importfrom="['types:GenericAlias']">
@@ -37519,10 +37984,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>dataclasses.FrozenInstanceError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>dataclasses.FrozenInstanceError</exception>
       </errors>
     </module>
     <module name="rlcompleter" imports="['atexit', 'builtins', 'keyword', 're', 'readline']" importfrom="[]">
@@ -37559,9 +38024,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>IndexError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>IndexError</exception>
       </errors>
     </module>
     <module name="weakref" imports="['sys', 'itertools', 'gc']" importfrom="['copy:deepcopy']">
@@ -37746,13 +38211,13 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>Exception</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
-        <exception>Exception</exception>
       </errors>
     </module>
-    <module name="os" imports="['abc', 'sys', 'stat', 'posixpath', 'posix', 'ntpath', 'nt', 'warnings', 'subprocess', 'io']" importfrom="['posix:*', 'nt:*', 'os.path:curdir', 'os.path:pardir', 'os.path:sep', 'os.path:pathsep', 'os.path:defpath', 'os.path:extsep', 'os.path:altsep', 'os.path:devnull']">
+    <module name="os" imports="['abc', 'sys', 'stat:st', 'posixpath:path', 'posix', 'ntpath:path', 'nt', 'warnings', 'subprocess', 'io']" importfrom="['posix:*', 'nt:*', 'os.path:curdir', 'os.path:pardir', 'os.path:sep', 'os.path:pathsep', 'os.path:defpath', 'os.path:extsep', 'os.path:altsep', 'os.path:devnull']">
       <class name="PathLike" init="obj = os.PathLike()%%[]"/>
       <api name="makedirs">
         <expr>os.makedirs(name,mode,exist_ok)%%['str', 'int', 'bool']</expr>
@@ -38006,16 +38471,16 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>ImportError</exception>
         <exception>FileExistsError</exception>
+        <exception>FileNotFoundError</exception>
+        <exception>ImportError</exception>
+        <exception>KeyError</exception>
+        <exception>NotADirectoryError</exception>
+        <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
-        <exception>FileNotFoundError</exception>
-        <exception>NotADirectoryError</exception>
         <exception>TypeError</exception>
-        <exception>KeyError</exception>
         <exception>ValueError</exception>
-        <exception>NotImplementedError</exception>
       </errors>
     </module>
     <module name="fractions" imports="['math', 'numbers', 'operator', 're', 'sys']" importfrom="['decimal:Decimal']">
@@ -38062,8 +38527,8 @@
         </api>
       </class>
       <errors>
-        <exception>ValueError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>ZeroDivisionError</exception>
       </errors>
     </module>
@@ -38376,28 +38841,28 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>NameError</exception>
-        <exception>ValueError</exception>
-        <exception>tarfile.ExtractError</exception>
-        <exception>tarfile.ReadError</exception>
-        <exception>tarfile.CompressionError</exception>
-        <exception>tarfile.StreamError</exception>
-        <exception>tarfile.HeaderError</exception>
-        <exception>tarfile.EmptyHeaderError</exception>
-        <exception>tarfile.TruncatedHeaderError</exception>
-        <exception>tarfile.EOFHeaderError</exception>
-        <exception>tarfile.InvalidHeaderError</exception>
-        <exception>tarfile.SubsequentHeaderError</exception>
-        <exception>UnicodeEncodeError</exception>
-        <exception>UnicodeDecodeError</exception>
-        <exception>OSError</exception>
         <exception>EOFError</exception>
-        <exception>LZMAError</exception>
-        <exception>KeyError</exception>
-        <exception>FileExistsError</exception>
         <exception>Exception</exception>
+        <exception>FileExistsError</exception>
+        <exception>ImportError</exception>
+        <exception>KeyError</exception>
+        <exception>LZMAError</exception>
+        <exception>NameError</exception>
+        <exception>OSError</exception>
+        <exception>UnicodeDecodeError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
+        <exception>tarfile.CompressionError</exception>
+        <exception>tarfile.EOFHeaderError</exception>
+        <exception>tarfile.EmptyHeaderError</exception>
+        <exception>tarfile.ExtractError</exception>
+        <exception>tarfile.HeaderError</exception>
+        <exception>tarfile.InvalidHeaderError</exception>
+        <exception>tarfile.ReadError</exception>
+        <exception>tarfile.StreamError</exception>
+        <exception>tarfile.SubsequentHeaderError</exception>
         <exception>tarfile.TarError</exception>
+        <exception>tarfile.TruncatedHeaderError</exception>
       </errors>
     </module>
     <module name="stringprep" imports="[]" importfrom="['unicodedata:ucd_3_2_0']">
@@ -38717,9 +39182,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>SyntaxError</exception>
         <exception>TypeError</exception>
-        <exception>AttributeError</exception>
       </errors>
     </module>
     <module name="posixpath" imports="['os', 'sys', 'stat', 'genericpath', 'pwd', 're']" importfrom="['genericpath:*']">
@@ -38904,13 +39369,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>BytesWarning</exception>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>KeyError</exception>
         <exception>DeprecationWarning</exception>
+        <exception>KeyError</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="pipes" imports="['re', 'os', 'tempfile']" importfrom="['shlex:quote']">
@@ -39113,10 +39578,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>KeyError</exception>
-        <exception>ValueError</exception>
         <exception>AttributeError</exception>
+        <exception>KeyError</exception>
+        <exception>OSError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="asyncore" imports="['select', 'socket', 'sys', 'time', 'warnings', 'os']" importfrom="['errno:EALREADY', 'errno:EINPROGRESS', 'errno:EWOULDBLOCK', 'errno:ECONNRESET', 'errno:EINVAL', 'errno:ENOTCONN', 'errno:ESHUTDOWN', 'errno:EISCONN', 'errno:EBADF', 'errno:ECONNABORTED', 'errno:EPIPE', 'errno:EAGAIN', 'errno:errorcode']">
@@ -39310,13 +39775,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>NameError</exception>
-        <exception>ValueError</exception>
-        <exception>OverflowError</exception>
-        <exception>OSError</exception>
-        <exception>TypeError</exception>
         <exception>AssertionError</exception>
+        <exception>NameError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>OverflowError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="sndhdr" imports="[]" importfrom="['collections:namedtuple']">
@@ -39425,30 +39890,9 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="select">
-          <expr>obj.select(timeout)%%['NoneType']</expr>
-          <args>['timeout:NoneType']</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[None]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
       </class>
       <class name="PollSelector" init="obj = selectors.PollSelector()%%[]"/>
-      <class name="EpollSelector" init="obj = selectors.EpollSelector()%%[]">
-        <api name="select">
-          <expr>obj.select(timeout)%%['int']</expr>
-          <args>['timeout:int']</args>
-          <return>[]</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[None]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
-      </class>
+      <class name="EpollSelector" init="obj = selectors.EpollSelector()%%[]"/>
       <class name="DevpollSelector" init="obj = selectors.DevpollSelector()%%[]"/>
       <class name="KqueueSelector" init="obj = selectors.KqueueSelector()%%[]">
         <api name="__init__">
@@ -39461,29 +39905,19 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
-        <api name="select">
-          <expr>ret = obj.select(timeout)%%['None']</expr>
-          <args>['timeout:None']</args>
-          <return>['ready:None']</return>
-          <dependences>None</dependences>
-          <posargs>[]</posargs>
-          <kwoargs>[]</kwoargs>
-          <defa>[None]</defa>
-          <kwodefa>[]</kwodefa>
-        </api>
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>InterruptedError</exception>
+        <exception>KeyError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>KeyError</exception>
-        <exception>InterruptedError</exception>
-        <exception>OSError</exception>
-        <exception>NotImplementedError</exception>
-        <exception>RuntimeError</exception>
       </errors>
     </module>
-    <module name="tempfile" imports="['functools', 'warnings', 'io', 'os', 'shutil', 'errno', 'sys', 'types', 'weakref']" importfrom="['random:Random']">
+    <module name="tempfile" imports="['functools:_functools', 'warnings:_warnings', 'io:_io', 'os:_os', 'shutil:_shutil', 'errno:_errno', 'sys:_sys', 'types:_types', 'weakref:_weakref']" importfrom="['random:Random']">
       <class name="SpooledTemporaryFile" init="obj = tempfile.SpooledTemporaryFile()%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method']">
         <api name="__init__">
           <expr>None</expr>
@@ -39659,14 +40093,14 @@
         <kwodefa>[None]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
         <exception>AttributeError</exception>
-        <exception>FileExistsError</exception>
-        <exception>PermissionError</exception>
         <exception>BaseException</exception>
-        <exception>IsADirectoryError</exception>
-        <exception>TypeError</exception>
+        <exception>FileExistsError</exception>
         <exception>FileNotFoundError</exception>
+        <exception>IsADirectoryError</exception>
+        <exception>OSError</exception>
+        <exception>PermissionError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -39757,9 +40191,9 @@
       <class name="PriorityQueue" init="obj = queue.PriorityQueue()%%[]"/>
       <class name="LifoQueue" init="obj = queue.LifoQueue()%%[]"/>
       <errors>
+        <exception>Empty</exception>
         <exception>ImportError</exception>
         <exception>ValueError</exception>
-        <exception>Empty</exception>
         <exception>queue.Full</exception>
       </errors>
     </module>
@@ -40159,9 +40593,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>IndexError</exception>
         <exception>NotImplementedError</exception>
+        <exception>ValueError</exception>
         <exception>bdb.BdbQuit</exception>
       </errors>
     </module>
@@ -40516,17 +40950,17 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
-        <exception>UnicodeEncodeError</exception>
-        <exception>struct.error</exception>
-        <exception>RuntimeError</exception>
-        <exception>NotImplementedError</exception>
-        <exception>ValueError</exception>
         <exception>EOFError</exception>
-        <exception>io.UnsupportedOperation</exception>
+        <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>RuntimeError</exception>
         <exception>TypeError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
+        <exception>io.UnsupportedOperation</exception>
+        <exception>struct.error</exception>
         <exception>zipfile.BadZipFile</exception>
         <exception>zipfile.LargeZipFile</exception>
       </errors>
@@ -40714,8 +41148,8 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
-        <exception>StopIteration</exception>
         <exception>ModuleNotFoundError</exception>
+        <exception>StopIteration</exception>
       </errors>
     </module>
     <module name="keyword" imports="[]" importfrom="[]"/>
@@ -40743,9 +41177,9 @@
         </api>
       </class>
       <errors>
-        <exception>graphlib.CycleError</exception>
         <exception>StopIteration</exception>
         <exception>ValueError</exception>
+        <exception>graphlib.CycleError</exception>
       </errors>
     </module>
     <module name="modulefinder" imports="['dis', 'importlib._bootstrap_external', 'importlib.machinery', 'marshal', 'os', 'io', 'sys']" importfrom="[]">
@@ -40844,12 +41278,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>KeyError</exception>
         <exception>ImportError</exception>
-        <exception>SyntaxError</exception>
+        <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
+        <exception>SyntaxError</exception>
       </errors>
     </module>
     <module name="symtable" imports="['weakref', 'os', 'sys']" importfrom="[]">
@@ -41475,10 +41909,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>xdrlib.ConversionError</exception>
+        <exception>EOFError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>EOFError</exception>
+        <exception>xdrlib.ConversionError</exception>
         <exception>xdrlib.Error</exception>
       </errors>
     </module>
@@ -41705,17 +42139,17 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
-        <exception>smtplib.SMTPRecipientsRefused</exception>
-        <exception>OSError</exception>
-        <exception>getopt.error</exception>
         <exception>ImportError</exception>
-        <exception>PermissionError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>PermissionError</exception>
+        <exception>ValueError</exception>
+        <exception>getopt.error</exception>
+        <exception>smtplib.SMTPRecipientsRefused</exception>
       </errors>
     </module>
-    <module name="cProfile" imports="['profile', 'pstats', 'marshal', 'os', 'sys', 'runpy']" importfrom="['optparse:OptionParser']">
+    <module name="cProfile" imports="['profile:_pyprofile', 'pstats', 'marshal', 'os', 'sys', 'runpy']" importfrom="['optparse:OptionParser']">
       <class name="Profile" init="obj = cProfile.Profile()%%[]">
         <api name="dump_stats">
           <expr>obj.dump_stats(file)%%['str']</expr>
@@ -41779,11 +42213,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>KeyError</exception>
         <exception>BrokenPipeError</exception>
+        <exception>KeyError</exception>
       </errors>
     </module>
-    <module name="warnings" imports="['sys', 'linecache', 'tracemalloc', 're', 'builtins', 'traceback']" importfrom="[]">
+    <module name="warnings" imports="['sys', 'linecache', 'tracemalloc', 're', 'builtins:m', 'traceback']" importfrom="[]">
       <class name="WarningMessage" init="obj = warnings.WarningMessage(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -41809,8 +42243,8 @@
         </api>
       </class>
       <api name="showwarning">
-        <expr>warnings.showwarning(message,category,filename,lineno,file,line)%%['str', 'type', 'str', 'int', 'StringIO', 'str']</expr>
-        <args>['message:str', 'category:type', 'filename:str', 'lineno:int', 'file:StringIO', 'line:str']</args>
+        <expr>warnings.showwarning(message,category,filename,lineno,file,line)%%['None', 'None', 'None', 'None', 'None', 'None']</expr>
+        <args>['message:None', 'category:None', 'filename:None', 'lineno:None', 'file:None', 'line:None']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -41819,9 +42253,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="formatwarning">
-        <expr>warnings.formatwarning(message,category,filename,lineno,line)%%['UserWarning', 'type', 'str', 'int', 'NoneType']</expr>
-        <args>['message:UserWarning', 'category:type', 'filename:str', 'lineno:int', 'line:NoneType']</args>
-        <return>[]</return>
+        <expr>ret = warnings.formatwarning(message,category,filename,lineno,line)%%['None', 'None', 'None', 'None', 'None']</expr>
+        <args>['message:None', 'category:None', 'filename:None', 'lineno:None', 'line:None']</args>
+        <return>['_formatwarnmsg_impl:None']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -41879,15 +42313,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
-        <exception>NameError</exception>
-        <exception>ValueError</exception>
-        <exception>OverflowError</exception>
-        <exception>ImportError</exception>
         <exception>AttributeError</exception>
-        <exception>TypeError</exception>
+        <exception>Exception</exception>
+        <exception>ImportError</exception>
+        <exception>NameError</exception>
+        <exception>OSError</exception>
+        <exception>OverflowError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>warnings._OptionError</exception>
       </errors>
     </module>
@@ -41924,21 +42358,21 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>pickle.PicklingError</exception>
-        <exception>pickle.UnpicklingError</exception>
         <exception>AttributeError</exception>
-        <exception>UnicodeEncodeError</exception>
+        <exception>EOFError</exception>
+        <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>UnicodeDecodeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
-        <exception>EOFError</exception>
+        <exception>UnicodeDecodeError</exception>
+        <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
+        <exception>pickle.PicklingError</exception>
+        <exception>pickle.UnpicklingError</exception>
         <exception>pickle._Stop</exception>
       </errors>
     </module>
-    <module name="threading" imports="['os', 'sys', 'functools']" importfrom="['time:monotonic', 'itertools:islice', 'itertools:count']">
+    <module name="threading" imports="['os:_os', 'sys:_sys', 'functools']" importfrom="['time:monotonic', 'itertools:islice', 'itertools:count']">
       <class name="Condition" init="obj = threading.Condition()%%['None']">
         <api name="__init__">
           <expr>None</expr>
@@ -42140,6 +42574,16 @@
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="native_id">
+          <expr>ret = obj.native_id()%%[]</expr>
+          <args>[]</args>
+          <return>['ret:None']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
         <api name="daemon">
           <expr>obj.daemon(daemonic)%%['NoneType']</expr>
           <args>['daemonic:NoneType']</args>
@@ -42284,13 +42728,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
         <exception>AttributeError</exception>
-        <exception>KeyError</exception>
-        <exception>ValueError</exception>
-        <exception>RuntimeError</exception>
-        <exception>threading.BrokenBarrierError</exception>
         <exception>Exception</exception>
+        <exception>ImportError</exception>
+        <exception>KeyError</exception>
+        <exception>RuntimeError</exception>
+        <exception>ValueError</exception>
+        <exception>threading.BrokenBarrierError</exception>
       </errors>
     </module>
     <module name="asynchat" imports="['asyncore']" importfrom="['collections:deque']">
@@ -42430,9 +42874,9 @@
       </api>
       <errors>
         <exception>BlockingIOError</exception>
+        <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
-        <exception>NotImplementedError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -42583,10 +43027,10 @@
       <errors>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
-        <exception>StopIteration</exception>
         <exception>RuntimeError</exception>
-        <exception>ValueError</exception>
+        <exception>StopIteration</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="uu" imports="['binascii', 'os', 'sys']" importfrom="[]">
@@ -42676,8 +43120,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>KeyError</exception>
         <exception>AttributeError</exception>
+        <exception>KeyError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -43022,9 +43466,9 @@
         </api>
       </class>
       <errors>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
         <exception>ChildProcessError</exception>
+        <exception>Exception</exception>
+        <exception>OSError</exception>
         <exception>socket.error</exception>
       </errors>
     </module>
@@ -43488,11 +43932,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>StopIteration</exception>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>RuntimeError</exception>
+        <exception>StopIteration</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="codecs" imports="['builtins', 'sys', 'encodings']" importfrom="[]">
@@ -43887,10 +44331,10 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>UnicodeDecodeError</exception>
         <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>StopIteration</exception>
+        <exception>UnicodeDecodeError</exception>
       </errors>
     </module>
     <module name="runpy" imports="['sys', 'importlib.machinery', 'importlib.util', 'io', 'types', 'os']" importfrom="['pkgutil:read_code', 'pkgutil:get_importer', 'warnings:warn']">
@@ -43915,16 +44359,16 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>KeyError</exception>
-        <exception>ImportError</exception>
         <exception>AttributeError</exception>
+        <exception>ImportError</exception>
+        <exception>KeyError</exception>
+        <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>RuntimeError</exception>
         <exception>runpy._Error</exception>
       </errors>
     </module>
-    <module name="mimetypes" imports="['os', 'sys', 'posixpath', 'urllib.parse', 'winreg', 'getopt']" importfrom="[]">
+    <module name="mimetypes" imports="['os', 'sys', 'posixpath', 'urllib.parse', 'winreg:_winreg', 'getopt']" importfrom="[]">
       <class name="MimeTypes" init="obj = mimetypes.MimeTypes()%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -44439,21 +44883,21 @@
         </api>
       </class>
       <errors>
-        <exception>configparser.NoSectionError</exception>
-        <exception>configparser.DuplicateSectionError</exception>
+        <exception>AttributeError</exception>
+        <exception>KeyError</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>configparser.DuplicateOptionError</exception>
-        <exception>configparser.NoOptionError</exception>
+        <exception>configparser.DuplicateSectionError</exception>
+        <exception>configparser.InterpolationDepthError</exception>
         <exception>configparser.InterpolationError</exception>
         <exception>configparser.InterpolationMissingOptionError</exception>
         <exception>configparser.InterpolationSyntaxError</exception>
-        <exception>configparser.InterpolationDepthError</exception>
-        <exception>configparser.ParsingError</exception>
         <exception>configparser.MissingSectionHeaderError</exception>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
+        <exception>configparser.NoOptionError</exception>
+        <exception>configparser.NoSectionError</exception>
+        <exception>configparser.ParsingError</exception>
       </errors>
     </module>
     <module name="symbol" imports="['warnings']" importfrom="[]"/>
@@ -44531,14 +44975,14 @@
         </api>
       </class>
       <errors>
-        <exception>ImportError</exception>
-        <exception>EOFError</exception>
         <exception>AttributeError</exception>
+        <exception>EOFError</exception>
+        <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>TypeError</exception>
       </errors>
     </module>
-    <module name="crypt" imports="['sys', 'errno', 'string']" importfrom="['random:SystemRandom', 'collections:namedtuple']">
+    <module name="crypt" imports="['sys:_sys', 'errno', 'string:_string']" importfrom="['random:SystemRandom', 'collections:namedtuple']">
       <api name="mksalt">
         <expr>ret = crypt.mksalt(method)%%['None']</expr>
         <args>['method:None']</args>
@@ -44567,7 +45011,6 @@
       </errors>
     </module>
     <module name="functools" imports="['types', 'weakref']" importfrom="['abc:get_cache_token', 'collections:namedtuple', 'reprlib:recursive_repr', 'types:GenericAlias']">
-      <class name="K" init="obj = functools.K()%%[]"/>
       <class name="partial" init="obj = functools.partial()%%[]"/>
       <class name="partialmethod" init="obj = functools.partialmethod()%%[]">
         <api name="__init__">
@@ -44688,10 +45131,10 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>RuntimeError</exception>
       </errors>
     </module>
     <module name="imp" imports="['importlib', 'os', 'sys', 'tokenize', 'types', 'warnings', 'importlib.machinery']" importfrom="['importlib._bootstrap_external:SourcelessFileLoader', 'importlib:machinery', 'importlib:util']">
@@ -44859,9 +45302,9 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="sre_compile" imports="['sre_parse', 'sys']" importfrom="['sre_constants:*']">
@@ -45114,11 +45557,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>ValueError</exception>
-        <exception>IndexError</exception>
         <exception>ImportError</exception>
+        <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="socket" imports="['os', 'sys', 'io', 'selectors', 'errno', 'array']" importfrom="['enum:IntEnum', 'enum:IntFlag']">
@@ -45357,18 +45800,18 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>ValueError</exception>
-        <exception>BlockingIOError</exception>
-        <exception>NameError</exception>
-        <exception>InterruptedError</exception>
-        <exception>TypeError</exception>
-        <exception>OSError</exception>
         <exception>AttributeError</exception>
+        <exception>BlockingIOError</exception>
+        <exception>ImportError</exception>
+        <exception>InterruptedError</exception>
+        <exception>NameError</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>socket._GiveupOnSendfile</exception>
       </errors>
     </module>
-    <module name="ssl" imports="['sys', 'os', 'socket', 'base64', 'errno', 'warnings']" importfrom="['collections:namedtuple', 'enum:Enum', 'enum:IntEnum', 'enum:IntFlag', 'socket:socket', 'socket:SOCK_STREAM', 'socket:create_connection', 'socket:SOL_SOCKET', 'socket:SO_TYPE', 'time:strptime', 'calendar:timegm']">
+    <module name="ssl" imports="['sys', 'os', 'socket:_socket', 'base64', 'errno', 'warnings']" importfrom="['collections:namedtuple', 'enum:Enum', 'enum:IntEnum', 'enum:IntFlag', 'socket:socket', 'socket:SOCK_STREAM', 'socket:create_connection', 'socket:SOL_SOCKET', 'socket:SO_TYPE', 'time:strptime', 'calendar:timegm']">
       <class name="TLSVersion" init="obj = ssl.TLSVersion()%%[]"/>
       <class name="Purpose" init="obj = ssl.Purpose()%%[]"/>
       <class name="SSLContext" init="obj = ssl.SSLContext()%%[]">
@@ -45432,9 +45875,39 @@
           <defa>[None]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="minimum_version">
+          <expr>obj.minimum_version(value)%%['NoneType']</expr>
+          <args>['value:NoneType']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="maximum_version">
+          <expr>obj.maximum_version(value)%%['NoneType']</expr>
+          <args>['value:NoneType']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
         <api name="options">
           <expr>obj.options(value)%%['NoneType']</expr>
           <args>['value:NoneType']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="hostname_checks_common_name">
+          <expr>obj.hostname_checks_common_name()%%[]</expr>
+          <args>[]</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -45718,15 +46191,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>OSError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
+        <exception>CertificateError</exception>
+        <exception>ImportError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>PermissionError</exception>
         <exception>SSLError</exception>
-        <exception>CertificateError</exception>
         <exception>TypeError</exception>
-        <exception>NotImplementedError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="quopri" imports="['sys', 'getopt']" importfrom="['binascii:a2b_qp', 'binascii:b2a_qp', 'io:BytesIO']">
@@ -45822,8 +46295,8 @@
       </api>
       <errors>
         <exception>ImportError</exception>
-        <exception>getopt.error</exception>
         <exception>OSError</exception>
+        <exception>getopt.error</exception>
       </errors>
     </module>
     <module name="getpass" imports="['contextlib', 'io', 'os', 'sys', 'warnings', 'pwd', 'termios']" importfrom="[]">
@@ -45869,16 +46342,16 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OSError</exception>
-        <exception>termios.error</exception>
-        <exception>UnicodeEncodeError</exception>
-        <exception>ImportError</exception>
         <exception>AttributeError</exception>
-        <exception>KeyboardInterrupt</exception>
         <exception>EOFError</exception>
+        <exception>ImportError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
+        <exception>UnicodeEncodeError</exception>
+        <exception>termios.error</exception>
       </errors>
     </module>
-    <module name="pprint" imports="['collections', 're', 'sys', 'types', 'time']" importfrom="['io:StringIO']">
+    <module name="pprint" imports="['collections:_collections', 're', 'sys:_sys', 'types:_types', 'time']" importfrom="['io:StringIO']">
       <class name="PrettyPrinter" init="obj = pprint.PrettyPrinter()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -45972,8 +46445,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>TypeError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="difflib" imports="['re', 'doctest', 'difflib']" importfrom="['heapq:nlargest', 'collections:namedtuple', 'types:GenericAlias']">
@@ -46184,9 +46657,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>KeyError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
-        <exception>KeyError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -46454,14 +46927,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>statistics.StatisticsError</exception>
         <exception>AttributeError</exception>
-        <exception>OverflowError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>ZeroDivisionError</exception>
-        <exception>IndexError</exception>
         <exception>ImportError</exception>
+        <exception>IndexError</exception>
+        <exception>OverflowError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>ZeroDivisionError</exception>
+        <exception>statistics.StatisticsError</exception>
       </errors>
     </module>
     <module name="nntplib" imports="['re', 'socket', 'collections', 'datetime', 'sys', 'ssl', 'netrc', 'argparse']" importfrom="['email.header:decode_header']">
@@ -46708,6 +47181,16 @@
           <defa>[None, None, True]</defa>
           <kwodefa>[]</kwodefa>
         </api>
+        <api name="starttls">
+          <expr>obj.starttls(context)%%['NoneType']</expr>
+          <args>['context:NoneType']</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[None]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
       </class>
       <class name="NNTP_SSL" init="obj = nntplib.NNTP_SSL(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
@@ -46742,18 +47225,18 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>EOFError</exception>
         <exception>ImportError</exception>
-        <exception>nntplib.NNTPReplyError</exception>
-        <exception>nntplib.NNTPTemporaryError</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>nntplib.NNTPDataError</exception>
+        <exception>nntplib.NNTPError</exception>
         <exception>nntplib.NNTPPermanentError</exception>
         <exception>nntplib.NNTPProtocolError</exception>
-        <exception>nntplib.NNTPDataError</exception>
-        <exception>OSError</exception>
-        <exception>EOFError</exception>
-        <exception>AttributeError</exception>
-        <exception>ValueError</exception>
-        <exception>TypeError</exception>
-        <exception>nntplib.NNTPError</exception>
+        <exception>nntplib.NNTPReplyError</exception>
+        <exception>nntplib.NNTPTemporaryError</exception>
       </errors>
     </module>
     <module name="py_compile" imports="['enum', 'importlib._bootstrap_external', 'importlib.machinery', 'importlib.util', 'os', 'os.path', 'sys', 'traceback']" importfrom="[]">
@@ -46986,12 +47469,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>OverflowError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
-        <exception>OverflowError</exception>
-        <exception>AssertionError</exception>
         <exception>sre_parse.Verbose</exception>
       </errors>
     </module>
@@ -47080,6 +47563,16 @@
       </class>
       <class name="ExitStack" init="obj = contextlib.ExitStack()%%[]"/>
       <class name="AsyncExitStack" init="obj = contextlib.AsyncExitStack()%%[]">
+        <api name="enter_async_context">
+          <expr>ret = obj.enter_async_context(cm)%%['TestCM']</expr>
+          <args>['cm:TestCM']</args>
+          <return>['result:NoneType']</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
         <api name="push_async_exit">
           <expr>ret = obj.push_async_exit(exit)%%['None']</expr>
           <args>['exit:None']</args>
@@ -47096,6 +47589,16 @@
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>['self:AsyncExitStack', 'callback:function']</posargs>
+          <kwoargs>[]</kwoargs>
+          <defa>[]</defa>
+          <kwodefa>[]</kwodefa>
+        </api>
+        <api name="aclose">
+          <expr>obj.aclose()%%[]</expr>
+          <args>[]</args>
+          <return>[]</return>
+          <dependences>None</dependences>
+          <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
           <defa>[]</defa>
           <kwodefa>[]</kwodefa>
@@ -47134,11 +47637,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>StopIteration</exception>
-        <exception>RuntimeError</exception>
-        <exception>BaseException</exception>
         <exception>AttributeError</exception>
+        <exception>BaseException</exception>
+        <exception>RuntimeError</exception>
         <exception>StopAsyncIteration</exception>
+        <exception>StopIteration</exception>
       </errors>
     </module>
     <module name="signal" imports="[]" importfrom="['enum:IntEnum']">
@@ -47203,8 +47706,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="tty" imports="[]" importfrom="['termios:*']">
@@ -47291,8 +47794,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>NameError</exception>
         <exception>AttributeError</exception>
+        <exception>NameError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -47531,12 +48034,12 @@
     </module>
     <module name="hashlib" imports="[]" importfrom="[]">
       <errors>
-        <exception>ImportError</exception>
         <exception>AttributeError</exception>
+        <exception>ImportError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="tokenize" imports="['collections', 'itertools', 're', 'sys', 'token', 'argparse']" importfrom="['builtins:open', 'codecs:lookup', 'codecs:BOM_UTF8', 'io:TextIOWrapper', 'token:*', 'token:EXACT_TOKEN_TYPES']">
+    <module name="tokenize" imports="['collections', 'itertools:_itertools', 're', 'sys', 'token', 'argparse']" importfrom="['builtins:open', 'codecs:lookup', 'codecs:BOM_UTF8', 'io:TextIOWrapper', 'token:*', 'token:EXACT_TOKEN_TYPES']">
       <class name="TokenInfo" init="obj = tokenize.TokenInfo()%%[]">
         <api name="exact_type">
           <expr>obj.exact_type()%%[]</expr>
@@ -47665,12 +48168,12 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>StopIteration</exception>
-        <exception>IndentationError</exception>
-        <exception>SyntaxError</exception>
-        <exception>OSError</exception>
-        <exception>KeyboardInterrupt</exception>
         <exception>Exception</exception>
+        <exception>IndentationError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
+        <exception>StopIteration</exception>
+        <exception>SyntaxError</exception>
         <exception>ValueError</exception>
         <exception>tokenize.TokenError</exception>
       </errors>
@@ -47768,13 +48271,13 @@
         </api>
       </class>
       <errors>
-        <exception>TypeError</exception>
-        <exception>StopIteration</exception>
-        <exception>NameError</exception>
-        <exception>KeyError</exception>
-        <exception>ValueError</exception>
-        <exception>OverflowError</exception>
         <exception>Error</exception>
+        <exception>KeyError</exception>
+        <exception>NameError</exception>
+        <exception>OverflowError</exception>
+        <exception>StopIteration</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="sched" imports="['time', 'heapq', 'threading']" importfrom="['collections:namedtuple', 'time:monotonic']">
@@ -47955,8 +48458,8 @@
       </api>
       <errors>
         <exception>OSError</exception>
-        <exception>ValueError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="turtle" imports="['tkinter:TK', 'types', 'math', 'time', 'inspect', 'sys', 're']" importfrom="['os.path:isfile', 'os.path:split', 'os.path:join', 'copy:deepcopy', 'tkinter:simpledialog']">
@@ -48903,17 +49406,17 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ValueError</exception>
+        <exception>AttributeError</exception>
         <exception>Exception</exception>
+        <exception>ImportError</exception>
         <exception>TK.TclError</exception>
         <exception>TypeError</exception>
-        <exception>AttributeError</exception>
-        <exception>ImportError</exception>
-        <exception>turtle.TurtleGraphicsError</exception>
+        <exception>ValueError</exception>
         <exception>turtle.Terminator</exception>
+        <exception>turtle.TurtleGraphicsError</exception>
       </errors>
     </module>
-    <module name="hmac" imports="['warnings', 'hashlib']" importfrom="[]">
+    <module name="hmac" imports="['warnings:_warnings', 'hashlib:_hashlib']" importfrom="[]">
       <class name="HMAC" init="obj = hmac.HMAC(None)%%['None', 'None', 'None']">
         <api name="__init__">
           <expr>None</expr>
@@ -49022,8 +49525,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>zipapp.ZipAppError</exception>
         <exception>SystemExit</exception>
+        <exception>zipapp.ZipAppError</exception>
       </errors>
     </module>
     <module name="code" imports="['sys', 'traceback', 'readline', 'argparse']" importfrom="['codeop:CommandCompiler', 'codeop:compile_command']">
@@ -49102,14 +49605,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>OverflowError</exception>
-        <exception>SyntaxError</exception>
-        <exception>ValueError</exception>
-        <exception>SystemExit</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
-        <exception>KeyboardInterrupt</exception>
         <exception>ImportError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>OverflowError</exception>
+        <exception>SyntaxError</exception>
+        <exception>SystemExit</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="bz2" imports="['io', 'os']" importfrom="['builtins:open', 'threading:RLock']">
@@ -49201,7 +49704,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="string" imports="['re']" importfrom="['collections:ChainMap']">
+    <module name="string" imports="['re:_re']" importfrom="['collections:ChainMap']">
       <class name="Template" init="obj = string.Template(None)%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -49437,10 +49940,10 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>ImportError</exception>
         <exception>Exception</exception>
-        <exception>OSError</exception>
+        <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -49484,11 +49987,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>TypeError</exception>
-        <exception>KeyError</exception>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
         <exception>Exception</exception>
+        <exception>KeyError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="lzma" imports="['builtins', 'io', 'os']" importfrom="[]">
@@ -49657,14 +50160,14 @@
         <kwodefa>['FMT_XML', False, True]</kwodefa>
       </api>
       <errors>
-        <exception>plistlib.InvalidFileException</exception>
-        <exception>OSError</exception>
         <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>OverflowError</exception>
-        <exception>ValueError</exception>
         <exception>TypeError</exception>
-        <exception>struct.error</exception>
         <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
+        <exception>plistlib.InvalidFileException</exception>
+        <exception>struct.error</exception>
       </errors>
     </module>
     <module name="poplib" imports="['errno', 're', 'socket', 'sys', 'ssl', 'hashlib']" importfrom="[]">
@@ -49962,10 +50465,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>StopIteration</exception>
-        <exception>TypeError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>StopIteration</exception>
+        <exception>TypeError</exception>
       </errors>
     </module>
     <module name="pstats" imports="['sys', 'os', 'time', 'marshal', 're', 'cmd', 'readline']" importfrom="['enum:Enum', 'functools:cmp_to_key', 'dataclasses:dataclass', 'typing:Dict']">
@@ -50400,12 +50903,12 @@
       </api>
       <errors>
         <exception>Exception</exception>
-        <exception>re.error</exception>
         <exception>ImportError</exception>
-        <exception>ValueError</exception>
-        <exception>OSError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
+        <exception>re.error</exception>
       </errors>
     </module>
     <module name="colorsys" imports="[]" importfrom="[]">
@@ -50662,13 +51165,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>UnicodeEncodeError</exception>
-        <exception>TypeError</exception>
         <exception>KeyError</exception>
-        <exception>struct.error</exception>
-        <exception>getopt.error</exception>
-        <exception>binascii.Error</exception>
+        <exception>TypeError</exception>
+        <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
+        <exception>binascii.Error</exception>
+        <exception>getopt.error</exception>
+        <exception>struct.error</exception>
       </errors>
     </module>
     <module name="pydoc" imports="['builtins', 'importlib._bootstrap', 'importlib._bootstrap_external', 'importlib.machinery', 'importlib.util', 'inspect', 'io', 'os', 'pkgutil', 'platform', 're', 'sys', 'sysconfig', 'time', 'tokenize', 'types', 'urllib.parse', 'warnings', 'tempfile', 'subprocess', 'tty', 'pydoc_data.topics', 'textwrap', 'http.server', 'email.message', 'select', 'threading', 'webbrowser', 'getopt']" importfrom="['collections:deque', 'reprlib:Repr', 'traceback:format_exception_only']">
@@ -50927,9 +51430,6 @@
         </api>
       </class>
       <class name="ModuleScanner" init="obj = pydoc.ModuleScanner()%%[]"/>
-      <class name="DocHandler" init="obj = pydoc.DocHandler()%%[]"/>
-      <class name="DocServer" init="obj = pydoc.DocServer()%%[]"/>
-      <class name="ServerThread" init="obj = pydoc.ServerThread()%%[]"/>
       <api name="pathdirs">
         <expr>ret = pydoc.pathdirs()%%[]</expr>
         <args>[]</args>
@@ -51282,15 +51782,15 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>TypeError</exception>
-        <exception>OSError</exception>
-        <exception>Exception</exception>
-        <exception>ValueError</exception>
-        <exception>KeyboardInterrupt</exception>
-        <exception>ImportError</exception>
         <exception>EOFError</exception>
+        <exception>Exception</exception>
+        <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
         <exception>SyntaxError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>pydoc.ErrorDuringImport</exception>
       </errors>
     </module>
@@ -51437,17 +51937,17 @@
         </api>
       </class>
       <errors>
-        <exception>zipimport.ZipImportError</exception>
-        <exception>KeyError</exception>
-        <exception>OSError</exception>
-        <exception>UnicodeDecodeError</exception>
+        <exception>EOFError</exception>
         <exception>Exception</exception>
+        <exception>FileNotFoundError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
+        <exception>UnicodeDecodeError</exception>
         <exception>ValueError</exception>
-        <exception>EOFError</exception>
-        <exception>FileNotFoundError</exception>
+        <exception>zipimport.ZipImportError</exception>
       </errors>
     </module>
     <module name="locale" imports="['sys', 'encodings', 'encodings.aliases', 're', 'functools', 'warnings', 'os']" importfrom="['builtins:str']">
@@ -51592,12 +52092,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ImportError</exception>
-        <exception>TypeError</exception>
-        <exception>ValueError</exception>
         <exception>AttributeError</exception>
         <exception>Error</exception>
+        <exception>ImportError</exception>
         <exception>NameError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="ast" imports="['sys', 'inspect', 'warnings', 'argparse']" importfrom="['contextlib:contextmanager', 'contextlib:nullcontext', 'enum:IntEnum', 'enum:auto', 'collections:deque']">
@@ -51758,9 +52258,9 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
-        <exception>ValueError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="shutil" imports="['os', 'sys', 'stat', 'fnmatch', 'collections', 'errno', 'zlib', 'bz2', 'lzma', 'posix', 'nt', 'tarfile', 'zipfile']" importfrom="['pwd:getpwnam', 'grp:getgrnam']">
@@ -51986,24 +52486,24 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>IsADirectoryError</exception>
+        <exception>KeyError</exception>
+        <exception>LookupError</exception>
+        <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>shutil.Error</exception>
-        <exception>shutil.SameFileError</exception>
-        <exception>shutil.SpecialFileError</exception>
         <exception>shutil.ExecError</exception>
         <exception>shutil.ReadError</exception>
-        <exception>Exception</exception>
-        <exception>OSError</exception>
-        <exception>IsADirectoryError</exception>
-        <exception>NotImplementedError</exception>
-        <exception>KeyError</exception>
-        <exception>tarfile.TarError</exception>
-        <exception>ValueError</exception>
-        <exception>AttributeError</exception>
-        <exception>TypeError</exception>
-        <exception>LookupError</exception>
         <exception>shutil.RegistryError</exception>
+        <exception>shutil.SameFileError</exception>
+        <exception>shutil.SpecialFileError</exception>
         <exception>shutil._GiveupOnFastCopy</exception>
+        <exception>tarfile.TarError</exception>
       </errors>
     </module>
     <module name="struct" imports="[]" importfrom="[]"/>
@@ -52406,15 +52906,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
-        <exception>ftplib.error_reply</exception>
-        <exception>ftplib.error_temp</exception>
-        <exception>ftplib.error_perm</exception>
-        <exception>ftplib.error_proto</exception>
-        <exception>OSError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>ValueError</exception>
         <exception>ftplib.Error</exception>
+        <exception>ftplib.error_perm</exception>
+        <exception>ftplib.error_proto</exception>
+        <exception>ftplib.error_reply</exception>
+        <exception>ftplib.error_temp</exception>
       </errors>
     </module>
   </library>

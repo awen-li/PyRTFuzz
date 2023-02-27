@@ -194,7 +194,10 @@ def PyEncode (DataList):
 def PyDecode (TypeList, ByteStream):
     # only for test
     ValueList = DataProvider ().GetDataList (TypeList)
-    return tuple (ValueList)
+    if len (TypeList) <= 1:
+        return ValueList[0]
+    else:
+        return tuple (ValueList)
 
 class DataProviderTest ():
     def AssertType (self, Value, Type):

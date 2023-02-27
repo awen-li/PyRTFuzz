@@ -138,8 +138,8 @@ class CodeGen ():
         MaxNumber = self.DefaultNumber ()
         for ApiPath, ApiInfo in pbar(ApiList.items ()):
             try:
-                if self.IsHoleApi (ApiInfo) == True:
-                    continue
+                #if self.IsHoleApi (ApiInfo) == True:
+                #    continue
 
                 PyFile  = Dir + '/' + str(InitStatNum) + '#' + ApiPath.replace('.', '#') + '.py'
                 self.GenPy (ApiPath, InitStatNum, PyFile, ApiInfo.Class != None)
