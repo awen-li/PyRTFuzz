@@ -49,6 +49,14 @@ def FilterOut (Cmd, Ret, SuccessNum, TotalNum):
             print ("[%d]Execute: %s ----> Result: %s" %(TotalNum, Cmd, RunResult))
     return SuccessNum
 
+def TransError (Err):
+    if Err.find ('AttributeError: \'NoneType\'') != -1:
+        return 'AttributeError_NoneType'
+    elif Err.find ('TypeError: \'NoneType\'') != -1:
+        return 'TypeError_NoneType'
+    else:
+        return False
+
 def RunProcess (Cmd):
     global SubProc
     global RunResult
@@ -64,6 +72,10 @@ def RunProcess (Cmd):
         
         if not Line: break
         Ret = Line.decode("utf-8").replace ("\n", "")
+        Trans = TransError (Ret)
+        if  Trans != False:
+            Ret = Trans
+            break
     
     if Ret == None:
         return
