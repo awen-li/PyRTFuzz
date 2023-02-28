@@ -74,7 +74,7 @@ do
     echo $test >> $CHACHE_FILES
 done
 
-# 3. update api expr
+# 3. fast falidate and update api expr
 python -m specgen -e apispec.xml
 
 # 4. output the statistic

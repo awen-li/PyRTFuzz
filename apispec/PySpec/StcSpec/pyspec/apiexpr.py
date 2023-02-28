@@ -84,7 +84,7 @@ class ApiExpr ():
         ValidateCmd = f'python -c \'import {Imports}; print ({WholePath})\''
         while True:
             Vres = self.RunCmd (ValidateCmd)
-            if Vres.find ('Error:') != -1:
+            if Vres.find ('Error: ') != -1:
                 print ("Validate %s Fail. with Error: %s" %(WholePath, Vres))
                 return False
             return True
@@ -150,6 +150,7 @@ class ApiExpr ():
         return InitExpr + '%%' + str(TypeList)   
 
     def GenExpr (self):
+        print ("\n################ Fast Validating & generating API expr ################\n")
         FailNum = 0
         par = ProgressBar ()
         for libName, pyLib in par(self.PyLibs.items ()):
@@ -157,7 +158,7 @@ class ApiExpr ():
                 ApiPath = mdName
 
                 Imports = self.GetImportList (ApiPath)
-                ImportList = Imports.split ('.')
+                ImportList = Imports.split (',')
                 for Impt in ImportList:
                     if not Impt in pyMoudle.Imports:
                         pyMoudle.Imports.append (Impt)
