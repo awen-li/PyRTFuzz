@@ -66,16 +66,27 @@ class AstWalk(NodeVisitor):
         method = 'visit_' + node.__class__.__name__.lower()
         visitor = getattr(self, method, self.generic_visit)
         return visitor(node)
-
+    
+    def GetRelativePath (self, ModPath):
+        Index = ModPath.rfind ('.')
+        if Index == -1:
+            return None
+        else:
+            RelPath = ModPath[0:Index]
+            return RelPath
+        
     #ImportFrom(module='enum', names=[alias(name='Enum')], level=0)
     def visit_importfrom (self, node):
         #print (ast.dump(node))
         Module = node.module
         if Module == None:
-            return
+            Module = self.GetRelativePath (self.CurPyMod.Name)
+            if Module == None:
+                return
+        
         if Module[0:1] == '_':
             return
-            
+                
         Names = node.names
         for al in Names:
             if al.name[0:1] == '_':

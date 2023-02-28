@@ -36,14 +36,30 @@ class ApiSpecMerge ():
     
     def MergeExc (self):
         par = ProgressBar ()
+        print ("########## Merging execeptions ##########")
         for libName, pyLib in par(self.ToSpec.items ()):
             for mdName, pyMoudle in pyLib.Modules.items ():
                 FMD = self.GetModule (self.FromSpec, libName, mdName)
                 pyMoudle.Exceptions += FMD.Exceptions
+                pyMoudle.Exceptions = list (set (pyMoudle.Exceptions))
+
+    def MergeImport (self):
+        par = ProgressBar ()
+        print ("########## Merging imports ##########")
+        for libName, pyLib in par(self.ToSpec.items ()):
+            for mdName, pyMoudle in pyLib.Modules.items ():
+                FMD = self.GetModule (self.FromSpec, libName, mdName)
+                pyMoudle.Imports += FMD.Imports
+                pyMoudle.ImportFrom += FMD.ImportFrom
+
+                pyMoudle.Imports = list (set (pyMoudle.Imports))
+                pyMoudle.ImportFrom = list (set (pyMoudle.ImportFrom))
     
     def Merge (self):
         if self.MergeField == 'exc':
             self.MergeExc ()
+        if self.MergeField == 'import':
+            self.MergeImport ()
         else:
             print ("Suport merge: " + str (ApiSpecMerge.SupportMerge))
 

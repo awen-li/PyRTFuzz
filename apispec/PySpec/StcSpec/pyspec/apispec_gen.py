@@ -115,10 +115,12 @@ class ApiSpecGen ():
         for lib in pyLibs:
             libNode = ApiSpecGen.AddChild (Root, ApiSpec, "library")
             libNode.setAttribute ('name', lib.Name)
-            
+
             for mdname, md in lib.Modules.items ():
                 if IsExcept(mdname) == True:
                     continue
+                md.Imports.sort ()
+                md.ImportFrom.sort ()
 
                 mdNode = ApiSpecGen.AddChild (Root, libNode, 'module')
                 mdNode.setAttribute ('name', mdname)
