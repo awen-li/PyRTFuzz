@@ -11332,7 +11332,7 @@
         <exception>expat.error</exception>
       </errors>
     </module>
-    <module name="xml.sax.saxutils" imports="['os', 'urllib.parse', 'urllib.request', 'io', 'codecs', 'sys', 'xml', 'xml.sax', 'xml.sax.saxutils']" importfrom="[]">
+    <module name="xml.sax.saxutils" imports="['os', 'urllib.parse', 'urllib.request', 'io', 'codecs', 'sys', 'xml', 'xml.sax', 'xml.sax.saxutils']" importfrom="['xml.sax:handler', 'xml.sax:xmlreader']">
       <class name="XMLGenerator" init="obj = xml.sax.saxutils.XMLGenerator()%%['NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -11531,7 +11531,7 @@
         <exception>AttributeError</exception>
       </errors>
     </module>
-    <module name="xml.sax.xmlreader" imports="['xml', 'xml.sax', 'xml.sax.xmlreader']" importfrom="[]">
+    <module name="xml.sax.xmlreader" imports="['xml', 'xml.sax', 'xml.sax.xmlreader']" importfrom="['xml.sax:handler', 'xml.sax:saxutils']">
       <class name="XMLReader" init="obj = xml.sax.xmlreader.XMLReader()%%[]">
         <api name="__init__">
           <expr>None</expr>
@@ -14065,7 +14065,7 @@
       </errors>
     </module>
     <module name="xml.etree.cElementTree" imports="['xml', 'xml.etree', 'xml.etree.cElementTree']" importfrom="['xml.etree.ElementTree:*']"/>
-    <module name="xml.etree.ElementTree" imports="['sys', 're', 'warnings', 'io', 'collections', 'collections.abc', 'contextlib', 'xml', 'xml.etree', 'xml.etree.ElementTree']" importfrom="[]">
+    <module name="xml.etree.ElementTree" imports="['sys', 're', 'warnings', 'io', 'collections', 'collections.abc', 'contextlib', 'xml', 'xml.etree', 'xml.etree.ElementTree']" importfrom="['xml.etree:ElementPath']">
       <class name="Element" init="obj = xml.etree.ElementTree.Element(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -14451,7 +14451,7 @@
         <exception>xml.etree.ElementTree.ParseError</exception>
       </errors>
     </module>
-    <module name="xml.etree.ElementInclude" imports="['copy', 'xml', 'xml.etree', 'xml.etree.ElementInclude']" importfrom="['urllib.parse:urljoin']">
+    <module name="xml.etree.ElementInclude" imports="['copy', 'xml', 'xml.etree', 'xml.etree.ElementInclude']" importfrom="['xml.etree:ElementTree', 'urllib.parse:urljoin']">
       <api name="default_loader">
         <expr>ret = xml.etree.ElementInclude.default_loader(href,parse,encoding)%%['None', 'None', 'None']</expr>
         <args>['href:None', 'parse:None', 'encoding:None']</args>
@@ -21381,7 +21381,7 @@
     </module>
   </library>
   <library name="asyncio">
-    <module name="asyncio.staggered" imports="['contextlib', 'typing', 'asyncio', 'asyncio.staggered']" importfrom="[]">
+    <module name="asyncio.staggered" imports="['contextlib', 'typing', 'asyncio', 'asyncio.staggered']" importfrom="['asyncio:events', 'asyncio:exceptions', 'asyncio:locks', 'asyncio:tasks']">
       <api name="staggered_race">
         <expr>asyncio.staggered.staggered_race(coro_fns,delay)%%['None', 'None']</expr>
         <args>['coro_fns:None', 'delay:None']</args>
@@ -21393,7 +21393,7 @@
         <kwodefa>[None]</kwodefa>
       </api>
     </module>
-    <module name="asyncio.unix_events" imports="['errno', 'io', 'itertools', 'os', 'selectors', 'signal', 'socket', 'stat', 'subprocess', 'sys', 'threading', 'warnings', 'asyncio', 'asyncio.unix_events']" importfrom="['log:logger']">
+    <module name="asyncio.unix_events" imports="['errno', 'io', 'itertools', 'os', 'selectors', 'signal', 'socket', 'stat', 'subprocess', 'sys', 'threading', 'warnings', 'asyncio', 'asyncio.unix_events']" importfrom="['asyncio:base_events', 'asyncio:base_subprocess', 'asyncio:constants', 'asyncio:coroutines', 'asyncio:events', 'asyncio:exceptions', 'asyncio:futures', 'asyncio:selector_events', 'asyncio:tasks', 'asyncio:transports', 'log:logger']">
       <class name="AbstractChildWatcher" init="obj = asyncio.unix_events.AbstractChildWatcher()%%[]">
         <api name="remove_child_handler">
           <expr>obj.remove_child_handler(pid)%%['Mock']</expr>
@@ -21596,7 +21596,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="asyncio.tasks" imports="['concurrent.futures', 'contextvars', 'functools', 'inspect', 'itertools', 'types', 'warnings', 'weakref', 'asyncio', 'asyncio.tasks']" importfrom="['types:GenericAlias', 'queues:Queue']">
+    <module name="asyncio.tasks" imports="['concurrent.futures', 'contextvars', 'functools', 'inspect', 'itertools', 'types', 'warnings', 'weakref', 'asyncio', 'asyncio.tasks']" importfrom="['types:GenericAlias', 'asyncio:base_tasks', 'asyncio:coroutines', 'asyncio:events', 'asyncio:exceptions', 'asyncio:futures', 'queues:Queue']">
       <class name="Task" init="obj = asyncio.tasks.Task(None)%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -21803,7 +21803,7 @@
         <exception>exceptions.InvalidStateError</exception>
       </errors>
     </module>
-    <module name="asyncio.coroutines" imports="['collections.abc', 'functools', 'inspect', 'os', 'sys', 'traceback', 'types', 'warnings', 'asyncio', 'asyncio.coroutines']" importfrom="['log:logger']">
+    <module name="asyncio.coroutines" imports="['collections.abc', 'functools', 'inspect', 'os', 'sys', 'traceback', 'types', 'warnings', 'asyncio', 'asyncio.coroutines']" importfrom="['asyncio:base_futures', 'asyncio:constants', 'asyncio:format_helpers', 'log:logger']">
       <class name="CoroWrapper" init="obj = asyncio.coroutines.CoroWrapper(None)%%['NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -21887,7 +21887,7 @@
         <kwodefa>[]</kwodefa>
       </api>
     </module>
-    <module name="asyncio.locks" imports="['collections', 'warnings', 'asyncio', 'asyncio.locks']" importfrom="[]">
+    <module name="asyncio.locks" imports="['collections', 'warnings', 'asyncio', 'asyncio.locks']" importfrom="['asyncio:events', 'asyncio:exceptions']">
       <class name="Lock" init="obj = asyncio.locks.Lock()%%[]">
         <api name="__init__">
           <expr>None</expr>
@@ -22025,7 +22025,7 @@
         <exception>exceptions.CancelledError</exception>
       </errors>
     </module>
-    <module name="asyncio.proactor_events" imports="['io', 'os', 'socket', 'warnings', 'signal', 'threading', 'collections', 'asyncio', 'asyncio.proactor_events']" importfrom="['log:logger']">
+    <module name="asyncio.proactor_events" imports="['io', 'os', 'socket', 'warnings', 'signal', 'threading', 'collections', 'asyncio', 'asyncio.proactor_events']" importfrom="['asyncio:base_events', 'asyncio:constants', 'asyncio:futures', 'asyncio:exceptions', 'asyncio:protocols', 'asyncio:sslproto', 'asyncio:transports', 'asyncio:trsock', 'log:logger']">
       <class name="BaseProactorEventLoop" init="obj = asyncio.proactor_events.BaseProactorEventLoop(None)%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -22105,7 +22105,7 @@
         <exception>socket.error</exception>
       </errors>
     </module>
-    <module name="asyncio.events" imports="['contextvars', 'os', 'socket', 'subprocess', 'sys', 'threading', 'asyncio', 'asyncio.events']" importfrom="[]">
+    <module name="asyncio.events" imports="['contextvars', 'os', 'socket', 'subprocess', 'sys', 'threading', 'asyncio', 'asyncio.events']" importfrom="['asyncio:format_helpers', 'asyncio:DefaultEventLoopPolicy']">
       <class name="Handle" init="obj = asyncio.events.Handle(None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -22858,7 +22858,7 @@
       </errors>
     </module>
     <module name="asyncio.log" imports="['logging', 'asyncio', 'asyncio.log']" importfrom="[]"/>
-    <module name="asyncio.base_tasks" imports="['linecache', 'traceback', 'asyncio', 'asyncio.base_tasks']" importfrom="[]"/>
+    <module name="asyncio.base_tasks" imports="['linecache', 'traceback', 'asyncio', 'asyncio.base_tasks']" importfrom="['asyncio:base_futures', 'asyncio:coroutines']"/>
     <module name="asyncio.constants" imports="['enum', 'asyncio', 'asyncio.constants']" importfrom="[]"/>
     <module name="asyncio.transports" imports="['asyncio', 'asyncio.transports']" importfrom="[]">
       <class name="BaseTransport" init="obj = asyncio.transports.BaseTransport()%%['NoneType']">
@@ -23120,7 +23120,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="asyncio.runners" imports="['asyncio', 'asyncio.runners']" importfrom="[]">
+    <module name="asyncio.runners" imports="['asyncio', 'asyncio.runners']" importfrom="['asyncio:coroutines', 'asyncio:events', 'asyncio:tasks']">
       <api name="run">
         <expr>asyncio.runners.run(main)%%['coroutine']</expr>
         <args>['main:coroutine']</args>
@@ -23136,7 +23136,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="asyncio.base_events" imports="['collections', 'collections.abc', 'concurrent.futures', 'functools', 'heapq', 'itertools', 'os', 'socket', 'stat', 'subprocess', 'threading', 'time', 'traceback', 'sys', 'warnings', 'weakref', 'ssl', 'asyncio', 'asyncio.base_events']" importfrom="['log:logger']">
+    <module name="asyncio.base_events" imports="['collections', 'collections.abc', 'concurrent.futures', 'functools', 'heapq', 'itertools', 'os', 'socket', 'stat', 'subprocess', 'threading', 'time', 'traceback', 'sys', 'warnings', 'weakref', 'ssl', 'asyncio', 'asyncio.base_events']" importfrom="['asyncio:constants', 'asyncio:coroutines', 'asyncio:events', 'asyncio:exceptions', 'asyncio:futures', 'asyncio:protocols', 'asyncio:sslproto', 'asyncio:staggered', 'asyncio:tasks', 'asyncio:transports', 'asyncio:trsock', 'log:logger']">
       <class name="Server" init="obj = asyncio.base_events.Server(None,None,None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -23558,7 +23558,7 @@
         <exception>socket.error</exception>
       </errors>
     </module>
-    <module name="asyncio.streams" imports="['socket', 'sys', 'warnings', 'weakref', 'asyncio', 'asyncio.streams']" importfrom="['log:logger', 'tasks:sleep']">
+    <module name="asyncio.streams" imports="['socket', 'sys', 'warnings', 'weakref', 'asyncio', 'asyncio.streams']" importfrom="['asyncio:coroutines', 'asyncio:events', 'asyncio:exceptions', 'asyncio:format_helpers', 'asyncio:protocols', 'log:logger', 'tasks:sleep']">
       <class name="FlowControlMixin" init="obj = asyncio.streams.FlowControlMixin()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -23767,7 +23767,7 @@
         <exception>exceptions.LimitOverrunError</exception>
       </errors>
     </module>
-    <module name="asyncio.futures" imports="['concurrent.futures', 'contextvars', 'logging', 'sys', 'asyncio', 'asyncio.futures']" importfrom="['types:GenericAlias']">
+    <module name="asyncio.futures" imports="['concurrent.futures', 'contextvars', 'logging', 'sys', 'asyncio', 'asyncio.futures']" importfrom="['types:GenericAlias', 'asyncio:base_futures', 'asyncio:events', 'asyncio:exceptions', 'asyncio:format_helpers']">
       <class name="Future" init="obj = asyncio.futures.Future()%%[]">
         <api name="__init__">
           <expr>None</expr>
@@ -23879,7 +23879,7 @@
         <exception>exceptions.InvalidStateError</exception>
       </errors>
     </module>
-    <module name="asyncio.queues" imports="['collections', 'heapq', 'warnings', 'asyncio', 'asyncio.queues']" importfrom="['types:GenericAlias']">
+    <module name="asyncio.queues" imports="['collections', 'heapq', 'warnings', 'asyncio', 'asyncio.queues']" importfrom="['types:GenericAlias', 'asyncio:events', 'asyncio:locks']">
       <class name="QueueEmpty" init="obj = asyncio.queues.QueueEmpty()%%[]"/>
       <class name="QueueFull" init="obj = asyncio.queues.QueueFull()%%[]"/>
       <class name="Queue" init="obj = asyncio.queues.Queue()%%['NoneType']">
@@ -23993,7 +23993,7 @@
         <exception>asyncio.exceptions.SendfileNotAvailableError</exception>
       </errors>
     </module>
-    <module name="asyncio.threads" imports="['functools', 'contextvars', 'asyncio', 'asyncio.threads']" importfrom="[]">
+    <module name="asyncio.threads" imports="['functools', 'contextvars', 'asyncio', 'asyncio.threads']" importfrom="['asyncio:events']">
       <api name="to_thread">
         <expr>asyncio.threads.to_thread()%%[]</expr>
         <args>[]</args>
@@ -24160,7 +24160,7 @@
         <exception>RuntimeError</exception>
       </errors>
     </module>
-    <module name="asyncio.sslproto" imports="['collections', 'warnings', 'ssl', 'asyncio', 'asyncio.sslproto']" importfrom="['log:logger']">
+    <module name="asyncio.sslproto" imports="['collections', 'warnings', 'ssl', 'asyncio', 'asyncio.sslproto']" importfrom="['asyncio:constants', 'asyncio:protocols', 'asyncio:transports', 'log:logger']">
       <class name="SSLProtocol" init="obj = asyncio.sslproto.SSLProtocol(None,None,None,None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -24194,7 +24194,7 @@
         <exception>ssl.SSLError</exception>
       </errors>
     </module>
-    <module name="asyncio.selector_events" imports="['collections', 'errno', 'functools', 'selectors', 'socket', 'warnings', 'weakref', 'ssl', 'asyncio', 'asyncio.selector_events']" importfrom="['log:logger']">
+    <module name="asyncio.selector_events" imports="['collections', 'errno', 'functools', 'selectors', 'socket', 'warnings', 'weakref', 'ssl', 'asyncio', 'asyncio.selector_events']" importfrom="['asyncio:base_events', 'asyncio:constants', 'asyncio:events', 'asyncio:futures', 'asyncio:protocols', 'asyncio:sslproto', 'asyncio:transports', 'asyncio:trsock', 'log:logger']">
       <class name="BaseSelectorEventLoop" init="obj = asyncio.selector_events.BaseSelectorEventLoop()%%['NoneType']">
         <api name="__init__">
           <expr>None</expr>
@@ -24293,7 +24293,7 @@
         <exception>ValueError</exception>
       </errors>
     </module>
-    <module name="asyncio.format_helpers" imports="['functools', 'inspect', 'reprlib', 'sys', 'traceback', 'asyncio', 'asyncio.format_helpers']" importfrom="[]">
+    <module name="asyncio.format_helpers" imports="['functools', 'inspect', 'reprlib', 'sys', 'traceback', 'asyncio', 'asyncio.format_helpers']" importfrom="['asyncio:constants']">
       <api name="extract_stack">
         <expr>asyncio.format_helpers.extract_stack(f,limit)%%['frame', 'NoneType']</expr>
         <args>['f:frame', 'limit:NoneType']</args>
@@ -24305,7 +24305,7 @@
         <kwodefa>[]</kwodefa>
       </api>
     </module>
-    <module name="asyncio.base_futures" imports="['reprlib', 'asyncio', 'asyncio.base_futures']" importfrom="[]">
+    <module name="asyncio.base_futures" imports="['reprlib', 'asyncio', 'asyncio.base_futures']" importfrom="['asyncio:format_helpers']">
       <api name="isfuture">
         <expr>asyncio.base_futures.isfuture(obj)%%['coroutine']</expr>
         <args>['obj:coroutine']</args>
