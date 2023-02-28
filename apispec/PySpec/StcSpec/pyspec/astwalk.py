@@ -356,11 +356,14 @@ class AstWalk(NodeVisitor):
         
         BaseInfo = Class2Bases.get (WholePath)
         if BaseInfo == None:
-            Cmd = f'python -c \'import {self.CurPyMod.Name},inspect; print ([tn.__name__ for tn in inspect.getmro({WholePath})])\''
+            Connector = '.'
+            Cmd = f'python -c \'import {self.CurPyMod.Name},inspect; print ([[tn.__module__,tn.__name__] for tn in inspect.getmro({WholePath})])\''
             BaseInfo = RunCmd (Cmd)
             if BaseInfo == '' or BaseInfo.find ('Error: ') != -1:
                 return False
-            BaseInfo = ','.join (eval (BaseInfo)[1:])
+                   
+            BaseInfo = eval (BaseInfo)[1:]
+            BaseInfo = ','.join('.'.join(BList) for BList in BaseInfo)
             Class2Bases [WholePath] = BaseInfo
                 
         if BaseInfo.find ('Error') != -1 or BaseInfo.find ('Exception') != -1:
@@ -379,7 +382,15 @@ class AstWalk(NodeVisitor):
         if self.HandleErrInHerit (Bases, clfNode.name) == True:
             return Bases[0], True
         
-        return Bases[0], False
+        # update the base with absolute path
+        CurBase = Bases[0]
+        BaseInfo = Class2Bases.get (self.CurPyMod.Name + '.' + clfNode.name)
+        if BaseInfo != None and BaseInfo[0:1] != '_':
+            BaseInfo = BaseInfo.split (',')
+            #print (CurBase + "  ---> " + BaseInfo[0])
+            CurBase  = BaseInfo[0]
+        
+        return CurBase, False
 
     def visit_classdef(self, node):
         if self.CurClass != None or self.CurFunc != None:

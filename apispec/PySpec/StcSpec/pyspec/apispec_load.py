@@ -141,6 +141,8 @@ class ApiSpecLoader():
             clsName = xmlCls.getAttribute("name")
             clsInit = xmlCls.getAttribute("init")
             clsBase = xmlCls.getAttribute("base")
+            if len (clsBase) == 0:
+                clsBase = None
             DebugPrint ("# Parse class: " + clsName + " -> [init]"  + clsInit)
                                    
             curMd.Classes [clsName] = self.ParseClass (xmlCls, clsName, clsInit, clsBase)

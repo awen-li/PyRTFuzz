@@ -4,7 +4,7 @@ import random
 from progressbar import ProgressBar
 from .apispec_load import *
 from .apispec_gen import *
-from .utils import RunCmd
+from .utils import RunCmd, WriteValidate
 from .validate import Path2Imports, ValidatedApiList, Class2Bases
 
 

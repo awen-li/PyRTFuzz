@@ -5,12 +5,17 @@ from .apispec_gen import *
 from .apispec_load import *
 
 class ApiSpecMerge ():
-    SupportMerge = ['exc']
 
     def __init__ (self, ToSpec, FromSpec, MergeField):
         self.ToSpec   = self.GetApiSpec (ToSpec)
         self.FromSpec = self.GetApiSpec (FromSpec)
         self.MergeField = MergeField
+
+        self.SupportMerge = {\
+            'exc': self.MergeExc,\
+            'import': self.MergeImport,\
+            'base': self.MergeBase,
+            }
 
     def GetApiSpec (self, SpecPath):
         apiSpec = ApiSpecLoader (SpecPath)
@@ -34,6 +39,18 @@ class ApiSpecMerge ():
                 return pyMoudle
         return None
     
+    def GetClass (self, Spec, Lib, Module, Class):
+        for libName, pyLib in Spec.items ():
+            if libName != Lib:
+                continue
+            for mdName, pyMoudle in pyLib.Modules.items ():
+                if mdName != Module:
+                    continue
+                for clsName, cls in pyMoudle.Classes.items ():
+                    if clsName == Class:
+                        return cls
+        return None
+    
     def MergeExc (self):
         par = ProgressBar ()
         print ("########## Merging execeptions ##########")
@@ -54,13 +71,21 @@ class ApiSpecMerge ():
 
                 pyMoudle.Imports = list (set (pyMoudle.Imports))
                 pyMoudle.ImportFrom = list (set (pyMoudle.ImportFrom))
+
+    def MergeBase (self):
+        par = ProgressBar ()
+        print ("########## Merging class bases ##########")
+        for libName, pyLib in par(self.ToSpec.items ()):
+            for mdName, pyMoudle in pyLib.Modules.items ():
+                for clsName, cls in pyMoudle.Classes.items ():
+                    FCLS = self.GetClass (self.FromSpec, libName, mdName, clsName)
+                    cls.Base = FCLS.Base
     
     def Merge (self):
-        if self.MergeField == 'exc':
-            self.MergeExc ()
-        if self.MergeField == 'import':
-            self.MergeImport ()
+        MergeFunc = self.SupportMerge.get (self.MergeField)
+        if MergeFunc == None:
+            print ("Fail, suport merge: " + str (self.SupportMerge))
         else:
-            print ("Suport merge: " + str (ApiSpecMerge.SupportMerge))
+            MergeFunc ()
 
         self.SavePyLibs ()
