@@ -6,6 +6,8 @@ import ast
 from ast import *
 import astunparse
 from .apispec import *
+from .utils import RunCmd, WriteValidate
+from .validate import Path2Imports, ValidatedApiList, Class2Bases
 
 class AstWalk(NodeVisitor):
     def __init__(self):
@@ -320,50 +322,78 @@ class AstWalk(NodeVisitor):
         self.CurFunc = None
 
         return None
-
-    def HandleErrInHerit (self, clfNode):
+    
+    def GetBases (self, clfNode):
         clfBase = clfNode.bases
         if len (clfBase) == 0:
-            return False
-
+            return []
+        
+        Bases = []
         for base in clfBase:
             if isinstance (base, Name):
-                errName = base.id
+                Bases.append(base.id)
             elif isinstance (base, Attribute):
                 self.GetAttr = True
-                errName = self.visit_attribute (base)
+                bName = self.visit_attribute (base)
                 self.GetAttr = False
+                Bases.append (bName)
+            elif isinstance (base, Subscript):
+                Bases.append(base.value.id)
             else:
-                #print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (base) + " ---> HandleErrInHerit -> Unsuport type!!!")
-                return False
-            
-            if errName.find ('Error') == -1:
+                #print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (clfNode) + " ---> HandleErrInHerit -> Unsuport type!!!")
+                pass
+        return Bases
+
+    def HandleErrInHerit (self, Bases, clsName):
+        WholePath = self.CurPyMod.Name + '.' + clsName
+        for bs in Bases:
+            if bs.find ('Error') != -1 or bs.find ('Exception') != -1:
+                Excep = PyExcep (WholePath)
+                self.AddExcep (Excep)
+                return True
+            else:
                 continue
-
-            ExcepPath = ''
-            #if self.CurPyLib.Name != '.':
-            #    ExcepPath += self.CurPyLib.Name
-            ExcepPath += self.CurPyMod.Name + '.' + clfNode.name
-
-            Excep = PyExcep (ExcepPath)
+        
+        BaseInfo = Class2Bases.get (WholePath)
+        if BaseInfo == None:
+            Cmd = f'python -c \'import {self.CurPyMod.Name},inspect; print ([tn.__name__ for tn in inspect.getmro({WholePath})])\''
+            BaseInfo = RunCmd (Cmd)
+            if BaseInfo == '' or BaseInfo.find ('Error: ') != -1:
+                return False
+            BaseInfo = ','.join (eval (BaseInfo)[1:])
+            Class2Bases [WholePath] = BaseInfo
+                
+        if BaseInfo.find ('Error') != -1 or BaseInfo.find ('Exception') != -1:
+            Excep = PyExcep (WholePath)
             self.AddExcep (Excep)
             return True
-
         return False
-            
+    
+    # ret0: bases, ret1: flag for exc inherit
+    def HandleHerit (self, clfNode):
+        Bases = self.GetBases (clfNode)
+        if len(Bases) == 0:
+            return None, False
+        
+        # check if inherit from error:
+        if self.HandleErrInHerit (Bases, clfNode.name) == True:
+            return Bases[0], True
+        
+        return Bases[0], False
 
     def visit_classdef(self, node):
-
-        clsname = node.name
         if self.CurClass != None or self.CurFunc != None:
             return
 
-        # check if inherit from error:
-        if self.HandleErrInHerit (node) == True:
-            return
-            
-        self.CurClass = PyCls (clsname, None)
+        Bases, IsErr = self.HandleHerit (node)
+
+        clsname = node.name
+        self.CurClass = PyCls (clsname, None, Bases)
         self.CurPyMod.Classes [clsname] = self.CurClass
+
+        if IsErr == True:
+            self.CurClass = None
+            return
         
         Body = node.body
         for stmt in Body:
@@ -384,4 +414,5 @@ class AstWalk(NodeVisitor):
         for s in node.body:
             self.visit(s)
         self.Reset ()
+        WriteValidate (Path2Imports, ValidatedApiList, Class2Bases)
         

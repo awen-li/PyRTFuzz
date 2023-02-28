@@ -118,8 +118,8 @@ class ApiSpecLoader():
             pyLib.Exceptions.append (PyExcep(exp))
             DebugPrint (exp)
 
-    def ParseClass (self, clsName, clsInit, xmlCls):
-        curCls = PyCls (clsName, clsInit)
+    def ParseClass (self, xmlCls, clsName, clsInit, clsBase):
+        curCls = PyCls (clsName, clsInit, clsBase)
         
         xmlApis = xmlCls.getElementsByTagName("api")
         for xmlApi in xmlApis:
@@ -140,9 +140,10 @@ class ApiSpecLoader():
             self.AssertAttr (xmlCls, "name")
             clsName = xmlCls.getAttribute("name")
             clsInit = xmlCls.getAttribute("init")
+            clsBase = xmlCls.getAttribute("base")
             DebugPrint ("# Parse class: " + clsName + " -> [init]"  + clsInit)
                                    
-            curMd.Classes [clsName] = self.ParseClass (clsName, clsInit, xmlCls)
+            curMd.Classes [clsName] = self.ParseClass (xmlCls, clsName, clsInit, clsBase)
 
         # api under module
         xmlApis = xmlMd.getElementsByTagName ("api")

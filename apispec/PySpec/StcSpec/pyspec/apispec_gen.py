@@ -135,6 +135,8 @@ class ApiSpecGen ():
                     clsNode = ApiSpecGen.AddChild (Root, mdNode, "class")
                     clsNode.setAttribute ('name', clsname)
                     clsNode.setAttribute ('init', cls.clsInit)
+                    if cls.Base != None:
+                        clsNode.setAttribute ('base', cls.Base)
 
                     for apiname, api in cls.Apis.items ():
                         if apiname[0:1] == '_' and apiname != '__init__':

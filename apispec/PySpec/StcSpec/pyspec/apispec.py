@@ -33,7 +33,8 @@ class PyApi ():
         print ("\n")
         
 class PyCls ():
-    def __init__ (self, clsName, Init):
+    def __init__ (self, clsName, Init, Base=None):
+        self.Base    = Base
         self.clsName = clsName
         self.clsInit = Init
         self.Apis = {}
