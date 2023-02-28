@@ -1,6 +1,7 @@
 import os
+import subprocess
 import random
-import numpy as np
+from progressbar import ProgressBar
 from .apispec_load import *
 from .apispec_gen import *
 
@@ -47,6 +48,46 @@ class ApiExpr ():
     def LogExprExcept (self, ApiPath, Expr):
         with open (self.ExprExcept, 'a') as log:
             print ("%s -- %s" %(ApiPath, Expr), file=log)
+
+    def RunCmd (self, Cmd):
+        SubProc = subprocess.Popen(Cmd, shell=True, stdout=subprocess.PIPE, stderr = subprocess.STDOUT)
+        Vres = SubProc.stdout.readlines()
+        if len (Vres) == 0:
+            return ''
+        Vres = [line.decode("utf-8").replace ("\n", "") for line in Vres]
+
+        return Vres[-1]
+
+    def GetImportList (self, ApiPath):
+        ImportList = []
+        MdSecs = ApiPath.split ('.')
+        Md = ''
+        for m in MdSecs:
+            if Md == '':
+                Md = m
+            else:
+                Md += '.' + m
+            Cmd = f'python -c \'import {Md}; print ({Md}.__class__.__name__)\''
+            #print ("\t ->Cmd: " + Cmd)
+            Mtype = self.RunCmd (Cmd)
+            if Mtype == 'module':
+                ImportList.append (Md)
+        ImportList = ','.join (ImportList)
+        #print ("### ImportList = " + ImportList)
+        return ImportList
+
+    def FastValidate (self, ApiSpec, ApiPath, Imports):     
+        WholePath = ApiPath
+        if ApiSpec != None:
+            WholePath += '.' + ApiSpec.ApiName
+        MdPos = WholePath.find ('.')
+        ValidateCmd = f'python -c \'import {Imports}; print ({WholePath})\''
+        while True:
+            Vres = self.RunCmd (ValidateCmd)
+            if Vres.find ('Error:') != -1:
+                print ("Validate %s Fail. with Error: %s" %(WholePath, Vres))
+                return False
+            return True
 
     def GetExpr (self, ApiPath, Expr, Spec, SetDefault=False, Log=False):
         #Spec.Show ()    
@@ -109,22 +150,53 @@ class ApiExpr ():
         return InitExpr + '%%' + str(TypeList)   
 
     def GenExpr (self):
-        for libName, pyLib in self.PyLibs.items ():
+        FailNum = 0
+        par = ProgressBar ()
+        for libName, pyLib in par(self.PyLibs.items ()):
             for mdName, pyMoudle in pyLib.Modules.items ():
                 ApiPath = mdName
+
+                Imports = self.GetImportList (ApiPath)
+                ImportList = Imports.split ('.')
+                for Impt in ImportList:
+                    if not Impt in pyMoudle.Imports:
+                        pyMoudle.Imports.append (Impt)
+                
+                NewClasses = {}
                 for clsName, cls in pyMoudle.Classes.items ():
+                    
+                    ClsPath = ApiPath+'.'+clsName
+                    if not self.FastValidate (None, ClsPath, Imports):
+                        FailNum += len (cls.Apis)
+                        continue           
+                    NewClasses [clsName] = cls
+
                     hasInit = False
+                    NewApis = {}
                     for apiName, api in cls.Apis.items ():
                         if apiName == '__init__':
                             hasInit = True
-                            cls.clsInit = self.GetClsInit (cls, api, ApiPath+'.'+clsName)
+                            cls.clsInit = self.GetClsInit (cls, api, ClsPath)
                         else:
-                            api.Expr = self.GetApiExpr (api, ApiPath+'.'+clsName, 'obj.')
+                            if not self.FastValidate (api, ClsPath, Imports):
+                                FailNum += 1
+                                continue
+
+                            api.Expr = self.GetApiExpr (api, ClsPath, 'obj.')
+                        NewApis [apiName] = api
+                    cls.Apis = NewApis
                     
                     if hasInit == False:
-                        cls.clsInit = self.GetClsInit (cls, None, ApiPath+'.'+clsName)
+                        cls.clsInit = self.GetClsInit (cls, None, ClsPath)
+                pyMoudle.Classes = NewClasses
 
+                NewApis = {}
                 for apiName, api in pyMoudle.Apis.items ():
+                    if not self.FastValidate (api, ApiPath, Imports):
+                        FailNum += 1
+                        continue
+                    NewApis [apiName] = api
                     api.Expr = self.GetApiExpr (api, ApiPath)
-        
+                pyMoudle.Apis = NewApis
+        print ("\n Total Validated with Failure = %d \r\n" %FailNum)
         self.SavePyLibs ()
