@@ -4,8 +4,9 @@ import random
 from progressbar import ProgressBar
 from .apispec_load import *
 from .apispec_gen import *
-from .validate import Path2Imports
-from .validate import ValidatedApiList
+from .utils import RunCmd
+from .validate import Path2Imports, ValidatedApiList, Class2Bases
+
 
 class ApiExpr ():
     def __init__ (self, apiSpecXml='apispec.xml'):
@@ -51,15 +52,6 @@ class ApiExpr ():
         with open (self.ExprExcept, 'a') as log:
             print ("%s -- %s" %(ApiPath, Expr), file=log)
 
-    def RunCmd (self, Cmd):
-        SubProc = subprocess.Popen(Cmd, shell=True, stdout=subprocess.PIPE, stderr = subprocess.STDOUT)
-        Vres = SubProc.stdout.readlines()
-        if len (Vres) == 0:
-            return ''
-        Vres = [line.decode("utf-8").replace ("\n", "") for line in Vres]
-
-        return Vres[-1]
-
     def GetImportList (self, ApiPath):
         ImportList = Path2Imports.get (ApiPath)
         if ImportList != None:
@@ -75,7 +67,7 @@ class ApiExpr ():
                 Md += '.' + m
             Cmd = f'python -c \'import {Md}; print ({Md}.__class__.__name__)\''
             #print ("\t ->Cmd: " + Cmd)
-            Mtype = self.RunCmd (Cmd)
+            Mtype = RunCmd (Cmd)
             if Mtype == 'module':
                 ImportList.append (Md)
         ImportList = ','.join (ImportList)
@@ -92,31 +84,13 @@ class ApiExpr ():
             WholePath += '.' + ApiSpec.ApiName
         MdPos = WholePath.find ('.')
         ValidateCmd = f'python -c \'import {Imports}; print ({WholePath})\''
-        Vres = self.RunCmd (ValidateCmd)
+        Vres = RunCmd (ValidateCmd)
         if Vres.find ('Error: ') != -1:
             print ("Validate %s Fail. with Error: %s" %(WholePath, Vres))
             return False
         else:
             ValidatedApiList.append (ApiPath)
             return True
-        
-    def WriteValidate (self):
-        P2Impts = dict(sorted (Path2Imports.items()))
-        ValidatedApiList.sort ()
-        with open ('validate.py', 'w') as F:
-            print ('###################################################', file=F)
-            print ('# !!!!! This file is generated automatically       ', file=F)
-            print ('###################################################\n\n\n', file=F)
-            print ('Path2Imports = {\\', file=F)
-            for path, imports in P2Impts.items ():
-                print ('\'%s\':\'%s\',\\' %(path, imports), file=F)
-            print ('}\n\n', file=F)
-
-            print ('ValidatedApiList = [\\', file=F)
-            for ApiPath in ValidatedApiList:
-                print ('\'%s\',\\' %(ApiPath), file=F)
-            print (']\n\n', file=F)
-        return
         
     def FastValidateExc (self, Exceptions):     
         return Exceptions
@@ -236,4 +210,4 @@ class ApiExpr ():
 
         print ("### Total Validated with Failure = %d \r\n" %FailNum)
         self.SavePyLibs ()
-        self.WriteValidate ()
+        WriteValidate (Path2Imports, ValidatedApiList, Class2Bases)
