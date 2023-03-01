@@ -76,12 +76,13 @@ class ApiExpr ():
         return ImportList
 
     def FastValidateApi (self, ApiSpec, ApiPath, Imports):
-        if ApiPath in ValidatedApiList:
-            return True
-        
         WholePath = ApiPath
         if ApiSpec != None:
             WholePath += '.' + ApiSpec.ApiName
+
+        if WholePath in ValidatedApiList:
+            return True
+        
         MdPos = WholePath.find ('.')
         ValidateCmd = f'python -c \'import {Imports}; print ({WholePath})\''
         Vres = RunCmd (ValidateCmd)
@@ -89,7 +90,7 @@ class ApiExpr ():
             print ("Validate %s Fail. with Error: %s" %(WholePath, Vres))
             return False
         else:
-            ValidatedApiList.append (ApiPath)
+            ValidatedApiList.append (WholePath)
             return True
         
     def FastValidateExc (self, Exceptions):     
@@ -153,11 +154,40 @@ class ApiExpr ():
         else:
             InitExpr, TypeList = self.GetExpr (ApiPath, InitExpr, InitSpec, SetDefault=True, Log=True)
         #print (InitExpr)
-        return InitExpr + '%%' + str(TypeList)   
+        return InitExpr + '%%' + str(TypeList)
+    
+    def GetClassInit (self, cls):
+        if cls == None:
+            return None
+        
+        for apiName, api in cls.Apis.items ():
+            if apiName == '__init__':
+                return api
+        return None
+
+    def GetBaseClass (self, pyLib, Base):
+        if Base == None:
+            return None
+        
+        Index = Base.rfind ('.')
+        Module = Base[0:Index]
+        Class  = Base[Index+1:]
+        if Module.find ('builtins') != -1:
+            return None
+        
+        for libName, pyLib in self.PyLibs.items ():
+            for mdName, pyMoudle in pyLib.Modules.items ():
+                if mdName != Module:
+                    continue
+                for clsName, cls in pyMoudle.Classes.items ():
+                    if clsName == Class:
+                        return cls
+        return None
 
     def GenExpr (self):
         print ("\n################ Fast Validating & generating API expr ################\n")
         FailNum = 0
+        NoInitCls = 0
         par = ProgressBar ()
         for libName, pyLib in par(self.PyLibs.items ()):
             for mdName, pyMoudle in pyLib.Modules.items ():
@@ -195,8 +225,13 @@ class ApiExpr ():
                         NewApis [apiName] = api
                     cls.Apis = NewApis
                     
-                    if hasInit == False:
-                        cls.clsInit = self.GetClsInit (cls, None, ClsPath)
+                    if hasInit == False and len (cls.Apis) != 0:
+                        BaseCls = self.GetBaseClass (pyLib, cls.Base)
+                        InitSpec = self.GetClassInit (BaseCls)
+                        cls.clsInit = self.GetClsInit (cls, InitSpec, ClsPath)
+                        #print ("### Update %s constructor as: %s" %(ClsPath, cls.clsInit))
+                        NoInitCls += 1
+
                 pyMoudle.Classes = NewClasses
 
                 NewApis = {}
@@ -208,6 +243,6 @@ class ApiExpr ():
                     api.Expr = self.GetApiExpr (api, ApiPath)
                 pyMoudle.Apis = NewApis
 
-        print ("### Total Validated with Failure = %d \r\n" %FailNum)
+        print ("### Total Validated with Failure = %d, Total %d classes with no init functions \r\n" %(FailNum, NoInitCls))
         self.SavePyLibs ()
         WriteValidate (Path2Imports, ValidatedApiList, Class2Bases)
