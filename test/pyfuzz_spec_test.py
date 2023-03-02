@@ -11,16 +11,22 @@ class SpecTest ():
     def __init__ (self):
         self.TestNum = 0
         self.FailNum = 0
-        self.TestEntry () 
+        self.TestEntry ()
 
     def Assert (self, Cond, Msg):
+        self.TestNum += 1
         if Cond == True:
             print ("[SUCCESS]: %s" %Msg)
         else:
+            self.FailNum += 1
             print ("[FAIL]: %s" %Msg)
 
-    def TestEntry ():
-        pass
+    def TestSet (self):
+        print ("Empty TestSet")
+
+    def TestEntry (self):
+        self.TestSet ()
+        print ("### TOTAL TESTS: %d, FAIL TESTS: %d\n\n" %(self.TestNum, self.FailNum))
 
 
 class ApiTest (SpecTest):
@@ -40,7 +46,7 @@ class ApiTest (SpecTest):
         self.Assert (str(Api.Args)==Args, f"{ApiPath}-args: {Api.Args}, expected: {Args}")
         print ("")
     
-    def TestEntry (self):
+    def TestSet (self):
         self.AssertApi ("sqlite3.dbapi2.DateFromTicks", "ret = sqlite3.dbapi2.DateFromTicks(ticks)%%['int']", "['ticks:int']")
 
 class ClsTest (SpecTest):
@@ -59,7 +65,7 @@ class ClsTest (SpecTest):
         self.Assert (ClsSpec.Base==Base, f"{Cls}-args: {ClsSpec.Base}, expected: {Base}")
         print ("")
     
-    def TestEntry (self):
+    def TestSet (self):
         self.AssertClass ('HTMLParser', "obj = html.parser.HTMLParser()%%[]", "_markupbase.ParserBase")
 
 class MdTest (SpecTest):
@@ -78,7 +84,7 @@ class MdTest (SpecTest):
         self.Assert (str(MdSpec.ImportFrom)==ImportFrom, f"{Md}-ImportFrom: {MdSpec.ImportFrom}, expected: {ImportFrom}")
         print ("")
     
-    def TestEntry (self):
+    def TestSet (self):
         self.AssertMoudle ("html.parser", "['html', 'html.parser', 're']", "['html:unescape']")
     
 

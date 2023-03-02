@@ -46,15 +46,11 @@ def FilterOut (Cmd, Ret, SuccessNum, TotalNum):
     if RunResult == 'True':
         SuccessNum += 1
     
-    if len (sys.argv) == 1:
-        if RunResult != 'True':
-            print ("[%d]Execute: %s ----> Fail (%d/%2.1f%%)" %(TotalNum, Cmd, SuccessNum, SuccessNum*100.0/TotalNum))
-        else:
-            print ("[%d]Execute: %s ----> Success (%d/%2.1f%%)" %(TotalNum, Cmd, SuccessNum, SuccessNum*100.0/TotalNum))
+    if RunResult != 'True':
+        print ("[%d]Execute: %s ----> Fail (%d/%2.1f%%)" %(TotalNum, Cmd, SuccessNum, SuccessNum*100.0/TotalNum))
     else:
-        Filter = sys.argv[1]
-        if RunResult == Filter:
-            print ("[%d]Execute: %s ----> Result: %s" %(TotalNum, Cmd, RunResult))
+        print ("[%d]Execute: %s ----> Success (%d/%2.1f%%)" %(TotalNum, Cmd, SuccessNum, SuccessNum*100.0/TotalNum))
+        
     return SuccessNum
 
 def TransError (Err):
@@ -117,24 +113,35 @@ if not os.path.exists (InitFlag):
     atheris.GetInitialSeeds ('../experiments/seeds')
     atheris.Done ()
 
-AllTests = GetTests ('../experiments/seeds')
-TotalNum = 0
-SuccessNum = 0
-for PyFile in AllTests:
-    Cmd = 'python -m runone ' + PyFile
-    sTimer = Timer(20, TimeOut)
-    sTimer.start()
- 
-    RunProcess (Cmd)
-    TotalNum += 1
-    sTimer.cancel ()
+if len (sys.argv) == 1:
+    AllTests = GetTests ('../experiments/seeds')
+    TotalNum = 0
+    SuccessNum = 0
+    for PyFile in AllTests:
+        Cmd = 'python -m runone ' + PyFile
+        sTimer = Timer(20, TimeOut)
+        sTimer.start()
+    
+        RunProcess (Cmd)
+        TotalNum += 1
+        sTimer.cancel ()
 
-    SuccessNum = FilterOut (Cmd, RunResult, SuccessNum, TotalNum)
+        SuccessNum = FilterOut (Cmd, RunResult, SuccessNum, TotalNum)
 
-print ("\n###Done, Success rate: %2.1f%%[%d/%d]" %(SuccessNum*100.0/TotalNum, SuccessNum, TotalNum))
-ShowError ()
+    print ("\n###Done, Success rate: %2.1f%%[%d/%d]" %(SuccessNum*100.0/TotalNum, SuccessNum, TotalNum))
+    ShowError ()
+    sys.exit (0)
+else:
+    ErrLog = sys.argv[1]
+    AllExe = []
+    with open (ErrLog, 'r') as F:
+        AllExe = F.readlines()
+        for exe in AllExe:
+            Cmd = exe.replace ('\n', '')
+            print ("\n### Run " + Cmd)
+            os.system (Cmd)
 
-sys.exit (0)
+
 
 
 
