@@ -9,19 +9,27 @@ from threading import Timer
 
 SubProc = None
 RunResult = 'False'
+CurCase = ''
 ErrorTypes = {}
 
 def TimeOut ():
+    global RunResult
+    global CurCase
+
     if SubProc != None:
         os.kill(SubProc.pid, signal.SIGTERM)
         os.kill(SubProc.pid+1, signal.SIGTERM)
-    global RunResult
-    RunResult = 'TimeOut'
-    LogError (RunResult)
     
-def LogError (Err):
+    RunResult = 'TimeOut'
+    LogError (RunResult, CurCase)
+    
+def LogError (Err, Cmd):
     if len (Err) > 32:
         Err = 'Other'
+
+    with open ("error_rpt_" + Err + ".log", 'a') as F:
+        print (Cmd, file=F)
+    
     ErrNum = ErrorTypes.get (Err)
     if ErrNum == None:
         ErrorTypes[Err] = 1
@@ -60,6 +68,9 @@ def TransError (Err):
 def RunProcess (Cmd):
     global SubProc
     global RunResult
+    global CurCase
+
+    CurCase = Cmd
 
     SubProc = subprocess.Popen(Cmd, shell=True, stdout=subprocess.PIPE, stderr = subprocess.STDOUT)
 
@@ -82,7 +93,7 @@ def RunProcess (Cmd):
     
     if Ret != 'True':       
         RunResult = Ret
-        LogError (Ret)
+        LogError (Ret, Cmd)
     else:
         RunResult = 'True'
     return

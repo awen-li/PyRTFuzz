@@ -131,8 +131,11 @@ class ApiSpecCheck ():
                 self.GenInports (mdName)
                 for clsName, cls in pyMoudle.Classes.items ():
                     #self.GenInports (mdName + '.' + clsName)
-                    TotalApiNum += len (cls.Apis)
                     for apiName, api in cls.Apis.items ():
+                        if apiName == '__init__':
+                            continue
+
+                        TotalApiNum += 1
                         self.CheckTypes (api)
                         Typed = self.CheckApi (api)
                         if Typed == True:
