@@ -6,7 +6,7 @@ DYN_SPEC=$BASE_DIR/DynSpec
 
 CPYTHON_PATH=`cd ../../cpython/Python-3.9.15/Lib && pwd`
 echo $CPYTHON_PATH
-TIMIE_LIMIT=300
+TIMIE_LIMIT=240
 
 Wait ()
 {

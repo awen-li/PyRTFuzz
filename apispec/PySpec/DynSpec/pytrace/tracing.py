@@ -3,6 +3,7 @@ import os
 import re
 import sys
 import ast
+import time
 from ast import *
 import inspect
 from multiprocessing import  Process
@@ -25,7 +26,7 @@ else:
         threading.settrace(None)
 
 class Tracing:
-    def __init__(self, ApiSpecXml):
+    def __init__(self, ApiSpecXml, TimeLimit=180):
         self.ApiSpecXml = ApiSpecXml
         
         self.PyLibs = self.InitPyLibs (ApiSpecXml)
@@ -42,15 +43,18 @@ class Tracing:
 
         self.Passes = ["unittest", "importlib._bootstrap", 'pytrace']
 
+        self.StartTime = time.time()
+        self.TimeLimit = TimeLimit
+
     def __enter__(self):
-        print ("[Tracing]----> __enter__................")
+        print ("[Tracing]----> __enter__: %d (s)................"%(time.time ()))
         _settrace(self.StartTracing)
         return self
 
     def __exit__(self, *_):
         _unsettrace()
         self.SavePyLibs ()
-        print ("[Tracing]----> __exit__................")   
+        print ("[Tracing]----> __exit__: %d (s) ............" %(time.time () - self.StartTime))   
 
     def InitPyLibs (self, apiSpecXml):
         apiSpec = ApiSpecLoader (apiSpecXml)
@@ -83,7 +87,7 @@ class Tracing:
         hasNew  = False
         for arg in ArgsList:
             para, ptype = arg.split(':')
-            if ptype == 'None':
+            if ptype == 'None' or ptype == 'NoneType':
                 hasNew = True
                 pval = self.GetValue (Frame, para)
                 ptype = type(pval).__name__
@@ -116,10 +120,12 @@ class Tracing:
         NewRet = []
         for r in ApiSpec.Ret:
             ret, rtype = r.split(':')
-            if rtype == 'None':
+            if rtype == 'None' or rtype == 'NoneType':
                 rval = self.GetValue (Frame, ret)
                 rtype = type(rval).__name__
                 NewRet.append (ret + ':' + rtype)
+            else:
+                NewRet.append (r)
                     
         ApiSpec.Ret = NewRet
         print ("###Update " + MdName + "." + ApiSpec.ApiName + " returns: " + str(NewRet))
@@ -235,6 +241,11 @@ class Tracing:
 
         
     def StartTracing (self, Frame, Event, Arg):
+        if time.time () - self.StartTime >= self.TimeLimit:
+            print ("End tracing with time cost: %d (s)." %(time.time () - self.StartTime))
+            _unsettrace()
+            self.SavePyLibs ()
+            return
    
         Code = Frame.f_code
         self.CoName = Code.co_name

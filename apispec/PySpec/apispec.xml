@@ -36361,7 +36361,7 @@
         <api name="total_seconds">
           <expr>ret = obj.total_seconds()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36371,7 +36371,7 @@
         <api name="days">
           <expr>ret = obj.days()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36381,7 +36381,7 @@
         <api name="seconds">
           <expr>ret = obj.seconds()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36391,7 +36391,7 @@
         <api name="microseconds">
           <expr>ret = obj.microseconds()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36453,7 +36453,7 @@
         <api name="year">
           <expr>ret = obj.year()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36463,7 +36463,7 @@
         <api name="month">
           <expr>ret = obj.month()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36473,7 +36473,7 @@
         <api name="day">
           <expr>ret = obj.day()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36483,7 +36483,7 @@
         <api name="timetuple">
           <expr>ret = obj.timetuple()%%[]</expr>
           <args>[]</args>
-          <return>['_build_struct_time:None']</return>
+          <return>['_build_struct_time:function']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36503,7 +36503,7 @@
         <api name="isoweekday">
           <expr>ret = obj.isoweekday()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36513,7 +36513,7 @@
         <api name="isocalendar">
           <expr>ret = obj.isocalendar()%%[]</expr>
           <args>[]</args>
-          <return>['_IsoCalendarDate:None']</return>
+          <return>['_IsoCalendarDate:type']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36537,7 +36537,7 @@
         <api name="hour">
           <expr>ret = obj.hour()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36547,7 +36547,7 @@
         <api name="minute">
           <expr>ret = obj.minute()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36557,7 +36557,7 @@
         <api name="second">
           <expr>ret = obj.second()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36567,7 +36567,7 @@
         <api name="microsecond">
           <expr>ret = obj.microsecond()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36577,7 +36577,7 @@
         <api name="tzinfo">
           <expr>ret = obj.tzinfo()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36587,7 +36587,7 @@
         <api name="fold">
           <expr>ret = obj.fold()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36596,8 +36596,8 @@
         </api>
         <api name="isoformat">
           <expr>ret = obj.isoformat(timespec)%%['None']</expr>
-          <args>['timespec:None']</args>
-          <return>['s:None']</return>
+          <args>['timespec:str']</args>
+          <return>['s:str']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36619,7 +36619,7 @@
         <api name="hour">
           <expr>ret = obj.hour()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36629,7 +36629,7 @@
         <api name="minute">
           <expr>ret = obj.minute()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36639,7 +36639,7 @@
         <api name="second">
           <expr>ret = obj.second()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36649,7 +36649,7 @@
         <api name="microsecond">
           <expr>ret = obj.microsecond()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36659,7 +36659,7 @@
         <api name="tzinfo">
           <expr>ret = obj.tzinfo()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36669,7 +36669,7 @@
         <api name="fold">
           <expr>ret = obj.fold()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36709,7 +36709,7 @@
         <api name="timetuple">
           <expr>ret = obj.timetuple()%%[]</expr>
           <args>[]</args>
-          <return>['_build_struct_time:None']</return>
+          <return>['_build_struct_time:function']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36719,7 +36719,7 @@
         <api name="timestamp">
           <expr>ret = obj.timestamp()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36729,7 +36729,7 @@
         <api name="utctimetuple">
           <expr>ret = obj.utctimetuple()%%[]</expr>
           <args>[]</args>
-          <return>['_build_struct_time:None']</return>
+          <return>['_build_struct_time:function']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36739,7 +36739,7 @@
         <api name="timetz">
           <expr>ret = obj.timetz()%%[]</expr>
           <args>[]</args>
-          <return>['time:None']</return>
+          <return>['time:type']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -36748,8 +36748,8 @@
         </api>
         <api name="astimezone">
           <expr>ret = obj.astimezone(tz)%%['None']</expr>
-          <args>['tz:None']</args>
-          <return>['ret:None']</return>
+          <args>['tz:ZoneInfo']</args>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -39878,7 +39878,7 @@
       </api>
       <api name="deepcopy">
         <expr>copy.deepcopy(x,memo,_nil)%%['st', 'NoneType', 'list']</expr>
-        <args>['x:st', 'memo:NoneType', '_nil:list']</args>
+        <args>['x:st', 'memo:dict', '_nil:list']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -46902,7 +46902,7 @@
         </api>
         <api name="opengroup">
           <expr>obj.opengroup(name)%%['NoneType']</expr>
-          <args>['name:NoneType']</args>
+          <args>['name:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>

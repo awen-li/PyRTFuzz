@@ -4,7 +4,7 @@ import random
 from progressbar import ProgressBar
 from .apispec_load import *
 from .apispec_gen import *
-from .utils import RunCmd, WriteValidate
+from .utils import RunCmd, WriteValidate, OsExcepts
 from .validate import Path2Imports, ValidatedApiList, Class2Bases
 
 
@@ -93,7 +93,11 @@ class ApiExpr ():
             ValidatedApiList.append (WholePath)
             return True
         
-    def FastValidateExc (self, Exceptions):     
+    def FastValidateExc (self, Exceptions):
+        ExceptsList = [exc.exName for exc in Exceptions]
+        ExceptsList = list (set (ExceptsList + OsExcepts))
+
+        Exceptions = [PyExcep(exc) for exc in ExceptsList]
         return Exceptions
 
     def GetExpr (self, ApiPath, Expr, Spec, SetDefault=False, Log=False):
@@ -192,15 +196,16 @@ class ApiExpr ():
         for libName, pyLib in par(self.PyLibs.items ()):
             for mdName, pyMoudle in pyLib.Modules.items ():
                 ApiPath = mdName
+                MdApiNum = 0
 
+                # validate imports
                 Imports = self.GetImportList (ApiPath)
                 ImportList = Imports.split (',')
                 for Impt in ImportList:
                     if not Impt in pyMoudle.Imports:
                         pyMoudle.Imports.append (Impt)
 
-                pyMoudle.Exceptions = self.FastValidateExc (pyMoudle.Exceptions)
-                
+                # validate CLASSes under the module
                 NewClasses = {}
                 for clsName, cls in pyMoudle.Classes.items ():
                     
@@ -224,6 +229,7 @@ class ApiExpr ():
                             api.Expr = self.GetApiExpr (api, ClsPath, 'obj.')
                         NewApis [apiName] = api
                     cls.Apis = NewApis
+                    MdApiNum += len (NewApis)
                     
                     if hasInit == False:
                         BaseCls = self.GetBaseClass (pyLib, cls.Base)
@@ -234,6 +240,7 @@ class ApiExpr ():
 
                 pyMoudle.Classes = NewClasses
 
+                # validate APIs under the module
                 NewApis = {}
                 for apiName, api in pyMoudle.Apis.items ():
                     if not self.FastValidateApi (api, ApiPath, Imports):
@@ -242,6 +249,11 @@ class ApiExpr ():
                     NewApis [apiName] = api
                     api.Expr = self.GetApiExpr (api, ApiPath)
                 pyMoudle.Apis = NewApis
+                MdApiNum += len (NewApis)
+
+                # validate exceptions
+                if MdApiNum != 0:
+                    pyMoudle.Exceptions = self.FastValidateExc (pyMoudle.Exceptions)
 
         print ("### Total Validated with Failure = %d, Total %d classes with no init functions \r\n" %(FailNum, NoInitCls))
         self.SavePyLibs ()
