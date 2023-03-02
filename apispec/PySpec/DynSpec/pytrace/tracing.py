@@ -24,6 +24,8 @@ else:
         sys.settrace(None)
         threading.settrace(None)
 
+TracingDone='/tmp/TracingDone'
+
 
 class Tracing:
     def __init__(self, ApiSpecXml):
@@ -45,12 +47,16 @@ class Tracing:
 
     def __enter__(self):
         print ("[Tracing]----> __enter__................")
+        if os.path.exists (TracingDone):
+            os.remove (TracingDone)
         _settrace(self.StartTracing)
         return self
 
     def __exit__(self, *_):
         _unsettrace()
         self.SavePyLibs ()
+        with open (TracingDone, 'w') as F:
+            print ("TracingDone", file=F)
         print ("[Tracing]----> __exit__................")   
 
     def InitPyLibs (self, apiSpecXml):

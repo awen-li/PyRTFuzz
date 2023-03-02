@@ -6,7 +6,7 @@ DYN_SPEC=$BASE_DIR/DynSpec
 
 CPYTHON_PATH=`cd ../../cpython/Python-3.9.15/Lib && pwd`
 echo $CPYTHON_PATH
-TIMIE_LIMIT=600
+TIMIE_LIMIT=300
 
 Wait ()
 {
@@ -23,7 +23,7 @@ Wait ()
 		
 		let second++
 		if [ $second == $TIMIE_LIMIT ]; then
-			pyId=`ps -ef | grep $process | grep -v grep | awk '{print $2}'`
+			pyId=`ps -ef | grep "$process" | grep -v grep | awk '{print $2}'`
 			echo "### $process[$pyId] runs over $TIMIE_LIMIT, force it to exit now........"
 			
 			kill -9 $pyId
@@ -50,6 +50,8 @@ INDEX=1
 CHACHE_FILES="cache.tmp"
 touch $CHACHE_FILES
 ALL_TESTS=`find $CPYTHON_TESTS -name "test*py"`
+FailLog="DynamicTracingFail.txt"
+rm -f $FailLog
 for test in $ALL_TESTS
 do
     StartTime=`date '+%s'`
@@ -62,9 +64,13 @@ do
     	let INDEX=$INDEX+1
     	continue
     fi
-    python -m spectrace $test &
-    
+
+    python -m spectrace $test &   
     Wait "python -m spectrace"
+
+	if [ ! -f "/tmp/TracingDone" ]; then
+		echo "python -m spectrace $test" >> $FailLog
+	fi
         
     EndTime=`date '+%s'`
     TimeCost=`expr $EndTime - $StartTime`
@@ -79,3 +85,5 @@ python -m specgen -e apispec.xml
 
 # 4. output the statistic
 python -m specgen -c apispec.xml
+
+

@@ -11,7 +11,7 @@ from .validate import Path2Imports, ValidatedApiList, Class2Bases
 class ApiExpr ():
     def __init__ (self, apiSpecXml='apispec.xml'):
         self.PyLibs = self.InitPyLibs (apiSpecXml)
-        self.ExprExcept = 'ExprExcept.txt'
+        self.ExprExcept = 'unrecognized-class-constructor.txt'
         if os.path.exists (self.ExprExcept):
             os.remove (self.ExprExcept)
 
@@ -145,14 +145,14 @@ class ApiExpr ():
         #print (ApiExpr)
         return ApiExpr + '%%' + str(TypeList)
 
-    def GetClsInit (self, ClsSpec, InitSpec, ApiPath):
+    def GetClsInit (self, ClsSpec, InitSpec, ApiPath, IsFromBase=False):
         #print ("[CLASS]" + ClsSpec.clsName)
         InitExpr = 'obj = ' + ApiPath
         if InitSpec == None:
             InitExpr += '()'
             TypeList  = []
         else:
-            InitExpr, TypeList = self.GetExpr (ApiPath, InitExpr, InitSpec, SetDefault=True, Log=True)
+            InitExpr, TypeList = self.GetExpr (ApiPath, InitExpr, InitSpec, SetDefault=True, Log=(IsFromBase == False))
         #print (InitExpr)
         return InitExpr + '%%' + str(TypeList)
     
@@ -225,10 +225,10 @@ class ApiExpr ():
                         NewApis [apiName] = api
                     cls.Apis = NewApis
                     
-                    if hasInit == False and len (cls.Apis) != 0:
+                    if hasInit == False:
                         BaseCls = self.GetBaseClass (pyLib, cls.Base)
                         InitSpec = self.GetClassInit (BaseCls)
-                        cls.clsInit = self.GetClsInit (cls, InitSpec, ClsPath)
+                        cls.clsInit = self.GetClsInit (cls, InitSpec, ClsPath, IsFromBase=True)
                         #print ("### Update %s constructor as: %s" %(ClsPath, cls.clsInit))
                         NoInitCls += 1
 
