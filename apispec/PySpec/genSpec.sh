@@ -82,6 +82,10 @@ done
 
 # 3. fast falidate and update api expr
 python -m specgen -e apispec.xml
+if [ ! -f "expr-apispec.xml" ]; then
+	exit 0
+fi
+mv expr-apispec.xml apispec.xml
 
 # 4. output the statistic
 python -m specgen -c apispec.xml

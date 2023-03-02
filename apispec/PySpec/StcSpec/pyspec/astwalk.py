@@ -9,6 +9,8 @@ from .apispec import *
 from .utils import RunCmd, WriteValidate
 from .validate import Path2Imports, ValidatedApiList, Class2Bases
 
+IsDebug = os.environ.get ("PYDEBUG")
+
 class AstWalk(NodeVisitor):
     def __init__(self):
         self.pyLibs  = []
@@ -258,11 +260,11 @@ class AstWalk(NodeVisitor):
                         type_names_body.append(self.visit_attribute (elmt))
                         self.GetAttr = False
                     else:
-                        #print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (elmt) + " ---> visit_try-Tuple -> Unsuport type!!!")
-                        pass
+                        if IsDebug:
+                            print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (elmt) + " ---> visit_try-Tuple -> Unsuport type!!!")
             else:
-                #print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (handler) + " ---> visit_try -> Unsuport type!!!")
-                pass
+                if IsDebug:
+                    print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (handler) + " ---> visit_try -> Unsuport type!!!")
 
         for excep in type_names_body:
             Prefix = ''
@@ -302,7 +304,9 @@ class AstWalk(NodeVisitor):
 
         if isinstance (node.body[0], Pass):
             return
-            
+
+        if IsDebug:
+            print ("### function -> " + node.name)  
         fa, pa, ka, defas, kwdefas = self.GetFP (node.args)
         self.CurFunc = PyApi (ApiName, None, [], 
                               [p+':None' for p in fa], 
@@ -340,8 +344,9 @@ class AstWalk(NodeVisitor):
             elif isinstance (base, Subscript):
                 Bases.append(base.value.id)
             else:
-                #print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (clfNode) + " ---> HandleErrInHerit -> Unsuport type!!!")
-                pass
+                if IsDebug:
+                    print ("@@@@@@@@@@@@@@@ \r\n" + ast.dump (clfNode) + " ---> HandleErrInHerit -> Unsuport type!!!")
+
         return Bases
 
     def HandleErrInHerit (self, Bases, clsName):

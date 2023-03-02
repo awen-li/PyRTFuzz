@@ -45,6 +45,7 @@ class Core ():
         self.PyLibs  = self.InitPyLibs (apiSpecXml)
         self.ApiList   = {}
         self.ClassInfo = {}
+        self.ModuleList= {}
         self.InitApiList ()
         
         self.CmdList = {}
@@ -62,7 +63,7 @@ class Core ():
         for libName, pyLib in par(self.PyLibs.items ()):
             for mdName, pyMoudle in pyLib.Modules.items ():
                 MdExcepts = [e.exName for e in pyMoudle.Exceptions]
-                MdExcepts = list (set (MdExcepts))
+                self.ModuleList [mdName] = pyMoudle
                 
                 for clsName, cls in pyMoudle.Classes.items ():
                     for apiName, api in cls.Apis.items ():

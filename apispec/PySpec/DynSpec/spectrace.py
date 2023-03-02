@@ -4,6 +4,7 @@ import sys, getopt
 import argparse
 from pytrace import *
 
+TracingDone='/tmp/TracingDone'
 
 def InitArgument (parser):
     parser.add_argument('--version', action='version', version='trace 2.0')
@@ -18,7 +19,6 @@ def InitArgument (parser):
               
     parser.add_argument('filename', nargs='?', help='file to run as main program')
     parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
-
 
 def DynTrace (Entry, ApiSpecXml):
     fIndex = Entry.rfind ('/')
@@ -39,15 +39,18 @@ def DynTrace (Entry, ApiSpecXml):
             '__cached__': None,
         }
 
+        if os.path.exists (TracingDone):
+            os.remove (TracingDone)
+
         sys.argv = [Entry]
         with Tracing (ApiSpecXml) as T:
             exec(code, globs, globs)
-  
+
     except OSError as oserr:
         sys.exit("Cannot run file %s because: %s" % (Entry, oserr))
-
     except SystemExit as sysrr:
-        pass
+        with open (TracingDone, 'w') as F:
+            print (TracingDone, file=F)
 
 
 def main():
