@@ -32,6 +32,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="sqlite3.dump" imports="['sqlite3', 'sqlite3.dump']" importfrom="[]"/>
   </library>
@@ -82,6 +87,9 @@
       </class>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
   </library>
@@ -105,6 +113,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="ctypes.util" imports="['ctypes', 'ctypes.util', 'importlib.machinery', 'os', 're', 'shutil', 'struct', 'subprocess', 'sys', 'tempfile']" importfrom="['ctypes._aix:find_library', 'ctypes.macholib.dyld:dyld_find']">
       <api name="find_library">
@@ -118,9 +131,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>FileNotFoundError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -135,6 +150,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="ctypes.macholib.dyld" imports="['ctypes', 'ctypes.macholib', 'ctypes.macholib.dyld', 'os']" importfrom="['ctypes.macholib.dylib:dylib_info', 'ctypes.macholib.framework:framework_info', 'itertools:*']">
       <api name="dyld_env">
@@ -258,8 +278,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -274,6 +296,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
   </library>
   <library name="xmlrpc">
@@ -1250,6 +1277,8 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -1764,6 +1793,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>LookupError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -1832,6 +1862,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -1922,7 +1954,10 @@
       </class>
       <class name="BytesFeedParser" init="obj = email.feedparser.BytesFeedParser()%%['NoneType']" base="email.feedparser.FeedParser"/>
       <errors>
+        <exception>AttributeError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="email.generator" imports="['email', 'email.generator', 'random', 're', 'sys', 'time']" importfrom="['copy:deepcopy', 'io:BytesIO', 'io:StringIO']">
@@ -1952,7 +1987,9 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="email.parser" imports="['email', 'email.parser']" importfrom="['email._policybase:compat32', 'email.feedparser:BytesFeedParser', 'email.feedparser:FeedParser', 'io:StringIO', 'io:TextIOWrapper']">
@@ -2002,6 +2039,11 @@
         </api>
       </class>
       <class name="BytesHeaderParser" init="obj = email.parser.BytesHeaderParser()%%[]" base="email.parser.BytesParser"/>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.encoders" imports="['email', 'email.encoders']" importfrom="['base64:encodebytes', 'quopri:encodestring']">
       <api name="encode_base64">
@@ -2045,7 +2087,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="email.contentmanager" imports="['binascii', 'email', 'email.charset', 'email.contentmanager', 'email.errors', 'email.message']" importfrom="['email:quoprimime']">
@@ -2172,6 +2217,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
@@ -2220,6 +2266,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.headerregistry" imports="['email', 'email.headerregistry']" importfrom="['email:errors', 'email:utils', 'types:MappingProxyType']">
       <class name="Address" init="obj = email.headerregistry.Address()%%['NoneType', 'NoneType', 'NoneType', 'NoneType']">
@@ -2503,6 +2554,8 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -2541,9 +2594,12 @@
       </api>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
         <exception>HeaderParseError</exception>
         <exception>IndexError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
         <exception>binascii.Error</exception>
       </errors>
     </module>
@@ -2578,6 +2634,11 @@
         <defa>['text', None]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.errors" imports="['email', 'email.errors']" importfrom="[]">
       <class name="MessageError" init="obj = email.errors.MessageError()%%[]" base="Exception"/>
@@ -2735,6 +2796,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -2752,6 +2815,9 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>errors.MultipartConversionError</exception>
       </errors>
     </module>
@@ -2768,6 +2834,11 @@
           <kwodefa>[None]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.mime.text" imports="['email', 'email.mime', 'email.mime.text']" importfrom="['email.charset:Charset', 'email.mime.nonmultipart:MIMENonMultipart']">
       <class name="MIMEText" init="obj = email.mime.text.MIMEText(None)%%['NoneType', 'NoneType', 'NoneType']" base="email.mime.nonmultipart.MIMENonMultipart">
@@ -2782,6 +2853,11 @@
           <kwodefa>[None]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.mime.application" imports="['email', 'email.mime', 'email.mime.application']" importfrom="['email.mime.nonmultipart:MIMENonMultipart', 'email:encoders']">
       <class name="MIMEApplication" init="obj = email.mime.application.MIMEApplication(None)%%['NoneType', 'NoneType', 'NoneType']" base="email.mime.nonmultipart.MIMENonMultipart">
@@ -2796,6 +2872,11 @@
           <kwodefa>[None]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.mime.base" imports="['email', 'email.mime', 'email.mime.base', 'email.policy']" importfrom="['email:message']">
       <class name="MIMEBase" init="obj = email.mime.base.MIMEBase(None,None)%%['NoneType', 'NoneType']" base="email.message.Message">
@@ -2810,6 +2891,11 @@
           <kwodefa>[None]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.mime.audio" imports="['email', 'email.mime', 'email.mime.audio', 'sndhdr']" importfrom="['email.mime.nonmultipart:MIMENonMultipart', 'email:encoders', 'io:BytesIO']">
       <class name="MIMEAudio" init="obj = email.mime.audio.MIMEAudio(None)%%['NoneType', 'NoneType', 'NoneType']" base="email.mime.nonmultipart.MIMENonMultipart">
@@ -2824,6 +2910,11 @@
           <kwodefa>[None]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.mime.image" imports="['email', 'email.mime', 'email.mime.image', 'imghdr']" importfrom="['email.mime.nonmultipart:MIMENonMultipart', 'email:encoders']">
       <class name="MIMEImage" init="obj = email.mime.image.MIMEImage(None)%%['NoneType', 'NoneType', 'NoneType']" base="email.mime.nonmultipart.MIMENonMultipart">
@@ -2838,6 +2929,11 @@
           <kwodefa>[None]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="email.mime.multipart" imports="['email', 'email.mime', 'email.mime.multipart']" importfrom="['email.mime.base:MIMEBase']">
       <class name="MIMEMultipart" init="obj = email.mime.multipart.MIMEMultipart()%%['NoneType', 'NoneType', 'NoneType']" base="email.mime.base.MIMEBase">
@@ -2852,6 +2948,11 @@
           <kwodefa>[None]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
   </library>
   <library name="dbm">
@@ -2995,6 +3096,7 @@
         <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="wsgiref.validate" imports="['re', 'sys', 'warnings', 'wsgiref', 'wsgiref.validate']" importfrom="[]">
@@ -3201,6 +3303,9 @@
       </api>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>wsgiref.validate.WSGIWarning</exception>
       </errors>
     </module>
@@ -3280,6 +3385,11 @@
         <defa>['WSGIServer', 'WSGIRequestHandler']</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="wsgiref.headers" imports="['re', 'wsgiref', 'wsgiref.headers']" importfrom="[]">
       <class name="Headers" init="obj = wsgiref.headers.Headers()%%['NoneType']">
@@ -3356,6 +3466,9 @@
       </class>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="wsgiref.util" imports="['posixpath', 'warnings', 'wsgiref', 'wsgiref.util']" importfrom="['io:BytesIO', 'io:StringIO', 'urllib.parse:quote']">
@@ -3432,8 +3545,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
   </library>
@@ -3633,6 +3749,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ConnectionError</exception>
         <exception>ImportError</exception>
         <exception>OSError</exception>
@@ -3826,6 +3943,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
@@ -4563,6 +4681,7 @@
         <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>http.cookiejar.LoadError</exception>
       </errors>
@@ -4736,6 +4855,9 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>http.cookies.CookieError</exception>
       </errors>
     </module>
@@ -4800,6 +4922,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp858" imports="['codecs', 'encodings', 'encodings.cp858']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp858.Codec()%%[]" base="codecs.Codec">
@@ -4860,6 +4987,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1026" imports="['codecs', 'encodings', 'encodings.cp1026']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1026.Codec()%%[]" base="codecs.Codec">
@@ -4920,6 +5052,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.utf_16_be" imports="['codecs', 'encodings', 'encodings.utf_16_be']" importfrom="[]">
       <class name="IncrementalEncoder" init="obj = encodings.utf_16_be.IncrementalEncoder()%%['None']" base="codecs.IncrementalEncoder">
@@ -4957,6 +5094,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.aliases" imports="['encodings', 'encodings.aliases']" importfrom="[]"/>
     <module name="encodings.cp850" imports="['codecs', 'encodings', 'encodings.cp850']" importfrom="[]">
@@ -5018,6 +5160,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1255" imports="['codecs', 'encodings', 'encodings.cp1255']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1255.Codec()%%[]" base="codecs.Codec">
@@ -5078,6 +5225,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.euc_jisx0213" imports="['codecs', 'encodings', 'encodings.euc_jisx0213']" importfrom="[]">
       <class name="Codec" init="obj = encodings.euc_jisx0213.Codec()%%[]" base="codecs.Codec"/>
@@ -5095,6 +5247,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.mac_latin2" imports="['codecs', 'encodings', 'encodings.mac_latin2']" importfrom="[]">
       <class name="Codec" init="obj = encodings.mac_latin2.Codec()%%[]" base="codecs.Codec">
@@ -5155,6 +5312,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.hp_roman8" imports="['codecs', 'encodings', 'encodings.hp_roman8']" importfrom="[]">
       <class name="Codec" init="obj = encodings.hp_roman8.Codec()%%[]" base="codecs.Codec">
@@ -5215,6 +5377,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.mac_arabic" imports="['codecs', 'encodings', 'encodings.mac_arabic']" importfrom="[]">
       <class name="Codec" init="obj = encodings.mac_arabic.Codec()%%[]" base="codecs.Codec">
@@ -5275,6 +5442,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp273" imports="['codecs', 'encodings', 'encodings.cp273']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp273.Codec()%%[]" base="codecs.Codec">
@@ -5335,6 +5507,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.idna" imports="['codecs', 'encodings', 'encodings.idna', 're', 'stringprep']" importfrom="['unicodedata:ucd_3_2_0']">
       <class name="Codec" init="obj = encodings.idna.Codec()%%[]" base="codecs.Codec"/>
@@ -5383,9 +5560,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>UnicodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="encodings.cp1252" imports="['codecs', 'encodings', 'encodings.cp1252']" importfrom="[]">
@@ -5447,6 +5627,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_9" imports="['codecs', 'encodings', 'encodings.iso8859_9']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_9.Codec()%%[]" base="codecs.Codec">
@@ -5507,6 +5692,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp869" imports="['codecs', 'encodings', 'encodings.cp869']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp869.Codec()%%[]" base="codecs.Codec">
@@ -5567,6 +5757,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso2022_jp_1" imports="['codecs', 'encodings', 'encodings.iso2022_jp_1']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso2022_jp_1.Codec()%%[]" base="codecs.Codec"/>
@@ -5584,6 +5779,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.gbk" imports="['codecs', 'encodings', 'encodings.gbk']" importfrom="[]">
       <class name="Codec" init="obj = encodings.gbk.Codec()%%[]" base="codecs.Codec"/>
@@ -5601,6 +5801,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.mac_turkish" imports="['codecs', 'encodings', 'encodings.mac_turkish']" importfrom="[]">
       <class name="Codec" init="obj = encodings.mac_turkish.Codec()%%[]" base="codecs.Codec">
@@ -5661,6 +5866,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso2022_jp_3" imports="['codecs', 'encodings', 'encodings.iso2022_jp_3']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso2022_jp_3.Codec()%%[]" base="codecs.Codec"/>
@@ -5678,6 +5888,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.gb18030" imports="['codecs', 'encodings', 'encodings.gb18030']" importfrom="[]">
       <class name="Codec" init="obj = encodings.gb18030.Codec()%%[]" base="codecs.Codec"/>
@@ -5695,6 +5910,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.zlib_codec" imports="['codecs', 'encodings', 'encodings.zlib_codec', 'zlib']" importfrom="[]">
       <class name="Codec" init="obj = encodings.zlib_codec.Codec()%%[]" base="codecs.Codec">
@@ -5815,6 +6035,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.mac_greek" imports="['codecs', 'encodings', 'encodings.mac_greek']" importfrom="[]">
       <class name="Codec" init="obj = encodings.mac_greek.Codec()%%[]" base="codecs.Codec">
@@ -5875,6 +6100,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.bz2_codec" imports="['bz2', 'codecs', 'encodings', 'encodings.bz2_codec']" importfrom="[]">
       <class name="Codec" init="obj = encodings.bz2_codec.Codec()%%[]" base="codecs.Codec">
@@ -5996,7 +6226,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="encodings.cp874" imports="['codecs', 'encodings', 'encodings.cp874']" importfrom="[]">
@@ -6058,6 +6291,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso2022_jp" imports="['codecs', 'encodings', 'encodings.iso2022_jp']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso2022_jp.Codec()%%[]" base="codecs.Codec"/>
@@ -6075,6 +6313,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.raw_unicode_escape" imports="['codecs', 'encodings', 'encodings.raw_unicode_escape']" importfrom="[]">
       <class name="Codec" init="obj = encodings.raw_unicode_escape.Codec()%%[]" base="codecs.Codec"/>
@@ -6114,6 +6357,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.utf_16" imports="['codecs', 'encodings', 'encodings.utf_16', 'sys']" importfrom="[]">
       <class name="IncrementalEncoder" init="obj = encodings.utf_16.IncrementalEncoder()%%['NoneType']" base="codecs.IncrementalEncoder">
@@ -6236,7 +6484,9 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="encodings.latin_1" imports="['codecs', 'encodings', 'encodings.latin_1']" importfrom="[]">
@@ -6278,6 +6528,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.ptcp154" imports="['codecs', 'encodings', 'encodings.ptcp154']" importfrom="[]">
       <class name="Codec" init="obj = encodings.ptcp154.Codec()%%[]" base="codecs.Codec">
@@ -6338,6 +6593,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp864" imports="['codecs', 'encodings', 'encodings.cp864']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp864.Codec()%%[]" base="codecs.Codec">
@@ -6398,6 +6658,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1251" imports="['codecs', 'encodings', 'encodings.cp1251']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1251.Codec()%%[]" base="codecs.Codec">
@@ -6458,6 +6723,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.mac_farsi" imports="['codecs', 'encodings', 'encodings.mac_farsi']" importfrom="[]">
       <class name="Codec" init="obj = encodings.mac_farsi.Codec()%%[]" base="codecs.Codec">
@@ -6518,6 +6788,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp950" imports="['codecs', 'encodings', 'encodings.cp950']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp950.Codec()%%[]" base="codecs.Codec"/>
@@ -6535,6 +6810,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp852" imports="['codecs', 'encodings', 'encodings.cp852']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp852.Codec()%%[]" base="codecs.Codec">
@@ -6595,6 +6875,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1250" imports="['codecs', 'encodings', 'encodings.cp1250']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1250.Codec()%%[]" base="codecs.Codec">
@@ -6655,6 +6940,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso2022_jp_2" imports="['codecs', 'encodings', 'encodings.iso2022_jp_2']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso2022_jp_2.Codec()%%[]" base="codecs.Codec"/>
@@ -6672,6 +6962,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.mac_roman" imports="['codecs', 'encodings', 'encodings.mac_roman']" importfrom="[]">
       <class name="Codec" init="obj = encodings.mac_roman.Codec()%%[]" base="codecs.Codec">
@@ -6732,6 +7027,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.shift_jisx0213" imports="['codecs', 'encodings', 'encodings.shift_jisx0213']" importfrom="[]">
       <class name="Codec" init="obj = encodings.shift_jisx0213.Codec()%%[]" base="codecs.Codec"/>
@@ -6749,6 +7049,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.big5hkscs" imports="['codecs', 'encodings', 'encodings.big5hkscs']" importfrom="[]">
       <class name="Codec" init="obj = encodings.big5hkscs.Codec()%%[]" base="codecs.Codec"/>
@@ -6766,6 +7071,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp437" imports="['codecs', 'encodings', 'encodings.cp437']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp437.Codec()%%[]" base="codecs.Codec">
@@ -6826,6 +7136,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.undefined" imports="['codecs', 'encodings', 'encodings.undefined']" importfrom="[]">
       <class name="Codec" init="obj = encodings.undefined.Codec()%%[]" base="codecs.Codec">
@@ -6887,7 +7202,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="encodings.base64_codec" imports="['base64', 'codecs', 'encodings', 'encodings.base64_codec']" importfrom="[]">
@@ -6969,6 +7287,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.euc_jp" imports="['codecs', 'encodings', 'encodings.euc_jp']" importfrom="[]">
       <class name="Codec" init="obj = encodings.euc_jp.Codec()%%[]" base="codecs.Codec"/>
@@ -6986,6 +7309,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.ascii" imports="['codecs', 'encodings', 'encodings.ascii']" importfrom="[]">
       <class name="Codec" init="obj = encodings.ascii.Codec()%%[]" base="codecs.Codec"/>
@@ -7026,6 +7354,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.kz1048" imports="['codecs', 'encodings', 'encodings.kz1048']" importfrom="[]">
       <class name="Codec" init="obj = encodings.kz1048.Codec()%%[]" base="codecs.Codec">
@@ -7086,6 +7419,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.utf_16_le" imports="['codecs', 'encodings', 'encodings.utf_16_le']" importfrom="[]">
       <class name="IncrementalEncoder" init="obj = encodings.utf_16_le.IncrementalEncoder()%%['None']" base="codecs.IncrementalEncoder">
@@ -7123,6 +7461,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp949" imports="['codecs', 'encodings', 'encodings.cp949']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp949.Codec()%%[]" base="codecs.Codec"/>
@@ -7140,6 +7483,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.punycode" imports="['codecs', 'encodings', 'encodings.punycode']" importfrom="[]">
       <class name="Codec" init="obj = encodings.punycode.Codec()%%[]" base="codecs.Codec">
@@ -7300,8 +7648,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="encodings.quopri_codec" imports="['codecs', 'encodings', 'encodings.quopri_codec', 'quopri']" importfrom="['io:BytesIO']">
@@ -7340,6 +7691,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp862" imports="['codecs', 'encodings', 'encodings.cp862']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp862.Codec()%%[]" base="codecs.Codec">
@@ -7400,6 +7756,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_3" imports="['codecs', 'encodings', 'encodings.iso8859_3']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_3.Codec()%%[]" base="codecs.Codec">
@@ -7460,6 +7821,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_11" imports="['codecs', 'encodings', 'encodings.iso8859_11']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_11.Codec()%%[]" base="codecs.Codec">
@@ -7520,6 +7886,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1258" imports="['codecs', 'encodings', 'encodings.cp1258']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1258.Codec()%%[]" base="codecs.Codec">
@@ -7580,6 +7951,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_4" imports="['codecs', 'encodings', 'encodings.iso8859_4']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_4.Codec()%%[]" base="codecs.Codec">
@@ -7640,6 +8016,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp037" imports="['codecs', 'encodings', 'encodings.cp037']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp037.Codec()%%[]" base="codecs.Codec">
@@ -7700,6 +8081,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1254" imports="['codecs', 'encodings', 'encodings.cp1254']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1254.Codec()%%[]" base="codecs.Codec">
@@ -7760,6 +8146,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.tis_620" imports="['codecs', 'encodings', 'encodings.tis_620']" importfrom="[]">
       <class name="Codec" init="obj = encodings.tis_620.Codec()%%[]" base="codecs.Codec">
@@ -7820,6 +8211,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.utf_8_sig" imports="['codecs', 'encodings', 'encodings.utf_8_sig']" importfrom="[]">
       <class name="IncrementalEncoder" init="obj = encodings.utf_8_sig.IncrementalEncoder()%%['NoneType']" base="codecs.IncrementalEncoder">
@@ -7921,6 +8317,8 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="encodings.cp1257" imports="['codecs', 'encodings', 'encodings.cp1257']" importfrom="[]">
@@ -7982,6 +8380,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_13" imports="['codecs', 'encodings', 'encodings.iso8859_13']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_13.Codec()%%[]" base="codecs.Codec">
@@ -8042,6 +8445,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.utf_7" imports="['codecs', 'encodings', 'encodings.utf_7']" importfrom="[]">
       <class name="IncrementalEncoder" init="obj = encodings.utf_7.IncrementalEncoder()%%['None']" base="codecs.IncrementalEncoder">
@@ -8079,6 +8487,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_6" imports="['codecs', 'encodings', 'encodings.iso8859_6']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_6.Codec()%%[]" base="codecs.Codec">
@@ -8139,6 +8552,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.johab" imports="['codecs', 'encodings', 'encodings.johab']" importfrom="[]">
       <class name="Codec" init="obj = encodings.johab.Codec()%%[]" base="codecs.Codec"/>
@@ -8156,6 +8574,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.big5" imports="['codecs', 'encodings', 'encodings.big5']" importfrom="[]">
       <class name="Codec" init="obj = encodings.big5.Codec()%%[]" base="codecs.Codec"/>
@@ -8173,6 +8596,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp857" imports="['codecs', 'encodings', 'encodings.cp857']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp857.Codec()%%[]" base="codecs.Codec">
@@ -8233,6 +8661,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.shift_jis_2004" imports="['codecs', 'encodings', 'encodings.shift_jis_2004']" importfrom="[]">
       <class name="Codec" init="obj = encodings.shift_jis_2004.Codec()%%[]" base="codecs.Codec"/>
@@ -8250,6 +8683,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1256" imports="['codecs', 'encodings', 'encodings.cp1256']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1256.Codec()%%[]" base="codecs.Codec">
@@ -8310,6 +8748,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.shift_jis" imports="['codecs', 'encodings', 'encodings.shift_jis']" importfrom="[]">
       <class name="Codec" init="obj = encodings.shift_jis.Codec()%%[]" base="codecs.Codec"/>
@@ -8327,6 +8770,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso2022_kr" imports="['codecs', 'encodings', 'encodings.iso2022_kr']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso2022_kr.Codec()%%[]" base="codecs.Codec"/>
@@ -8344,6 +8792,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1253" imports="['codecs', 'encodings', 'encodings.cp1253']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1253.Codec()%%[]" base="codecs.Codec">
@@ -8404,6 +8857,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_15" imports="['codecs', 'encodings', 'encodings.iso8859_15']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_15.Codec()%%[]" base="codecs.Codec">
@@ -8464,6 +8922,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.utf_32_be" imports="['codecs', 'encodings', 'encodings.utf_32_be']" importfrom="[]">
       <class name="IncrementalEncoder" init="obj = encodings.utf_32_be.IncrementalEncoder()%%['None']" base="codecs.IncrementalEncoder">
@@ -8501,6 +8964,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.utf_32" imports="['codecs', 'encodings', 'encodings.utf_32', 'sys']" importfrom="[]">
       <class name="IncrementalEncoder" init="obj = encodings.utf_32.IncrementalEncoder()%%['NoneType']" base="codecs.IncrementalEncoder">
@@ -8623,7 +9091,9 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="encodings.palmos" imports="['codecs', 'encodings', 'encodings.palmos']" importfrom="[]">
@@ -8685,6 +9155,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.unicode_escape" imports="['codecs', 'encodings', 'encodings.unicode_escape']" importfrom="[]">
       <class name="Codec" init="obj = encodings.unicode_escape.Codec()%%[]" base="codecs.Codec"/>
@@ -8724,6 +9199,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp866" imports="['codecs', 'encodings', 'encodings.cp866']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp866.Codec()%%[]" base="codecs.Codec">
@@ -8784,6 +9264,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp863" imports="['codecs', 'encodings', 'encodings.cp863']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp863.Codec()%%[]" base="codecs.Codec">
@@ -8844,6 +9329,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_7" imports="['codecs', 'encodings', 'encodings.iso8859_7']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_7.Codec()%%[]" base="codecs.Codec">
@@ -8904,6 +9394,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.koi8_t" imports="['codecs', 'encodings', 'encodings.koi8_t']" importfrom="[]">
       <class name="Codec" init="obj = encodings.koi8_t.Codec()%%[]" base="codecs.Codec">
@@ -8964,6 +9459,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_5" imports="['codecs', 'encodings', 'encodings.iso8859_5']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_5.Codec()%%[]" base="codecs.Codec">
@@ -9024,6 +9524,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp860" imports="['codecs', 'encodings', 'encodings.cp860']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp860.Codec()%%[]" base="codecs.Codec">
@@ -9084,6 +9589,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.hz" imports="['codecs', 'encodings', 'encodings.hz']" importfrom="[]">
       <class name="Codec" init="obj = encodings.hz.Codec()%%[]" base="codecs.Codec"/>
@@ -9101,6 +9611,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp861" imports="['codecs', 'encodings', 'encodings.cp861']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp861.Codec()%%[]" base="codecs.Codec">
@@ -9161,6 +9676,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.rot_13" imports="['codecs', 'encodings', 'encodings.rot_13', 'sys']" importfrom="[]">
       <class name="Codec" init="obj = encodings.rot_13.Codec()%%[]" base="codecs.Codec">
@@ -9231,6 +9751,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1125" imports="['codecs', 'encodings', 'encodings.cp1125']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1125.Codec()%%[]" base="codecs.Codec">
@@ -9291,6 +9816,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1140" imports="['codecs', 'encodings', 'encodings.cp1140']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1140.Codec()%%[]" base="codecs.Codec">
@@ -9351,6 +9881,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.euc_kr" imports="['codecs', 'encodings', 'encodings.euc_kr']" importfrom="[]">
       <class name="Codec" init="obj = encodings.euc_kr.Codec()%%[]" base="codecs.Codec"/>
@@ -9368,6 +9903,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp500" imports="['codecs', 'encodings', 'encodings.cp500']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp500.Codec()%%[]" base="codecs.Codec">
@@ -9428,6 +9968,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.utf_32_le" imports="['codecs', 'encodings', 'encodings.utf_32_le']" importfrom="[]">
       <class name="IncrementalEncoder" init="obj = encodings.utf_32_le.IncrementalEncoder()%%['None']" base="codecs.IncrementalEncoder">
@@ -9465,6 +10010,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp865" imports="['codecs', 'encodings', 'encodings.cp865']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp865.Codec()%%[]" base="codecs.Codec">
@@ -9525,6 +10075,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_1" imports="['codecs', 'encodings', 'encodings.iso8859_1']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_1.Codec()%%[]" base="codecs.Codec">
@@ -9585,6 +10140,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso2022_jp_ext" imports="['codecs', 'encodings', 'encodings.iso2022_jp_ext']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso2022_jp_ext.Codec()%%[]" base="codecs.Codec"/>
@@ -9602,6 +10162,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.koi8_r" imports="['codecs', 'encodings', 'encodings.koi8_r']" importfrom="[]">
       <class name="Codec" init="obj = encodings.koi8_r.Codec()%%[]" base="codecs.Codec">
@@ -9662,6 +10227,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_16" imports="['codecs', 'encodings', 'encodings.iso8859_16']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_16.Codec()%%[]" base="codecs.Codec">
@@ -9722,6 +10292,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp1006" imports="['codecs', 'encodings', 'encodings.cp1006']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp1006.Codec()%%[]" base="codecs.Codec">
@@ -9782,6 +10357,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.mac_cyrillic" imports="['codecs', 'encodings', 'encodings.mac_cyrillic']" importfrom="[]">
       <class name="Codec" init="obj = encodings.mac_cyrillic.Codec()%%[]" base="codecs.Codec">
@@ -9842,6 +10422,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.utf_8" imports="['codecs', 'encodings', 'encodings.utf_8']" importfrom="[]">
       <class name="IncrementalEncoder" init="obj = encodings.utf_8.IncrementalEncoder()%%['None']" base="codecs.IncrementalEncoder">
@@ -9879,6 +10464,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.mac_croatian" imports="['codecs', 'encodings', 'encodings.mac_croatian']" importfrom="[]">
       <class name="Codec" init="obj = encodings.mac_croatian.Codec()%%[]" base="codecs.Codec">
@@ -9939,6 +10529,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.gb2312" imports="['codecs', 'encodings', 'encodings.gb2312']" importfrom="[]">
       <class name="Codec" init="obj = encodings.gb2312.Codec()%%[]" base="codecs.Codec"/>
@@ -9956,6 +10551,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.euc_jis_2004" imports="['codecs', 'encodings', 'encodings.euc_jis_2004']" importfrom="[]">
       <class name="Codec" init="obj = encodings.euc_jis_2004.Codec()%%[]" base="codecs.Codec"/>
@@ -9973,6 +10573,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_10" imports="['codecs', 'encodings', 'encodings.iso8859_10']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_10.Codec()%%[]" base="codecs.Codec">
@@ -10033,6 +10638,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso2022_jp_2004" imports="['codecs', 'encodings', 'encodings.iso2022_jp_2004']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso2022_jp_2004.Codec()%%[]" base="codecs.Codec"/>
@@ -10050,6 +10660,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_2" imports="['codecs', 'encodings', 'encodings.iso8859_2']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_2.Codec()%%[]" base="codecs.Codec">
@@ -10110,6 +10725,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp720" imports="['codecs', 'encodings', 'encodings.cp720']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp720.Codec()%%[]" base="codecs.Codec">
@@ -10170,6 +10790,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp855" imports="['codecs', 'encodings', 'encodings.cp855']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp855.Codec()%%[]" base="codecs.Codec">
@@ -10230,6 +10855,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.koi8_u" imports="['codecs', 'encodings', 'encodings.koi8_u']" importfrom="[]">
       <class name="Codec" init="obj = encodings.koi8_u.Codec()%%[]" base="codecs.Codec">
@@ -10290,6 +10920,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.charmap" imports="['codecs', 'encodings', 'encodings.charmap']" importfrom="[]">
       <class name="Codec" init="obj = encodings.charmap.Codec()%%[]" base="codecs.Codec"/>
@@ -10371,6 +11006,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.uu_codec" imports="['binascii', 'codecs', 'encodings', 'encodings.uu_codec']" importfrom="['io:BytesIO']">
       <class name="Codec" init="obj = encodings.uu_codec.Codec()%%[]" base="codecs.Codec">
@@ -10452,6 +11092,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>binascii.Error</exception>
       </errors>
@@ -10515,6 +11157,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp775" imports="['codecs', 'encodings', 'encodings.cp775']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp775.Codec()%%[]" base="codecs.Codec">
@@ -10575,6 +11222,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp932" imports="['codecs', 'encodings', 'encodings.cp932']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp932.Codec()%%[]" base="codecs.Codec"/>
@@ -10592,6 +11244,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp737" imports="['codecs', 'encodings', 'encodings.cp737']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp737.Codec()%%[]" base="codecs.Codec">
@@ -10652,6 +11309,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.mac_romanian" imports="['codecs', 'encodings', 'encodings.mac_romanian']" importfrom="[]">
       <class name="Codec" init="obj = encodings.mac_romanian.Codec()%%[]" base="codecs.Codec">
@@ -10712,6 +11374,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.hex_codec" imports="['binascii', 'codecs', 'encodings', 'encodings.hex_codec']" importfrom="[]">
       <class name="Codec" init="obj = encodings.hex_codec.Codec()%%[]" base="codecs.Codec">
@@ -10792,6 +11459,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp856" imports="['codecs', 'encodings', 'encodings.cp856']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp856.Codec()%%[]" base="codecs.Codec">
@@ -10852,6 +11524,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp424" imports="['codecs', 'encodings', 'encodings.cp424']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp424.Codec()%%[]" base="codecs.Codec">
@@ -10912,6 +11589,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.cp875" imports="['codecs', 'encodings', 'encodings.cp875']" importfrom="[]">
       <class name="Codec" init="obj = encodings.cp875.Codec()%%[]" base="codecs.Codec">
@@ -10972,6 +11654,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="encodings.iso8859_8" imports="['codecs', 'encodings', 'encodings.iso8859_8']" importfrom="[]">
       <class name="Codec" init="obj = encodings.iso8859_8.Codec()%%[]" base="codecs.Codec">
@@ -11032,6 +11719,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
   </library>
   <library name="xml">
@@ -11297,6 +11989,8 @@
         <exception>SAXNotRecognizedException</exception>
         <exception>SAXNotSupportedException</exception>
         <exception>SAXReaderNotAvailable</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>expat.error</exception>
       </errors>
     </module>
@@ -11497,6 +12191,8 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="xml.sax.xmlreader" imports="['xml', 'xml.sax', 'xml.sax.xmlreader']" importfrom="['xml.sax:handler', 'xml.sax:saxutils']">
@@ -12013,10 +12709,13 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
         <exception>SAXNotRecognizedException</exception>
         <exception>SAXNotSupportedException</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="xml.sax.handler" imports="['xml', 'xml.sax', 'xml.sax.handler']" importfrom="[]">
@@ -12228,6 +12927,11 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="xml.dom.domreg" imports="['os', 'sys', 'xml', 'xml.dom', 'xml.dom.domreg']" importfrom="[]">
       <api name="registerDOMImplementation">
@@ -12251,8 +12955,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -13535,6 +14241,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>xml.dom.expatbuilder.ParseEscape</exception>
       </errors>
@@ -13553,7 +14261,10 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="xml.dom.minicompat" imports="['xml', 'xml.dom', 'xml.dom.minicompat']" importfrom="[]">
@@ -13592,6 +14303,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>xml.dom.NoModificationAllowedErr</exception>
       </errors>
     </module>
@@ -13835,8 +14549,11 @@
       </api>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="xml.dom.xmlbuilder" imports="['copy', 'posixpath', 'urllib.parse', 'urllib.request', 'xml', 'xml.dom', 'xml.dom.expatbuilder', 'xml.dom.xmlbuilder']" importfrom="['xml.dom.NodeFilter:NodeFilter']">
@@ -14026,6 +14743,7 @@
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>xml.dom.NotFoundErr</exception>
         <exception>xml.dom.NotSupportedErr</exception>
@@ -14444,6 +15162,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>xml.etree.ElementInclude.FatalIncludeError</exception>
         <exception>xml.etree.ElementInclude.LimitedRecursiveIncludeError</exception>
@@ -14571,10 +15291,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
         <exception>SyntaxError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -14626,10 +15348,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -14687,6 +15411,8 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -14734,6 +15460,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -14801,9 +15529,12 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>KeyError</exception>
+        <exception>TypeError</exception>
         <exception>UnknownFileError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.dep_util" imports="['distutils', 'distutils.dep_util', 'os']" importfrom="['distutils.errors:DistutilsFileError', 'stat:ST_MTIME']">
@@ -14838,7 +15569,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -14918,8 +15651,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>UnknownFileError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -15029,8 +15764,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsInternalError</exception>
         <exception>DistutilsTemplateError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.extension" imports="['distutils', 'distutils.extension', 'os', 'warnings']" importfrom="['distutils.sysconfig:expand_makefile_vars', 'distutils.sysconfig:parse_makefile', 'distutils.text_file:TextFile', 'distutils.util:split_quoted']">
@@ -15056,6 +15794,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="distutils.spawn" imports="['distutils', 'distutils.spawn', 'os', 'subprocess', 'sys']" importfrom="['distutils.debug:DEBUG', 'distutils.errors:DistutilsExecError', 'distutils.errors:DistutilsPlatformError', 'distutils:log', 'distutils:sysconfig']">
       <api name="spawn">
@@ -15083,6 +15826,7 @@
         <exception>DistutilsExecError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -15180,6 +15924,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -15320,8 +16066,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsGetoptError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>getopt.error</exception>
       </errors>
@@ -15358,9 +16106,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.sysconfig" imports="['distutils', 'distutils.sysconfig', 'os', 're', 'sys', 'warnings']" importfrom="['distutils.text_file:TextFile', 'errors:DistutilsPlatformError']">
@@ -15477,6 +16228,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -15554,8 +16306,10 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.util" imports="['distutils', 'distutils.sysconfig', 'distutils.util', 'importlib.util', 'os', 'pwd', 're', 'string', 'subprocess', 'sys']" importfrom="['distutils.dep_util:newer', 'distutils.dir_util:mkpath', 'distutils.errors:DistutilsByteCompileError', 'distutils.errors:DistutilsPlatformError', 'distutils.file_util:copy_file', 'distutils.filelist:FileList', 'distutils.spawn:spawn', 'distutils:log', 'lib2to3.refactor:RefactoringTool', 'lib2to3.refactor:get_fixers_from_package', 'py_compile:compile', 'tempfile:mkstemp']">
@@ -15701,11 +16455,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsByteCompileError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -15732,6 +16488,11 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="distutils.cmd" imports="['distutils', 'distutils.cmd', 'os', 're', 'sys']" importfrom="['distutils.debug:DEBUG', 'distutils.errors:DistutilsOptionError', 'distutils.fancy_getopt:longopt_xlate', 'distutils.spawn:spawn', 'distutils:archive_util', 'distutils:dep_util', 'distutils:dir_util', 'distutils:file_util', 'distutils:log', 'distutils:util']">
       <class name="Command" init="obj = distutils.cmd.Command(None)%%['NoneType']">
@@ -15881,6 +16642,7 @@
         <exception>DistutilsOptionError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.core" imports="['distutils', 'distutils.core', 'os', 'sys']" importfrom="['distutils.cmd:Command', 'distutils.config:PyPIRCCommand', 'distutils.debug:DEBUG', 'distutils.dist:Distribution', 'distutils.errors:*', 'distutils.extension:Extension']">
@@ -15915,6 +16677,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>CCompilerError</exception>
         <exception>DistutilsArgError</exception>
         <exception>DistutilsError</exception>
@@ -15923,6 +16686,7 @@
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>SystemExit</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -15974,6 +16738,8 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -16482,6 +17248,7 @@
         <exception>DistutilsOptionError</exception>
         <exception>ImportError</exception>
         <exception>SystemExit</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -16537,9 +17304,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
         <exception>DistutilsInternalError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.ccompiler" imports="['distutils', 'distutils.ccompiler', 'os', 're', 'sys', 'tempfile']" importfrom="['distutils.debug:DEBUG', 'distutils.dep_util:newer_group', 'distutils.dir_util:mkpath', 'distutils.errors:*', 'distutils.fancy_getopt:FancyGetopt', 'distutils.file_util:move_file', 'distutils.spawn:spawn', 'distutils.util:execute', 'distutils.util:split_quoted', 'distutils:log']">
@@ -16896,6 +17666,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>CompileError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
@@ -16940,10 +17711,13 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>DistutilsFileError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.check" imports="['distutils', 'distutils.command', 'distutils.command.check']" importfrom="['distutils.core:Command', 'distutils.errors:DistutilsSetupError', 'docutils.parsers.rst:Parser', 'docutils.utils:Reporter', 'docutils:frontend', 'docutils:nodes']">
@@ -16985,6 +17759,8 @@
         <exception>AttributeError</exception>
         <exception>DistutilsSetupError</exception>
         <exception>Exception</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.build_scripts" imports="['distutils', 'distutils.command', 'distutils.command.build_scripts', 'os', 're', 'tokenize']" importfrom="['distutils.core:Command', 'distutils.dep_util:newer', 'distutils.util:Mixin2to3', 'distutils.util:convert_path', 'distutils:log', 'distutils:sysconfig', 'stat:ST_MODE']">
@@ -17032,8 +17808,11 @@
       </class>
       <class name="build_scripts_2to3" init="obj = distutils.command.build_scripts.build_scripts_2to3()%%[]" base="distutils.command.build_scripts.build_scripts"/>
       <errors>
+        <exception>AttributeError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.build" imports="['distutils', 'distutils.command', 'distutils.command.build', 'os', 'sys']" importfrom="['distutils.ccompiler:show_compilers', 'distutils.core:Command', 'distutils.errors:DistutilsOptionError', 'distutils.util:get_platform']">
@@ -17080,7 +17859,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -17099,10 +17880,12 @@
       </class>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
         <exception>DistutilsError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>HTTPError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -17170,7 +17953,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsSetupError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.register" imports="['distutils', 'distutils.command', 'distutils.command.register', 'getpass', 'io', 'urllib.parse', 'urllib.request']" importfrom="['distutils.core:PyPIRCCommand', 'distutils.errors:*', 'distutils:log', 'warnings:warn']">
@@ -17197,6 +17983,8 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>urllib.error.HTTPError</exception>
         <exception>urllib.error.URLError</exception>
@@ -17270,6 +18058,8 @@
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>KeyError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_scripts" imports="['distutils', 'distutils.command', 'distutils.command.install_scripts', 'os']" importfrom="['distutils.core:Command', 'distutils:log', 'stat:ST_MODE']">
@@ -17325,6 +18115,11 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="distutils.command.sdist" imports="['distutils', 'distutils.command', 'distutils.command.sdist', 'os', 'sys']" importfrom="['distutils.archive_util:ARCHIVE_FORMATS', 'distutils.core:Command', 'distutils.errors:DistutilsOptionError', 'distutils.errors:DistutilsTemplateError', 'distutils.fancy_getopt:FancyGetopt', 'distutils.filelist:FileList', 'distutils.text_file:TextFile', 'distutils.util:convert_path', 'distutils:archive_util', 'distutils:dir_util', 'distutils:file_util', 'distutils:log', 'glob:glob', 'warnings:warn']">
       <class name="sdist" init="obj = distutils.command.sdist.sdist(None)%%['NoneType']" base="distutils.cmd.Command">
@@ -17390,8 +18185,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsTemplateError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -17448,6 +18245,11 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="distutils.command.bdist" imports="['distutils', 'distutils.command', 'distutils.command.bdist', 'os']" importfrom="['distutils.core:Command', 'distutils.errors:*', 'distutils.fancy_getopt:FancyGetopt', 'distutils.util:get_platform']">
       <class name="bdist" init="obj = distutils.command.bdist.bdist(None)%%['NoneType']" base="distutils.cmd.Command">
@@ -17493,7 +18295,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.config" imports="['distutils', 'distutils.command', 'distutils.command.config', 'os', 're']" importfrom="['distutils.ccompiler:CCompiler', 'distutils.ccompiler:CompileError', 'distutils.ccompiler:LinkError', 'distutils.ccompiler:new_compiler', 'distutils.core:Command', 'distutils.errors:DistutilsExecError', 'distutils.sysconfig:customize_compiler', 'distutils:log']">
@@ -17590,10 +18395,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>CompileError</exception>
         <exception>DistutilsExecError</exception>
         <exception>LinkError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_lib" imports="['distutils', 'distutils.command', 'distutils.command.install_lib', 'importlib.util', 'os', 'sys']" importfrom="['distutils.core:Command', 'distutils.errors:DistutilsOptionError', 'distutils.util:byte_compile']">
@@ -17641,6 +18449,8 @@
       </class>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -17678,8 +18488,11 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>KeyError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.clean" imports="['distutils', 'distutils.command', 'distutils.command.clean', 'os']" importfrom="['distutils.core:Command', 'distutils.dir_util:remove_tree', 'distutils:log']">
@@ -17716,7 +18529,10 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.bdist_wininst" imports="['distutils', 'distutils.command', 'distutils.command.bdist_wininst', 'os', 'struct', 'sys', 'time', 'warnings']" importfrom="['distutils.core:Command', 'distutils.dir_util:remove_tree', 'distutils.errors:*', 'distutils.sysconfig:get_python_version', 'distutils.util:get_platform', 'distutils:log', 'msvcrt:CRT_ASSEMBLY_VERSION', 'tempfile:mktemp']">
@@ -17763,9 +18579,12 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="distutils.command.install_headers" imports="['distutils', 'distutils.command', 'distutils.command.install_headers']" importfrom="['distutils.core:Command']">
@@ -17821,6 +18640,11 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="distutils.command.install_egg_info" imports="['distutils', 'distutils.command', 'distutils.command.install_egg_info', 'os', 're', 'sys']" importfrom="['distutils.cmd:Command', 'distutils:dir_util', 'distutils:log']">
       <class name="install_egg_info" init="obj = distutils.command.install_egg_info.install_egg_info(None)%%['NoneType']" base="distutils.cmd.Command">
@@ -17895,6 +18719,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="distutils.command.build_ext" imports="['contextlib', 'distutils', 'distutils.command', 'distutils.command.build_ext', 'os', 're', 'sys']" importfrom="['concurrent.futures:ThreadPoolExecutor', 'distutils._msvccompiler:MSVCCompiler', 'distutils.ccompiler:new_compiler', 'distutils.ccompiler:show_compilers', 'distutils.core:Command', 'distutils.dep_util:newer_group', 'distutils.errors:*', 'distutils.extension:Extension', 'distutils.sysconfig:customize_compiler', 'distutils.sysconfig:get_config_h_filename', 'distutils.sysconfig:get_config_var', 'distutils.sysconfig:get_python_version', 'distutils.util:get_platform', 'distutils:log', 'distutils:sysconfig', 'site:USER_BASE']">
       <class name="build_ext" init="obj = distutils.command.build_ext.build_ext(None)%%['NoneType']" base="distutils.cmd.Command">
@@ -17990,12 +18819,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>CCompilerError</exception>
         <exception>CompileError</exception>
         <exception>DistutilsError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>DistutilsSetupError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18077,6 +18908,7 @@
       </class>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
@@ -18385,9 +19217,12 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>FileNotFoundError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>queue.Empty</exception>
       </errors>
     </module>
@@ -18544,7 +19379,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="json.encoder" imports="['json', 'json.encoder', 're']" importfrom="[]">
@@ -18601,8 +19439,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="json.decoder" imports="['json', 'json.decoder', 're']" importfrom="['json:scanner']">
@@ -18660,10 +19500,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>json.decoder.JSONDecodeError</exception>
       </errors>
@@ -18680,7 +19522,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>BrokenPipeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -19675,6 +20519,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ContentTooShortError</exception>
         <exception>HTTPError</exception>
         <exception>ImportError</exception>
@@ -19807,6 +20652,9 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>urllib.error.HTTPError</exception>
       </errors>
     </module>
@@ -20176,6 +21024,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
@@ -20273,6 +21122,8 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -20389,6 +21240,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.yinyang" imports="['turtledemo', 'turtledemo.yinyang']" importfrom="['turtle:*']">
       <api name="yin">
@@ -20411,6 +21267,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.forest" imports="['turtledemo', 'turtledemo.forest']" importfrom="['random:randrange', 'time:perf_counter', 'turtle:Turtle', 'turtle:colormode', 'turtle:mainloop', 'turtle:tracer']">
       <api name="symRandom">
@@ -20503,6 +21364,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.paint" imports="['turtledemo', 'turtledemo.paint']" importfrom="['turtle:*']">
       <api name="switchupdown">
@@ -20535,6 +21401,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.nim" imports="['random', 'time', 'turtle', 'turtledemo', 'turtledemo.nim']" importfrom="[]">
       <class name="NimModel" init="obj = turtledemo.nim.NimModel(None)%%['None']" base="builtins.object">
@@ -20667,6 +21538,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.round_dance" imports="['turtledemo', 'turtledemo.round_dance']" importfrom="['turtle:*']">
       <api name="stop">
@@ -20689,6 +21565,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.peace" imports="['turtledemo', 'turtledemo.peace']" importfrom="['turtle:*']">
       <api name="main">
@@ -20701,6 +21582,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.tree" imports="['turtledemo', 'turtledemo.tree']" importfrom="['time:perf_counter', 'turtle:Turtle', 'turtle:mainloop']">
       <api name="tree">
@@ -20733,6 +21619,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.two_canvases" imports="['turtledemo', 'turtledemo.two_canvases']" importfrom="['turtle:RawTurtle', 'turtle:TK', 'turtle:TurtleScreen']">
       <api name="main">
@@ -20745,6 +21636,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.planet_and_moon" imports="['turtledemo', 'turtledemo.planet_and_moon']" importfrom="['turtle:Shape', 'turtle:Turtle', 'turtle:Vec2D', 'turtle:mainloop']">
       <class name="GravSys" init="obj = turtledemo.planet_and_moon.GravSys()%%[]" base="builtins.object">
@@ -20791,6 +21687,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.chaos" imports="['turtledemo', 'turtledemo.chaos']" importfrom="['turtle:*']">
       <api name="f">
@@ -20873,6 +21774,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.clock" imports="['turtledemo', 'turtledemo.clock']" importfrom="['datetime:datetime', 'turtle:*']">
       <api name="jump">
@@ -20966,7 +21872,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Terminator</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="turtledemo.sorting_animate" imports="['random', 'turtledemo', 'turtledemo.sorting_animate']" importfrom="['turtle:*']">
@@ -21154,6 +22063,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.bytedesign" imports="['turtledemo', 'turtledemo.bytedesign']" importfrom="['time:perf_counter', 'turtle:Turtle', 'turtle:mainloop']">
       <class name="Designer" init="obj = turtledemo.bytedesign.Designer()%%['NoneType', 'NoneType', 'NoneType']" base="turtle.Turtle">
@@ -21178,6 +22092,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.fractalcurves" imports="['math', 'turtledemo', 'turtledemo.fractalcurves']" importfrom="['time:perf_counter', 'time:sleep', 'turtle:*']">
       <class name="CurvesTurtle" init="obj = turtledemo.fractalcurves.CurvesTurtle()%%['NoneType', 'NoneType', 'NoneType']" base="turtle.Turtle">
@@ -21202,6 +22121,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.lindenmayer" imports="['turtledemo', 'turtledemo.lindenmayer']" importfrom="['time:sleep', 'turtle:*']">
       <api name="replace">
@@ -21235,7 +22159,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="turtledemo.rosette" imports="['turtledemo', 'turtledemo.rosette']" importfrom="['time:perf_counter', 'time:sleep', 'turtle:Screen', 'turtle:Turtle', 'turtle:mainloop']">
@@ -21259,6 +22185,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="turtledemo.minimal_hanoi" imports="['turtledemo', 'turtledemo.minimal_hanoi']" importfrom="['turtle:*']">
       <class name="Disc" init="obj = turtledemo.minimal_hanoi.Disc(None)%%['None']" base="turtle.Turtle">
@@ -21326,7 +22257,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Terminator</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="turtledemo.colormixer" imports="['turtledemo', 'turtledemo.colormixer']" importfrom="['turtle:Screen', 'turtle:Turtle', 'turtle:mainloop']">
@@ -21372,6 +22306,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
   </library>
   <library name="asyncio">
@@ -21386,6 +22325,11 @@
         <defa>[]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="asyncio.unix_events" imports="['asyncio', 'asyncio.unix_events', 'errno', 'io', 'itertools', 'os', 'selectors', 'signal', 'socket', 'stat', 'subprocess', 'sys', 'threading', 'warnings']" importfrom="['asyncio:base_events', 'asyncio:base_subprocess', 'asyncio:constants', 'asyncio:coroutines', 'asyncio:events', 'asyncio:exceptions', 'asyncio:futures', 'asyncio:selector_events', 'asyncio:tasks', 'asyncio:transports', 'log:logger']">
       <class name="AbstractChildWatcher" init="obj = asyncio.unix_events.AbstractChildWatcher()%%[]">
@@ -21880,6 +22824,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="asyncio.locks" imports="['asyncio', 'asyncio.locks', 'collections', 'warnings']" importfrom="['asyncio:events', 'asyncio:exceptions']">
       <class name="Lock" init="obj = asyncio.locks.Lock()%%[]" base="asyncio.locks._ContextManagerMixin">
@@ -22013,8 +22962,10 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>exceptions.CancelledError</exception>
       </errors>
@@ -22843,12 +23794,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
         <exception>RuntimeError</exception>
         <exception>SystemExit</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="asyncio.log" imports="['asyncio', 'asyncio.log', 'logging']" importfrom="[]"/>
@@ -23107,10 +24061,12 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
         <exception>SystemExit</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -23126,7 +24082,9 @@
         <kwodefa>[None]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -23456,6 +24414,7 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>ConnectionError</exception>
         <exception>Exception</exception>
@@ -23547,6 +24506,7 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>socket.error</exception>
@@ -23752,10 +24712,12 @@
         <kwodefa>[None, '_DEFAULT_LIMIT']</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ConnectionResetError</exception>
         <exception>NotImplementedError</exception>
         <exception>RuntimeError</exception>
         <exception>StopAsyncIteration</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>exceptions.IncompleteReadError</exception>
         <exception>exceptions.LimitOverrunError</exception>
@@ -23961,6 +24923,8 @@
       <class name="PriorityQueue" init="obj = asyncio.queues.PriorityQueue()%%['NoneType']" base="asyncio.queues.Queue"/>
       <class name="LifoQueue" init="obj = asyncio.queues.LifoQueue()%%['NoneType']" base="asyncio.queues.Queue"/>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>asyncio.queues.QueueEmpty</exception>
         <exception>asyncio.queues.QueueFull</exception>
@@ -23993,6 +24957,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="asyncio.protocols" imports="['asyncio', 'asyncio.protocols']" importfrom="[]">
       <class name="BaseProtocol" init="obj = asyncio.protocols.BaseProtocol()%%[]">
@@ -24146,7 +25115,10 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="asyncio.sslproto" imports="['asyncio', 'asyncio.sslproto', 'collections', 'ssl', 'warnings']" importfrom="['asyncio:constants', 'asyncio:protocols', 'asyncio:transports', 'log:logger']">
@@ -24173,6 +25145,7 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
@@ -24293,6 +25266,11 @@
         <defa>[None, None]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="asyncio.base_futures" imports="['asyncio', 'asyncio.base_futures', 'reprlib']" importfrom="['asyncio:format_helpers']">
       <api name="isfuture">
@@ -24305,6 +25283,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
   </library>
   <library name="tkinter">
@@ -24331,6 +25314,11 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="tkinter.colorchooser" imports="['tkinter', 'tkinter.colorchooser']" importfrom="['tkinter.commondialog:Dialog']">
       <class name="Chooser" init="obj = tkinter.colorchooser.Chooser()%%['NoneType']" base="tkinter.commondialog.Dialog"/>
@@ -24345,7 +25333,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="tkinter.dialog" imports="['tkinter', 'tkinter.dialog']" importfrom="['tkinter:Button', 'tkinter:Pack', 'tkinter:TclError', 'tkinter:Widget']">
@@ -24361,6 +25352,11 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="tkinter.messagebox" imports="['tkinter', 'tkinter.messagebox']" importfrom="['tkinter.commondialog:Dialog']">
       <class name="Message" init="obj = tkinter.messagebox.Message()%%['NoneType']" base="tkinter.commondialog.Dialog"/>
@@ -24444,6 +25440,11 @@
         <defa>[None, None]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="tkinter.constants" imports="['tkinter', 'tkinter.constants']" importfrom="[]"/>
     <module name="tkinter.tix" imports="['os', 'tkinter', 'tkinter.tix']" importfrom="['tkinter:*']">
@@ -26830,6 +27831,8 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>TclError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="tkinter.scrolledtext" imports="['tkinter', 'tkinter.scrolledtext']" importfrom="['tkinter.constants:BOTH', 'tkinter.constants:END', 'tkinter.constants:LEFT', 'tkinter.constants:RIGHT', 'tkinter.constants:Y', 'tkinter:Frame', 'tkinter:Grid', 'tkinter:Pack', 'tkinter:Place', 'tkinter:Scrollbar', 'tkinter:Text']">
@@ -26855,6 +27858,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="tkinter.simpledialog" imports="['tkinter', 'tkinter.simpledialog']" importfrom="['tkinter:*', 'tkinter:messagebox']">
       <class name="SimpleDialog" init="obj = tkinter.simpledialog.SimpleDialog(None)%%['NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']">
@@ -26982,6 +27990,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -28115,6 +29125,8 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="tkinter.font" imports="['itertools', 'tkinter', 'tkinter.font']" importfrom="[]">
@@ -28211,7 +29223,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Exception</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="tkinter.filedialog" imports="['fnmatch', 'os', 'tkinter', 'tkinter.filedialog']" importfrom="['tkinter.dialog:Dialog', 'tkinter:BOTH', 'tkinter:BOTTOM', 'tkinter:Button', 'tkinter:END', 'tkinter:Entry', 'tkinter:Frame', 'tkinter:LEFT', 'tkinter:Listbox', 'tkinter:RIGHT', 'tkinter:Scrollbar', 'tkinter:TOP', 'tkinter:Tk', 'tkinter:Toplevel', 'tkinter:X', 'tkinter:Y', 'tkinter:YES', 'tkinter:commondialog']">
@@ -28386,6 +29401,8 @@
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
   </library>
@@ -28581,6 +29598,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="curses.textpad" imports="['curses', 'curses.ascii', 'curses.textpad']" importfrom="[]">
       <class name="Textbox" init="obj = curses.textpad.Textbox(None)%%['NoneType', 'NoneType']">
@@ -28626,6 +29648,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>curses.error</exception>
       </errors>
     </module>
@@ -28641,6 +29666,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
   </library>
   <library name=".">
@@ -29291,6 +30321,11 @@
         <defa>[1, None, 5, 'html']</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="cgi" imports="['cgi', 'html', 'locale', 'os', 're', 'sys', 'tempfile', 'traceback', 'urllib.parse']" importfrom="['collections.abc:Mapping', 'email.message:Message', 'email.parser:FeedParser', 'io:BytesIO', 'io:StringIO', 'io:TextIOWrapper']">
       <class name="MiniFieldStorage" init="obj = cgi.MiniFieldStorage(None,None)%%['NoneType', 'NoneType']">
@@ -29557,10 +30592,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>OSError</exception>
         <exception>SyntaxError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeError</exception>
         <exception>ValueError</exception>
         <exception>py_compile.PyCompileError</exception>
@@ -29577,6 +30614,11 @@
         <defa>[None]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="mailcap" imports="['mailcap', 'os', 'warnings']" importfrom="[]">
       <api name="lineno_sort_key">
@@ -29690,7 +30732,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="opcode" imports="['opcode']" importfrom="[]">
@@ -29874,6 +30919,7 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>NotImplementedError</exception>
         <exception>TypeError</exception>
@@ -30513,8 +31559,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>IndentationError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>getopt.error</exception>
         <exception>tabnanny.NannyNag</exception>
@@ -30584,7 +31632,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>getopt.GetoptError</exception>
       </errors>
@@ -30673,6 +31723,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -30956,6 +32008,8 @@
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>sunau.Error</exception>
       </errors>
     </module>
@@ -31001,6 +32055,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -31026,7 +32082,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="profile" imports="['marshal', 'os', 'profile', 'pstats', 'runpy', 'sys', 'time']" importfrom="['optparse:OptionParser']">
@@ -31163,6 +32222,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>BrokenPipeError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
@@ -31305,6 +32365,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -31729,6 +32790,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>calendar.IllegalMonthError</exception>
         <exception>calendar.IllegalWeekdayError</exception>
       </errors>
@@ -31951,9 +33015,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
         <exception>smtplib.SMTPAuthenticationError</exception>
@@ -32030,8 +33096,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>MemoryError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="wave" imports="['audioop', 'builtins', 'struct', 'sys', 'wave']" importfrom="['chunk:Chunk', 'collections:namedtuple']">
@@ -32354,6 +33423,8 @@
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>struct.error</exception>
         <exception>wave.Error</exception>
       </errors>
@@ -32922,6 +33993,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>NotImplementedError</exception>
         <exception>TypeError</exception>
@@ -33131,6 +34203,7 @@
         <exception>ImportError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="shlex" imports="['os', 're', 'shlex', 'sys', 'warnings']" importfrom="['collections:deque', 'io:StringIO']">
@@ -33207,7 +34280,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -33317,6 +34392,8 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>getopt.GetoptError</exception>
       </errors>
     </module>
@@ -33861,12 +34938,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>FileNotFoundError</exception>
         <exception>KeyError</exception>
         <exception>NotADirectoryError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>PermissionError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>getopt.error</exception>
         <exception>subprocess.TimeoutExpired</exception>
         <exception>webbrowser.Error</exception>
@@ -34212,6 +35292,7 @@
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>aifc.Error</exception>
         <exception>struct.error</exception>
@@ -34466,6 +35547,11 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="gettext" imports="['builtins', 'copy', 'gettext', 'locale', 'os', 're', 'sys', 'warnings']" importfrom="['errno:ENOENT', 'struct:unpack']">
       <class name="NullTranslations" init="obj = gettext.NullTranslations()%%['None']">
@@ -34722,6 +35808,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>FileNotFoundError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
@@ -35222,6 +36309,7 @@
         <exception>IMAP4.error</exception>
         <exception>ImportError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>getopt.error</exception>
       </errors>
@@ -35541,9 +36629,11 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -36172,7 +37262,10 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>netrc.NetrcParseError</exception>
       </errors>
     </module>
@@ -36595,7 +37688,7 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="isoformat">
-          <expr>ret = obj.isoformat(timespec)%%['None']</expr>
+          <expr>ret = obj.isoformat(timespec)%%['str']</expr>
           <args>['timespec:str']</args>
           <return>['s:str']</return>
           <dependences>None</dependences>
@@ -36747,7 +37840,7 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="astimezone">
-          <expr>ret = obj.astimezone(tz)%%['None']</expr>
+          <expr>ret = obj.astimezone(tz)%%['ZoneInfo']</expr>
           <args>['tz:ZoneInfo']</args>
           <return>['ret:NoneType']</return>
           <dependences>None</dependences>
@@ -36885,6 +37978,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="fnmatch" imports="['fnmatch', 'functools', 'os', 'posixpath', 're']" importfrom="['itertools:count']">
@@ -36928,6 +38022,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="timeit" imports="['gc', 'getopt', 'itertools', 'linecache', 'os', 'sys', 'time', 'timeit', 'traceback', 'warnings']" importfrom="[]">
       <class name="Timer" init="obj = timeit.Timer()%%['NoneType', 'NoneType', 'NoneType', 'builtin_function_or_method']">
@@ -36993,6 +38092,9 @@
         <kwodefa>[None]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>getopt.error</exception>
       </errors>
     </module>
@@ -37076,6 +38178,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>binascii.Incomplete</exception>
         <exception>binhex.Error</exception>
       </errors>
@@ -37122,7 +38227,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -37703,9 +38810,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="weakref" imports="['gc', 'itertools', 'sys', 'weakref']" importfrom="['copy:deepcopy']">
@@ -37894,6 +39004,7 @@
         <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="os" imports="['abc', 'io', 'nt', 'ntpath:path', 'os', 'posix', 'posixpath:path', 'stat:st', 'subprocess', 'sys', 'warnings']" importfrom="['nt:*', 'os.path:altsep', 'os.path:curdir', 'os.path:defpath', 'os.path:devnull', 'os.path:extsep', 'os.path:pardir', 'os.path:pathsep', 'os.path:sep', 'posix:*']">
@@ -38196,6 +39307,7 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>ZeroDivisionError</exception>
@@ -38520,6 +39632,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>Exception</exception>
         <exception>FileExistsError</exception>
@@ -38528,6 +39641,7 @@
         <exception>LZMAError</exception>
         <exception>NameError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
@@ -38735,6 +39849,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="dis" imports="['argparse', 'collections', 'dis', 'io', 'sys', 'types']" importfrom="['opcode:*']">
       <class name="Instruction" init="obj = dis.Instruction()%%[]" base="dis._Instruction"/>
@@ -38864,6 +39983,7 @@
         <exception>AttributeError</exception>
         <exception>SyntaxError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="posixpath" imports="['genericpath', 'os', 'posixpath', 'pwd', 're', 'stat', 'sys']" importfrom="['genericpath:*']">
@@ -39131,6 +40251,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -39260,6 +40381,7 @@
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -39455,6 +40577,7 @@
       </api>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
         <exception>NameError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
@@ -39525,6 +40648,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="selectors" imports="['math', 'select', 'selectors', 'sys']" importfrom="['abc:ABCMeta', 'abc:abstractmethod', 'collections.abc:Mapping', 'collections:namedtuple']">
       <class name="BaseSelector" init="obj = selectors.BaseSelector()%%[]">
@@ -39858,8 +40986,10 @@
       <class name="PriorityQueue" init="obj = queue.PriorityQueue()%%['NoneType']" base="queue.Queue"/>
       <class name="LifoQueue" init="obj = queue.LifoQueue()%%['NoneType']" base="queue.Queue"/>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Empty</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>queue.Full</exception>
       </errors>
@@ -39877,7 +41007,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="deepcopy">
-        <expr>copy.deepcopy(x,memo,_nil)%%['st', 'NoneType', 'list']</expr>
+        <expr>copy.deepcopy(x,memo,_nil)%%['st', 'dict', 'list']</expr>
         <args>['x:st', 'memo:dict', '_nil:list']</args>
         <return>[]</return>
         <dependences>None</dependences>
@@ -39887,8 +41017,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>copy.Error</exception>
       </errors>
     </module>
@@ -40260,8 +41393,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>bdb.BdbQuit</exception>
       </errors>
@@ -40617,6 +41752,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
@@ -40764,7 +41900,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="pyclbr" imports="['importlib.util', 'io', 'os', 'pyclbr', 'sys', 'tokenize']" importfrom="['token:DEDENT', 'token:NAME', 'token:OP']">
@@ -40817,6 +41956,8 @@
         <exception>ImportError</exception>
         <exception>ModuleNotFoundError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="keyword" imports="['keyword']" importfrom="[]"/>
@@ -40845,7 +41986,9 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>graphlib.CycleError</exception>
       </errors>
@@ -40946,12 +42089,15 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>SyntaxError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="symtable" imports="['os', 'symtable', 'sys', 'weakref']" importfrom="[]">
@@ -41296,6 +42442,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -41567,6 +42715,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -41797,11 +42946,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>PermissionError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>getopt.error</exception>
         <exception>smtplib.SMTPRecipientsRefused</exception>
@@ -41871,8 +43022,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>BrokenPipeError</exception>
         <exception>KeyError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="warnings" imports="['builtins:m', 'linecache', 're', 'sys', 'traceback', 'tracemalloc', 'warnings']" importfrom="[]">
@@ -42395,6 +43549,7 @@
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>RuntimeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>threading.BrokenBarrierError</exception>
       </errors>
@@ -42535,6 +43690,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>BlockingIOError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
@@ -42687,6 +43843,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>RuntimeError</exception>
@@ -42719,6 +43876,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>binascii.Error</exception>
         <exception>uu.Error</exception>
@@ -42784,6 +43942,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -42941,7 +44100,10 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="socketserver" imports="['os', 'selectors', 'socket', 'socketserver', 'sys', 'threading', 'traceback']" importfrom="['io:BufferedIOBase', 'io:BytesIO', 'time:monotonic']">
@@ -43128,9 +44290,12 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ChildProcessError</exception>
         <exception>Exception</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>socket.error</exception>
       </errors>
     </module>
@@ -43447,6 +44612,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -43588,6 +44755,7 @@
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -43982,11 +45150,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="runpy" imports="['importlib.machinery', 'importlib.util', 'io', 'os', 'runpy', 'sys', 'types']" importfrom="['pkgutil:get_importer', 'pkgutil:read_code', 'warnings:warn']">
@@ -44134,8 +45305,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>getopt.error</exception>
       </errors>
     </module>
@@ -44201,7 +45375,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="configparser" imports="['configparser', 'functools', 'io', 'itertools', 'os', 're', 'sys', 'warnings']" importfrom="['collections.abc:MutableMapping', 'collections:ChainMap']">
@@ -44632,6 +45809,7 @@
         <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="crypt" imports="['', 'errno', 'string:_string', 'sys:_sys']" importfrom="['collections:namedtuple', 'random:SystemRandom']">
@@ -44933,6 +46111,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -44971,7 +46150,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="uuid" imports="['io', 'os', 'platform', 'random', 'shutil', 'socket', 'subprocess', 'sys', 'time', 'uuid']" importfrom="['enum:Enum', 'hashlib:md5', 'hashlib:sha1']">
@@ -45189,6 +46371,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>OSError</exception>
@@ -45916,8 +47099,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>getopt.error</exception>
       </errors>
     </module>
@@ -45969,7 +47155,9 @@
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
+        <exception>ValueError</exception>
         <exception>getpass.GetPassWarning</exception>
         <exception>termios.error</exception>
       </errors>
@@ -46068,8 +47256,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="difflib" imports="['difflib', 'doctest', 're']" importfrom="['collections:namedtuple', 'heapq:nlargest', 'types:GenericAlias']">
@@ -46280,6 +47470,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -46871,9 +48062,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>FileExistsError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>py_compile.PyCompileError</exception>
       </errors>
     </module>
@@ -46901,7 +48095,7 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="opengroup">
-          <expr>obj.opengroup(name)%%['NoneType']</expr>
+          <expr>obj.opengroup(name)%%['str']</expr>
           <args>['name:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
@@ -47067,6 +48261,7 @@
       </api>
       <errors>
         <exception>AssertionError</exception>
+        <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
         <exception>OverflowError</exception>
@@ -47125,7 +48320,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="contextlib" imports="['abc', 'contextlib', 'sys']" importfrom="['collections:deque', 'functools:wraps', 'types:GenericAlias', 'types:MethodType']">
@@ -47239,6 +48437,8 @@
         <exception>RuntimeError</exception>
         <exception>StopAsyncIteration</exception>
         <exception>StopIteration</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="signal" imports="['signal']" importfrom="['enum:IntEnum']">
@@ -47303,6 +48503,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -47328,6 +48529,11 @@
         <defa>['TCSAFLUSH']</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="copyreg" imports="['copyreg']" importfrom="[]">
       <api name="pickle">
@@ -47511,7 +48717,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Exception</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="contextvars" imports="['contextvars']" importfrom="[]"/>
@@ -47626,7 +48835,10 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>NotImplementedError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="hashlib" imports="['hashlib']" importfrom="[]">
@@ -47771,6 +48983,7 @@
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>SyntaxError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>tokenize.StopTokenizing</exception>
         <exception>tokenize.TokenError</exception>
@@ -47869,6 +49082,7 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Error</exception>
         <exception>KeyError</exception>
         <exception>NameError</exception>
@@ -47942,6 +49156,11 @@
           <kwodefa>[]</kwodefa>
         </api>
       </class>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="genericpath" imports="['genericpath', 'os', 'stat']" importfrom="[]">
       <api name="exists">
@@ -48055,6 +49274,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -49058,7 +50278,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="zipapp" imports="['argparse', 'contextlib', 'os', 'pathlib', 'shutil', 'stat', 'sys', 'zipapp', 'zipfile']" importfrom="[]">
@@ -49094,7 +50317,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>SystemExit</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
         <exception>zipapp.ZipAppError</exception>
       </errors>
     </module>
@@ -49181,6 +50407,7 @@
         <exception>OverflowError</exception>
         <exception>SyntaxError</exception>
         <exception>SystemExit</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -49268,6 +50495,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -49339,6 +50567,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -49626,7 +50856,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>LZMAError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
     </module>
@@ -49691,6 +50923,7 @@
         <kwodefa>['FMT_XML', False, True]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
@@ -49908,8 +51141,10 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>poplib.error_proto</exception>
       </errors>
@@ -50000,6 +51235,7 @@
         <exception>ImportError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="pstats" imports="['cmd', 'marshal', 'os', 'pstats', 're', 'readline', 'sys', 'time']" importfrom="['dataclasses:dataclass', 'enum:Enum', 'functools:cmp_to_key', 'typing:Dict']">
@@ -50201,6 +51437,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
@@ -50271,6 +51508,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="base64" imports="['base64', 'binascii', 'getopt', 're', 'struct', 'sys']" importfrom="[]">
       <api name="b64encode">
@@ -50464,6 +51706,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
@@ -51118,7 +52361,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>SyntaxError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
       </errors>
     </module>
     <module name="zipimport" imports="['marshal', 'sys', 'time', 'zipimport']" importfrom="['importlib.abc:ResourceReader', 'io:BytesIO', 'pathlib:Path', 'zlib:decompress']">
@@ -51226,6 +52472,7 @@
         </api>
       </class>
       <errors>
+        <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>Exception</exception>
         <exception>FileNotFoundError</exception>
@@ -51832,6 +53079,11 @@
         <defa>[]</defa>
         <kwodefa>[]</kwodefa>
       </api>
+      <errors>
+        <exception>AttributeError</exception>
+        <exception>TypeError</exception>
+        <exception>ValueError</exception>
+      </errors>
     </module>
     <module name="ftplib" imports="['ftplib', 're', 'socket', 'ssl', 'sys']" importfrom="[]">
       <class name="Error" init="obj = ftplib.Error()%%[]" base="Exception"/>
@@ -52204,9 +53456,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>OSError</exception>
+        <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>ftplib.Error</exception>
         <exception>ftplib.error_perm</exception>
