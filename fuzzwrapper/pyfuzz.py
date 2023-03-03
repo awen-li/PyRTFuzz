@@ -4,16 +4,11 @@ import sys
 import importlib
 import random
 import atheris
+from fuzzwrap import *
 
 PYFUZZ_SCRIPT = 'PYFUZZ_SCRIPT'
 PYFUZZ_SCRIPT_API_TYPE = 'PYFUZZ_SCRIPT_API_TYPE'
 
-SrvPort = random.randint(10000, 65531)
-try:
-    atheris.SetupPyFuzz('apispec.xml', SrvPort, ProbAll=False)
-    atheris.GetInitialSeeds ('seeds')
-except:
-    sys.exit (0)
 
 def PyLv2Mutate (Data, MaxSize, Seed):
     #print ("[%s] PYFUZZ_SCRIPT_API_TYPE = %s" %(os.environ[PYFUZZ_SCRIPT], os.environ[PYFUZZ_SCRIPT_API_TYPE]))
@@ -55,8 +50,27 @@ def PyCoreFuzz (script):
     atheris.SetLv2Driver (FuzzMd.RunFuzzer, pyScriptCorpus)
     atheris.FuzzLv2()
 
+def _GetSeedDir ():
+    for arg in sys.argv:
+        if arg.find ("-pyscript=") == -1:
+            continue
+        return arg[arg.find('=')+1:]
+    return None
     
 if __name__ == '__main__':
+    SrvPort = random.randint(10000, 65531)
+    try:
+        atheris.SetupPyFuzz('apispec.xml', SrvPort, ProbAll=False)
+
+        SeedPath = _GetSeedDir ()
+        if SeedPath == None:
+            Exception("Please specify the seed directory with /-pycript/ parameter")
+        
+        atheris.GetInitialSeeds (SeedPath)
+        Calibrate (SeedPath)
+    except:
+        sys.exit (0)
+
     atheris.SetupCore(sys.argv,
                       PyCoreFuzz,
                       atheris.GetRandomSeed,

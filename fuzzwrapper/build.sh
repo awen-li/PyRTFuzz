@@ -19,4 +19,7 @@ PythonInstallPath ()
 
 
 PythonPath=$(PythonInstallPath)
-cp ./*.py $PythonPath/
+cp ./pyfuzz.py $PythonPath/
+cp ./runone.py $PythonPath/
+
+pip install .
