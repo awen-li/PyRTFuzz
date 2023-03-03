@@ -1,0 +1,7 @@
+python -m runone ../experiments/seeds/1#secrets#token_urlsafe.py
+python -m runone ../experiments/seeds/1#calendar#TextCalendar#formatday.py
+python -m runone ../experiments/seeds/1#timeit#reindent.py
+python -m runone ../experiments/seeds/1#pickletools#dis.py
+python -m runone ../experiments/seeds/1#calendar#formatstring.py
+python -m runone ../experiments/seeds/1#calendar#format.py
+python -m runone ../experiments/seeds/1#secrets#token_hex.py

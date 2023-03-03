@@ -1,0 +1,6 @@
+python -m runone ../experiments/seeds/1#cProfile#runctx.py
+python -m runone ../experiments/seeds/1#timeit#repeat.py
+python -m runone ../experiments/seeds/1#cProfile#run.py
+python -m runone ../experiments/seeds/1#profile#runctx.py
+python -m runone ../experiments/seeds/1#profile#run.py
+python -m runone ../experiments/seeds/1#timeit#timeit.py
