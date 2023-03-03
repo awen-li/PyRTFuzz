@@ -25,8 +25,8 @@ else:
         sys.settrace(None)
         threading.settrace(None)
 
-class Tracing:
-    def __init__(self, ApiSpecXml, TimeLimit=180):
+class Tracing():
+    def __init__(self, ApiSpecXml, PyLibPath=None, TimeLimit=180):
         self.ApiSpecXml = ApiSpecXml
         
         self.PyLibs = self.InitPyLibs (ApiSpecXml)
@@ -36,9 +36,12 @@ class Tracing:
         if os.environ.get ("PYDEBUG") != None:
             self.Debug = True
 
-        self.PyLibPath = os.getenv ("PYTHON_LIBRARY")
-        if self.PyLibPath == None:
-            raise Exception("Please set PYTHON_LIBRARY first!")
+        if PyLibPath != None:
+            self.PyLibPath = PyLibPath
+        else:
+            self.PyLibPath = os.getenv ("PYTHON_LIBRARY")
+            if self.PyLibPath == None:
+                raise Exception("Please set PYTHON_LIBRARY first!")
         self.PyLibPathLen = len (self.PyLibPath)
 
         self.Passes = ["unittest", "importlib._bootstrap", 'pytrace']
@@ -118,17 +121,20 @@ class Tracing:
 
     def UpdateApiRets (self, Frame, ApiSpec, LibName, MdName):
         NewRet = []
+        hasNew = False
         for r in ApiSpec.Ret:
             ret, rtype = r.split(':')
             if rtype == 'None' or rtype == 'NoneType':
                 rval = self.GetValue (Frame, ret)
                 rtype = type(rval).__name__
                 NewRet.append (ret + ':' + rtype)
+                hasNew = True
             else:
                 NewRet.append (r)
                     
         ApiSpec.Ret = NewRet
-        print ("###Update " + MdName + "." + ApiSpec.ApiName + " returns: " + str(NewRet))
+        if hasNew:
+            print ("###Update " + MdName + "." + ApiSpec.ApiName + " returns: " + str(NewRet))
 
     def GetApiSpec (self, Frame, CurMd, ApiName):
         sf = self.GetValue (Frame, 'self')

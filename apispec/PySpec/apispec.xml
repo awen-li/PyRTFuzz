@@ -822,8 +822,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="dumps">
-        <expr>xmlrpc.client.dumps(params,methodname,methodresponse,encoding,allow_none)%%['Fault', 'NoneType', 'NoneType', 'str', 'bool']</expr>
-        <args>['params:Fault', 'methodname:NoneType', 'methodresponse:NoneType', 'encoding:str', 'allow_none:bool']</args>
+        <expr>xmlrpc.client.dumps(params,methodname,methodresponse,encoding,allow_none)%%['Fault', 'str', 'int', 'str', 'bool']</expr>
+        <args>['params:Fault', 'methodname:str', 'methodresponse:int', 'encoding:str', 'allow_none:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -1335,8 +1335,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="get_payload">
-          <expr>obj.get_payload(i,decode)%%['NoneType', 'bool']</expr>
-          <args>['i:NoneType', 'decode:bool']</args>
+          <expr>obj.get_payload(i,decode)%%['int', 'bool']</expr>
+          <args>['i:int', 'decode:bool']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -1345,8 +1345,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="set_payload">
-          <expr>obj.set_payload(payload,charset)%%['str', 'NoneType']</expr>
-          <args>['payload:str', 'charset:NoneType']</args>
+          <expr>obj.set_payload(payload,charset)%%['str', 'str']</expr>
+          <args>['payload:str', 'charset:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -1415,8 +1415,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="get_all">
-          <expr>obj.get_all(name,failobj)%%['str', 'NoneType']</expr>
-          <args>['name:str', 'failobj:NoneType']</args>
+          <expr>obj.get_all(name,failobj)%%['str', 'str']</expr>
+          <args>['name:str', 'failobj:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -1465,8 +1465,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="get_filename">
-          <expr>obj.get_filename(failobj)%%['NoneType']</expr>
-          <args>['failobj:NoneType']</args>
+          <expr>obj.get_filename(failobj)%%['str']</expr>
+          <args>['failobj:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -1495,8 +1495,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="get_charsets">
-          <expr>obj.get_charsets(failobj)%%['NoneType']</expr>
-          <args>['failobj:NoneType']</args>
+          <expr>obj.get_charsets(failobj)%%['str']</expr>
+          <args>['failobj:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -1567,8 +1567,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="make_related">
-          <expr>obj.make_related(boundary)%%['NoneType']</expr>
-          <args>['boundary:NoneType']</args>
+          <expr>obj.make_related(boundary)%%['str']</expr>
+          <args>['boundary:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -1577,8 +1577,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="make_alternative">
-          <expr>obj.make_alternative(boundary)%%['NoneType']</expr>
-          <args>['boundary:NoneType']</args>
+          <expr>obj.make_alternative(boundary)%%['str']</expr>
+          <args>['boundary:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -1587,8 +1587,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="make_mixed">
-          <expr>obj.make_mixed(boundary)%%['NoneType']</expr>
-          <args>['boundary:NoneType']</args>
+          <expr>obj.make_mixed(boundary)%%['str']</expr>
+          <args>['boundary:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -1701,8 +1701,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="make_msgid">
-        <expr>email.utils.make_msgid(idstring,domain)%%['NoneType', 'str']</expr>
-        <args>['idstring:NoneType', 'domain:str']</args>
+        <expr>email.utils.make_msgid(idstring,domain)%%['str', 'str']</expr>
+        <args>['idstring:str', 'domain:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -2187,8 +2187,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="set_text_content">
-        <expr>email.contentmanager.set_text_content(msg,string,subtype,charset,cte,disposition,filename,cid,params,headers)%%['EmailMessage', 'str', 'str', 'str', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']</expr>
-        <args>['msg:EmailMessage', 'string:str', 'subtype:str', 'charset:str', 'cte:NoneType', 'disposition:NoneType', 'filename:NoneType', 'cid:NoneType', 'params:NoneType', 'headers:NoneType']</args>
+        <expr>email.contentmanager.set_text_content(msg,string,subtype,charset,cte,disposition,filename,cid,params,headers)%%['EmailMessage', 'str', 'str', 'str', 'str', 'str', 'str', 'str', 'dict', 'tuple']</expr>
+        <args>['msg:EmailMessage', 'string:str', 'subtype:str', 'charset:str', 'cte:str', 'disposition:str', 'filename:str', 'cid:str', 'params:dict', 'headers:tuple']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -2197,8 +2197,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="set_message_content">
-        <expr>email.contentmanager.set_message_content(msg,message,subtype,cte,disposition,filename,cid,params,headers)%%['EmailMessage', 'EmailMessage', 'str', 'NoneType', 'NoneType', 'NoneType', 'str', 'NoneType', 'NoneType']</expr>
-        <args>['msg:EmailMessage', 'message:EmailMessage', 'subtype:str', 'cte:NoneType', 'disposition:NoneType', 'filename:NoneType', 'cid:str', 'params:NoneType', 'headers:NoneType']</args>
+        <expr>email.contentmanager.set_message_content(msg,message,subtype,cte,disposition,filename,cid,params,headers)%%['EmailMessage', 'EmailMessage', 'str', 'str', 'str', 'str', 'str', 'dict', 'tuple']</expr>
+        <args>['msg:EmailMessage', 'message:EmailMessage', 'subtype:str', 'cte:str', 'disposition:str', 'filename:str', 'cid:str', 'params:dict', 'headers:tuple']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -2207,8 +2207,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="set_bytes_content">
-        <expr>email.contentmanager.set_bytes_content(msg,data,maintype,subtype,cte,disposition,filename,cid,params,headers)%%['EmailMessage', 'bytes', 'str', 'str', 'str', 'NoneType', 'NoneType', 'str', 'NoneType', 'NoneType']</expr>
-        <args>['msg:EmailMessage', 'data:bytes', 'maintype:str', 'subtype:str', 'cte:str', 'disposition:NoneType', 'filename:NoneType', 'cid:str', 'params:NoneType', 'headers:NoneType']</args>
+        <expr>email.contentmanager.set_bytes_content(msg,data,maintype,subtype,cte,disposition,filename,cid,params,headers)%%['EmailMessage', 'bytes', 'str', 'str', 'str', 'str', 'str', 'str', 'dict', 'tuple']</expr>
+        <args>['msg:EmailMessage', 'data:bytes', 'maintype:str', 'subtype:str', 'cte:str', 'disposition:str', 'filename:str', 'cid:str', 'params:dict', 'headers:tuple']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -2625,8 +2625,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="typed_subpart_iterator">
-        <expr>email.iterators.typed_subpart_iterator(msg,maintype,subtype)%%['Message', 'str', 'NoneType']</expr>
-        <args>['msg:Message', 'maintype:str', 'subtype:NoneType']</args>
+        <expr>email.iterators.typed_subpart_iterator(msg,maintype,subtype)%%['Message', 'str', 'str']</expr>
+        <args>['msg:Message', 'maintype:str', 'subtype:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -3610,8 +3610,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="getheader">
-          <expr>obj.getheader(name,default)%%['str', 'NoneType']</expr>
-          <args>['name:str', 'default:NoneType']</args>
+          <expr>obj.getheader(name,default)%%['str', 'str']</expr>
+          <args>['name:str', 'default:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -3672,8 +3672,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="set_tunnel">
-          <expr>obj.set_tunnel(host,port,headers)%%['str', 'NoneType', 'NoneType']</expr>
-          <args>['host:str', 'port:NoneType', 'headers:NoneType']</args>
+          <expr>obj.set_tunnel(host,port,headers)%%['str', 'int', 'dict']</expr>
+          <args>['host:str', 'port:int', 'headers:dict']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -3692,8 +3692,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="request">
-          <expr>obj.request(method,url,body,headers)%%['str', 'str', 'NoneType', 'dict']</expr>
-          <args>['method:str', 'url:str', 'body:NoneType', 'headers:dict']</args>
+          <expr>obj.request(method,url,body,headers)%%['str', 'str', 'bytes', 'dict']</expr>
+          <args>['method:str', 'url:str', 'body:bytes', 'headers:dict']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -4760,8 +4760,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="output">
-          <expr>obj.output(attrs,header)%%['NoneType', 'str']</expr>
-          <args>['attrs:NoneType', 'header:str']</args>
+          <expr>obj.output(attrs,header)%%['list', 'str']</expr>
+          <args>['attrs:list', 'header:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -4770,8 +4770,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="js_output">
-          <expr>obj.js_output(attrs)%%['NoneType']</expr>
-          <args>['attrs:NoneType']</args>
+          <expr>obj.js_output(attrs)%%['list']</expr>
+          <args>['attrs:list']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -4780,8 +4780,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="OutputString">
-          <expr>obj.OutputString(attrs)%%['NoneType']</expr>
-          <args>['attrs:NoneType']</args>
+          <expr>obj.OutputString(attrs)%%['list']</expr>
+          <args>['attrs:list']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -11903,8 +11903,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="start_namespace_decl">
-          <expr>obj.start_namespace_decl(prefix,uri)%%['NoneType', 'str']</expr>
-          <args>['prefix:NoneType', 'uri:str']</args>
+          <expr>obj.start_namespace_decl(prefix,uri)%%['str', 'str']</expr>
+          <args>['prefix:str', 'uri:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -12027,8 +12027,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="startPrefixMapping">
-          <expr>obj.startPrefixMapping(prefix,uri)%%['NoneType', 'str']</expr>
-          <args>['prefix:NoneType', 'uri:str']</args>
+          <expr>obj.startPrefixMapping(prefix,uri)%%['str', 'str']</expr>
+          <args>['prefix:str', 'uri:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -12037,8 +12037,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="endPrefixMapping">
-          <expr>obj.endPrefixMapping(prefix)%%['NoneType']</expr>
-          <args>['prefix:NoneType']</args>
+          <expr>obj.endPrefixMapping(prefix)%%['str']</expr>
+          <args>['prefix:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -13215,8 +13215,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="setAttributeNS">
-          <expr>obj.setAttributeNS(namespaceURI,qualifiedName,value)%%['NoneType', 'str', 'str']</expr>
-          <args>['namespaceURI:NoneType', 'qualifiedName:str', 'value:str']</args>
+          <expr>obj.setAttributeNS(namespaceURI,qualifiedName,value)%%['str', 'str', 'str']</expr>
+          <args>['namespaceURI:str', 'qualifiedName:str', 'value:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -13557,8 +13557,8 @@
       </class>
       <class name="DOMImplementation" init="obj = xml.dom.minidom.DOMImplementation()%%[]" base="xml.dom.xmlbuilder.DOMImplementationLS">
         <api name="createDocument">
-          <expr>obj.createDocument(namespaceURI,qualifiedName,doctype)%%['str', 'str', 'NoneType']</expr>
-          <args>['namespaceURI:str', 'qualifiedName:str', 'doctype:NoneType']</args>
+          <expr>obj.createDocument(namespaceURI,qualifiedName,doctype)%%['str', 'str', 'DocumentType']</expr>
+          <args>['namespaceURI:str', 'qualifiedName:str', 'doctype:DocumentType']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -13567,8 +13567,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="createDocumentType">
-          <expr>obj.createDocumentType(qualifiedName,publicId,systemId)%%['str', 'NoneType', 'NoneType']</expr>
-          <args>['qualifiedName:str', 'publicId:NoneType', 'systemId:NoneType']</args>
+          <expr>obj.createDocumentType(qualifiedName,publicId,systemId)%%['str', 'str', 'str']</expr>
+          <args>['qualifiedName:str', 'publicId:str', 'systemId:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -13761,8 +13761,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="renameNode">
-          <expr>obj.renameNode(n,namespaceURI,name)%%['Attr', 'NoneType', 'str']</expr>
-          <args>['n:Attr', 'namespaceURI:NoneType', 'name:str']</args>
+          <expr>obj.renameNode(n,namespaceURI,name)%%['Attr', 'str', 'str']</expr>
+          <args>['n:Attr', 'namespaceURI:str', 'name:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -14170,8 +14170,8 @@
       <class name="ParseEscape" init="obj = xml.dom.expatbuilder.ParseEscape()%%[]" base="Exception"/>
       <class name="InternalSubsetExtractor" init="obj = xml.dom.expatbuilder.InternalSubsetExtractor()%%['None']" base="xml.dom.expatbuilder.ExpatBuilder">
         <api name="start_doctype_decl_handler">
-          <expr>obj.start_doctype_decl_handler(name,publicId,systemId,has_internal_subset)%%['str', 'NoneType', 'NoneType', 'int']</expr>
-          <args>['name:str', 'publicId:NoneType', 'systemId:NoneType', 'has_internal_subset:int']</args>
+          <expr>obj.start_doctype_decl_handler(name,publicId,systemId,has_internal_subset)%%['str', 'str', 'str', 'int']</expr>
+          <args>['name:str', 'publicId:str', 'systemId:str', 'has_internal_subset:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -14332,8 +14332,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="startPrefixMapping">
-          <expr>obj.startPrefixMapping(prefix,uri)%%['NoneType', 'str']</expr>
-          <args>['prefix:NoneType', 'uri:str']</args>
+          <expr>obj.startPrefixMapping(prefix,uri)%%['str', 'str']</expr>
+          <args>['prefix:str', 'uri:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -14528,8 +14528,8 @@
       </class>
       <class name="SAX2DOM" init="obj = xml.dom.pulldom.SAX2DOM()%%['NoneType']" base="xml.dom.pulldom.PullDOM"/>
       <api name="parse">
-        <expr>xml.dom.pulldom.parse(stream_or_string,parser,bufsize)%%['str', 'NoneType', 'NoneType']</expr>
-        <args>['stream_or_string:str', 'parser:NoneType', 'bufsize:NoneType']</args>
+        <expr>xml.dom.pulldom.parse(stream_or_string,parser,bufsize)%%['str', 'SAXExerciser', 'NoneType']</expr>
+        <args>['stream_or_string:str', 'parser:SAXExerciser', 'bufsize:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -14819,8 +14819,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="parse">
-          <expr>obj.parse(source,parser)%%['BufferedReader', 'NoneType']</expr>
-          <args>['source:BufferedReader', 'parser:NoneType']</args>
+          <expr>obj.parse(source,parser)%%['BufferedReader', 'XMLParser']</expr>
+          <args>['source:BufferedReader', 'parser:XMLParser']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -15028,22 +15028,22 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="tostring">
-        <expr>xml.etree.ElementTree.tostring(element,encoding,method)%%['Element', 'NoneType', 'NoneType']</expr>
-        <args>['element:Element', 'encoding:NoneType', 'method:NoneType']</args>
+        <expr>xml.etree.ElementTree.tostring(element,encoding,method)%%['Element', 'str', 'NoneType']</expr>
+        <args>['element:Element', 'encoding:str', 'method:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['xml_declaration:NoneType', 'default_namespace:NoneType', 'short_empty_elements:bool']</kwoargs>
+        <kwoargs>['xml_declaration:bool', 'default_namespace:str', 'short_empty_elements:bool']</kwoargs>
         <defa>[None, None]</defa>
         <kwodefa>[None, None, True]</kwodefa>
       </api>
       <api name="tostringlist">
-        <expr>xml.etree.ElementTree.tostringlist(element,encoding,method)%%['Element', 'NoneType', 'NoneType']</expr>
-        <args>['element:Element', 'encoding:NoneType', 'method:NoneType']</args>
+        <expr>xml.etree.ElementTree.tostringlist(element,encoding,method)%%['Element', 'str', 'NoneType']</expr>
+        <args>['element:Element', 'encoding:str', 'method:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['xml_declaration:NoneType', 'default_namespace:NoneType', 'short_empty_elements:bool']</kwoargs>
+        <kwoargs>['xml_declaration:bool', 'default_namespace:str', 'short_empty_elements:bool']</kwoargs>
         <defa>[None, None]</defa>
         <kwodefa>[None, None, True]</kwodefa>
       </api>
@@ -15068,8 +15068,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="parse">
-        <expr>xml.etree.ElementTree.parse(source,parser)%%['BufferedReader', 'NoneType']</expr>
-        <args>['source:BufferedReader', 'parser:NoneType']</args>
+        <expr>xml.etree.ElementTree.parse(source,parser)%%['BufferedReader', 'XMLParser']</expr>
+        <args>['source:BufferedReader', 'parser:XMLParser']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -15078,8 +15078,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="iterparse">
-        <expr>xml.etree.ElementTree.iterparse(source,events,parser)%%['StringIO', 'NoneType', 'NoneType']</expr>
-        <args>['source:StringIO', 'events:NoneType', 'parser:NoneType']</args>
+        <expr>xml.etree.ElementTree.iterparse(source,events,parser)%%['StringIO', 'tuple', 'XMLParser']</expr>
+        <args>['source:StringIO', 'events:tuple', 'parser:XMLParser']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -15123,7 +15123,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['out:NoneType', 'from_file:NoneType']</kwoargs>
+        <kwoargs>['out:NoneType', 'from_file:str']</kwoargs>
         <defa>[None]</defa>
         <kwodefa>[None, None]</kwodefa>
       </api>
@@ -15171,8 +15171,8 @@
     </module>
     <module name="xml.etree.ElementPath" imports="['re', 'xml', 'xml.etree', 'xml.etree.ElementPath']" importfrom="[]">
       <api name="xpath_tokenizer">
-        <expr>xml.etree.ElementPath.xpath_tokenizer(pattern,namespaces)%%['str', 'NoneType']</expr>
-        <args>['pattern:str', 'namespaces:NoneType']</args>
+        <expr>xml.etree.ElementPath.xpath_tokenizer(pattern,namespaces)%%['str', 'dict']</expr>
+        <args>['pattern:str', 'namespaces:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -15251,8 +15251,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="iterfind">
-        <expr>xml.etree.ElementPath.iterfind(elem,path,namespaces)%%['Element', 'str', 'NoneType']</expr>
-        <args>['elem:Element', 'path:str', 'namespaces:NoneType']</args>
+        <expr>xml.etree.ElementPath.iterfind(elem,path,namespaces)%%['Element', 'str', 'dict']</expr>
+        <args>['elem:Element', 'path:str', 'namespaces:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -15271,8 +15271,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="findall">
-        <expr>xml.etree.ElementPath.findall(elem,path,namespaces)%%['Element', 'str', 'NoneType']</expr>
-        <args>['elem:Element', 'path:str', 'namespaces:NoneType']</args>
+        <expr>xml.etree.ElementPath.findall(elem,path,namespaces)%%['Element', 'str', 'dict']</expr>
+        <args>['elem:Element', 'path:str', 'namespaces:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -15281,8 +15281,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="findtext">
-        <expr>xml.etree.ElementPath.findtext(elem,path,default,namespaces)%%['Element', 'str', 'NoneType', 'NoneType']</expr>
-        <args>['elem:Element', 'path:str', 'default:NoneType', 'namespaces:NoneType']</args>
+        <expr>xml.etree.ElementPath.findtext(elem,path,default,namespaces)%%['Element', 'str', 'str', 'NoneType']</expr>
+        <args>['elem:Element', 'path:str', 'default:str', 'namespaces:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -15308,8 +15308,8 @@
   <library name="distutils">
     <module name="distutils.archive_util" imports="['distutils', 'distutils.archive_util', 'os', 'sys', 'tarfile', 'zipfile']" importfrom="['distutils.dir_util:mkpath', 'distutils.errors:DistutilsExecError', 'distutils.spawn:spawn', 'distutils:log', 'grp:getgrnam', 'pwd:getpwnam', 'warnings:warn']">
       <api name="make_tarball">
-        <expr>distutils.archive_util.make_tarball(base_name,base_dir,compress,verbose,dry_run,owner,group)%%['str', 'str', 'str', 'int', 'int', 'NoneType', 'NoneType']</expr>
-        <args>['base_name:str', 'base_dir:str', 'compress:str', 'verbose:int', 'dry_run:int', 'owner:NoneType', 'group:NoneType']</args>
+        <expr>distutils.archive_util.make_tarball(base_name,base_dir,compress,verbose,dry_run,owner,group)%%['str', 'str', 'str', 'int', 'int', 'str', 'str']</expr>
+        <args>['base_name:str', 'base_dir:str', 'compress:str', 'verbose:int', 'dry_run:int', 'owner:str', 'group:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -15338,8 +15338,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="make_archive">
-        <expr>distutils.archive_util.make_archive(base_name,format,root_dir,base_dir,verbose,dry_run,owner,group)%%['str', 'str', 'str', 'NoneType', 'int', 'int', 'NoneType', 'NoneType']</expr>
-        <args>['base_name:str', 'format:str', 'root_dir:str', 'base_dir:NoneType', 'verbose:int', 'dry_run:int', 'owner:NoneType', 'group:NoneType']</args>
+        <expr>distutils.archive_util.make_archive(base_name,format,root_dir,base_dir,verbose,dry_run,owner,group)%%['str', 'str', 'str', 'str', 'int', 'int', 'str', 'str']</expr>
+        <args>['base_name:str', 'format:str', 'root_dir:str', 'base_dir:str', 'verbose:int', 'dry_run:int', 'owner:str', 'group:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -15713,8 +15713,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="include_pattern">
-          <expr>obj.include_pattern(pattern,anchor,prefix,is_regex)%%['str', 'int', 'NoneType', 'int']</expr>
-          <args>['pattern:str', 'anchor:int', 'prefix:NoneType', 'is_regex:int']</args>
+          <expr>obj.include_pattern(pattern,anchor,prefix,is_regex)%%['str', 'int', 'str', 'int']</expr>
+          <args>['pattern:str', 'anchor:int', 'prefix:str', 'is_regex:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -15723,8 +15723,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="exclude_pattern">
-          <expr>obj.exclude_pattern(pattern,anchor,prefix,is_regex)%%['str', 'int', 'NoneType', 'int']</expr>
-          <args>['pattern:str', 'anchor:int', 'prefix:NoneType', 'is_regex:int']</args>
+          <expr>obj.exclude_pattern(pattern,anchor,prefix,is_regex)%%['str', 'int', 'str', 'int']</expr>
+          <args>['pattern:str', 'anchor:int', 'prefix:str', 'is_regex:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -15754,8 +15754,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="translate_pattern">
-        <expr>distutils.filelist.translate_pattern(pattern,anchor,prefix,is_regex)%%['str', 'int', 'NoneType', 'int']</expr>
-        <args>['pattern:str', 'anchor:int', 'prefix:NoneType', 'is_regex:int']</args>
+        <expr>distutils.filelist.translate_pattern(pattern,anchor,prefix,is_regex)%%['str', 'int', 'str', 'int']</expr>
+        <args>['pattern:str', 'anchor:int', 'prefix:str', 'is_regex:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -15812,8 +15812,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="find_executable">
-        <expr>distutils.spawn.find_executable(executable,path)%%['str', 'NoneType']</expr>
-        <args>['executable:str', 'path:NoneType']</args>
+        <expr>distutils.spawn.find_executable(executable,path)%%['str', 'str']</expr>
+        <args>['executable:str', 'path:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -16076,8 +16076,8 @@
     </module>
     <module name="distutils.file_util" imports="['distutils', 'distutils.file_util', 'errno', 'os']" importfrom="['distutils.dep_util:newer', 'distutils.errors:DistutilsFileError', 'distutils:log', 'os.path:basename', 'os.path:dirname', 'os.path:exists', 'os.path:isdir', 'os.path:isfile', 'stat:ST_ATIME', 'stat:ST_MODE', 'stat:ST_MTIME', 'stat:S_IMODE']">
       <api name="copy_file">
-        <expr>distutils.file_util.copy_file(src,dst,preserve_mode,preserve_times,update,link,verbose,dry_run)%%['str', 'str', 'int', 'int', 'int', 'NoneType', 'int', 'int']</expr>
-        <args>['src:str', 'dst:str', 'preserve_mode:int', 'preserve_times:int', 'update:int', 'link:NoneType', 'verbose:int', 'dry_run:int']</args>
+        <expr>distutils.file_util.copy_file(src,dst,preserve_mode,preserve_times,update,link,verbose,dry_run)%%['str', 'str', 'int', 'int', 'int', 'str', 'int', 'int']</expr>
+        <args>['src:str', 'dst:str', 'preserve_mode:int', 'preserve_times:int', 'update:int', 'link:str', 'verbose:int', 'dry_run:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -16136,8 +16136,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="get_python_lib">
-        <expr>distutils.sysconfig.get_python_lib(plat_specific,standard_lib,prefix)%%['int', 'int', 'NoneType']</expr>
-        <args>['plat_specific:int', 'standard_lib:int', 'prefix:NoneType']</args>
+        <expr>distutils.sysconfig.get_python_lib(plat_specific,standard_lib,prefix)%%['int', 'int', 'str']</expr>
+        <args>['plat_specific:int', 'standard_lib:int', 'prefix:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -16415,8 +16415,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="byte_compile">
-        <expr>distutils.util.byte_compile(py_files,optimize,force,prefix,base_dir,verbose,dry_run,direct)%%['list', 'int', 'NoneType', 'str', 'NoneType', 'int', 'int', 'NoneType']</expr>
-        <args>['py_files:list', 'optimize:int', 'force:NoneType', 'prefix:str', 'base_dir:NoneType', 'verbose:int', 'dry_run:int', 'direct:NoneType']</args>
+        <expr>distutils.util.byte_compile(py_files,optimize,force,prefix,base_dir,verbose,dry_run,direct)%%['list', 'int', 'int', 'str', 'NoneType', 'int', 'int', 'NoneType']</expr>
+        <args>['py_files:list', 'optimize:int', 'force:int', 'prefix:str', 'base_dir:NoneType', 'verbose:int', 'dry_run:int', 'direct:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -17274,8 +17274,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="copy_tree">
-        <expr>distutils.dir_util.copy_tree(src,dst,preserve_mode,preserve_times,preserve_symlinks,update,verbose,dry_run)%%['str', 'NoneType', 'int', 'int', 'int', 'int', 'int', 'int']</expr>
-        <args>['src:str', 'dst:NoneType', 'preserve_mode:int', 'preserve_times:int', 'preserve_symlinks:int', 'update:int', 'verbose:int', 'dry_run:int']</args>
+        <expr>distutils.dir_util.copy_tree(src,dst,preserve_mode,preserve_times,preserve_symlinks,update,verbose,dry_run)%%['str', 'str', 'int', 'int', 'int', 'int', 'int', 'int']</expr>
+        <args>['src:str', 'dst:str', 'preserve_mode:int', 'preserve_times:int', 'preserve_symlinks:int', 'update:int', 'verbose:int', 'dry_run:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -17616,8 +17616,8 @@
         </api>
       </class>
       <api name="get_default_compiler">
-        <expr>distutils.ccompiler.get_default_compiler(osname,platform)%%['NoneType', 'NoneType']</expr>
-        <args>['osname:NoneType', 'platform:NoneType']</args>
+        <expr>distutils.ccompiler.get_default_compiler(osname,platform)%%['str', 'NoneType']</expr>
+        <args>['osname:str', 'platform:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -18962,8 +18962,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="shouldRollover">
-          <expr>ret = obj.shouldRollover(record)%%['None']</expr>
-          <args>['record:None']</args>
+          <expr>ret = obj.shouldRollover(record)%%['LogRecord']</expr>
+          <args>['record:LogRecord']</args>
           <return>['ret:bool']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -18984,8 +18984,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="shouldRollover">
-          <expr>ret = obj.shouldRollover(record)%%['None']</expr>
-          <args>['record:None']</args>
+          <expr>ret = obj.shouldRollover(record)%%['LogRecord']</expr>
+          <args>['record:LogRecord']</args>
           <return>['ret:bool']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -18996,7 +18996,7 @@
         <api name="getFilesToDelete">
           <expr>ret = obj.getFilesToDelete()%%[]</expr>
           <args>[]</args>
-          <return>['result:None']</return>
+          <return>['result:list']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -19052,9 +19052,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="encodePriority">
-          <expr>ret = obj.encodePriority(facility,priority)%%['None', 'None']</expr>
-          <args>['facility:None', 'priority:None']</args>
-          <return>['ret:None']</return>
+          <expr>ret = obj.encodePriority(facility,priority)%%['int', 'str']</expr>
+          <args>['facility:int', 'priority:str']</args>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -19062,9 +19062,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="mapPriority">
-          <expr>ret = obj.mapPriority(levelName)%%['None']</expr>
-          <args>['levelName:None']</args>
-          <return>['ret:None']</return>
+          <expr>ret = obj.mapPriority(levelName)%%['str']</expr>
+          <args>['levelName:str']</args>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -19108,9 +19108,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="mapLogRecord">
-          <expr>ret = obj.mapLogRecord(record)%%['None']</expr>
-          <args>['record:None']</args>
-          <return>['ret:None']</return>
+          <expr>ret = obj.mapLogRecord(record)%%['LogRecord']</expr>
+          <args>['record:LogRecord']</args>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -19130,9 +19130,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="shouldFlush">
-          <expr>ret = obj.shouldFlush(record)%%['None']</expr>
-          <args>['record:None']</args>
-          <return>['ret:None']</return>
+          <expr>ret = obj.shouldFlush(record)%%['LogRecord']</expr>
+          <args>['record:LogRecord']</args>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -19152,9 +19152,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="shouldFlush">
-          <expr>ret = obj.shouldFlush(record)%%['None']</expr>
-          <args>['record:None']</args>
-          <return>['ret:None']</return>
+          <expr>ret = obj.shouldFlush(record)%%['LogRecord']</expr>
+          <args>['record:LogRecord']</args>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -19162,8 +19162,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="setTarget">
-          <expr>obj.setTarget(target)%%['None']</expr>
-          <args>['target:None']</args>
+          <expr>obj.setTarget(target)%%['MockRaceConditionHandler']</expr>
+          <args>['target:MockRaceConditionHandler']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -19184,9 +19184,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="prepare">
-          <expr>ret = obj.prepare(record)%%['None']</expr>
-          <args>['record:None']</args>
-          <return>['record:None']</return>
+          <expr>ret = obj.prepare(record)%%['LogRecord']</expr>
+          <args>['record:LogRecord']</args>
+          <return>['record:LogRecord']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -19264,9 +19264,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="cfg_convert">
-          <expr>ret = obj.cfg_convert(value)%%['None']</expr>
-          <args>['value:None']</args>
-          <return>['d:None']</return>
+          <expr>ret = obj.cfg_convert(value)%%['str']</expr>
+          <args>['value:str']</args>
+          <return>['d:int']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -19307,8 +19307,8 @@
         </api>
       </class>
       <api name="fileConfig">
-        <expr>logging.config.fileConfig(fname,defaults,disable_existing_loggers)%%['None', 'None', 'None']</expr>
-        <args>['fname:None', 'defaults:None', 'disable_existing_loggers:None']</args>
+        <expr>logging.config.fileConfig(fname,defaults,disable_existing_loggers)%%['StringIO', 'dict', 'bool']</expr>
+        <args>['fname:StringIO', 'defaults:dict', 'disable_existing_loggers:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -19317,8 +19317,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="valid_ident">
-        <expr>ret = logging.config.valid_ident(s)%%['None']</expr>
-        <args>['s:None']</args>
+        <expr>ret = logging.config.valid_ident(s)%%['str']</expr>
+        <args>['s:str']</args>
         <return>['ret:bool']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -19327,8 +19327,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="dictConfig">
-        <expr>logging.config.dictConfig(config)%%['None']</expr>
-        <args>['config:None']</args>
+        <expr>logging.config.dictConfig(config)%%['dict']</expr>
+        <args>['config:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -19337,9 +19337,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="listen">
-        <expr>ret = logging.config.listen(port,verify)%%['None', 'None']</expr>
-        <args>['port:None', 'verify:None']</args>
-        <return>['Server:None']</return>
+        <expr>ret = logging.config.listen(port,verify)%%['int', 'function']</expr>
+        <args>['port:int', 'verify:function']</args>
+        <return>['Server:type']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -19408,9 +19408,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="encode">
-          <expr>ret = obj.encode(o)%%['None']</expr>
-          <args>['o:None']</args>
-          <return>['ret:None']</return>
+          <expr>ret = obj.encode(o)%%['dict']</expr>
+          <args>['o:dict']</args>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -20339,12 +20339,12 @@
         </api>
       </class>
       <api name="urlopen">
-        <expr>urllib.request.urlopen(url,data,timeout)%%['str', 'NoneType', 'object']</expr>
-        <args>['url:str', 'data:NoneType', 'timeout:object']</args>
+        <expr>urllib.request.urlopen(url,data,timeout)%%['str', 'bytes', 'object']</expr>
+        <args>['url:str', 'data:bytes', 'timeout:object']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['cafile:NoneType', 'capath:NoneType', 'cadefault:bool', 'context:NoneType']</kwoargs>
+        <kwoargs>['cafile:str', 'capath:NoneType', 'cadefault:bool', 'context:SSLContext']</kwoargs>
         <defa>[None, None]</defa>
         <kwodefa>[None, None, False, None]</kwodefa>
       </api>
@@ -20359,8 +20359,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="urlretrieve">
-        <expr>urllib.request.urlretrieve(url,filename,reporthook,data)%%['str', 'NoneType', 'NoneType', 'NoneType']</expr>
-        <args>['url:str', 'filename:NoneType', 'reporthook:NoneType', 'data:NoneType']</args>
+        <expr>urllib.request.urlretrieve(url,filename,reporthook,data)%%['str', 'str', 'function', 'NoneType']</expr>
+        <args>['url:str', 'filename:str', 'reporthook:function', 'data:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -20834,8 +20834,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="parse_qs">
-        <expr>urllib.parse.parse_qs(qs,keep_blank_values,strict_parsing,encoding,errors,max_num_fields,separator)%%['str', 'bool', 'bool', 'str', 'str', 'NoneType', 'str']</expr>
-        <args>['qs:str', 'keep_blank_values:bool', 'strict_parsing:bool', 'encoding:str', 'errors:str', 'max_num_fields:NoneType', 'separator:str']</args>
+        <expr>urllib.parse.parse_qs(qs,keep_blank_values,strict_parsing,encoding,errors,max_num_fields,separator)%%['str', 'bool', 'bool', 'str', 'str', 'int', 'str']</expr>
+        <args>['qs:str', 'keep_blank_values:bool', 'strict_parsing:bool', 'encoding:str', 'errors:str', 'max_num_fields:int', 'separator:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -20844,8 +20844,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="parse_qsl">
-        <expr>urllib.parse.parse_qsl(qs,keep_blank_values,strict_parsing,encoding,errors,max_num_fields,separator)%%['str', 'bool', 'bool', 'str', 'str', 'NoneType', 'str']</expr>
-        <args>['qs:str', 'keep_blank_values:bool', 'strict_parsing:bool', 'encoding:str', 'errors:str', 'max_num_fields:NoneType', 'separator:str']</args>
+        <expr>urllib.parse.parse_qsl(qs,keep_blank_values,strict_parsing,encoding,errors,max_num_fields,separator)%%['str', 'bool', 'bool', 'str', 'str', 'int', 'str']</expr>
+        <args>['qs:str', 'keep_blank_values:bool', 'strict_parsing:bool', 'encoding:str', 'errors:str', 'max_num_fields:int', 'separator:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -20864,8 +20864,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="quote">
-        <expr>urllib.parse.quote(string,safe,encoding,errors)%%['str', 'str', 'str', 'NoneType']</expr>
-        <args>['string:str', 'safe:str', 'encoding:str', 'errors:NoneType']</args>
+        <expr>urllib.parse.quote(string,safe,encoding,errors)%%['str', 'str', 'str', 'str']</expr>
+        <args>['string:str', 'safe:str', 'encoding:str', 'errors:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -20874,8 +20874,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="quote_plus">
-        <expr>urllib.parse.quote_plus(string,safe,encoding,errors)%%['str', 'str', 'NoneType', 'NoneType']</expr>
-        <args>['string:str', 'safe:str', 'encoding:NoneType', 'errors:NoneType']</args>
+        <expr>urllib.parse.quote_plus(string,safe,encoding,errors)%%['str', 'str', 'str', 'str']</expr>
+        <args>['string:str', 'safe:str', 'encoding:str', 'errors:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -20894,8 +20894,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="urlencode">
-        <expr>urllib.parse.urlencode(query,doseq,safe,encoding,errors,quote_via)%%['dict', 'bool', 'str', 'NoneType', 'NoneType', 'function']</expr>
-        <args>['query:dict', 'doseq:bool', 'safe:str', 'encoding:NoneType', 'errors:NoneType', 'quote_via:function']</args>
+        <expr>urllib.parse.urlencode(query,doseq,safe,encoding,errors,quote_via)%%['dict', 'bool', 'str', 'str', 'str', 'function']</expr>
+        <args>['query:dict', 'doseq:bool', 'safe:str', 'encoding:str', 'errors:str', 'quote_via:function']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -22607,8 +22607,8 @@
           <kwodefa>[None, None]</kwodefa>
         </api>
         <api name="cancel">
-          <expr>obj.cancel(msg)%%['NoneType']</expr>
-          <args>['msg:NoneType']</args>
+          <expr>obj.cancel(msg)%%['str']</expr>
+          <args>['msg:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -22643,7 +22643,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['name:NoneType']</kwoargs>
+        <kwoargs>['name:str']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -22653,7 +22653,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['loop:NoneType', 'timeout:NoneType', 'return_when:str']</kwoargs>
+        <kwoargs>['loop:TestLoop', 'timeout:float', 'return_when:str']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None, None, 'ALL_COMPLETED']</kwodefa>
       </api>
@@ -22673,17 +22673,17 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['loop:TestLoop', 'timeout:NoneType']</kwoargs>
+        <kwoargs>['loop:TestLoop', 'timeout:float']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None, None]</kwodefa>
       </api>
       <api name="sleep">
-        <expr>asyncio.tasks.sleep(delay,result)%%['int', 'NoneType']</expr>
-        <args>['delay:int', 'result:NoneType']</args>
+        <expr>asyncio.tasks.sleep(delay,result)%%['int', 'int']</expr>
+        <args>['delay:int', 'result:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['loop:NoneType']</kwoargs>
+        <kwoargs>['loop:_UnixSelectorEventLoop']</kwoargs>
         <defa>[None]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -22703,7 +22703,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['loop:NoneType', 'return_exceptions:bool']</kwoargs>
+        <kwoargs>['loop:_UnixSelectorEventLoop', 'return_exceptions:bool']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None, False]</kwodefa>
       </api>
@@ -23734,8 +23734,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="set_event_loop_policy">
-        <expr>asyncio.events.set_event_loop_policy(policy)%%['NoneType']</expr>
-        <args>['policy:NoneType']</args>
+        <expr>asyncio.events.set_event_loop_policy(policy)%%['object']</expr>
+        <args>['policy:object']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -24077,7 +24077,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['debug:NoneType']</kwoargs>
+        <kwoargs>['debug:bool']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -24687,7 +24687,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['loop:NoneType', 'limit:int']</kwoargs>
+        <kwoargs>['loop:_UnixSelectorEventLoop', 'limit:int']</kwoargs>
         <defa>[None, None]</defa>
         <kwodefa>[None, '_DEFAULT_LIMIT']</kwodefa>
       </api>
@@ -24746,8 +24746,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="cancel">
-          <expr>obj.cancel(msg)%%['NoneType']</expr>
-          <args>['msg:NoneType']</args>
+          <expr>obj.cancel(msg)%%['str']</expr>
+          <args>['msg:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -24796,8 +24796,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="set_result">
-          <expr>obj.set_result(result)%%['NoneType']</expr>
-          <args>['result:NoneType']</args>
+          <expr>obj.set_result(result)%%['int']</expr>
+          <args>['result:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -25094,8 +25094,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="pipe_connection_lost">
-          <expr>obj.pipe_connection_lost(fd,exc)%%['int', 'NoneType']</expr>
-          <args>['fd:int', 'exc:NoneType']</args>
+          <expr>obj.pipe_connection_lost(fd,exc)%%['int', 'Mock']</expr>
+          <args>['fd:int', 'exc:Mock']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -25134,8 +25134,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="connection_lost">
-          <expr>obj.connection_lost(exc)%%['NoneType']</expr>
-          <args>['exc:NoneType']</args>
+          <expr>obj.connection_lost(exc)%%['SSLCertVerificationError']</expr>
+          <args>['exc:SSLCertVerificationError']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -29812,8 +29812,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="abs">
-        <expr>operator.abs(a)%%['NoneType']</expr>
-        <args>['a:NoneType']</args>
+        <expr>operator.abs(a)%%['int']</expr>
+        <args>['a:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29822,8 +29822,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="add">
-        <expr>operator.add(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.add(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29832,8 +29832,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="and_">
-        <expr>operator.and_(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.and_(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29842,8 +29842,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="floordiv">
-        <expr>operator.floordiv(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.floordiv(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29862,8 +29862,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="inv">
-        <expr>operator.inv(a)%%['NoneType']</expr>
-        <args>['a:NoneType']</args>
+        <expr>operator.inv(a)%%['int']</expr>
+        <args>['a:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29872,8 +29872,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="lshift">
-        <expr>operator.lshift(a,b)%%['NoneType', 'int']</expr>
-        <args>['a:NoneType', 'b:int']</args>
+        <expr>operator.lshift(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29882,8 +29882,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="mod">
-        <expr>operator.mod(a,b)%%['NoneType', 'int']</expr>
-        <args>['a:NoneType', 'b:int']</args>
+        <expr>operator.mod(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29892,8 +29892,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="mul">
-        <expr>operator.mul(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.mul(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29912,8 +29912,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="neg">
-        <expr>operator.neg(a)%%['NoneType']</expr>
-        <args>['a:NoneType']</args>
+        <expr>operator.neg(a)%%['int']</expr>
+        <args>['a:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29922,8 +29922,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="or_">
-        <expr>operator.or_(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.or_(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29932,8 +29932,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="pos">
-        <expr>operator.pos(a)%%['NoneType']</expr>
-        <args>['a:NoneType']</args>
+        <expr>operator.pos(a)%%['int']</expr>
+        <args>['a:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29942,8 +29942,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="pow">
-        <expr>operator.pow(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.pow(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29952,8 +29952,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="rshift">
-        <expr>operator.rshift(a,b)%%['NoneType', 'int']</expr>
-        <args>['a:NoneType', 'b:int']</args>
+        <expr>operator.rshift(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29962,8 +29962,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="sub">
-        <expr>operator.sub(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.sub(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29972,8 +29972,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="truediv">
-        <expr>operator.truediv(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.truediv(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29982,8 +29982,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="xor">
-        <expr>operator.xor(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.xor(a,b)%%['int', 'int']</expr>
+        <args>['a:int', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -29992,8 +29992,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="concat">
-        <expr>operator.concat(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.concat(a,b)%%['str', 'str']</expr>
+        <args>['a:str', 'b:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -30002,8 +30002,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="contains">
-        <expr>operator.contains(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.contains(a,b)%%['BadIterable', 'int']</expr>
+        <args>['a:BadIterable', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -30012,8 +30012,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="countOf">
-        <expr>operator.countOf(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.countOf(a,b)%%['BadIterable', 'int']</expr>
+        <args>['a:BadIterable', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -30022,8 +30022,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="delitem">
-        <expr>operator.delitem(a,b)%%['list', 'NoneType']</expr>
-        <args>['a:list', 'b:NoneType']</args>
+        <expr>operator.delitem(a,b)%%['list', 'int']</expr>
+        <args>['a:list', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -30032,8 +30032,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="getitem">
-        <expr>operator.getitem(a,b)%%['range', 'NoneType']</expr>
-        <args>['a:range', 'b:NoneType']</args>
+        <expr>operator.getitem(a,b)%%['range', 'int']</expr>
+        <args>['a:range', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -30042,8 +30042,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="indexOf">
-        <expr>operator.indexOf(a,b)%%['NoneType', 'NoneType']</expr>
-        <args>['a:NoneType', 'b:NoneType']</args>
+        <expr>operator.indexOf(a,b)%%['BadIterable', 'int']</expr>
+        <args>['a:BadIterable', 'b:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -30052,8 +30052,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="setitem">
-        <expr>operator.setitem(a,b,c)%%['list', 'NoneType', 'NoneType']</expr>
-        <args>['a:list', 'b:NoneType', 'c:NoneType']</args>
+        <expr>operator.setitem(a,b,c)%%['list', 'int', 'int']</expr>
+        <args>['a:list', 'b:int', 'c:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -30443,8 +30443,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="parse">
-        <expr>cgi.parse(fp,environ,keep_blank_values,strict_parsing,separator)%%['NoneType', 'dict', 'int', 'int', 'str']</expr>
-        <args>['fp:NoneType', 'environ:dict', 'keep_blank_values:int', 'strict_parsing:int', 'separator:str']</args>
+        <expr>cgi.parse(fp,environ,keep_blank_values,strict_parsing,separator)%%['BytesIO', 'dict', 'int', 'int', 'str']</expr>
+        <args>['fp:BytesIO', 'environ:dict', 'keep_blank_values:int', 'strict_parsing:int', 'separator:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -30552,22 +30552,22 @@
     </module>
     <module name="compileall" imports="['argparse', 'compileall', 'filecmp', 'importlib.util', 'os', 'py_compile', 're', 'struct', 'sys']" importfrom="['concurrent.futures:ProcessPoolExecutor', 'functools:partial', 'pathlib:Path']">
       <api name="compile_dir">
-        <expr>compileall.compile_dir(dir,maxlevels,ddir,force,rx,quiet,legacy,optimize,workers,invalidation_mode)%%['str', 'int', 'NoneType', 'bool', 'NoneType', 'bool', 'bool', 'int', 'int', 'NoneType']</expr>
-        <args>['dir:str', 'maxlevels:int', 'ddir:NoneType', 'force:bool', 'rx:NoneType', 'quiet:bool', 'legacy:bool', 'optimize:int', 'workers:int', 'invalidation_mode:NoneType']</args>
+        <expr>compileall.compile_dir(dir,maxlevels,ddir,force,rx,quiet,legacy,optimize,workers,invalidation_mode)%%['str', 'int', 'str', 'bool', 'NoneType', 'bool', 'bool', 'int', 'int', 'NoneType']</expr>
+        <args>['dir:str', 'maxlevels:int', 'ddir:str', 'force:bool', 'rx:NoneType', 'quiet:bool', 'legacy:bool', 'optimize:int', 'workers:int', 'invalidation_mode:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['stripdir:NoneType', 'prependdir:NoneType', 'limit_sl_dest:NoneType', 'hardlink_dupes:bool']</kwoargs>
+        <kwoargs>['stripdir:str', 'prependdir:str', 'limit_sl_dest:str', 'hardlink_dupes:bool']</kwoargs>
         <defa>[None, None, False, None, 0, False, 'int', 1, None]</defa>
         <kwodefa>[None, None, None, False]</kwodefa>
       </api>
       <api name="compile_file">
-        <expr>compileall.compile_file(fullname,ddir,force,rx,quiet,legacy,optimize,invalidation_mode)%%['str', 'NoneType', 'bool', 'NoneType', 'bool', 'bool', 'int', 'NoneType']</expr>
-        <args>['fullname:str', 'ddir:NoneType', 'force:bool', 'rx:NoneType', 'quiet:bool', 'legacy:bool', 'optimize:int', 'invalidation_mode:NoneType']</args>
+        <expr>compileall.compile_file(fullname,ddir,force,rx,quiet,legacy,optimize,invalidation_mode)%%['str', 'PosixPath', 'bool', 'NoneType', 'bool', 'bool', 'int', 'NoneType']</expr>
+        <args>['fullname:str', 'ddir:PosixPath', 'force:bool', 'rx:NoneType', 'quiet:bool', 'legacy:bool', 'optimize:int', 'invalidation_mode:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['stripdir:NoneType', 'prependdir:NoneType', 'limit_sl_dest:NoneType', 'hardlink_dupes:bool']</kwoargs>
+        <kwoargs>['stripdir:str', 'prependdir:str', 'limit_sl_dest:str', 'hardlink_dupes:bool']</kwoargs>
         <defa>[None, False, None, 0, False, 'int', None]</defa>
         <kwodefa>[None, None, None, False]</kwodefa>
       </api>
@@ -30605,8 +30605,8 @@
     </module>
     <module name="imghdr" imports="['imghdr']" importfrom="['os:PathLike']">
       <api name="what">
-        <expr>imghdr.what(file,h)%%['NoneType', 'NoneType']</expr>
-        <args>['file:NoneType', 'h:NoneType']</args>
+        <expr>imghdr.what(file,h)%%['str', 'int']</expr>
+        <args>['file:str', 'h:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -30786,8 +30786,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="shuffle">
-          <expr>obj.shuffle(x,random)%%['list', 'NoneType']</expr>
-          <args>['x:list', 'random:NoneType']</args>
+          <expr>obj.shuffle(x,random)%%['list', 'Mock']</expr>
+          <args>['x:list', 'random:Mock']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -30796,12 +30796,12 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="choices">
-          <expr>obj.choices(population,weights)%%['list', 'NoneType']</expr>
-          <args>['population:list', 'weights:NoneType']</args>
+          <expr>obj.choices(population,weights)%%['list', 'range']</expr>
+          <args>['population:list', 'weights:range']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
-          <kwoargs>['cum_weights:NoneType', 'k:int']</kwoargs>
+          <kwoargs>['cum_weights:range', 'k:int']</kwoargs>
           <defa>[None]</defa>
           <kwodefa>[None, 1]</kwodefa>
         </api>
@@ -31995,8 +31995,8 @@
         </api>
       </class>
       <api name="open">
-        <expr>sunau.open(f,mode)%%['BytesIO', 'NoneType']</expr>
-        <args>['f:BytesIO', 'mode:NoneType']</args>
+        <expr>sunau.open(f,mode)%%['BytesIO', 'str']</expr>
+        <args>['f:BytesIO', 'mode:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -32035,8 +32035,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="token_hex">
-        <expr>secrets.token_hex(nbytes)%%['NoneType']</expr>
-        <args>['nbytes:NoneType']</args>
+        <expr>secrets.token_hex(nbytes)%%['int']</expr>
+        <args>['nbytes:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -32045,8 +32045,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="token_urlsafe">
-        <expr>secrets.token_urlsafe(nbytes)%%['NoneType']</expr>
-        <args>['nbytes:NoneType']</args>
+        <expr>secrets.token_urlsafe(nbytes)%%['int']</expr>
+        <args>['nbytes:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -32192,8 +32192,8 @@
         </api>
       </class>
       <api name="run">
-        <expr>profile.run(statement,filename,sort)%%['str', 'NoneType', 'int']</expr>
-        <args>['statement:str', 'filename:NoneType', 'sort:int']</args>
+        <expr>profile.run(statement,filename,sort)%%['str', 'str', 'int']</expr>
+        <args>['statement:str', 'filename:str', 'sort:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -32202,8 +32202,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="runctx">
-        <expr>profile.runctx(statement,globals,locals,filename,sort)%%['str', 'dict', 'dict', 'NoneType', 'int']</expr>
-        <args>['statement:str', 'globals:dict', 'locals:dict', 'filename:NoneType', 'sort:int']</args>
+        <expr>profile.runctx(statement,globals,locals,filename,sort)%%['str', 'dict', 'dict', 'str', 'int']</expr>
+        <args>['statement:str', 'globals:dict', 'locals:dict', 'filename:str', 'sort:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -32315,8 +32315,8 @@
         </api>
       </class>
       <api name="open">
-        <expr>gzip.open(filename,mode,compresslevel,encoding,errors,newline)%%['str', 'str', 'int', 'NoneType', 'NoneType', 'NoneType']</expr>
-        <args>['filename:str', 'mode:str', 'compresslevel:int', 'encoding:NoneType', 'errors:NoneType', 'newline:NoneType']</args>
+        <expr>gzip.open(filename,mode,compresslevel,encoding,errors,newline)%%['str', 'str', 'int', 'str', 'str', 'str']</expr>
+        <args>['filename:str', 'mode:str', 'compresslevel:int', 'encoding:str', 'errors:str', 'newline:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -32340,7 +32340,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['mtime:NoneType']</kwoargs>
+        <kwoargs>['mtime:int']</kwoargs>
         <defa>['_COMPRESS_LEVEL_BEST']</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -32900,8 +32900,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="auth_cram_md5">
-          <expr>obj.auth_cram_md5(challenge)%%['NoneType']</expr>
-          <args>['challenge:NoneType']</args>
+          <expr>obj.auth_cram_md5(challenge)%%['bytes']</expr>
+          <args>['challenge:bytes']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -32920,8 +32920,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="auth_login">
-          <expr>obj.auth_login(challenge)%%['NoneType']</expr>
-          <args>['challenge:NoneType']</args>
+          <expr>obj.auth_login(challenge)%%['bytes']</expr>
+          <args>['challenge:bytes']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -33046,8 +33046,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="getline">
-        <expr>linecache.getline(filename,lineno,module_globals)%%['str', 'int', 'NoneType']</expr>
-        <args>['filename:str', 'lineno:int', 'module_globals:NoneType']</args>
+        <expr>linecache.getline(filename,lineno,module_globals)%%['str', 'int', 'dict']</expr>
+        <args>['filename:str', 'lineno:int', 'module_globals:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -33634,8 +33634,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="process">
-          <expr>obj.process(opt,value,values,parser)%%['str', 'NoneType', 'Values', 'OptionParser']</expr>
-          <args>['opt:str', 'value:NoneType', 'values:Values', 'parser:OptionParser']</args>
+          <expr>obj.process(opt,value,values,parser)%%['str', 'str', 'Values', 'OptionParser']</expr>
+          <args>['opt:str', 'value:str', 'values:Values', 'parser:OptionParser']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -33832,8 +33832,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="set_usage">
-          <expr>obj.set_usage(usage)%%['NoneType']</expr>
-          <args>['usage:NoneType']</args>
+          <expr>obj.set_usage(usage)%%['str']</expr>
+          <args>['usage:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -34858,8 +34858,8 @@
       <class name="Konqueror" init="obj = webbrowser.Konqueror()%%['NoneType']" base="webbrowser.BaseBrowser"/>
       <class name="Grail" init="obj = webbrowser.Grail()%%['NoneType']" base="webbrowser.BaseBrowser"/>
       <api name="register">
-        <expr>webbrowser.register(name,klass,instance)%%['str', 'type', 'NoneType']</expr>
-        <args>['name:str', 'klass:type', 'instance:NoneType']</args>
+        <expr>webbrowser.register(name,klass,instance)%%['str', 'type', 'ExampleBrowser']</expr>
+        <args>['name:str', 'klass:type', 'instance:ExampleBrowser']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -34868,8 +34868,8 @@
         <kwodefa>[False]</kwodefa>
       </api>
       <api name="get">
-        <expr>webbrowser.get(using)%%['NoneType']</expr>
-        <args>['using:NoneType']</args>
+        <expr>webbrowser.get(using)%%['str']</expr>
+        <args>['using:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -35628,8 +35628,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="find">
-        <expr>gettext.find(domain,localedir,languages,all)%%['str', 'NoneType', 'NoneType', 'bool']</expr>
-        <args>['domain:str', 'localedir:NoneType', 'languages:NoneType', 'all:bool']</args>
+        <expr>gettext.find(domain,localedir,languages,all)%%['str', 'str', 'NoneType', 'bool']</expr>
+        <args>['domain:str', 'localedir:str', 'languages:NoneType', 'all:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -35638,8 +35638,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="translation">
-        <expr>gettext.translation(domain,localedir,languages,class_,fallback,codeset)%%['str', 'NoneType', 'NoneType', 'NoneType', 'bool', 'list']</expr>
-        <args>['domain:str', 'localedir:NoneType', 'languages:NoneType', 'class_:NoneType', 'fallback:bool', 'codeset:list']</args>
+        <expr>gettext.translation(domain,localedir,languages,class_,fallback,codeset)%%['str', 'str', 'NoneType', 'type', 'bool', 'list']</expr>
+        <args>['domain:str', 'localedir:str', 'languages:NoneType', 'class_:type', 'fallback:bool', 'codeset:list']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -35678,8 +35678,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="bind_textdomain_codeset">
-        <expr>gettext.bind_textdomain_codeset(domain,codeset)%%['str', 'NoneType']</expr>
-        <args>['domain:str', 'codeset:NoneType']</args>
+        <expr>gettext.bind_textdomain_codeset(domain,codeset)%%['str', 'str']</expr>
+        <args>['domain:str', 'codeset:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -35830,8 +35830,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="open">
-          <expr>obj.open(host,port,timeout)%%['str', 'int', 'NoneType']</expr>
-          <args>['host:str', 'port:int', 'timeout:NoneType']</args>
+          <expr>obj.open(host,port,timeout)%%['str', 'int', 'float']</expr>
+          <args>['host:str', 'port:int', 'timeout:float']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -36328,8 +36328,8 @@
         </api>
       </class>
       <api name="libc_ver">
-        <expr>platform.libc_ver(executable,lib,version,chunksize)%%['NoneType', 'str', 'str', 'int']</expr>
-        <args>['executable:NoneType', 'lib:str', 'version:str', 'chunksize:int']</args>
+        <expr>platform.libc_ver(executable,lib,version,chunksize)%%['str', 'str', 'str', 'int']</expr>
+        <args>['executable:str', 'lib:str', 'version:str', 'chunksize:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -37312,8 +37312,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="add_usage">
-          <expr>obj.add_usage(usage,actions,groups,prefix)%%['NoneType', 'list', 'list', 'NoneType']</expr>
-          <args>['usage:NoneType', 'actions:list', 'groups:list', 'prefix:NoneType']</args>
+          <expr>obj.add_usage(usage,actions,groups,prefix)%%['str', 'list', 'list', 'str']</expr>
+          <args>['usage:str', 'actions:list', 'groups:list', 'prefix:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -37936,8 +37936,8 @@
         </api>
       </class>
       <api name="new_class">
-        <expr>types.new_class(name,bases,kwds,exec_body)%%['str', 'tuple', 'NoneType', 'NoneType']</expr>
-        <args>['name:str', 'bases:tuple', 'kwds:NoneType', 'exec_body:NoneType']</args>
+        <expr>types.new_class(name,bases,kwds,exec_body)%%['str', 'tuple', 'dict', 'function']</expr>
+        <args>['name:str', 'bases:tuple', 'kwds:dict', 'exec_body:function']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -37956,8 +37956,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="prepare_class">
-        <expr>types.prepare_class(name,bases,kwds)%%['str', 'tuple', 'NoneType']</expr>
-        <args>['name:str', 'bases:tuple', 'kwds:NoneType']</args>
+        <expr>types.prepare_class(name,bases,kwds)%%['str', 'tuple', 'dict']</expr>
+        <args>['name:str', 'bases:tuple', 'kwds:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -38041,8 +38041,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="autorange">
-          <expr>obj.autorange(callback)%%['NoneType']</expr>
-          <args>['callback:NoneType']</args>
+          <expr>obj.autorange(callback)%%['function']</expr>
+          <args>['callback:function']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -38062,8 +38062,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="timeit">
-        <expr>timeit.timeit(stmt,setup,timer,number,globals)%%['str', 'str', 'FakeTimer', 'int', 'NoneType']</expr>
-        <args>['stmt:str', 'setup:str', 'timer:FakeTimer', 'number:int', 'globals:NoneType']</args>
+        <expr>timeit.timeit(stmt,setup,timer,number,globals)%%['str', 'str', 'FakeTimer', 'int', 'dict']</expr>
+        <args>['stmt:str', 'setup:str', 'timer:FakeTimer', 'number:int', 'globals:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -38365,8 +38365,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="get_type_hints">
-        <expr>typing.get_type_hints(obj,globalns,localns,include_extras)%%['type', 'NoneType', 'NoneType', 'bool']</expr>
-        <args>['obj:type', 'globalns:NoneType', 'localns:NoneType', 'include_extras:bool']</args>
+        <expr>typing.get_type_hints(obj,globalns,localns,include_extras)%%['type', 'dict', 'dict', 'bool']</expr>
+        <args>['obj:type', 'globalns:dict', 'localns:dict', 'include_extras:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -38695,7 +38695,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['default:_MISSING_TYPE', 'default_factory:_MISSING_TYPE', 'init:bool', 'repr:bool', 'hash:NoneType', 'compare:bool', 'metadata:NoneType']</kwoargs>
+        <kwoargs>['default:_MISSING_TYPE', 'default_factory:_MISSING_TYPE', 'init:bool', 'repr:bool', 'hash:bool', 'compare:bool', 'metadata:SimpleNameSpace']</kwoargs>
         <defa>[]</defa>
         <kwodefa>['MISSING', 'MISSING', True, True, None, True, None]</kwodefa>
       </api>
@@ -38704,7 +38704,7 @@
         <args>[]</args>
         <return>[]</return>
         <dependences>None</dependences>
-        <posargs>['cls:NoneType']</posargs>
+        <posargs>['cls:type']</posargs>
         <kwoargs>['init:bool', 'repr:bool', 'eq:bool', 'order:bool', 'unsafe_hash:bool', 'frozen:bool']</kwoargs>
         <defa>[None]</defa>
         <kwodefa>[True, True, True, False, False, False]</kwodefa>
@@ -38755,7 +38755,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['bases:tuple', 'namespace:NoneType', 'init:bool', 'repr:bool', 'eq:bool', 'order:bool', 'unsafe_hash:bool', 'frozen:bool']</kwoargs>
+        <kwoargs>['bases:tuple', 'namespace:dict', 'init:bool', 'repr:bool', 'eq:bool', 'order:bool', 'unsafe_hash:bool', 'frozen:bool']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None, None, True, True, True, False, False, False]</kwodefa>
       </api>
@@ -39040,8 +39040,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="walk">
-        <expr>os.walk(top,topdown,onerror,followlinks)%%['str', 'bool', 'NoneType', 'bool']</expr>
-        <args>['top:str', 'topdown:bool', 'onerror:NoneType', 'followlinks:bool']</args>
+        <expr>os.walk(top,topdown,onerror,followlinks)%%['str', 'bool', 'builtin_function_or_method', 'bool']</expr>
+        <args>['top:str', 'topdown:bool', 'onerror:builtin_function_or_method', 'followlinks:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -39050,12 +39050,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="fwalk">
-        <expr>os.fwalk(top,topdown,onerror)%%['bytes', 'bool', 'NoneType']</expr>
-        <args>['top:bytes', 'topdown:bool', 'onerror:NoneType']</args>
+        <expr>os.fwalk(top,topdown,onerror)%%['bytes', 'bool', 'builtin_function_or_method']</expr>
+        <args>['top:bytes', 'topdown:bool', 'onerror:builtin_function_or_method']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['follow_symlinks:bool', 'dir_fd:NoneType']</kwoargs>
+        <kwoargs>['follow_symlinks:bool', 'dir_fd:int']</kwoargs>
         <defa>['.', True, None]</defa>
         <kwodefa>[False, None]</kwodefa>
       </api>
@@ -39110,8 +39110,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="execvpe">
-        <expr>os.execvpe(file,args,env)%%['str', 'list', 'NoneType']</expr>
-        <args>['file:str', 'args:list', 'env:NoneType']</args>
+        <expr>os.execvpe(file,args,env)%%['str', 'list', 'dict']</expr>
+        <args>['file:str', 'args:list', 'env:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -39120,8 +39120,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="get_exec_path">
-        <expr>os.get_exec_path(env)%%['NoneType']</expr>
-        <args>['env:NoneType']</args>
+        <expr>os.get_exec_path(env)%%['dict']</expr>
+        <args>['env:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -39541,8 +39541,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="extractall">
-          <expr>obj.extractall(path,members)%%['str', 'NoneType']</expr>
-          <args>['path:str', 'members:NoneType']</args>
+          <expr>obj.extractall(path,members)%%['str', 'list']</expr>
+          <args>['path:str', 'members:list']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -39895,17 +39895,17 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['file:NoneType', 'depth:int']</kwoargs>
+        <kwoargs>['file:StringIO', 'depth:int']</kwoargs>
         <defa>[None]</defa>
         <kwodefa>[None, None]</kwodefa>
       </api>
       <api name="distb">
-        <expr>dis.distb(tb)%%['NoneType']</expr>
-        <args>['tb:NoneType']</args>
+        <expr>dis.distb(tb)%%['traceback']</expr>
+        <args>['tb:traceback']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['file:NoneType']</kwoargs>
+        <kwoargs>['file:StringIO']</kwoargs>
         <defa>[None]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -39935,7 +39935,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['file:NoneType']</kwoargs>
+        <kwoargs>['file:StringIO']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -39945,7 +39945,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['first_line:NoneType']</kwoargs>
+        <kwoargs>['first_line:int']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -39955,7 +39955,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['file:NoneType']</kwoargs>
+        <kwoargs>['file:StringIO']</kwoargs>
         <defa>['int']</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -40148,8 +40148,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="relpath">
-        <expr>posixpath.relpath(path,start)%%['str', 'NoneType']</expr>
-        <args>['path:str', 'start:NoneType']</args>
+        <expr>posixpath.relpath(path,start)%%['str', 'str']</expr>
+        <args>['path:str', 'start:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -40546,8 +40546,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="loop">
-        <expr>asyncore.loop(timeout,use_poll,map,count)%%['float', 'bool', 'NoneType', 'int']</expr>
-        <args>['timeout:float', 'use_poll:bool', 'map:NoneType', 'count:int']</args>
+        <expr>asyncore.loop(timeout,use_poll,map,count)%%['float', 'bool', 'dict', 'int']</expr>
+        <args>['timeout:float', 'use_poll:bool', 'map:dict', 'count:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -40566,8 +40566,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="close_all">
-        <expr>asyncore.close_all(map,ignore_all)%%['NoneType', 'bool']</expr>
-        <args>['map:NoneType', 'ignore_all:bool']</args>
+        <expr>asyncore.close_all(map,ignore_all)%%['dict', 'bool']</expr>
+        <args>['map:dict', 'ignore_all:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -40838,8 +40838,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="mkstemp">
-        <expr>tempfile.mkstemp(suffix,prefix,dir,text)%%['NoneType', 'NoneType', 'NoneType', 'bool']</expr>
-        <args>['suffix:NoneType', 'prefix:NoneType', 'dir:NoneType', 'text:bool']</args>
+        <expr>tempfile.mkstemp(suffix,prefix,dir,text)%%['str', 'str', 'str', 'bool']</expr>
+        <args>['suffix:str', 'prefix:str', 'dir:str', 'text:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -40848,8 +40848,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="mkdtemp">
-        <expr>tempfile.mkdtemp(suffix,prefix,dir)%%['NoneType', 'NoneType', 'NoneType']</expr>
-        <args>['suffix:NoneType', 'prefix:NoneType', 'dir:NoneType']</args>
+        <expr>tempfile.mkdtemp(suffix,prefix,dir)%%['str', 'str', 'str']</expr>
+        <args>['suffix:str', 'prefix:str', 'dir:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -40858,8 +40858,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="mktemp">
-        <expr>tempfile.mktemp(suffix,prefix,dir)%%['str', 'str', 'NoneType']</expr>
-        <args>['suffix:str', 'prefix:str', 'dir:NoneType']</args>
+        <expr>tempfile.mktemp(suffix,prefix,dir)%%['str', 'str', 'str']</expr>
+        <args>['suffix:str', 'prefix:str', 'dir:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -40868,8 +40868,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="NamedTemporaryFile">
-        <expr>tempfile.NamedTemporaryFile(mode,buffering,encoding,newline,suffix,prefix,dir,delete)%%['str', 'int', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'bool']</expr>
-        <args>['mode:str', 'buffering:int', 'encoding:NoneType', 'newline:NoneType', 'suffix:NoneType', 'prefix:NoneType', 'dir:NoneType', 'delete:bool']</args>
+        <expr>tempfile.NamedTemporaryFile(mode,buffering,encoding,newline,suffix,prefix,dir,delete)%%['str', 'int', 'NoneType', 'NoneType', 'str', 'str', 'str', 'bool']</expr>
+        <args>['mode:str', 'buffering:int', 'encoding:NoneType', 'newline:NoneType', 'suffix:str', 'prefix:str', 'dir:str', 'delete:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -40878,12 +40878,12 @@
         <kwodefa>[None]</kwodefa>
       </api>
       <api name="TemporaryFile">
-        <expr>tempfile.TemporaryFile(mode,buffering,encoding,newline,suffix,prefix,dir)%%['str', 'int', 'NoneType', 'NoneType', 'NoneType', 'NoneType', 'NoneType']</expr>
-        <args>['mode:str', 'buffering:int', 'encoding:NoneType', 'newline:NoneType', 'suffix:NoneType', 'prefix:NoneType', 'dir:NoneType']</args>
+        <expr>tempfile.TemporaryFile(mode,buffering,encoding,newline,suffix,prefix,dir)%%['str', 'int', 'str', 'str', 'str', 'str', 'str']</expr>
+        <args>['mode:str', 'buffering:int', 'encoding:str', 'newline:str', 'suffix:str', 'prefix:str', 'dir:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['errors:NoneType']</kwoargs>
+        <kwoargs>['errors:str']</kwoargs>
         <defa>['w+b', 'int', None, None, None, None, None]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -41534,8 +41534,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="printdir">
-          <expr>obj.printdir(file)%%['NoneType']</expr>
-          <args>['file:NoneType']</args>
+          <expr>obj.printdir(file)%%['StringIO']</expr>
+          <args>['file:StringIO']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -41564,8 +41564,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="open">
-          <expr>obj.open(name,mode,pwd)%%['ZipInfo', 'str', 'NoneType']</expr>
-          <args>['name:ZipInfo', 'mode:str', 'pwd:NoneType']</args>
+          <expr>obj.open(name,mode,pwd)%%['ZipInfo', 'str', 'str']</expr>
+          <args>['name:ZipInfo', 'mode:str', 'pwd:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -41574,8 +41574,8 @@
           <kwodefa>[False]</kwodefa>
         </api>
         <api name="extract">
-          <expr>obj.extract(member,path,pwd)%%['str', 'NoneType', 'str']</expr>
-          <args>['member:str', 'path:NoneType', 'pwd:str']</args>
+          <expr>obj.extract(member,path,pwd)%%['str', 'str', 'str']</expr>
+          <args>['member:str', 'path:str', 'pwd:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -41584,8 +41584,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="extractall">
-          <expr>obj.extractall(path,members,pwd)%%['NoneType', 'NoneType', 'NoneType']</expr>
-          <args>['path:NoneType', 'members:NoneType', 'pwd:NoneType']</args>
+          <expr>obj.extractall(path,members,pwd)%%['str', 'NoneType', 'NoneType']</expr>
+          <args>['path:str', 'members:NoneType', 'pwd:NoneType']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -41594,8 +41594,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="writestr">
-          <expr>obj.writestr(zinfo_or_arcname,data,compress_type,compresslevel)%%['str', 'bytes', 'NoneType', 'NoneType']</expr>
-          <args>['zinfo_or_arcname:str', 'data:bytes', 'compress_type:NoneType', 'compresslevel:NoneType']</args>
+          <expr>obj.writestr(zinfo_or_arcname,data,compress_type,compresslevel)%%['str', 'bytes', 'int', 'int']</expr>
+          <args>['zinfo_or_arcname:str', 'data:bytes', 'compress_type:int', 'compresslevel:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -42787,8 +42787,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="smtp_NOOP">
-          <expr>obj.smtp_NOOP(arg)%%['NoneType']</expr>
-          <args>['arg:NoneType']</args>
+          <expr>obj.smtp_NOOP(arg)%%['str']</expr>
+          <args>['arg:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -42797,8 +42797,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="smtp_QUIT">
-          <expr>obj.smtp_QUIT(arg)%%['NoneType']</expr>
-          <args>['arg:NoneType']</args>
+          <expr>obj.smtp_QUIT(arg)%%['str']</expr>
+          <args>['arg:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -42807,8 +42807,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="smtp_HELP">
-          <expr>obj.smtp_HELP(arg)%%['NoneType']</expr>
-          <args>['arg:NoneType']</args>
+          <expr>obj.smtp_HELP(arg)%%['str']</expr>
+          <args>['arg:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -42847,8 +42847,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="smtp_RSET">
-          <expr>obj.smtp_RSET(arg)%%['NoneType']</expr>
-          <args>['arg:NoneType']</args>
+          <expr>obj.smtp_RSET(arg)%%['str']</expr>
+          <args>['arg:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -42857,8 +42857,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="smtp_DATA">
-          <expr>obj.smtp_DATA(arg)%%['NoneType']</expr>
-          <args>['arg:NoneType']</args>
+          <expr>obj.smtp_DATA(arg)%%['str']</expr>
+          <args>['arg:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -42982,8 +42982,8 @@
         </api>
       </class>
       <api name="run">
-        <expr>cProfile.run(statement,filename,sort)%%['str', 'NoneType', 'int']</expr>
-        <args>['statement:str', 'filename:NoneType', 'sort:int']</args>
+        <expr>cProfile.run(statement,filename,sort)%%['str', 'str', 'int']</expr>
+        <args>['statement:str', 'filename:str', 'sort:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -42992,8 +42992,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="runctx">
-        <expr>cProfile.runctx(statement,globals,locals,filename,sort)%%['str', 'dict', 'dict', 'NoneType', 'int']</expr>
-        <args>['statement:str', 'globals:dict', 'locals:dict', 'filename:NoneType', 'sort:int']</args>
+        <expr>cProfile.runctx(statement,globals,locals,filename,sort)%%['str', 'dict', 'dict', 'str', 'int']</expr>
+        <args>['statement:str', 'globals:dict', 'locals:dict', 'filename:str', 'sort:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -43055,8 +43055,8 @@
         </api>
       </class>
       <api name="showwarning">
-        <expr>warnings.showwarning(message,category,filename,lineno,file,line)%%['None', 'None', 'None', 'None', 'None', 'None']</expr>
-        <args>['message:None', 'category:None', 'filename:None', 'lineno:None', 'file:None', 'line:None']</args>
+        <expr>warnings.showwarning(message,category,filename,lineno,file,line)%%['str', 'type', 'str', 'int', 'StringIO', 'str']</expr>
+        <args>['message:str', 'category:type', 'filename:str', 'lineno:int', 'file:StringIO', 'line:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -43065,9 +43065,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="formatwarning">
-        <expr>ret = warnings.formatwarning(message,category,filename,lineno,line)%%['None', 'None', 'None', 'None', 'None']</expr>
-        <args>['message:None', 'category:None', 'filename:None', 'lineno:None', 'line:None']</args>
-        <return>['_formatwarnmsg_impl:None']</return>
+        <expr>ret = warnings.formatwarning(message,category,filename,lineno,line)%%['UserWarning', 'type', 'str', 'int', 'NoneType']</expr>
+        <args>['message:UserWarning', 'category:type', 'filename:str', 'lineno:int', 'line:NoneType']</args>
+        <return>['_formatwarnmsg_impl:function']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -43361,8 +43361,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="join">
-          <expr>obj.join(timeout)%%['NoneType']</expr>
-          <args>['timeout:NoneType']</args>
+          <expr>obj.join(timeout)%%['float']</expr>
+          <args>['timeout:float']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -43371,8 +43371,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="name">
-          <expr>obj.name(name)%%['NoneType']</expr>
-          <args>['name:NoneType']</args>
+          <expr>obj.name(name)%%['str']</expr>
+          <args>['name:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -43401,8 +43401,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="daemon">
-          <expr>obj.daemon(daemonic)%%['NoneType']</expr>
-          <args>['daemonic:NoneType']</args>
+          <expr>obj.daemon(daemonic)%%['bool']</expr>
+          <args>['daemonic:bool']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -43865,8 +43865,8 @@
         <kwodefa>[False]</kwodefa>
       </api>
       <api name="decode">
-        <expr>uu.decode(in_file,out_file,mode,quiet)%%['BufferedReader', 'NoneType', 'NoneType', 'bool']</expr>
-        <args>['in_file:BufferedReader', 'out_file:NoneType', 'mode:NoneType', 'quiet:bool']</args>
+        <expr>uu.decode(in_file,out_file,mode,quiet)%%['BufferedReader', 'str', 'NoneType', 'bool']</expr>
+        <args>['in_file:BufferedReader', 'out_file:str', 'mode:NoneType', 'quiet:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -43895,8 +43895,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="get">
-          <expr>obj.get(key,default)%%['str', 'NoneType']</expr>
-          <args>['key:str', 'default:NoneType']</args>
+          <expr>obj.get(key,default)%%['str', 'int']</expr>
+          <args>['key:str', 'default:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -44741,8 +44741,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="hook_encoded">
-        <expr>fileinput.hook_encoded(encoding,errors)%%['str', 'NoneType']</expr>
-        <args>['encoding:str', 'errors:NoneType']</args>
+        <expr>fileinput.hook_encoded(encoding,errors)%%['str', 'object']</expr>
+        <args>['encoding:str', 'errors:object']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -44995,8 +44995,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="readlines">
-          <expr>obj.readlines(sizehint,keepends)%%['NoneType', 'bool']</expr>
-          <args>['sizehint:NoneType', 'keepends:bool']</args>
+          <expr>obj.readlines(sizehint,keepends)%%['int', 'bool']</expr>
+          <args>['sizehint:int', 'keepends:bool']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -45162,9 +45162,9 @@
     </module>
     <module name="runpy" imports="['importlib.machinery', 'importlib.util', 'io', 'os', 'runpy', 'sys', 'types']" importfrom="['pkgutil:get_importer', 'pkgutil:read_code', 'warnings:warn']">
       <api name="run_module">
-        <expr>ret = runpy.run_module(mod_name,init_globals,run_name,alter_sys)%%['None', 'None', 'None', 'None']</expr>
-        <args>['mod_name:None', 'init_globals:None', 'run_name:None', 'alter_sys:None']</args>
-        <return>['_run_module_code:None', '_run_code:None']</return>
+        <expr>ret = runpy.run_module(mod_name,init_globals,run_name,alter_sys)%%['str', 'dict', 'str', 'bool']</expr>
+        <args>['mod_name:str', 'init_globals:dict', 'run_name:str', 'alter_sys:bool']</args>
+        <return>['_run_module_code:function', '_run_code:function']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -45172,9 +45172,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="run_path">
-        <expr>ret = runpy.run_path(path_name,init_globals,run_name)%%['None', 'None', 'None']</expr>
-        <args>['path_name:None', 'init_globals:None', 'run_name:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = runpy.run_path(path_name,init_globals,run_name)%%['str', 'dict', 'str']</expr>
+        <args>['path_name:str', 'init_globals:dict', 'run_name:str']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -45553,8 +45553,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="read">
-          <expr>obj.read(filenames,encoding)%%['list', 'NoneType']</expr>
-          <args>['filenames:list', 'encoding:NoneType']</args>
+          <expr>obj.read(filenames,encoding)%%['list', 'str']</expr>
+          <args>['filenames:list', 'encoding:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -46001,8 +46001,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="cache_from_source">
-        <expr>imp.cache_from_source(path,debug_override)%%['str', 'NoneType']</expr>
-        <args>['path:str', 'debug_override:NoneType']</args>
+        <expr>imp.cache_from_source(path,debug_override)%%['str', 'bool']</expr>
+        <args>['path:str', 'debug_override:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -46331,8 +46331,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="uuid1">
-        <expr>uuid.uuid1(node,clock_seq)%%['NoneType', 'NoneType']</expr>
-        <args>['node:NoneType', 'clock_seq:NoneType']</args>
+        <expr>uuid.uuid1(node,clock_seq)%%['int', 'int']</expr>
+        <args>['node:int', 'clock_seq:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -46407,7 +46407,7 @@
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
-          <kwoargs>['encoding:NoneType', 'errors:NoneType', 'newline:NoneType']</kwoargs>
+          <kwoargs>['encoding:str', 'errors:str', 'newline:str']</kwoargs>
           <defa>['r', None]</defa>
           <kwodefa>[None, None, None]</kwodefa>
         </api>
@@ -46545,8 +46545,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="socketpair">
-        <expr>socket.socketpair(family,type,proto)%%['NoneType', 'SocketKind', 'int']</expr>
-        <args>['family:NoneType', 'type:SocketKind', 'proto:int']</args>
+        <expr>socket.socketpair(family,type,proto)%%['AddressFamily', 'SocketKind', 'int']</expr>
+        <args>['family:AddressFamily', 'type:SocketKind', 'proto:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -46565,8 +46565,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="create_connection">
-        <expr>socket.create_connection(address,timeout,source_address)%%['tuple', 'object', 'NoneType']</expr>
-        <args>['address:tuple', 'timeout:object', 'source_address:NoneType']</args>
+        <expr>socket.create_connection(address,timeout,source_address)%%['tuple', 'object', 'tuple']</expr>
+        <args>['address:tuple', 'timeout:object', 'source_address:tuple']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -46590,7 +46590,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['family:AddressFamily', 'backlog:NoneType', 'reuse_port:bool', 'dualstack_ipv6:bool']</kwoargs>
+        <kwoargs>['family:AddressFamily', 'backlog:int', 'reuse_port:bool', 'dualstack_ipv6:bool']</kwoargs>
         <defa>[]</defa>
         <kwodefa>['AF_INET', None, False, False]</kwodefa>
       </api>
@@ -46621,8 +46621,8 @@
       <class name="Purpose" init="obj = ssl.Purpose()%%[]" base="ssl._ASN1Object"/>
       <class name="SSLContext" init="obj = ssl.SSLContext()%%[]" base="_SSLContext">
         <api name="wrap_socket">
-          <expr>obj.wrap_socket(sock,server_side,do_handshake_on_connect,suppress_ragged_eofs,server_hostname,session)%%['socket', 'bool', 'bool', 'bool', 'str', 'NoneType']</expr>
-          <args>['sock:socket', 'server_side:bool', 'do_handshake_on_connect:bool', 'suppress_ragged_eofs:bool', 'server_hostname:str', 'session:NoneType']</args>
+          <expr>obj.wrap_socket(sock,server_side,do_handshake_on_connect,suppress_ragged_eofs,server_hostname,session)%%['socket', 'bool', 'bool', 'bool', 'str', 'Session']</expr>
+          <args>['sock:socket', 'server_side:bool', 'do_handshake_on_connect:bool', 'suppress_ragged_eofs:bool', 'server_hostname:str', 'session:Session']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -46681,8 +46681,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="minimum_version">
-          <expr>obj.minimum_version(value)%%['NoneType']</expr>
-          <args>['value:NoneType']</args>
+          <expr>obj.minimum_version(value)%%['TLSVersion']</expr>
+          <args>['value:TLSVersion']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -46691,8 +46691,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="maximum_version">
-          <expr>obj.maximum_version(value)%%['NoneType']</expr>
-          <args>['value:NoneType']</args>
+          <expr>obj.maximum_version(value)%%['TLSVersion']</expr>
+          <args>['value:TLSVersion']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -46701,8 +46701,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="options">
-          <expr>obj.options(value)%%['NoneType']</expr>
-          <args>['value:NoneType']</args>
+          <expr>obj.options(value)%%['Options']</expr>
+          <args>['value:Options']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -46731,8 +46731,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="verify_flags">
-          <expr>obj.verify_flags(value)%%['NoneType']</expr>
-          <args>['value:NoneType']</args>
+          <expr>obj.verify_flags(value)%%['VerifyFlags']</expr>
+          <args>['value:VerifyFlags']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -46741,8 +46741,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="verify_mode">
-          <expr>obj.verify_mode(value)%%['NoneType']</expr>
-          <args>['value:NoneType']</args>
+          <expr>obj.verify_mode(value)%%['VerifyMode']</expr>
+          <args>['value:VerifyMode']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -46825,8 +46825,8 @@
       </class>
       <class name="SSLSocket" init="obj = ssl.SSLSocket()%%['None', 'None', 'None', 'None']" base="socket.socket">
         <api name="context">
-          <expr>obj.context(ctx)%%['NoneType']</expr>
-          <args>['ctx:NoneType']</args>
+          <expr>obj.context(ctx)%%['SSLContext']</expr>
+          <args>['ctx:SSLContext']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -46835,8 +46835,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="session">
-          <expr>obj.session(session)%%['NoneType']</expr>
-          <args>['session:NoneType']</args>
+          <expr>obj.session(session)%%['type']</expr>
+          <args>['session:type']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -46931,13 +46931,13 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['cafile:NoneType', 'capath:NoneType', 'cadata:NoneType']</kwoargs>
+        <kwoargs>['cafile:str', 'capath:str', 'cadata:str']</kwoargs>
         <defa>[None]</defa>
         <kwodefa>[None, None, None]</kwodefa>
       </api>
       <api name="wrap_socket">
-        <expr>ssl.wrap_socket(sock,keyfile,certfile,server_side,cert_reqs,ssl_version,ca_certs,do_handshake_on_connect,suppress_ragged_eofs,ciphers)%%['socket', 'str', 'NoneType', 'bool', 'VerifyMode', '_SSLMethod', 'NoneType', 'bool', 'bool', 'NoneType']</expr>
-        <args>['sock:socket', 'keyfile:str', 'certfile:NoneType', 'server_side:bool', 'cert_reqs:VerifyMode', 'ssl_version:_SSLMethod', 'ca_certs:NoneType', 'do_handshake_on_connect:bool', 'suppress_ragged_eofs:bool', 'ciphers:NoneType']</args>
+        <expr>ssl.wrap_socket(sock,keyfile,certfile,server_side,cert_reqs,ssl_version,ca_certs,do_handshake_on_connect,suppress_ragged_eofs,ciphers)%%['socket', 'str', 'str', 'bool', 'VerifyMode', '_SSLMethod', 'NoneType', 'bool', 'bool', 'NoneType']</expr>
+        <args>['sock:socket', 'keyfile:str', 'certfile:str', 'server_side:bool', 'cert_reqs:VerifyMode', 'ssl_version:_SSLMethod', 'ca_certs:NoneType', 'do_handshake_on_connect:bool', 'suppress_ragged_eofs:bool', 'ciphers:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -46976,8 +46976,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="get_server_certificate">
-        <expr>ssl.get_server_certificate(addr,ssl_version,ca_certs)%%['tuple', '_SSLMethod', 'NoneType']</expr>
-        <args>['addr:tuple', 'ssl_version:_SSLMethod', 'ca_certs:NoneType']</args>
+        <expr>ssl.get_server_certificate(addr,ssl_version,ca_certs)%%['tuple', '_SSLMethod', 'str']</expr>
+        <args>['addr:tuple', 'ssl_version:_SSLMethod', 'ca_certs:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -47110,8 +47110,8 @@
     <module name="getpass" imports="['contextlib', 'getpass', 'io', 'os', 'pwd', 'sys', 'termios', 'warnings']" importfrom="[]">
       <class name="GetPassWarning" init="obj = getpass.GetPassWarning()%%[]" base="UserWarning"/>
       <api name="unix_getpass">
-        <expr>getpass.unix_getpass(prompt,stream)%%['str', 'NoneType']</expr>
-        <args>['prompt:str', 'stream:NoneType']</args>
+        <expr>getpass.unix_getpass(prompt,stream)%%['str', 'Mock']</expr>
+        <args>['prompt:str', 'stream:Mock']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -47206,8 +47206,8 @@
         <kwodefa>[False, True]</kwodefa>
       </api>
       <api name="pformat">
-        <expr>pprint.pformat(object,indent,width,depth)%%['list', 'int', 'int', 'NoneType']</expr>
-        <args>['object:list', 'indent:int', 'width:int', 'depth:NoneType']</args>
+        <expr>pprint.pformat(object,indent,width,depth)%%['list', 'int', 'int', 'int']</expr>
+        <args>['object:list', 'indent:int', 'width:int', 'depth:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -47521,8 +47521,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="cdf">
-          <expr>ret = obj.cdf(x)%%['None']</expr>
-          <args>['x:None']</args>
+          <expr>ret = obj.cdf(x)%%['float']</expr>
+          <args>['x:float']</args>
           <return>['ret:int']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -47541,8 +47541,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="overlap">
-          <expr>ret = obj.overlap(other)%%['None']</expr>
-          <args>['other:None']</args>
+          <expr>ret = obj.overlap(other)%%['NormalDist']</expr>
+          <args>['other:NormalDist']</args>
           <return>['ret:int']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -47583,7 +47583,7 @@
         <api name="stdev">
           <expr>ret = obj.stdev()%%[]</expr>
           <args>[]</args>
-          <return>['ret:None']</return>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -47592,9 +47592,9 @@
         </api>
       </class>
       <api name="mean">
-        <expr>ret = statistics.mean(data)%%['None']</expr>
-        <args>['data:None']</args>
-        <return>['_convert:None']</return>
+        <expr>ret = statistics.mean(data)%%['list']</expr>
+        <args>['data:list']</args>
+        <return>['_convert:function']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47602,9 +47602,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="fmean">
-        <expr>ret = statistics.fmean(data)%%['None']</expr>
-        <args>['data:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = statistics.fmean(data)%%['list']</expr>
+        <args>['data:list']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47612,9 +47612,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="geometric_mean">
-        <expr>ret = statistics.geometric_mean(data)%%['None']</expr>
-        <args>['data:None']</args>
-        <return>['exp:None']</return>
+        <expr>ret = statistics.geometric_mean(data)%%['list']</expr>
+        <args>['data:list']</args>
+        <return>['exp:builtin_function_or_method']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47622,9 +47622,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="harmonic_mean">
-        <expr>ret = statistics.harmonic_mean(data)%%['None']</expr>
-        <args>['data:None']</args>
-        <return>['x:None', '_convert:None']</return>
+        <expr>ret = statistics.harmonic_mean(data)%%['list']</expr>
+        <args>['data:list']</args>
+        <return>['x:str', '_convert:function']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47642,9 +47642,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="median_low">
-        <expr>ret = statistics.median_low(data)%%['None']</expr>
-        <args>['data:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = statistics.median_low(data)%%['list']</expr>
+        <args>['data:list']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47652,9 +47652,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="median_high">
-        <expr>ret = statistics.median_high(data)%%['None']</expr>
-        <args>['data:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = statistics.median_high(data)%%['list']</expr>
+        <args>['data:list']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47662,9 +47662,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="median_grouped">
-        <expr>ret = statistics.median_grouped(data,interval)%%['None', 'None']</expr>
-        <args>['data:None', 'interval:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = statistics.median_grouped(data,interval)%%['list', 'int']</expr>
+        <args>['data:list', 'interval:int']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47672,9 +47672,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="mode">
-        <expr>ret = statistics.mode(data)%%['None']</expr>
-        <args>['data:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = statistics.mode(data)%%['list']</expr>
+        <args>['data:list']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47682,9 +47682,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="multimode">
-        <expr>ret = statistics.multimode(data)%%['None']</expr>
-        <args>['data:None']</args>
-        <return>['list:None']</return>
+        <expr>ret = statistics.multimode(data)%%['str']</expr>
+        <args>['data:str']</args>
+        <return>['list:type']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47702,9 +47702,9 @@
         <kwodefa>[4, 'exclusive']</kwodefa>
       </api>
       <api name="variance">
-        <expr>ret = statistics.variance(data,xbar)%%['None', 'None']</expr>
-        <args>['data:None', 'xbar:None']</args>
-        <return>['_convert:None']</return>
+        <expr>ret = statistics.variance(data,xbar)%%['list', 'float']</expr>
+        <args>['data:list', 'xbar:float']</args>
+        <return>['_convert:function']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47712,9 +47712,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="pvariance">
-        <expr>ret = statistics.pvariance(data,mu)%%['None', 'None']</expr>
-        <args>['data:None', 'mu:None']</args>
-        <return>['_convert:None']</return>
+        <expr>ret = statistics.pvariance(data,mu)%%['list', 'float']</expr>
+        <args>['data:list', 'mu:float']</args>
+        <return>['_convert:function']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47722,9 +47722,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="stdev">
-        <expr>ret = statistics.stdev(data,xbar)%%['None', 'None']</expr>
-        <args>['data:None', 'xbar:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = statistics.stdev(data,xbar)%%['list', 'float']</expr>
+        <args>['data:list', 'xbar:float']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47732,9 +47732,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="pstdev">
-        <expr>ret = statistics.pstdev(data,mu)%%['None', 'None']</expr>
-        <args>['data:None', 'mu:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = statistics.pstdev(data,mu)%%['list', 'NoneType']</expr>
+        <args>['data:list', 'mu:NoneType']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -47811,8 +47811,8 @@
           <kwodefa>[None]</kwodefa>
         </api>
         <api name="list">
-          <expr>obj.list(group_pattern)%%['NoneType']</expr>
-          <args>['group_pattern:NoneType']</args>
+          <expr>obj.list(group_pattern)%%['str']</expr>
+          <args>['group_pattern:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -48042,8 +48042,8 @@
       <class name="PyCompileError" init="obj = py_compile.PyCompileError()%%[]" base="Exception"/>
       <class name="PycInvalidationMode" init="obj = py_compile.PycInvalidationMode()%%[]" base="enum.Enum"/>
       <api name="compile">
-        <expr>py_compile.compile(file,cfile,dfile,doraise,optimize,invalidation_mode,quiet)%%['str', 'str', 'NoneType', 'bool', 'int', 'NoneType', 'int']</expr>
-        <args>['file:str', 'cfile:str', 'dfile:NoneType', 'doraise:bool', 'optimize:int', 'invalidation_mode:NoneType', 'quiet:int']</args>
+        <expr>py_compile.compile(file,cfile,dfile,doraise,optimize,invalidation_mode,quiet)%%['str', 'str', 'str', 'bool', 'int', 'PycInvalidationMode', 'int']</expr>
+        <args>['file:str', 'cfile:str', 'dfile:str', 'doraise:bool', 'optimize:int', 'invalidation_mode:PycInvalidationMode', 'quiet:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -48875,9 +48875,9 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="untokenize">
-          <expr>ret = obj.untokenize(iterable)%%['None']</expr>
-          <args>['iterable:None']</args>
-          <return>['ret:None']</return>
+          <expr>ret = obj.untokenize(iterable)%%['list']</expr>
+          <args>['iterable:list']</args>
+          <return>['ret:NoneType']</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
           <kwoargs>[]</kwoargs>
@@ -48916,9 +48916,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="untokenize">
-        <expr>ret = tokenize.untokenize(iterable)%%['None']</expr>
-        <args>['iterable:None']</args>
-        <return>['out:None']</return>
+        <expr>ret = tokenize.untokenize(iterable)%%['list']</expr>
+        <args>['iterable:list']</args>
+        <return>['out:bytes']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -49061,8 +49061,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="sniff">
-          <expr>obj.sniff(sample,delimiters)%%['str', 'NoneType']</expr>
-          <args>['sample:str', 'delimiters:NoneType']</args>
+          <expr>obj.sniff(sample,delimiters)%%['str', 'str']</expr>
+          <args>['sample:str', 'delimiters:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -49707,8 +49707,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="distance">
-          <expr>obj.distance(x,y)%%['Vec2D', 'NoneType']</expr>
-          <args>['x:Vec2D', 'y:NoneType']</args>
+          <expr>obj.distance(x,y)%%['Vec2D', 'int']</expr>
+          <args>['x:Vec2D', 'y:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -50258,8 +50258,8 @@
         </api>
       </class>
       <api name="new">
-        <expr>hmac.new(key,msg,digestmod)%%['str', 'NoneType', 'str']</expr>
-        <args>['key:str', 'msg:NoneType', 'digestmod:str']</args>
+        <expr>hmac.new(key,msg,digestmod)%%['str', 'bytes', 'str']</expr>
+        <args>['key:str', 'msg:bytes', 'digestmod:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -50287,8 +50287,8 @@
     <module name="zipapp" imports="['argparse', 'contextlib', 'os', 'pathlib', 'shutil', 'stat', 'sys', 'zipapp', 'zipfile']" importfrom="[]">
       <class name="ZipAppError" init="obj = zipapp.ZipAppError()%%[]" base="ValueError"/>
       <api name="create_archive">
-        <expr>zipapp.create_archive(source,target,interpreter,main,filter,compressed)%%['PosixPath', 'PosixPath', 'NoneType', 'NoneType', 'NoneType', 'bool']</expr>
-        <args>['source:PosixPath', 'target:PosixPath', 'interpreter:NoneType', 'main:NoneType', 'filter:NoneType', 'compressed:bool']</args>
+        <expr>zipapp.create_archive(source,target,interpreter,main,filter,compressed)%%['PosixPath', 'PosixPath', 'str', 'str', 'function', 'bool']</expr>
+        <args>['source:PosixPath', 'target:PosixPath', 'interpreter:str', 'main:str', 'filter:function', 'compressed:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -50379,8 +50379,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="interact">
-          <expr>obj.interact(banner,exitmsg)%%['str', 'NoneType']</expr>
-          <args>['banner:str', 'exitmsg:NoneType']</args>
+          <expr>obj.interact(banner,exitmsg)%%['str', 'str']</expr>
+          <args>['banner:str', 'exitmsg:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -50465,8 +50465,8 @@
         </api>
       </class>
       <api name="open">
-        <expr>bz2.open(filename,mode,compresslevel,encoding,errors,newline)%%['str', 'str', 'int', 'NoneType', 'NoneType', 'NoneType']</expr>
-        <args>['filename:str', 'mode:str', 'compresslevel:int', 'encoding:NoneType', 'errors:NoneType', 'newline:NoneType']</args>
+        <expr>bz2.open(filename,mode,compresslevel,encoding,errors,newline)%%['str', 'str', 'int', 'str', 'str', 'str']</expr>
+        <args>['filename:str', 'mode:str', 'compresslevel:int', 'encoding:str', 'errors:str', 'newline:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -50557,8 +50557,8 @@
         </api>
       </class>
       <api name="capwords">
-        <expr>string.capwords(s,sep)%%['str', 'NoneType']</expr>
-        <args>['s:str', 'sep:NoneType']</args>
+        <expr>string.capwords(s,sep)%%['str', 'str']</expr>
+        <args>['s:str', 'sep:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -50618,9 +50618,9 @@
         </api>
       </class>
       <api name="read_code">
-        <expr>ret = pkgutil.read_code(stream)%%['None']</expr>
-        <args>['stream:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = pkgutil.read_code(stream)%%['BufferedReader']</expr>
+        <args>['stream:BufferedReader']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -50628,8 +50628,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="walk_packages">
-        <expr>pkgutil.walk_packages(path,prefix,onerror)%%['list', 'str', 'NoneType']</expr>
-        <args>['path:list', 'prefix:str', 'onerror:NoneType']</args>
+        <expr>pkgutil.walk_packages(path,prefix,onerror)%%['list', 'str', 'function']</expr>
+        <args>['path:list', 'prefix:str', 'onerror:function']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -50831,13 +50831,13 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['format:NoneType', 'check:int', 'preset:NoneType', 'filters:NoneType', 'encoding:NoneType', 'errors:NoneType', 'newline:NoneType']</kwoargs>
+        <kwoargs>['format:int', 'check:int', 'preset:NoneType', 'filters:list', 'encoding:str', 'errors:str', 'newline:str']</kwoargs>
         <defa>['rb']</defa>
         <kwodefa>[None, 'int', None, None, None, None, None]</kwodefa>
       </api>
       <api name="compress">
-        <expr>lzma.compress(data,format,check,preset,filters)%%['list', 'int', 'int', 'NoneType', 'NoneType']</expr>
-        <args>['data:list', 'format:int', 'check:int', 'preset:NoneType', 'filters:NoneType']</args>
+        <expr>lzma.compress(data,format,check,preset,filters)%%['list', 'int', 'int', 'str', 'int']</expr>
+        <args>['data:list', 'format:int', 'check:int', 'preset:str', 'filters:int']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -50846,8 +50846,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="decompress">
-        <expr>lzma.decompress(data,format,memlimit,filters)%%['list', 'int', 'NoneType', 'NoneType']</expr>
-        <args>['data:list', 'format:int', 'memlimit:NoneType', 'filters:NoneType']</args>
+        <expr>lzma.decompress(data,format,memlimit,filters)%%['list', 'int', 'float', 'dict']</expr>
+        <args>['data:list', 'format:int', 'memlimit:float', 'filters:dict']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -50888,7 +50888,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['fmt:NoneType', 'dict_type:type']</kwoargs>
+        <kwoargs>['fmt:PlistFormat', 'dict_type:type']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None, 'dict']</kwodefa>
       </api>
@@ -50898,7 +50898,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['fmt:NoneType', 'dict_type:type']</kwoargs>
+        <kwoargs>['fmt:PlistFormat', 'dict_type:type']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None, 'dict']</kwodefa>
       </api>
@@ -50998,8 +50998,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="list">
-          <expr>obj.list(which)%%['NoneType']</expr>
-          <args>['which:NoneType']</args>
+          <expr>obj.list(which)%%['str']</expr>
+          <args>['which:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -51088,8 +51088,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="uidl">
-          <expr>obj.uidl(which)%%['NoneType']</expr>
-          <args>['which:NoneType']</args>
+          <expr>obj.uidl(which)%%['str']</expr>
+          <args>['which:str']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -51108,8 +51108,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="stls">
-          <expr>obj.stls(context)%%['NoneType']</expr>
-          <args>['context:NoneType']</args>
+          <expr>obj.stls(context)%%['SSLContext']</expr>
+          <args>['context:SSLContext']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -51206,13 +51206,13 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['key:NoneType', 'reverse:bool']</kwoargs>
+        <kwoargs>['key:function', 'reverse:bool']</kwoargs>
         <defa>[]</defa>
         <kwodefa>[None, False]</kwodefa>
       </api>
       <api name="nsmallest">
-        <expr>heapq.nsmallest(n,iterable,key)%%['int', 'list', 'NoneType']</expr>
-        <args>['n:int', 'iterable:list', 'key:NoneType']</args>
+        <expr>heapq.nsmallest(n,iterable,key)%%['int', 'list', 'function']</expr>
+        <args>['n:int', 'iterable:list', 'key:function']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -51221,8 +51221,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="nlargest">
-        <expr>heapq.nlargest(n,iterable,key)%%['int', 'list', 'NoneType']</expr>
-        <args>['n:int', 'iterable:list', 'key:NoneType']</args>
+        <expr>heapq.nlargest(n,iterable,key)%%['int', 'list', 'itemgetter']</expr>
+        <args>['n:int', 'iterable:list', 'key:itemgetter']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -51516,8 +51516,8 @@
     </module>
     <module name="base64" imports="['base64', 'binascii', 'getopt', 're', 'struct', 'sys']" importfrom="[]">
       <api name="b64encode">
-        <expr>base64.b64encode(s,altchars)%%['bytes', 'NoneType']</expr>
-        <args>['s:bytes', 'altchars:NoneType']</args>
+        <expr>base64.b64encode(s,altchars)%%['bytes', 'bytes']</expr>
+        <args>['s:bytes', 'altchars:bytes']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -51526,8 +51526,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="b64decode">
-        <expr>base64.b64decode(s,altchars,validate)%%['bytes', 'NoneType', 'bool']</expr>
-        <args>['s:bytes', 'altchars:NoneType', 'validate:bool']</args>
+        <expr>base64.b64decode(s,altchars,validate)%%['bytes', 'bytes', 'bool']</expr>
+        <args>['s:bytes', 'altchars:bytes', 'validate:bool']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -51586,8 +51586,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="b32decode">
-        <expr>base64.b32decode(s,casefold,map01)%%['bytes', 'bool', 'NoneType']</expr>
-        <args>['s:bytes', 'casefold:bool', 'map01:NoneType']</args>
+        <expr>base64.b32decode(s,casefold,map01)%%['bytes', 'bool', 'bytes']</expr>
+        <args>['s:bytes', 'casefold:bool', 'map01:bytes']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -52052,8 +52052,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="visiblename">
-        <expr>pydoc.visiblename(name,all,obj)%%['str', 'NoneType', 'EnumMeta']</expr>
-        <args>['name:str', 'all:NoneType', 'obj:EnumMeta']</args>
+        <expr>pydoc.visiblename(name,all,obj)%%['str', 'list', 'EnumMeta']</expr>
+        <args>['name:str', 'all:list', 'obj:EnumMeta']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -52598,8 +52598,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="setlocale">
-        <expr>locale.setlocale(category,locale)%%['int', 'NoneType']</expr>
-        <args>['category:int', 'locale:NoneType']</args>
+        <expr>locale.setlocale(category,locale)%%['int', 'str']</expr>
+        <args>['category:int', 'locale:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -52668,7 +52668,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['type_comments:bool', 'feature_version:NoneType']</kwoargs>
+        <kwoargs>['type_comments:bool', 'feature_version:tuple']</kwoargs>
         <defa>['&lt;unknown&gt;', 'exec']</defa>
         <kwodefa>[False, None]</kwodefa>
       </api>
@@ -52688,7 +52688,7 @@
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
-        <kwoargs>['indent:NoneType']</kwoargs>
+        <kwoargs>['indent:int']</kwoargs>
         <defa>[True, False]</defa>
         <kwodefa>[None]</kwodefa>
       </api>
@@ -52773,9 +52773,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="unparse">
-        <expr>ret = ast.unparse(ast_obj)%%['None']</expr>
-        <args>['ast_obj:None']</args>
-        <return>['ret:None']</return>
+        <expr>ret = ast.unparse(ast_obj)%%['Module']</expr>
+        <args>['ast_obj:Module']</args>
+        <return>['ret:NoneType']</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
         <kwoargs>[]</kwoargs>
@@ -52887,8 +52887,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="rmtree">
-        <expr>shutil.rmtree(path,ignore_errors,onerror)%%['str', 'bool', 'NoneType']</expr>
-        <args>['path:str', 'ignore_errors:bool', 'onerror:NoneType']</args>
+        <expr>shutil.rmtree(path,ignore_errors,onerror)%%['str', 'bool', 'function']</expr>
+        <args>['path:str', 'ignore_errors:bool', 'onerror:function']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -52937,8 +52937,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="make_archive">
-        <expr>shutil.make_archive(base_name,format,root_dir,base_dir,verbose,dry_run,owner,group,logger)%%['str', 'str', 'NoneType', 'NoneType', 'int', 'int', 'NoneType', 'NoneType', 'NoneType']</expr>
-        <args>['base_name:str', 'format:str', 'root_dir:NoneType', 'base_dir:NoneType', 'verbose:int', 'dry_run:int', 'owner:NoneType', 'group:NoneType', 'logger:NoneType']</args>
+        <expr>shutil.make_archive(base_name,format,root_dir,base_dir,verbose,dry_run,owner,group,logger)%%['str', 'str', 'str', 'str', 'int', 'int', 'str', 'str', 'NoneType']</expr>
+        <args>['base_name:str', 'format:str', 'root_dir:str', 'base_dir:str', 'verbose:int', 'dry_run:int', 'owner:str', 'group:str', 'logger:NoneType']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -52977,8 +52977,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="unpack_archive">
-        <expr>shutil.unpack_archive(filename,extract_dir,format)%%['str', 'str', 'NoneType']</expr>
-        <args>['filename:str', 'extract_dir:str', 'format:NoneType']</args>
+        <expr>shutil.unpack_archive(filename,extract_dir,format)%%['str', 'str', 'str']</expr>
+        <args>['filename:str', 'extract_dir:str', 'format:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -52997,8 +52997,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="chown">
-        <expr>shutil.chown(path,user,group)%%['str', 'NoneType', 'NoneType']</expr>
-        <args>['path:str', 'user:NoneType', 'group:NoneType']</args>
+        <expr>shutil.chown(path,user,group)%%['str', 'str', 'str']</expr>
+        <args>['path:str', 'user:str', 'group:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -53017,8 +53017,8 @@
         <kwodefa>[]</kwodefa>
       </api>
       <api name="which">
-        <expr>shutil.which(cmd,mode,path)%%['str', 'int', 'NoneType']</expr>
-        <args>['cmd:str', 'mode:int', 'path:NoneType']</args>
+        <expr>shutil.which(cmd,mode,path)%%['str', 'int', 'str']</expr>
+        <args>['cmd:str', 'mode:int', 'path:str']</args>
         <return>[]</return>
         <dependences>None</dependences>
         <posargs>[]</posargs>
@@ -53103,8 +53103,8 @@
           <kwodefa>['utf-8']</kwodefa>
         </api>
         <api name="connect">
-          <expr>obj.connect(host,port,timeout,source_address)%%['str', 'int', 'int', 'NoneType']</expr>
-          <args>['host:str', 'port:int', 'timeout:int', 'source_address:NoneType']</args>
+          <expr>obj.connect(host,port,timeout,source_address)%%['str', 'int', 'int', 'tuple']</expr>
+          <args>['host:str', 'port:int', 'timeout:int', 'source_address:tuple']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -53173,8 +53173,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="ntransfercmd">
-          <expr>obj.ntransfercmd(cmd,rest)%%['str', 'NoneType']</expr>
-          <args>['cmd:str', 'rest:NoneType']</args>
+          <expr>obj.ntransfercmd(cmd,rest)%%['str', 'int']</expr>
+          <args>['cmd:str', 'rest:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -53183,8 +53183,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="transfercmd">
-          <expr>obj.transfercmd(cmd,rest)%%['str', 'NoneType']</expr>
-          <args>['cmd:str', 'rest:NoneType']</args>
+          <expr>obj.transfercmd(cmd,rest)%%['str', 'int']</expr>
+          <args>['cmd:str', 'rest:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -53203,8 +53203,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="retrbinary">
-          <expr>obj.retrbinary(cmd,callback,blocksize,rest)%%['str', 'function', 'int', 'NoneType']</expr>
-          <args>['cmd:str', 'callback:function', 'blocksize:int', 'rest:NoneType']</args>
+          <expr>obj.retrbinary(cmd,callback,blocksize,rest)%%['str', 'function', 'int', 'int']</expr>
+          <args>['cmd:str', 'callback:function', 'blocksize:int', 'rest:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -53213,8 +53213,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="storbinary">
-          <expr>obj.storbinary(cmd,fp,blocksize,callback,rest)%%['str', 'BytesIO', 'int', 'NoneType', 'NoneType']</expr>
-          <args>['cmd:str', 'fp:BytesIO', 'blocksize:int', 'callback:NoneType', 'rest:NoneType']</args>
+          <expr>obj.storbinary(cmd,fp,blocksize,callback,rest)%%['str', 'BytesIO', 'int', 'function', 'int']</expr>
+          <args>['cmd:str', 'fp:BytesIO', 'blocksize:int', 'callback:function', 'rest:int']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>
@@ -53223,8 +53223,8 @@
           <kwodefa>[]</kwodefa>
         </api>
         <api name="storlines">
-          <expr>obj.storlines(cmd,fp,callback)%%['str', 'BytesIO', 'NoneType']</expr>
-          <args>['cmd:str', 'fp:BytesIO', 'callback:NoneType']</args>
+          <expr>obj.storlines(cmd,fp,callback)%%['str', 'BytesIO', 'function']</expr>
+          <args>['cmd:str', 'fp:BytesIO', 'callback:function']</args>
           <return>[]</return>
           <dependences>None</dependences>
           <posargs>[]</posargs>

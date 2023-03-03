@@ -1,0 +1,298 @@
+ValueError                      416 
+TypeError                       415 
+AttributeError                  415 
+ImportError                     84  
+OSError                         80  
+KeyError                        60  
+NotImplementedError             35  
+RuntimeError                    33  
+Exception                       29  
+StopIteration                   24  
+IndexError                      20  
+KeyboardInterrupt               19  
+EOFError                        18  
+UnicodeEncodeError              16  
+SystemExit                      13  
+OverflowError                   12  
+AssertionError                  12  
+UnicodeError                    11  
+FileNotFoundError               11  
+BaseException                   11  
+getopt.error                    9   
+SyntaxError                     9   
+NameError                       9   
+UnicodeDecodeError              8   
+DistutilsPlatformError          8   
+DistutilsOptionError            8   
+DistutilsExecError              7   
+PermissionError                 6   
+struct.error                    5   
+LookupError                     5   
+FileExistsError                 5   
+DistutilsFileError              5   
+socket.error                    4   
+exceptions.CancelledError       4   
+binascii.Error                  4   
+InterruptedError                4   
+DistutilsSetupError             4   
+BrokenPipeError                 4   
+BlockingIOError                 4   
+urllib.error.HTTPError          3   
+ZeroDivisionError               3   
+UnknownFileError                3   
+DistutilsError                  3   
+ConnectionResetError            3   
+ConnectionAbortedError          3   
+CompileError                    3   
+xml.dom.WrongDocumentErr        2   
+xml.dom.NotSupportedErr         2   
+xml.dom.NotFoundErr             2   
+xml.dom.NoModificationAllowedErr2   
+uu.Error                        2   
+urllib.error.URLError           2   
+tokenize.TokenError             2   
+tarfile.TarError                2   
+smtplib.SMTPRecipientsRefused   2   
+py_compile.PyCompileError       2   
+http.client.RemoteDisconnected  2   
+http.client.LineTooLong         2   
+http.client.HTTPException       2   
+http.client.BadStatusLine       2   
+getopt.GetoptError              2   
+ftplib.error_perm               2   
+exceptions.InvalidStateError    2   
+email.errors.HeaderDefect       2   
+Terminator                      2   
+StopAsyncIteration              2   
+SAXNotSupportedException        2   
+SAXNotRecognizedException       2   
+NotADirectoryError              2   
+ModuleNotFoundError             2   
+LinkError                       2   
+LZMAError                       2   
+IsADirectoryError               2   
+IndentationError                2   
+HTTPError                       2   
+Error                           2   
+DistutilsTemplateError          2   
+DistutilsInternalError          2   
+DistutilsArgError               2   
+DeprecationWarning              2   
+ConnectionError                 2   
+ChildProcessError               2   
+CCompilerError                  2   
+BytesWarning                    2   
+zipimport.ZipImportError        1   
+zipfile.LargeZipFile            1   
+zipfile.BadZipFile              1   
+zipapp.ZipAppError              1   
+xmlrpc.client.ResponseError     1   
+xmlrpc.client.ProtocolError     1   
+xmlrpc.client.Fault             1   
+xmlrpc.client.Error             1   
+xml.etree.ElementTree.ParseError1   
+xml.etree.ElementInclude.LimitedRecursiveIncludeError1   
+xml.etree.ElementInclude.FatalIncludeError1   
+xml.dom.expatbuilder.ParseEscape1   
+xml.dom.NamespaceErr            1   
+xml.dom.InvalidCharacterErr     1   
+xml.dom.InuseAttributeErr       1   
+xml.dom.IndexSizeErr            1   
+xml.dom.HierarchyRequestErr     1   
+xdrlib.Error                    1   
+xdrlib.ConversionError          1   
+wsgiref.validate.WSGIWarning    1   
+webbrowser.Error                1   
+wave.Error                      1   
+warnings._OptionError           1   
+urllib.error.ContentTooShortError1   
+turtle.TurtleGraphicsError      1   
+turtle.Terminator               1   
+tokenize.StopTokenizing         1   
+threading.BrokenBarrierError    1   
+termios.error                   1   
+tarfile.TruncatedHeaderError    1   
+tarfile.SubsequentHeaderError   1   
+tarfile.StreamError             1   
+tarfile.ReadError               1   
+tarfile.InvalidHeaderError      1   
+tarfile.HeaderError             1   
+tarfile.ExtractError            1   
+tarfile.EmptyHeaderError        1   
+tarfile.EOFHeaderError          1   
+tarfile.CompressionError        1   
+tabnanny.NannyNag               1   
+sunau.Error                     1   
+subprocess.TimeoutExpired       1   
+statistics.StatisticsError      1   
+ssl.SSLError                    1   
+sre_parse.Verbose               1   
+sre_constants.error             1   
+socket.timeout                  1   
+socket.gaierror                 1   
+socket._GiveupOnSendfile        1   
+smtplib.SMTPServerDisconnected  1   
+smtplib.SMTPSenderRefused       1   
+smtplib.SMTPResponseException   1   
+smtplib.SMTPNotSupportedError   1   
+smtplib.SMTPHeloError           1   
+smtplib.SMTPException           1   
+smtplib.SMTPDataError           1   
+smtplib.SMTPConnectError        1   
+smtplib.SMTPAuthenticationError 1   
+shutil._GiveupOnFastCopy        1   
+shutil.SpecialFileError         1   
+shutil.SameFileError            1   
+shutil.RegistryError            1   
+shutil.ReadError                1   
+shutil.ExecError                1   
+shutil.Error                    1   
+runpy._Error                    1   
+re.error                        1   
+queue.Full                      1   
+queue.Empty                     1   
+pydoc.ErrorDuringImport         1   
+poplib.error_proto              1   
+plistlib.InvalidFileException   1   
+pickle._Stop                    1   
+pickle.UnpicklingError          1   
+pickle.PicklingError            1   
+pickle.PickleError              1   
+optparse.OptionValueError       1   
+optparse.OptionError            1   
+optparse.OptionConflictError    1   
+optparse.OptParseError          1   
+optparse.BadOptionError         1   
+optparse.AmbiguousOptionError   1   
+nntplib.NNTPTemporaryError      1   
+nntplib.NNTPReplyError          1   
+nntplib.NNTPProtocolError       1   
+nntplib.NNTPPermanentError      1   
+nntplib.NNTPError               1   
+nntplib.NNTPDataError           1   
+netrc.NetrcParseError           1   
+mailbox.NotEmptyError           1   
+mailbox.NoSuchMailboxError      1   
+mailbox.FormatError             1   
+mailbox.ExternalClashError      1   
+mailbox.Error                   1   
+json.decoder.JSONDecodeError    1   
+ipaddress.NetmaskValueError     1   
+ipaddress.AddressValueError     1   
+io.UnsupportedOperation         1   
+http.cookies.CookieError        1   
+http.cookiejar.LoadError        1   
+http.client.UnknownTransferEncoding1   
+http.client.UnknownProtocol     1   
+http.client.UnimplementedFileMode1   
+http.client.ResponseNotReady    1   
+http.client.NotConnected        1   
+http.client.InvalidURL          1   
+http.client.IncompleteRead      1   
+http.client.ImproperConnectionState1   
+http.client.CannotSendRequest   1   
+http.client.CannotSendHeader    1   
+gzip.BadGzipFile                1   
+graphlib.CycleError             1   
+getpass.GetPassWarning          1   
+ftplib.error_temp               1   
+ftplib.error_reply              1   
+ftplib.error_proto              1   
+ftplib.Error                    1   
+expat.error                     1   
+exceptions.SendfileNotAvailableError1   
+exceptions.LimitOverrunError    1   
+exceptions.IncompleteReadError  1   
+errors.MultipartConversionError 1   
+errors.HeaderParseError         1   
+email.errors.UndecodableBytesDefect1   
+email.errors.StartBoundaryNotFoundDefect1   
+email.errors.ObsoleteHeaderDefect1   
+email.errors.NonPrintableDefect 1   
+email.errors.NonASCIILocalPartDefect1   
+email.errors.NoBoundaryInMultipartDefect1   
+email.errors.MultipartInvariantViolationDefect1   
+email.errors.MultipartConversionError1   
+email.errors.MissingHeaderBodySeparatorDefect1   
+email.errors.MisplacedEnvelopeHeaderDefect1   
+email.errors.MessageParseError  1   
+email.errors.MessageError       1   
+email.errors.MessageDefect      1   
+email.errors.InvalidMultipartContentTransferEncodingDefect1   
+email.errors.InvalidHeaderDefect1   
+email.errors.InvalidBase64PaddingDefect1   
+email.errors.InvalidBase64LengthDefect1   
+email.errors.InvalidBase64CharactersDefect1   
+email.errors.HeaderParseError   1   
+email.errors.HeaderMissingRequiredValue1   
+email.errors.FirstHeaderLineIsContinuationDefect1   
+email.errors.CloseBoundaryNotFoundDefect1   
+email.errors.CharsetError       1   
+email.errors.BoundaryError      1   
+distutils.errors.UnknownFileError1   
+distutils.errors.PreprocessError1   
+distutils.errors.LinkError      1   
+distutils.errors.LibError       1   
+distutils.errors.DistutilsTemplateError1   
+distutils.errors.DistutilsSetupError1   
+distutils.errors.DistutilsPlatformError1   
+distutils.errors.DistutilsOptionError1   
+distutils.errors.DistutilsModuleError1   
+distutils.errors.DistutilsInternalError1   
+distutils.errors.DistutilsGetoptError1   
+distutils.errors.DistutilsFileError1   
+distutils.errors.DistutilsExecError1   
+distutils.errors.DistutilsError 1   
+distutils.errors.DistutilsClassError1   
+distutils.errors.DistutilsByteCompileError1   
+distutils.errors.DistutilsArgError1   
+distutils.errors.CompileError   1   
+distutils.errors.CCompilerError 1   
+dataclasses.FrozenInstanceError 1   
+curses.error                    1   
+copy.Error                      1   
+configparser.ParsingError       1   
+configparser.NoSectionError     1   
+configparser.NoOptionError      1   
+configparser.MissingSectionHeaderError1   
+configparser.InterpolationSyntaxError1   
+configparser.InterpolationMissingOptionError1   
+configparser.InterpolationError 1   
+configparser.InterpolationDepthError1   
+configparser.Error              1   
+configparser.DuplicateSectionError1   
+configparser.DuplicateOptionError1   
+calendar.IllegalWeekdayError    1   
+calendar.IllegalMonthError      1   
+binhex.Error                    1   
+binascii.Incomplete             1   
+bdb.BdbQuit                     1   
+asyncore.ExitNow                1   
+asyncio.queues.QueueFull        1   
+asyncio.queues.QueueEmpty       1   
+asyncio.exceptions.TimeoutError 1   
+asyncio.exceptions.SendfileNotAvailableError1   
+asyncio.exceptions.LimitOverrunError1   
+asyncio.exceptions.InvalidStateError1   
+asyncio.exceptions.IncompleteReadError1   
+asyncio.exceptions.CancelledError1   
+argparse.ArgumentTypeError      1   
+argparse.ArgumentError          1   
+aifc.Error                      1   
+URLError                        1   
+TclError                        1   
+TK.TclError                     1   
+SSLError                        1   
+SAXReaderNotAvailable           1   
+RecursionError                  1   
+MemoryError                     1   
+IMAP4.error                     1   
+HeaderParseError                1   
+Fault                           1   
+Empty                           1   
+DistutilsModuleError            1   
+DistutilsGetoptError            1   
+DistutilsClassError             1   
+DistutilsByteCompileError       1   
+ContentTooShortError            1   
+CertificateError                1   
