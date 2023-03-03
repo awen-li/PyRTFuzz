@@ -4,6 +4,7 @@ import sys
 import random
 import atheris
 import signal
+import psutil
 import subprocess
 from threading import Timer
 
@@ -12,13 +13,22 @@ RunResult = 'False'
 CurCase = ''
 ErrorTypes = {}
 
+def KillAll (Pid):
+    CurProc = psutil.Process(Pid)
+    Children = CurProc.children(recursive=True)
+    try:
+        for ch in Children:
+            os.kill(ch.pid, signal.SIGTERM)
+        os.kill (Pid, signal.SIGTERM)
+    except:
+        pass
+
 def TimeOut ():
     global RunResult
     global CurCase
 
     if SubProc != None:
-        os.kill(SubProc.pid, signal.SIGTERM)
-        os.kill(SubProc.pid+1, signal.SIGTERM)
+        KillAll (SubProc.pid)
     
     RunResult = 'TimeOut'
     LogError (RunResult, CurCase)
@@ -69,7 +79,6 @@ def RunProcess (Cmd):
     CurCase = Cmd
 
     SubProc = subprocess.Popen(Cmd, shell=True, stdout=subprocess.PIPE, stderr = subprocess.STDOUT)
-
     Ret = None
     while True:
         try:
@@ -118,7 +127,7 @@ if len (sys.argv) == 1:
     TotalNum = 0
     SuccessNum = 0
     for PyFile in AllTests:
-        Cmd = 'python -m runone ' + PyFile
+        Cmd = 'python -m runone ' + PyFile + " 2>&1"
         sTimer = Timer(20, TimeOut)
         sTimer.start()
     
