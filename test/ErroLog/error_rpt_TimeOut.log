@@ -1,0 +1,7 @@
+python -m runone /home/wen/CpyFuzz/experiments/seeds/1#xmlrpc#server#CGIXMLRPCRequestHandler#handle_request.py
+python -m runone /home/wen/CpyFuzz/experiments/seeds/1#random#SystemRandom#randbytes.py
+python -m runone /home/wen/CpyFuzz/experiments/seeds/1#secrets#token_bytes.py
+python -m runone /home/wen/CpyFuzz/experiments/seeds/1#tarfile#itn.py
+python -m runone /home/wen/CpyFuzz/experiments/seeds/1#operator#pow.py
+
+
