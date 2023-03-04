@@ -2,23 +2,23 @@
 import os
 import sys
 import random
-import atheris
+from fuzzwrap import *
 
 SrvPort = random.randint(10000, 65531) 
 
-if True == atheris.SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False):
-    print ("atheris.SetupPyFuzz setup success")
+if True == SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False):
+    print ("SetupPyFuzz setup success")
 else:
-    atheris.SendEndReq ()
+    SendEndReq ()
     sys.exit (0)
   
-Ret = atheris.GetRandomSeed ('../experiments/seeds')
+Ret = GetRandomSeed ('../experiments/seeds')
 if os.path.exists (Ret):
-	print ("atheris.GetRandomSeed success with Action: random -> " + Ret)
+	print ("GetRandomSeed success with Action: random -> " + Ret)
 else:
-    print ("atheris.GetRandomSeed fail with Action: random")
+    print ("GetRandomSeed fail with Action: random")
     
-atheris.Done ()
+Done ()
 sys.exit (0)
 
 

@@ -15,21 +15,22 @@ def _GetSeedDir ():
 if __name__ == '__main__':
     SrvPort = random.randint(10000, 65531)
     try:
-        atheris.SetupPyFuzz('apispec.xml', SrvPort, ProbAll=False)
+        SetupPyFuzz('apispec.xml', SrvPort, ProbAll=False)
 
         SeedPath = _GetSeedDir ()
         if SeedPath == None:
             Exception("Please specify the seed directory with /-pycript/ parameter")
         
-        atheris.GetInitialSeeds (SeedPath)
+        GetInitialSeeds (SeedPath)
         Calibrate (SeedPath)
-    except:
+    except Exception as e:
+        print (e)
         sys.exit (0)
 
     atheris.SetupCore(sys.argv,
                       PyCoreFuzz,
-                      atheris.GetRandomSeed,
-                      atheris.GetSpecifiedSeed,
+                      GetRandomSeed,
+                      GetSpecifiedSeed,
                       enable_python_coverage=True,
                       custom_mutator=PyLv2Mutate)
     atheris.FuzzLv1(300)

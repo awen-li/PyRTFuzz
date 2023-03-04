@@ -2,23 +2,23 @@
 import os
 import sys
 import random
-import atheris
+from fuzzwrap import *
 
 SrvPort = random.randint(10000, 65531) 
 
-if True == atheris.SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False):
-    print ("atheris.SetupPyFuzz setup success")
+if True == SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False):
+    print ("SetupPyFuzz setup success")
 else:
-    atheris.SendEndReq ()
+    SendEndReq ()
     sys.exit (0)
     
-Ret = atheris.GetSpecifiedSeed ('../experiments/seeds/1#xml#dom#minidom#Node#isSameNode.py')
+Ret = GetSpecifiedSeed ('../experiments/seeds/1#xml#dom#minidom#Node#isSameNode.py')
 if os.path.exists (Ret):
-	print ("atheris.GetSpecifiedSeed success with Action: specify -> " + Ret)
+	print ("GetSpecifiedSeed success with Action: specify -> " + Ret)
 else:
-    print ("atheris.GetSpecifiedSeed fail with Action: specify")
+    print ("GetSpecifiedSeed fail with Action: specify")
     
-atheris.Done ()
+Done ()
 sys.exit (0)
 
 

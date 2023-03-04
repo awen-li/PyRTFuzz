@@ -3,16 +3,16 @@ import os
 import sys
 import importlib
 import random
-import atheris
+from fuzzwrap import *
 
 SrvPort = random.randint(10000, 65531) 
 
-if True == atheris.SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort):
-    print ("atheris.SetupPyFuzz setup success")
+if True == SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort):
+    print ("SetupPyFuzz setup success")
 else:
-    print ("atheris.SetupPyFuzz setup Fail")
+    print ("SetupPyFuzz setup Fail")
 
-atheris.Done ()
+Done ()
 sys.exit (0)
 
 

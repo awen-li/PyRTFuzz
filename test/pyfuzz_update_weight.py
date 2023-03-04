@@ -2,23 +2,23 @@
 import os
 import sys
 import random
-import atheris
+from fuzzwrap import *
 
 SrvPort = random.randint(10000, 65531) 
 
-if True == atheris.SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False):
-    print ("atheris.SetupPyFuzz setup success")
+if True == SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False):
+    print ("SetupPyFuzz setup success")
 else:
-    atheris.SendEndReq ()
+    SendEndReq ()
     sys.exit (0)
 
-Ret = atheris.UpdateWeight ('../../../')
+Ret = UpdateWeight ('../../../')
 if Ret == 'done':
-	print ("atheris.SendWeightedReq success")
+	print ("SendWeightedReq success")
 else:
-    print ("atheris.SendWeightedReq fail")
+    print ("SendWeightedReq fail")
     
-atheris.Done ()
+Done ()
 sys.exit (0)
 
 

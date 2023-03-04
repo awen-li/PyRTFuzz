@@ -16,7 +16,7 @@ class PyImport():
         PMd = self.PyModule.Name.split ('.')[0]
 
         # self module
-        Imports = "from atheris import PyDecode \n" +\
+        Imports = "from fuzzwrap import PyDecode \n" +\
                   "import " + PMd + "\n"\
                   "from " + self.PyModule.Name + " import *"
 

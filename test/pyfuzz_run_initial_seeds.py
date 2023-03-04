@@ -2,11 +2,11 @@
 import os
 import sys
 import random
-import atheris
 import signal
 import psutil
 import subprocess
 from threading import Timer
+from fuzzwrap import *
 
 SubProc = None
 RunResult = 'False'
@@ -125,9 +125,9 @@ def GetTests (Path):
 InitFlag = '../experiments/seeds/initial_done'
 if not os.path.exists (InitFlag):
     SrvPort = random.randint(10000, 65531)
-    atheris.SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False)
-    atheris.GetInitialSeeds ('../experiments/seeds')
-    atheris.Done ()
+    SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False)
+    GetInitialSeeds ('../experiments/seeds')
+    Done ()
 
 if len (sys.argv) == 1:
     if not os.path.exists (RunDir):

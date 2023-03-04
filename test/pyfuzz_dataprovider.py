@@ -1,10 +1,10 @@
 
 import os
 import sys
-import atheris
+from fuzzwrap import *
 
 
-Dpt = atheris.DataProviderTest ()
+Dpt = DataProviderTest ()
 Dpt.TestEntry ()
 
 

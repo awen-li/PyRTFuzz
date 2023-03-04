@@ -23,18 +23,6 @@ from .instrument_bytecode import instrument_func
 from .instrument_bytecode import patch_code
 from .utils import path
 
-from .pyfuzz_core import SetupPyFuzz
-from .pyfuzz_core import GetInitialSeeds
-from .pyfuzz_core import GetRandomSeed
-from .pyfuzz_core import GetSpecifiedSeed
-from .pyfuzz_core import UpdateWeight
-from .pyfuzz_core import Done
-
-from .pyfuzz_encode import DataProvider
-from .pyfuzz_encode import DataProviderTest
-from .pyfuzz_encode import PyEncode
-from .pyfuzz_encode import PyDecode
-
 from .native import FuzzLv1   
 from .native import FuzzLv2   
 from .native import SetupCore   
