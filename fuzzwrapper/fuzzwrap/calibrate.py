@@ -8,10 +8,11 @@ from multiprocessing import  Process
 from progressbar import ProgressBar
 
 class Task(Process):
-    def __init__(self, TaskId, SeedList):
+    def __init__(self, TaskId, SeedList, Log="calibrate_fail.log"):
         super(Task, self).__init__()
         self.TaskId = TaskId
         self.SeedList = SeedList
+        self.Log = Log
 
     def KillAll (self, Pid):
         CurProc = psutil.Process(Pid)
@@ -44,12 +45,21 @@ class Task(Process):
             Ret = self.RunSeed (seed)
             if Ret == False:
                 print ("[CALIBRATING-FAIL]" + seed)
+                with open (self.Log, "a") as F:
+                    print (seed, file=F)
                 os.remove (seed)
                 FailNum += 1
         print ("[TASK-%d] FailNum = %d" %(self.TaskId, FailNum))
 
 class Calibrate ():
+    CalibrateDone = 'CalbrateDone'
+    CalibrateLog  = 'Calibrate_fail.log'
+
     def __init__ (self, Seedpath):
+        self.LogPath = Seedpath+'/'+Calibrate.CalibrateLog
+        if os.path.exists (self.LogPath):
+            os.remove (self.LogPath)
+        
         self.Run (Seedpath)
 
     def _GetTests (self, Seedpath):
@@ -65,6 +75,12 @@ class Calibrate ():
         return AllTests
 
     def Run (self, Seedpath, TaskNum=4):
+        CalbFlag = Seedpath+'/'+Calibrate.CalibrateDone
+        print (CalbFlag)
+        if os.path.exists (CalbFlag):
+            print ("[Calibrating done]")
+            return
+        
         AllSeeds = self._GetTests (Seedpath)
         SeedNum  = len (AllSeeds)
         DistNum  = int(SeedNum / TaskNum)
@@ -82,7 +98,7 @@ class Calibrate ():
                     EndNo = -1
                 
                 print ("[TASK-%d] calibrating range [%d, %d] / %d" %(TaskId, SeedNo, EndNo, SeedNum))
-                RTask = Task (TaskId, AllSeeds[SeedNo:EndNo])
+                RTask = Task (TaskId, AllSeeds[SeedNo:EndNo], self.LogPath)
                 RTask.start()
                 AllTasks.append (RTask)
 
@@ -91,3 +107,4 @@ class Calibrate ():
 
             for task in AllTasks:
                 task.join()
+        os.mknod(CalbFlag)     
