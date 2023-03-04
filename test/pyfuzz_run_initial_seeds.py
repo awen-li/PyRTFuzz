@@ -12,6 +12,8 @@ SubProc = None
 RunResult = 'False'
 CurCase = ''
 ErrorTypes = {}
+RunDir = 'Temp'
+ErrorLogDir = '../ErroLog/'
 
 def KillAll (Pid):
     CurProc = psutil.Process(Pid)
@@ -34,11 +36,16 @@ def TimeOut ():
     LogError (RunResult, CurCase)
     
 def LogError (Err, Cmd):
+    if not os.path.exists (ErrorLogDir):
+        os.mkdir (ErrorLogDir)
+
     if len (Err) > 32:
         Err = 'Other'
-
-    with open ("error_rpt_" + Err + ".log", 'a') as F:
-        print (Cmd, file=F)
+    try:
+        with open (ErrorLogDir + "error_rpt_" + Err + ".log", 'a') as F:
+            print (Cmd, file=F)
+    except:
+        pass
     
     ErrNum = ErrorTypes.get (Err)
     if ErrNum == None:
@@ -123,12 +130,17 @@ if not os.path.exists (InitFlag):
     atheris.Done ()
 
 if len (sys.argv) == 1:
-    AllTests = GetTests ('../experiments/seeds')
+    if not os.path.exists (RunDir):
+        os.mkdir (RunDir)
+    os.chdir (RunDir)
+
+    absPath  = os.path.abspath ('../../experiments/seeds')
+    AllTests = GetTests (absPath)
     TotalNum = 0
     SuccessNum = 0
     for PyFile in AllTests:
-        Cmd = 'python -m runone ' + PyFile + " 2>&1"
-        sTimer = Timer(20, TimeOut)
+        Cmd = 'python -m runone ' + PyFile
+        sTimer = Timer(30, TimeOut)
         sTimer.start()
     
         RunProcess (Cmd)
