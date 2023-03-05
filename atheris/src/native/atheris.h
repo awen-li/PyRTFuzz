@@ -48,7 +48,7 @@ std::vector<std::string> SetupCore(
 
 
 void Fuzz();
-void FuzzLv1(int time_budget);
+void FuzzLv1();
 void FuzzLv2();
 
 py::handle _trace_cmp(py::handle left, py::handle right, int opid, uint64_t idx,

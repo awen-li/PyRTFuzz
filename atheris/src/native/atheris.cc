@@ -311,7 +311,7 @@ void Fuzz() {
 
 
 NO_SANITIZE
-void FuzzLv1(int time_budget) {
+void FuzzLv1() {
   if (!setup_called) {
     std::cerr << Colorize(STDERR_FILENO,
                           "Setup() must be called before Fuzz() can be called.")

@@ -50,7 +50,7 @@ def PyCoreFuzz (script):
     atheris.FuzzLv2()
 
 
-def RunScript (script, Print=False):
+def RunScript (script, Input='0000000000', Print=False):
 
     absPath  = os.path.abspath (script)
     absDir   = os.path.dirname (absPath)
@@ -63,7 +63,7 @@ def RunScript (script, Print=False):
     lib = importlib.import_module(md)
     
     try:
-        lib.RunFuzzer ('0000000000')
+        lib.RunFuzzer (Input)
     except Exception as e:
         if Print == True:
             traceback.print_exc()
