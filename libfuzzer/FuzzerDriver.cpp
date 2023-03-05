@@ -1092,7 +1092,7 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
            "***\n");
     exit(0);
   }
-  printf ("Load init scripts from: %s\r\n", Flags.pyscript);
+  printf ("### Load init scripts from: %s\r\n", Flags.pyscript);
   Inputs->push_back (Flags.pyscript);
   
   auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs));

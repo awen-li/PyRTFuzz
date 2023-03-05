@@ -49,6 +49,13 @@ def PyCoreFuzz (script):
     atheris.SetLv2Driver (FuzzMd.RunFuzzer, pyScriptCorpus)
     atheris.FuzzLv2()
 
+    try:
+        SeedList = os.listdir(pyScriptCorpus)
+        if len (SeedList) == 0:
+            os.removedirs (pyScriptCorpus)
+    except Exception as e:
+        print (e)
+
 
 def RunScript (script, Input='0000000000', Print=False):
 

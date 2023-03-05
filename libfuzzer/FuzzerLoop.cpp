@@ -759,6 +759,7 @@ void Fuzzer::MutateAndTestOne() {
     TryDetectingAMemoryLeak(CurrentUnitData, Size,
                             /*DuringInitialCorpusExecution*/ false);
     if (NewCov) {
+      SetLastUpdateTime ();
       ReportNewCoverage(&II, {CurrentUnitData, CurrentUnitData + Size});
       break;  // We will mutate this input more in the next rounds.
     }
@@ -862,7 +863,8 @@ void Fuzzer::Loop(Vector<SizedFile> &CorporaFiles) {
   TmpMaxMutationLen =
       Min(MaxMutationLen, Max(size_t(4), Corpus->MaxInputSize()));
 
-  printf ("Lv2 -> start entry Loop....\r\n");
+  printf ("### [Level-2] start entry fuzzing loop, Options.MaxTotalTimeSec = %d\r\n", Options.MaxTotalTimeSec);
+  SetLastUpdateTime ();
   while (true) {
     auto Now = system_clock::now();
     if (!Options.StopFile.empty() &&
@@ -970,49 +972,21 @@ bool Fuzzer::RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeat
     return false;
 }
 
-
-void Fuzzer::ExecuteScriptCorpora(Vector<SizedFile> &ScriptFiles) {
-
-    // Load and execute inputs one by one.
-    for (auto &SF : ScriptFiles) {
-        printf("ExecuteScriptCorpora  ---> %s \r\n", SF.File.c_str());
-        
-        ExecuteCBCore (SF.File.c_str());
-        //CheckExitOnSrcPosOrItem();
-    }
-
-    return;  
-}
-
-void Fuzzer::MutatePyAndTest()
+void Fuzzer::MutatePyAndTest(const char* Script)
 {
-    printf ("@@@ MutatePyAndTest \r\n");
+  InputInfo II;
+  bool FoundUniqFeatures = false;
 
-    std::vector<std::string> PySet;
-    PySet.push_back ("tc1.py");
-    PySet.push_back ("tc2.py");
-    PySet.push_back ("tc3.py");
-
-    for (auto It = PySet.begin (); It != PySet.end (); It++)
-    {
-        std::string Script = *It;
-
-        InputInfo II;
-        bool FoundUniqFeatures = false;
-
-        size_t Size = 4;
-        bool NewCov = RunOneScript (Script.c_str(), &II, &FoundUniqFeatures);
-        if (NewCov) {
-            ReportNewCoverage(&II, {CurrentUnitData, CurrentUnitData + Size}, false);
-            break;
-        }
-    }
-
+  bool NewCov = RunOneScript (Script, &II, &FoundUniqFeatures);
+  if (NewCov == false) {
     return;
+  }
+
+  printf ("### [Level-1] Find new coverage!!!!!!");
+  return;
 }
 
 void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles) {
-    printf ("@@@ LoopPyCore \r\n");
     if (CorporaFiles.empty() && Options.MaxNumberOfRuns) {
         Printf("ERROR: no interesting inputs were found. "
                "Is the code instrumented for coverage? Exiting.\n");
@@ -1020,29 +994,18 @@ void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles) {
     }
   
     auto FocusFunctionOrAuto = Options.FocusFunction;
-    DFT.Init(Options.DataFlowTrace, &FocusFunctionOrAuto, CorporaFiles, MD.GetRand());
     TPC.SetFocusFunction(FocusFunctionOrAuto);
-    
-    ExecuteScriptCorpora(CorporaFiles);
-    DFT.Clear();  // No need for DFT any more.
-    
     TPC.SetPrintNewPCs(Options.PrintNewCovPcs);
     TPC.SetPrintNewFuncs(Options.PrintNewCovFuncs);
-    system_clock::time_point LastCorpusReload = system_clock::now();
 
-    while (true) {
-        auto Now = system_clock::now();
+    while (true) { 
+      for (auto &Script : CorporaFiles) {
+        const char* CurScript = Script.File.c_str();
+        printf("### [Level-1] start fuzzing ---> %s \r\n", CurScript);
 
-        if (TotalNumberOfRuns >= Options.MaxNumberOfRuns)
-            break;
-        
-        if (TimedOut())
-            break;
-
-        // Perform several mutations and runs.
-        MutatePyAndTest();
-
+        MutatePyAndTest(CurScript);
         PurgeAllocator();
+      } 
     } 
 
     PrintStats("LoopPyCore DONE  ", "\n");

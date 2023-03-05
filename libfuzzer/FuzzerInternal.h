@@ -44,7 +44,6 @@ public:
   void RereadOutputCorpus(size_t MaxSize);
 
   void LoopPyCore(Vector<SizedFile> &CorporaFiles);
-  void ExecuteScriptCorpora(Vector<SizedFile> &ScriptFiles);
   bool RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeatures);
   void PrintPulseAndReportSlowInput(const char *Script);
   void ExecuteCBCore(const char *Script);
@@ -55,10 +54,30 @@ public:
         .count();
   }
 
+  inline size_t SecondsDuration() {
+    return duration_cast<seconds>(system_clock::now() - LastUpdateTime).count();
+  }
+
+  inline void SetLastUpdateTime () {
+    size_t Last = SecondsDuration();
+    LastUpdateTime = system_clock::now();
+
+    printf ("####[SetLastUpdateTime] duration = %u\r\n", Last);
+  }
+
   bool TimedOut() {
-    return Options.MaxTotalTimeSec > 0 &&
-           secondsSinceProcessStartUp() >
-               static_cast<size_t>(Options.MaxTotalTimeSec);
+    if (Options.MaxTotalTimeSec <= 0) {
+      return false;
+    }
+    else {
+      size_t LastUpdateTime = SecondsDuration();
+      if (LastUpdateTime > static_cast<size_t>(Options.MaxTotalTimeSec)) {
+          return true;
+      }
+      else {
+        return false;
+      }
+    }
   }
 
   size_t execPerSec() {
@@ -99,7 +118,7 @@ public:
 
 private:
   void InitFuzzer ();
-  void MutatePyAndTest();
+  void MutatePyAndTest(const char* Script);
   
   void AlarmCallback();
   void CrashCallback();
@@ -147,6 +166,8 @@ private:
   InputCorpus *PyCorpus;
 
   system_clock::time_point ProcessStartTime = system_clock::now();
+  system_clock::time_point LastUpdateTime = system_clock::now();
+
   system_clock::time_point UnitStartTime, UnitStopTime;
   long TimeOfLongestUnitInSeconds = 0;
   long EpochOfLastReadOfOutputCorpus = 0;

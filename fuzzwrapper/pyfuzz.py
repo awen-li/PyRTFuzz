@@ -13,12 +13,15 @@ def _GetSeedDir ():
     return None
 
 def _ArgProc ():
-    index = 0
+    Index = 0
     for arg in sys.argv:
         if arg.find ("-lv2time=") != -1:
-            sys.argv[index] = arg.replace ("-lv2time=", "-max_total_time=")
+            sys.argv[Index] = arg.replace ("-lv2time=", "-max_total_time=")
             break
-        index += 1
+        Index += 1
+    
+    if Index == len (sys.argv):
+       sys.argv.append ("-max_total_time=2") 
 
 if __name__ == '__main__':
     SrvPort = random.randint(10000, 65531)
