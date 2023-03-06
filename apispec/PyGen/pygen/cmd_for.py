@@ -63,7 +63,7 @@ def RunFuzzer (x):
         if node.name != self.criterion.Name:
             return node
 
-        Range  = random.randint (1, 10)
+        Range  = random.randint (1, 6)
         ForVar = random.choice (string.ascii_letters) + str (Range)
         forAst = ast.parse (f'for {ForVar} in range (0, {Range}):\
         pass').body[0]

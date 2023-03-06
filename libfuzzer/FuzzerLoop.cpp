@@ -928,65 +928,42 @@ void Fuzzer::ExecuteCBCore(const char *Script)
 }
 
 
-bool Fuzzer::RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeatures)
+int Fuzzer::RunOneScript(const char *Script)
 {
-    ExecuteCBCore (Script);
+  PyCurScript = Script;
+  size_t BeforeCov = TPC.GetTotalPCCoverage ();
+  ExecuteCBCore (Script);
+  size_t NewCov = TPC.GetTotalPCCoverage ();
 
-    UniqFeatureSetTmp.clear();
-    size_t FoundUniqFeaturesOfII = 0;
-    size_t NumUpdatesBefore = PyCorpus->NumFeatureUpdates();
-    TPC.CollectFeatures([&](size_t Feature) {
-        if (PyCorpus->AddFeature(Feature, 0, Options.Shrink))
-            UniqFeatureSetTmp.push_back(Feature);
-        if (Options.Entropic)
-            PyCorpus->UpdateFeatureFrequency(II, Feature);
-        if (Options.ReduceInputs && II)
-            if (std::binary_search(II->UniqFeatureSet.begin(), II->UniqFeatureSet.end(), Feature))
-                FoundUniqFeaturesOfII++;
-    });
-
-    
-    if (FoundUniqFeatures)
-        *FoundUniqFeatures = FoundUniqFeaturesOfII;
-    
-    PrintPulseAndReportSlowInput(Script);
-    
-    size_t NumNewFeatures = PyCorpus->NumFeatureUpdates() - NumUpdatesBefore;
-    if (NumNewFeatures) {
-        TPC.UpdateObservedPCs();
-
-        int SriptLen = strlen (Script)+1;
-        Unit U(SriptLen);
-        for (int i = 0; i < SriptLen+1; i++) {
-            U[i] = Script[i];
-        }
-        printf ("U ---> %s \r\n", U.data());
-        
-        auto NewII = PyCorpus->AddToCorpus(U, NumNewFeatures, false, TPC.ObservedFocusFunction(),
-                                        UniqFeatureSetTmp, DFT, II);
-        WriteFeatureSetToFile(Options.FeaturesDir, Sha1ToString(NewII->Sha1), NewII->UniqFeatureSet);
-        return true;
-    }
-
-
-    return false;
+  int Delta = int (NewCov-BeforeCov);
+  printf ("### [Level-1] on script(%s), Cov change: %u, [%u -> %u]\r\n", Script, Delta, BeforeCov, NewCov);
+  return Delta;
 }
 
-void Fuzzer::MutatePyAndTest(const char* Script)
+void Fuzzer::MutatePyAndTest(const char* Script, GetSpecifiedSeed CbSpecified)
 {
-  InputInfo II;
-  bool FoundUniqFeatures = false;
-
-  bool NewCov = RunOneScript (Script, &II, &FoundUniqFeatures);
-  if (NewCov == false) {
+  int DeltaCov = RunOneScript (Script);
+  if (DeltaCov <= 0) {
     return;
   }
+  else {
+    int MutateNum = 0;
+    while (DeltaCov > 0) {
+      const char *MutatedScript = CbSpecified (Script);
+      printf ("### [Level-1][mutate-%u] new script(%s)\r\n", MutateNum, Script);
+      if (strcmp (MutatedScript, Script) == 0)
+        break;
 
-  printf ("### [Level-1] Find new coverage!!!!!!");
+      DeltaCov = RunOneScript (MutatedScript);
+      MutateNum++;
+      free ((void*)MutatedScript);
+    }
+  }
+
   return;
 }
 
-void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles) {
+void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles, GetSpecifiedSeed CbSpecified) {
     if (CorporaFiles.empty() && Options.MaxNumberOfRuns) {
         Printf("ERROR: no interesting inputs were found. "
                "Is the code instrumented for coverage? Exiting.\n");
@@ -1003,7 +980,7 @@ void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles) {
         const char* CurScript = Script.File.c_str();
         printf("### [Level-1] start fuzzing ---> %s \r\n", CurScript);
 
-        MutatePyAndTest(CurScript);
+        MutatePyAndTest(CurScript, CbSpecified);
         PurgeAllocator();
       } 
     } 

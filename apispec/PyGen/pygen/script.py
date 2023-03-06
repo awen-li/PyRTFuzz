@@ -171,7 +171,7 @@ class CodeGen ():
         print ("Get random API as:" + RandomApi)
         return PyFile
 
-    def GenSpecifiedPy (self, Case, StateNum=16):
+    def GenSpecifiedPy (self, Case, StateNum=2):
         try:
             Path, Ext = os.path.splitext(Case)
 

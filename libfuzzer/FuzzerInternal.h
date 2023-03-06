@@ -43,10 +43,10 @@ public:
   void MinimizeCrashLoop(const Unit &U);
   void RereadOutputCorpus(size_t MaxSize);
 
-  void LoopPyCore(Vector<SizedFile> &CorporaFiles);
-  bool RunOneScript(const char *Script, InputInfo *II, bool *FoundUniqFeatures);
-  void PrintPulseAndReportSlowInput(const char *Script);
+  void LoopPyCore(Vector<SizedFile> &CorporaFiles, GetSpecifiedSeed CbSpecified);
+  int RunOneScript(const char *Script);
   void ExecuteCBCore(const char *Script);
+  void PrintPulseAndReportSlowInput(const char *Script);
   void SetFuzzer (UserCallback CB, InputCorpus *Corpus);
   
   size_t secondsSinceProcessStartUp() {
@@ -118,7 +118,7 @@ public:
 
 private:
   void InitFuzzer ();
-  void MutatePyAndTest(const char* Script);
+  void MutatePyAndTest(const char* Script, GetSpecifiedSeed CbSpecified);
   
   void AlarmCallback();
   void CrashCallback();
@@ -180,6 +180,8 @@ private:
 
   // Need to know our own thread.
   static thread_local bool IsMyThread;
+
+  const char* PyCurScript;
 };
 
 

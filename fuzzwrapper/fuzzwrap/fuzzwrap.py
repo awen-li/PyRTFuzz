@@ -55,7 +55,7 @@ def PyCoreFuzz (script):
             os.removedirs (pyScriptCorpus)
     except Exception as e:
         print (e)
-
+        sys.exit (0)
 
 def RunScript (script, Input='0000000000', Print=False):
 

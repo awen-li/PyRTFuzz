@@ -1092,11 +1092,11 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
            "***\n");
     exit(0);
   }
-  printf ("### Load init scripts from: %s\r\n", Flags.pyscript);
+  printf ("### [Level-1] Load init scripts from: %s\r\n", Flags.pyscript);
   Inputs->push_back (Flags.pyscript);
   
   auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs));
-  F->LoopPyCore(CorporaFiles);
+  F->LoopPyCore(CorporaFiles, CbSpecified);
 
   if (Flags.verbosity)
     Printf("Level2-Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),

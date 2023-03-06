@@ -331,7 +331,7 @@ const char* GetRandomSeed(const char* Dir) {
 NO_SANITIZE
 const char* GetSpecifiedSeed(const char* Seed) {
   std::string NewSeed = get_specified_script_global (Seed);
-  return NewSeed.c_str();
+  return strdup (NewSeed.c_str());
 }
 
 NO_SANITIZE
