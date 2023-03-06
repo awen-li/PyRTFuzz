@@ -4,21 +4,31 @@ import os
 import sys
 import random
 
-SuportTypes = ['NoneType', 'str', 'int', 'bool', 'bytes', 'list', 'memoryview', 'tuple', 'dict', 'float', 
-               'function', 'Request', 'BytesIO', 'type', 'builtin_function_or_method', 'Mock', 'C', 'Cookie', 'BufferedReader', 'object', 
-               'StringIO', 'Element', 'EmailMessage', 'method', '_UnixSelectorEventLoop', 'EnumMeta', 'coroutine', 'complex', 'method-wrapper', 'ConfigParser', 
-               'FakePath', 'Message', 'LogRecord', 'Module', 'HTTPResponse', 'HTTPMessage', 'BufferedWriter', 'module', 'range', 'TextIOWrapper', 
-               'set', 'SocketKind', 'socket', 'generator', 'Match', 'frame', 'code', 'AddressFamily', '_SSLMethod', 'PosixPath', 
-               'Constant', 'Marshaller', 'datetime', 'ClassWithAnnotation', 'MIMEApplication', 'FakeResponse', 'AttributesImpl', 'UnixCCompiler', 'Extension', 'MockFile', 
-               'Future', 'Option', 'FakeTimer', '_MISSING_TYPE', 'Pattern', 'RawConfigParser', 'ChainMap', 'UUID', 'MemoryBIO', 'Purpose', 
-               'frozenset', 'Signals', 'stat_result', 'Template', 'PlistFormat', 'TestCgitb', 'Expression', 'Fault', 'TestInstance', '_ContentTypeHeader', 
-               '_UniqueAddressHeader', 'MIMEImage', 'MIMEText', 'DefaultCookiePolicy', 'InputSource', 'SAXParseException', 'ExpatLocator', 'Text', 'Document', 
-               'Attr', 'AttributesNSImpl', '_SelectorContext', 'OSError', 'MockRaceConditionHandler', 'JSONDecoder', 'ProxyHandler', 'MockHTTPClass', 'MockResponse', 
-               'FakeSocket', 'OpenerDirector', 'filter', 'ValueError', 'TestLoop', 'SafeChildWatcher', 'DummyExecutor', '_SelectorSocketTransport', 'TaskWakeupMethWrapper', 
-               'Context', 'RuntimeError', '_sunau_params', 'fake_frame', 'struct_time', 'SSLContext', '_wave_params', 'Values', 'OptionParser', 'IndentedHelpFormatter', 
-               'TestProgram', '_ProtocolMeta', 'ABCMeta', 'SourceFileLoader', 'A', 'RefCycle', '_Stream', 'SendfileTestServer', 'SMTPChannel', 'echo_client', 'st', 'ZipInfo', 
-               'UserWarning', 'VerifyMode', 'NormalDist', 'date', 'SubPattern', 'Tokenizer', 'AsyncExitStack', 'Sigmasks', 'array', 'deque', 'Event', 'Vec2D', 'zipimporter', 
-               'Profile', '_PlainTextDoc', 'Call', '_SocketWriter']
+SuportTypes = ['str', 'int', 'bool', 'bytes', 'NoneType', 'list', 'dict', 'tuple', 'memoryview', 'function', 
+               'float', 'Request', 'BytesIO', 'Mock', 'type', 'C', 'builtin_function_or_method', 'StringIO', 
+               'object', 'BufferedReader', 'Cookie', '_UnixSelectorEventLoop', 'Element', 'EmailMessage', 
+               'EnumMeta', 'coroutine', 'complex', 'FakePath', 'method', 'method-wrapper', 'ConfigParser', 
+               'Message', 'LogRecord', 'AddressFamily', 'socket', 'HTTPResponse', 'HTTPMessage', 'range', 
+               'BufferedWriter', 'Module', 'SSLContext', 'TextIOWrapper', 'set', 'SocketKind', 'PlistFormat', 
+               'Fault', 'datetime', 'generator', 'Match', 'XMLParser', 'frame', 'BadIterable', 'PosixPath', 
+               'IPv4Address', 'code', '_SSLMethod', 'Constant', 'Expression', 'Marshaller', 'ClassWithAnnotation', 
+               '_UniqueAddressHeader', 'MIMEApplication', 'MIMEText', 'FakeResponse', 'AttributesImpl', 
+               'UnixCCompiler', 'Extension', 'MockFile', 'TestLoop', 'Future', '_SentinelObject', 'Option', 
+               'FakeTimer', '_MISSING_TYPE', 'echo_client', 'Pattern', 'RawConfigParser', 'ChainMap', 'module', 
+               'UUID', 'MemoryBIO', 'Purpose', 'TLSVersion', 'VerifyMode', 'frozenset', 'Signals', 'stat_result', 
+               'Template', 'TestCgitb', 'TestInstance', 'MIMEImage', 'DefaultCookiePolicy', 'InputSource', 
+               'SAXParseException', 'ExpatLocator', 'Text', 'DocumentType', 'Document', 'Attr', 'AttributesNSImpl', 
+               'SAXExerciser', '_SelectorContext', 'OSError', 'MockRaceConditionHandler', 'JSONDecoder', 'ProxyHandler', 
+               'MockHTTPClass', 'MockResponse', 'FakeSocket', 'OpenerDirector', 'filter', 'ValueError', 'AddressInfo', 
+               '_Sentinel', 'SafeChildWatcher', 'DummyExecutor', '_SelectorSocketTransport', 'TaskWakeupMethWrapper', 
+               'Context', 'RuntimeError', 'SSLCertVerificationError', '_sunau_params', 'fake_frame', 'struct_time', 
+               '_wave_params', 'Values', 'OptionParser', 'IndentedHelpFormatter', 'ExampleBrowser', 'TestProgram', 
+               'ZoneInfo', '_ProtocolMeta', 'ABCMeta', 'SourceFileLoader', 'SimpleNameSpace', 'A', '_Stream', 
+               'traceback', 'SendfileTestServer', 'st', 'ZipInfo', 'UserWarning', 'IdleConfParser', 'Session', 
+               'Options', 'VerifyFlags', 'NormalDist', 'date', 'PycInvalidationMode', 'SubPattern', 'Tokenizer', 
+               'TestCM', 'AsyncExitStack', 'array', 'deque', 'Event', 'Vec2D', 'zipimporter', 'itemgetter', 'Profile', 
+               '_PlainTextDoc', 'Call', '_SocketWriter']
+
 TypeLen = len (SuportTypes)
 
 class DataProvider ():
@@ -173,26 +183,43 @@ class DataProvider ():
         return ValueList
 
 
-def PyEncode (DataList):
-    print ("### PyEncode ##############################################")
-    return b'abcdfasjfkasjfkdsjf'
+_SPLITFLAG='%&$%'
+
+def PyEncode (TypeList):
+    ValueList = DataProvider ().GetDataList (TypeList)
+    ByteStream = _SPLITFLAG + _SPLITFLAG.join ([str(value) for value in ValueList])
+    return ByteStream
 
 
 def PyDecode (TypeList, ByteStream):
-    # only for test
-    ValueList = DataProvider ().GetDataList (TypeList)
-    if len (TypeList) <= 1:
-        return ValueList[0]
+    if ByteStream[0:4] != _SPLITFLAG:
+        return ByteStream
+    
+    TypeNum = len (TypeList)
+    if TypeNum == 0:
+        return ByteStream[4:]
+    
+    if len (TypeList) == 1:
+        Type = eval (TypeList[0])
+        return Type(ByteStream[4:])
     else:
-        return tuple (ValueList)
+        Values = ByteStream[4:].split (_SPLITFLAG)
+        ValuseList = []
+        TypeIndex  = 0
+        for val in Values:
+            Type = eval (TypeList[TypeIndex])
+            ValuseList.append (Type(val))
+            TypeIndex += 1
+        return tuple (ValuseList)
+    
 
 class DataProviderTest ():
     def AssertType (self, Value, Type):
         if Value.__class__.__name__ != Type:
-            print ("Value type: %s, expected: %s" %(Value.__class__.__name__, Type))
+            print ("### [TypeAssert] Value type: %s, expected: %s" %(Value.__class__.__name__, Type))
             return False
         else:
-            print ("Generate Value type: %s success" %(Type))
+            print ("### [TypeAssert] Value type: %s success" %(Type))
             return True
         
     def AssertListEqual (self, SList, DList):
@@ -245,3 +272,19 @@ class DataProviderTest ():
         ValueList = DataProvider ().GetDataList (TL)
         TypeList  = [v.__class__.__name__ for v in ValueList]
         self.AssertListEqual (TypeList, TL)
+
+        # Encode test
+        TypeList = ['int']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("### %s: Encode: %s, Decode:%d" %(str(TypeList), Bytestream, DecodeValues))
+        self.AssertType (DecodeValues, TypeList[0])
+        
+        TypeList = ['str', 'int', 'float', 'bool']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        TypeIndex = 0
+        for val in DecodeValues:
+            self.AssertType (val, TypeList[TypeIndex])
+            TypeIndex += 1
