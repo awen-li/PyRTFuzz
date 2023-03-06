@@ -1,6 +1,7 @@
 
 
 import os
+import io
 import sys
 import random
 
@@ -31,10 +32,14 @@ SuportTypes = ['str', 'int', 'bool', 'bytes', 'NoneType', 'list', 'dict', 'tuple
 
 TypeLen = len (SuportTypes)
 
+def NullFunction ():
+    pass
+
 class DataProvider ():
-    def __init__ (self, Depth=32):
+    def __init__ (self, Depth=16):
         self.MaxDepth = Depth
         self.CurDepth = 0
+        self.IsComplexType = False
 
     def RandomType (self, Excep=[]):
         Type = None
@@ -45,7 +50,7 @@ class DataProvider ():
                 break
         return Type
 
-    def RandomStr (self, Length=256):
+    def RandomStr (self, Length=16):
         Length = random.randint(0, Length)
         StrCtx = ''
         for i in range (0, Length):
@@ -69,16 +74,20 @@ class DataProvider ():
         Str = self.RandomStr ()
         return bytes (Str, encoding='utf8')
 
-    def RandomList (self, Length=256):
+    def RandomList (self, Length=8):
+        self.IsComplexType = True
         Length = random.randint(0, Length)
         List = []
         for i in range (0, Length):
             Type = self.RandomType ()
             Val = self.GetData (Type)
+            #print ("### RandomList -> %s : %s" %(str(Type), str(Val)))
             List.append (Val)
+        self.IsComplexType = False
         return List
 
-    def RandomDict (self, Length=256):
+    def RandomDict (self, Length=8):
+        self.IsComplexType = True
         Length = random.randint(0, Length)
         Dict = {}
         for i in range (0, Length):
@@ -86,20 +95,27 @@ class DataProvider ():
             Val = self.GetData (Type)
             Key = self.RandomInt ()
             Dict [Key] = Val
+        self.IsComplexType = False
         return Dict
 
-    def RandomTuple (self, Length=256):
+    def RandomTuple (self, Length=8):
         RdList = self.RandomList (Length)
         return tuple (RdList)
 
-    def RandomSet (self, Length=256):
+    def RandomSet (self, Length=8):
         RdList = self.RandomList (Length)
         return set (RdList)
 
-    def RandomMemView (self):
-        RdStr = self.RandomStr ()
-        Barry = bytearray(RdStr,'utf-8')
+    def GenMemView (self, Str):
+        Barry = bytearray(Str,'utf-8')
         return memoryview(Barry)
+    
+    def GenByteIo (self, Str):
+        Bytes = bytes (Str, encoding='utf8')
+        return io.BytesIO(Bytes)
+    
+    def GenStringIo (self, Str):
+        return io.StringIO(Str)
 
     def GetData (self, type):
         self.CurDepth += 1
@@ -121,44 +137,48 @@ class DataProvider ():
         elif type == 'bytes':
             return self.RandomBytes ()
         elif type == 'list':
-            return self.RandomList ()
+            if self.IsComplexType == True:
+                return self.GetData ('str')
+            else:
+                return self.RandomList ()
         elif type == 'memoryview':
-            return self.RandomMemView ()
+            return self.GetData ('str')
         elif type == 'tuple':
-            return self.RandomTuple ()
+            if self.IsComplexType == True:
+                return self.GetData ('str')
+            else:
+                return self.RandomTuple ()
         elif type == 'dict':
-            return self.RandomDict ()
+            if self.IsComplexType == True:
+                return self.GetData ('str')
+            else:
+                return self.RandomDict ()
+        elif type == 'set':
+            if self.IsComplexType == True:
+                return self.GetData ('str')
+            else:
+                return self.RandomSet ()
         elif type == 'float':
             return self.RandomFloat ()
         elif type == 'function':
-            pass
+            return type
         elif type == 'Request':
-            pass
+            return type
         elif type == 'BytesIO':
-            pass
+            return self.GetData ('str')
         elif type == 'type':
-            pass
-        elif type == 'builtin_function_or_method':
-            pass
-        elif type == 'Mock':
-            pass
-        elif type == 'C':
-            pass
+            return self.RandomType ()
         elif type == 'Cookie':
             pass
         elif type == 'BufferedReader':
             pass
-        elif type == 'object':
-            pass
         elif type == 'StringIO':
-            pass
+            return self.GetData ('str')
         elif type == 'Element':
             pass
         elif type == 'EmailMessage':
             pass
         elif type == 'method':
-            pass
-        elif type == '_UnixSelectorEventLoop':
             pass
         elif type == 'EnumMeta':
             pass
@@ -170,10 +190,8 @@ class DataProvider ():
             pass
         elif type == 'ConfigParser':
             pass
-        elif type == 'set':
-            pass
         else:
-            pass
+            return b'None'
     
     def GetDataList (self, TypeList):
         ValueList = []
@@ -184,6 +202,23 @@ class DataProvider ():
 
 
 _SPLITFLAG='%&$%'
+
+def _Str2Value (Type, Value):  
+    if Type in ['list', 'dict', 'tuple', 'set']:
+        return eval (Value)
+    elif Type == 'NoneType':
+        return None
+    elif Type == 'bytes':
+        return bytes (Value, encoding='utf8')
+    elif Type == 'memoryview':
+        return DataProvider ().GenMemView (Value)
+    elif Type == 'BytesIO':
+        return DataProvider ().GenByteIo (Value)
+    elif Type == 'StringIO':
+        return DataProvider ().GenStringIo (Value)
+    else:
+        Type = eval (Type)
+        return Type (Value)
 
 def PyEncode (TypeList):
     ValueList = DataProvider ().GetDataList (TypeList)
@@ -201,14 +236,15 @@ def PyDecode (TypeList, ByteStream):
     
     if len (TypeList) == 1:
         Type = eval (TypeList[0])
-        return Type(ByteStream[4:])
+        return _Str2Value (TypeList[0], ByteStream[4:])
     else:
         Values = ByteStream[4:].split (_SPLITFLAG)
         ValuseList = []
         TypeIndex  = 0
         for val in Values:
-            Type = eval (TypeList[TypeIndex])
-            ValuseList.append (Type(val))
+            print ("type = %s, value = %s " %(TypeList[TypeIndex], val))
+            Value = _Str2Value (TypeList[TypeIndex], val)
+            ValuseList.append (Value)
             TypeIndex += 1
         return tuple (ValuseList)
     
@@ -239,6 +275,14 @@ class DataProviderTest ():
                 
             print ("AssertListEqual Success on TypeList: %s" %(str(SList)))
             return True
+    
+    def AssertDecode (self, DecodeValues, TypeList):
+        if not isinstance (DecodeValues, tuple):
+            DecodeValues = [DecodeValues]
+        TypeIndex = 0
+        for val in DecodeValues:
+            self.AssertType (val, TypeList[TypeIndex])
+            TypeIndex += 1
 
     def TestEntry (self):
         # single type testing
@@ -250,7 +294,6 @@ class DataProviderTest ():
         self.AssertType (DataProvider ().RandomList (), 'list')
         self.AssertType (DataProvider ().RandomDict (), 'dict')
         self.AssertType (DataProvider ().RandomTuple (), 'tuple')
-        self.AssertType (DataProvider ().RandomMemView (), 'memoryview')
 
         # multiple type testing
         TL = ['str', 'int']
@@ -268,7 +311,7 @@ class DataProviderTest ():
         TypeList  = [v.__class__.__name__ for v in ValueList]
         self.AssertListEqual (TypeList, TL)
 
-        TL = ['memoryview', 'dict']
+        TL = ['bytes', 'dict']
         ValueList = DataProvider ().GetDataList (TL)
         TypeList  = [v.__class__.__name__ for v in ValueList]
         self.AssertListEqual (TypeList, TL)
@@ -277,14 +320,42 @@ class DataProviderTest ():
         TypeList = ['int']
         Bytestream = PyEncode (TypeList)
         DecodeValues = PyDecode (TypeList, Bytestream)
-        print ("### %s: Encode: %s, Decode:%d" %(str(TypeList), Bytestream, DecodeValues))
-        self.AssertType (DecodeValues, TypeList[0])
+        print ("\n### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
         
         TypeList = ['str', 'int', 'float', 'bool']
         Bytestream = PyEncode (TypeList)
         DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("\n### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
+
+        TypeList = ['list']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("\n### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
+
+        TypeList = ['list', 'int']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("\n### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
+
+        TypeList = ['dict', 'tuple', 'bytes']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("\n### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
+
+        TypeList = ['memoryview', 'tuple']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
         print ("### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
-        TypeIndex = 0
-        for val in DecodeValues:
-            self.AssertType (val, TypeList[TypeIndex])
-            TypeIndex += 1
+        self.AssertDecode (DecodeValues, TypeList)
+
+        TypeList = ['BytesIO', 'StringIO']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
+        
