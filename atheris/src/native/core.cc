@@ -49,7 +49,7 @@ int LLVMFuzzerRunDriverPyCore(int* argc, char*** argv,
                               const char* (*CbRandom) (const char *Dir),
                               const char* (*CbSpecified) (const char *Seed),
                               std::size_t (*CbUserMutator)(uint8_t* data, std::size_t size, std::size_t max_size, unsigned int seed));
-
+int  LLVMFuzzerGetCovUpdateDuration();
 size_t LLVMFuzzerMutate(uint8_t* Data, size_t Size, size_t MaxSize);
 void __sanitizer_cov_8bit_counters_init(uint8_t* start, uint8_t* stop);
 void __sanitizer_cov_pcs_init(uint8_t* pcs_beg, uint8_t* pcs_end);
@@ -405,6 +405,12 @@ py::bytes Mutate(py::bytes data, size_t max_size) {
   return py::bytes(d.data(), new_size);
 }
 
+NO_SANITIZE
+int GetCovUpdateDuration ()
+{
+  return LLVMFuzzerGetCovUpdateDuration();
+}
+
 #ifndef ATHERIS_MODULE_NAME
 #define ATHERIS_MODULE_NAME core_with_libfuzzer
 #endif  // ATHERIS_MODULE_NAME
@@ -414,6 +420,7 @@ PYBIND11_MODULE(ATHERIS_MODULE_NAME, m) {
 
   m.def("start_fuzzing", &start_fuzzing);
   m.def("start_fuzzing_core", &start_fuzzing_core);
+  m.def("GetCovUpdateDuration", &GetCovUpdateDuration);
   
   m.def("_trace_branch", &_trace_branch);
   m.def("_reserve_counter", ReserveCounter);

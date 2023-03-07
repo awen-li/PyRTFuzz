@@ -30,6 +30,7 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
                        GetRandomSeed CbRandom,
                        GetSpecifiedSeed CbSpecified,
                        UserMutator CbUserMutator);
+int FuzzerGetCovUpdateDuration();
 
 }  // namespace fuzzer
 
@@ -49,5 +50,10 @@ extern "C" __attribute__((visibility("default"))) int LLVMFuzzerRunDriverPyCore(
     const char* (*CbSpecified) (const char *Seed),
     std::size_t (*CbUserMutator)(uint8_t* data, std::size_t size, std::size_t max_size, unsigned int seed)) {
   return fuzzer::FuzzerDriverPyCore(argc, argv, UserCb, CbRandom, CbSpecified, CbUserMutator);
+}
+
+
+extern "C" __attribute__((visibility("default"))) int  LLVMFuzzerGetCovUpdateDuration() {
+  return fuzzer::FuzzerGetCovUpdateDuration ();
 }
 

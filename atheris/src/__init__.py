@@ -26,7 +26,8 @@ from .utils import path
 from .native import FuzzLv1   
 from .native import FuzzLv2   
 from .native import SetupCore   
-from .native import SetLv2Driver 
+from .native import SetLv2Driver
+from .native import GetCovUpdateDuration 
 
 
 # MyPy cannot find native code.

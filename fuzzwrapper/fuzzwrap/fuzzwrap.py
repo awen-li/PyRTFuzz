@@ -13,13 +13,17 @@ def PyLv2Mutate (Data, MaxSize, Seed):
     #print ("[%s] PYFUZZ_SCRIPT_API_TYPE = %s, MaxSize = %d" %(os.environ[PYFUZZ_SCRIPT], os.environ[PYFUZZ_SCRIPT_API_TYPE], MaxSize))
     if MaxSize != 0:
         try:
-            Indicator = int (Data [0:1])
-            if Indicator%2 == 0:
+            LasUpdate = atheris.GetCovUpdateDuration ()
+            Duration = LasUpdate>>16
+            TimeBudget = LasUpdate&0xFFFF    
+            #print ("### [PyLv2Mutate][%d]Duration = %d, TimeBudget = %d" %(LasUpdate, Duration, TimeBudget))
+            
+            if Duration <= TimeBudget/4:
                 return atheris.Mutate(Data, MaxSize)
             else:
                 TypeList = eval (os.environ[PYFUZZ_SCRIPT_API_TYPE])
                 Ret =  PyEncode (TypeList)
-                #print ("### [PyLv2Mutate] entry PyEncode:" + str(Ret))
+                #print ("### [PyLv2Mutate] Duration=%d, PyEncode: %s" %(Duration, str(Ret)))
                 return Ret
         except Exception as e:
             print (e)
@@ -27,13 +31,15 @@ def PyLv2Mutate (Data, MaxSize, Seed):
     else:
         return atheris.Mutate(Data, MaxSize)
         
-def _Lv2InitialCorpus (TypeList, pyScriptCorpus):
+def _Lv2InitialCorpus (TypeList, pyScriptCorpus, InitialNum=10):
     if not os.path.exists (pyScriptCorpus):
         os.mkdir (pyScriptCorpus, mode=711)
-    InitialSeed = pyScriptCorpus + '/initial.seed'
-    with open (InitialSeed, 'w') as F:
-        Ret =  PyEncode (TypeList)
-        F.write (Ret.decode())
+    while InitialNum > 0:
+        InitialSeed = pyScriptCorpus + f'/{InitialNum}-initial.seed'
+        with open (InitialSeed, 'w') as F:
+            Ret =  PyEncode (TypeList)
+            F.write (Ret.decode())
+        InitialNum -= 1
 
 def PyCoreFuzz (script):
 

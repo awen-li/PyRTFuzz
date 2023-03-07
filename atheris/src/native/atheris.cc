@@ -203,6 +203,14 @@ void SetLv2Driver(const std::function<void(py::bytes data)>& test_one_input, std
     return;
 }
 
+NO_SANITIZE
+int GetCovUpdateDuration ()
+{
+  std::cerr << Colorize(STDERR_FILENO,
+                        "Fuzz() must be called before GetCovUpdateDuration() can be called.")
+            << std::endl;
+  exit(-1);
+}
 
 
 // Checks if libfuzzer is already present.
@@ -305,6 +313,7 @@ void Fuzz() {
   atheris.attr("_trace_regex_match") = core.attr("_trace_regex_match");
   atheris.attr("_trace_branch") = core.attr("_trace_branch");
   atheris.attr("_reserve_counter") = core.attr("_reserve_counter");
+  atheris.attr("GetCovUpdateDuration") = core.attr("GetCovUpdateDuration");
 
   core.attr("start_fuzzing")(args_global, test_one_input_global);
 }
@@ -354,6 +363,7 @@ void FuzzLv1() {
   atheris.attr("_trace_regex_match") = core.attr("_trace_regex_match");
   atheris.attr("_trace_branch") = core.attr("_trace_branch");
   atheris.attr("_reserve_counter") = core.attr("_reserve_counter");
+  atheris.attr("GetCovUpdateDuration") = core.attr("GetCovUpdateDuration");
 
   core.attr("start_fuzzing_core")(args_global, test_one_script_global,
                                   get_random_script_global,
@@ -379,6 +389,7 @@ PYBIND11_MODULE(native, m) {
   m.def("FuzzLv1", &FuzzLv1);
   m.def("FuzzLv2", &FuzzLv2);
   m.def("SetLv2Driver", &SetLv2Driver);
+  m.def("GetCovUpdateDuration", &GetCovUpdateDuration);
   
   m.def("Mutate", &Mutate);
   m.def("_trace_branch", &prefuzz_trace_branch);

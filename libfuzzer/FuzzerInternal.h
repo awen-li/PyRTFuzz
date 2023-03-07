@@ -59,10 +59,8 @@ public:
   }
 
   inline void SetLastUpdateTime () {
-    size_t Last = SecondsDuration();
     LastUpdateTime = system_clock::now();
-
-    printf ("####[SetLastUpdateTime] duration = %u\r\n", Last);
+    return;
   }
 
   bool TimedOut() {

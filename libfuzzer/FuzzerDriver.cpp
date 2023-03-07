@@ -865,7 +865,6 @@ int FuzzerDriverPyCoreLv2 (int *argc, char ***argv, UserCallback Callback) {
   const Vector<std::string> Args(*argv, *argv + *argc);
   ParseFlags(Args, EF);
   Options.OutputCorpus = (*Inputs)[0];
-  Options.MaxTotalTimeSec = Options.Lv2TimeBudgetSec;
 
   bool RunIndividualFiles = AllInputsAreFiles();
 
@@ -1016,9 +1015,6 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
   Options.EntropicNumberOfRarestFeatures =
       (size_t)Flags.entropic_number_of_rarest_features;
 
-  if (Flags.lv2timebudget)
-    Options.Lv2TimeBudgetSec = Flags.lv2timebudget;
-
   struct EntropicOptions Entropic;
   Entropic.Enabled = Options.Entropic;
   Entropic.FeatureFrequencyThreshold =
@@ -1104,6 +1100,15 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
   F->PrintFinalStats();
 
   exit(0);  // Don't let F destroy itself.
+}
+
+int FuzzerGetCovUpdateDuration()
+{
+  Fuzzer *F = fuzzer::GetFuzzer();
+  int Last = (int)F->SecondsDuration();
+  
+  //printf ("####[FuzzerGetCovUpdateDuration] duration = %u\r\n", Last);
+  return int (Last<<16 | Options.MaxTotalTimeSec);
 }
 
 
