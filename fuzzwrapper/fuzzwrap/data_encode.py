@@ -1,34 +1,14 @@
 
-
 import os
 import io
 import sys
 import random
+import http.client
+import configparser
 
-SuportTypes = ['str', 'int', 'bool', 'bytes', 'NoneType', 'list', 'dict', 'tuple', 'memoryview', 'function', 
-               'float', 'Request', 'BytesIO', 'Mock', 'type', 'C', 'builtin_function_or_method', 'StringIO', 
-               'object', 'BufferedReader', 'Cookie', '_UnixSelectorEventLoop', 'Element', 'EmailMessage', 
-               'EnumMeta', 'coroutine', 'complex', 'FakePath', 'method', 'method-wrapper', 'ConfigParser', 
-               'Message', 'LogRecord', 'AddressFamily', 'socket', 'HTTPResponse', 'HTTPMessage', 'range', 
-               'BufferedWriter', 'Module', 'SSLContext', 'TextIOWrapper', 'set', 'SocketKind', 'PlistFormat', 
-               'Fault', 'datetime', 'generator', 'Match', 'XMLParser', 'frame', 'BadIterable', 'PosixPath', 
-               'IPv4Address', 'code', '_SSLMethod', 'Constant', 'Expression', 'Marshaller', 'ClassWithAnnotation', 
-               '_UniqueAddressHeader', 'MIMEApplication', 'MIMEText', 'FakeResponse', 'AttributesImpl', 
-               'UnixCCompiler', 'Extension', 'MockFile', 'TestLoop', 'Future', '_SentinelObject', 'Option', 
-               'FakeTimer', '_MISSING_TYPE', 'echo_client', 'Pattern', 'RawConfigParser', 'ChainMap', 'module', 
-               'UUID', 'MemoryBIO', 'Purpose', 'TLSVersion', 'VerifyMode', 'frozenset', 'Signals', 'stat_result', 
-               'Template', 'TestCgitb', 'TestInstance', 'MIMEImage', 'DefaultCookiePolicy', 'InputSource', 
-               'SAXParseException', 'ExpatLocator', 'Text', 'DocumentType', 'Document', 'Attr', 'AttributesNSImpl', 
-               'SAXExerciser', '_SelectorContext', 'OSError', 'MockRaceConditionHandler', 'JSONDecoder', 'ProxyHandler', 
-               'MockHTTPClass', 'MockResponse', 'FakeSocket', 'OpenerDirector', 'filter', 'ValueError', 'AddressInfo', 
-               '_Sentinel', 'SafeChildWatcher', 'DummyExecutor', '_SelectorSocketTransport', 'TaskWakeupMethWrapper', 
-               'Context', 'RuntimeError', 'SSLCertVerificationError', '_sunau_params', 'fake_frame', 'struct_time', 
-               '_wave_params', 'Values', 'OptionParser', 'IndentedHelpFormatter', 'ExampleBrowser', 'TestProgram', 
-               'ZoneInfo', '_ProtocolMeta', 'ABCMeta', 'SourceFileLoader', 'SimpleNameSpace', 'A', '_Stream', 
-               'traceback', 'SendfileTestServer', 'st', 'ZipInfo', 'UserWarning', 'IdleConfParser', 'Session', 
-               'Options', 'VerifyFlags', 'NormalDist', 'date', 'PycInvalidationMode', 'SubPattern', 'Tokenizer', 
-               'TestCM', 'AsyncExitStack', 'array', 'deque', 'Event', 'Vec2D', 'zipimporter', 'itemgetter', 'Profile', 
-               '_PlainTextDoc', 'Call', '_SocketWriter']
+SuportTypes = ['str', 'int', 'bool', 'bytes', 'NoneType', 'list', 'dict', 'tuple', 'memoryview',  
+               'float', 'BytesIO', 'type', 'StringIO', 'BufferedReader', 'HTTPResponse', 'HTTPMessage',
+               'BufferedWriter', 'set']
 
 TypeLen = len (SuportTypes)
 
@@ -41,13 +21,9 @@ class DataProvider ():
         self.CurDepth = 0
         self.IsComplexType = False
 
-    def RandomType (self, Excep=[]):
-        Type = None
-        while True:
-            TypeIndex = random.randint(0, 10) #/*TypeLen-1*/
-            Type = SuportTypes [TypeIndex]
-            if not Type in Excep:
-                break
+    def RandomType (self, TypeList=SuportTypes):
+        TypeIndex = random.randint(0, len(TypeList)-1)
+        Type = TypeList [TypeIndex]
         return Type
 
     def RandomStr (self, Length=16):
@@ -128,6 +104,23 @@ class DataProvider ():
         #fio = self.GenByteIo (Str)
         fio  = io.FileIO(Str, mode='w')
         return io.BufferedWriter(fio)
+    
+    def GenHttpResponse (self, Str):
+        conn = http.client.HTTPSConnection(Str)
+        conn.request("GET", "/")
+        return conn.getresponse()
+    
+    def GenHttpMessage (self, Str):
+        headers = http.client.HTTPMessage()
+        headers.add_header('Host', Str)
+        return headers
+    
+    def GenConfigParser (self, Str):
+        config = configparser.ConfigParser()
+        config['DEFAULT'] = {'ServerAliveInterval': '45',
+                             'Compression': 'yes',
+                             'CompressionLevel': '9'}
+        return config
 
     def GetData (self, type):
         self.CurDepth += 1
@@ -177,11 +170,17 @@ class DataProvider ():
         elif type == 'StringIO':
             return self.GetData ('str')
         elif type == 'type':
-            return self.RandomType ()
+            return self.RandomType (['list', 'dict', 'tuple', 'set', 'str', 'int', 'float', 'bool', 'type'])
         elif type == 'BufferedReader':
             return '/tmp/fuzzing-test'
         elif type == 'BufferedWriter':
             return '/tmp/fuzzing-test'
+        elif type == 'HTTPResponse':
+            return 'www.python.org'
+        elif type == 'HTTPMessage':
+            return 'www.python.org'
+        elif type == 'ConfigParser':
+            return type
         else:
             return self.RandomBytes ()
     
@@ -217,6 +216,12 @@ def _Str2Value (Type, Value):
         return DataProvider ().GenBufferReader (Value)
     elif Type == 'BufferedWriter':
         return DataProvider ().GenBufferWriter (Value)
+    elif Type == 'HTTPResponse':
+        return DataProvider ().GenHttpResponse (Value)
+    elif Type == 'HTTPMessage':
+        return DataProvider ().GenHttpMessage (Value)
+    elif Type == 'ConfigParser':
+        return DataProvider ().GenConfigParser (Value)
     else:
         return bytes (Value, encoding='utf8')
     
@@ -243,7 +248,6 @@ def PyDecode (TypeList, ByteStream):
         return ByteStream[4:]
     
     if len (TypeList) == 1:
-        Type = eval (TypeList[0])
         return _Str2Value (TypeList[0], ByteStream[4:])
     else:
         Values = ByteStream[4:].split (_SPLITFLAG)
@@ -374,6 +378,18 @@ class DataProviderTest ():
         self.AssertDecode (DecodeValues, TypeList)
 
         TypeList = ['type', 'type']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("\n### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
+
+        TypeList = ['HTTPResponse', 'HTTPMessage']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("\n### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
+
+        TypeList = ['ConfigParser']
         Bytestream = PyEncode (TypeList)
         DecodeValues = PyDecode (TypeList, Bytestream)
         print ("\n### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
