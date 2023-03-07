@@ -116,6 +116,18 @@ class DataProvider ():
     
     def GenStringIo (self, Str):
         return io.StringIO(Str)
+    
+    def GenBufferReader (self, Str):
+        if not os.path.exists (Str):
+            with open (Str, 'w') as F:
+                F.write ("fuzzing test for GenBufferReader")
+        fio  = io.FileIO(Str, mode='r')
+        return io.BufferedReader(fio)
+    
+    def GenBufferWriter (self, Str):
+        #fio = self.GenByteIo (Str)
+        fio  = io.FileIO(Str, mode='w')
+        return io.BufferedWriter(fio)
 
     def GetData (self, type):
         self.CurDepth += 1
@@ -160,38 +172,18 @@ class DataProvider ():
                 return self.RandomSet ()
         elif type == 'float':
             return self.RandomFloat ()
-        elif type == 'function':
-            return type
-        elif type == 'Request':
-            return type
         elif type == 'BytesIO':
+            return self.GetData ('str')
+        elif type == 'StringIO':
             return self.GetData ('str')
         elif type == 'type':
             return self.RandomType ()
-        elif type == 'Cookie':
-            pass
         elif type == 'BufferedReader':
-            pass
-        elif type == 'StringIO':
-            return self.GetData ('str')
-        elif type == 'Element':
-            pass
-        elif type == 'EmailMessage':
-            pass
-        elif type == 'method':
-            pass
-        elif type == 'EnumMeta':
-            pass
-        elif type == 'coroutine':
-            pass
-        elif type == 'complex':
-            pass
-        elif type == 'method-wrapper':
-            pass
-        elif type == 'ConfigParser':
-            pass
+            return '/tmp/fuzzing-test'
+        elif type == 'BufferedWriter':
+            return '/tmp/fuzzing-test'
         else:
-            return b'None'
+            return self.RandomBytes ()
     
     def GetDataList (self, TypeList):
         ValueList = []
@@ -206,8 +198,13 @@ _SPLITFLAG='%&$%'
 def _Str2Value (Type, Value):  
     if Type in ['list', 'dict', 'tuple', 'set']:
         return eval (Value)
+    elif Type in ['str', 'int', 'float', 'bool']:
+        Type = eval (Type)
+        return Type (Value)
     elif Type == 'NoneType':
         return None
+    elif Type == 'type':
+        return eval (Value)
     elif Type == 'bytes':
         return bytes (Value, encoding='utf8')
     elif Type == 'memoryview':
@@ -216,16 +213,27 @@ def _Str2Value (Type, Value):
         return DataProvider ().GenByteIo (Value)
     elif Type == 'StringIO':
         return DataProvider ().GenStringIo (Value)
+    elif Type == 'BufferedReader':
+        return DataProvider ().GenBufferReader (Value)
+    elif Type == 'BufferedWriter':
+        return DataProvider ().GenBufferWriter (Value)
     else:
-        Type = eval (Type)
-        return Type (Value)
-
+        return bytes (Value, encoding='utf8')
+    
+"""
+Level-2 mutator:
+Generate an input for the APP at level-2 fuzzing loop
+"""
 def PyEncode (TypeList):
     ValueList = DataProvider ().GetDataList (TypeList)
     ByteStream = _SPLITFLAG + _SPLITFLAG.join ([str(value) for value in ValueList])
     return ByteStream
 
 
+"""
+Invoked by APP:
+Decode the byte stream for different API arguments
+"""
 def PyDecode (TypeList, ByteStream):
     if ByteStream[0:4] != _SPLITFLAG:
         return ByteStream
@@ -357,5 +365,17 @@ class DataProviderTest ():
         Bytestream = PyEncode (TypeList)
         DecodeValues = PyDecode (TypeList, Bytestream)
         print ("### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
+
+        TypeList = ['BufferedReader', 'BufferedWriter']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
+        self.AssertDecode (DecodeValues, TypeList)
+
+        TypeList = ['type', 'type']
+        Bytestream = PyEncode (TypeList)
+        DecodeValues = PyDecode (TypeList, Bytestream)
+        print ("\n### %s: Encode: %s, Decode:%s" %(str(TypeList), Bytestream, str(DecodeValues)))
         self.AssertDecode (DecodeValues, TypeList)
         
