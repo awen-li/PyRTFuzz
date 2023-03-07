@@ -26,7 +26,7 @@ class DataProvider ():
         Type = TypeList [TypeIndex]
         return Type
 
-    def RandomStr (self, Length=16):
+    def RandomStr (self, Length=128):
         Length = random.randint(0, Length)
         StrCtx = ''
         for i in range (0, Length):
@@ -50,7 +50,7 @@ class DataProvider ():
         Str = self.RandomStr ()
         return bytes (Str, encoding='utf8')
 
-    def RandomList (self, Length=8):
+    def RandomList (self, Length=16):
         self.IsComplexType = True
         Length = random.randint(0, Length)
         List = []
@@ -62,7 +62,7 @@ class DataProvider ():
         self.IsComplexType = False
         return List
 
-    def RandomDict (self, Length=8):
+    def RandomDict (self, Length=16):
         self.IsComplexType = True
         Length = random.randint(0, Length)
         Dict = {}
@@ -74,11 +74,11 @@ class DataProvider ():
         self.IsComplexType = False
         return Dict
 
-    def RandomTuple (self, Length=8):
+    def RandomTuple (self, Length=16):
         RdList = self.RandomList (Length)
         return tuple (RdList)
 
-    def RandomSet (self, Length=8):
+    def RandomSet (self, Length=16):
         RdList = self.RandomList (Length)
         return set (RdList)
 
@@ -232,7 +232,7 @@ Generate an input for the APP at level-2 fuzzing loop
 def PyEncode (TypeList):
     ValueList = DataProvider ().GetDataList (TypeList)
     ByteStream = _SPLITFLAG + _SPLITFLAG.join ([str(value) for value in ValueList])
-    return ByteStream
+    return bytes (ByteStream, encoding='utf8')
 
 
 """

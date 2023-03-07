@@ -19,7 +19,7 @@ def PyLv2Mutate (Data, MaxSize, Seed):
             else:
                 TypeList = eval (os.environ[PYFUZZ_SCRIPT_API_TYPE])
                 Ret =  PyEncode (TypeList)
-                print ("[PyLv2Mutate] entry atheris.PyEncode...................." + str(Ret))
+                #print ("### [PyLv2Mutate] entry PyEncode:" + str(Ret))
                 return Ret
         except:
             return atheris.Mutate(Data, MaxSize)

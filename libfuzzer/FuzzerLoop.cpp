@@ -639,7 +639,12 @@ std::string Fuzzer::WriteToOutputCorpus(const Unit &U, bool IsLv2) {
 void Fuzzer::WriteUnitToFileWithPrefix(const Unit &U, const char *Prefix) {
   if (!Options.SaveArtifacts)
     return;
-  std::string Path = Options.ArtifactPrefix + Prefix + Hash(U);
+  
+  std::string Script = "";
+  if (PyCurScript != NULL)
+    Script = basename (PyCurScript) + std::string("-");
+
+  std::string Path = Options.ArtifactPrefix + Prefix + Script + Hash(U);
   if (!Options.ExactArtifactPath.empty())
     Path = Options.ExactArtifactPath; // Overrides ArtifactPrefix.
   WriteToFile(U, Path);
