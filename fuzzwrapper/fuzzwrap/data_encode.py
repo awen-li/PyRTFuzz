@@ -245,6 +245,8 @@ def PyDecode (TypeList, ByteStream):
     #    return ValueList[0]
     #else:
     #    return tuple (ValueList)
+    if isinstance (ByteStream, bytes):
+        ByteStream = ByteStream.decode ()
     
     if ByteStream[0:4] != _SPLITFLAG:
         return ByteStream

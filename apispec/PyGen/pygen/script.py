@@ -129,6 +129,13 @@ class CodeGen ():
             return True
         else:
             return False
+        
+    def GetApiDir (self, BaseDir, ApiPath):
+        ApiName = ApiPath.replace('.', '#')
+        ApiDir  = BaseDir + '/' + ApiPath
+        if not os.path.exists (ApiDir):
+            os.mkdir (ApiDir, mode=0o777)
+        return ApiName, ApiDir
 
     def GenInitPy (self, Dir):
         ApiList = self.Core.ApiList
@@ -140,8 +147,9 @@ class CodeGen ():
             try:
                 #if self.IsHoleApi (ApiInfo) == True:
                 #    continue
+                ApiName, ApiDir = self.GetApiDir (Dir, ApiPath)
 
-                PyFile  = Dir + '/' + str(InitStatNum) + '#' + ApiPath.replace('.', '#') + '.py'
+                PyFile  =  ApiDir + '/' + str(InitStatNum) + '#' + ApiName + '.py'
                 self.GenPy (ApiPath, InitStatNum, PyFile, ApiInfo.Class != None)
             except Exception as e:     
                 traceback.print_exc ()
@@ -161,7 +169,8 @@ class CodeGen ():
             ApiInfo = self.Core.ApiList.get (RandomApi)
 
             StateNum = random.randint(0, StateNum)
-            PyFile  = Dir + '/' + str(StateNum) + '#' + RandomApi.replace('.', '#') + '.py'
+            ApiName, ApiDir = self.GetApiDir (Dir, RandomApi)
+            PyFile  = ApiDir + '/' + str(StateNum) + '#' + ApiName + '.py'
 
             self.GenPy (RandomApi, StateNum, PyFile, ApiInfo.Class != None)
         except Exception as e:     
@@ -173,16 +182,16 @@ class CodeGen ():
 
     def GenSpecifiedPy (self, Case, StateNum=2):
         try:
-            Path, Ext = os.path.splitext(Case)
-
-            ApiIndex = Path.find ('#')
-            ApiPath = Path [ApiIndex+1:].replace ('#', '.')
+            CaseName = os.path.basename (Case)
+            CaseName,_ = os.path.splitext(CaseName)
+            ApiIndex = CaseName.find ('#')
+            ApiPath = CaseName [ApiIndex+1:].replace ('#', '.')
             print ("ApiPath is " + ApiPath)
             ApiInfo = self.Core.ApiList.get (ApiPath)
             
-            PathPrefix = Path.rfind ('/')
+            PathPrefix = Case.rfind ('/')
             StateNum = random.randint(0, StateNum)
-            PyFile  = Path[0:PathPrefix+1] + str(StateNum) + '#' + ApiPath.replace('.', '#') + '.py'
+            PyFile  = Case[0:PathPrefix+1] + str(StateNum) + '#' + ApiPath.replace('.', '#') + '.py'
 
             self.GenPy (ApiPath, StateNum, PyFile, ApiInfo.Class != None)
         except Exception as e:     
