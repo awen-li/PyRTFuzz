@@ -259,13 +259,18 @@ def PyDecode (TypeList, ByteStream):
         return _Str2Value (TypeList[0], ByteStream[4:])
     else:
         Values = ByteStream[4:].split (_SPLITFLAG)
+        ValueNum = len (Values)
+
         ValuseList = []
-        TypeIndex  = 0
-        for val in Values:
+        Index  = 0
+        for ty in TypeList:
             #print ("type = %s, value = %s " %(TypeList[TypeIndex], val))
-            Value = _Str2Value (TypeList[TypeIndex], val)
+            if Index < ValueNum:
+                Value = _Str2Value (ty, Values[Index])
+            else:
+                Value = _Str2Value (ty, "9523")
             ValuseList.append (Value)
-            TypeIndex += 1
+            Index += 1
         return tuple (ValuseList)
     
 

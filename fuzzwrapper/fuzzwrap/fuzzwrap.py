@@ -21,11 +21,19 @@ def PyLv2Mutate (Data, MaxSize, Seed):
                 Ret =  PyEncode (TypeList)
                 #print ("### [PyLv2Mutate] entry PyEncode:" + str(Ret))
                 return Ret
-        except:
+        except Exception as e:
+            print (e)
             return atheris.Mutate(Data, MaxSize)
     else:
         return atheris.Mutate(Data, MaxSize)
         
+def _Lv2InitialCorpus (TypeList, pyScriptCorpus):
+    if not os.path.exists (pyScriptCorpus):
+        os.mkdir (pyScriptCorpus, mode=711)
+    InitialSeed = pyScriptCorpus + '/initial.seed'
+    with open (InitialSeed, 'w') as F:
+        Ret =  PyEncode (TypeList)
+        F.write (Ret.decode())
 
 def PyCoreFuzz (script):
 
@@ -40,7 +48,8 @@ def PyCoreFuzz (script):
     FuzzMd = importlib.import_module(SctModule)
     
     # create corpus dir for the current script
-    pyScriptCorpus = absDir + '/' + SctModule
+    pyScriptCorpus = absDir + '/corpus'
+    _Lv2InitialCorpus (FuzzMd.API_TYPE_LIST, pyScriptCorpus)
 
     # add env
     os.environ[PYFUZZ_SCRIPT] = script

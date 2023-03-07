@@ -79,7 +79,7 @@ struct SizedFile {
   bool operator<(const SizedFile &B) const { return Size < B.Size; }
 };
 
-void GetSizedFilesFromDir(const std::string &Dir, Vector<SizedFile> *V);
+void GetSizedFilesFromDir(const std::string &Dir, Vector<SizedFile> *V, std::string Suffix="");
 
 char GetSeparator();
 // Similar to the basename utility: returns the file name w/o the dir prefix.

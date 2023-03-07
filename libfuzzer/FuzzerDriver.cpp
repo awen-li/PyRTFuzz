@@ -593,11 +593,11 @@ Vector<std::string> ParseSeedInuts(const char *seed_inputs) {
 }
 
 static Vector<SizedFile> ReadCorpora(const Vector<std::string> &CorpusDirs,
-    const Vector<std::string> &ExtraSeedFiles) {
+    const Vector<std::string> &ExtraSeedFiles, std::string Suffix="") {
   Vector<SizedFile> SizedFiles;
   size_t LastNumFiles = 0;
   for (auto &Dir : CorpusDirs) {
-    GetSizedFilesFromDir(Dir, &SizedFiles);
+    GetSizedFilesFromDir(Dir, &SizedFiles, Suffix);
     Printf("INFO: % 8zd files found in %s\n", SizedFiles.size() - LastNumFiles,
            Dir.c_str());
     LastNumFiles = SizedFiles.size();
@@ -1095,11 +1095,11 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
   printf ("### [Level-1] Load init scripts from: %s\r\n", Flags.pyscript);
   Inputs->push_back (Flags.pyscript);
   
-  auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs));
+  auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs), ".py");
   F->LoopPyCore(CorporaFiles, CbSpecified);
 
   if (Flags.verbosity)
-    Printf("Level2-Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),
+    Printf("Level1-Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),
            F->secondsSinceProcessStartUp());
   F->PrintFinalStats();
 

@@ -96,12 +96,25 @@ void ReadDirToVectorOfUnits(const char *Path, Vector<Unit> *V,
 }
 
 
-void GetSizedFilesFromDir(const std::string &Dir, Vector<SizedFile> *V) {
+void GetSizedFilesFromDir(const std::string &Dir, Vector<SizedFile> *V, std::string Suffix) {
   Vector<std::string> Files;
   ListFilesInDirRecursive(Dir, 0, &Files, /*TopDir*/true);
-  for (auto &File : Files)
+  for (auto &File : Files) {
+    if (Suffix != "") {
+      size_t Pos = File.find_last_of('.');
+      if (Pos == std::string::npos)
+        continue;
+      
+      std::string FileSuffix = File.substr(Pos);
+      if (FileSuffix != Suffix){
+        //printf ("[%s <--> %s]------> %s is not a python script.....\r\n", Suffix.c_str(), FileSuffix.c_str(), File.c_str());
+        continue;
+      }
+    }
+
     if (size_t Size = FileSize(File))
       V->push_back({File, Size});
+  }
 }
 
 std::string DirPlusFile(const std::string &DirPath,

@@ -758,13 +758,16 @@ void Fuzzer::MutateAndTestOne() {
     II.NumExecutedMutations++;
     Corpus->IncrementNumExecutedMutations();
 
+    size_t BeforeCov = TPC.GetTotalPCCoverage ();
     bool FoundUniqFeatures = false;
     bool NewCov = RunOne(CurrentUnitData, Size, /*MayDeleteFile=*/true, &II,
                          &FoundUniqFeatures);
     TryDetectingAMemoryLeak(CurrentUnitData, Size,
                             /*DuringInitialCorpusExecution*/ false);
     if (NewCov) {
-      SetLastUpdateTime ();
+      size_t PcCov = TPC.GetTotalPCCoverage ();
+      if (PcCov > BeforeCov)
+        SetLastUpdateTime ();
       ReportNewCoverage(&II, {CurrentUnitData, CurrentUnitData + Size});
       break;  // We will mutate this input more in the next rounds.
     }
