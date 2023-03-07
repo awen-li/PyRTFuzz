@@ -240,6 +240,12 @@ Invoked by APP:
 Decode the byte stream for different API arguments
 """
 def PyDecode (TypeList, ByteStream):
+    #ValueList = DataProvider ().GetDataList (TypeList)
+    #if len (TypeList) <= 1:
+    #    return ValueList[0]
+    #else:
+    #    return tuple (ValueList)
+    
     if ByteStream[0:4] != _SPLITFLAG:
         return ByteStream
     
@@ -254,7 +260,7 @@ def PyDecode (TypeList, ByteStream):
         ValuseList = []
         TypeIndex  = 0
         for val in Values:
-            print ("type = %s, value = %s " %(TypeList[TypeIndex], val))
+            #print ("type = %s, value = %s " %(TypeList[TypeIndex], val))
             Value = _Str2Value (TypeList[TypeIndex], val)
             ValuseList.append (Value)
             TypeIndex += 1

@@ -3,6 +3,7 @@ import sys
 import importlib
 import traceback
 import atheris
+from .data_encode import PyEncode
 
 PYFUZZ_SCRIPT = 'PYFUZZ_SCRIPT'
 PYFUZZ_SCRIPT_API_TYPE = 'PYFUZZ_SCRIPT_API_TYPE'
@@ -17,7 +18,7 @@ def PyLv2Mutate (Data, MaxSize, Seed):
                 return atheris.Mutate(Data, MaxSize)
             else:
                 TypeList = eval (os.environ[PYFUZZ_SCRIPT_API_TYPE])
-                Ret =  atheris.PyEncode (TypeList)
+                Ret =  PyEncode (TypeList)
                 print ("[PyLv2Mutate] entry atheris.PyEncode...................." + str(Ret))
                 return Ret
         except:
@@ -57,7 +58,7 @@ def PyCoreFuzz (script):
         print (e)
         sys.exit (0)
 
-def RunScript (script, Input='0000000000', Print=False):
+def RunScript (script, Input=None, Print=False):
 
     absPath  = os.path.abspath (script)
     absDir   = os.path.dirname (absPath)
@@ -70,6 +71,10 @@ def RunScript (script, Input='0000000000', Print=False):
     lib = importlib.import_module(md)
     
     try:
+        if Input == None:
+            Input = PyEncode (lib.API_TYPE_LIST)
+        
+        print ("### Running %s with inputs: %s" %(script, str(Input)))
         lib.RunFuzzer (Input)
     except Exception as e:
         if Print == True:
