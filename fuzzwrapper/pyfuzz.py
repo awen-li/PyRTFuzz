@@ -21,7 +21,7 @@ def _ArgProc ():
         Index += 1
     
     if Index == len (sys.argv):
-       sys.argv.append ("-max_total_time=2") 
+       sys.argv.append ("-max_total_time=300") 
 
 if __name__ == '__main__':
     SrvPort = random.randint(10000, 65531)

@@ -7,9 +7,12 @@ from .data_encode import PyEncode
 
 PYFUZZ_SCRIPT = 'PYFUZZ_SCRIPT'
 PYFUZZ_SCRIPT_API_TYPE = 'PYFUZZ_SCRIPT_API_TYPE'
+SEED_ITERATION_BUDGET = 1024
 
+SeedIterNum = SEED_ITERATION_BUDGET
 
 def PyLv2Mutate (Data, MaxSize, Seed):
+    global SeedIterNum
     #print ("[%s] PYFUZZ_SCRIPT_API_TYPE = %s, MaxSize = %d" %(os.environ[PYFUZZ_SCRIPT], os.environ[PYFUZZ_SCRIPT_API_TYPE], MaxSize))
     if MaxSize != 0:
         try:
@@ -18,12 +21,14 @@ def PyLv2Mutate (Data, MaxSize, Seed):
             TimeBudget = LasUpdate&0xFFFF    
             #print ("### [PyLv2Mutate][%d]Duration = %d, TimeBudget = %d" %(LasUpdate, Duration, TimeBudget))
             
-            if Duration <= TimeBudget/4:
+            if Duration <= TimeBudget/4 or SeedIterNum > 0:
+                SeedIterNum -= 1
                 return atheris.Mutate(Data, MaxSize)
             else:
+                SeedIterNum = SEED_ITERATION_BUDGET
                 TypeList = eval (os.environ[PYFUZZ_SCRIPT_API_TYPE])
                 Ret =  PyEncode (TypeList)
-                #print ("### [PyLv2Mutate] Duration=%d, PyEncode: %s" %(Duration, str(Ret)))
+                print ("\n### [PyLv2Mutate] Duration=%d/%d, PyEncode: %s" %(Duration, TimeBudget, str(Ret)))
                 return Ret
         except Exception as e:
             print (e)
@@ -42,6 +47,8 @@ def _Lv2InitialCorpus (TypeList, pyScriptCorpus, InitialNum=10):
         InitialNum -= 1
 
 def PyCoreFuzz (script):
+    global SeedIterNum
+    SeedIterNum = SEED_ITERATION_BUDGET
 
     absPath  = os.path.abspath (script)
     absDir   = os.path.dirname (absPath)

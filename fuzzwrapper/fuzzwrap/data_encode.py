@@ -268,7 +268,7 @@ def PyDecode (TypeList, ByteStream):
             if Index < ValueNum:
                 Value = _Str2Value (ty, Values[Index])
             else:
-                Value = _Str2Value (ty, "9523")
+                Value = _Str2Value (ty, "!@#$%^&*9523")
             ValuseList.append (Value)
             Index += 1
         return tuple (ValuseList)
