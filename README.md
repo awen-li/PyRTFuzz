@@ -6,6 +6,7 @@ Use the ``` . build.sh ``` to build the whole program.
 
 ```
 CpyFuzz
++-- apispec          --------------    API spec collection
 +-- atheris          --------------    the python fuzzer
 +-- cpython          --------------    the cpython package for testing
 +-- documents        --------------    the design documents for CpyFuzz
@@ -17,7 +18,22 @@ CpyFuzz
 
 ```
 
-## Example
+## Install Cpython-3.9 with instrumentation
+```
+cd CpyFuzz/experiments && ./buildCPython.sh 
+```
+
+## Collect API specs from cpython runtimes
+```
+cd CpyFuzz/apispec/PySpec && ./genSpec.sh
+```
+
+## Run the basic test cases
+```
+cd CpyFuzz/test && ./RunTest.sh
+```
+
+## Example for python APP generation
 ### Inherit (email.charset.Charset.get_body_encoding)
 ```
 class demoCls(Charset):
