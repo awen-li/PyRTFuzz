@@ -91,9 +91,10 @@ class Tracing():
         for arg in ArgsList:
             para, ptype = arg.split(':')
             if ptype == 'None' or ptype == 'NoneType':
-                hasNew = True
                 pval = self.GetValue (Frame, para)
                 ptype = type(pval).__name__
+                if ptype != 'None' and ptype != 'NoneType':
+                    hasNew = True
             NewArgs.append (para + ':' + ptype)
         return hasNew, NewArgs
 
@@ -128,7 +129,8 @@ class Tracing():
                 rval = self.GetValue (Frame, ret)
                 rtype = type(rval).__name__
                 NewRet.append (ret + ':' + rtype)
-                hasNew = True
+                if rtype != 'None' and rtype != 'NoneType':
+                    hasNew = True
             else:
                 NewRet.append (r)
                     

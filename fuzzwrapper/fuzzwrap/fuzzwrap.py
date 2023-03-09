@@ -94,7 +94,7 @@ def RunScript (script, Input=None, Print=False):
     
     try:
         if Input == None:
-            Input = PyEncode (lib.API_TYPE_LIST)
+            Input = PyEncode (lib.API_TYPE_LIST).decode()
         
         print ("### Running %s with inputs: %s" %(script, str(Input)))
         lib.RunFuzzer (Input)

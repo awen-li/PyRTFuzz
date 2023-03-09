@@ -40,8 +40,12 @@ class ApiSpecGen ():
             return True
 
         if exc.find ('.') != -1:
-            md = exc.split ('.')[0]
+            block = exc.split ('.')
+            md = block[0]
             if md in ['self', 's', 'source', 'd', 'header']:
+                return True
+            name = block[-1]
+            if name[0:1] == '_':
                 return True
         else:
             if exc.islower ():

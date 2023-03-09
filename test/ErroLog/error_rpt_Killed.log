@@ -5,3 +5,4 @@ python -m runone /home/wen/CpyFuzz/experiments/seeds/1#xml#etree#ElementTree#ind
 python -m runone /home/wen/CpyFuzz/experiments/seeds/1#difflib#HtmlDiff#make_file.py
 python -m runone /home/wen/CpyFuzz/experiments/seeds/1#pickletools#dis.py
 python -m runone /home/wen/CpyFuzz/experiments/seeds/1#calendar#format.py
+python -m runone /home/wen/CpyFuzz/experiments/seeds/calendar.formatstring/1#calendar#formatstring.py

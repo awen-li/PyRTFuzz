@@ -17,8 +17,8 @@ class PyImport():
 
         # self module
         Imports = "from fuzzwrap import PyDecode \n" +\
-                  "import " + PMd + "\n"\
-                  "from " + self.PyModule.Name + " import *"
+                  "from " + self.PyModule.Name + " import *\n" +\
+                  "import " + PMd
 
         # Imports
         for Impt in self.PyModule.Imports:
@@ -27,14 +27,20 @@ class PyImport():
 
             if Impt.find (':') == -1:
                 Name = Impt
-                if self.IsRef (App, Name) == False:
+                if self.IsRef (App, Name) == False or Name == PMd:
                     continue
                 Imports += '\n' + "import " + Name
             else:
                 Name, AsName = Impt.split (':')
-                if self.IsRef (App, Name) == False and self.IsRef (App, AsName) == False:
+                mdRef = self.IsRef (App, Name)
+                alRef = self.IsRef (App, AsName)
+                if mdRef == False and alRef == False:
                     continue
-                Imports += '\n' + "import " + Name + ' as ' + AsName
+
+                if mdRef == True and Name != PMd:
+                    Imports += '\n' + "import " + Name
+                if alRef == True:
+                    Imports += '\n' + "import " + Name + ' as ' + AsName
 
         # Importfrom
         for ImptFrom in self.PyModule.ImportFrom:

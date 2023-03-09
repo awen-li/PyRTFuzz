@@ -93,8 +93,35 @@ class ApiExpr ():
             ValidatedApiList.append (WholePath)
             return True
         
-    def FastValidateExc (self, Exceptions):
+    def GetModule (self, Module):
+        for libName, pyLib in self.PyLibs.items ():
+            for mdName, pyMoudle in pyLib.Modules.items ():
+                if mdName != Module:
+                    continue
+                return pyMoudle
+        return None
+        
+    def FastValidateExc (self, pyMoudle):
+        Exceptions = pyMoudle.Exceptions
         ExceptsList = [exc.exName for exc in Exceptions]
+        
+        for impt in pyMoudle.Imports:
+            ImptName = impt
+            if ImptName.find(':') != -1:
+                ImptName = ImptName.split(':')[0]
+            if ImptName == pyMoudle.Name:
+                continue
+            ImptMd = self.GetModule (ImptName)
+            if ImptMd == None:
+                continue
+
+            MdExcepts = ImptMd.Exceptions
+            Prefix = len (ImptName)
+            for excp in MdExcepts:
+                if excp.exName[0:Prefix]== ImptName:
+                    #print ('success ==> ' + excp.exName + ' ----- ' + ImptName)
+                    ExceptsList.append (excp.exName)
+
         ExceptsList = list (set (ExceptsList + OsExcepts))
 
         Exceptions = [PyExcep(exc) for exc in ExceptsList]
@@ -253,7 +280,7 @@ class ApiExpr ():
 
                 # validate exceptions
                 if MdApiNum != 0:
-                    pyMoudle.Exceptions = self.FastValidateExc (pyMoudle.Exceptions)
+                    pyMoudle.Exceptions = self.FastValidateExc (pyMoudle)
 
         print ("### Total Validated with Failure = %d, Total %d classes with no init functions \r\n" %(FailNum, NoInitCls))
         self.SavePyLibs ()
