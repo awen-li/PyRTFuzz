@@ -11,5 +11,6 @@ setup(
     description="python APP generation",
     long_description_content_type="text/markdown",
     url="https://github.com/Daybreak2019/CpyFuzz",
-    packages=['pyspec']
+    packages=['pyspec'],
+    install_requires=['progressbar']
 )

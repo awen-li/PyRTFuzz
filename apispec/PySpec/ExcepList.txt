@@ -1,8 +1,8 @@
 ValueError                      416 
 TypeError                       415 
+OSError                         415 
 AttributeError                  415 
 ImportError                     84  
-OSError                         80  
 KeyError                        60  
 NotImplementedError             35  
 RuntimeError                    33  

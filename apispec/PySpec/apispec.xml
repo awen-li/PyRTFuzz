@@ -34,6 +34,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -88,6 +89,7 @@
       <errors>
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -115,6 +117,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -158,6 +161,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -287,6 +291,7 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -304,6 +309,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -1227,6 +1233,7 @@
         <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>pydoc.ErrorDuringImport</exception>
@@ -1299,6 +1306,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -1672,6 +1680,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>LookupError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>UnicodeError</exception>
@@ -1814,6 +1823,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>LookupError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
@@ -1884,6 +1894,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -1976,6 +1987,7 @@
       <class name="BytesFeedParser" init="obj = email.feedparser.BytesFeedParser()%%['NoneType']" base="email.feedparser.FeedParser"/>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2009,6 +2021,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2062,6 +2075,7 @@
       <class name="BytesHeaderParser" init="obj = email.parser.BytesHeaderParser()%%[]" base="email.parser.BytesParser"/>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2109,6 +2123,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
         <exception>ValueError</exception>
@@ -2240,6 +2255,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>ValueError</exception>
@@ -2313,6 +2329,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2600,6 +2617,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2642,6 +2660,7 @@
         <exception>AttributeError</exception>
         <exception>HeaderParseError</exception>
         <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
@@ -2681,6 +2700,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2842,6 +2862,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2861,6 +2882,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>errors.MultipartConversionError</exception>
@@ -2881,6 +2903,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2900,6 +2923,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2919,6 +2943,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2938,6 +2963,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2957,6 +2983,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2976,6 +3003,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -2995,6 +3023,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -3140,6 +3169,7 @@
         <exception>ConnectionResetError</exception>
         <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -3349,6 +3379,7 @@
       <errors>
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>wsgiref.validate.WSGIWarning</exception>
@@ -3432,6 +3463,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>webbrowser.Error</exception>
@@ -3513,6 +3545,7 @@
       <errors>
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -3593,6 +3626,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -4939,6 +4973,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>http.cookies.CookieError</exception>
@@ -5007,6 +5042,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5072,6 +5108,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5137,6 +5174,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5179,6 +5217,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5245,6 +5284,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5310,6 +5350,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5332,6 +5373,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5397,6 +5439,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5462,6 +5505,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5527,6 +5571,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5592,6 +5637,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5644,6 +5690,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
         <exception>UnicodeEncodeError</exception>
@@ -5712,6 +5759,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5777,6 +5825,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5842,6 +5891,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5864,6 +5914,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5886,6 +5937,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5951,6 +6003,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5973,6 +6026,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -5995,6 +6049,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6120,6 +6175,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6185,6 +6241,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6311,6 +6368,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6376,6 +6434,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6398,6 +6457,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6442,6 +6502,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6567,6 +6628,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
         <exception>ValueError</exception>
@@ -6613,6 +6675,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6678,6 +6741,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6743,6 +6807,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6808,6 +6873,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6873,6 +6939,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6895,6 +6962,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -6960,6 +7028,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7025,6 +7094,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7047,6 +7117,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7112,6 +7183,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7134,6 +7206,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7156,6 +7229,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7221,6 +7295,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7286,6 +7361,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
         <exception>ValueError</exception>
@@ -7372,6 +7448,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7394,6 +7471,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7439,6 +7517,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7504,6 +7583,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7546,6 +7626,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7568,6 +7649,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7733,6 +7815,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
         <exception>ValueError</exception>
@@ -7776,6 +7859,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7841,6 +7925,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7906,6 +7991,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -7971,6 +8057,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8036,6 +8123,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8101,6 +8189,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8166,6 +8255,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8231,6 +8321,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8296,6 +8387,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8400,6 +8492,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8465,6 +8558,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8530,6 +8624,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8572,6 +8667,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8637,6 +8733,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8659,6 +8756,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8681,6 +8779,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8746,6 +8845,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8768,6 +8868,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8833,6 +8934,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8855,6 +8957,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8877,6 +8980,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -8942,6 +9046,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9007,6 +9112,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9049,6 +9155,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9174,6 +9281,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
         <exception>ValueError</exception>
@@ -9240,6 +9348,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9284,6 +9393,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9349,6 +9459,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9414,6 +9525,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9479,6 +9591,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9544,6 +9657,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9609,6 +9723,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9674,6 +9789,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9696,6 +9812,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9761,6 +9878,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9836,6 +9954,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9901,6 +10020,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9966,6 +10086,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -9988,6 +10109,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10053,6 +10175,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10095,6 +10218,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10160,6 +10284,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10225,6 +10350,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10247,6 +10373,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10312,6 +10439,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10377,6 +10505,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10442,6 +10571,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10507,6 +10637,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10549,6 +10680,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10614,6 +10746,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10636,6 +10769,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10658,6 +10792,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10723,6 +10858,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10745,6 +10881,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10810,6 +10947,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10875,6 +11013,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -10940,6 +11079,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11005,6 +11145,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11091,6 +11232,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11176,6 +11318,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>binascii.Error</exception>
@@ -11242,6 +11385,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11307,6 +11451,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11329,6 +11474,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11394,6 +11540,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11459,6 +11606,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11544,6 +11692,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11609,6 +11758,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11674,6 +11824,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11739,6 +11890,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -11804,6 +11956,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -12069,6 +12222,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>SAXNotRecognizedException</exception>
         <exception>SAXNotSupportedException</exception>
         <exception>SAXReaderNotAvailable</exception>
@@ -12274,6 +12428,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -12795,6 +12950,7 @@
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>SAXNotRecognizedException</exception>
         <exception>SAXNotSupportedException</exception>
         <exception>TypeError</exception>
@@ -13012,6 +13168,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -13041,6 +13198,7 @@
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -13888,6 +14046,7 @@
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>xml.dom.HierarchyRequestErr</exception>
@@ -14325,6 +14484,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>xml.dom.expatbuilder.ParseEscape</exception>
@@ -14346,6 +14506,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -14387,6 +14548,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>xml.dom.NoModificationAllowedErr</exception>
@@ -14634,6 +14796,7 @@
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -14826,6 +14989,7 @@
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>copy.Error</exception>
@@ -15217,6 +15381,7 @@
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>NameError</exception>
+        <exception>OSError</exception>
         <exception>SyntaxError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -15248,6 +15413,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>copy.Error</exception>
@@ -15379,6 +15545,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
         <exception>SyntaxError</exception>
@@ -15438,6 +15605,7 @@
         <exception>DistutilsExecError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -15511,6 +15679,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -15560,6 +15729,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -15631,6 +15801,7 @@
         <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnknownFileError</exception>
         <exception>ValueError</exception>
@@ -15670,6 +15841,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -15867,6 +16039,7 @@
         <exception>AttributeError</exception>
         <exception>DistutilsInternalError</exception>
         <exception>DistutilsTemplateError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -15896,6 +16069,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -16025,6 +16199,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
@@ -16168,6 +16343,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>DistutilsGetoptError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16329,6 +16505,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -16409,6 +16586,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -16561,6 +16739,7 @@
         <exception>DistutilsPlatformError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16591,6 +16770,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -16741,6 +16921,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16840,6 +17021,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -17348,6 +17530,7 @@
         <exception>DistutilsModuleError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -17773,6 +17956,7 @@
         <exception>KeyError</exception>
         <exception>LinkError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnknownFileError</exception>
         <exception>ValueError</exception>
@@ -17817,6 +18001,7 @@
         <exception>DistutilsFileError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -17860,6 +18045,7 @@
         <exception>AttributeError</exception>
         <exception>DistutilsSetupError</exception>
         <exception>Exception</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -17964,6 +18150,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18058,6 +18245,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>DistutilsSetupError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18087,6 +18275,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>getpass.GetPassWarning</exception>
@@ -18162,6 +18351,7 @@
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18221,6 +18411,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18292,6 +18483,7 @@
         <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsTemplateError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18351,6 +18543,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18401,6 +18594,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18554,6 +18748,7 @@
       <errors>
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18595,6 +18790,7 @@
         <exception>AttributeError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18687,6 +18883,7 @@
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18746,6 +18943,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18825,6 +19023,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -18930,6 +19129,7 @@
         <exception>DistutilsPlatformError</exception>
         <exception>DistutilsSetupError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
@@ -19015,6 +19215,7 @@
         <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -19495,6 +19696,7 @@
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>NameError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>configparser.DuplicateOptionError</exception>
@@ -19527,6 +19729,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -19587,6 +19790,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -19650,6 +19854,7 @@
         <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -19670,6 +19875,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>BrokenPipeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>argparse.ArgumentError</exception>
@@ -20819,6 +21025,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>urllib.error.HTTPError</exception>
@@ -21193,6 +21400,7 @@
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
         <exception>ValueError</exception>
@@ -21289,6 +21497,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21408,6 +21617,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21435,6 +21645,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21532,6 +21743,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21569,6 +21781,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21706,6 +21919,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>turtle.Terminator</exception>
@@ -21735,6 +21949,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21752,6 +21967,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21789,6 +22005,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21806,6 +22023,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21857,6 +22075,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -21944,6 +22163,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -22041,6 +22261,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>Terminator</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22233,6 +22454,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -22262,6 +22484,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -22291,6 +22514,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -22328,6 +22552,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -22355,6 +22580,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -22426,6 +22652,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>Terminator</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22476,6 +22703,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -22495,6 +22723,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -22901,6 +23130,7 @@
         <exception>BaseException</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
         <exception>SystemExit</exception>
@@ -22995,6 +23225,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -23132,6 +23363,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -23969,6 +24201,7 @@
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
@@ -24236,6 +24469,7 @@
         <exception>BaseException</exception>
         <exception>KeyboardInterrupt</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -24254,6 +24488,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -24679,6 +24914,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>socket.error</exception>
@@ -24887,6 +25123,7 @@
         <exception>AttributeError</exception>
         <exception>ConnectionResetError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopAsyncIteration</exception>
         <exception>TypeError</exception>
@@ -25001,6 +25238,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25096,6 +25334,7 @@
       <class name="LifoQueue" init="obj = asyncio.queues.LifoQueue()%%['NoneType']" base="asyncio.queues.Queue"/>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>asyncio.queues.QueueEmpty</exception>
@@ -25131,6 +25370,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -25288,6 +25528,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25321,6 +25562,7 @@
         <exception>BaseException</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
@@ -25440,6 +25682,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -25457,6 +25700,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -25488,6 +25732,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -25507,6 +25752,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -25526,6 +25772,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -25614,6 +25861,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -28002,6 +28250,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TclError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -28032,6 +28281,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -28163,6 +28413,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -29164,6 +29415,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -29297,6 +29549,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -29397,6 +29650,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -29772,6 +30026,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -29821,6 +30076,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>curses.error</exception>
@@ -29840,6 +30096,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -30386,6 +30643,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -30495,6 +30753,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>pydoc.ErrorDuringImport</exception>
@@ -30793,6 +31052,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -31099,6 +31359,7 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>ZeroDivisionError</exception>
@@ -31604,6 +31865,7 @@
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -31813,6 +32075,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>getopt.GetoptError</exception>
@@ -31903,6 +32166,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -32235,6 +32499,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -32403,6 +32668,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>BrokenPipeError</exception>
+        <exception>OSError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -32970,6 +33236,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>argparse.ArgumentError</exception>
@@ -34180,6 +34447,7 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>optparse.AmbiguousOptionError</exception>
@@ -34465,6 +34733,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -35742,6 +36011,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -37466,6 +37736,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>netrc.NetrcParseError</exception>
@@ -38080,6 +38351,7 @@
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
@@ -38180,6 +38452,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -38227,6 +38500,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -38296,6 +38570,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>getopt.GetoptError</exception>
@@ -38383,6 +38658,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>binascii.Incomplete</exception>
@@ -38433,6 +38709,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -38671,6 +38948,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -38975,6 +39253,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>copy.Error</exception>
@@ -39019,6 +39298,7 @@
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -39208,6 +39488,7 @@
         <exception>Exception</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -39513,6 +39794,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>ZeroDivisionError</exception>
@@ -40065,6 +40347,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -40195,6 +40478,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>SyntaxError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -40468,6 +40752,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -40866,6 +41151,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -41211,6 +41497,7 @@
         <exception>AttributeError</exception>
         <exception>Empty</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>queue.Full</exception>
@@ -41243,6 +41530,7 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>copy.Error</exception>
@@ -41619,6 +41907,7 @@
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>bdb.BdbQuit</exception>
@@ -42134,6 +42423,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -42187,6 +42477,7 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>ModuleNotFoundError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -42221,6 +42512,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -42677,6 +42969,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -42951,6 +43244,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>xdrlib.ConversionError</exception>
@@ -43270,6 +43564,7 @@
         <exception>AttributeError</exception>
         <exception>BrokenPipeError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -43420,6 +43715,7 @@
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
@@ -43793,6 +44089,7 @@
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -44092,6 +44389,7 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -44123,6 +44421,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>binascii.Error</exception>
@@ -44189,6 +44488,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -44349,6 +44649,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -44861,6 +45162,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>argparse.ArgumentError</exception>
@@ -45409,6 +45711,7 @@
         <exception>ImportError</exception>
         <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
@@ -45440,6 +45743,7 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -46063,6 +46367,7 @@
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -46196,6 +46501,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -46368,6 +46674,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -46409,6 +46716,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>sre_parse.Verbose</exception>
@@ -47521,6 +47829,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -47736,6 +48045,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -48009,6 +48319,7 @@
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -48531,6 +48842,7 @@
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -48589,6 +48901,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -48701,6 +49014,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
+        <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopAsyncIteration</exception>
         <exception>StopIteration</exception>
@@ -48771,6 +49085,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -48798,6 +49113,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -48866,6 +49182,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>NameError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -48986,6 +49303,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -49104,6 +49422,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>NotImplementedError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -49355,6 +49674,7 @@
         <exception>Error</exception>
         <exception>KeyError</exception>
         <exception>NameError</exception>
+        <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -49427,6 +49747,7 @@
       </class>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
         <exception>threading.BrokenBarrierError</exception>
@@ -50467,6 +50788,7 @@
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TK.TclError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -50550,6 +50872,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -50588,6 +50911,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -50684,6 +51008,7 @@
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>SyntaxError</exception>
         <exception>SystemExit</exception>
@@ -50850,6 +51175,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -51051,6 +51377,7 @@
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -51141,6 +51468,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>LZMAError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -51516,6 +51844,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -51793,6 +52122,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -51991,6 +52321,7 @@
       <errors>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
         <exception>ValueError</exception>
@@ -52651,6 +52982,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>SyntaxError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -52921,6 +53253,7 @@
         <exception>Error</exception>
         <exception>ImportError</exception>
         <exception>NameError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
@@ -53083,6 +53416,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -53383,6 +53717,7 @@
       </api>
       <errors>
         <exception>AttributeError</exception>
+        <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
       </errors>
