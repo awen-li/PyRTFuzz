@@ -918,6 +918,24 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
   }
 }
 
+void DisorderCorpus (Vector<SizedFile>& VecCorpus)
+{
+  size_t IterNum = VecCorpus.size();
+  if (IterNum == 0)
+    return;
+  
+  std::srand((unsigned)time(NULL));
+  for (int iter = 0; iter < IterNum; iter++) {
+    int Pos1 = std::rand() % IterNum;
+    int Pos2 = std::rand() % IterNum;
+
+    if (Pos1 != Pos2) {
+      SizedFile Tmp    = VecCorpus [Pos1];
+      VecCorpus [Pos1] = VecCorpus [Pos2];
+      VecCorpus [Pos2] = Tmp;
+    }
+  }
+}
 
 int FuzzerDriverPyCore(int *argc, char ***argv, 
                        UserCallbackCore Callback,
@@ -1092,6 +1110,7 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
   Inputs->push_back (Flags.pyscript);
   
   auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs), ".py");
+  DisorderCorpus (CorporaFiles);
   F->LoopPyCore(CorporaFiles, CbSpecified);
 
   if (Flags.verbosity)

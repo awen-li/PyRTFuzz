@@ -197,7 +197,7 @@ int TestOneInput(const uint8_t* data, size_t size) {
       GracefulExit(130);
     }
     std::cout << Colorize(STDOUT_FILENO,
-                          "\n === Uncaught Python exception: ===\n");
+                          "\n === Uncaught Python exception at Level-2: ===\n");
     PrintPythonException(ex, std::cout);
     GracefulExit(-1, /*prevent_crash_report=*/false);
   }
@@ -300,9 +300,8 @@ int TestOneScript(const char* Script) {
       GracefulExit(130);
     }
     std::cout << Colorize(STDOUT_FILENO,
-                          "\n === Uncaught Python exception: ===\n");
-    PrintPythonException(ex, std::cout);
-    GracefulExit(-1, /*prevent_crash_report=*/false);
+                          "\n === Uncaught Python exception at Level-1: ===\n");
+    exit (0);
   }
 
   --runs;

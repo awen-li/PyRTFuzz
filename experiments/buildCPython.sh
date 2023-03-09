@@ -38,6 +38,11 @@ if [ ! -d "$PYTHON_VER" ]; then
 	setPython python3.9	
 fi
 
+# link apispec here
+if [ ! -a "apispec.xml" ]; then
+	ln -s ../apispec/PySpec/apispec.xml apispec.xml
+fi
+
 
 
 

@@ -56,6 +56,10 @@ def PyCoreFuzz (script):
 
     if absDir not in sys.path:
         sys.path.insert(0, absDir)
+    
+    # logging:
+    with open ("CURRENT-level-fuzzing.log", 'w') as F:
+        print (absPath, file=F)
 
     SctModule  = baseName.split('.')[0]
     FuzzMd = importlib.import_module(SctModule)
