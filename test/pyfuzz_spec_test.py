@@ -49,8 +49,8 @@ class ApiTest (SpecTest):
     def TestSet (self):
         self.AssertApi ("sqlite3.dbapi2.DateFromTicks", "ret = sqlite3.dbapi2.DateFromTicks(ticks)%%['int']", "['ticks:int']")
         self.AssertApi ("distutils.version.StrictVersion.parse", "obj.parse(vstring)%%['str']", "['vstring:str']")
-        self.AssertApi ("distutils.core.run_setup", "distutils.core.run_setup(script_name,script_args,stop_after)%%['str', 'NoneType', 'str']", "['script_name:str', 'script_args:NoneType', 'stop_after:str']")
-        self.AssertApi ("encodings.gb18030.getregentry", "encodings.gb18030.getregentry()%%[]", "[]")
+        self.AssertApi ("distutils.core.run_setup", "ret = distutils.core.run_setup(script_name,script_args,stop_after)%%['str', 'NoneType', 'str']", "['script_name:str', 'script_args:NoneType', 'stop_after:str']")
+        self.AssertApi ("encodings.gb18030.getregentry", "ret = encodings.gb18030.getregentry()%%[]", "[]")
         self.AssertApi ("email.iterators.typed_subpart_iterator", "email.iterators.typed_subpart_iterator(msg,maintype,subtype)%%['Message', 'str', 'str']", "['msg:Message', 'maintype:str', 'subtype:str']")
         
 
