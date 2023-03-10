@@ -21,5 +21,6 @@ PythonInstallPath ()
 PythonPath=$(PythonInstallPath)
 cp ./pyfuzz.py $PythonPath/
 cp ./runone.py $PythonPath/
+cp ./fuzzloop.py $PythonPath/
 
 pip install .
