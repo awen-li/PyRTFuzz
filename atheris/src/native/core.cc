@@ -301,6 +301,7 @@ int TestOneScript(const char* Script) {
     }
     std::cout << Colorize(STDOUT_FILENO,
                           "\n === Uncaught Python exception at Level-1: ===\n");
+    PrintPythonException(ex, std::cout);
     exit (0);
   }
 
@@ -324,7 +325,7 @@ int TestOneScript(const char* Script) {
 NO_SANITIZE
 const char* GetRandomSeed(const char* Dir) {
   std::string NewSeed = get_random_script_global (Dir);
-  return NewSeed.c_str();
+  return strdup(NewSeed.c_str());
 }
 
 NO_SANITIZE

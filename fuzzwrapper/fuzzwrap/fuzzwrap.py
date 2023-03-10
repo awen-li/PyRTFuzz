@@ -28,7 +28,7 @@ def PyLv2Mutate (Data, MaxSize, Seed):
                 SeedIterNum = SEED_ITERATION_BUDGET
                 TypeList = eval (os.environ[PYFUZZ_SCRIPT_API_TYPE])
                 Ret =  PyEncode (TypeList)
-                print ("\n### [PyLv2Mutate] Duration=%d/%d, PyEncode: %s" %(Duration, TimeBudget, str(Ret)))
+                #print ("\n### [PyLv2Mutate] Duration=%d/%d, PyEncode: %s" %(Duration, TimeBudget, str(Ret)))
                 return Ret
         except Exception as e:
             print (e)

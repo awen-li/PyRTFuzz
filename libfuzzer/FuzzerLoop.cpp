@@ -180,13 +180,16 @@ Fuzzer::Fuzzer(UserCallbackCore CBCore, InputCorpus *Corpus, MutationDispatcher 
 
 void Fuzzer::SetFuzzer (UserCallback CB, InputCorpus *Corpus)
 {
-    if (this->Corpus != this->PyCorpus)
-    {
-        delete this->Corpus;
-    }
+  if (this->Corpus != this->PyCorpus)
+  {
+    delete this->Corpus;
+  }
     
-    this->CB = CB;
-    this->Corpus = Corpus;
+  this->CB = CB;
+  this->Corpus = Corpus;
+
+  if (Options.MaxLen == 0)
+    this->MaxInputLen = 0;
 }
   
 

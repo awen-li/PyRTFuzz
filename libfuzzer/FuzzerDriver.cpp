@@ -925,7 +925,7 @@ void DisorderCorpus (Vector<SizedFile>& VecCorpus)
     return;
   
   std::srand((unsigned)time(NULL));
-  for (int iter = 0; iter < IterNum; iter++) {
+  for (size_t iter = 0; iter < IterNum; iter++) {
     int Pos1 = std::rand() % IterNum;
     int Pos2 = std::rand() % IterNum;
 
