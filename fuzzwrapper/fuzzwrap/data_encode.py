@@ -194,36 +194,39 @@ class DataProvider ():
 
 _SPLITFLAG='%&$%'
 
-def _Str2Value (Type, Value):  
-    if Type in ['list', 'dict', 'tuple', 'set']:
-        return eval (Value)
-    elif Type in ['str', 'int', 'float', 'bool']:
-        Type = eval (Type)
-        return Type (Value)
-    elif Type == 'NoneType':
-        return None
-    elif Type == 'type':
-        return eval (Value)
-    elif Type == 'bytes':
-        return bytes (Value, encoding='utf8')
-    elif Type == 'memoryview':
-        return DataProvider ().GenMemView (Value)
-    elif Type == 'BytesIO':
-        return DataProvider ().GenByteIo (Value)
-    elif Type == 'StringIO':
-        return DataProvider ().GenStringIo (Value)
-    elif Type == 'BufferedReader':
-        return DataProvider ().GenBufferReader (Value)
-    elif Type == 'BufferedWriter':
-        return DataProvider ().GenBufferWriter (Value)
-    elif Type == 'HTTPResponse':
-        return DataProvider ().GenHttpResponse (Value)
-    elif Type == 'HTTPMessage':
-        return DataProvider ().GenHttpMessage (Value)
-    elif Type == 'ConfigParser':
-        return DataProvider ().GenConfigParser (Value)
-    else:
-        return bytes (Value, encoding='utf8')
+def _Str2Value (Type, Value):
+    try:
+        if Type in ['list', 'dict', 'tuple', 'set']:
+            return eval (Value)
+        elif Type in ['str', 'int', 'float', 'bool']:
+            Type = eval (Type)
+            return Type (Value)
+        elif Type == 'NoneType':
+            return None
+        elif Type == 'type':
+            return eval (Value)
+        elif Type == 'bytes':
+            return bytes (Value, encoding='utf8')
+        elif Type == 'memoryview':
+            return DataProvider ().GenMemView (Value)
+        elif Type == 'BytesIO':
+            return DataProvider ().GenByteIo (Value)
+        elif Type == 'StringIO':
+            return DataProvider ().GenStringIo (Value)
+        elif Type == 'BufferedReader':
+            return DataProvider ().GenBufferReader (Value)
+        elif Type == 'BufferedWriter':
+            return DataProvider ().GenBufferWriter (Value)
+        elif Type == 'HTTPResponse':
+            return DataProvider ().GenHttpResponse (Value)
+        elif Type == 'HTTPMessage':
+            return DataProvider ().GenHttpMessage (Value)
+        elif Type == 'ConfigParser':
+            return DataProvider ().GenConfigParser (Value)
+        else:
+            return bytes (Value, encoding='utf8')
+    except:
+        return Value
     
 """
 Level-2 mutator:
