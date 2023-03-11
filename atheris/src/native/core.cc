@@ -273,9 +273,7 @@ void start_fuzzing(const std::vector<std::string>& args,
 
 NO_SANITIZE
 int TestOneScript(const char* Script) {
-  (void)OnFirstTestOneInput();
-  RefreshTimeout();
-  
+
   const auto alloc = AllocateCountersAndPcs();
   
   if (alloc.counters_start && alloc.counters_end) {
