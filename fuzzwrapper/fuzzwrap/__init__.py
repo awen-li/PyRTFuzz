@@ -1,7 +1,7 @@
 
 
 from .fuzzentry import *
-from .data_encode import PyDecode
+from .data_encode import *
 
 
 

@@ -36,9 +36,10 @@ def FuzzEntry ():
         SeedPath = _GetSeedDir ()
         if SeedPath == None:
             Exception("Please specify the seed directory with /-pycript/ parameter")
-        
-        GetInitialSeeds (SeedPath)
-        Calibrate (SeedPath)
+
+        if os.path.isdir (SeedPath):
+            GetInitialSeeds (SeedPath)
+            Calibrate (SeedPath)
     except Exception as e:
         print (e)
         sys.exit (0)

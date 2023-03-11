@@ -1072,31 +1072,7 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
   Options.HandleUsr1 = Flags.handle_usr1;
   Options.HandleUsr2 = Flags.handle_usr2;
   SetSignalHandler(Options);
-
   std::atexit(Fuzzer::StaticExitCallback);
-
-  if (RunIndividualFiles) {
-    Options.SaveArtifacts = false;
-    int Runs = std::max(1, Flags.runs);
-    Printf("%s: Running %zd inputs %d time(s) each.\n", ProgName->c_str(),
-           Inputs->size(), Runs);
-    for (auto &Path : *Inputs) {
-      auto StartTime = system_clock::now();
-      Printf("Running: %s\n", Path.c_str());
-      for (int Iter = 0; Iter < Runs; Iter++)
-        RunOneTest(F, Path.c_str(), Options.MaxLen);
-      auto StopTime = system_clock::now();
-      auto MS = duration_cast<milliseconds>(StopTime - StartTime).count();
-      Printf("Executed %s in %zd ms\n", Path.c_str(), (long)MS);
-    }
-    Printf("***\n"
-           "*** NOTE: fuzzing was not performed, you have only\n"
-           "***       executed the target code on a fixed set of inputs.\n"
-           "***\n");
-    F->PrintFinalStats();
-    exit(0);
-  }
-
 
   // for python interpreter fuzzing
   // we need to maintain two-level seed queue
@@ -1107,11 +1083,19 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
     exit(0);
   }
   printf ("### [Level-1] Load init scripts from: %s\r\n", Flags.pyscript);
-  Inputs->push_back (Flags.pyscript);
   
-  auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs), ".py");
-  DisorderCorpus (CorporaFiles);
-  F->LoopPyCore(CorporaFiles, CbSpecified);
+  if (IsFile(Flags.pyscript) == true) {
+    Vector<SizedFile> CorporaFiles;
+    if (size_t Size = FileSize(Flags.pyscript))
+      CorporaFiles.push_back({Flags.pyscript, Size});
+    F->LoopPyCore(CorporaFiles, CbSpecified);
+  }
+  else {
+    Inputs->push_back (Flags.pyscript);
+    auto CorporaFiles = ReadCorpora(*Inputs, ParseSeedInuts(Flags.seed_inputs), ".py");
+    DisorderCorpus (CorporaFiles);
+    F->LoopPyCore(CorporaFiles, CbSpecified);
+  }
 
   if (Flags.verbosity)
     Printf("Level1-Done %zd runs in %zd second(s)\n", F->getTotalNumberOfRuns(),
