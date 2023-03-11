@@ -156,7 +156,7 @@ class HardcodedApi ():
         self.AddHdcApi ('encodings.hex_codec.IncrementalDecoder.decode', ['input:bytes', 'final:bool'])
         self.AddHdcApi ('xml.xml.sax.expatreader.ExpatLocator.getColumnNumber', [])
         self.AddHdcApi ('xml.xml.sax.expatreader.ExpatLocator.getLineNumber', [])
-        # self.AddHdcApi ('xml.sax.expatreader.ExpatParser.getProperty', ['name:None'])
+        self.AddHdcApi ('xml.sax.expatreader.ExpatParser.getProperty', ['name:str'])
         # self.AddHdcApi ('xml.sax.expatreader.ExpatParser.setProperty', ['name:None', 'value:None'])
         # self.AddHdcApi ('xml.sax.expatreader.ExpatParser.processing_instruction', ['target:None', 'data:None'])
         # self.AddHdcApi ('xml.sax.expatreader.ExpatParser.character_data', ['data:None'])
