@@ -7,6 +7,7 @@ import time
 from fuzzwrap import *
 from multiprocessing import Process
 from datetime import datetime
+import shutil
 
 LOG_DIR = 'fuzzlog/'
 
@@ -25,6 +26,33 @@ def _Log ():
     except:
         pass
 
+def Clear ():
+    KeyList = ['slow-unit-', 'crash-', 'Python', 'seeds', 'fuzzlog', 'apispec', 'clear', 'buildCPython']
+    def IsInKeyList (name):
+        NameLen = len (name)
+        for key in KeyList:
+            KeyLen = len (key)
+            if KeyLen > NameLen:
+                continue 
+            if name[0:KeyLen] == key:
+                return True
+        return False
+    
+    FileList = os.listdir (".")
+    for file in FileList:
+        print (file)
+        if IsInKeyList (file) == True:
+            print ("\t ---> match success!!!")
+            continue
+        
+        try:
+            if os.path.isfile (file) == True:
+                os.remove (file)
+            else:
+                shutil.rmtree(file, ignore_errors=True)
+        except:
+            pass
+
 if __name__ == '__main__':
     IterNum = 0
     while True:
@@ -40,6 +68,7 @@ if __name__ == '__main__':
         print ("\n\n### [%d]Fuzzer process exit [%d]\n" %(IterNum, Fuzzer.pid))
         IterNum += 1
         _Log ()
+        Clear ()
 
         try:
             for proc in ChildProc:
