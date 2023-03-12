@@ -52,6 +52,7 @@ void LibfuzzerAlarmSignalCallback(int signum) {
     _exit(1);
   }
   libfuzzer_alarm_signal(signum);
+  exit (0);
 }
 
 // Our SIGALRM signal handler.
