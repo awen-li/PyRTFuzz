@@ -40,11 +40,8 @@ def Clear ():
     
     FileList = os.listdir (".")
     for file in FileList:
-        print (file)
         if IsInKeyList (file) == True:
-            print ("\t ---> match success!!!")
-            continue
-        
+            continue       
         try:
             if os.path.isfile (file) == True:
                 os.remove (file)
