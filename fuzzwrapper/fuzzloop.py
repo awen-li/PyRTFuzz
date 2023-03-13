@@ -50,7 +50,18 @@ def Clear ():
         except:
             pass
 
+def SysArg (Key):
+    for arg in sys.argv:
+        if arg.find (Key) != -1:
+            return True
+    return False
+
 if __name__ == '__main__':
+    if SysArg ('clear'):
+        Clear ()
+        print ("### clear the directory done!")
+        exit (0)
+    
     IterNum = 0
     while True:
         Fuzzer = Process(target=FuzzEntry, args=())
