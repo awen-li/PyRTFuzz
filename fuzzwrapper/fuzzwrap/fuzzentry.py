@@ -31,7 +31,7 @@ def _ArgProc ():
 def FuzzEntry ():
     SrvPort = random.randint(10000, 65531)
     try:
-        SetupPyFuzz('apispec.xml', SrvPort, ProbAll=False)
+        SetupPyFuzz('apispec.xml', SrvPort, ProbAll=True)
 
         SeedPath = _GetSeedDir ()
         if SeedPath == None:
