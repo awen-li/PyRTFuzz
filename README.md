@@ -1,7 +1,7 @@
 # CpyFuzz
 fuzzing on python interpreter
 
-Useable docker image for CpyFuzz: ```docker pull daybreak2019/cpyfuzz:v1.1 ```
+Useable docker image for CpyFuzz: ```docker pull daybreak2019/cpyfuzz:v2.0 ```
 Use the ``` . build.sh ``` to build the whole program.
 
 ```
@@ -31,6 +31,18 @@ cd CpyFuzz/apispec/PySpec && ./genSpec.sh
 ## Run the basic test cases
 ```
 cd CpyFuzz/test && ./RunTest.sh
+```
+
+
+## Run the fuzzing on cpython&runtimes
+```
+# run the fuzzing in loop with docker image: daybreak2019/cpyfuzz:v2.0
+cd CpyFuzz/experiments
+python -m fuzzloop -pyscript=seeds &
+
+# collect fuzzing results
+cd CpyFuzz/experiments
+python -m pycollect
 ```
 
 ## Example for python APP generation
