@@ -33,7 +33,7 @@ def FuzzEntry (CpuId):
     if CpuId != None:
         CurP = psutil.Process ()
         CurP.cpu_affinity([int(CpuId)])
-        CurP.nice(-20)
+        #CurP.nice(-20)
         print ("### Bind current process to CPU: %s\n" %str(CurP.cpu_affinity()))
 
     SrvPort = random.randint(10000, 65531)
