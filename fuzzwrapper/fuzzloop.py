@@ -72,7 +72,7 @@ if __name__ == '__main__':
     
     IterNum = 0
     while True:
-        Fuzzer = Process(target=FuzzEntry, args=(CpuId))
+        Fuzzer = Process(target=FuzzEntry, args=(CpuId,))
         Fuzzer.start()
         print ("\n### [%d]Fuzzer process starts [%d]\n" %(IterNum, Fuzzer.pid))
 
