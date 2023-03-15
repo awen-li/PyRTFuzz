@@ -56,15 +56,23 @@ def SysArg (Key):
             return True
     return False
 
+def BindCpu ():
+    for arg in sys.argv:
+        if arg.find ('-cpu=') != -1:
+            return arg[arg.find('=')+1:]
+    return None
+
 if __name__ == '__main__':
     if SysArg ('clear'):
         Clear ()
         print ("### clear the directory done!")
         exit (0)
     
+    CpuId = BindCpu ()
+    
     IterNum = 0
     while True:
-        Fuzzer = Process(target=FuzzEntry, args=())
+        Fuzzer = Process(target=FuzzEntry, args=(CpuId))
         Fuzzer.start()
         print ("\n### [%d]Fuzzer process starts [%d]\n" %(IterNum, Fuzzer.pid))
 

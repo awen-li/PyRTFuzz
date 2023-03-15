@@ -1,6 +1,7 @@
 import sys
 import random
 import atheris
+import psutil
 from .fuzzsetup import *
 from .calibrate import *
 from .fuzzwrap import *
@@ -28,7 +29,13 @@ def _ArgProc ():
     sys.argv.append ("-rss_limit_mb=8192")
 
 
-def FuzzEntry ():
+def FuzzEntry (CpuId):
+    if CpuId != None:
+        CurP = psutil.Process ()
+        CurP.cpu_affinity([int(CpuId)])
+        CurP.nice(-20)
+        print ("### Bind current process to CPU: %s\n" %str(CurP.cpu_affinity()))
+
     SrvPort = random.randint(10000, 65531)
     try:
         SetupPyFuzz('apispec.xml', SrvPort, ProbAll=True)
