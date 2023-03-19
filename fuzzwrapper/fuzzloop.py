@@ -38,17 +38,36 @@ def Clear ():
                 return True
         return False
     
-    FileList = os.listdir (".")
-    for file in FileList:
-        if IsInKeyList (file) == True:
-            continue       
-        try:
-            if os.path.isfile (file) == True:
-                os.remove (file)
-            else:
-                shutil.rmtree(file, ignore_errors=True)
-        except:
-            pass
+    absPath  = os.path.abspath ('.')
+    if absPath.find ('/experiments') != -1:
+        FileList = os.listdir (".")
+        for file in FileList:
+            if IsInKeyList (file) == True:
+                continue       
+            try:
+                if os.path.isfile (file) == True:
+                    os.remove (file)
+                else:
+                    shutil.rmtree(file, ignore_errors=True)
+            except:
+                pass
+    
+    DstDir = ['/', '/root']
+    for dir in DstDir:
+        FileList = os.listdir (dir)
+        for file in FileList:
+            try:
+                if file[0] == '.':
+                    continue
+
+                P = os.path.join (dir, file)
+                if os.path.islink (P) == True or os.path.isdir (P) == True:
+                    continue
+
+                if os.path.isfile (P) == True:
+                    os.remove (P)
+            except:
+                pass
 
 def SysArg (Key):
     for arg in sys.argv:
