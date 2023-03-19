@@ -1,21 +1,16 @@
 
 import argparse
 from fuzzwrap import *
-
-def InitArgument (parser):
-    parser.add_argument('--version', action='version', version='appgen 1.0')
-    
-    grp = parser.add_argument_group('Main options', 'One of these (or --report) must be given')              
-    parser.add_argument('filename', nargs='?', help='apispec file path')
-    parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
     
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument('filename', nargs='?', help='the filename for running')
+    parser.add_argument('arguments', nargs=argparse.REMAINDER, help='arguments to the program')
+
     grp = parser.add_argument_group('Main options', 'One of these (or --report) must be given')
     grp.add_argument('-s', '--silent', action='store_true', help='run in silent mode')
     grp.add_argument('-i', '--input', help='input for the script')
 
-    InitArgument (parser)
     opts = parser.parse_args()
 
     if opts.filename is None:
