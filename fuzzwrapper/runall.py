@@ -1,5 +1,7 @@
 import os
 import argparse
+import psutil
+import signal
 from fuzzwrap import *
 
 def _GetAllTests (DirName):
@@ -35,14 +37,33 @@ def main():
         parser.error('please specify the dirname!')
     
     AllTests = _GetAllTests (opts.dirname)
-    for test in AllTests:
-        AppName = _GetAppName (test)
-        AppPath = os.path.join (opts.dirname, AppName)
+    Id = 0
+    All = len (AllTests)
+    for Test in AllTests:
+        RunTest (Id, All, opts.dirname, Test)
+        Id += 1
 
-        print ("### Running " + AppPath + ' with input: ' + test)
-        with open (test, 'r') as F:
-            Inputs = F.read ()
-            RunScript (AppPath, Input=Inputs)
+def RunOne (Id, All, Dir, Test):
+    AppName = _GetAppName (Test)
+    AppPath = os.path.join (Dir, AppName)
+
+    print ("### [%3d/%3d] Running %s with input: %s" %(Id, All, AppPath, Test))
+    with open (Test, 'rb') as F:
+        Inputs = F.read ()
+        RunScript (AppPath, Input=Inputs, Silent=True)
+
+def RunTest (Id, All, Dir, Test, TimeOut=180):
+    Rp = Process(target=RunOne, args=(Id, All, Dir, Test,))
+    Rp.start()
+    Rp.join (TimeOut)
+
+    try:
+        if psutil.Process(Rp.pid) != None:
+            os.kill(Rp.pid, signal.SIGTERM)
+            print ("\n\t Running timeout (over %d s)!\n" %(TimeOut))
+    except psutil.NoSuchProcess:
+        pass
+
 
 if __name__ == "__main__":
    main()

@@ -84,7 +84,7 @@ def PyCoreFuzz (script):
         print (e)
         sys.exit (0)
 
-def RunScript (script, Input=None, Print=False):
+def RunScript (script, Input=None, Print=False, Silent=False):
 
     absPath  = os.path.abspath (script)
     absDir   = os.path.dirname (absPath)
@@ -100,7 +100,8 @@ def RunScript (script, Input=None, Print=False):
         if Input == None:
             Input = PyEncode (lib.API_TYPE_LIST).decode()
         
-        print ("### Running %s with inputs: %s" %(script, str(Input)))
+        if Silent == False:
+            print ("### Running %s with inputs: %s" %(script, str(Input)))
         lib.RunFuzzer (Input)
     except Exception as e:
         if Print == True:
