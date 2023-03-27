@@ -8,17 +8,19 @@ from ast import *
 from .astop import *
 from .debug import *
 
+def LoopRange (Prefix='F_', MaxLoop=6):
+    LoopRange = random.randint (1, MaxLoop)
+    LoopVar = random.choice (string.ascii_letters)
+    LoopVar = Prefix + LoopVar + str (LoopRange)
+
+    return LoopVar, LoopRange
+
 class PyFor(AstOp):
-
-    ForRange = random.randint (1, 10)
-
-    ForVar = random.choice (string.ascii_letters)
-    ForVar = ForVar + str (ForRange)
-    
-    ForTmpt = \
+    LoopVar, LoopRange = LoopRange ()   
+    Tmpt = \
 f"""
 def demoFunc(arg):
-    for {ForVar} in range (0, {ForRange}):
+    for {LoopVar} in range (0, {LoopRange}):
         pass
 
 def RunFuzzer (x):
@@ -30,11 +32,12 @@ def RunFuzzer (x):
         self.excepts   = None
         self.criterion = None
         self.PyCode    = None
+        self.Tmpt = PyFor.Tmpt
     
     def SetExeCode (self, ExeCode):
         self.PyCode = ExeCode
         if self.PyCode == None:
-            super(PyFor, self).__init__(PyFor.ForTmpt)
+            super(PyFor, self).__init__(self.Tmpt)
         else:
             super(PyFor, self).__init__(self.PyCode)
     
@@ -63,9 +66,8 @@ def RunFuzzer (x):
         if node.name != self.criterion.Name:
             return node
 
-        Range  = random.randint (1, 6)
-        ForVar = random.choice (string.ascii_letters) + str (Range)
-        forAst = ast.parse (f'for {ForVar} in range (0, {Range}):\
+        Var, Range = LoopRange ()
+        forAst = ast.parse (f'for {Var} in range (0, {Range}):\
         pass').body[0]
 
         forAst.body = node.body
@@ -83,7 +85,7 @@ def RunFuzzer (x):
             self.criterion.View()
             DebugPrint ("GenApp -> api: " + str(self.init) + "  " + self.api.Expr)
             
-            astApp = ast.parse(PyFor.ForTmpt)
+            astApp = ast.parse(self.Tmpt)
             new = self.visit(astApp)
             
             DebugPrint (astunparse.unparse(new))
