@@ -5,16 +5,30 @@ import signal
 from fuzzwrap import *
 
 def _GetAllTests (DirName):
-    AllTests = []
-    FileList = os.listdir (DirName)
-    for file in FileList:
-        Path = os.path.join (DirName, file)
-        if os.path.isdir (Path):
-            continue
+    DirList = []
+    DirList.append (DirName)
 
-        if Path.find ("slow-unit-") != -1 or Path.find ("crash-1") != -1:
-            AllTests.append (Path)
-    return AllTests
+    AllTests = {}
+    TestNum  = 0
+    while len (DirList) != 0:
+        DirName = DirList.pop (0)
+        DirTest = []
+        FileList = os.listdir (DirName)
+        print (DirName + ' ---> ' + str(FileList))
+        for file in FileList:
+            Path = os.path.join (DirName, file)
+            if os.path.isdir (Path):
+                DirList.append (Path)
+                continue
+
+            if Path.find ("slow-unit-") != -1 or Path.find ("crash-") != -1:
+                DirTest.append (Path)
+        
+        if len (DirTest) == 0:
+            continue
+        AllTests [DirName] = DirTest
+        TestNum += len (DirTest)
+    return AllTests, TestNum
 
 def _GetAppName (Test):
     file = os.path.basename (Test)
@@ -36,12 +50,13 @@ def main():
     if opts.dirname is None:
         parser.error('please specify the dirname!')
     
-    AllTests = _GetAllTests (opts.dirname)
+    AllTests, TestNum = _GetAllTests (opts.dirname)
+    print (AllTests)
     Id = 0
-    All = len (AllTests)
-    for Test in AllTests:
-        RunTest (Id, All, opts.dirname, Test)
-        Id += 1
+    for Dir, DirTests in AllTests.items():
+        for Test in DirTests:
+            RunTest (Id, TestNum, Dir, Test)
+            Id += 1
 
 def RunOne (Id, All, Dir, Test):
     AppName = _GetAppName (Test)
