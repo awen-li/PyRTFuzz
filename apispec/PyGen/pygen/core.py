@@ -5,11 +5,12 @@ from progressbar import ProgressBar
 from pyspec import *
 from .cmd_newoo import *
 from .cmd_newpo import *
+from .cmd_inherit import *
+from .cmd_import import *
 from .cmd_for import *
 from .cmd_while import *
 from .cmd_with import *
-from .cmd_inherit import *
-from .cmd_import import *
+from .cmd_if import *
 from .debug import *
 
 class ApiInfo ():
@@ -116,6 +117,7 @@ class Core ():
         self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP)
         self.CmdList['While'] = SLCmd ('PyWhile ()', 'cmd_while', SLCmd.APP)
         self.CmdList['Wtih'] = SLCmd ('PyWith ()', 'cmd_with', SLCmd.APP)
+        self.CmdList['If'] = SLCmd ('PyIf ()', 'cmd_if', SLCmd.APP)
 
     def GetSlCmd (self, CmdName):
         return self.CmdList.get (CmdName)
