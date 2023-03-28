@@ -2,7 +2,7 @@
 
 ## Gen APP with single API
 ```
-python -m appgen -g -a [api-path] apispec-path]
+python -m appgen -g -a [api-path] [apispec-path]
 ```
 
 ### Example of generating APP with wingle API
