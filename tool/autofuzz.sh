@@ -13,7 +13,7 @@ function RunFuzzer ()
 	do
    		FuzzName="cpyfuzz-inst-$ID"
 		docker run -itd --name "$FuzzName" $Image
-		docker exec -itd $FuzzName bash "cd /root/CpyFuzz/experiments; python -m fuzzloop -pyscript=seeds -cpu=$ID"
+		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID
 		let ID++
 	done	
 }
@@ -48,8 +48,8 @@ function Collect ()
 			let ID++
 			continue
 		fi
-
-		docker exec -it $FuzzName bash "cd /root/CpyFuzz/experiments; python -m pycollect"
+		
+		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh collect
 
 		LocalDir="$HOSTNAME-FuzzResult-$FuzzName"
 		if [ ! -d "$LocalDir" ]; then
@@ -76,6 +76,6 @@ elif [ "$Action" == "collect" ]; then
 elif [ "$Action" == "del" ]; then
 	DelFuzzer
 
-else:
+else
 	echo "### Not support the action input: [run / collect / del]"
 fi

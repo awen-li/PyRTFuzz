@@ -10,10 +10,24 @@ export PATH=/root/anaconda3/bin:/root/anaconda3/condabin:/usr/local/sbin:/usr/lo
 export CLANG_PATH=/root/tools/llvm11/build/bin
 export CONDA_DEFAULT_ENV=base
 
-CPUID=$1
-if [ ! -n "$CPUID" ]; then
-    echo "please specify CPUID!"
+ACTION=$1
+if [ "$ACTION" == "run" ]; then
+
+    CPUID=$1
+    if [ ! -n "$CPUID" ]; then
+        echo "please specify CPUID!"
+    fi
+    python -m fuzzloop -pyscript=seeds -cpu=$CPUID
+
+elif [ "$ACTION" == "collect" ]; then
+
+    python -m pycollect
+    ll FuzzResult
+
+else
+    echo "Not support the command [run / collect]"
 fi
-python -m fuzzloop -pyscript=seeds -cpu=$CPUID &
+
+
 
 
