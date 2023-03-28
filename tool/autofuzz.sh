@@ -12,7 +12,8 @@ function RunFuzzer ()
 	while [ $ID -le $MaxCpu ]
 	do
    		FuzzName="cpyfuzz-inst-$ID"
-		echo "\n Start Fuzzer $FuzzName..."
+		echo
+		echo "### Start Fuzzer $FuzzName..."
 		docker run -itd --name "$FuzzName" $Image
 		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID
 		let ID++
@@ -50,14 +51,22 @@ function Collect ()
 			continue
 		fi
 
-		echo "\n Collecting experiment results from $FuzzName..."
-		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh collect
+		echo
+		echo "### Collecting experiment results from $FuzzName..."
+		docker exec -it -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh collect
 
 		LocalDir="$HOSTNAME-FuzzResult-$FuzzName"
 		if [ ! -d "$LocalDir" ]; then
 			mkdir $LocalDir
 		fi
-		docker cp $FuzzName:/root/CpyFuzz/experiments/FuzzResult $LocalDir
+
+		Res=`docker exec -ti -w /root/CpyFuzz/experiments $FuzzName ls FuzzResult`
+		IsExist=`echo $Res | grep "cannot access"`
+		if [ -n "$IsExist" ]; then
+			echo "FuzzResult not found in $FuzzName"
+		else
+			docker cp $FuzzName:/root/CpyFuzz/experiments/FuzzResult/* $LocalDir/
+		fi
 
 		let ID++
 	done	

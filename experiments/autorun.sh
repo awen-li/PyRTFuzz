@@ -22,7 +22,6 @@ if [ "$ACTION" == "run" ]; then
 elif [ "$ACTION" == "collect" ]; then
 
     python -m pycollect
-    ll FuzzResult
 
 else
     echo "Not support the command [run / collect]"
