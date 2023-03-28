@@ -14,7 +14,7 @@ function RunFuzzer ()
    		FuzzName="cpyfuzz-inst-$ID"
 		docker run -itd --name "$FuzzName" $Image
 		docker exec -itd $FuzzName bash "cd /root/CpyFuzz/experiments; python -m fuzzloop -pyscript=seeds -cpu=$ID"
-		let Inst++
+		let ID++
 	done	
 }
 
@@ -26,11 +26,12 @@ function DelFuzzer ()
    		FuzzName="cpyfuzz-inst-$ID"
 		Dck=`docker ps  | grep $FuzzName`
 		if [ ! -n "$Dck" ]; then
+			let ID++
 			continue
 		fi
 		docker stop $FuzzName
 		docker rm $FuzzName
-		let Inst++
+		let ID++
 	done	
 }
 
@@ -41,9 +42,10 @@ function Collect ()
 	while [ $ID -le $MaxCpu ]
 	do
    		FuzzName="cpyfuzz-inst-$ID"
-		Dck=`docker ps  | grep $FuzzName`
+		Dck=`docker ps | grep $FuzzName`
 		if [ ! -n "$Dck" ]; then
 			echo "$FuzzName does not exist!!!"
+			let ID++
 			continue
 		fi
 
@@ -55,7 +57,7 @@ function Collect ()
 		fi
 		docker cp $FuzzName:/root/CpyFuzz/experiments/FuzzResult $LocalDir
 
-		let Inst++
+		let ID++
 	done	
 }
 
@@ -73,7 +75,7 @@ elif [ "$Action" == "collect" ]; then
 
 elif [ "$Action" == "del" ]; then
 	DelFuzzer
-	
+
 else:
 	echo "### Not support the action input: [run / collect / del]"
-
+fi
