@@ -13,7 +13,7 @@ export CONDA_DEFAULT_ENV=base
 ACTION=$1
 if [ "$ACTION" == "run" ]; then
 
-    CPUID=$1
+    CPUID=$2
     if [ ! -n "$CPUID" ]; then
         echo "please specify CPUID!"
     fi

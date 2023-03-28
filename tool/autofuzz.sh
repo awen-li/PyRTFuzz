@@ -12,6 +12,7 @@ function RunFuzzer ()
 	while [ $ID -le $MaxCpu ]
 	do
    		FuzzName="cpyfuzz-inst-$ID"
+		echo "\n Start Fuzzer $FuzzName..."
 		docker run -itd --name "$FuzzName" $Image
 		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID
 		let ID++
@@ -48,7 +49,8 @@ function Collect ()
 			let ID++
 			continue
 		fi
-		
+
+		echo "\n Collecting experiment results from $FuzzName..."
 		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh collect
 
 		LocalDir="$HOSTNAME-FuzzResult-$FuzzName"
