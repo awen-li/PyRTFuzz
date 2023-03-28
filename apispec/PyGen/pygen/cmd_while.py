@@ -1,14 +1,10 @@
-
 # _*_ coding:utf-8 _*_
-import random
-import string
 import astunparse
 import ast
 from ast import *
-from .cmd_for import *
-from .debug import *
+from .cmd_appbase import *
 
-class PyWhile(PyFor):
+class PyWhile(PyAppBase):
     LoopVar, LoopRange = LoopRange (Prefix='W_') 
     Tmpt = \
 f"""
