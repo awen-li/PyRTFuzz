@@ -9,3 +9,11 @@ export LLVM_PATH=/root/tools/llvm11
 export PATH=/root/anaconda3/bin:/root/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/tools/llvm11/build/bin:/root/PolyFuzz/AFLplusplus
 export CLANG_PATH=/root/tools/llvm11/build/bin
 export CONDA_DEFAULT_ENV=base
+
+CPUID=$1
+if [ ! -n "$CPUID" ]; then
+    echo "please specify CPUID!"
+fi
+python -m fuzzloop -pyscript=seeds -cpu=$CPUID &
+
+
