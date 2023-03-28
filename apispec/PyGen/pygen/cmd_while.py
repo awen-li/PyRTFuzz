@@ -17,11 +17,6 @@ def RunFuzzer (x):
     demoFunc (x)
 """
     def __init__(self):
-        self.init = None
-        self.api  = None
-        self.excepts   = None
-        self.criterion = None
-        self.PyCode    = None
         self.Tmpt = PyWhile.Tmpt
 
     def op_functiondef (self, node):

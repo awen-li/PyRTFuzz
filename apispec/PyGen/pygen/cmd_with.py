@@ -1,37 +1,31 @@
-
 # _*_ coding:utf-8 _*_
 import astunparse
 import ast
 from ast import *
 from .cmd_appbase import *
 
-class PyFor(PyAppBase):
-    LoopVar, LoopRange = LoopRange ()   
+class PyWith(PyAppBase):
     Tmpt = \
 f"""
 def demoFunc(arg):
-    for {LoopVar} in range (0, {LoopRange}):
+    with open ("/dev/null", "r"):
         pass
 
 def RunFuzzer (x):
     demoFunc (x)
 """
     def __init__(self):
-        self.Tmpt = PyFor.Tmpt
+        self.Tmpt = PyWith.Tmpt
 
     def op_functiondef (self, node):
         if node.name != self.criterion.Name:
             return node
 
-        Var, Range = LoopRange ()
-        forAst = ast.parse (f'for {Var} in range (0, {Range}):\
+        WithAst = ast.parse ('with open ("/dev/null", "r"):\
         pass').body[0]
 
-        forAst.body = node.body
-        node.body = [forAst]
+        WithAst.body = node.body
+        node.body = [WithAst]
         return node
-
         
-        
-
         
