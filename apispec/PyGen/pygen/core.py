@@ -11,6 +11,7 @@ from .cmd_for import *
 from .cmd_while import *
 from .cmd_with import *
 from .cmd_if import *
+from .cmd_recursive import *
 from .debug import *
 
 class ApiInfo ():
@@ -118,6 +119,7 @@ class Core ():
         self.CmdList['While'] = SLCmd ('PyWhile ()', 'cmd_while', SLCmd.APP)
         self.CmdList['Wtih'] = SLCmd ('PyWith ()', 'cmd_with', SLCmd.APP)
         self.CmdList['If'] = SLCmd ('PyIf ()', 'cmd_if', SLCmd.APP)
+        self.CmdList['Recursive'] = SLCmd ('PyRecursive ()', 'cmd_recursive', SLCmd.APP)
 
     def GetSlCmd (self, CmdName):
         return self.CmdList.get (CmdName)

@@ -364,10 +364,15 @@ class PropGraph (NodeVisitor):
     def Build (self, App):
         DebugPrint ("\r\n================ PropGraph.Build ================")
         DebugPrint ("Template: \r\n" + App)
-        astApp = ast.parse(App)
-        for body in astApp.body:
-            self.VisitAst (body)
+        try:
+            astApp = ast.parse(App)
+            for body in astApp.body:
+                self.VisitAst (body)
 
-        self.ShowPg ()
-        return self.GetRoots ()
+            self.ShowPg ()
+            return self.GetRoots ()
+        except:
+            print ("Parse error:\n")
+            print (App)
+            exit (0)
 

@@ -257,7 +257,11 @@ class AstOp (NodeTransformer):
         for st in node.body:
             self.visit (st)
         return node
-
+    
+    def op_module(self, node):
+        for st in node.body:
+            self.visit(st)
+        return node
 
     def op_try_wrapper (self, targetBody, targetExceps):
         #body=[Try(body=[Pass()], 
