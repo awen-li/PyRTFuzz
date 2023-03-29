@@ -4,6 +4,7 @@ from ast import parse
 from xml.dom.minidom import Document
 from .astwalk import AstWalk
 from .apispec import *
+from platform import python_version
 
 class ApiSpecGen ():
     def __init__ (self, CodeDir):
@@ -106,9 +107,15 @@ class ApiSpecGen ():
     @staticmethod 
     def WriteErrs (Root, excpNode, excp):
         ApiSpecGen.AddChild (Root, excpNode, "exception", str(excp))
+
+    @staticmethod     
+    def GetSpecName (ApiSpecXml='apispec.xml'):
+        return 'CPY_' + python_version() + '_' + ApiSpecXml
     
     @staticmethod     
     def WriteXml (pyLibs, ApiSpecXml='apispec.xml'):
+        ApiSpecXml = ApiSpecGen.GetSpecName (ApiSpecXml)
+        
         Root = Document()  
         ApiSpec = ApiSpecGen.AddChild (Root, Root, 'apisepc')
         ApiSpec.setAttribute ('version', '1.0')

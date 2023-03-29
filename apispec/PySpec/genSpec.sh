@@ -4,7 +4,9 @@ BASE_DIR=`pwd`
 STC_SPEC=$BASE_DIR/StcSpec
 DYN_SPEC=$BASE_DIR/DynSpec
 
-CPYTHON_PATH=`cd ../../cpython/Python-3.9.15/Lib && pwd`
+PythonVersion=`python -c "from platform import python_version; print(python_version())"`
+
+CPYTHON_PATH=`cd ../../cpython/Python-$PythonVersion/Lib && pwd`
 echo $CPYTHON_PATH
 TIMIE_LIMIT=200
 
@@ -34,10 +36,11 @@ Wait ()
 }
 
 # 1. generate basic spec through static analysis
-if [ ! -f "apispec.xml" ]; then
+SpecFile=`python -c "from pyspec import ApiSpecGen; print(ApiSpecGen.GetSpecName())"`
+if [ ! -f "$SpecFile" ]; then
 	python -m specgen $CPYTHON_PATH
-	if [ ! -f "apispec.xml" ]; then
-		echo "@@@ Generate apispec.xml fail........."
+	if [ ! -f "$SpecFile" ]; then
+		echo "@@@ Generate $SpecFile fail........."
 		exit 0
 	fi
 fi
@@ -81,13 +84,14 @@ do
 done
 
 # 3. fast falidate and update api expr
-python -m specgen -e apispec.xml
-if [ ! -f "expr-apispec.xml" ]; then
+python -m specgen -e $SpecFile
+ExprSpecFile=`python -c "from pyspec import ApiSpecGen; print(ApiSpecGen.GetSpecName(\"expr-apispec.xml\"))"`
+if [ ! -f "$ExprSpecFile" ]; then
 	exit 0
 fi
-mv expr-apispec.xml apispec.xml
+mv $ExprSpecFile $SpecFile
 
 # 4. output the statistic
-python -m specgen -c apispec.xml
+python -m specgen -c $SpecFile
 
 

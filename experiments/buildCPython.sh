@@ -39,9 +39,11 @@ if [ ! -d "$PYTHON_VER" ]; then
 fi
 
 # link apispec here
-if [ ! -a "apispec.xml" ]; then
-	ln -s ../apispec/PySpec/apispec.xml apispec.xml
+SpecFile=`python -c "from pyspec import ApiSpecGen; print(ApiSpecGen.GetSpecName())"`
+if [ -a "apispec.xml" ]; then
+	unlink apispec.xml
 fi
+ln -s ../apispec/PySpec/$SpecFile apispec.xml
 
 
 
