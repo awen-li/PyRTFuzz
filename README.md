@@ -44,3 +44,18 @@ python -m fuzzloop -pyscript=seeds &
 cd CpyFuzz/experiments
 python -m pycollect
 ```
+
+## Automatically running the experiments
+```
+# create and run 10 fuzzing instances (containers) on CPU[0-9]
+CpyFuzz/tool/autofuzz.sh run daybreak2019/cpyfuzz:v2.0
+
+# collect results
+CpyFuzz/tool/autofuzz.sh collect
+
+# delete all fuzzing instances
+CpyFuzz/tool/autofuzz.sh del
+```
+
+
+
