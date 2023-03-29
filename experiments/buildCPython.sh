@@ -40,7 +40,7 @@ fi
 
 # link apispec here
 SpecFile=`python -c "from pyspec import ApiSpecGen; print(ApiSpecGen.GetSpecName())"`
-if [ -a "apispec.xml" ]; then
+if [ -L "apispec.xml" ]; then
 	unlink apispec.xml
 fi
 ln -s ../apispec/PySpec/$SpecFile apispec.xml
