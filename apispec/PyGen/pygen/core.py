@@ -14,6 +14,7 @@ from .cmd_if import *
 from .cmd_recursive import *
 from .cmd_exceptnest import *
 from .cmd_print import *
+from .cmd_repr import *
 from .debug import *
 
 class ApiInfo ():
@@ -122,6 +123,7 @@ class Core ():
         self.CmdList['Wtih'] = SLCmd ('PyWith ()', 'cmd_with', SLCmd.APP)
         self.CmdList['If'] = SLCmd ('PyIf ()', 'cmd_if', SLCmd.APP)
         self.CmdList['Print'] = SLCmd ('PyPrint ()', 'cmd_print', SLCmd.APP)
+        self.CmdList['Repr'] = SLCmd ('PyRepr ()', 'cmd_repr', SLCmd.APP)
 
         self.CmdList['Recursive'] = SLCmd ('PyRecursive ()', 'cmd_recursive', SLCmd.APP)
         self.CmdList['ExceptNest'] = SLCmd ('PyExceptNest ()', 'cmd_exceptnest', SLCmd.APP)
