@@ -1,30 +1,19 @@
 
 # _*_ coding:utf-8 _*_
 import astunparse
-import random
 import ast
 from ast import *
 from .cmd_appbase import *
 
 class PyRecursive(PyAppBase):
-    Tmpt = \
-f"""
-def demoFunc(arg):
-    pass
-
-def RunFuzzer (x):
-    demoFunc (x)
-"""
     def __init__(self):
-        self.Tmpt = PyRecursive.Tmpt
         self.RC = 'Recursive'
+        self.RCFunc = None
 
     def HasRecursive (self, node):
-        for st in node.body:
-            if not isinstance (st, Call):
-                continue
-            if st.func.id == self.RC:
-                return True
+        App = astunparse.unparse(node)
+        if App.find (self.RC) != -1:
+            return True
         return False
     
     def op_functiondef (self, node):
@@ -32,7 +21,6 @@ def RunFuzzer (x):
             return node
         
         if self.HasRecursive (node) == True:
-            print ("Already in recursive!!!!!!!!!!!!!")
             return node
 
         fp = self.criterion.NodeVal.Val
@@ -47,7 +35,8 @@ def RunFuzzer (x):
     
     def op_module(self, node):    
         node = super().op_module (node)
-        node.body.append (self.RCFunc)
+        if self.RCFunc != None:
+            node.body.append (self.RCFunc)
         return node
     
 
