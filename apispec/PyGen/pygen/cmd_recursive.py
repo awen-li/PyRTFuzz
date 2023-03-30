@@ -7,37 +7,23 @@ from .cmd_appbase import *
 
 class PyRecursive(PyAppBase):
     def __init__(self):
-        self.RC = 'Recursive'
-        self.RCFunc = None
-
-    def HasRecursive (self, node):
-        App = astunparse.unparse(node)
-        if App.find (self.RC) != -1:
-            return True
-        return False
+        super(PyRecursive, self).__init__()
+        self.FN = 'Recursive'
     
     def op_functiondef (self, node):
         if node.name != self.criterion.Name:
             return node
-        
-        if self.HasRecursive (node) == True:
-            return node
 
         fp = self.criterion.NodeVal.Val
-        RcCall = self.op_new_expr (self.op_new_call (self.RC, None, [fp[0]]))
+        RcCall = self.op_new_expr (self.op_new_call (self.FN, None, [fp[0]]))
 
-        self.RCFunc = self.op_new_functiondef(self.RC, [fp[0]])
-        self.RCFunc.body = node.body
-        self.RCFunc.body.append (RcCall)
+        self.FNFunc = self.op_new_functiondef(self.FN, [fp[0]])
+        self.FNFunc.body = node.body
+        self.FNFunc.body.append (RcCall)
 
         node.body = self.op_try_wrapper ([RcCall], ['RecursionError']) 
         return node
     
-    def op_module(self, node):    
-        node = super().op_module (node)
-        if self.RCFunc != None:
-            node.body.append (self.RCFunc)
-        return node
     
 
 

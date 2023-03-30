@@ -25,6 +25,9 @@ class PyAppBase(AstOp):
         self.criterion = None
         self.PyCode    = None
         self.Tmpt = PyAppBase.Tmpt
+
+        self.FN     = 'PyAppBase'
+        self.FNFunc = None
     
     def SetExeCode (self, ExeCode):
         self.PyCode = ExeCode
@@ -39,6 +42,12 @@ class PyAppBase(AstOp):
         self.init = init
         self.api  = api
         self.excepts = excepts
+
+    def HasFUnit (self, node):
+        App = astunparse.unparse(node)
+        if App.find (self.FN) != -1:
+            return True
+        return False
 
     def op_insert_invocation (self, node, InitStmt, CallStmt):
         pyBase = node.body[0]
@@ -56,6 +65,15 @@ class PyAppBase(AstOp):
 
     def op_functiondef (self, node):
         pass
+
+    def op_module(self, node):
+        if self.HasFUnit (node) == True:
+            return node
+          
+        node = super().op_module (node)
+        if self.FNFunc != None:
+            node.body.append (self.FNFunc)
+        return node
         
     def GenApp (self):
         

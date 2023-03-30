@@ -15,6 +15,7 @@ def RunFuzzer (x):
     demoFunc (x)
 """
     def __init__(self):
+        super(PyIf, self).__init__()
         self.Tmpt = PyIf.Tmpt
 
     def op_functiondef (self, node):

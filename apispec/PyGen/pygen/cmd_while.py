@@ -17,6 +17,7 @@ def RunFuzzer (x):
     demoFunc (x)
 """
     def __init__(self):
+        super(PyWhile, self).__init__()
         self.Tmpt = PyWhile.Tmpt
 
     def op_functiondef (self, node):

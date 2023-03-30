@@ -15,6 +15,7 @@ def RunFuzzer (x):
     demoFunc (x)
 """
     def __init__(self):
+        super(PyWith, self).__init__()
         self.Tmpt = PyWith.Tmpt
 
     def op_functiondef (self, node):
