@@ -12,9 +12,10 @@ class PyRepr(PyAppBase):
 
     def op_try(self, node):
         Obj = 'obj'
-        if astunparse.unparse(node).find (Obj) == -1:
+        Stmts = astunparse.unparse(node)
+        if Stmts.find (Obj) == -1 or Stmts.find ('repr') != -1:
             return node
-        
+
         ReprCall = self.op_new_expr (self.op_new_call ('repr', None, [Obj]))
         node.body.append (ReprCall)
 

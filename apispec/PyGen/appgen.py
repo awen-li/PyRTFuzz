@@ -10,7 +10,7 @@ def InitArgument (parser):
     grp = parser.add_argument_group('Main options', 'One of these (or --report) must be given')
     grp.add_argument('-g', '--generate', action='store_true', help='generate python app')
     grp.add_argument('-d', '--debug', action='store_true', help='generate python app')
-    grp.add_argument('-s', '--server', help='run in server mode, listenning on specified port')
+    grp.add_argument('-s', '--show', action='store_true', help='show all supported CMDs')
     grp.add_argument('-a', '--api', help='target api for app generation')
     grp.add_argument('-l', '--length', help='length of SL script')
                      
@@ -26,9 +26,7 @@ def main():
     if opts.debug:
         SetDebug (1)
 
-    if opts.server:
-        pass
-    elif opts.generate:
+    if opts.generate:
         if opts.filename is None:
             parser.error('please specify the apispec file!')
 
@@ -43,6 +41,8 @@ def main():
             SG.GenPyApp (opts.api, StateNum=int(opts.length))
 
         print ("Run successful.....")
+    elif opts.show:
+        Core ().ShowCmds ()
     else:
         print ("Do nothing?")
 

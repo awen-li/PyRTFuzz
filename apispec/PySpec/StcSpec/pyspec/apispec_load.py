@@ -163,7 +163,7 @@ class ApiSpecLoader():
         return curMd
             
     def Parser (self):
-        if os.path.exists (self.apiSpecXml) == False:
+        if self.apiSpecXml == None or os.path.exists (self.apiSpecXml) == False:
             return
         
         DOMTree = xml.dom.minidom.parse(self.apiSpecXml)

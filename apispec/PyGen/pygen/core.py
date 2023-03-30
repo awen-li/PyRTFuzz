@@ -48,7 +48,7 @@ class ExeCmd ():
         self.Para  = Para
 
 class Core ():
-    def __init__ (self, apiSpecXml):
+    def __init__ (self, apiSpecXml=None):
         self.PyLibs  = self.InitPyLibs (apiSpecXml)
         self.ApiList   = {}
         self.ClassInfo = {}
@@ -65,7 +65,16 @@ class Core ():
 
         self.InitOk = bool(len (self.PyLibs) != 0)
 
+    def ShowCmds (self):
+        print ("\n############## SL Interpreter Statement List [%2d] ##############" %len (self.CmdList))
+        for Cmd, CmdObj in self.CmdList.items ():
+            print ("### %-12s ---- %-16s" %(Cmd, CmdObj.CmdName))
+        print ("###################################################################\n")
+
     def InitApiList (self):
+        if len (self.PyLibs) == 0:
+            return
+        
         par = ProgressBar ()
         for libName, pyLib in par(self.PyLibs.items ()):
             for mdName, pyMoudle in pyLib.Modules.items ():
