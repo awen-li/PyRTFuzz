@@ -30,7 +30,7 @@ class PyRecursive(PyAppBase):
         self.RCFunc.body = node.body
         self.RCFunc.body.append (RcCall)
 
-        node.body = [RcCall]
+        node.body = self.op_try_wrapper ([RcCall], ['RecursionError']) 
         return node
     
     def op_module(self, node):    
