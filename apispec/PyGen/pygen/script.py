@@ -47,7 +47,7 @@ class CodeGen ():
     def SelectWtCmd (self, CmdList):
         pass
 
-    def SelectCmd (self, Type):
+    def SelectCmd (self, Type, StatNum=0):
         CmdList = None
         if Type == SLCmd.BASE:    
             CmdList = self.BaseCmdList
@@ -57,10 +57,13 @@ class CodeGen ():
             raise Exception("Unknown CMD Type: " + Type)
 
         if self.Strategy == CodeGen.STRATEGY_RANDOM:
-            CmdIndex = random.randint(0, len (CmdList)-1)     
-            return CmdList [CmdIndex]
+            CmdIndex = random.randint(0, len (CmdList)-1)
+            Cmd = CmdList [CmdIndex]
+            if StatNum%Cmd.slCmd.Mod != 0:
+                return None
+            return Cmd
         elif self.Strategy == CodeGen.STRATEGY_WEIGHT:
-            pass
+            return None
         else:
             raise Exception("Unknown Strategy Type: " + self.Strategy)
 
@@ -98,11 +101,14 @@ class CodeGen ():
         Ret = self.WriteScript (BaseCmd, ApiExpr)
 
         # 2. SELECT a set of APP CMD
-        while StatNum > 0:
-            AppCmd = self.SelectCmd (SLCmd.APP)
+        Num = StatNum
+        while Num > 0:
+            AppCmd = self.SelectCmd (SLCmd.APP, StatNum)
+            if AppCmd == None:
+                continue
             Ret = self.WriteScript (AppCmd, Ret)
 
-            StatNum = StatNum-1
+            Num = Num-1
 
         self.CloseSlHandle ()
         return self.LoadSl (Output)

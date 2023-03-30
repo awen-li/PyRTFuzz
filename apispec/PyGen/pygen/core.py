@@ -30,11 +30,12 @@ class SLCmd ():
     BASE = 1
     APP  = 2
     
-    def __init__ (self, CmdName, Module, Type, OORequired=False):
+    def __init__ (self, CmdName, Module, Type, OORequired=False, Mod=0):
         self.CmdName = CmdName
         self.Module  = Module
         self.Type    = Type
         self.OORequired = OORequired
+        self.Mod     = Mod
 
 class CmdOP ():
     def __init__ (self, OpName):
@@ -125,7 +126,7 @@ class Core ():
     def InitCmd (self):
         self.CmdList['OO']  = SLCmd ('NewOO ()', 'cmd_newoo', SLCmd.BASE)
         self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo', SLCmd.BASE)
-        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE, True)
+        self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE, OORequired=True)
         
         self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP)
         self.CmdList['While'] = SLCmd ('PyWhile ()', 'cmd_while', SLCmd.APP)
@@ -135,7 +136,7 @@ class Core ():
         self.CmdList['Repr'] = SLCmd ('PyRepr ()', 'cmd_repr', SLCmd.APP)
 
         self.CmdList['Recursive'] = SLCmd ('PyRecursive ()', 'cmd_recursive', SLCmd.APP)
-        self.CmdList['ExceptNest'] = SLCmd ('PyExceptNest ()', 'cmd_exceptnest', SLCmd.APP)
+        self.CmdList['ExceptNest'] = SLCmd ('PyExceptNest ()', 'cmd_exceptnest', SLCmd.APP, Mod=4)
 
     def GetSlCmd (self, CmdName):
         return self.CmdList.get (CmdName)
