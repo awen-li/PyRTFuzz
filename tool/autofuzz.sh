@@ -40,6 +40,7 @@ function DelFuzzer ()
 
 function Collect ()
 {
+	git clone git@github.com:yhryyq/FuzzResult.git
 	ID=$MinCpu
 	while [ $ID -le $MaxCpu ]
 	do
@@ -62,13 +63,21 @@ function Collect ()
 		else
 			LocalDir="$HOSTNAME-FuzzResult-$FuzzName"
 			if [ ! -d "$LocalDir" ]; then
-				mkdir $LocalDir
+				mkdir FuzzResult/$LocalDir
 			fi
-			docker cp $FuzzName:/root/CpyFuzz/experiments/FuzzResult/ $LocalDir/
+			docker cp $FuzzName:/root/CpyFuzz/experiments/FuzzResult/ FuzzResult/$LocalDir
+			 
 		fi
 
 		let ID++
-	done	
+	done
+
+	cd FuzzResult
+	git add .
+	git commit -m "server-192 $(date +%Y-%m-%d" "%H:%M:%S)"
+	git push
+	cd ..
+	rm -rf FuzzResult
 }
 
 
