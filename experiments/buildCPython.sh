@@ -10,8 +10,14 @@ setPython ()
 	if [ -L "python" ]; then
 		unlink python
 	fi
-
 	ln -s $py python
+
+	if [ -L "pip" ]; then
+		unlink pip
+	fi
+	Pip=`echo ${py/python/pip}`
+	ln -s $Pip pip
+	
 	cd -
 }
 

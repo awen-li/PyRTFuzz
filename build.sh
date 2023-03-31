@@ -6,16 +6,25 @@ ALL_VERSIONS=("3.9.15" "3.8.15" "3.7.15")
 
 setPython ()
 {
-	py=$1
 	cd $INSTALL_PATH/bin
+
+	py=$1
 	if [ -L "python" ]; then
 		unlink python
 	fi
-
 	ln -s $py python
+	echo "### set Python -> $py"
+
+	if [ -L "pip" ]; then
+		unlink pip
+	fi
+	Pip=`echo ${py/python/pip}`
+	ln -s $Pip pip
+	echo "### set Pip -> $Pip"
+
 	cd -
 	
-	echo "### setPython -> $py"
+	
 	export PYTHON_LIBRARY=$INSTALL_PATH/lib/$PRIMARY_PYTHON
 }
 
