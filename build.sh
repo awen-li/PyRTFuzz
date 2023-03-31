@@ -15,6 +15,7 @@ setPython ()
 	ln -s $py python
 	cd -
 	
+	echo "### setPython -> $py"
 	export PYTHON_LIBRARY=$INSTALL_PATH/lib/$PRIMARY_PYTHON
 }
 
@@ -45,12 +46,13 @@ if [ "$Action" == "llvm" ] || [ "$Action" == "all" ]; then
 fi
 
 
-setPython $PRIMARY_PYTHON
-python --version
 if [ "$Action" == "python" ] || [ "$Action" == "all" ]; then
 	for Ver in ${ALL_VERSIONS[@]}
 	do
-		INSTALL_VER=`echo ${VERSION: 0: 3}`
+		setPython $PRIMARY_PYTHON
+		python --version
+
+		INSTALL_VER=`echo ${Ver: 0: 3}`
 		echo "### Start to compile python$INSTALL_VER"
 
 		# 2. install python from source
