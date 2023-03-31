@@ -15,6 +15,8 @@ class WtSLCmd ():
         self.Weight = Weight
 
 
+DEFAULT_STMT_NUM = 16
+
 class CodeGen ():
     STRATEGY_RANDOM = 1
     STRATEGY_WEIGHT = 2
@@ -31,13 +33,20 @@ class CodeGen ():
             sys.exit (0)
         self.InitCmdList (self.Core.GetCmdList ())
 
+        StmtNum = os.environ.get ('SL_STMT_NUM')
+        if StmtNum == None:
+            self.StmtNum = DEFAULT_STMT_NUM
+        else:
+            self.StmtNum = int (StmtNum)
+            #print ("### CodeGen: obtain SL_STMT_NUM as %d" %self.StmtNum)
+
     def IsCoreUp (self):
         return self.Core.InitOk
 
     def InitCmdList (self, SlCmdList):
         for CmdName, SlCmd in SlCmdList.items ():
             WtCmd = WtSLCmd (CmdName, SlCmd)
-            if SlCmd.Type == SLCmd.BASE:    
+            if SlCmd.Type == SLCmd.BASE:   
                 self.BaseCmdList.append(WtCmd)
             elif SlCmd.Type == SLCmd.APP:
                 self.AppCmdList.append(WtCmd)
@@ -166,7 +175,7 @@ class CodeGen ():
         print ("### Generating %d seeds..." %PyNum)
         return Dir
 
-    def GenRandomPy (self, Dir, StateNum=16):
+    def GenRandomPy (self, Dir, StateNum=DEFAULT_STMT_NUM):
         try:
             ApiList = list (self.Core.ApiList.keys())
             ApiIndex = random.randint(0, len (ApiList)-1)
@@ -186,7 +195,10 @@ class CodeGen ():
         print ("Get random API as:" + RandomApi)
         return PyFile
 
-    def GenSpecifiedPy (self, Case, StateNum=2):
+    def GenSpecifiedPy (self, Case, StateNum=DEFAULT_STMT_NUM):
+        if self.StmtNum != StateNum:
+            StateNum = self.StmtNum
+        
         try:
             CaseName = os.path.basename (Case)
             CaseName,_ = os.path.splitext(CaseName)
@@ -209,7 +221,10 @@ class CodeGen ():
     def UpdateWeight (self, Case, Weight):
         pass
 
-    def GenPyApp (self, ApiPath, StateNum=16):
+    def GenPyApp (self, ApiPath, StateNum=DEFAULT_STMT_NUM):
+        if self.StmtNum != StateNum:
+            StateNum = self.StmtNum
+        
         ApiInfo = self.Core.ApiList.get (ApiPath)
         if ApiInfo == None:
             print ("Fail to find %s in API spec list!" %ApiPath)

@@ -30,7 +30,7 @@ class SLCmd ():
     BASE = 1
     APP  = 2
     
-    def __init__ (self, CmdName, Module, Type, OORequired=False, Mod=0):
+    def __init__ (self, CmdName, Module, Type, OORequired=False, Mod=1):
         self.CmdName = CmdName
         self.Module  = Module
         self.Type    = Type
