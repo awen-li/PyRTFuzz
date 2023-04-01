@@ -6,6 +6,11 @@ function setPython ()
 	cd $INSTALL_PATH/bin
 
 	py=$1
+	if [ ! -f "$py" ]; then
+		echo "### $py is not installed...."
+		return 1
+	fi
+
 	if [ -L "python" ]; then
 		unlink python
 	fi
@@ -19,8 +24,9 @@ function setPython ()
 	ln -s $Pip pip
 	echo "### set Pip -> $Pip"
 
-	export PYTHON_LIBRARY=$INSTALL_PATH/lib/$py
 	cd -
+	return 0
 }
 
 setPython $1
+exit $?
