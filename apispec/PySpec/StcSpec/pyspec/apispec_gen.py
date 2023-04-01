@@ -110,6 +110,8 @@ class ApiSpecGen ():
 
     @staticmethod     
     def GetSpecName (ApiSpecXml='apispec.xml'):
+        if ApiSpecXml.find('CPY_') != -1:
+            return ApiSpecXml
         return 'CPY_' + python_version() + '_' + ApiSpecXml
     
     @staticmethod     

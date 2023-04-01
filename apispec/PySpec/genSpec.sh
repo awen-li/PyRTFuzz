@@ -84,7 +84,7 @@ do
     	continue
     fi
 
-    python -m spectrace $test &   
+    python -m spectrace -s $SpecFile $test &   
     Wait "python -m spectrace"
 
 	if [ ! -f "/tmp/TracingDone" ]; then
