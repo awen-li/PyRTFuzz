@@ -10,7 +10,7 @@ if [ ! -n "$Action" ]; then
 fi
 
 
-# 1. build libfuzzer
+# build libfuzzer
 if [ "$Action" == "llvm" ] || [ "$Action" == "all" ]; then
 	if [ ! -n "$LLVM_PATH" ]; then
 		echo "Plase set LLVM_PATH before building libfuzzer!"
@@ -31,29 +31,36 @@ if [ "$Action" == "llvm" ] || [ "$Action" == "all" ]; then
 fi
 
 cp $BASE_DIR/tool/setPython.sh /usr/bin
+setPython.sh $PRIMARY_PYTHON
 if [ "$Action" == "python" ] || [ "$Action" == "all" ]; then
 	for Ver in ${ALL_VERSIONS[@]}
 	do
-		setPython.sh $PRIMARY_PYTHON
-		python --version
+		echo "### Start to compile python$Ver"
 
-		INSTALL_VER=`echo ${Ver: 0: 3}`
-		echo "### Start to compile python$INSTALL_VER"
-
-		# 2. install python from source
+		# install python from source
 		cd $BASE_DIR/cpython
 		PYTHON_PATH="Python-$Ver"
 		if [ ! -d "$PYTHON_PATH" ]; then
 			apt-get install openssl	
 			tar -xvf $PYTHON_PATH.tar.xz
-			
-			cd $PYTHON_PATH && ./configure --prefix=$INSTALL_PATH --enable-optimizations --with-openssl=/root/anaconda3
-			make clean && make && make altinstall
 		fi
+
+		cd $PYTHON_PATH && ./configure --prefix=$INSTALL_PATH --enable-optimizations --with-openssl=/root/anaconda3
+		make clean && make && make altinstall
 		rm -rf $PYTHON_PATH
 
-		# 3. build atheris
+		cd $BASE_DIR
+	done
+fi
+
+
+if [ "$Action" == "prtfuzz" ] || [ "$Action" == "all" ]; then
+	for Ver in ${ALL_VERSIONS[@]}
+	do
+		INSTALL_VER=`echo ${Ver: 0: 3}`
 		setPython.sh "python$INSTALL_VER"
+
+		# build atheris	
 		export ASAN_OPTIONS=detect_leaks=0
 		cd $BASE_DIR/atheris
 		if [ -d "build" ]; then
@@ -62,11 +69,11 @@ if [ "$Action" == "python" ] || [ "$Action" == "all" ]; then
 		python setup.py install
 		cd -
 
-		# 4. install fuzzwrapper
+		# install fuzzwrapper
 		cd $BASE_DIR/fuzzwrapper && ./build.sh && cd -
 
 
-		# 5. install apispec toolkit
+		# install apispec toolkit
 		cd $BASE_DIR/apispec && ./build.sh && cd -
 	done
 fi
