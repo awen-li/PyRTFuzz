@@ -3,24 +3,6 @@ BASE_DIR=`pwd`
 INSTALL_PATH=/root/anaconda3
 ALL_VERSIONS=("3.9.15" "3.8.15" "3.7.15")
 
-setPython ()
-{
-	py=$1
-	cd $INSTALL_PATH/bin
-	if [ -L "python" ]; then
-		unlink python
-	fi
-	ln -s $py python
-
-	if [ -L "pip" ]; then
-		unlink pip
-	fi
-	Pip=`echo ${py/python/pip}`
-	ln -s $Pip pip
-	
-	cd -
-}
-
 function InstallPython ()
 {
 	VERSION=$1
@@ -30,7 +12,7 @@ function InstallPython ()
 	echo "InstallPython --> $VERSION, $PYTHON_PATH, $INSTALL_VER"
 	return
 
-	setPython python$INSTALL_VER
+	setPython.sh python$INSTALL_VER
 	export ASAN_OPTIONS=detect_leaks=0
 
 	LD_CLANG="$(python -c "import sysconfig; print(sysconfig.get_config_var('LDSHARED'))")"	
@@ -50,7 +32,7 @@ function InstallPython ()
 		cd -
 
 		#link to the current python
-		setPython python$INSTALL_VER
+		setPython.sh python$INSTALL_VER
 	fi
 }
 

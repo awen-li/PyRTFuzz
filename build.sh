@@ -4,30 +4,6 @@ INSTALL_PATH=/root/anaconda3
 PRIMARY_PYTHON=python3.9
 ALL_VERSIONS=("3.9.15" "3.8.15" "3.7.15")
 
-setPython ()
-{
-	cd $INSTALL_PATH/bin
-
-	py=$1
-	if [ -L "python" ]; then
-		unlink python
-	fi
-	ln -s $py python
-	echo "### set Python -> $py"
-
-	if [ -L "pip" ]; then
-		unlink pip
-	fi
-	Pip=`echo ${py/python/pip}`
-	ln -s $Pip pip
-	echo "### set Pip -> $Pip"
-
-	cd -
-	
-	
-	export PYTHON_LIBRARY=$INSTALL_PATH/lib/$PRIMARY_PYTHON
-}
-
 Action=$1
 if [ ! -n "$Action" ]; then
 	Action="all"
@@ -54,11 +30,11 @@ if [ "$Action" == "llvm" ] || [ "$Action" == "all" ]; then
 	make -j4
 fi
 
-
+cd $BASE_DIR/too/setPython.sh /usr/bin
 if [ "$Action" == "python" ] || [ "$Action" == "all" ]; then
 	for Ver in ${ALL_VERSIONS[@]}
 	do
-		setPython $PRIMARY_PYTHON
+		setPython.sh $PRIMARY_PYTHON
 		python --version
 
 		INSTALL_VER=`echo ${Ver: 0: 3}`
@@ -77,7 +53,7 @@ if [ "$Action" == "python" ] || [ "$Action" == "all" ]; then
 		rm -rf $PYTHON_PATH
 
 		# 3. build atheris
-		setPython "python$INSTALL_VER"
+		setPython.sh "python$INSTALL_VER"
 		export ASAN_OPTIONS=detect_leaks=0
 		cd $BASE_DIR/atheris
 		if [ -d "build" ]; then
