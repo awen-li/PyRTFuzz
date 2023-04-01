@@ -12,5 +12,5 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Daybreak2019/CpyFuzz",
     packages=['pyspec'],
-    install_requires=['progressbar']
+    install_requires=['progressbar', 'astunparse']
 )
