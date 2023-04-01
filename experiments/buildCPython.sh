@@ -31,8 +31,7 @@ function InstallPython ()
 		make altinstall
 		cd -
 
-		#link to the current python
-		setPython.sh python$INSTALL_VER
+		rm -rf $PYTHON_PATH/build
 	fi
 }
 
@@ -43,14 +42,6 @@ do
 	InstallPython $Ver
 done
 
-
-
-# link apispec here
-SpecFile=`python -c "from pyspec import ApiSpecGen; print(ApiSpecGen.GetSpecName())"`
-if [ -L "apispec.xml" ]; then
-	unlink apispec.xml
-fi
-ln -s ../apispec/PySpec/$SpecFile apispec.xml
 
 
 

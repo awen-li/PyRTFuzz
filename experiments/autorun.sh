@@ -10,6 +10,19 @@ export PATH=/root/anaconda3/bin:/root/anaconda3/condabin:/usr/local/sbin:/usr/lo
 export CLANG_PATH=/root/tools/llvm11/build/bin
 export CONDA_DEFAULT_ENV=base
 
+function setPyEnv ()
+{
+    PY=$1
+    setPython.sh $PY
+
+    # link apispec here
+    SpecFile=`python -c "from pyspec import ApiSpecGen; print(ApiSpecGen.GetSpecName())"`
+    if [ -L "apispec.xml" ]; then
+        unlink apispec.xml
+    fi
+    ln -s ../apispec/PySpec/$SpecFile apispec.xml
+}
+
 ACTION=$1
 if [ "$ACTION" == "run" ]; then
 
@@ -17,6 +30,15 @@ if [ "$ACTION" == "run" ]; then
     if [ ! -n "$CPUID" ]; then
         echo "please specify CPUID!"
     fi
+
+    PY=$3
+    if [ ! -n "$PY" ]; then
+        PY=python3.9
+
+        echo "### Set python version to $PY"
+        setPyEnv $PY
+    fi
+
     python -m fuzzloop -pyscript=seeds -cpu=$CPUID
 
 elif [ "$ACTION" == "collect" ]; then

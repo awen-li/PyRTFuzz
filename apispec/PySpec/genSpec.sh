@@ -1,9 +1,16 @@
 
 BASE_DIR=`pwd`
 
+INSTALL_PATH=/root/anaconda3
 STC_SPEC=$BASE_DIR/StcSpec
 DYN_SPEC=$BASE_DIR/DynSpec
 
+PY=$1
+if [ "$PY" != "python3.9" ] && [ "$PY" != "python3.8" ] && [ "$PY" != "python3.7" ]; then
+    echo "### Support python version [python3.9 / python3.8 / python3.7]"
+    exit
+fi
+export PYTHON_LIBRARY=$INSTALL_PATH/lib/$PY
 PythonVersion=`python -c "from platform import python_version; print(python_version())"`
 
 CPYTHON_PATH=`cd ../../cpython/Python-$PythonVersion/Lib && pwd`
