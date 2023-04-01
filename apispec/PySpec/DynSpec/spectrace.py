@@ -67,7 +67,7 @@ def main():
         opts.source = 'apispec.xml'
         if not os.path.exists (opts.source):
             parser.error('please specify the original api spec xml')
-        opts.source = os.path.abspath (opts.source)
+    opts.source = os.path.abspath (opts.source)
 
     if opts.include_path is None:
         default_path = os.path.abspath(r".")
