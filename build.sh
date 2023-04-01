@@ -30,7 +30,7 @@ if [ "$Action" == "llvm" ] || [ "$Action" == "all" ]; then
 	make -j4
 fi
 
-cp $BASE_DIR/too/setPython.sh /usr/bin
+cp $BASE_DIR/tool/setPython.sh /usr/bin
 if [ "$Action" == "python" ] || [ "$Action" == "all" ]; then
 	for Ver in ${ALL_VERSIONS[@]}
 	do
