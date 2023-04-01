@@ -16,6 +16,15 @@ if [ -n "$Anaconda" ]; then
     if [ -d "$PYTHON_PATH" ]; then
     	cp $PY_PATH/spectrace.py $PYTHON_PATH
     	echo "Have installed pygen to anaconda...."
+
+        UT=$PWD/unittest
+        if [ -d "$PYTHON_PATH/unittest" ]; then
+            mv $PYTHON_PATH/unittest $PYTHON_PATH/unittest_back
+        elif [ -L "$PYTHON_PATH/unittest" ]; then
+            unlink $PYTHON_PATH/unittest
+        fi
+
+        cd $PYTHON_PATH && ln -s $UT unittest && cd -
     fi
 fi
 
