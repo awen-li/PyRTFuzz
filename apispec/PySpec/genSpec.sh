@@ -10,10 +10,19 @@ if [ "$PY" != "python3.9" ] && [ "$PY" != "python3.8" ] && [ "$PY" != "python3.7
     echo "### Support python version [python3.9 / python3.8 / python3.7]"
     exit
 fi
+
+setPython.sh $PY
 export PYTHON_LIBRARY=$INSTALL_PATH/lib/$PY
 PythonVersion=`python -c "from platform import python_version; print(python_version())"`
 
-CPYTHON_PATH=`cd ../../cpython/Python-$PythonVersion/Lib && pwd`
+CPYTHON=`cd ../../cpython/ && pwd`
+if [ ! -d "$CPYTHON/Python-$PythonVersion" ]; then
+	cd $CPYTHON
+	tar -xvf Python-$PythonVersion.tar.xz
+	cd -
+fi
+
+CPYTHON_PATH=$CPYTHON/Python-$PythonVersion/Lib
 echo $CPYTHON_PATH
 TIMIE_LIMIT=200
 
@@ -100,5 +109,7 @@ mv $ExprSpecFile $SpecFile
 
 # 4. output the statistic
 python -m specgen -c $SpecFile
+
+rm -rf $CPYTHON/Python-$PythonVersion
 
 
