@@ -57,7 +57,8 @@ def Clear ():
         FileList = os.listdir (dir)
         for file in FileList:
             try:
-                if file[0] == '.':
+                if file in ['.dockerenv', '.bash_history', '.bashrc', '.condarc', '.profile', 
+                            '.python_history', '.viminfo', '.wget-hsts', '.gitconfig']:
                     continue
 
                 P = os.path.join (dir, file)

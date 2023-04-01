@@ -1,3 +1,6 @@
+
+INSTALL_PATH=/root/anaconda3
+
 function setPython ()
 {
 	cd $INSTALL_PATH/bin
@@ -16,7 +19,7 @@ function setPython ()
 	ln -s $Pip pip
 	echo "### set Pip -> $Pip"
 
-	export PYTHON_LIBRARY=$INSTALL_PATH/lib/$PRIMARY_PYTHON
+	export PYTHON_LIBRARY=$INSTALL_PATH/lib/$py
 	cd -
 }
 
