@@ -1,6 +1,5 @@
 
 import os
-import numpy as np
 from .apispec_load import *
 
 logFileName = "unrecognized_api_spec.txt"
