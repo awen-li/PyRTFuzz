@@ -1,5 +1,5 @@
 
-export PY_PATH=`pwd`
+export PYTRACE_PATH=`pwd`
 
 echo ""
 echo ""
@@ -14,10 +14,10 @@ Anaconda=`which anaconda`
 if [ -n "$Anaconda" ]; then   
     PYTHON_PATH=/root/anaconda3/lib/python$PyVersion
     if [ -d "$PYTHON_PATH" ]; then
-    	cp $PY_PATH/spectrace.py $PYTHON_PATH
+    	cp $PYTRACE_PATH/spectrace.py $PYTHON_PATH
     	echo "Have installed pygen to anaconda...."
 
-        UT=$PWD/unittest
+        UT=$PYTRACE_PATH/unittest
         if [ -d "$PYTHON_PATH/unittest" ]; then
             mv $PYTHON_PATH/unittest $PYTHON_PATH/unittest_back
         elif [ -L "$PYTHON_PATH/unittest" ]; then
