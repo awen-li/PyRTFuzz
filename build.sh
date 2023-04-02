@@ -77,3 +77,5 @@ if [ "$Action" == "prtfuzz" ] || [ "$Action" == "all" ]; then
 		cd $BASE_DIR/apispec && ./build.sh && cd -
 	done
 fi
+
+setPython.sh $PRIMARY_PYTHON
