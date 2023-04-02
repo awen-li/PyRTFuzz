@@ -34,12 +34,10 @@ if [ "$ACTION" == "run" ]; then
     PY=$3
     if [ ! -n "$PY" ]; then
         PY=python3.9
-
-        echo "### Set python version to $PY"
-        setPyEnv $PY
     fi
+    setPyEnv $PY
 
-    python -m fuzzloop -pyscript=seeds -cpu=$CPUID
+    python -m fuzzloop -pyscript=seeds_$PY -cpu=$CPUID
 
 elif [ "$ACTION" == "collect" ]; then
 
