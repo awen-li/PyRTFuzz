@@ -21,12 +21,14 @@ if [ -n "$Anaconda" ]; then
             git clone https://github.com/Daybreak2019/unittest-PRT.git
         fi
         UT=$PYTRACE_PATH/unittest-PRT/unittest_python$PyVersion
-        echo "### Currrent customized unittest is: $UT"
+        echo "### Currrent customized unittest is: $UT, try to link as $PYTHON_PATH/unittest"
 
         if [ -d "$PYTHON_PATH/unittest" ]; then
             mv $PYTHON_PATH/unittest $PYTHON_PATH/unittest_back
         elif [ -L "$PYTHON_PATH/unittest" ]; then
             unlink $PYTHON_PATH/unittest
+        elif [ -f "$PYTHON_PATH/unittest" ]; then
+            rm -f $PYTHON_PATH/unittest
         fi
 
         cd $PYTHON_PATH && ln -s $UT unittest && cd -
