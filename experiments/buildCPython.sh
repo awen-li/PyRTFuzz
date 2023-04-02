@@ -10,7 +10,6 @@ function InstallPython ()
 	INSTALL_VER=`echo ${VERSION: 0: 3}`
 	
 	echo "InstallPython --> $VERSION, $PYTHON_PATH, $INSTALL_VER"
-	return
 
 	setPython.sh python$INSTALL_VER
 	export ASAN_OPTIONS=detect_leaks=0
