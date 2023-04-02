@@ -42,6 +42,8 @@ do
 	InstallPython $Ver
 done
 
+setPython.sh python3.9
+
 
 
 
