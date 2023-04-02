@@ -1,7 +1,6 @@
 export CONDA_EXE=/root/anaconda3/bin/conda
 export CONDA_PREFIX=/root/anaconda3
 export ASAN_OPTIONS=detect_leaks=0
-export PYTHON_LIBRARY=/root/anaconda3/lib/python3.9
 export HOME=/root
 export CONDA_PYTHON_EXE=/root/anaconda3/bin/python
 export CONDA_PROMPT_MODIFIER=(base) 

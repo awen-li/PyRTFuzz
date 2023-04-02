@@ -5,6 +5,7 @@ MaxCpu=9
 
 Action=$1
 Image=""
+PyVersion=python3.9
 
 function RunFuzzer ()
 {
@@ -15,7 +16,7 @@ function RunFuzzer ()
 		echo
 		echo "### Start Fuzzer $FuzzName..."
 		docker run -itd --name "$FuzzName" $Image
-		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID
+		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion
 		let ID++
 	done	
 }
@@ -88,6 +89,22 @@ if [ "$Action" == "run" ]; then
 		docker image ls | grep cpyfuzz
 		exit
 	fi
+
+	PyVersion=$3
+	if [ -n "$PyVersion" ]; then
+		echo "Please specify the python version for fuzzing"
+		exit
+	fi
+
+	if [ -n "$4" ]; then
+		MinCpu=$3
+	fi
+
+	if [ -n "$5" ]; then
+		MaxCpu=`expr $MinCpu + $5`
+	fi
+
+	echo "### Run the fuzzers on CPU [$MinCpu: $MaxCpu]..."
 	RunFuzzer
 
 elif [ "$Action" == "collect" ]; then

@@ -24,6 +24,8 @@ function InstallPython ()
 	if [ ! -d "$PYTHON_PATH" ]; then
 		cp ../cpython/$PYTHON_PATH.tar.xz ./
 		tar -xvf $PYTHON_PATH.tar.xz
+	else
+		rm -rf $PYTHON_PATH/build
 	fi
 
 	cd $PYTHON_PATH && ./configure --prefix=$INSTALL_PATH --enable-optimizations --with-openssl=/root/anaconda3	
