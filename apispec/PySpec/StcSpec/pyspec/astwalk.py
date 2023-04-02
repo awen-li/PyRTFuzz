@@ -49,7 +49,9 @@ class AstWalk(NodeVisitor):
                 continue
             fp.append (arg.arg)
 
-        PosArgs = Args.posonlyargs
+        PosArgs = []
+        if hasattr(Args, "posonlyargs"):
+            PosArgs = Args.posonlyargs
         pa = [arg.arg for arg in PosArgs]
             
         KwArgs  = Args.kwonlyargs

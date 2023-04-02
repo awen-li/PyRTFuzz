@@ -4,6 +4,9 @@ import ast
 from ast import *
 from .propgraph import *
 from .debug import *
+from platform import python_version
+
+py_version = python_version()[0:3]
 
 def EXPR2TYPE (Expr):
     Expr, TypeList = Expr.split('%%')
@@ -140,10 +143,20 @@ class AstOp (NodeTransformer):
         return call
 
     def op_new_arguments (self, args):
-        argmt= arguments(posonlyargs=[],
-                         args=[arg(arg=x) for x in args],
-                         kwonlyargs=[], kw_defaults=[], defaults=[])
+        if py_version == "3.7":
+            argmt= arguments(args=[arg(arg=x) for x in args],
+                            vararg=None,
+                            kwonlyargs=[], kw_defaults=[], 
+                            kwarg=None,
+                            defaults=[])
+        elif py_version in ["3.8", "3.9"]:
+            argmt= arguments(posonlyargs=[],
+                            args=[arg(arg=x) for x in args],
+                            kwonlyargs=[], kw_defaults=[], defaults=[])
+        else:
+            raise Exception("Unsupported python version -> " + py_version)
         return argmt
+
         
     def op_new_functiondef (self, fname, args):
         funcdef = FunctionDef(name=fname,
