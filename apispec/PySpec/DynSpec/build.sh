@@ -5,7 +5,6 @@ echo ""
 echo ""
 echo "@@@@@@@@@@@@@@@ build Python:spectrace @@@@@@@@@@@@@@@"
 pip install .
-cd -
 
 PyVersion=`python -c 'import platform; major, minor, patch = platform.python_version_tuple(); print(str(major)+"."+str(minor))'`
 
@@ -17,7 +16,13 @@ if [ -n "$Anaconda" ]; then
     	cp $PYTRACE_PATH/spectrace.py $PYTHON_PATH
     	echo "Have installed pygen to anaconda...."
 
-        UT=$PYTRACE_PATH/unittest
+        # clone customized unittest
+        if [ ! -d "unittest-PRT" ]; then
+            git clone https://github.com/Daybreak2019/unittest-PRT.git
+        fi
+        UT=$PYTRACE_PATH/unittest-PRT/unittest_python$PyVersion
+        echo "### Currrent customized unittest is: $UT"
+
         if [ -d "$PYTHON_PATH/unittest" ]; then
             mv $PYTHON_PATH/unittest $PYTHON_PATH/unittest_back
         elif [ -L "$PYTHON_PATH/unittest" ]; then
