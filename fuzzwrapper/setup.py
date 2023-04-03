@@ -10,5 +10,6 @@ setup(
     author_email="li.wen@wsu.edu",
     description="fuzz wrapping",
     url="https://github.com/Daybreak2019/CpyFuzz",
-    packages=['fuzzwrap']
+    packages=['fuzzwrap'],
+    install_requires=['psutil']
 )

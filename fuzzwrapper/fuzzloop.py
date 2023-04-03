@@ -27,7 +27,7 @@ def _Log ():
         pass
 
 def Clear ():
-    KeyList = ['slow-unit-', 'crash-', 'Python', 'seeds', 'fuzzlog', 'apispec', 'clear', 'buildCPython', 'autorun']
+    KeyList = ['slow-unit-', 'crash-', 'Python', 'seeds', 'fuzzlog', 'apispec', 'clear', 'buildCPython', 'autorun', 'setPyEnv']
     def IsInKeyList (name):
         NameLen = len (name)
         for key in KeyList:

@@ -26,7 +26,6 @@ def _InstrumentAll (ProbAll=True):
         import html.entities
         import html.parser
         import ctypes
-        import ctypes.wintypes
         import ctypes.util
         import ctypes.macholib.framework
         import ctypes.macholib.dyld
@@ -274,9 +273,7 @@ def _InstrumentAll (ProbAll=True):
         import urllib.robotparser
         import urllib.parse
         import urllib.response
-
         import asyncio
-        import asyncio.staggered
         import asyncio.unix_events
         import asyncio.tasks
         import asyncio.coroutines
@@ -289,11 +286,9 @@ def _InstrumentAll (ProbAll=True):
         import asyncio.transports
         import asyncio.runners
         import asyncio.base_events
-        import asyncio.trsock
         import asyncio.streams
         import asyncio.futures
         import asyncio.queues
-        import asyncio.exceptions
         import asyncio.protocols
         import asyncio.sslproto
         import asyncio.selector_events
