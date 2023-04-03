@@ -7,6 +7,9 @@ import psutil
 import subprocess
 from threading import Timer
 from fuzzwrap import *
+from platform import python_version
+
+py_version = python_version()
 
 SubProc = None
 RunResult = 'False'
@@ -122,11 +125,12 @@ def GetTests (Path):
             AllTests.append (PyFile)
     return AllTests
 
-InitFlag = '../experiments/seeds/initial_done'
+SeedDir = os.path.abspath (f'../experiments/seeds_python{py_version}')
+InitFlag = SeedDir + '/initial_done'
 if not os.path.exists (InitFlag):
     SrvPort = random.randint(10000, 65531)
     SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False)
-    GetInitialSeeds ('../experiments/seeds')
+    GetInitialSeeds (SeedDir)
     Done ()
 
 if len (sys.argv) == 1:
@@ -134,8 +138,10 @@ if len (sys.argv) == 1:
         os.mkdir (RunDir)
     os.chdir (RunDir)
 
-    absPath  = os.path.abspath ('../../experiments/seeds')
-    AllTests = GetTests (absPath)
+    AllTests = GetTests (SeedDir)
+    if len (AllTests) == 0:
+        print ("### Get no APPs from %s" %SeedDir)
+        exit (0)
     TotalNum = 0
     SuccessNum = 0
     for PyFile in AllTests:

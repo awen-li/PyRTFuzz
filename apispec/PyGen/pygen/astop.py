@@ -95,10 +95,10 @@ class AstOp (NodeTransformer):
     def op_new_constant (self, val):
         if py_version == "3.9":
             return Constant(value=val)
-        elif py_version == "3.8":
+        elif py_version in ["3.8","3.7"]:
             return Constant(value=val, kind=None)
         else:
-            return Constant(value=val)
+            raise Exception("Unsupported python version -> " + py_version)
 
     def op_new_load  (self, name):
         return Name(id=name, ctx=Load())
@@ -150,10 +150,10 @@ class AstOp (NodeTransformer):
     def op_new_arg (self, x):
         if py_version == "3.9":
             return arg(arg=x)
-        elif py_version == "3.8":
+        elif py_version in ["3.8", "3.7"]:
             return arg(arg=x, annotation=None)
         else:
-            return arg(arg=x)
+            raise Exception("Unsupported python version -> " + py_version)
 
     def op_new_arguments (self, args):
         if py_version == "3.7":

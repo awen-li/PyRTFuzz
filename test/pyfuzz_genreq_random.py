@@ -3,6 +3,9 @@ import os
 import sys
 import random
 from fuzzwrap import *
+from platform import python_version
+
+py_version = python_version()
 
 SrvPort = random.randint(10000, 65531) 
 
@@ -12,7 +15,7 @@ else:
     SendEndReq ()
     sys.exit (0)
   
-Ret = GetRandomSeed ('../experiments/seeds')
+Ret = GetRandomSeed (f'../experiments/seeds_python{py_version}')
 if os.path.exists (Ret):
 	print ("GetRandomSeed success with Action: random -> " + Ret)
 else:

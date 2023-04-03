@@ -3,6 +3,9 @@ import os
 import sys
 import random
 from fuzzwrap import *
+from platform import python_version
+
+py_version = python_version()
 
 SrvPort = random.randint(10000, 65531) 
 
@@ -12,11 +15,12 @@ else:
     SendEndReq ()
     sys.exit (0)
 
-InitFlag = '../experiments/seeds/initial_done'
+SeedDir = f'../experiments/seeds_python{py_version}'
+InitFlag = SeedDir + '/initial_done'
 if os.path.exists (InitFlag):
-    os.system ("rm -rf ../experiments/seeds/*")
+    os.system (f"rm -rf {SeedDir}/*")
 
-Ret = GetInitialSeeds ('../experiments/seeds')
+Ret = GetInitialSeeds (SeedDir)
 if Ret == 'done':
     if not os.path.exists (InitFlag):
         print ("### Warning: Initialization Flag Missing!")
