@@ -5,6 +5,9 @@ import time
 from multiprocessing import Process
 import atheris
 from pygen import *
+from platform import python_version
+
+py_version = python_version()[0:3]
 
 #######################################################################
 #
@@ -64,7 +67,6 @@ def _InstrumentAll (ProbAll=True):
         import wsgiref.simple_server
         import wsgiref.headers
         import wsgiref.util
-        import zoneinfo
         import http
         import http.client
         import http.server
@@ -272,26 +274,7 @@ def _InstrumentAll (ProbAll=True):
         import urllib.robotparser
         import urllib.parse
         import urllib.response
-        import turtledemo
-        import turtledemo.penrose
-        import turtledemo.yinyang
-        import turtledemo.forest
-        import turtledemo.paint
-        import turtledemo.nim
-        import turtledemo.round_dance
-        import turtledemo.peace
-        import turtledemo.tree
-        import turtledemo.two_canvases
-        import turtledemo.planet_and_moon
-        import turtledemo.chaos
-        import turtledemo.clock
-        import turtledemo.sorting_animate
-        import turtledemo.bytedesign
-        import turtledemo.fractalcurves
-        import turtledemo.lindenmayer
-        import turtledemo.rosette
-        import turtledemo.minimal_hanoi
-        import turtledemo.colormixer
+
         import asyncio
         import asyncio.staggered
         import asyncio.unix_events
@@ -311,30 +294,11 @@ def _InstrumentAll (ProbAll=True):
         import asyncio.futures
         import asyncio.queues
         import asyncio.exceptions
-        import asyncio.threads
         import asyncio.protocols
         import asyncio.sslproto
         import asyncio.selector_events
         import asyncio.format_helpers
         import asyncio.base_futures
-        import tkinter
-        import tkinter.commondialog
-        import tkinter.colorchooser
-        import tkinter.dialog
-        import tkinter.messagebox
-        import tkinter.constants
-        import tkinter.tix
-        import tkinter.scrolledtext
-        import tkinter.simpledialog
-        import tkinter.ttk
-        import tkinter.dnd
-        import tkinter.font
-        import tkinter.filedialog
-        import curses
-        import curses.ascii
-        import curses.textpad
-        import curses.panel
-        import curses.has_key
         import operator
         import cgitb
         import cgi
@@ -402,7 +366,6 @@ def _InstrumentAll (ProbAll=True):
         import stat
         import pyclbr
         import keyword
-        import graphlib
         import modulefinder
         import pty
         import symtable
@@ -456,7 +419,6 @@ def _InstrumentAll (ProbAll=True):
         import csv
         import sched
         import genericpath
-        import turtle
         import hmac
         import zipapp
         import code
@@ -482,6 +444,48 @@ def _InstrumentAll (ProbAll=True):
         import struct
         import token
         import ftplib
+        if py_version == "3.9":
+            import zoneinfo
+            import tkinter
+            import tkinter.commondialog
+            import tkinter.colorchooser
+            import tkinter.dialog
+            import tkinter.messagebox
+            import tkinter.constants
+            import tkinter.tix
+            import tkinter.scrolledtext
+            import tkinter.simpledialog
+            import tkinter.ttk
+            import tkinter.dnd
+            import tkinter.font
+            import tkinter.filedialog
+            import turtledemo
+            import turtledemo.penrose
+            import turtledemo.yinyang
+            import turtledemo.forest
+            import turtledemo.paint
+            import turtledemo.nim
+            import turtledemo.round_dance
+            import turtledemo.peace
+            import turtledemo.tree
+            import turtledemo.two_canvases
+            import turtledemo.planet_and_moon
+            import turtledemo.chaos
+            import turtledemo.clock
+            import turtledemo.sorting_animate
+            import turtledemo.bytedesign
+            import turtledemo.fractalcurves
+            import turtledemo.lindenmayer
+            import turtledemo.rosette
+            import turtledemo.minimal_hanoi
+            import turtledemo.colormixer
+            import asyncio.threads
+            import curses
+            import curses.ascii
+            import curses.textpad
+            import curses.panel
+            import curses.has_key
+            import graphlib
 
 
 
