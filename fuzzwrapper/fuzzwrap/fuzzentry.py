@@ -42,11 +42,10 @@ def FuzzEntry (CpuId):
 
         SeedPath = _GetSeedDir ()
         if SeedPath == None:
-            Exception("Please specify the seed directory with /-pycript/ parameter")
+            raise Exception("Please specify the seed directory with /-pycript/ parameter")
 
-        if os.path.isdir (SeedPath):
-            GetInitialSeeds (SeedPath)
-            Calibrate (SeedPath)
+        GetInitialSeeds (SeedPath)
+        Calibrate (SeedPath)
     except Exception as e:
         print (e)
         sys.exit (0)
