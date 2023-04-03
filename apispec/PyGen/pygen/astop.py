@@ -93,7 +93,12 @@ class AstOp (NodeTransformer):
         return operator(node)
 
     def op_new_constant (self, val):
-        return Constant(value=val)
+        if py_version == "3.9":
+            return Constant(value=val)
+        elif py_version == "3.8":
+            return Constant(value=val, kind=None)
+        else:
+            return Constant(value=val)
 
     def op_new_load  (self, name):
         return Name(id=name, ctx=Load())
@@ -141,17 +146,32 @@ class AstOp (NodeTransformer):
                          args=[self.op_new_value (arg) for arg in args],
                          keywords=[])
         return call
+    
+    def op_new_arg (self, x):
+        if py_version == "3.9":
+            return arg(arg=x)
+        elif py_version == "3.8":
+            return arg(arg=x, annotation=None)
+        else:
+            return arg(arg=x)
 
     def op_new_arguments (self, args):
         if py_version == "3.7":
-            argmt= arguments(args=[arg(arg=x) for x in args],
+            argmt= arguments(args=[self.op_new_arg(x) for x in args],
                             vararg=None,
                             kwonlyargs=[], kw_defaults=[], 
                             kwarg=None,
                             defaults=[])
-        elif py_version in ["3.8", "3.9"]:
+        elif py_version == "3.8":
             argmt= arguments(posonlyargs=[],
-                            args=[arg(arg=x) for x in args],
+                            args=[self.op_new_arg(x) for x in args],
+                            vararg=None,
+                            kwonlyargs=[], kw_defaults=[], 
+                            kwarg=None,
+                            defaults=[])
+        elif py_version == "3.9":
+            argmt= arguments(posonlyargs=[],
+                            args=[self.op_new_arg(x) for x in args],
                             kwonlyargs=[], kw_defaults=[], defaults=[])
         else:
             raise Exception("Unsupported python version -> " + py_version)
