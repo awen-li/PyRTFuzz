@@ -62,4 +62,7 @@ def Collect (SeedDir='seeds'):
 
 
 if __name__ == '__main__':
-    Collect ()
+    if len(sys.argv) > 1:
+        Collect (sys.argv[1])
+    else:
+        Collect ()

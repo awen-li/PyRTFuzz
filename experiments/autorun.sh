@@ -40,7 +40,13 @@ if [ "$ACTION" == "run" ]; then
 
 elif [ "$ACTION" == "collect" ]; then
 
-    python -m pycollect
+    PY=$2
+    if [ ! -n "$PY" ]; then
+        PY=python3.9
+    fi
+    setPyEnv $PY
+
+    python -m pycollect seeds_$PY
 
 else
     echo "Not support the command [run / collect]"

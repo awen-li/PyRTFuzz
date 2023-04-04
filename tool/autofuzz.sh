@@ -70,7 +70,7 @@ function Collect ()
 
 		echo
 		echo "### Collecting experiment results from $FuzzName..."
-		docker exec -it -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh collect
+		docker exec -it -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh collect $PyVersion
 
 		Res=`docker exec -ti -w /root/CpyFuzz/experiments $FuzzName ls FuzzResult`
 		IsExist=`echo $Res | grep "cannot access"`
