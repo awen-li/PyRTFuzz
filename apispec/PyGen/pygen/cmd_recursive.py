@@ -21,7 +21,9 @@ class PyRecursive(PyAppBase):
         self.FNFunc.body = node.body
         self.FNFunc.body.append (RcCall)
 
-        node.body = self.op_try_wrapper ([RcCall], ['RecursionError']) 
+        ImportSys = self.op_new_import (['sys'])
+        ExitCall = self.op_new_expr (self.op_new_call ("sys", "exit", []))
+        node.body = self.op_try_wrapper ([RcCall], ['RecursionError'], [ImportSys, ExitCall]) 
         return node
     
     

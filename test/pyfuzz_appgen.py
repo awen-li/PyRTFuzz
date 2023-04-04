@@ -1,3 +1,4 @@
+import os
 from pygen import *
 
 Spec = '../experiments/apispec.xml'
@@ -18,3 +19,4 @@ for AppCmd in CG.AppCmdList:
     print ("### Generate APP with CMD:%-16s for %s" %(AppCmd.Name, APIexpr))
     SL = GenSL (BaseCmd, AppCmd)
     CG.Core.Run (SL, OutPut='sl2python.py')
+    os.system ('python -m runone sl2python.py')

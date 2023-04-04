@@ -91,6 +91,9 @@ class AstOp (NodeTransformer):
         method = 'op_' + node.__class__.__name__.lower()
         operator = getattr(self, method, self.generic_visit)        
         return operator(node)
+    
+    def op_new_import (self, NameList):
+        return Import(names=[alias(name=N) for N in NameList])
 
     def op_new_constant (self, val):
         if py_version == "3.9":
