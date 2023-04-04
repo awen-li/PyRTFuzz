@@ -7,13 +7,14 @@ Action=$1
 Image=""
 PyVersion=python3.9
 ALL_VERSIONS=("python3.9" "python3.8" "python3.7")
+GitPush="yes"
 
 function Help ()
 {
 	echo
 	echo "#########################################################################"
 	echo "### autofuzz.sh run [docker-image] [python-version] [start-cpu] [cpu-num]"
-	echo "### autofuzz.sh collect"
+	echo "### autofuzz.sh collect [GitPush:yes (default) / no]"
 	echo "### autofuzz.sh del"
 	echo "#########################################################################"
 	echo
@@ -53,7 +54,10 @@ function DelFuzzer ()
 
 function Collect ()
 {
-	git clone git@github.com:yhryyq/FuzzResult.git
+	if [ "$GitPush" == "yes" ]; then
+		git clone git@github.com:yhryyq/FuzzResult.git
+	fi
+
 	ID=$MinCpu
 	while [ $ID -lt $MaxCpu ]
 	do
@@ -84,12 +88,14 @@ function Collect ()
 		let ID++
 	done
 
-	cd FuzzResult
-	git add .
-	git commit -m "server-192 $(date +%Y-%m-%d" "%H:%M:%S)"
-	git push
-	cd ..
-	rm -rf FuzzResult
+	if [ "$GitPush" == "yes" ]; then
+		cd FuzzResult
+		git add .
+		git commit -m "server-192 $(date +%Y-%m-%d" "%H:%M:%S)"
+		git push
+		cd ..
+		rm -rf FuzzResult
+	fi
 }
 
 if [ "$Action" == "help" ]; then
@@ -124,6 +130,11 @@ elif [ "$Action" == "run" ]; then
 	RunFuzzer
 
 elif [ "$Action" == "collect" ]; then
+
+	GitPush=$2
+	if [ ! -n "$GitPush" ]; then
+		GitPush="yes"
+	fi
 	
 	for Ver in ${ALL_VERSIONS[@]}
 	do
