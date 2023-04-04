@@ -6,7 +6,7 @@ MaxCpu=9
 Action=$1
 Image=""
 PyVersion=python3.9
-ALL_VERSIONS=("python3.9", "python3.8", "python3.7")
+ALL_VERSIONS=("python3.9" "python3.8" "python3.7")
 
 function Help ()
 {
