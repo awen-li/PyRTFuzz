@@ -129,7 +129,7 @@ SeedDir = os.path.abspath (f'../experiments/seeds_python{py_version}')
 InitFlag = SeedDir + '/initial_done'
 if not os.path.exists (InitFlag):
     SrvPort = random.randint(10000, 65531)
-    SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False)
+    SetupPyFuzz('../experiments/apispec.xml', SrvPort, ProbAll=False)
     GetInitialSeeds (SeedDir)
     Done ()
 

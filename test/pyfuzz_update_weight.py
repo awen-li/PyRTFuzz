@@ -6,7 +6,7 @@ from fuzzwrap import *
 
 SrvPort = random.randint(10000, 65531) 
 
-if True == SetupPyFuzz('../apispec/PySpec/apispec.xml', SrvPort, ProbAll=False):
+if True == SetupPyFuzz('../experiments/apispec.xml', SrvPort, ProbAll=False):
     print ("SetupPyFuzz setup success")
 else:
     SendEndReq ()

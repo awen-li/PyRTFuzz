@@ -117,7 +117,12 @@ class AstOp (NodeTransformer):
         return Try(body=stmts, handlers=[], orelse=[], finalbody=[])
     
     def op_new_raise (self, Excp):
-        return Raise(exc=self.op_new_value (Excp))
+        if py_version == "3.9":
+            return Raise(exc=self.op_new_value (Excp))
+        elif py_version in ["3.8","3.7"]:
+            return Raise(exc=self.op_new_value (Excp), cause=None)
+        else:
+            raise Exception("Unsupported python version -> " + py_version)
         
     def op_new_tuple (self, list):
         return Tuple(elts=[self.op_new_value (i) for i in list])

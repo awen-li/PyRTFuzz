@@ -11,6 +11,7 @@ from .cmd_for import *
 from .cmd_while import *
 from .cmd_with import *
 from .cmd_if import *
+from .cmd_call import *
 from .cmd_recursive import *
 from .cmd_exceptnest import *
 from .cmd_print import *
@@ -132,6 +133,7 @@ class Core ():
         self.CmdList['While'] = SLCmd ('PyWhile ()', 'cmd_while', SLCmd.APP)
         self.CmdList['Wtih'] = SLCmd ('PyWith ()', 'cmd_with', SLCmd.APP)
         self.CmdList['If'] = SLCmd ('PyIf ()', 'cmd_if', SLCmd.APP)
+        self.CmdList['Call'] = SLCmd ('PyCall ()', 'cmd_call', SLCmd.APP)
         self.CmdList['Print'] = SLCmd ('PyPrint ()', 'cmd_print', SLCmd.APP)
         self.CmdList['Repr'] = SLCmd ('PyRepr ()', 'cmd_repr', SLCmd.APP)
 
