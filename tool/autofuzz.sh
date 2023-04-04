@@ -103,13 +103,17 @@ elif [ "$Action" == "run" ]; then
 	fi
 
 	PyVersion=$3
-	if [ -n "$PyVersion" ]; then
-		echo "Please specify the python version for fuzzing: [$ALL_VERSIONS]"
+	if [ ! -n "$PyVersion" ]; then
+		echo "Please specify the python version for fuzzing:"
+		for Ver in ${ALL_VERSIONS[@]}
+		do
+			echo "                $Ver"
+		done
 		exit
 	fi
 
 	if [ -n "$4" ]; then
-		MinCpu=$3
+		MinCpu=$4
 	fi
 
 	if [ -n "$5" ]; then
