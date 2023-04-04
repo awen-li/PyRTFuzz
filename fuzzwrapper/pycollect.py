@@ -2,12 +2,6 @@
 import sys
 import os
 from shutil import copyfile
-
-def _GetDir ():
-    if len (sys.argv) == 1:
-        return "."
-    else:
-        return sys.argv[1]
     
 def _GetAppName (file):
     if file[0:6] == 'crash-':
@@ -45,7 +39,7 @@ def MoveTo (file, TargetDir='FuzzResult'):
 
 
 def Collect (SeedDir='seeds'):
-    CurDir = _GetDir ()
+    CurDir = '.'
     FileList = os.listdir (CurDir)
     AppNum = 0
     for file in FileList:
@@ -59,6 +53,10 @@ def Collect (SeedDir='seeds'):
         MoveTo (Test)
         AppNum += 1
     print ("### [Collect] Total %d APP & test get collected...." %AppNum)
+
+    Log = "PRTFuzz_perf.log"
+    if os.path.exists (Log) == True:
+        MoveTo (Log)
 
 
 if __name__ == '__main__':
