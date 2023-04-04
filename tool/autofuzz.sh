@@ -6,13 +6,25 @@ MaxCpu=9
 Action=$1
 Image=""
 PyVersion=python3.9
+ALL_VERSIONS=("python3.9", "python3.8", "python3.7")
+
+function Help ()
+{
+	echo
+	echo "#########################################################################"
+	echo "### autofuzz.sh run [docker-image] [python-version] [start-cpu] [cpu-num]"
+	echo "### autofuzz.sh collect"
+	echo "### autofuzz.sh del"
+	echo "#########################################################################"
+	echo
+}
 
 function RunFuzzer ()
 {
 	ID=$MinCpu
-	while [ $ID -le $MaxCpu ]
+	while [ $ID -lt $MaxCpu ]
 	do
-   		FuzzName="cpyfuzz-inst-$ID"
+   		FuzzName="cpyfuzz-$PyVersion-$ID"
 		echo
 		echo "### Start Fuzzer $FuzzName..."
 		docker run -itd --name "$FuzzName" $Image
@@ -24,9 +36,9 @@ function RunFuzzer ()
 function DelFuzzer ()
 {
 	ID=$MinCpu
-	while [ $ID -le $MaxCpu ]
+	while [ $ID -lt $MaxCpu ]
 	do
-   		FuzzName="cpyfuzz-inst-$ID"
+   		FuzzName="cpyfuzz-$PyVersion-$ID"
 		Dck=`docker ps  | grep $FuzzName`
 		if [ ! -n "$Dck" ]; then
 			let ID++
@@ -43,12 +55,11 @@ function Collect ()
 {
 	git clone git@github.com:yhryyq/FuzzResult.git
 	ID=$MinCpu
-	while [ $ID -le $MaxCpu ]
+	while [ $ID -lt $MaxCpu ]
 	do
-   		FuzzName="cpyfuzz-inst-$ID"
+   		FuzzName="cpyfuzz-$PyVersion-$ID"
 		Dck=`docker ps | grep $FuzzName`
 		if [ ! -n "$Dck" ]; then
-			echo "$FuzzName does not exist!!!"
 			let ID++
 			continue
 		fi
@@ -81,8 +92,9 @@ function Collect ()
 	rm -rf FuzzResult
 }
 
-
-if [ "$Action" == "run" ]; then
+if [ "$Action" == "help" ]; then
+	Help
+elif [ "$Action" == "run" ]; then
 	Image=$2
 	if [ ! -n "$Image" ]; then
 		echo "Please specify the Iage"
@@ -92,7 +104,7 @@ if [ "$Action" == "run" ]; then
 
 	PyVersion=$3
 	if [ -n "$PyVersion" ]; then
-		echo "Please specify the python version for fuzzing"
+		echo "Please specify the python version for fuzzing: [$ALL_VERSIONS]"
 		exit
 	fi
 
@@ -104,15 +116,30 @@ if [ "$Action" == "run" ]; then
 		MaxCpu=`expr $MinCpu + $5`
 	fi
 
-	echo "### Run the fuzzers on CPU [$MinCpu: $MaxCpu]..."
+	echo "### Run the fuzzers on CPU [$MinCpu: `expr $MaxCpu-1`]..."
 	RunFuzzer
 
 elif [ "$Action" == "collect" ]; then
-	Collect
+	
+	for Ver in ${ALL_VERSIONS[@]}
+	do
+		MinCpu=0
+		MaxCpu=`nproc --all`
+		PyVersion=$Ver
+		Collect
+	done
 
 elif [ "$Action" == "del" ]; then
-	DelFuzzer
+
+	for Ver in ${ALL_VERSIONS[@]}
+	do
+		MinCpu=0
+		MaxCpu=`nproc --all`
+		PyVersion=$Ver
+		DelFuzzer
+	done
 
 else
-	echo "### Not support the action input: [run / collect / del]"
+	echo "### Not support the action input: $Action"
+	Help
 fi
