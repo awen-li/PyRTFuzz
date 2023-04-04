@@ -20,6 +20,8 @@
 #include <memory>
 #include <mutex>
 #include <set>
+#include <unistd.h>
+ #include <signal.h>
 
 #if defined(__has_include)
 #if __has_include(<sanitizer / lsan_interface.h>)
@@ -44,6 +46,32 @@ bool RunningUserCallback = false;
 
 // Only one Fuzzer per process.
 static Fuzzer *F;
+
+size_t g_AllCovs = 0;
+void LogPerfInfo(int Sig)
+{
+  (void)Sig;
+  FILE *Pef = fopen ("PRTFuzz_perf.log", "a");
+  if (Pef != NULL) {
+    fprintf (Pef, "%lu,%u\n", time (NULL), g_AllCovs);
+    fclose (Pef);
+  }
+
+  alarm(60);
+  return;
+}
+
+void SetLogPerfAlarm()
+{
+  if (g_AllCovs != 0)
+    return;
+
+  signal(SIGALRM, LogPerfInfo);
+  alarm(30);
+
+  g_AllCovs = 1;
+  return;
+}
 
 // Leak detection is expensive, so we first check if there were more mallocs
 // than frees (using the sanitizer malloc hooks) and only then try to call lsan.
@@ -164,6 +192,8 @@ void Fuzzer::InitFuzzer ()
   AllocateCurrentUnitData();
   CurrentUnitSize = 0;
   memset(BaseSha1, 0, sizeof(BaseSha1));
+
+  SetLogPerfAlarm();
 }
 
 
@@ -945,6 +975,8 @@ int Fuzzer::RunOneScript(const char *Script)
   size_t BeforeCov = TPC.GetTotalPCCoverage ();
   ExecuteCBCore (Script);
   size_t NewCov = TPC.GetTotalPCCoverage ();
+
+  g_AllCovs = NewCov;
 
   int Delta = int (NewCov-BeforeCov);
   printf ("### [Level-1] on script(%s), Cov change: %u, [%u -> %u]\r\n", Script, Delta, BeforeCov, NewCov);
