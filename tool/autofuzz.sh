@@ -39,8 +39,8 @@ function DelFuzzer ()
 	while [ $ID -lt $MaxCpu ]
 	do
    		FuzzName="cpyfuzz-$PyVersion-$ID"
-		Dck=`docker ps  | grep $FuzzName`
-		if [ ! -n "$Dck" ]; then
+		Dck=`docker ps  | grep $FuzzName | awk '{print $10}'`
+		if [ "$Dck" != "$FuzzName" ]; then
 			let ID++
 			continue
 		fi
@@ -58,8 +58,8 @@ function Collect ()
 	while [ $ID -lt $MaxCpu ]
 	do
    		FuzzName="cpyfuzz-$PyVersion-$ID"
-		Dck=`docker ps | grep $FuzzName`
-		if [ ! -n "$Dck" ]; then
+		Dck=`docker ps  | grep $FuzzName | awk '{print $10}'`
+		if [ "$Dck" != "$FuzzName" ]; then
 			let ID++
 			continue
 		fi
