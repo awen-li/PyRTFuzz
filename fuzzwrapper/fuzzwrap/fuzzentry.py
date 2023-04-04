@@ -23,7 +23,7 @@ def _ArgProc ():
     
     # default time budget
     if Index == len (sys.argv):
-       sys.argv.append ("-max_total_time=300")
+       sys.argv.append ("-max_total_time=180")
 
     # default memory budget
     sys.argv.append ("-rss_limit_mb=8192")
