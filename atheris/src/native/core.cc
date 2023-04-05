@@ -342,19 +342,9 @@ void start_fuzzing_core(const std::vector<std::string>& args,
   get_specified_script_global = get_specified_script;
   py_core_fuzzing = true;
 
-  bool registered_alarm = SetupPythonSigaction();
-
   std::vector<char*> arg_array;
   arg_array.reserve(args.size() + 1);
   for (const std::string& arg : args) {
-    // We care about certain arguments. Other arguments are passed through to
-    // libFuzzer.
-    if (arg.substr(0, 9) == "-timeout=") {
-      if (!registered_alarm) {
-        std::cerr << "WARNING: -timeout ignored." << std::endl;
-      }
-      SetTimeout(std::stoi(arg.substr(9, std::string::npos)));
-    }
     if (arg.substr(0, 14) == "-atheris_runs=") {
       // We want to handle 'runs' ourselves so we can exit gracefully rather
       // than letting libFuzzer call _exit().
