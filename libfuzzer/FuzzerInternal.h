@@ -48,6 +48,8 @@ public:
   void ExecuteCBCore(const char *Script);
   void PrintPulseAndReportSlowInput(const char *Script);
   void SetFuzzer (UserCallback CB, InputCorpus *Corpus);
+
+  size_t GetCov ();
   
   size_t secondsSinceProcessStartUp() {
     return duration_cast<seconds>(system_clock::now() - ProcessStartTime)

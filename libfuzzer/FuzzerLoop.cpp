@@ -47,29 +47,39 @@ bool RunningUserCallback = false;
 // Only one Fuzzer per process.
 static Fuzzer *F;
 
-size_t g_AllCovs = 0;
-void LogPerfInfo(int Sig)
+const char* LogFile = "PRTFuzz_perf.log";
+void* LogPerfInfo(void *arg)
 {
-  (void)Sig;
-  FILE *Pef = fopen ("PRTFuzz_perf.log", "a");
+  printf ("entry LogPerfInfo \r\n");
+  FILE *Pef = fopen (LogFile, "a");
   if (Pef != NULL) {
-    fprintf (Pef, "%lu,%u\n", time (NULL), g_AllCovs);
+    fprintf (Pef, "======================\n");
     fclose (Pef);
   }
 
-  alarm(60);
-  return;
+  sleep (30);
+  while (true) {
+    
+    FILE *Pef = fopen (LogFile, "a");
+    if (Pef != NULL) {
+      fprintf (Pef, "%lu,%u\n", time (NULL), F->GetCov());
+      fclose (Pef);
+      printf ("### LogPerfInfo:%u \r\n", F->GetCov());
+    }
+    else{
+      printf ("### Open PRTFuzz_perf.log fail....\r\n");
+    }
+
+    sleep (1800);
+  }
+  return NULL;
 }
 
 void SetLogPerfAlarm()
 {
-  if (g_AllCovs != 0)
-    return;
+  pthread_t tid;
+  pthread_create(&tid, NULL, LogPerfInfo, NULL);
 
-  signal(SIGALRM, LogPerfInfo);
-  alarm(30);
-
-  g_AllCovs = 1;
   return;
 }
 
@@ -976,11 +986,14 @@ int Fuzzer::RunOneScript(const char *Script)
   ExecuteCBCore (Script);
   size_t NewCov = TPC.GetTotalPCCoverage ();
 
-  g_AllCovs = NewCov;
-
   int Delta = int (NewCov-BeforeCov);
   printf ("### [Level-1] on script(%s), Cov change: %u, [%u -> %u]\r\n", Script, Delta, BeforeCov, NewCov);
   return Delta;
+}
+
+size_t Fuzzer::GetCov ()
+{
+  return TPC.GetTotalPCCoverage ();
 }
 
 void Fuzzer::MutatePyAndTest(const char* Script, GetSpecifiedSeed CbSpecified)
