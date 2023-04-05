@@ -21,19 +21,18 @@ function InstallPython ()
 	export LDSHARED=$LD_CLANG
 	export CC="clang" CFLAGS="-fsanitize=fuzzer-no-link" CXX="clang++" CXXFLAGS="-fsanitize=fuzzer-no-link"
 
-	if [ ! -d "$PYTHON_PATH" ]; then
-		cp ../cpython/$PYTHON_PATH.tar.xz ./
-		tar -xvf $PYTHON_PATH.tar.xz
-	else
-		rm -rf $PYTHON_PATH/build
+	cp -f ../cpython/$PYTHON_PATH.tar.xz ./
+	if [ -d "$PYTHON_PATH" ]; then
+		rm -rf $PYTHON_PATH
 	fi
+	tar -xvf $PYTHON_PATH.tar.xz
 
 	cd $PYTHON_PATH && ./configure --prefix=$INSTALL_PATH --enable-optimizations --with-openssl=/root/anaconda3	
 	make clean && make
 	make altinstall
 	cd -
 
-	rm -rf $PYTHON_PATH/build
+	rm -rf $PYTHON_PATH
 }
 
 
