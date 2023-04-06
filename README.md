@@ -18,14 +18,17 @@ CpyFuzz
 
 ```
 
-## Install Cpython-3.9 with instrumentation
+## Install Cpython-3.9/3.8/3.7 with instrumentation
 ```
 cd CpyFuzz/experiments && ./buildCPython.sh 
 ```
 
 ## Collect API specs from cpython runtimes
 ```
-cd CpyFuzz/apispec/PySpec && ./genSpec.sh
+cd CpyFuzz/apispec/PySpec
+setPython.sh python3.9 && ./genSpec.sh   ----> CPY_3.9.15_apispec.xml
+setPython.sh python3.8 && ./genSpec.sh   ----> CPY_3.8.15_apispec.xml
+setPython.sh python3.7 && ./genSpec.sh   ----> CPY_3.7.15_apispec.xml
 ```
 
 ## Run the basic test cases
@@ -36,25 +39,29 @@ cd CpyFuzz/test && ./RunTest.sh
 
 ## Run the fuzzing on cpython&runtimes
 ```
-# run the fuzzing in loop with docker image: daybreak2019/cpyfuzz:v2.0
-cd CpyFuzz/experiments
-python -m fuzzloop -pyscript=seeds &
+PY_VERSIONS=("python3.9" "python3.8" "python3.7")
+for Var in ${PY_VERSIONS[@]}
 
-# collect fuzzing results
-cd CpyFuzz/experiments
-python -m pycollect
+  cd CpyFuzz/experiments
+  
+  # set python verion and fuzzing environment
+  ./setPyEnv.sh $Var
+  
+  # run the fuzzer 
+  python -m fuzzloop -pyscript=seeds_$Var 
+
+  # collect fuzzing results
+  cd CpyFuzz/experiments
+  python -m pycollect seeds_$Var
+  
+done
 ```
 
 ## Automatically running the experiments
 ```
-# create and run 10 fuzzing instances (containers) on CPU[0-9]
-CpyFuzz/tool/autofuzz.sh run daybreak2019/cpyfuzz:v2.0
-
-# collect results
-CpyFuzz/tool/autofuzz.sh collect
-
-# delete all fuzzing instances
-CpyFuzz/tool/autofuzz.sh del
+### autofuzz.sh run [docker-image] [python-version] [start-cpu] [cpu-num]
+### autofuzz.sh collect [GitPush:yes (default) / no]
+### autofuzz.sh del
 ```
 
 
