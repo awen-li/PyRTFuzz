@@ -102,8 +102,18 @@ def RunScript (script, Input=None, Print=False, Silent=False):
         
         if Silent == False:
             print ("### Running %s with inputs: %s" %(script, str(Input)))
+        
+        sys.stdout = open ('/dev/null', 'w')
+        sys.stderr = open ('/dev/null', 'w')
+
         lib.RunFuzzer (Input)
+
+        sys.stdout = sys.__stdout__
+        sys.stderr = sys.__stderr__
     except Exception as e:
+        sys.stdout = sys.__stdout__
+        sys.stderr = sys.__stderr__
+        
         if Print == True:
             traceback.print_exc()
         return e.__class__.__name__
