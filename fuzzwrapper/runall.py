@@ -61,7 +61,7 @@ def RunOne (Id, All, Dir, Test):
     AppName = _GetAppName (Test)
     AppPath = os.path.join (Dir, AppName)
 
-    print ("### [%3d/%3d] Running %s with input: %s" %(Id, All, AppPath, Test))
+    print ("### [%3d/%3d] python -m runone -i %s %s" %(Id, All, Test, AppPath))
     with open (Test, 'rb') as F:
         Inputs = F.read ()
         RunScript (AppPath, Input=Inputs, Silent=True)
