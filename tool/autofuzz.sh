@@ -56,6 +56,10 @@ function Collect ()
 {
 	if [ "$GitPush" == "yes" ]; then
 		git clone git@github.com:yhryyq/FuzzResult.git
+	else
+		if [ ! -d "FuzzResult" ]; then
+			mkdir FuzzResult
+		fi
 	fi
 
 	ID=$MinCpu
