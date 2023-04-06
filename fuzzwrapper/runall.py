@@ -51,7 +51,6 @@ def main():
         parser.error('please specify the dirname!')
     
     AllTests, TestNum = _GetAllTests (opts.dirname)
-    print (AllTests)
     Id = 0
     for Dir, DirTests in AllTests.items():
         for Test in DirTests:
