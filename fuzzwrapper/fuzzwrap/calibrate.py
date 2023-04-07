@@ -25,7 +25,7 @@ class Task(Process):
             pass
     
     def RunSeed (self, Seed):
-        Cmd = "python -m runone -s " + Seed + " 2>/dev/null"
+        Cmd = "python -m runone -s " + Seed
         SubProc = subprocess.Popen(Cmd, shell=True, stdout=subprocess.PIPE, stderr = subprocess.STDOUT)
         try:
             Results,err  = SubProc.communicate(timeout=20)
