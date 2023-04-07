@@ -64,6 +64,7 @@ fi
 
 # 2. update data types through dynamic tracing
 CPYTHON_TESTS=$CPYTHON_PATH/test
+DynTrac=$2
 
 INDEX=1
 CHACHE_FILES="cache.tmp"
@@ -83,6 +84,11 @@ do
     	let INDEX=$INDEX+1
     	continue
     fi
+
+	if [ "$DynTrac" == "nodyn" ]; then
+		let INDEX=$INDEX+1
+    	continue
+	fi
 
     python -m spectrace -s $SpecFile $test &   
     Wait "python -m spectrace"
