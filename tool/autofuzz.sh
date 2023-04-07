@@ -82,7 +82,7 @@ function Collect ()
 			echo "FuzzResult not found in $FuzzName"
 		else
 			LocalDir="$HOSTNAME-FuzzResult-$FuzzName"
-			if [ ! -d "$LocalDir" ]; then
+			if [ ! -d "FuzzResult/$LocalDir" ]; then
 				mkdir FuzzResult/$LocalDir
 			fi
 			docker cp $FuzzName:/root/CpyFuzz/experiments/FuzzResult/ FuzzResult/$LocalDir
