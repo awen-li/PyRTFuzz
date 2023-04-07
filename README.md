@@ -26,9 +26,9 @@ cd CpyFuzz/experiments && ./buildCPython.sh
 ## Collect API specs from cpython runtimes
 ```
 cd CpyFuzz/apispec/PySpec
-setPython.sh python3.9 && ./genSpec.sh   ----> CPY_3.9.15_apispec.xml
-setPython.sh python3.8 && ./genSpec.sh   ----> CPY_3.8.15_apispec.xml
-setPython.sh python3.7 && ./genSpec.sh   ----> CPY_3.7.15_apispec.xml
+./genSpec.sh python3.9  ----> CPY_3.9.15_apispec.xml
+./genSpec.sh python3.8  ----> CPY_3.8.15_apispec.xml
+./genSpec.sh python3.7  ----> CPY_3.7.15_apispec.xml
 ```
 
 ## Run the basic test cases
