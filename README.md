@@ -57,7 +57,7 @@ for Var in ${PY_VERSIONS[@]}
 done
 ```
 
-## Automatically running the experiments
+## Automatically running the experiments with containers
 ```
 autofuzz.sh run [docker-image] [python3.9/python3.8/python3.7] [start-cpu] [cpu-num]
 autofuzz.sh collect [GitPush:yes (default) / no]
