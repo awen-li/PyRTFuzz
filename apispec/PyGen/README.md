@@ -14,18 +14,13 @@ python -m appgen -g -a sqlite3.dbapi2.DateFromTicks apispec.xml
 # SL script
 p = PO (sqlite3.dbapi2.DateFromTicks)
 p = For (p)
-p = For (p)
-p = For (p)
+p = Repr (p)
 p = While (p)
 p = While (p)
-p = For (p)
+p = Wtih (p)
+p = Repr (p)
 p = While (p)
-p = For (p)
-p = While (p)
-p = While (p)
-p = While (p)
-p = For (p)
-p = While (p)
+p = Call (p)
 ```
 
 ```
@@ -41,31 +36,25 @@ def demoFunc(arg):
     try:
         ticks = PyDecode(API_TYPE_LIST, arg)
         ret = sqlite3.dbapi2.DateFromTicks(ticks)
-    except (AttributeError, OSError, TypeError, ValueError):
+    except (AssertionError, AttributeError, LookupError, OSError, TypeError, ValueError) as e:
         pass
 
 def RunFuzzer(x):
-    W_i6 = 0
-    while (W_i6 in range(0, 6)):
-        for F_W1 in range(0, 1):
-            W_c5 = 0
-            while (W_c5 in range(0, 5)):
-                W_K4 = 0
-                while (W_K4 in range(0, 4)):
-                    W_C6 = 0
-                    while (W_C6 in range(0, 6)):
-                        for F_V3 in range(0, 3):
-                            W_d2 = 0
-                            while (W_d2 in range(0, 2)):
-                                for F_D3 in range(0, 3):
-                                    W_F3 = 0
-                                    while (W_F3 in range(0, 3)):
-                                        W_V4 = 0
-                                        while (W_V4 in range(0, 4)):
-                                            for F_X6 in range(0, 6):
-                                                for F_W1 in range(0, 1):
-                                                    for F_o2 in range(0, 2):
-                                                        demoFunc(x)
+    PyCall_1680969543_NYWjR(x)
+
+def PyCall_1680969543_NYWjR(x):
+    W_j2 = 0
+    while (W_j2 in range(0, 2)):
+        W_j2 += 1
+        with open('/dev/null', 'r'):
+            W_T3 = 0
+            while (W_T3 in range(0, 3)):
+                W_T3 += 1
+                W_g1 = 0
+                while (W_g1 in range(0, 1)):
+                    W_g1 += 1
+                    for F_v3 in range(0, 3):
+                        demoFunc(x)
 ```
 
 
