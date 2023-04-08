@@ -28,9 +28,9 @@ def RunFuzzer (x):
 
         InitAst  = ast.parse (f'{Var} = 0').body[0]
         WhileAst = ast.parse (f'while {Var} in range (0, {Range}):\
-        pass').body[0]
+        {Var} += 1').body[0]
 
-        WhileAst.body = node.body
+        WhileAst.body += node.body
         node.body = [InitAst, WhileAst]
         return node
         

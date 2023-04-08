@@ -64,9 +64,10 @@ def RunOne (Id, All, Dir, Test):
     print ("### [%3d/%3d] python -m runone -i %s %s" %(Id, All, Test, AppPath))
     with open (Test, 'rb') as F:
         Inputs = F.read ()
-        RunScript (AppPath, Input=Inputs, Silent=True)
+        Res = RunScript (AppPath, Input=Inputs, Silent=True)
+        print (Res)
 
-def RunTest (Id, All, Dir, Test, TimeOut=180):
+def RunTest (Id, All, Dir, Test, TimeOut=20):
     Rp = Process(target=RunOne, args=(Id, All, Dir, Test,))
     Rp.start()
     Rp.join (TimeOut)

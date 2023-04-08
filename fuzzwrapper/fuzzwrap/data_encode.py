@@ -196,15 +196,34 @@ _SPLITFLAG='%&$%'
 
 def _Str2Value (Type, Value):
     try:
-        if Type in ['list', 'dict', 'tuple', 'set']:
-            return eval (Value)
+        # we can not guarantee 100% syntax correct, just simple checking
+        if Type == 'list':
+            if Value[0] == '[' and Value[-1] == ']':
+                return list (Value)
+            else:
+                return [Value]
+        elif Type == 'dict':
+            if Value[0] == '{' and Value[-1] == '}':
+                return dict (Value)
+            else:
+                return {Value}
+        elif Type == 'tuple':
+            if Value[0] == '(' and Value[-1] == ')':
+                return tuple (Value)
+            else:
+                return (Value)
+        elif Type == 'set':
+            if Value[0] == '{' and Value[-1] == '}':
+                return set (Value)
+            else:
+                return {Value}
         elif Type in ['str', 'int', 'float', 'bool']:
             Type = eval (Type)
             return Type (Value)
         elif Type == 'NoneType':
             return None
         elif Type == 'type':
-            return eval (Value)
+            return type (Value)
         elif Type == 'bytes':
             return bytes (Value, encoding='utf8')
         elif Type == 'memoryview':
@@ -264,10 +283,11 @@ def PyDecode (TypeList, ByteStream):
         Values = ByteStream[4:].split (_SPLITFLAG)
         ValueNum = len (Values)
 
+        #print ("ValueNum = " + str(ValueNum))
         ValuseList = []
         Index  = 0
         for ty in TypeList:
-            #print ("type = %s, value = %s " %(TypeList[TypeIndex], val))
+            #print ("[%d]type = %s, ValueNum = %s " %(Index, ty, Values[Index]))
             if Index < ValueNum:
                 Value = _Str2Value (ty, Values[Index])
             else:

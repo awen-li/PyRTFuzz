@@ -97,6 +97,9 @@ def RunScript (script, Input=None, Print=False, Silent=False):
 
     md  = baseName.split('.')[0]
     lib = importlib.import_module(md)
+
+    stdout_bk = sys.stdout
+    stderr_bk = sys.stderr
     
     Ret = 'True'
     try:
@@ -111,12 +114,12 @@ def RunScript (script, Input=None, Print=False, Silent=False):
 
         lib.RunFuzzer (Input)
 
-        sys.stdout = sys.__stdout__
-        sys.stderr = sys.__stderr__
+        sys.stdout = stdout_bk
+        sys.stderr = stderr_bk
 
     except Exception as e:
-        sys.stdout = sys.__stdout__
-        sys.stderr = sys.__stderr__
+        sys.stdout = stdout_bk
+        sys.stderr = stderr_bk
         
         if Print == True:
             traceback.print_exc()
