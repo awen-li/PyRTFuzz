@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-OsExcepts = ["ValueError", "TypeError", "AttributeError", "OSError"]
+OsExcepts = ["ValueError", "TypeError", "AttributeError", "OSError", 'LookupError', 'AssertionError']
 
 def RunCmd (Cmd):
     SubProc = subprocess.Popen(Cmd, shell=True, stdout=subprocess.PIPE, stderr = subprocess.STDOUT)

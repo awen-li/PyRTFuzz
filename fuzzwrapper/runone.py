@@ -23,7 +23,7 @@ def main():
     if opts.input != None:
         Inputs = opts.input
         if os.path.isfile(opts.input):
-            with open (opts.input, 'r') as F:
+            with open (opts.input, 'rb') as F:
                 Inputs = F.read ()
         Ret = RunScript (opts.filename, Input=Inputs, Print=Silent)
     else:

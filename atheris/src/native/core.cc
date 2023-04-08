@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 #include <atomic>
 #include <cerrno>
@@ -170,6 +171,10 @@ bool OnFirstTestOneInput() {
   return true;
 }
 
+static int fd_stdout_backup = dup(1);
+static int fd_stderr_backup = dup(2);
+static int null_fd = open ("/dev/null", O_RDWR);
+
 NO_SANITIZE
 int TestOneInput(const uint8_t* data, size_t size) {
   static bool dummy = OnFirstTestOneInput();
@@ -185,8 +190,14 @@ int TestOneInput(const uint8_t* data, size_t size) {
   }
 
   try {
+    dup2 (null_fd, 1), dup2 (null_fd, 2);
+
     test_one_input_global(py::bytes(reinterpret_cast<const char*>(data), size));
+
+    dup2 (fd_stdout_backup, 1), dup2 (fd_stderr_backup, 2);
   } catch (py::error_already_set& ex) {
+    dup2 (fd_stdout_backup, 1), dup2 (fd_stderr_backup, 2);
+
     std::string exception_type = GetExceptionType(ex);
     if (exception_type == "KeyboardInterrupt" ||
         exception_type == "exceptions.KeyboardInterrupt") {

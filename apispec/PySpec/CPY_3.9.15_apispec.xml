@@ -33,7 +33,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -89,6 +91,7 @@
       <errors>
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -116,7 +119,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -134,9 +139,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>FileNotFoundError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -160,7 +167,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -288,8 +297,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -308,7 +319,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -874,10 +887,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
@@ -1226,12 +1241,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>Fault</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -1305,7 +1322,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -1678,6 +1697,7 @@
       </class>
       <class name="EmailMessage" init="obj = email.message.EmailMessage()%%['NoneType']" base="email.message.MIMEPart"/>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>LookupError</exception>
         <exception>OSError</exception>
@@ -1821,6 +1841,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>LookupError</exception>
         <exception>OSError</exception>
@@ -1893,7 +1914,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -1986,7 +2009,9 @@
       </class>
       <class name="BytesFeedParser" init="obj = email.feedparser.BytesFeedParser()%%['NoneType']" base="email.feedparser.FeedParser"/>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -2020,7 +2045,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2074,7 +2101,9 @@
       </class>
       <class name="BytesHeaderParser" init="obj = email.parser.BytesHeaderParser()%%[]" base="email.parser.BytesParser"/>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2122,7 +2151,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
@@ -2253,8 +2284,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
@@ -2328,7 +2361,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2616,7 +2651,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2660,6 +2697,7 @@
         <exception>AttributeError</exception>
         <exception>HeaderParseError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
@@ -2699,7 +2737,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2861,7 +2901,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2881,7 +2923,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2902,7 +2946,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2922,7 +2968,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2942,7 +2990,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2962,7 +3012,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -2982,7 +3034,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -3002,7 +3056,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -3022,7 +3078,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -3042,7 +3100,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -3379,6 +3439,7 @@
       <errors>
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -3462,7 +3523,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -3545,6 +3608,7 @@
       <errors>
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -3624,8 +3688,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -3829,9 +3895,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ConnectionError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -4023,10 +4091,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>TypeError</exception>
@@ -4777,9 +4847,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -4972,7 +5044,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5041,7 +5115,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5107,7 +5183,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5173,7 +5251,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5216,7 +5296,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5283,7 +5365,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5349,7 +5433,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5372,7 +5458,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5438,7 +5526,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5504,7 +5594,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5570,7 +5662,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5636,7 +5730,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5689,7 +5785,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
@@ -5758,7 +5856,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5824,7 +5924,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5890,7 +5992,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5913,7 +6017,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -5936,7 +6042,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6002,7 +6110,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6025,7 +6135,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6048,7 +6160,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6174,7 +6288,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6240,7 +6356,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6366,8 +6484,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6433,7 +6553,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6456,7 +6578,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6501,7 +6625,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6627,7 +6753,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
@@ -6674,7 +6802,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6740,7 +6870,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6806,7 +6938,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6872,7 +7006,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6938,7 +7074,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -6961,7 +7099,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7027,7 +7167,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7093,7 +7235,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7116,7 +7260,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7182,7 +7328,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7205,7 +7353,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7228,7 +7378,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7294,7 +7446,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7360,7 +7514,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
@@ -7447,7 +7603,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7470,7 +7628,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7516,7 +7676,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7582,7 +7744,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7625,7 +7789,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7648,7 +7814,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7813,8 +7981,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
@@ -7858,7 +8028,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7924,7 +8096,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -7990,7 +8164,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8056,7 +8232,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8122,7 +8300,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8188,7 +8368,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8254,7 +8436,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8320,7 +8504,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8386,7 +8572,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8491,7 +8679,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8557,7 +8747,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8623,7 +8815,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8666,7 +8860,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8732,7 +8928,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8755,7 +8953,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8778,7 +8978,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8844,7 +9046,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8867,7 +9071,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8933,7 +9139,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8956,7 +9164,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -8979,7 +9189,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9045,7 +9257,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9111,7 +9325,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9154,7 +9370,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9280,7 +9498,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
@@ -9347,7 +9567,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9392,7 +9614,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9458,7 +9682,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9524,7 +9750,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9590,7 +9818,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9656,7 +9886,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9722,7 +9954,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9788,7 +10022,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9811,7 +10047,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9877,7 +10115,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -9953,7 +10193,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10019,7 +10261,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10085,7 +10329,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10108,7 +10354,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10174,7 +10422,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10217,7 +10467,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10283,7 +10535,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10349,7 +10603,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10372,7 +10628,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10438,7 +10696,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10504,7 +10764,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10570,7 +10832,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10636,7 +10900,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10679,7 +10945,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10745,7 +11013,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10768,7 +11038,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10791,7 +11063,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10857,7 +11131,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10880,7 +11156,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -10946,7 +11224,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11012,7 +11292,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11078,7 +11360,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11144,7 +11428,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11231,7 +11517,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11317,7 +11605,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11384,7 +11674,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11450,7 +11742,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11473,7 +11767,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11539,7 +11835,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11605,7 +11903,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11691,7 +11991,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11757,7 +12059,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11823,7 +12127,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11889,7 +12195,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -11955,7 +12263,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -12220,8 +12530,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>SAXNotRecognizedException</exception>
         <exception>SAXNotSupportedException</exception>
@@ -12427,7 +12739,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -12947,8 +13261,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>SAXNotRecognizedException</exception>
@@ -13167,7 +13483,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -13195,9 +13513,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -14043,9 +14363,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -14483,7 +14805,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -14504,7 +14828,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -14547,7 +14873,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -14796,6 +15124,7 @@
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -14986,8 +15315,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -15377,9 +15708,11 @@
         <kwodefa>[None, None]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NameError</exception>
         <exception>OSError</exception>
         <exception>SyntaxError</exception>
@@ -15412,7 +15745,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -15543,8 +15878,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
@@ -15601,10 +15938,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -15678,7 +16017,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -15728,7 +16069,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -15798,9 +16141,11 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnknownFileError</exception>
@@ -15839,8 +16184,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -15922,8 +16269,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnknownFileError</exception>
@@ -16036,9 +16385,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsInternalError</exception>
         <exception>DistutilsTemplateError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16068,7 +16419,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16096,9 +16449,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16198,7 +16553,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
@@ -16341,8 +16698,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsGetoptError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -16383,9 +16742,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16503,8 +16864,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16584,8 +16947,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16734,11 +17099,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsByteCompileError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -16769,7 +17136,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -16919,8 +17288,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -16959,12 +17330,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>CCompilerError</exception>
         <exception>DistutilsArgError</exception>
         <exception>DistutilsError</exception>
         <exception>DistutilsSetupError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>SystemExit</exception>
@@ -17020,7 +17393,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -17524,12 +17899,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsArgError</exception>
         <exception>DistutilsClassError</exception>
         <exception>DistutilsModuleError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
@@ -17588,9 +17965,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
         <exception>DistutilsInternalError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -17950,11 +18329,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>CompileError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>LinkError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -17996,11 +18377,13 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsExecError</exception>
         <exception>DistutilsFileError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18042,9 +18425,11 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsSetupError</exception>
         <exception>Exception</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18095,7 +18480,9 @@
       </class>
       <class name="build_scripts_2to3" init="obj = distutils.command.build_scripts.build_scripts_2to3()%%[]" base="distutils.command.build_scripts.build_scripts"/>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
@@ -18148,8 +18535,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18174,6 +18563,7 @@
         <exception>DistutilsError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>HTTPError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18243,8 +18633,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsSetupError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18274,7 +18666,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18347,10 +18741,12 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18410,7 +18806,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18480,9 +18878,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsTemplateError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18542,7 +18942,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18592,8 +18994,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18693,10 +19097,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>CompileError</exception>
         <exception>DistutilsExecError</exception>
         <exception>LinkError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18748,6 +19154,7 @@
       <errors>
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18787,9 +19194,11 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18829,7 +19238,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18879,10 +19290,12 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>DistutilsOptionError</exception>
         <exception>DistutilsPlatformError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -18942,7 +19355,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -19022,7 +19437,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -19122,6 +19539,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>CCompilerError</exception>
         <exception>CompileError</exception>
@@ -19129,6 +19547,7 @@
         <exception>DistutilsPlatformError</exception>
         <exception>DistutilsSetupError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
@@ -19215,6 +19634,7 @@
         <exception>AttributeError</exception>
         <exception>DistutilsFileError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -19522,9 +19942,11 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>FileNotFoundError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -19692,9 +20114,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>NameError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -19727,8 +20151,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -19788,8 +20214,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -19850,10 +20278,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -19873,8 +20303,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BrokenPipeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -20873,12 +21305,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ContentTooShortError</exception>
         <exception>HTTPError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>URLError</exception>
@@ -21024,7 +21458,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -21397,9 +21833,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeError</exception>
@@ -21496,7 +21934,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -21616,7 +22056,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -21644,7 +22086,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -21742,7 +22186,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -21780,7 +22226,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -21918,7 +22366,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -21948,7 +22398,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -21966,7 +22418,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22004,7 +22458,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22022,7 +22478,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22074,7 +22532,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22162,7 +22622,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22260,7 +22722,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>Terminator</exception>
         <exception>TypeError</exception>
@@ -22453,7 +22917,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22483,7 +22949,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22513,7 +22981,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22551,7 +23021,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22579,7 +23051,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22651,7 +23125,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>Terminator</exception>
         <exception>TypeError</exception>
@@ -22702,7 +23178,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22722,7 +23200,9 @@
         <kwodefa>[None]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -22914,6 +23394,7 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>BlockingIOError</exception>
@@ -22923,6 +23404,7 @@
         <exception>InterruptedError</exception>
         <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
@@ -23126,10 +23608,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
@@ -23224,7 +23708,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -23362,7 +23848,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
@@ -23435,12 +23923,14 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>ConnectionAbortedError</exception>
         <exception>ConnectionResetError</exception>
         <exception>Exception</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
@@ -24196,10 +24686,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
@@ -24465,9 +24957,11 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>SystemExit</exception>
@@ -24487,7 +24981,9 @@
         <kwodefa>[None]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -24820,6 +25316,7 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>ConnectionError</exception>
@@ -24827,6 +25324,7 @@
         <exception>FileNotFoundError</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
@@ -24913,7 +25411,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25120,8 +25620,10 @@
         <kwodefa>[None, '_DEFAULT_LIMIT']</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ConnectionResetError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
@@ -25236,8 +25738,10 @@
         <kwodefa>[None]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -25333,7 +25837,9 @@
       <class name="PriorityQueue" init="obj = asyncio.queues.PriorityQueue()%%['NoneType']" base="asyncio.queues.Queue"/>
       <class name="LifoQueue" init="obj = asyncio.queues.LifoQueue()%%['NoneType']" base="asyncio.queues.Queue"/>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25369,7 +25875,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25527,7 +26035,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -25558,10 +26068,12 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>SystemExit</exception>
@@ -25654,6 +26166,7 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>BlockingIOError</exception>
@@ -25662,6 +26175,7 @@
         <exception>InterruptedError</exception>
         <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>SystemExit</exception>
@@ -25681,7 +26195,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25699,7 +26215,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25731,7 +26249,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25750,8 +26270,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25771,7 +26293,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -25860,7 +26384,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -28249,7 +28775,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TclError</exception>
         <exception>TypeError</exception>
@@ -28280,7 +28808,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -28412,7 +28942,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -29414,7 +29946,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -29548,7 +30082,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -29648,8 +30184,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -29824,8 +30362,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -30025,7 +30565,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -30075,7 +30617,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -30095,7 +30639,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -30641,8 +31187,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -30752,7 +31300,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -30977,8 +31527,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -31026,9 +31578,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>SyntaxError</exception>
         <exception>TypeError</exception>
@@ -31051,7 +31605,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -31169,7 +31725,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -31356,8 +31914,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -31864,6 +32424,7 @@
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
@@ -31998,8 +32559,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndentationError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -32073,8 +32636,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -32165,7 +32730,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -32448,8 +33015,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -32498,7 +33067,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -32526,7 +33097,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -32666,8 +33239,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BrokenPipeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
@@ -32810,8 +33385,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
@@ -33235,7 +33812,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -33463,8 +34042,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -33545,7 +34126,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>MemoryError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -33871,8 +34454,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -34444,8 +35029,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -34650,9 +35237,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -34732,7 +35321,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -34843,7 +35434,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -35241,11 +35834,13 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>FileNotFoundError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>PermissionError</exception>
@@ -35391,9 +35986,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>FileNotFoundError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotADirectoryError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
@@ -35751,8 +36348,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -36010,7 +36609,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -36271,9 +36872,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>FileNotFoundError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RecursionError</exception>
         <exception>TypeError</exception>
@@ -36769,9 +37372,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IMAP4.error</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -37026,8 +37631,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -37098,8 +37705,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -37685,12 +38294,14 @@
       <class name="ExternalClashError" init="obj = mailbox.ExternalClashError()%%[]" base="Error"/>
       <class name="FormatError" init="obj = mailbox.FormatError()%%[]" base="Error"/>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>FileExistsError</exception>
         <exception>FileNotFoundError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
@@ -37734,8 +38345,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -37912,8 +38525,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -38346,10 +38961,12 @@
       </class>
       <class name="timezone" init="obj = datetime.timezone()%%[]" base="datetime.tzinfo"/>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
@@ -38451,7 +39068,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -38499,7 +39118,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -38569,7 +39190,9 @@
         <kwodefa>[None]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -38657,7 +39280,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -38707,8 +39332,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -38946,7 +39573,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -39135,11 +39764,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BytesWarning</exception>
         <exception>DeprecationWarning</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -39252,7 +39883,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -39294,10 +39927,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -39484,10 +40119,12 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -39736,11 +40373,13 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>FileExistsError</exception>
         <exception>FileNotFoundError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotADirectoryError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
@@ -39793,7 +40432,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -40119,6 +40760,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>Exception</exception>
@@ -40126,6 +40768,7 @@
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>LZMAError</exception>
+        <exception>LookupError</exception>
         <exception>NameError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -40346,7 +40989,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -40477,7 +41122,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>SyntaxError</exception>
         <exception>TypeError</exception>
@@ -40668,10 +41315,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BytesWarning</exception>
         <exception>DeprecationWarning</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -40751,7 +41400,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -40879,8 +41530,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -41079,6 +41732,7 @@
       <errors>
         <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>NameError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
@@ -41150,7 +41804,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -41204,9 +41860,11 @@
       <class name="PollSelector" init="obj = selectors.PollSelector()%%[]" base="selectors._PollLikeSelector"/>
       <class name="EpollSelector" init="obj = selectors.EpollSelector()%%[]" base="selectors._PollLikeSelector"/>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>InterruptedError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
@@ -41390,11 +42048,13 @@
         <kwodefa>[None]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
         <exception>FileExistsError</exception>
         <exception>FileNotFoundError</exception>
         <exception>IsADirectoryError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>PermissionError</exception>
         <exception>TypeError</exception>
@@ -41494,9 +42154,11 @@
       <class name="PriorityQueue" init="obj = queue.PriorityQueue()%%['NoneType']" base="queue.Queue"/>
       <class name="LifoQueue" init="obj = queue.LifoQueue()%%['NoneType']" base="queue.Queue"/>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Empty</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -41527,9 +42189,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -41904,8 +42568,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -42264,10 +42930,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
@@ -42421,8 +43089,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -42474,8 +43144,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>ModuleNotFoundError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
@@ -42511,7 +43183,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -42615,10 +43289,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>SyntaxError</exception>
@@ -42968,7 +43644,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -43242,8 +43920,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -43474,9 +44154,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>PermissionError</exception>
@@ -43561,9 +44243,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BrokenPipeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -43665,9 +44349,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>NameError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
@@ -43711,10 +44397,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -44085,10 +44773,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -44232,8 +44922,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BlockingIOError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -44386,9 +45078,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
@@ -44420,7 +45114,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -44486,8 +45182,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -44647,8 +45345,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -44838,9 +45538,11 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ChildProcessError</exception>
         <exception>Exception</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -45161,7 +45863,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -45306,7 +46010,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
@@ -45707,6 +46413,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>LookupError</exception>
@@ -45740,9 +46447,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -45863,8 +46572,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -45934,7 +46645,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -46270,8 +46983,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -46363,10 +47078,12 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -46499,8 +47216,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopIteration</exception>
@@ -46672,8 +47391,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>TypeError</exception>
@@ -46714,8 +47435,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -46937,9 +47660,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -47177,10 +47902,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BlockingIOError</exception>
         <exception>ImportError</exception>
         <exception>InterruptedError</exception>
+        <exception>LookupError</exception>
         <exception>NameError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -47567,9 +48294,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>CertificateError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>PermissionError</exception>
@@ -47670,8 +48399,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -47722,10 +48453,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
@@ -47828,7 +48561,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -48043,8 +48778,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -48316,9 +49053,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>TypeError</exception>
@@ -48599,9 +49338,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -48640,9 +49381,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>FileExistsError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -48842,6 +49585,7 @@
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>TypeError</exception>
@@ -48899,8 +49643,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -49012,8 +49758,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>BaseException</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>RuntimeError</exception>
         <exception>StopAsyncIteration</exception>
@@ -49084,7 +49832,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -49112,7 +49862,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -49180,7 +49932,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>NameError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -49301,8 +50055,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -49420,7 +50176,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>NotImplementedError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -49562,10 +50320,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>IndentationError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>SyntaxError</exception>
@@ -49670,9 +50430,11 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Error</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>NameError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
@@ -49746,7 +50508,9 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -49865,7 +50629,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -50785,9 +51551,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TK.TclError</exception>
         <exception>TypeError</exception>
@@ -50870,8 +51638,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -50910,7 +51680,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>SystemExit</exception>
         <exception>TypeError</exception>
@@ -51004,10 +51776,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>SyntaxError</exception>
@@ -51102,7 +51876,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -51174,7 +51950,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -51346,10 +52124,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -51374,9 +52154,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -51466,8 +52248,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>LZMAError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -51534,8 +52318,10 @@
         <kwodefa>['FMT_XML', False, True]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>IndexError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>OverflowError</exception>
         <exception>TypeError</exception>
@@ -51752,8 +52538,10 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -51842,8 +52630,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -52049,10 +52839,12 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -52121,7 +52913,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -52319,8 +53113,10 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeEncodeError</exception>
@@ -52927,12 +53723,14 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
         <exception>KeyError</exception>
         <exception>KeyboardInterrupt</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>SyntaxError</exception>
         <exception>TypeError</exception>
@@ -52981,7 +53779,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>SyntaxError</exception>
         <exception>TypeError</exception>
@@ -53093,6 +53893,7 @@
         </api>
       </class>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>Exception</exception>
@@ -53100,6 +53901,7 @@
         <exception>ImportError</exception>
         <exception>IndexError</exception>
         <exception>KeyError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>UnicodeDecodeError</exception>
@@ -53249,9 +54051,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Error</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>NameError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
@@ -53415,7 +54219,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>StopIteration</exception>
         <exception>TypeError</exception>
@@ -53652,6 +54458,7 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>Exception</exception>
         <exception>ImportError</exception>
@@ -53716,7 +54523,9 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
@@ -54093,9 +54902,11 @@
         <kwodefa>[]</kwodefa>
       </api>
       <errors>
+        <exception>AssertionError</exception>
         <exception>AttributeError</exception>
         <exception>EOFError</exception>
         <exception>ImportError</exception>
+        <exception>LookupError</exception>
         <exception>OSError</exception>
         <exception>TypeError</exception>
         <exception>ValueError</exception>
