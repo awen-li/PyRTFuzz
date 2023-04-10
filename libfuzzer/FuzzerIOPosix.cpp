@@ -52,6 +52,21 @@ std::string Basename(const std::string &Path) {
   return Path.substr(Pos + 1);
 }
 
+void ListFilesInDir(const std::string &Dir, Vector<std::string> *V) {
+  DIR *D = opendir(Dir.c_str());
+  if (!D) {
+    Printf("%s: %s; exiting\n", strerror(errno), Dir.c_str());
+    exit(1);
+  }
+  while (auto E = readdir(D)) {
+    std::string Path = DirPlusFile(Dir, E->d_name);
+    if (E->d_type == DT_REG || E->d_type == DT_LNK ||
+        (E->d_type == DT_UNKNOWN && IsFile(Path)))
+      V->push_back(Path);
+  }
+  closedir(D);
+}
+
 void ListFilesInDirRecursive(const std::string &Dir, long *Epoch,
                              Vector<std::string> *V, bool TopDir) {
   auto E = GetEpoch(Dir);

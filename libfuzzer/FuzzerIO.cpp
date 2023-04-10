@@ -117,6 +117,18 @@ void GetSizedFilesFromDir(const std::string &Dir, Vector<SizedFile> *V, std::str
   }
 }
 
+void GetAbmlSeedsFromDir(const std::string &Dir, Vector<SizedFile> *V) {
+  Vector<std::string> Files;
+  ListFilesInDir(Dir, &Files);
+  for (auto &File : Files) {
+    if (File.find("crash-") == std::string::npos &&
+        File.find("slow-unit-") == std::string::npos)
+        continue;
+
+    V->push_back({File, FileSize(File)});
+  }
+}
+
 std::string DirPlusFile(const std::string &DirPath,
                         const std::string &FileName) {
   return DirPath + GetSeparator() + FileName;

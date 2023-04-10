@@ -608,6 +608,31 @@ static Vector<SizedFile> ReadCorpora(const Vector<std::string> &CorpusDirs,
   return SizedFiles;
 }
 
+static std::string GetAppName (std::string Seed)
+{
+  // crash-3#turtledemo#round_dance#stop.py-da39a3ee5e6b4b0d3255bfef95601890afd80709
+  size_t SPos = Seed.find_first_of('#');
+  if (SPos == std::string::npos)
+    return "";
+
+  size_t EPos = Seed.find_last_of('-');
+  if (EPos == std::string::npos)
+    return "";
+
+  std::string AppName = "1" + Seed.substr (SPos, EPos-SPos);
+
+  return AppName;
+}
+
+static void GetAbmSeeds(Vector<std::string> *AbmlSeeds) {
+  Vector<SizedFile> SizedFiles;
+  GetAbmlSeedsFromDir(".", &SizedFiles);
+  for (auto &SFile : SizedFiles) {
+    std::string AppName = GetAppName (SFile.File);
+    AbmlSeeds->push_back (AppName);
+  }
+}
+
 int FuzzerDriverOrigin(int *argc, char ***argv, UserCallback Callback) {
   using namespace fuzzer;
   assert(argc && argv && "Argument pointers cannot be nullptr");
@@ -918,9 +943,26 @@ int FuzzerDriver(int *argc, char ***argv, UserCallback Callback) {
   }
 }
 
+
 void DisorderCorpus (Vector<SizedFile>& VecCorpus)
 {
-  size_t IterNum = VecCorpus.size();
+  Vector<std::string> AbmlSeeds;
+  GetAbmSeeds (&AbmlSeeds);
+
+  Vector<SizedFile> NoneTouchSeeds;
+  Vector<SizedFile> TouchVSeeds;
+  for (auto &Vc : VecCorpus) {
+    std::string FName = std::string(basename (Vc.File.c_str()));
+    auto Item = std::find(AbmlSeeds.begin(), AbmlSeeds.end(), FName);
+    if (Item != AbmlSeeds.end()) {
+      TouchVSeeds.push_back (Vc);
+    }
+    else{
+      NoneTouchSeeds.push_back (Vc);
+    }
+  }
+  
+  size_t IterNum = NoneTouchSeeds.size();
   if (IterNum == 0)
     return;
   
@@ -930,11 +972,17 @@ void DisorderCorpus (Vector<SizedFile>& VecCorpus)
     int Pos2 = std::rand() % IterNum;
 
     if (Pos1 != Pos2) {
-      SizedFile Tmp    = VecCorpus [Pos1];
-      VecCorpus [Pos1] = VecCorpus [Pos2];
-      VecCorpus [Pos2] = Tmp;
+      SizedFile Tmp    = NoneTouchSeeds [Pos1];
+      NoneTouchSeeds [Pos1] = NoneTouchSeeds [Pos2];
+      NoneTouchSeeds [Pos2] = Tmp;
     }
   }
+
+  VecCorpus.clear();
+  VecCorpus.insert(VecCorpus.end(), NoneTouchSeeds.begin(), NoneTouchSeeds.end());
+  VecCorpus.insert(VecCorpus.end(), TouchVSeeds.begin(), TouchVSeeds.end());
+
+  return;
 }
 
 int FuzzerDriverPyCore(int *argc, char ***argv, 
