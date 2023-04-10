@@ -129,8 +129,8 @@ class Core ():
         self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo', SLCmd.BASE)
         self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE, OORequired=True)
         
-        self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP)
-        self.CmdList['While'] = SLCmd ('PyWhile ()', 'cmd_while', SLCmd.APP)
+        self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP, Mod=2)
+        self.CmdList['While'] = SLCmd ('PyWhile ()', 'cmd_while', SLCmd.APP, Mod=2)
         self.CmdList['Wtih'] = SLCmd ('PyWith ()', 'cmd_with', SLCmd.APP)
         self.CmdList['If'] = SLCmd ('PyIf ()', 'cmd_if', SLCmd.APP)
         self.CmdList['Call'] = SLCmd ('PyCall ()', 'cmd_call', SLCmd.APP)
