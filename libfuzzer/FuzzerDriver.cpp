@@ -631,6 +631,19 @@ static void GetAbmSeeds(Vector<std::string> *AbmlSeeds) {
     std::string AppName = GetAppName (SFile.File);
     AbmlSeeds->push_back (AppName);
   }
+
+  FILE *F = fopen ("History.hty", "r");
+  if (F != NULL) {
+    while (!feof(F)) {
+      char Buf[256] = {0};
+      fgets(Buf, sizeof (Buf), F);
+      if (strstr(Buf, ".py") == NULL)
+        continue;
+      printf ("Read from His: %s\r\n", Buf);
+      AbmlSeeds->push_back (std::string(Buf));
+    }
+    fclose (F);
+  }
 }
 
 int FuzzerDriverOrigin(int *argc, char ***argv, UserCallback Callback) {

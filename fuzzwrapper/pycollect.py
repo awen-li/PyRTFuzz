@@ -28,7 +28,7 @@ def _App2HisRec (AppName):
 def _SaveHisSeeds (File=HisSeedLog):
     with open (File, "w") as F:
         for Name in HisSeed:
-            F.write(Name + '\n')
+            F.write(Name)
     
 def _GetAppName (file):
     if file[0:6] == 'crash-':
