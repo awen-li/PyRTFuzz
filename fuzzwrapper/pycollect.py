@@ -81,6 +81,9 @@ def Collect (SeedDir='seeds'):
 
         _App2HisRec (AppName)
 
+        if os.path.exists (SeedDir) == False:
+            continue
+        
         AppDir = _GetAppDir (CurDir, SeedDir, AppName)
         if AppDir == None:
             continue 
