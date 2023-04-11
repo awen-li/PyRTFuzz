@@ -11,6 +11,7 @@ def _LoadHisSeeds (File=HisSeedLog):
         with open (File, "r") as F:
             AllNames = F.readlines ()
             for Name in AllNames:
+                Name = Name.replace ('\n', '')
                 if Name in HisSeed:
                     continue
                 HisSeed.append (Name)
@@ -22,13 +23,15 @@ def _App2HisRec (AppName):
     if S == None:
         return
     Hisrec = '1' + AppName[S:]
+    if len (Hisrec) < 8:
+        return
     if not Hisrec in HisSeed:
         HisSeed.append (Hisrec)
 
 def _SaveHisSeeds (File=HisSeedLog):
     with open (File, "w") as F:
         for Name in HisSeed:
-            F.write(Name)
+            F.write(Name+'\n')
     
 def _GetAppName (file):
     if file[0:6] == 'crash-':
@@ -78,7 +81,9 @@ def Collect (SeedDir='seeds'):
 
         _App2HisRec (AppName)
 
-        AppDir = _GetAppDir (CurDir, SeedDir, AppName)    
+        AppDir = _GetAppDir (CurDir, SeedDir, AppName)
+        if AppDir == None:
+            continue 
         App = os.path.join(AppDir, AppName)
         Test = os.path.join(CurDir, file)
         MoveTo (App)
