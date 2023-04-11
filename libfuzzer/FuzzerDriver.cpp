@@ -637,8 +637,12 @@ static void GetAbmSeeds(Vector<std::string> *AbmlSeeds) {
     while (!feof(F)) {
       char Buf[256] = {0};
       fgets(Buf, sizeof (Buf), F);
-      if (strstr(Buf, ".py") == NULL)
+
+      char *EPos = strstr(Buf, ".py");
+      if (EPos == NULL)
         continue;
+      EPos[3] = 0;
+      
       printf ("Read from His: %s\r\n", Buf);
       AbmlSeeds->push_back (std::string(Buf));
     }
