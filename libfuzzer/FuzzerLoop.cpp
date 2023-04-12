@@ -53,7 +53,7 @@ void* LogPerfInfo(void *arg)
   printf ("entry LogPerfInfo \r\n");
   FILE *Pef = fopen (LogFile, "a");
   if (Pef != NULL) {
-    fprintf (Pef, "======================\n");
+    fprintf (Pef, "%-16s %-12s %-12s\n", "Time(s)", "Coverage", "AppNum");
     fclose (Pef);
   }
 
@@ -62,9 +62,8 @@ void* LogPerfInfo(void *arg)
     
     FILE *Pef = fopen (LogFile, "a");
     if (Pef != NULL) {
-      fprintf (Pef, "%lu,%u\n", time (NULL), F->GetCov());
+      fprintf (Pef, "%-16lu %-12u %-12u\n", time (NULL), F->GetCov(), F->AppNum);
       fclose (Pef);
-      printf ("### LogPerfInfo:%u \r\n", F->GetCov());
     }
     else{
       printf ("### Open PRTFuzz_perf.log fail....\r\n");
@@ -202,6 +201,7 @@ void Fuzzer::InitFuzzer ()
   AllocateCurrentUnitData();
   CurrentUnitSize = 0;
   memset(BaseSha1, 0, sizeof(BaseSha1));
+  AppNum = 0;
 
   SetLogPerfAlarm();
 }
@@ -1013,6 +1013,8 @@ void Fuzzer::MutatePyAndTest(const char* Script, GetSpecifiedSeed CbSpecified)
       DeltaCov = RunOneScript (MutatedScript);
       MutateNum++;
       free ((void*)MutatedScript);
+
+      AppNum++;
     }
   }
 
@@ -1030,6 +1032,8 @@ void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles, GetSpecifiedSeed CbSpec
     TPC.SetFocusFunction(FocusFunctionOrAuto);
     TPC.SetPrintNewPCs(Options.PrintNewCovPcs);
     TPC.SetPrintNewFuncs(Options.PrintNewCovFuncs);
+
+    AppNum = CorporaFiles.size();
 
     while (true) { 
       for (auto &Script : CorporaFiles) {

@@ -50,6 +50,7 @@ public:
   void SetFuzzer (UserCallback CB, InputCorpus *Corpus);
 
   size_t GetCov ();
+  size_t AppNum;
   
   size_t secondsSinceProcessStartUp() {
     return duration_cast<seconds>(system_clock::now() - ProcessStartTime)
