@@ -77,10 +77,32 @@ def SysArg (Key):
     return False
 
 def BindCpu ():
+    newArgv = []
+    Cpu = None
     for arg in sys.argv:
         if arg.find ('-cpu=') != -1:
-            return arg[arg.find('=')+1:]
-    return None
+            Cpu = arg[arg.find('=')+1:]
+        else:
+            newArgv.append (arg)
+    
+    if Cpu != None:
+        sys.argv = newArgv
+    return Cpu
+
+def Maskexcp ():
+    newArgv = []
+    Mask = False
+    for arg in sys.argv:
+        if arg.find ('-maskexcp') != -1:
+            Mask = True
+        else:
+            newArgv.append (arg)
+
+    if Mask == True:
+        sys.argv = newArgv
+        os.environ ['BYPASS_EXCEPTION'] = 'True'
+        print ("### set BYPASS_EXCEPTION True!")
+    return
 
 if __name__ == '__main__':
     if SysArg ('clear'):
@@ -88,8 +110,10 @@ if __name__ == '__main__':
         print ("### clear the directory done!")
         exit (0)
     
+    Maskexcp ()
     CpuId = BindCpu ()
     
+    print ("### FuzzLoop: " + str(sys.argv))
     IterNum = 0
     while True:
         Fuzzer = Process(target=FuzzEntry, args=(CpuId,))

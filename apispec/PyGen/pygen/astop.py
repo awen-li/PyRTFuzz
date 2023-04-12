@@ -1,5 +1,5 @@
 
-# _*_ coding:utf-8 _*_
+import os
 import ast
 from ast import *
 from .propgraph import *
@@ -311,6 +311,10 @@ class AstOp (NodeTransformer):
         return node
 
     def op_try_wrapper (self, targetBody, targetExceps, Body=[Pass()]):
+        IsExcepPass = os.getenv ("BYPASS_EXCEPTION")
+        if IsExcepPass != None:
+            targetExceps = ['Exception']
+
         #body=[Try(body=[Pass()], 
         #      handlers=[ExceptHandler(type=Tuple(elts=[Name(id='NameError', ctx=Load()), Name(id='TypeError', ctx=Load())], ctx=Load()), name='error', body=[Pass()])]
         tryStmt = self.op_new_try(targetBody)

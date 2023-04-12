@@ -64,7 +64,7 @@ def RunOne (Id, All, Dir, Test):
     print ("### [%3d/%3d] python -m runone -i %s %s" %(Id, All, Test, AppPath))
     with open (Test, 'rb') as F:
         Inputs = F.read ()
-        Res = RunScript (AppPath, Input=Inputs, Silent=True)
+        Res = RunScript (AppPath, Input=Inputs, Silent=False)
         print (Res)
 
 def RunTest (Id, All, Dir, Test, TimeOut=20):

@@ -8,7 +8,7 @@ from ast import *
 from .astop import *
 from .debug import *
 
-def LoopRange (Prefix='F_', MaxLoop=3):
+def LoopRange (Prefix='F_', MaxLoop=1):
     LoopRange = random.randint (1, MaxLoop)
     LoopVar = random.choice (string.ascii_letters)
     LoopVar = Prefix + LoopVar + str (LoopRange)
