@@ -12,6 +12,8 @@ SEED_ITERATION_BUDGET = 1024
 
 SeedIterNum = SEED_ITERATION_BUDGET
 
+IsExcepPass = os.getenv ("BYPASS_EXCEPTION")
+
 def PyLv2Mutate (Data, MaxSize, Seed):
     global SeedIterNum
     #print ("[%s] PYFUZZ_SCRIPT_API_TYPE = %s, MaxSize = %d" %(os.environ[PYFUZZ_SCRIPT], os.environ[PYFUZZ_SCRIPT_API_TYPE], MaxSize))
@@ -75,7 +77,14 @@ def PyCoreFuzz (script):
 
     # set Lv2Driver
     atheris.SetLv2Driver (FuzzMd.RunFuzzer, pyScriptCorpus)
-    atheris.FuzzLv2()
+    if IsExcepPass != None:
+        print ("#########  IsExcepPass != None")
+        try:
+            atheris.FuzzLv2()
+        except:
+            pass
+    else:
+        atheris.FuzzLv2()
 
     try:
         SeedList = os.listdir(pyScriptCorpus)
