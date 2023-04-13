@@ -10,19 +10,25 @@ from datetime import datetime
 import shutil
 
 LOG_DIR = 'fuzzlog/'
+if not os.path.exists (LOG_DIR):
+    os.mkdir (LOG_DIR, mode=0o777)
+LogFile = LOG_DIR + 'pyfuzz.log'
+if os.path.exists (LogFile):
+    os.remove (LogFile)
 
-def _Log ():
-    if not os.path.exists (LOG_DIR):
-        os.mkdir (LOG_DIR, mode=0o777)
-    LogFile = LOG_DIR + 'pyfuzz.log'
-
+def _Log (Msg=None):
+    
     try:
         with open(LogFile, 'a') as LogF:
-            LastApp = ''
-            with open('CURRENT-level-fuzzing.log', 'r') as LF:
-                LastApp = LF.readline()
             CurTime = str(datetime.now())
-            print (f"[{CurTime}]\t{LastApp}", file=LogF)
+
+            if Msg == None:
+                LastApp = ''
+                with open('CURRENT-level-fuzzing.log', 'r') as LF:
+                    LastApp = LF.readline()
+                print (f"[{CurTime}]\t{LastApp}", file=LogF)
+            else:
+                print (f"[{CurTime}]\t{Msg}", file=LogF)
     except:
         pass
 
@@ -87,6 +93,7 @@ def BindCpu ():
     
     if Cpu != None:
         sys.argv = newArgv
+        _Log (f"### bindding to CPU: {Cpu}")
     return Cpu
 
 def Maskexcp ():
@@ -101,7 +108,7 @@ def Maskexcp ():
     if Mask == True:
         sys.argv = newArgv
         os.environ ['BYPASS_EXCEPTION'] = 'True'
-        print ("### set BYPASS_EXCEPTION True!")
+        _Log ("### set BYPASS_EXCEPTION True!")
     return
 
 def ProbPy ():
@@ -115,6 +122,7 @@ def ProbPy ():
 
     if ProbAll == False:
         sys.argv = newArgv
+        _Log (f"### No instrument for Python code")
     return ProbAll
 
 if __name__ == '__main__':
