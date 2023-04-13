@@ -9,6 +9,8 @@ PyVersion=python3.9
 ALL_VERSIONS=("python3.9" "python3.8" "python3.7")
 GitPush="yes"
 
+SubTask=""
+
 function Help ()
 {
 	echo
@@ -20,7 +22,7 @@ function Help ()
 	echo
 }
 
-function RunFuzzer ()
+function RunFuzzer_BugF ()
 {
 	ID=$MinCpu
 	while [ $ID -lt $MaxCpu ]
@@ -41,12 +43,12 @@ function DelFuzzer ()
 	do
    		FuzzName="cpyfuzz-$PyVersion-$ID"
 		Dck=`docker ps  | grep $FuzzName | awk '{print $10}'`
-		if [ "$Dck" != "$FuzzName" ]; then
+		if [ ! -n "$Dck" ]; then
 			let ID++
 			continue
 		fi
-		docker stop $FuzzName
-		docker rm $FuzzName
+		docker stop $Dck
+		docker rm $Dck
 		let ID++
 	done	
 }
@@ -67,11 +69,12 @@ function Collect ()
 	do
    		FuzzName="cpyfuzz-$PyVersion-$ID"
 		Dck=`docker ps  | grep $FuzzName | awk '{print $10}'`
-		if [ "$Dck" != "$FuzzName" ]; then
+		if [ ! -n "$Dck" ]; then
 			let ID++
 			continue
 		fi
 
+		FuzzName=$Dck
 		echo
 		echo "### Collecting experiment results from $FuzzName..."
 		docker exec -it -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh collect $PyVersion
@@ -130,8 +133,43 @@ elif [ "$Action" == "run" ]; then
 		MaxCpu=`expr $MinCpu + $5`
 	fi
 
+	SubTask=$6
+
 	echo "### Run the fuzzers on CPU [$MinCpu: `expr $MaxCpu-1`]..."
-	RunFuzzer
+	if [ ! -n "$SubTask" ]; then
+		RunFuzzer_BugF
+
+	elif [ "$SubTask" == "covapp" ]; then
+		FuzzName="cpyfuzz-$PyVersion-$MinCpu-covapp"
+		docker run -itd --name "$FuzzName" $Image
+		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion "maskexcp"
+
+	elif [ "$SubTask" == "typed" ]; then
+		# typed
+		FuzzName="cpyfuzz-$PyVersion-$MinCpu-typed"
+		docker run -itd --name "$FuzzName" $Image
+		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion "typed"
+		# untyped
+		FuzzName="cpyfuzz-$PyVersion-$MinCpu-untyped"
+		docker run -itd --name "$FuzzName" $Image
+		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion "untyped"
+
+	elif [ "$SubTask" == "compl" ]; then
+		Compl=$7
+		FuzzName="cpyfuzz-$PyVersion-$MinCpu-$SubTask-$Compl"
+		docker run -itd --name "$FuzzName" $Image
+		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion "compl" $Compl
+
+	elif [ "$SubTask" == "bncmd" ]; then
+		# normal
+		FuzzName="cpyfuzz-$PyVersion-$MinCpu-bncmd-normal"
+		docker run -itd --name "$FuzzName" $Image
+		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion "normcmd"
+		# abnormal
+		FuzzName="cpyfuzz-$PyVersion-$MinCpu-bncmd-abnormal"
+		docker run -itd --name "$FuzzName" $Image
+		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion "abnormcmd"
+	fi
 
 elif [ "$Action" == "collect" ]; then
 

@@ -127,29 +127,36 @@ if __name__ == '__main__':
     CpuId = BindCpu ()
     ProbAll = ProbPy ()
     
-    print ("### FuzzLoop: " + str(sys.argv))
-    IterNum = 0
-    while True:
-        Fuzzer = Process(target=FuzzEntry, args=(CpuId,ProbAll,))
-        Fuzzer.start()
-        print ("\n### [%d]Fuzzer process starts [%d]\n" %(IterNum, Fuzzer.pid))
+    try:
+        print ("### FuzzLoop: " + str(sys.argv))
+        IterNum = 0
+        while True:
+            Fuzzer = Process(target=FuzzEntry, args=(CpuId,ProbAll,))
+            Fuzzer.start()
+            print ("\n### [%d]Fuzzer process starts [%d]\n" %(IterNum, Fuzzer.pid))
 
-        time.sleep(15)
-        CurProc = psutil.Process(Fuzzer.pid)
-        ChildProc = CurProc.children(recursive=True)
+            time.sleep(15)
+            CurProc = psutil.Process(Fuzzer.pid)
+            ChildProc = CurProc.children(recursive=True)
 
-        Fuzzer.join ()
-        print ("\n\n### [%d]Fuzzer process exit [%d]\n" %(IterNum, Fuzzer.pid))
-        IterNum += 1
-        _Log ()
+            Fuzzer.join ()
+            print ("\n\n### [%d]Fuzzer process exit [%d]\n" %(IterNum, Fuzzer.pid))
+            IterNum += 1
+            _Log ()
+            Clear ()
+
+            try:
+                for proc in ChildProc:
+                    if psutil.Process(proc.pid) != None:
+                        os.kill(proc.pid, signal.SIGTERM)
+            except:
+                pass
+            break
+    except Exception as e:
+        print ("### fuzzloop exception: " + str(e))
+    finally:
         Clear ()
-
-        try:
-            for proc in ChildProc:
-                if psutil.Process(proc.pid) != None:
-                    os.kill(proc.pid, signal.SIGTERM)
-        except:
-            pass
+        print ("### fuzzloop exit.....")
 
 
  

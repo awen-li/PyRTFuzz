@@ -34,9 +34,16 @@ if [ "$ACTION" == "run" ]; then
     if [ ! -n "$PY" ]; then
         PY=python3.9
     fi
+
+    SubAct=$4
+
     setPyEnv $PY
 
-    python -m fuzzloop -pyscript=seeds_$PY -cpu=$CPUID
+    if [ -n "$SubAct" ]; then
+        python -m fuzzloop -pyscript=seeds_$PY -cpu=$CPUID -$SubAct
+    else
+        python -m fuzzloop -pyscript=seeds_$PY -cpu=$CPUID
+    fi
 
 elif [ "$ACTION" == "collect" ]; then
 
