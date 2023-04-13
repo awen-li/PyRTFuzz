@@ -29,7 +29,7 @@ def _ArgProc ():
     sys.argv.append ("-rss_limit_mb=8192")
 
 
-def FuzzEntry (CpuId):
+def FuzzEntry (CpuId, ProbAll):
     if CpuId != None:
         CurP = psutil.Process ()
         CurP.cpu_affinity([int(CpuId)])
@@ -38,7 +38,7 @@ def FuzzEntry (CpuId):
 
     SrvPort = random.randint(10000, 65531)
     try:
-        SetupPyFuzz('apispec.xml', SrvPort, ProbAll=True)
+        SetupPyFuzz('apispec.xml', SrvPort, ProbAll=ProbAll)
 
         SeedPath = _GetSeedDir ()
         if SeedPath == None:

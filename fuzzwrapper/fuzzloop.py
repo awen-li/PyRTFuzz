@@ -104,6 +104,19 @@ def Maskexcp ():
         print ("### set BYPASS_EXCEPTION True!")
     return
 
+def ProbPy ():
+    newArgv = []
+    ProbAll = True
+    for arg in sys.argv:
+        if arg.find ('-nopy') != -1:
+            ProbAll = False
+        else:
+            newArgv.append (arg)
+
+    if ProbAll == False:
+        sys.argv = newArgv
+    return ProbAll
+
 if __name__ == '__main__':
     if SysArg ('clear'):
         Clear ()
@@ -112,11 +125,12 @@ if __name__ == '__main__':
     
     Maskexcp ()
     CpuId = BindCpu ()
+    ProbAll = ProbPy ()
     
     print ("### FuzzLoop: " + str(sys.argv))
     IterNum = 0
     while True:
-        Fuzzer = Process(target=FuzzEntry, args=(CpuId,))
+        Fuzzer = Process(target=FuzzEntry, args=(CpuId,ProbAll,))
         Fuzzer.start()
         print ("\n### [%d]Fuzzer process starts [%d]\n" %(IterNum, Fuzzer.pid))
 
