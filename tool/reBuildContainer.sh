@@ -1,6 +1,6 @@
 
-docker stop $(docker ps -a -f "name=cpyfuzz")
-docker rm $(docker ps -a -f "name=cpyfuzz")
+#docker stop $(docker ps -a -f "name=cpyfuzz")
+#docker rm $(docker ps -a -f "name=cpyfuzz")
 
 ########################################################################
 #  45-64: 20 CPUs
