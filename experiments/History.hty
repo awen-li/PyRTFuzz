@@ -33,3 +33,6 @@
 1#dis#dis.py
 1#operator#mul.py
 1#tarfile#stn.py
+1#operator#mod.py
+1#calendar#monthlen.py
+1#pprint#pformat.py

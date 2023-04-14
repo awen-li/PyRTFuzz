@@ -138,13 +138,17 @@ def DTyped ():
             newArgv.append (arg)
 
     if Untyped == True or Typed == True:
-        sys.argv = newArgv
-        os.environ ['PYRTF_UNTYPED'] = 'True'
-        _Log ("### set PYRTF_UNTYPED True!")
-
         # in typed/untyped mode, open maskexcp
         os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
         _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
+
+        sys.argv = newArgv
+    
+    if Untyped == True:
+        os.environ ['PYRTF_UNTYPED'] = 'True'
+        _Log ("### set PYRTF_UNTYPED True!")
+
+        
     return
 
 if __name__ == '__main__':
