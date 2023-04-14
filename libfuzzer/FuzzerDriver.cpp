@@ -975,12 +975,11 @@ void DisorderCorpus (Vector<SizedFile>& VecCorpus)
     if (SPos == std::string::npos)
       continue;
     std::string FName = "1" + AppName.substr (SPos);
-    printf ("### AppName: %s  ----> FName:%s\r\n", AppName.c_str(), FName.c_str());
+    //printf ("### AppName: %s  ----> FName:%s\r\n", AppName.c_str(), FName.c_str());
 
     auto Item = std::find(AbmlSeeds.begin(), AbmlSeeds.end(), FName);
     if (Item != AbmlSeeds.end()) {
       TouchVSeeds.push_back (Vc);
-      
     }
     else{
       NoneTouchSeeds.push_back (Vc);
