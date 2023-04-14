@@ -88,7 +88,7 @@ function Collect ()
 		FuzzName=`GetFuzzerName cpyfuzz-$PyVersion-$ID-`
 		if [ ! -n "$FuzzName" ]; then
 		    FuzzName=`GetFuzzerName cpyfuzz-$PyVersion-$ID`
-			if [ -n "$FuzzName" ]; then
+			if [ ! -n "$FuzzName" ]; then
 				let ID++
 				continue
 			fi	
