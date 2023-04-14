@@ -36,3 +36,5 @@
 1#operator#mod.py
 1#calendar#monthlen.py
 1#pprint#pformat.py
+1#xmlrpc#client#gzip_decode.py
+1#calendar#main.py

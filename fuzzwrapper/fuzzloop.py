@@ -82,6 +82,12 @@ def SysArg (Key):
             return True
     return False
 
+def DisableDisorder ():
+    if SysArg ("disorder=0") == True:
+        return
+    sys.argv.append ("-disorder=0")
+    _Log (f"### DisableDisorder with -disorder=0")
+
 def BindCpu ():
     newArgv = []
     Cpu = None
@@ -109,6 +115,8 @@ def Maskexcp ():
         sys.argv = newArgv
         os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
         _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
+
+        DisableDisorder ()
     return
 
 def ProbPy ():
@@ -143,6 +151,7 @@ def DTyped ():
         _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
 
         sys.argv = newArgv
+        DisableDisorder ()
     
     if Untyped == True:
         os.environ ['PYRTF_UNTYPED'] = 'True'

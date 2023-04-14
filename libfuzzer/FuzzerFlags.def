@@ -170,4 +170,6 @@ FUZZER_FLAG_STRING(collect_data_flow,
                    
 FUZZER_FLAG_STRING(pyscript,
                    "initial python script corpus")
+
+FUZZER_FLAG_INT(disorder, 1, "disorder the level-1 seeds during setup")
                    

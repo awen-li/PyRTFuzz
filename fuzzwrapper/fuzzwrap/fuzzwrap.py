@@ -78,7 +78,7 @@ def PyCoreFuzz (script):
 
     IsExcepPass = os.getenv ("PYRTF_BYPASS_EXCEPTION")
     if IsExcepPass != None:
-        print ("#########  Entry mask-exception fuzzing mode!")
+        print ("###  Entry mask-exception fuzzing mode!")
         try:
             atheris.FuzzLv2()
         except:

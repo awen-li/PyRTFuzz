@@ -969,10 +969,18 @@ void DisorderCorpus (Vector<SizedFile>& VecCorpus)
   Vector<SizedFile> NoneTouchSeeds;
   Vector<SizedFile> TouchVSeeds;
   for (auto &Vc : VecCorpus) {
-    std::string FName = std::string(basename (Vc.File.c_str()));
+    std::string AppName = std::string(basename (Vc.File.c_str()));
+    
+    size_t SPos = AppName.find_first_of('#');
+    if (SPos == std::string::npos)
+      continue;
+    std::string FName = "1" + AppName.substr (SPos);
+    printf ("### AppName: %s  ----> FName:%s\r\n", AppName.c_str(), FName.c_str());
+
     auto Item = std::find(AbmlSeeds.begin(), AbmlSeeds.end(), FName);
     if (Item != AbmlSeeds.end()) {
       TouchVSeeds.push_back (Vc);
+      
     }
     else{
       NoneTouchSeeds.push_back (Vc);
@@ -983,15 +991,17 @@ void DisorderCorpus (Vector<SizedFile>& VecCorpus)
   if (IterNum == 0)
     return;
   
-  std::srand((unsigned)time(NULL));
-  for (size_t iter = 0; iter < IterNum; iter++) {
-    int Pos1 = std::rand() % IterNum;
-    int Pos2 = std::rand() % IterNum;
+  if (Options.DisorderPyScript) {
+    std::srand((unsigned)time(NULL));
+    for (size_t iter = 0; iter < IterNum; iter++) {
+      int Pos1 = std::rand() % IterNum;
+      int Pos2 = std::rand() % IterNum;
 
-    if (Pos1 != Pos2) {
-      SizedFile Tmp    = NoneTouchSeeds [Pos1];
-      NoneTouchSeeds [Pos1] = NoneTouchSeeds [Pos2];
-      NoneTouchSeeds [Pos2] = Tmp;
+      if (Pos1 != Pos2) {
+        SizedFile Tmp    = NoneTouchSeeds [Pos1];
+        NoneTouchSeeds [Pos1] = NoneTouchSeeds [Pos2];
+        NoneTouchSeeds [Pos2] = Tmp;
+      }
     }
   }
 
@@ -1125,6 +1135,8 @@ int FuzzerDriverPyCore(int *argc, char ***argv,
   auto *Corpus = new InputCorpus (Options.OutputCorpus, Entropic);
   auto *F = new Fuzzer(Callback, Corpus, *MD, Options);
   TwoLvFuzzing = true;
+  Options.DisorderPyScript = Flags.disorder;
+  Printf("### INFO: Options.DisorderPyScript: %u\n", Options.DisorderPyScript);
 
   Options.HandleAbrt = Flags.handle_abrt;
   Options.HandleBus = Flags.handle_bus;
