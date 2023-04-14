@@ -3,7 +3,7 @@
 #docker rm $(docker ps -a -f "name=cpyfuzz")
 
 ########################################################################
-#  45-64: 20 CPUs
+#  40-64: 25 CPUs
 ########################################################################
 image=$1
 rq=$2
@@ -28,22 +28,18 @@ fi
 # RQ2
 ###########
 if [ "$rq" == "rq2.1" ] || [ "$rq" == "rq2" ] || [ "$rq" == "all" ]; then
-# 2.1 for Untyped <-> Typed
+# 2.1 Untyped <-> Typed (Dynamic data type extraction)
 ./autofuzz.sh run $image python3.9 47 2 typed
 fi
 
-if [ "$rq" == "rq2.2" ] || [ "$rq" == "rq2" ] || [ "$rq" == "all" ]; then
-# 2.2 for complexity: 1 -> 4 → 16 → 64 → 256 → 1024 → 4096
-./autofuzz.sh run $image python3.9 1 1 compl 1
-./autofuzz.sh run $image python3.9 2 1 compl 4
-./autofuzz.sh run $image python3.9 3 1 compl 16
-./autofuzz.sh run $image python3.9 4 1 compl 64
-./autofuzz.sh run $image python3.9 5 1 compl 256
-./autofuzz.sh run $image python3.9 6 1 compl 1024
-./autofuzz.sh run $image python3.9 7 1 compl 4096
+# 2.2 (Level-2) Fuzzing budget: 1 -> 30 -> 60 -> 90 -> 180 -> 360
+if [ "$rq" == "rq2.3" ] || [ "$rq" == "rq2" ] || [ "$rq" == "all" ]; then
+./autofuzz.sh run $image python3.9 40 6 budget
 fi
 
-# 2.3 built-in CMD: Normal vs. Abnormal
-if [ "$rq" == "rq2.3" ] || [ "$rq" == "rq2" ] || [ "$rq" == "all" ]; then
-./autofuzz.sh run $image python3.9 8 2 bncmd
+
+if [ "$rq" == "rq2.2" ] || [ "$rq" == "rq2" ] || [ "$rq" == "all" ]; then
+# 2.3 (Level-1) for complexity: 1 -> 4 → 16 → 64 → 256 → 1024 → 4096 (Built-in commands)
+./autofuzz.sh run $image python3.9 1 8 compl
 fi
+
