@@ -1033,7 +1033,8 @@ void Fuzzer::LoopPyCore(Vector<SizedFile> &CorporaFiles, GetSpecifiedSeed CbSpec
     TPC.SetPrintNewPCs(Options.PrintNewCovPcs);
     TPC.SetPrintNewFuncs(Options.PrintNewCovFuncs);
 
-    AppNum = CorporaFiles.size();
+    // init as 1
+    AppNum = 1;
 
     while (true) { 
       for (auto &Script : CorporaFiles) {
