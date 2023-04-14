@@ -182,7 +182,7 @@ if __name__ == '__main__':
                         os.kill(proc.pid, signal.SIGTERM)
             except:
                 pass
-            break
+
     except Exception as e:
         print ("### fuzzloop exception: " + str(e))
     finally:
