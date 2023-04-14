@@ -76,7 +76,7 @@ def PyCoreFuzz (script):
     # set Lv2Driver
     atheris.SetLv2Driver (FuzzMd.RunFuzzer, pyScriptCorpus)
 
-    IsExcepPass = os.getenv ("BYPASS_EXCEPTION")
+    IsExcepPass = os.getenv ("PYRTF_BYPASS_EXCEPTION")
     if IsExcepPass != None:
         print ("#########  Entry mask-exception fuzzing mode!")
         try:

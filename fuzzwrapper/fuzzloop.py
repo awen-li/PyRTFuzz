@@ -107,8 +107,8 @@ def Maskexcp ():
 
     if Mask == True:
         sys.argv = newArgv
-        os.environ ['BYPASS_EXCEPTION'] = 'True'
-        _Log ("### set BYPASS_EXCEPTION True!")
+        os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
+        _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
     return
 
 def ProbPy ():
@@ -125,6 +125,28 @@ def ProbPy ():
         _Log (f"### No instrument for Python code")
     return ProbAll
 
+def DTyped ():
+    newArgv = []
+    Untyped = False
+    Typed = False
+    for arg in sys.argv:
+        if arg.find ('-typed') != -1:
+            Typed = True
+        elif arg.find ('-untyped') != -1:
+            Untyped = True
+        else:
+            newArgv.append (arg)
+
+    if Untyped == True or Typed == True:
+        sys.argv = newArgv
+        os.environ ['PYRTF_UNTYPED'] = 'True'
+        _Log ("### set PYRTF_UNTYPED True!")
+
+        # in typed/untyped mode, open maskexcp
+        os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
+        _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
+    return
+
 if __name__ == '__main__':
     if SysArg ('clear'):
         Clear ()
@@ -132,11 +154,12 @@ if __name__ == '__main__':
         exit (0)
     
     Maskexcp ()
+    DTyped ()
     CpuId = BindCpu ()
     ProbAll = ProbPy ()
     
     try:
-        print ("### FuzzLoop: " + str(sys.argv))
+        _Log ("### FuzzLoop: " + str(sys.argv))
         IterNum = 0
         while True:
             Fuzzer = Process(target=FuzzEntry, args=(CpuId,ProbAll,))

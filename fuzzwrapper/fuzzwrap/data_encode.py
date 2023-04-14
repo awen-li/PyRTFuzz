@@ -252,6 +252,10 @@ Level-2 mutator:
 Generate an input for the APP at level-2 fuzzing loop
 """
 def PyEncode (TypeList):
+    IsUnTyped = os.getenv ('PYRTF_UNTYPED')
+    if IsUnTyped != None:
+        return DataProvider ().RandomBytes ()
+
     ValueList = DataProvider ().GetDataList (TypeList)
     ByteStream = _SPLITFLAG + _SPLITFLAG.join ([str(value) for value in ValueList])
     return bytes (ByteStream, encoding='utf8')
@@ -269,6 +273,10 @@ def PyDecode (TypeList, ByteStream):
     #    return tuple (ValueList)
     if isinstance (ByteStream, bytes):
         ByteStream = ByteStream.decode ()
+
+    IsUnTyped = os.getenv ('PYRTF_UNTYPED')
+    if IsUnTyped != None:
+        return ByteStream
     
     if ByteStream[0:4] != _SPLITFLAG:
         return ByteStream

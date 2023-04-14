@@ -78,19 +78,12 @@ function Collect ()
 		echo
 		echo "### Collecting experiment results from $FuzzName..."
 		docker exec -it -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh collect $PyVersion
-
-		Res=`docker exec -ti -w /root/CpyFuzz/experiments $FuzzName ls FuzzResult`
-		IsExist=`echo $Res | grep "cannot access"`
-		if [ -n "$IsExist" ]; then
-			echo "FuzzResult not found in $FuzzName"
-		else
-			LocalDir="$HOSTNAME-FuzzResult-$FuzzName"
-			if [ ! -d "FuzzResult/$LocalDir" ]; then
-				mkdir FuzzResult/$LocalDir
-			fi
-			docker cp $FuzzName:/root/CpyFuzz/experiments/FuzzResult/ FuzzResult/$LocalDir
-			 
+	
+		LocalDir="$HOSTNAME-FuzzResult-$FuzzName"
+		if [ ! -d "FuzzResult/$LocalDir" ]; then
+			mkdir FuzzResult/$LocalDir
 		fi
+		docker cp $FuzzName:/root/CpyFuzz/experiments/FuzzResult/ FuzzResult/$LocalDir
 
 		let ID++
 	done
