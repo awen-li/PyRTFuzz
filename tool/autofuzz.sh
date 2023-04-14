@@ -53,6 +53,24 @@ function DelFuzzer ()
 	done	
 }
 
+function GetFuzzerName ()
+{
+	Fuzzer=$1
+	Containers=`docker ps --format "{{.Names}}"`
+	for Con in $Containers
+	do
+		isFuzzer=`echo $Con | grep $Fuzzer`
+		if [ ! -n "$isFuzzer" ]; then
+		    continue
+		fi
+
+		echo $Con
+		return
+	done
+
+	return
+}
+
 
 function Collect ()
 {
@@ -67,14 +85,15 @@ function Collect ()
 	ID=$MinCpu
 	while [ $ID -lt $MaxCpu ]
 	do
-   		FuzzName="cpyfuzz-$PyVersion-$ID"
-		Dck=`docker ps  | grep $FuzzName | awk '{print $10}'`
-		if [ ! -n "$Dck" ]; then
-			let ID++
-			continue
+		FuzzName=`GetFuzzerName cpyfuzz-$PyVersion-$ID-`
+		if [ ! -n "$FuzzName" ]; then
+		    FuzzName=`GetFuzzerName cpyfuzz-$PyVersion-$ID`
+			if [ -n "$FuzzName" ]; then
+				let ID++
+				continue
+			fi	
 		fi
 
-		FuzzName=$Dck
 		echo
 		echo "### Collecting experiment results from $FuzzName..."
 		docker exec -it -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh collect $PyVersion
