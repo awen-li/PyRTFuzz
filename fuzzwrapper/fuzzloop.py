@@ -14,8 +14,7 @@ if not os.path.exists (LOG_DIR):
     os.mkdir (LOG_DIR, mode=0o777)
 LogFile = LOG_DIR + 'pyfuzz.log'
 
-def _Log (Msg=None):
-    
+def _Log (Msg=None): 
     try:
         with open(LogFile, 'a') as LogF:
             CurTime = str(datetime.now())
@@ -74,128 +73,7 @@ def Clear ():
             except:
                 pass
 
-def SysArg (Key):
-    for arg in sys.argv:
-        if arg.find (Key) != -1:
-            return True
-    return False
 
-def DisableDisorder ():
-    if SysArg ("disorder=0") == True:
-        return
-    sys.argv.append ("-disorder=0")
-    _Log (f"### DisableDisorder with -disorder=0")
-
-def BindCpu ():
-    newArgv = []
-    Cpu = None
-    for arg in sys.argv:
-        if arg.find ('-cpu=') != -1:
-            Cpu = arg[arg.find('=')+1:]
-        else:
-            newArgv.append (arg)
-    
-    if Cpu != None:
-        sys.argv = newArgv
-        _Log (f"### bindding to CPU: {Cpu}")
-    return Cpu
-
-def Maskexcp ():
-    newArgv = []
-    Mask = False
-    for arg in sys.argv:
-        if arg.find ('-maskexcp') != -1:
-            Mask = True
-        else:
-            newArgv.append (arg)
-
-    if Mask == True:
-        sys.argv = newArgv
-        os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
-        _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
-
-        DisableDisorder ()
-    return
-
-def SLComplex ():
-    newArgv = []
-    Complex = None
-    for arg in sys.argv:
-        if arg.find ('-complex') != -1:
-            Complex = arg[arg.find('=')+1:]
-        else:
-            newArgv.append (arg)
-
-    if Complex != None:
-        sys.argv = newArgv
-        os.environ ['PYRTF_COMPLEXITY'] = Complex
-        _Log (f"### set Complex as {Complex}!")
-
-        os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
-        _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
-        
-        DisableDisorder ()
-    return
-
-def ProbPy ():
-    newArgv = []
-    ProbAll = True
-    for arg in sys.argv:
-        if arg.find ('-nopy') != -1:
-            ProbAll = False
-        else:
-            newArgv.append (arg)
-
-    if ProbAll == False:
-        sys.argv = newArgv
-        _Log (f"### No instrument for Python code")
-    return ProbAll
-
-def DTyped ():
-    newArgv = []
-    Untyped = False
-    Typed = False
-    for arg in sys.argv:
-        if arg.find ('-typed') != -1:
-            Typed = True
-        elif arg.find ('-untyped') != -1:
-            Untyped = True
-        else:
-            newArgv.append (arg)
-
-    if Untyped == True or Typed == True:
-        # in typed/untyped mode, open maskexcp
-        os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
-        _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
-
-        sys.argv = newArgv
-        DisableDisorder ()
-    
-    if Untyped == True:
-        os.environ ['PYRTF_UNTYPED'] = 'True'
-        _Log ("### set PYRTF_UNTYPED True!")
-
-    return
-
-def TimeBudget ():
-    Budget = None
-    newArgv = []
-    for arg in sys.argv:
-        if arg.find ("-lv2budget") != -1:
-            Budget = arg[arg.find('=')+1:]
-        else:
-            newArgv.append (arg)
-    
-    # default time budget
-    if Budget == None:
-       sys.argv.append ("-max_total_time=90")
-       _Log ("### set LEVEL-2 budget as 90 (s)")
-    else:
-        sys.argv.append (f"-max_total_time={Budget}")
-        _Log (f"### set LEVEL-2 budget as {Budget} (s)")
-
-        os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
-        _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
 
 if __name__ == '__main__':
     if SysArg ('clear'):
@@ -206,14 +84,8 @@ if __name__ == '__main__':
     if os.path.exists (LogFile):
         os.remove (LogFile)
     
-    Maskexcp ()
-    DTyped ()
-    SLComplex ()
-    TimeBudget ()
+    CpuId,ProbAll = ArgHanlde (_Log)
 
-    CpuId = BindCpu ()
-    ProbAll = ProbPy ()
-    
     try:
         _Log ("### FuzzLoop: " + str(sys.argv))
         IterNum = 0
