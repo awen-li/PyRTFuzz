@@ -16,12 +16,12 @@ fi
 ###########
 if [ "$rq" == "rq1" ] || [ "$rq" == "all" ]; then
 # 1.1 for bug finding: 15 CPUs
-./autofuzz.sh run $image python3.9 60 5
-./autofuzz.sh run $image python3.8 55 5
-./autofuzz.sh run $image python3.7 50 5
+./autofuzz.sh run $image python3.9 59 5
+./autofuzz.sh run $image python3.8 54 5
+./autofuzz.sh run $image python3.7 49 5
 
 # 1.2 for coverage/appnum report 1 CPU
-./autofuzz.sh run $image python3.9 49 1 covapp
+./autofuzz.sh run $image python3.9 48 1 covapp
 fi
 
 ###########
@@ -29,7 +29,7 @@ fi
 ###########
 if [ "$rq" == "rq2.1" ] || [ "$rq" == "rq2" ] || [ "$rq" == "all" ]; then
 # 2.1 Untyped <-> Typed (Dynamic data type extraction)
-./autofuzz.sh run $image python3.9 47 2 typed
+./autofuzz.sh run $image python3.9 46 2 typed
 fi
 
 # 2.2 (Level-2) Fuzzing budget: 1 -> 30 -> 60 -> 90 -> 180 -> 360
