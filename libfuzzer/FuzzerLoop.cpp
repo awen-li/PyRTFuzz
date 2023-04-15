@@ -998,6 +998,7 @@ size_t Fuzzer::GetCov ()
 
 void Fuzzer::MutatePyAndTest(const char* Script, GetSpecifiedSeed CbSpecified)
 {
+  AppNum++;
   int DeltaCov = RunOneScript (Script);
   if (DeltaCov <= 0) {
     return;

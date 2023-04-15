@@ -177,6 +177,26 @@ def DTyped ():
 
     return
 
+def TimeBudget ():
+    Budget = None
+    newArgv = []
+    for arg in sys.argv:
+        if arg.find ("-lv2budget") != -1:
+            Budget = arg[arg.find('=')+1:]
+        else:
+            newArgv.append (arg)
+    
+    # default time budget
+    if Budget == None:
+       sys.argv.append ("-max_total_time=90")
+       _Log ("### set LEVEL-2 budget as 90 (s)")
+    else:
+        sys.argv.append (f"-max_total_time={Budget}")
+        _Log (f"### set LEVEL-2 budget as {Budget} (s)")
+
+        os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
+        _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
+
 if __name__ == '__main__':
     if SysArg ('clear'):
         Clear ()
@@ -189,6 +209,7 @@ if __name__ == '__main__':
     Maskexcp ()
     DTyped ()
     SLComplex ()
+    TimeBudget ()
 
     CpuId = BindCpu ()
     ProbAll = ProbPy ()
@@ -209,6 +230,7 @@ if __name__ == '__main__':
             print ("\n\n### [%d]Fuzzer process exit [%d]\n" %(IterNum, Fuzzer.pid))
             IterNum += 1
             _Log ()
+            _Log ("Fuzzer instance exit with IterNum: " + str(IterNum))
             Clear ()
 
             try:

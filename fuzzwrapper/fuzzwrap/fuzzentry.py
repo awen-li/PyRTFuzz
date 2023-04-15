@@ -13,21 +13,6 @@ def _GetSeedDir ():
         return arg[arg.find('=')+1:]
     return None
 
-def _ArgProc ():
-    Index = 0
-    for arg in sys.argv:
-        if arg.find ("-lv2time=") != -1:
-            sys.argv[Index] = arg.replace ("-lv2time=", "-max_total_time=")
-            break
-        Index += 1
-    
-    # default time budget
-    if Index == len (sys.argv):
-       sys.argv.append ("-max_total_time=90")
-
-    # default memory budget
-    sys.argv.append ("-rss_limit_mb=8192")
-
 
 def FuzzEntry (CpuId, ProbAll):
     if CpuId != None:
@@ -50,7 +35,9 @@ def FuzzEntry (CpuId, ProbAll):
         print (e)
         sys.exit (0)
 
-    _ArgProc ()
+    # default memory budget
+    sys.argv.append ("-rss_limit_mb=8192")
+
     atheris.SetupCore(sys.argv,
                       PyCoreFuzz,
                       GetRandomSeed,
