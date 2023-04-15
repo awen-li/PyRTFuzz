@@ -40,6 +40,6 @@ fi
 
 if [ "$rq" == "rq2.2" ] || [ "$rq" == "rq2" ] || [ "$rq" == "all" ]; then
 # 2.3 (Level-1) for complexity: 1 -> 4 → 16 → 64 → 256 → 1024 → 4096 (Built-in commands)
-./autofuzz.sh run $image python3.9 1 8 compl
+./autofuzz.sh run $image python3.9 1 8 complex
 fi
 

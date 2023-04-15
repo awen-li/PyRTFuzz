@@ -13,8 +13,6 @@ LOG_DIR = 'fuzzlog/'
 if not os.path.exists (LOG_DIR):
     os.mkdir (LOG_DIR, mode=0o777)
 LogFile = LOG_DIR + 'pyfuzz.log'
-if os.path.exists (LogFile):
-    os.remove (LogFile)
 
 def _Log (Msg=None):
     
@@ -119,6 +117,26 @@ def Maskexcp ():
         DisableDisorder ()
     return
 
+def SLComplex ():
+    newArgv = []
+    Complex = None
+    for arg in sys.argv:
+        if arg.find ('-complex') != -1:
+            Complex = arg[arg.find('=')+1:]
+        else:
+            newArgv.append (arg)
+
+    if Complex != None:
+        sys.argv = newArgv
+        os.environ ['PYRTF_COMPLEXITY'] = Complex
+        _Log (f"### set Complex as {Complex}!")
+
+        os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
+        _Log ("### set PYRTF_BYPASS_EXCEPTION True!")
+        
+        DisableDisorder ()
+    return
+
 def ProbPy ():
     newArgv = []
     ProbAll = True
@@ -157,7 +175,6 @@ def DTyped ():
         os.environ ['PYRTF_UNTYPED'] = 'True'
         _Log ("### set PYRTF_UNTYPED True!")
 
-        
     return
 
 if __name__ == '__main__':
@@ -165,9 +182,14 @@ if __name__ == '__main__':
         Clear ()
         print ("### clear the directory done!")
         exit (0)
+
+    if os.path.exists (LogFile):
+        os.remove (LogFile)
     
     Maskexcp ()
     DTyped ()
+    SLComplex ()
+
     CpuId = BindCpu ()
     ProbAll = ProbPy ()
     

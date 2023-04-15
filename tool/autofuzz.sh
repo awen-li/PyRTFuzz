@@ -168,11 +168,16 @@ elif [ "$Action" == "run" ]; then
 		docker run -itd --name "$FuzzName" $Image
 		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $MinCpu $PyVersion "untyped"
 
-	elif [ "$SubTask" == "compl" ]; then
-		Compl=$7
-		FuzzName="cpyfuzz-$PyVersion-$MinCpu-$SubTask-$Compl"
-		docker run -itd --name "$FuzzName" $Image
-		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $MinCpu $PyVersion "compl" $Compl
+	elif [ "$SubTask" == "complex" ]; then
+		Complex=(1 4 16 64 256 512 1024 2048)
+		CPUID=$MinCpu
+		for Compl in ${Complex[@]}
+		do
+			FuzzName="cpyfuzz-$PyVersion-$CPUID-$SubTask-$Compl"
+			docker run -itd --name "$FuzzName" $Image
+			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $MinCpu $PyVersion "complex=$Compl"
+			let CPUID++
+		done 
 
 	elif [ "$SubTask" == "bncmd" ]; then
 		# normal

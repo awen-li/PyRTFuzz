@@ -33,13 +33,6 @@ class CodeGen ():
             sys.exit (0)
         self.InitCmdList (self.Core.GetCmdList ())
 
-        StmtNum = os.environ.get ('SL_STMT_NUM')
-        if StmtNum == None:
-            self.StmtNum = DEFAULT_STMT_NUM
-        else:
-            self.StmtNum = int (StmtNum)
-            #print ("### CodeGen: obtain SL_STMT_NUM as %d" %self.StmtNum)
-
     def IsCoreUp (self):
         return self.Core.InitOk
 
@@ -194,11 +187,15 @@ class CodeGen ():
 
         print ("Get random API as:" + RandomApi)
         return PyFile
+    
+    def GetStmtNum (self, MaxStateNum):
+        PyrtfNum = os.getenv('PYRTF_COMPLEXITY')
+        if PyrtfNum != None:
+            return int (PyrtfNum)
+        else:
+            return random.randint(0, MaxStateNum)
 
-    def GenSpecifiedPy (self, Case, StateNum=DEFAULT_STMT_NUM):
-        if self.StmtNum != StateNum:
-            StateNum = self.StmtNum
-        
+    def GenSpecifiedPy (self, Case, MaxStateNum=DEFAULT_STMT_NUM):
         try:
             CaseName = os.path.basename (Case)
             CaseName,_ = os.path.splitext(CaseName)
@@ -208,7 +205,7 @@ class CodeGen ():
             ApiInfo = self.Core.ApiList.get (ApiPath)
             
             PathPrefix = Case.rfind ('/')
-            StateNum = random.randint(0, StateNum)
+            StateNum = self.GetStmtNum(MaxStateNum)
             PyFile  = Case[0:PathPrefix+1] + str(StateNum) + '#' + ApiPath.replace('.', '#') + '.py'
 
             self.GenPy (ApiPath, StateNum, PyFile, ApiInfo.Class != None)
@@ -222,15 +219,12 @@ class CodeGen ():
         pass
 
     def GenPyApp (self, ApiPath, StateNum=DEFAULT_STMT_NUM):
-        if self.StmtNum != StateNum:
-            StateNum = self.StmtNum
-        
         ApiInfo = self.Core.ApiList.get (ApiPath)
         if ApiInfo == None:
             print ("Fail to find %s in API spec list!" %ApiPath)
             return
         
-        StateNum = random.randint(0, StateNum)
+        StateNum = self.GetStmtNum(StateNum)
         PyFile   = ApiPath.replace ('.', '#')+'.py'
         self.GenPy (ApiPath, StateNum, PyFile, ApiInfo.Class != None)
         return
