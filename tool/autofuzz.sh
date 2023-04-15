@@ -179,17 +179,16 @@ elif [ "$Action" == "run" ]; then
 			let CPUID++
 		done 
 
-	elif [ "$SubTask" == "bncmd" ]; then
-		# normal
-		FuzzName="cpyfuzz-$PyVersion-$MinCpu-bncmd-normal"
-		docker run -itd --name "$FuzzName" $Image
-		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $MinCpu $PyVersion "normcmd"
-		let MinCpu++
-
-		# abnormal
-		FuzzName="cpyfuzz-$PyVersion-$MinCpu-bncmd-abnormal"
-		docker run -itd --name "$FuzzName" $Image
-		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $MinCpu $PyVersion "abnormcmd"
+	elif [ "$SubTask" == "budget" ]; then
+		Budgets=(1 30 60 90 180 360)
+		CPUID=$MinCpu
+		for Bgt in ${Budgets[@]}
+		do
+			FuzzName="cpyfuzz-$PyVersion-$CPUID-Budget-$Bgt"
+			docker run -itd --name "$FuzzName" $Image
+			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $MinCpu $PyVersion "lv2budget=$Bgt"
+			let CPUID++
+		done
 	fi
 
 elif [ "$Action" == "collect" ]; then
