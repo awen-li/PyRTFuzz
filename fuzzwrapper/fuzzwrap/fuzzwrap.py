@@ -88,7 +88,8 @@ def PyCoreFuzz (script):
         try:
             atheris.FuzzLv2()
         except (ValueError, TypeError, AttributeError, OSError, LookupError, 
-                AssertionError, EOFError, ModuleNotFoundError, TypeError) as e:
+                AssertionError, EOFError, ModuleNotFoundError, TypeError, OverflowError,
+                NameError, SyntaxError) as e:
             pass
 
     try:
