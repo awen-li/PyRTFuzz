@@ -137,8 +137,8 @@ class Core ():
         self.CmdList['Print'] = SLCmd ('PyPrint ()', 'cmd_print', SLCmd.APP)
         self.CmdList['Repr'] = SLCmd ('PyRepr ()', 'cmd_repr', SLCmd.APP)
 
-        self.CmdList['Recursive'] = SLCmd ('PyRecursive ()', 'cmd_recursive', SLCmd.APP, Mod=3)
-        self.CmdList['ExceptNest'] = SLCmd ('PyExceptNest ()', 'cmd_exceptnest', SLCmd.APP, Mod=4)
+        #self.CmdList['Recursive'] = SLCmd ('PyRecursive ()', 'cmd_recursive', SLCmd.APP, Mod=3)
+        #self.CmdList['ExceptNest'] = SLCmd ('PyExceptNest ()', 'cmd_exceptnest', SLCmd.APP, Mod=4)
 
     def GetSlCmd (self, CmdName):
         return self.CmdList.get (CmdName)
