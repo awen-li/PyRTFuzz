@@ -19,7 +19,7 @@ def _GetSeedDir ():
     return None
 
 
-def FuzzEntry (CpuId, ProbAll):
+def FuzzEntry (CpuId, ProbAll, Log=None):
     if CpuId != None:
         CurP = psutil.Process ()
         CurP.cpu_affinity([int(CpuId)])
@@ -51,10 +51,10 @@ def FuzzEntry (CpuId, ProbAll):
                       custom_mutator=PyLv2Mutate)
     try:
         atheris.FuzzLv1()
-        Done ()
-        sys.exit (0)
-    except:
-        Done ()
+        _Log (Log, "### atheris.FuzzLv1() exit without exception")
+    except Exception as e:
+        _Log (Log, "### atheris.FuzzLv1() exit with exception: " + str(e))   
+    finally:
         sys.exit (0)
 
 def SysArg (Key):

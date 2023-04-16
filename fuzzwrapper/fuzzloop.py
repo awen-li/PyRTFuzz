@@ -90,7 +90,7 @@ if __name__ == '__main__':
         _Log ("### FuzzLoop: " + str(sys.argv))
         IterNum = 0
         while True:
-            Fuzzer = Process(target=FuzzEntry, args=(CpuId,ProbAll,))
+            Fuzzer = Process(target=FuzzEntry, args=(CpuId,ProbAll,_Log,))
             Fuzzer.start()
             print ("\n### [%d]Fuzzer process starts [%d]\n" %(IterNum, Fuzzer.pid))
 
@@ -111,7 +111,7 @@ if __name__ == '__main__':
                         os.kill(proc.pid, signal.SIGTERM)
             except:
                 pass
-
+            break
     except Exception as e:
         print ("### fuzzloop exception: " + str(e))
     finally:
