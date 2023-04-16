@@ -102,18 +102,19 @@ if __name__ == '__main__':
             print ("\n\n### [%d]Fuzzer process exit [%d]\n" %(IterNum, Fuzzer.pid))
             IterNum += 1
             _Log ()
-            _Log ("Fuzzer instance exit with IterNum: " + str(IterNum))
+            _Log ("### Fuzzer instance exit with IterNum: " + str(IterNum))
             Clear ()
 
             try:
                 for proc in ChildProc:
                     if psutil.Process(proc.pid) != None:
                         os.kill(proc.pid, signal.SIGTERM)
-            except:
-                pass
+            except Exception as e:
+                _Log ("Exception happens while killing Subprocess: " + str(e))
             break
     except Exception as e:
         print ("### fuzzloop exception: " + str(e))
+        _Log ("### fuzzloop exception: " + str(e))
     finally:
         Clear ()
         print ("### fuzzloop exit.....")
