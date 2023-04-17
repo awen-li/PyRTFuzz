@@ -31,7 +31,10 @@ function RunFuzzer_BugF ()
 		echo
 		echo "### Start Fuzzer $FuzzName..."
 		docker run -itd --name "$FuzzName" $Image
-		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion
+		if [ $((ID % 2)) -eq 0 ]; then
+			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion
+		else
+			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion "lv2budget=30"
 		let ID++
 	done	
 }
