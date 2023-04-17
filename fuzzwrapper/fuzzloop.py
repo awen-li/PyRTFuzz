@@ -111,7 +111,7 @@ if __name__ == '__main__':
                         os.kill(proc.pid, signal.SIGTERM)
             except Exception as e:
                 _Log ("Exception happens while killing Subprocess: " + str(e))
-            break
+
     except Exception as e:
         print ("### fuzzloop exception: " + str(e))
         _Log ("### fuzzloop exception: " + str(e))
