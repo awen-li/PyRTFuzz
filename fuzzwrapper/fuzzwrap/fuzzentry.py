@@ -178,9 +178,6 @@ def TimeBudget (Log=None):
         sys.argv.append (f"-max_total_time={Budget}")
         _Log (Log, f"### set LEVEL-2 budget as {Budget} (s)")
 
-        os.environ ['PYRTF_BYPASS_EXCEPTION'] = 'True'
-        _Log (Log, "### set PYRTF_BYPASS_EXCEPTION True!")
-
 def ArgHanlde (Log=None):
     Maskexcp (Log)
     DTyped (Log)
