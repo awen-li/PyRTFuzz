@@ -35,8 +35,9 @@ function RunFuzzer_BugF ()
 			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion
 		else
 			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $ID $PyVersion "lv2budget=30"
+		fi
 		let ID++
-	done	
+	done
 }
 
 function DelFuzzer ()
