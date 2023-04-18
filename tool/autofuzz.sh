@@ -179,7 +179,7 @@ elif [ "$Action" == "run" ]; then
 		do
 			FuzzName="cpyfuzz-$PyVersion-$CPUID-$SubTask-$Compl"
 			docker run -itd --name "$FuzzName" $Image
-			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $MinCpu $PyVersion "complex=$Compl"
+			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $CPUID $PyVersion "complex=$Compl"
 			let CPUID++
 		done 
 
@@ -190,7 +190,7 @@ elif [ "$Action" == "run" ]; then
 		do
 			FuzzName="cpyfuzz-$PyVersion-$CPUID-Budget-$Bgt"
 			docker run -itd --name "$FuzzName" $Image
-			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $MinCpu $PyVersion "lv2budget=$Bgt -maskexcp"
+			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $CPUID $PyVersion "lv2budget=$Bgt -maskexcp"
 			let CPUID++
 		done
 	fi
