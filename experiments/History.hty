@@ -38,3 +38,8 @@
 1#pprint#pformat.py
 1#xmlrpc#client#gzip_decode.py
 1#calendar#main.py
+1#tarfile#itn.py
+1#operator#imod.py
+1#calendar#TextCalendar#formatweekday.py
+1#codeop#compile_command.py
+1#email#policy#EmailPolicy#header_fetch_parse.py
