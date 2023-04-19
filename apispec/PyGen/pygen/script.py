@@ -2,8 +2,10 @@ import os
 import sys
 import random
 import traceback
+import psutil
 from progressbar import ProgressBar
 from .core import SLCmd, Core
+from datetime import datetime
 
 class WtSLCmd ():
     def __init__ (self, Name, slCmd):
@@ -31,7 +33,11 @@ class CodeGen ():
         except:
             traceback.print_exc ()
             sys.exit (0)
+        
+        self.NestBrkCmd = None
         self.InitCmdList (self.Core.GetCmdList ())
+
+        self.PrintTime = os.getenv ("PYRTF_CODEGEN_TIME")
 
     def IsCoreUp (self):
         return self.Core.InitOk
@@ -39,6 +45,9 @@ class CodeGen ():
     def InitCmdList (self, SlCmdList):
         for CmdName, SlCmd in SlCmdList.items ():
             WtCmd = WtSLCmd (CmdName, SlCmd)
+            if SlCmd.Nested == SLCmd.NestBrkCmd:
+                self.NestBrkCmd = WtCmd
+
             if SlCmd.Type == SLCmd.BASE:   
                 self.BaseCmdList.append(WtCmd)
             elif SlCmd.Type == SLCmd.APP:
@@ -103,13 +112,29 @@ class CodeGen ():
         Ret = self.WriteScript (BaseCmd, ApiExpr)
 
         # 2. SELECT a set of APP CMD
+        MaxNest = 20 # Limited 20 in Python interpreter
+        NestNum = 0
+
         Num = StatNum
         while Num > 0:
+            if NestNum >= MaxNest:
+                # when nested block reach to the limitation, add a Call
+                Ret = self.WriteScript (self.NestBrkCmd, Ret)
+                #print ("### %d: NestNum = %d, Insert NestBrkCmd:%s\n" %(Num, NestNum, self.NestBrkCmd.Name))
+                NestNum = 0
+                Num = Num-1
+                continue
+                
             AppCmd = self.SelectCmd (SLCmd.APP, StatNum)
             if AppCmd == None:
                 continue
-            Ret = self.WriteScript (AppCmd, Ret)
 
+            if AppCmd.slCmd.Nested == SLCmd.NestCmd:
+                NestNum += 1
+            elif AppCmd.slCmd.Nested == SLCmd.NestBrkCmd:
+                NestNum = 0
+            
+            Ret = self.WriteScript (AppCmd, Ret)
             Num = Num-1
 
         self.CloseSlHandle ()
@@ -117,9 +142,19 @@ class CodeGen ():
 
     def GenPy (self, ApiExpr, StatNum, PyFile, OOFlag=False):
         ScriptFile = 'script.sl'
+        if self.PrintTime != None:
+            print ("### Start to GenSL, Time: %s, RAM Used (MB): %.2f" %(datetime.now(), psutil.virtual_memory()[3]/1000000.0))
+
         Script = self.GenSL (ApiExpr, StatNum, ScriptFile)
-        #print (Script)
+
+        if self.PrintTime != None:
+            print ("### Generate script done to script.sl, Time: %s, RAM Used (MB): %.2f" %(datetime.now(), psutil.virtual_memory()[3]/1000000.0))
+
         self.Core.Run (Script, OutPut=PyFile)
+
+        if self.PrintTime != None:
+            print ("### Generate python done, Time: %s, RAM Used (MB): %.2f" %(datetime.now(), psutil.virtual_memory()[3]/1000000.0))
+      
 
     def DefaultNumber (self):
         Number = os.environ.get ("INIT_SEED_NUM")

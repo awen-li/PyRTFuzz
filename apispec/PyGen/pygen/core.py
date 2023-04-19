@@ -30,13 +30,18 @@ class ApiInfo ():
 class SLCmd ():
     BASE = 1
     APP  = 2
+
+    NestNone   = 0
+    NestCmd    = 1
+    NestBrkCmd = 2
     
-    def __init__ (self, CmdName, Module, Type, OORequired=False, Mod=1):
+    def __init__ (self, CmdName, Module, Type, OORequired=False, Mod=1, Nested=NestNone):
         self.CmdName = CmdName
         self.Module  = Module
         self.Type    = Type
         self.OORequired = OORequired
         self.Mod     = Mod
+        self.Nested  = Nested
 
 class CmdOP ():
     def __init__ (self, OpName):
@@ -129,11 +134,11 @@ class Core ():
         self.CmdList['PO']  = SLCmd ('NewPO ()', 'cmd_newpo', SLCmd.BASE)
         self.CmdList['Inherit'] = SLCmd ('PyInherit ()', 'cmd_inherit', SLCmd.BASE, OORequired=True)
         
-        self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP, Mod=2)
-        self.CmdList['While'] = SLCmd ('PyWhile ()', 'cmd_while', SLCmd.APP, Mod=2)
-        self.CmdList['Wtih'] = SLCmd ('PyWith ()', 'cmd_with', SLCmd.APP)
-        self.CmdList['If'] = SLCmd ('PyIf ()', 'cmd_if', SLCmd.APP)
-        self.CmdList['Call'] = SLCmd ('PyCall ()', 'cmd_call', SLCmd.APP)
+        self.CmdList['For'] = SLCmd ('PyFor ()', 'cmd_for', SLCmd.APP, Mod=2, Nested=SLCmd.NestCmd)
+        self.CmdList['While'] = SLCmd ('PyWhile ()', 'cmd_while', SLCmd.APP, Mod=2, Nested=SLCmd.NestCmd)
+        self.CmdList['Wtih'] = SLCmd ('PyWith ()', 'cmd_with', SLCmd.APP, Nested=SLCmd.NestCmd)
+        self.CmdList['If'] = SLCmd ('PyIf ()', 'cmd_if', SLCmd.APP, Nested=SLCmd.NestCmd)
+        self.CmdList['Call'] = SLCmd ('PyCall ()', 'cmd_call', SLCmd.APP, Nested=SLCmd.NestBrkCmd)
         self.CmdList['Print'] = SLCmd ('PyPrint ()', 'cmd_print', SLCmd.APP)
         self.CmdList['Repr'] = SLCmd ('PyRepr ()', 'cmd_repr', SLCmd.APP)
 

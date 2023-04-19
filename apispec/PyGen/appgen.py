@@ -35,12 +35,15 @@ def main():
         
         SG = CodeGen (opts.filename)
 
+        StartSec = time.time ()
+        print ("### Start time: %d (s)" %(StartSec))
+
         if opts.length is None:
             SG.GenPyApp (opts.api)
         else:
             SG.GenPyApp (opts.api, StateNum=int(opts.length))
-
-        print ("Run successful.....")
+        
+        print ("### Run successful, Total Time Cost: %d (s)" %(time.time() - StartSec))
     elif opts.show:
         Core ().ShowCmds ()
     else:
