@@ -210,6 +210,9 @@ class CodeGen ():
 
             RandomApi = ApiList[ApiIndex]
             ApiInfo = self.Core.ApiList.get (RandomApi)
+            if ApiInfo == None:
+                print ("### GenRandomPy: retrieve %s fail." %RandomApi)
+                return None
 
             StateNum = random.randint(0, StateNum)
             ApiName, ApiDir = self.GetApiDir (Dir, RandomApi)
@@ -236,8 +239,10 @@ class CodeGen ():
             CaseName,_ = os.path.splitext(CaseName)
             ApiIndex = CaseName.find ('#')
             ApiPath = CaseName [ApiIndex+1:].replace ('#', '.')
-            print ("ApiPath is " + ApiPath)
             ApiInfo = self.Core.ApiList.get (ApiPath)
+            if ApiInfo == None:
+                print ("### GenSpecifiedPy: retrieve %s fail." %ApiPath)
+                return None
             
             PathPrefix = Case.rfind ('/')
             StateNum = self.GetStmtNum(MaxStateNum)

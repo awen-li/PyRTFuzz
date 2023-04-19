@@ -63,7 +63,11 @@ def PyCoreFuzz (script):
         print (absPath, file=F)
 
     SctModule  = baseName.split('.')[0]
-    FuzzMd = importlib.import_module(SctModule)
+    try:
+        FuzzMd = importlib.import_module(SctModule)
+    except Exception as e:
+        print (e)
+        return
     
     # create corpus dir for the current script
     pyScriptCorpus = absDir + '/corpus'
@@ -98,7 +102,6 @@ def PyCoreFuzz (script):
             os.removedirs (pyScriptCorpus)
     except Exception as e:
         print (e)
-        sys.exit (0)
 
 def RunScript (script, Input=None, Print=False, Silent=False):
 
