@@ -173,7 +173,7 @@ elif [ "$Action" == "run" ]; then
 		docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $MinCpu $PyVersion "untyped"
 
 	elif [ "$SubTask" == "complex" ]; then
-		Complex=(1 4 16 64 256 512 1024 2048)
+		Complex=(1 4 16 64 128 256 512 1024)
 		CPUID=$MinCpu
 		for Compl in ${Complex[@]}
 		do
