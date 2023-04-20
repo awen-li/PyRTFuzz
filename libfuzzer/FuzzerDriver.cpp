@@ -1006,7 +1006,7 @@ void DisorderCorpus (Vector<SizedFile>& VecCorpus)
 
   VecCorpus.clear();
   VecCorpus.insert(VecCorpus.end(), NoneTouchSeeds.begin(), NoneTouchSeeds.end());
-  VecCorpus.insert(VecCorpus.end(), TouchVSeeds.begin(), TouchVSeeds.end());
+  //VecCorpus.insert(VecCorpus.end(), TouchVSeeds.begin(), TouchVSeeds.end());
 
   return;
 }
