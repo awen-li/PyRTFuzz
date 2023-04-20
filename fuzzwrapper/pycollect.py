@@ -92,6 +92,10 @@ def Collect (SeedDir='seeds'):
         MoveTo (App)
         MoveTo (Test)
         AppNum += 1
+        try:
+            os.remove (Test)
+        except:
+            pass
     print ("### [Collect] Total %d APP & test get collected...." %AppNum)
 
     Log = "PRTFuzz_perf.log"
