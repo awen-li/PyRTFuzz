@@ -26,6 +26,8 @@ def LoadInput (File='PRTFuzz_perf.log'):
         for Line in AllLines:
             Items = ' '.join(Line.split ()).split()
             if not Items[0].isnumeric ():
+                TpNodeList = []
+                BaseTime = None
                 continue
             if BaseTime == None:
                 BaseTime = int(Items[0])
@@ -78,18 +80,16 @@ def GetAppNumByTimeLine (TpNodeList, TimeLine):
     return AnList
 
 def DrawRQ1 (Dir):
+    print ("### RQ1: drawing Cov/AppNum over time line....")
     File = GetAllLogs (Dir)[0]
     TpNodeList = LoadInput (File)
 
     TimeLine = [v*4 for v in range (0, 19)]
-    print (TimeLine)
-
     fig, (axCov, axApp) = plt.subplots(1, 2)
 
     # Cov over time
     X = TimeLine
     Y = GetCovByTimeLine (TpNodeList, TimeLine)
-    print (Y)
     axCov.plot(X, Y, linewidth=2.0, color='black')
     #axCov.set_title('Block coverage over time', fontsize=10)
     axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
@@ -98,7 +98,6 @@ def DrawRQ1 (Dir):
 
     # AppNum over time
     Y = GetAppNumByTimeLine (TpNodeList, TimeLine)
-    print (Y)
     axApp.plot(X, Y, linewidth=2.0, color='black')
     #axApp.set_title('Application number over time', fontsize=10)
     axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
@@ -113,6 +112,8 @@ def DrawRQ1 (Dir):
     return
 
 def DrawRQ3_1 (Dir):
+    print ("### RQ3.1: drawing Cov/AppNum over time line with diff APP complexity....")
+
     TimeLine = [v*4 for v in range (0, 19)]
     fig, (axCov, axApp) = plt.subplots(1, 2)
 
@@ -130,7 +131,6 @@ def DrawRQ3_1 (Dir):
         # Cov over time
         X = TimeLine
         Y = GetCovByTimeLine (TpNodeList, TimeLine)
-        print (Y)
         axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
         #axCov.set_title('Block coverage over time', fontsize=10)
         axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
@@ -139,7 +139,6 @@ def DrawRQ3_1 (Dir):
 
         # AppNum over time
         Y = GetAppNumByTimeLine (TpNodeList, TimeLine)
-        print (Y)
         axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
         #axApp.set_title('Application number over time', fontsize=10)
         axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
@@ -153,6 +152,8 @@ def DrawRQ3_1 (Dir):
     plt.close()
 
 def DrawRQ3_2 (Dir):
+    print ("### RQ3.2: drawing Cov/AppNum over time line with diff Lv2Budget....")
+
     TimeLine = [v*4 for v in range (0, 19)]
     fig, (axCov, axApp) = plt.subplots(1, 2)
 
@@ -161,7 +162,6 @@ def DrawRQ3_2 (Dir):
 
     AllLogs = GetAllLogs (Dir)
     for Log in AllLogs:
-        print (Log)
         Complexity = re.findall(r"-Budget-(\d+?)/", Log)[0]
         LT = LineType[Complexity]
         CL = ColorType[Complexity]
@@ -171,7 +171,6 @@ def DrawRQ3_2 (Dir):
         # Cov over time
         X = TimeLine
         Y = GetCovByTimeLine (TpNodeList, TimeLine)
-        print (Y)
         axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
         #axCov.set_title('Block coverage over time', fontsize=10)
         axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
@@ -180,7 +179,6 @@ def DrawRQ3_2 (Dir):
 
         # AppNum over time
         Y = GetAppNumByTimeLine (TpNodeList, TimeLine)
-        print (Y)
         axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
         #axApp.set_title('Application number over time', fontsize=10)
         axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
@@ -193,6 +191,48 @@ def DrawRQ3_2 (Dir):
     plt.savefig(Dir+'/PIC_RQ3-2_Lv2Budget')
     plt.close()
 
+def DrawRQ3_3 (Dir):
+    print ("### RQ3.3: drawing Cov/AppNum over time line with typed/untyped....")
+
+    TimeLine = [v*4 for v in range (0, 19)]
+    fig, (axCov, axApp) = plt.subplots(1, 2)
+
+    LineType = {'typed':'-', 'untyped':'--'}
+    ColorType = {'typed':'k', 'untyped':'g'}
+
+    AllLogs = GetAllLogs (Dir)
+    for Log in AllLogs:
+        Type = 'typed'
+        if Log.find ("untyped") != -1:
+            Type = 'untyped'
+        
+        LT = LineType[Type]
+        CL = ColorType[Type]
+
+        TpNodeList = LoadInput (Log)
+        
+        # Cov over time
+        X = TimeLine
+        Y = GetCovByTimeLine (TpNodeList, TimeLine)
+        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
+        #axCov.set_title('Block coverage over time', fontsize=10)
+        axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
+        axCov.set(ylabel="#Block-coverage")
+        axCov.set(xlabel="Time (hour)")
+
+        # AppNum over time
+        Y = GetAppNumByTimeLine (TpNodeList, TimeLine)
+        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
+        #axApp.set_title('Application number over time', fontsize=10)
+        axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
+        axApp.set(ylabel="#Application")
+        axApp.set(xlabel="Time (hour)")
+
+    fig.set_figwidth(12)
+    fig.set_figheight(4)
+    
+    plt.savefig(Dir+'/PIC_RQ3-2_Lv2Budget')
+    plt.close()
 
 def main(argv):
     Rq = ''
@@ -218,6 +258,9 @@ def main(argv):
 
     if Rq == 'rq3.2' or Rq == 'all':    
         DrawRQ3_2 ('RQ3.2')
+
+    if Rq == 'rq3.3' or Rq == 'all':    
+        DrawRQ3_3 ('RQ3.3')
 
 if __name__ == "__main__":
     main(sys.argv[1:])
