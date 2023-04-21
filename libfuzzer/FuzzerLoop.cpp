@@ -1007,8 +1007,9 @@ void Fuzzer::MutatePyAndTest(const char* Script, GetSpecifiedSeed CbSpecified)
     int MutateNum = 0;
     while (DeltaCov > 0) {
       const char *MutatedScript = CbSpecified (Script);
-      printf ("### [Level-1][mutate-%u] new script(%s)\r\n", MutateNum, MutatedScript);
+      printf ("### [%u][Level-1][mutate-%u] new script(%s)\r\n", AppNum, MutateNum, MutatedScript);
       if (strcmp (MutatedScript, Script) == 0 || strlen (MutatedScript) < 4)
+        free ((void*)MutatedScript);
         break;
 
       DeltaCov = RunOneScript (MutatedScript);

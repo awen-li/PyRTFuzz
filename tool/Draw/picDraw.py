@@ -57,6 +57,10 @@ def GetAppNumByTimeLine (TpNodeList, TimeLine):
         AnList.append (AnList[-1])
     return AnList
 
+def GetPicName (File):
+    Index = File.rfind ('.')
+    return File[0:Index]
+
 def DrawRQ1 (File):
     TpNodeList = LoadInput (File)
 
@@ -87,7 +91,7 @@ def DrawRQ1 (File):
     fig.set_figwidth(12)
     fig.set_figheight(4)
     
-    PicName = File.split('.')[0]
+    PicName = GetPicName (File)
     plt.savefig(PicName)
     plt.close()
     
@@ -110,7 +114,7 @@ def main(argv):
         return
     
     if Rq == 'rq1':    
-        DrawRQ1 ('RQ1/PRTFuzz_perf.log')
+        DrawRQ1 ('RQ1/GPU-cailab-FuzzResult-cpyfuzz-python3.9-48-covapp/FuzzResult/PRTFuzz_perf.log')
 
 if __name__ == "__main__":
     main(sys.argv[1:])
