@@ -5,7 +5,7 @@ export HOME=/root
 export CONDA_PYTHON_EXE=/root/anaconda3/bin/python
 export CONDA_PROMPT_MODIFIER=(base) 
 export LLVM_PATH=/root/tools/llvm11
-export PATH=/root/anaconda3/bin:/root/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/tools/llvm11/build/bin:/root/PolyFuzz/AFLplusplus
+export PATH=/root/anaconda3/bin:/root/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/tools/llvm11/build/bin
 export CLANG_PATH=/root/tools/llvm11/build/bin
 export CONDA_DEFAULT_ENV=base
 

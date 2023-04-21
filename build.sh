@@ -21,11 +21,12 @@ if [ "$Action" == "llvm" ] || [ "$Action" == "all" ]; then
 	if [ ! -L fuzzer ]; then
 		if [ -d fuzzer ]; then
 			rm -rf fuzzer
-		fi
-		
-		ln -s $BASE_DIR/libfuzzer fuzzer
+		fi	
+	else
+		unlink fuzzer
 	fi
 
+	ln -s $BASE_DIR/libfuzzer fuzzer
 	cd $LLVM_PATH/build
 	make -j4
 fi
@@ -54,7 +55,7 @@ if [ "$Action" == "python" ] || [ "$Action" == "all" ]; then
 fi
 
 
-if [ "$Action" == "prtfuzz" ] || [ "$Action" == "all" ]; then
+if [ "$Action" == "pyrtfuzz" ] || [ "$Action" == "all" ]; then
 	for Ver in ${ALL_VERSIONS[@]}
 	do
 		INSTALL_VER=`echo ${Ver: 0: 3}`
