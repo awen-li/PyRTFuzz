@@ -179,7 +179,11 @@ elif [ "$Action" == "run" ]; then
 		do
 			FuzzName="cpyfuzz-$PyVersion-$CPUID-$SubTask-$Compl"
 			docker run -itd --name "$FuzzName" $Image
-			docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $CPUID $PyVersion "complex=$Compl"
+			if [ $Compl == 1024 ]; then
+				docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $CPUID $PyVersion "complex=$Compl -timeout=600"
+			else
+				docker exec -itd -w /root/CpyFuzz/experiments $FuzzName bash autorun.sh run $CPUID $PyVersion "complex=$Compl"
+			fi
 			let CPUID++
 		done 
 
