@@ -5,7 +5,7 @@ Useable docker image for CpyFuzz: ```docker pull daybreak2019/prtfuzz:v1.0 ```
 Use the ``` . build.sh ``` to build the whole program.
 
 ```
-CpyFuzz
+PyRTFuzz
 +-- apispec          --------------    API spec collection
 +-- atheris          --------------    the python fuzzer
 +-- cpython          --------------    the cpython package for testing
@@ -20,12 +20,12 @@ CpyFuzz
 
 ## Install Cpython-3.9/3.8/3.7 with instrumentation
 ```
-cd CpyFuzz/experiments && ./buildCPython.sh 
+cd PyRTFuzz/experiments && ./buildCPython.sh 
 ```
 
 ## Collect API specs from cpython runtimes
 ```
-cd CpyFuzz/apispec/PySpec
+cd PyRTFuzz/apispec/PySpec
 ./genSpec.sh python3.9  ----> CPY_3.9.15_apispec.xml
 ./genSpec.sh python3.8  ----> CPY_3.8.15_apispec.xml
 ./genSpec.sh python3.7  ----> CPY_3.7.15_apispec.xml
@@ -33,7 +33,7 @@ cd CpyFuzz/apispec/PySpec
 
 ## Run the basic test cases
 ```
-cd CpyFuzz/test && ./RunTest.sh
+cd PyRTFuzz/test && ./RunTest.sh
 ```
 
 
@@ -42,7 +42,7 @@ cd CpyFuzz/test && ./RunTest.sh
 PY_VERSIONS=("python3.9" "python3.8" "python3.7")
 for Var in ${PY_VERSIONS[@]}
 
-  cd CpyFuzz/experiments
+  cd PyRTFuzz/experiments
   
   # set python verion and fuzzing environment
   ./setPyEnv.sh $Var
@@ -51,7 +51,7 @@ for Var in ${PY_VERSIONS[@]}
   python -m fuzzloop -pyscript=seeds_$Var 
 
   # collect fuzzing results
-  cd CpyFuzz/experiments
+  cd PyRTFuzz/experiments
   python -m pycollect seeds_$Var
   
 done
