@@ -987,7 +987,7 @@ int Fuzzer::RunOneScript(const char *Script)
   size_t NewCov = TPC.GetTotalPCCoverage ();
 
   int Delta = int (NewCov-BeforeCov);
-  printf ("### [Level-1] on script(%s), Cov change: %u, [%u -> %u]\r\n", Script, Delta, BeforeCov, NewCov);
+  printf ("### [%u][Level-1] on script(%s), Cov change: %u, [%u -> %u]\r\n", AppNum, Script, Delta, BeforeCov, NewCov);
   return Delta;
 }
 
