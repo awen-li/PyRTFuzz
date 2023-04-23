@@ -190,7 +190,7 @@ elif [ "$Action" == "run" ]; then
 		done 
 
 	elif [ "$SubTask" == "budget" ]; then
-		Budgets=(1 30 60 90 180 360)
+		Budgets=(10 30 60 90 180 360)
 		CPUID=$MinCpu
 		for Bgt in ${Budgets[@]}
 		do
