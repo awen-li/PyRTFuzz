@@ -26,7 +26,6 @@ def LoadInput (File='PRTFuzz_perf.log'):
         for Line in AllLines:
             Items = ' '.join(Line.split ()).split()
             if not Items[0].isnumeric ():
-                TpNodeList = []
                 BaseTime = None
                 continue
             if BaseTime == None:
@@ -231,7 +230,7 @@ def DrawRQ3_3 (Dir):
     fig.set_figwidth(12)
     fig.set_figheight(4)
     
-    plt.savefig(Dir+'/PIC_RQ3-2_Lv2Budget')
+    plt.savefig(Dir+'/PIC_RQ3-3_Typed')
     plt.close()
 
 def main(argv):
