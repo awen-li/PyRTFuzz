@@ -187,7 +187,7 @@ class Crawler():
         return Created
 
     def UpdateIssues (self, IssueFile):
-        AllIssues = []
+        AllIssues = {}
         
         df = pd.read_csv(IssueFile)
         for index, row in df.iterrows():
@@ -212,8 +212,11 @@ class Crawler():
             if Created == None:
                 Created = self.GetIssueTime (Url)
             
+            if AllIssues.get (ID) != None:
+                continue
             curIssue = Issue(ID, Status, Title, Label, SecLabel, Module, Url, PatchUrl, Created)
             curIssue.AppendWrite ('new-' + IssueFile)
+            AllIssues [ID] = True
 
 
 def main(argv):
