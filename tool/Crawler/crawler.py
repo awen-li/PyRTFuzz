@@ -11,7 +11,7 @@ from time import sleep
 
 
 class Issue():
-    def __init__(self, ID, Status, Title, Label, SecLabel, Module, Url, PatchUrl):
+    def __init__(self, ID, Status, Title, Label, SecLabel, Module, Url, PatchUrl, Created):
         self.ID = ID
         self.Title    = Title
         self.Status   = Status  
@@ -20,6 +20,7 @@ class Issue():
         self.Module   = Module
         self.Url      = Url
         self.PatchUrl = PatchUrl
+        self.Created  = Created
         
     def AppendWrite (self, FileName):
         IsNew = False
@@ -29,9 +30,9 @@ class Issue():
         with open(FileName, 'a+', encoding='utf-8') as CsvFile:
             writer = csv.writer(CsvFile)      
             if IsNew == True:
-                Header = ['ID', 'Status', 'Title', 'Label', 'Security-Label', 'Module', 'Url', 'PatchUrl']
+                Header = ['ID', 'Status', 'Title', 'Label', 'Security-Label', 'Module', 'Url', 'PatchUrl', 'Created']
                 writer.writerow(Header)
-            Row = [self.ID, self.Status, self.Title, self.Label, self.SecLabel, self.Module, self.Url, self.PatchUrl]
+            Row = [self.ID, self.Status, self.Title, self.Label, self.SecLabel, self.Module, self.Url, self.PatchUrl, self.Created]
             writer.writerow(Row)
 
 
@@ -162,11 +163,28 @@ class Crawler():
                     if 'pull_request' in issue:
                         PullReq = issue['pull_request']
                         PatchUrl = PullReq['patch_url']
+
+                    Created = issue['created_at']
+                    YIndex = Created.find ('-')
+                    if YIndex != -1:
+                        Created = Created[0:YIndex]
                         
-                    curIssue = Issue(ID, issue['state'], Title, Label, SecLabel, Module, issue['url'], PatchUrl)
+                    curIssue = Issue(ID, issue['state'], Title, Label, SecLabel, Module, issue['url'], PatchUrl, Created)
                     curIssue.AppendWrite (self.IssueFile)
 
         print ("Total Issues: %d, Bug-Issues: %d" %(TotalIssues, BugIssues))
+
+    def GetIssueTime (self, IssueUrl):
+        try:
+            Issue = self.HttpCall (IssueUrl)
+        except:
+            return None
+        Created = Issue['created_at']
+        YIndex = Created.find ('-')
+        if YIndex != -1:
+            Created = Created[0:YIndex]
+        print ("%s ---> %s" %(IssueUrl, Created))
+        return Created
 
     def UpdateIssues (self, IssueFile):
         AllIssues = []
@@ -181,13 +199,20 @@ class Crawler():
             Module   = row['Module']
             Url      = row['Url']
             PatchUrl = row['PatchUrl']
+            try:
+                Created = row['Created']
+            except:
+                Created = None
 
             if Label.find ('interpreter') != -1:
                 Module = 'cpython'
             else:
                 Module = ' '
             
-            curIssue = Issue(ID, Status, Title, Label, SecLabel, Module, Url, PatchUrl)
+            if Created == None:
+                Created = self.GetIssueTime (Url)
+            
+            curIssue = Issue(ID, Status, Title, Label, SecLabel, Module, Url, PatchUrl, Created)
             curIssue.AppendWrite ('new-' + IssueFile)
 
 
