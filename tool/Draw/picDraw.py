@@ -116,10 +116,11 @@ def DrawRQ3_1 (Dir):
     TimeLine = [v*4 for v in range (0, 19)]
     fig, (axCov, axApp) = plt.subplots(1, 2)
 
-    LineType = {'1':'-', '4':'--', '16':'-.', '64':':', '128':'-', '256':'--', '512':'-.', '1024':':'}
-    ColorType = {'1':'k', '4':'k', '16':'k', '64':'k', '128':'g', '256':'g', '512':'g', '1024':'g'}
+    LineType = {'1':'-', '4':'-', '16':'-', '64':'-', '128':':', '256':':', '512':':', '1024':':'}
+    ColorType = {'1':'k', '4':'g', '16':'r', '64':'b', '128':'k', '256':'g', '512':'r', '1024':'b'}
 
     AllLogs = GetAllLogs (Dir)
+    AllLogs.sort ()
     for Log in AllLogs:
         Complexity = re.findall(r"-complex-(\d+?)/", Log)[0]
         LT = LineType[Complexity]
@@ -130,22 +131,25 @@ def DrawRQ3_1 (Dir):
         # Cov over time
         X = TimeLine
         Y = GetCovByTimeLine (TpNodeList, TimeLine)
-        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
+        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='complexity-' + str(Complexity))
         #axCov.set_title('Block coverage over time', fontsize=10)
         axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
         axCov.set(ylabel="#Block-coverage")
         axCov.set(xlabel="Time (hour)")
+        axCov.legend(loc="upper left", prop={"size": 8})
 
         # AppNum over time
         Y = GetAppNumByTimeLine (TpNodeList, TimeLine)
-        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
+        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='complexity-' + str(Complexity))
         #axApp.set_title('Application number over time', fontsize=10)
         axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
         axApp.set(ylabel="#Application")
         axApp.set(xlabel="Time (hour)")
+        axApp.legend(loc="upper left", prop={"size": 8})
 
     fig.set_figwidth(12)
     fig.set_figheight(4)
+    
     
     plt.savefig(Dir+'/PIC_RQ3-1_Complexity')
     plt.close()
@@ -156,33 +160,36 @@ def DrawRQ3_2 (Dir):
     TimeLine = [v*4 for v in range (0, 19)]
     fig, (axCov, axApp) = plt.subplots(1, 2)
 
-    LineType = {'1':'-', '30':'--', '60':'-.', '90':':', '180':'-', '360':'--'}
-    ColorType = {'1':'k', '30':'k', '60':'k', '90':'g', '180':'g', '360':'g'}
+    LineType = {'1':'-', '30':'-', '60':'-', '90':':', '180':':', '360':':'}
+    ColorType = {'1':'k', '30':'g', '60':'b', '90':'k', '180':'g', '360':'b'}
 
     AllLogs = GetAllLogs (Dir)
+    AllLogs.sort()
     for Log in AllLogs:
-        Complexity = re.findall(r"-Budget-(\d+?)/", Log)[0]
-        LT = LineType[Complexity]
-        CL = ColorType[Complexity]
+        Budget = re.findall(r"-Budget-(\d+?)/", Log)[0]
+        LT = LineType[Budget]
+        CL = ColorType[Budget]
 
         TpNodeList = LoadInput (Log)
         
         # Cov over time
         X = TimeLine
         Y = GetCovByTimeLine (TpNodeList, TimeLine)
-        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
+        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='budget-' + str(Budget))
         #axCov.set_title('Block coverage over time', fontsize=10)
         axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
         axCov.set(ylabel="#Block-coverage")
         axCov.set(xlabel="Time (hour)")
+        axCov.legend(loc="upper left", prop={"size": 8})
 
         # AppNum over time
         Y = GetAppNumByTimeLine (TpNodeList, TimeLine)
-        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
+        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='budget-' + str(Budget))
         #axApp.set_title('Application number over time', fontsize=10)
         axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
         axApp.set(ylabel="#Application")
         axApp.set(xlabel="Time (hour)")
+        axApp.legend(loc="upper left", prop={"size": 8})
 
     fig.set_figwidth(12)
     fig.set_figheight(4)
@@ -196,7 +203,7 @@ def DrawRQ3_3 (Dir):
     TimeLine = [v*4 for v in range (0, 19)]
     fig, (axCov, axApp) = plt.subplots(1, 2)
 
-    LineType = {'typed':'-', 'untyped':'--'}
+    LineType = {'typed':'-', 'untyped':'-'}
     ColorType = {'typed':'k', 'untyped':'g'}
 
     AllLogs = GetAllLogs (Dir)
@@ -213,19 +220,21 @@ def DrawRQ3_3 (Dir):
         # Cov over time
         X = TimeLine
         Y = GetCovByTimeLine (TpNodeList, TimeLine)
-        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
+        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label=Type)
         #axCov.set_title('Block coverage over time', fontsize=10)
         axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
         axCov.set(ylabel="#Block-coverage")
         axCov.set(xlabel="Time (hour)")
+        axCov.legend(loc="upper left", prop={"size": 8})
 
         # AppNum over time
         Y = GetAppNumByTimeLine (TpNodeList, TimeLine)
-        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT)
+        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label=Type)
         #axApp.set_title('Application number over time', fontsize=10)
         axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
         axApp.set(ylabel="#Application")
         axApp.set(xlabel="Time (hour)")
+        axApp.legend(loc="upper left", prop={"size": 8})
 
     fig.set_figwidth(12)
     fig.set_figheight(4)
