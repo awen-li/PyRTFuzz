@@ -110,6 +110,75 @@ def DrawRQ1 (Dir):
     plt.close()
     return
 
+def LoadRQ2Data (File):
+    DList = {}
+    with open (File, 'r') as F:
+        AllLines = F.readlines()
+        for Line in AllLines:
+            Items = ' '.join(Line.split ()).split()
+            if not Items[0].isnumeric ():
+                continue
+            DList[Items[0]] = Items
+    return DList
+
+def GetOverComplexity (DList, Index):
+    Data = []
+    for compl, item in DList.items ():
+        Data.append (item[Index])
+    return Data
+
+def DrawRQ2 (Dir):
+    print ("### RQ2: drawing line of SSGEN.")
+    DList = LoadRQ2Data (Dir+'/data.txt')
+
+    XLabels = list (DList.keys())
+    fig, (axTimes, axMems, axCodeSize) = plt.subplots(1, 3)
+
+    # SS-gen
+    SSTimes = GetOverComplexity (DList, 1)
+    SSMems  = GetOverComplexity (DList, 2)
+
+    # PY-gen
+    PYTimes = GetOverComplexity (DList, 3)
+    PYMems  = GetOverComplexity (DList, 4)
+    PYSize  = GetOverComplexity (DList, 5)
+
+    # Times
+    X = XLabels
+    axTimes.plot(X, SSTimes, linewidth=2.0, color='b', label='SS-gen')
+    axTimes.plot(X, PYTimes, linewidth=2.0, color='g', label='PY-gen')
+    axTimes.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
+    axTimes.set(ylabel="Time (s)")
+    #axTimes.set(xlabel="The number of complexity")
+    axTimes.set_xticklabels(X, rotation=45)
+    axTimes.legend(loc="upper left", prop={"size": 8})
+
+    # Memories
+    X = XLabels
+    axMems.plot(X, SSMems, linewidth=2.0, color='b', label='SS-gen')
+    axMems.plot(X, PYMems, linewidth=2.0, color='g', label='PY-gen')
+    axMems.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
+    axMems.set(ylabel="Memory (MB)")
+    axMems.set(xlabel="The number of complexity")
+    axMems.set_xticklabels(X, rotation=45)
+    axMems.legend(loc="upper left", prop={"size": 8})
+
+    # Code size
+    X = XLabels
+    axCodeSize.plot(X, PYSize, linewidth=2.0, color='c')
+    axCodeSize.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
+    axCodeSize.set(ylabel="Code size (KLoC)")
+    #axCodeSize.set(xlabel="The number of complexity")
+    axCodeSize.set_xticklabels(X, rotation=45)
+
+
+    fig.set_figwidth(20)
+    fig.set_figheight(6)
+    
+    plt.savefig(Dir+'/PIC_RQ2')
+    plt.close()
+    return
+
 def DrawRQ3_1 (Dir):
     print ("### RQ3.1: drawing Cov/AppNum over time line with diff APP complexity....")
 
@@ -260,6 +329,9 @@ def main(argv):
     
     if Rq == 'rq1' or Rq == 'all':    
         DrawRQ1 ('RQ1')
+
+    if Rq == 'rq2' or Rq == 'all':    
+        DrawRQ2 ('RQ2')
 
     if Rq == 'rq3.1' or Rq == 'all':    
         DrawRQ3_1 ('RQ3.1')
