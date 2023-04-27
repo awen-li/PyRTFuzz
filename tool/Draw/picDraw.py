@@ -229,8 +229,8 @@ def DrawRQ3_2 (Dir):
     TimeLine = [v*4 for v in range (0, 19)]
     fig, (axCov, axApp) = plt.subplots(1, 2)
 
-    LineType = {'1':'-', '30':'-', '60':'-', '90':':', '180':':', '360':':'}
-    ColorType = {'1':'k', '30':'g', '60':'b', '90':'k', '180':'g', '360':'b'}
+    LineType = {'10':'-', '30':'-', '60':'-', '90':':', '180':':', '360':':'}
+    ColorType = {'10':'k', '30':'g', '60':'b', '90':'k', '180':'g', '360':'b'}
 
     AllLogs = GetAllLogs (Dir)
     AllLogs.sort()
