@@ -123,11 +123,13 @@ class ApiSpecCheck ():
     def Check (self):
         TotalApiNum = 0
         TypeKnowns   = 0
+        Modules = {}
         for libName, pyLib in self.PyLibs.items ():
             if libName != '.':
                 self.GenInports (libName)
             for mdName, pyMoudle in pyLib.Modules.items ():
                 self.GenInports (mdName)
+                Modules[mdName.split ('.')[0]] = 1
                 for clsName, cls in pyMoudle.Classes.items ():
                     #self.GenInports (mdName + '.' + clsName)
                     for apiName, api in cls.Apis.items ():
@@ -158,6 +160,8 @@ class ApiSpecCheck ():
         print ("### TypeKnownsNum = %d" %TypeKnowns)
         print ("### Percentage    = %f" %(TypeKnowns/TotalApiNum*1.0))
         print ("############################################################\n")
+
+        print ("### Modules = " + str (list (Modules.keys ())))
     
         self.LogTypeInfo ()
         self.LogImportInfo ()
