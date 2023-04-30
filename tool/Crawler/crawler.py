@@ -218,6 +218,82 @@ class Crawler():
             curIssue.AppendWrite ('new-' + IssueFile)
             AllIssues [ID] = True
 
+    def StatByTimeLine (self, IssueFile):
+        print ("### StatByTimeLine")
+        Year2Bugs = {}
+        df = pd.read_csv(IssueFile)
+        for index, row in df.iterrows():
+            try:
+                Created = row['Created']
+            except:
+                Created = None
+            
+            if Created == None:
+                continue
+
+            Labels = row['Label']
+            if Labels.find ('bug') == -1 and Labels.find ('security') == -1:
+                continue
+
+            Year = int (Created)
+            Num = Year2Bugs.get (Year)
+            if Num == None:
+                Year2Bugs [Year] = 1
+            else:
+                Year2Bugs [Year] = Num+1
+        
+        with open ("StatByTimeLine.txt", 'w') as F:
+            for year, num in Year2Bugs.items ():
+                print ("%d %d" %(year, num), file=F)
+
+    def StatByDist (self, IssueFile):
+        print ("### StatByDist")
+        Modules = ['interpreter','sqlite3', 'html', 'ctypes', 'xmlrpc', 'email', 'dbm', 'wsgiref', 'http', 'encodings', 'xml', 
+                   'pydoc_data', 'distutils', 'logging', 'json', 'collections', 'urllib', 'turtledemo', 'asyncio', 'tkinter', 
+                   'curses', 'operator', 'cgitb', 'cgi', 'compileall', 'imghdr', 'mailcap', 'opcode', 'random', 'ipaddress', 
+                   'tabnanny', 'getopt', 'textwrap', 'sunau', 'secrets', 'nturl2path', 'profile', 'this', 'gzip', 'calendar', 
+                   'smtplib', 'linecache', 'wave', 'optparse', 'site', 'shlex', 'filecmp', 'pathlib', 'webbrowser', 'aifc', 
+                   'formatter', 'gettext', 'imaplib', 'platform', 'chunk', 'mailbox', 'netrc', 'argparse', 'datetime', 'io', 
+                   'types', 'fnmatch', 'timeit', 'binhex', 'bisect', 'typing', 'ntpath', 'dataclasses', 'rlcompleter', 'weakref', 
+                   'os', 'fractions', 'tarfile', 'stringprep', 'dis', 'posixpath', 'pipes', 'sysconfig', 'asyncore', 'sndhdr', 
+                   'selectors', 'tempfile', 'queue', 'copy', 'bdb', 'zipfile', 'stat', 'pyclbr', 'keyword', 'graphlib', 'modulefinder', 
+                   'symtable', 'xdrlib', 'smtpd', 'cProfile', 'warnings', 'pickle', 'threading', 'asynchat', 're', 'uu', 'shelve', 
+                   'telnetlib', 'socketserver', 'decimal', 'pickletools', 'fileinput', 'codecs', 'runpy', 'mimetypes', 'glob', 
+                   'configparser', 'symbol', 'cmd', 'crypt', 'functools', 'imp', 'sre_compile', 'uuid', 'socket', 'ssl', 
+                   'quopri', 'getpass', 'pprint', 'difflib', 'statistics', 'nntplib', 'py_compile', 'sre_parse', 'abc', 
+                   'contextlib', 'signal', 'tty', 'copyreg', 'reprlib', 'contextvars', 'numbers', 'hashlib', 'tokenize', 
+                   'csv', 'sched', 'genericpath', 'turtle', 'hmac', 'zipapp', 'code', 'bz2', 'string', 'pkgutil', 'enum', 
+                   'lzma', 'sre_constants', 'plistlib', 'poplib', 'heapq', 'pstats', 'colorsys', 'base64', 'pydoc', 'codeop', 
+                   'zipimport', 'locale', 'ast', 'shutil', 'struct', 'token', 'ftplib']
+        
+        Module2Bugs = {}
+        df = pd.read_csv(IssueFile)
+        for index, row in df.iterrows():
+            Labels = row['Label']
+            if Labels.find ('bug') == -1 and Labels.find ('security') == -1:
+                continue
+
+            Title = row['Title']
+            Title = Title.lower()
+            for md in Modules:
+                if len (md) < 3:
+                    key = ' ' + md + ' '
+                else:
+                    key = md
+                if Title.find (key) != -1:
+                    Num = Module2Bugs.get (md)
+                    if Num == None:
+                        Module2Bugs[md] = 1
+                    else:
+                        Module2Bugs[md] = 1+Num
+        
+        with open ('StatByDist.txt', 'w') as F:
+            Total = 0
+            for md, num in Module2Bugs.items ():
+                print ("%s %d" %(md, num), file=F)
+                Total += num
+            print ("Total bugNum= %d, Distributed modules: %d / %d"  %(Total, len(Module2Bugs), len (Modules)))
+            print (Module2Bugs)
 
 def main(argv):
     Function   = 'issue'
@@ -241,6 +317,10 @@ def main(argv):
     elif (Function == "update"):
         Cl = Crawler(DefaultUrl)
         Cl.UpdateIssues (IssueFile)
+    elif (Function == "stat"):
+        Cl = Crawler(DefaultUrl)
+        Cl.StatByTimeLine (IssueFile)
+        Cl.StatByDist (IssueFile)
     else:
         pass
 
