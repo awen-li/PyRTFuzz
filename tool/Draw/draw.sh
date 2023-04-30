@@ -9,6 +9,9 @@ fi
 cp -rf $FUZZRES/GPU-cailab-FuzzResult-*-covapp RQ1/ 
 python picDraw.py -q rq1
 
+# RQ2 - PyGen
+python picDraw.py -q rq2
+
 
 # RQ3.1 - complexity <---> Cov & AppNum
 cp -rf $FUZZRES/GPU-cailab-FuzzResult-*-complex* RQ3.1/ 
