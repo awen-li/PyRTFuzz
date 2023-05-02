@@ -161,7 +161,7 @@ class ApiSpecCheck ():
         print ("### Percentage    = %f" %(TypeKnowns/TotalApiNum*1.0))
         print ("############################################################\n")
 
-        print ("### Modules = " + str (list (Modules.keys ())))
+        print ("### Modules = [%d]%s" %(len(Modules), str (list (Modules.keys ()))))
     
         self.LogTypeInfo ()
         self.LogImportInfo ()

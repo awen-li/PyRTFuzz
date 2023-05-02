@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import matplotlib.font_manager as font_manager
 from matplotlib.ticker import FuncFormatter
+from matplotlib.pyplot import MultipleLocator
 
 
 class TpNode ():
@@ -347,6 +348,84 @@ def DrawRQ3_3 (Dir):
     plt.savefig(Dir+'/PIC_RQ3-3_Typed')
     plt.close()
 
+def LoadFstl (path):
+    Year2BugNum = {}
+    with open (path, 'r') as F:
+        AllLines = F.readlines()
+        for Line in AllLines:
+            Items = ' '.join(Line.split ()).split()
+            if len (Items) == 0:
+                continue
+            Year2BugNum[Items[0]] = int (Items[1])
+    Year2BugNum = dict(sorted (Year2BugNum.items()))
+    return Year2BugNum
+
+def LoadFstd (path):
+    Md2BugNum = {}
+    with open (path, 'r') as F:
+        AllLines = F.readlines()
+        for Line in AllLines:
+            Items = ' '.join(Line.split ()).split()
+            if len (Items) == 0:
+                continue
+            Md2BugNum[Items[0]] = int(Items[1])
+    
+    Md2BugNum = dict(sorted (Md2BugNum.items(), key=lambda x:x[1], reverse=True))
+    return Md2BugNum
+
+def DrawIssueStat (Dir):
+    print ("### IssueStat: drawing stat of issues in CPython....")
+
+    FSTL = Dir + '/StatByTimeLine.txt'
+    FSTD = Dir + '/StatByDist.txt'
+
+    Year2BugNum = LoadFstl (FSTL)
+    Md2BugNum = LoadFstd (FSTD)
+
+    # bugs over timeline
+    TimeLine = list (Year2BugNum.keys())
+    TimeLine = TimeLine[2::2]
+    fig, ax = plt.subplots(1, 1)
+
+    X = TimeLine
+    print (X)
+    Y = list (Year2BugNum.values())
+    Y = Y[2::2]
+    plt.ylim([1, 2000])
+    plt.plot(X, Y, color='k')
+    plt.xticks(['2002', ' ', '2006', ' ', '2010', ' ', '2014', ' ', '2018', ' ', '2022'])
+    plt.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
+    plt.ylabel('#Bug')
+
+    fig.set_figwidth(6)
+    fig.set_figheight(3)  
+    plt.savefig(Dir+'/StatByTimeLine', dpi=300)
+    plt.close()
+
+    # bugs by modules
+    fig, ax = plt.subplots(1, 1)
+    X = list (Md2BugNum.keys())[0:15]
+    X = ['code', 'imp', 'string', 'dis', ' ', 'ssl', 'stat', 'socket', 'types', 'urllib', 'http', 'asyncio', 'email', 'ast', 'distutils']
+    Y = list (Md2BugNum.values())[0:15]
+
+    y_locator=MultipleLocator(500)
+    ax.yaxis.set_major_locator(y_locator)
+    ax.set_ylim ([0, 1500])
+    
+    ax.bar(X, Y, color='grey')
+    print (X)
+    ax.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
+    ax.set(ylabel="#Bug")
+    ax.set_xticklabels(X, rotation=30)
+
+    #plt.setp(ax.get_xticklabels(), rotation=30)
+    
+
+    fig.set_figwidth(8)
+    fig.set_figheight(5)  
+    plt.savefig(Dir+'/StatByDist', dpi=300) 
+    plt.close()
+
 def main(argv):
     Rq = ''
 
@@ -377,6 +456,9 @@ def main(argv):
 
     if Rq == 'rq3.3' or Rq == 'all':    
         DrawRQ3_3 ('RQ3.3')
+
+    if Rq == 'stat' or Rq == 'all':
+        DrawIssueStat ('../Crawler')
 
 if __name__ == "__main__":
     main(sys.argv[1:])
