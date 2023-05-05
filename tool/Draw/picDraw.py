@@ -90,42 +90,67 @@ def StdCompute (TimeLine, Covs, Apps):
     Y[0] = Y [1]
     return Y
 
+def SetLabelFrontSize (ax, size, tksize=10):
+    ax.yaxis.label.set_size(size)
+    ax.xaxis.label.set_size(size)
+    ax.xaxis.set_tick_params(labelsize=tksize)
+    ax.yaxis.set_tick_params(labelsize=tksize)
+
+def SetYLabelColor (ax, c):
+    ax.tick_params(axis='y', colors=c)
+    ax.yaxis.label.set_color(c)
+
+def SetYLabelRight (ax):
+    ax.yaxis.tick_right()
+    ax.yaxis.set_label_position("right")
+
 def DrawRQ1 (Dir):
     print ("### RQ1: drawing Cov/AppNum over time line....")
     File = GetAllLogs (Dir)[0]
     TpNodeList = LoadInput (File)
 
-    TimeLine = [v for v in range (0, 84)]
-    fig, (axCov, axApp, axStd) = plt.subplots(1, 3)
+    TimeLine = [v*8 for v in range (0, 16)]
+    fig, (axCov, axStd) = plt.subplots(1, 2)
 
-    # Cov over time
+    # Cov over time and AppNum over time
     X = TimeLine
+    print (X)
+
     Y = Covs = GetCovByTimeLine (TpNodeList, TimeLine)
     axCov.plot(X, Y, linewidth=2.0, color='black')
     #axCov.set_title('Block coverage over time', fontsize=10)
     axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-    axCov.set(ylabel="#Block-coverage")
-    axCov.set(xlabel="Time (hour)")
+    axCov.set(ylabel="Number of basic blocks")
+    #axCov.set(xlabel="Time (hour)")
+    SetLabelFrontSize (axCov, 14)
 
-    # AppNum over time
+    axApp = axCov.twinx()
     Y = Apps = GetAppNumByTimeLine (TpNodeList, TimeLine)
-    axApp.plot(X, Y, linewidth=2.0, color='black')
-    #axApp.set_title('Application number over time', fontsize=10)
-    axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-    axApp.set(ylabel="#Application")
-    axApp.set(xlabel="Time (hour)")
+    axApp.plot(X, Y, linewidth=2.0, color='g')
+    axApp.set(ylabel="Number of applications")
+    #axApp.get_yticklabels()[0].set_color ('g')
+    SetYLabelColor (axApp, 'g')
+    SetLabelFrontSize (axApp, 14)
 
+
+    # Cov/AppNum over time
     Y = StdCompute (TimeLine, Covs, Apps)
+    print (Y)
     axStd.plot(X, Y, linewidth=2.0, color='black')
-    #axCov.set_title('Block coverage over time', fontsize=10)
     axStd.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-    axStd.set(ylabel="#Block-coverage/#APP")
-    axStd.set(xlabel="Time (hour)")
+    axStd.set(ylabel="Per APP basic-block change / 8h")
+    #axStd.set(xlabel="Time (hour)")
+    SetYLabelRight (axStd)
+    SetLabelFrontSize (axStd, 14)
+
+    axStd.text(-48, -0.2, "Time (hour)", fontsize=14)
+
     
-    fig.set_figwidth(12)
+    fig.set_figwidth(8)
     fig.set_figheight(4)
-    
-    plt.savefig(Dir+'/PIC_RQ1')
+
+    plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0.3, hspace=None)
+    plt.savefig(Dir+'/PIC_RQ1', bbox_inches='tight', pad_inches=0, dpi=300)
     plt.close()
     return
 
@@ -151,7 +176,7 @@ def DrawRQ2 (Dir):
     DList = LoadRQ2Data (Dir+'/data.txt')
 
     XLabels = list (DList.keys())
-    fig, (axTimes, axMems, axCodeSize) = plt.subplots(1, 3)
+    fig, (axTimes, axCodeSize) = plt.subplots(1, 2)
 
     # SS-gen
     SSTimes = GetOverComplexity (DList, 1)
@@ -159,49 +184,61 @@ def DrawRQ2 (Dir):
 
     # PY-gen
     PYTimes = GetOverComplexity (DList, 3)
+    print (PYTimes)
     PYMems  = GetOverComplexity (DList, 4)
     PYSize  = GetOverComplexity (DList, 5)
 
-    # Times
+    # Times & Memories
     X = XLabels
-    axTimes.plot(X, SSTimes, linewidth=2.0, color='b', label='SS-gen')
-    axTimes.plot(X, PYTimes, linewidth=2.0, color='g', label='PY-gen')
+    axTimes.plot(X, SSTimes, linewidth=2.0, linestyle = '--', color='k', label='specification:time')
+    axTimes.plot(X, PYTimes, linewidth=2.0, color='k', label='python:time')
+    #axTimes.scatter (X, PYTimes, color='k')
     axTimes.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-    axTimes.set(ylabel="Time (s)")
-    #axTimes.set(xlabel="The number of complexity")
+    axTimes.set(ylabel="Time cost (s)")
+    #axTimes.set(xlabel="Specification size")
     axTimes.set_xticklabels(X, rotation=45)
-    axTimes.legend(loc="upper left", prop={"size": 8})
+    #axTimes.set_ylim ([0, 2750])
+    axTimes.legend(bbox_to_anchor=(0.01, 0.99), loc="upper left", prop={"size": 12})
+    SetLabelFrontSize (axTimes, 16, 12)
+    axTimes.get_yticklabels()[9].set_color ('r')
+    axTimes.get_xticklabels()[5].set_color ('r')
 
-    # Memories
-    X = XLabels
-    axMems.plot(X, SSMems, linewidth=2.0, color='b', label='SS-gen')
-    axMems.plot(X, PYMems, linewidth=2.0, color='g', label='PY-gen')
-    axMems.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-    axMems.set(ylabel="Memory (MB)")
-    axMems.set(xlabel="The number of complexity")
-    axMems.set_xticklabels(X, rotation=45)
-    axMems.legend(loc="upper left", prop={"size": 8})
+    axMems = axTimes.twinx()
+    axMems.plot(X, SSMems, linewidth=2.0, color='g', linestyle = '--', label='specification:memory')
+    axMems.plot(X, PYMems, linewidth=2.0, color='g', label='python:memory')
+    #axMems.scatter (X, PYMems, color='b')
+    axMems.set(ylabel="Memory usage (MB)")
+    #axMems.set_ylim ([0, 300])
+    axMems.legend(bbox_to_anchor=(0.01, 0.89), loc="upper left", prop={"size": 12})
+    SetYLabelColor (axMems, 'g')
+    SetLabelFrontSize (axMems, 16, 12)
 
     # Code size
     X = XLabels
-    axCodeSize.plot(X, PYSize, linewidth=2.0, color='c')
+    axCodeSize.plot(X, PYSize, linewidth=2.0, color='k')
     axCodeSize.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-    axCodeSize.set(ylabel="Code size (KLoC)")
-    #axCodeSize.set(xlabel="The number of complexity")
+    axCodeSize.set(ylabel="Python code size (KLoC)")
+    #axCodeSize.set(xlabel="Specification size")
     axCodeSize.set_xticklabels(X, rotation=45)
+    SetLabelFrontSize (axCodeSize, 16, 12)
+    SetYLabelRight (axCodeSize)
+    axCodeSize.get_yticklabels()[5].set_color ('r')
+    axCodeSize.get_xticklabels()[5].set_color ('r')
 
+    axCodeSize.text(-2.5, -1.35, "Specification size", fontsize=16)
 
-    fig.set_figwidth(20)
+    fig.set_figwidth(12)
     fig.set_figheight(6)
     
-    plt.savefig(Dir+'/PIC_RQ2')
+    plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0.25, hspace=None)
+    plt.savefig(Dir+'/PIC_RQ2', bbox_inches='tight', pad_inches=0, dpi=300)
     plt.close()
     return
 
 def DrawRQ3_1 (Dir):
-    print ("### RQ3.1: drawing Cov/AppNum over time line with diff APP complexity....")
+    print ("### RQ3.1: drawing Cov/AppNum over time line with diff APP specifications....")
 
-    TimeLine = [v*4 for v in range (0, 19)]
+    TimeLine = [v*8 for v in range (0, 16)]
     fig, (axCov, axApp, axStd) = plt.subplots(1, 3)
 
     LineType = {'1':'-', '4':'-', '16':'-', '64':'-', '128':':', '256':':', '512':':', '1024':':'}
@@ -218,47 +255,49 @@ def DrawRQ3_1 (Dir):
         # Cov over time
         X = TimeLine
         Y = Covs = GetCovByTimeLine (TpNodeList, TimeLine)
-        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='complexity-' + str(Complexity))
-        #axCov.set_title('Block coverage over time', fontsize=10)
+        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='spec-' + str(Complexity))
         axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-        axCov.set(ylabel="#Block-coverage")
-        axCov.set(xlabel="Time (hour)")
+        axCov.set(ylabel="Number of basic blocks")
+        #axCov.set(xlabel="Time (hour)")
         axCov.legend(loc="upper left", prop={"size": 8})
 
         # AppNum over time
         Y = Apps = GetAppNumByTimeLine (TpNodeList, TimeLine)
-        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='complexity-' + str(Complexity))
-        #axApp.set_title('Application number over time', fontsize=10)
-        axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-        axApp.set(ylabel="#Application")
-        axApp.set(xlabel="Time (hour)")
+        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='spec-' + str(Complexity))
+        axApp.set(ylabel="Number of applications")
         axApp.legend(loc="upper left", prop={"size": 8})
+        axApp.set(xlabel="Time (hour)")
 
         Y = StdCompute (TimeLine, Covs, Apps)
-        axStd.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='complexity-' + str(Complexity))
+        axStd.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='spec-' + str(Complexity))
         axStd.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-        axStd.set(ylabel="#Block-coverage/#APP")
-        axStd.set(xlabel="Time (hour)")
+        axStd.set(ylabel="Per APP basic-block change / 8h")
+        #axStd.set(xlabel="Time (hour)")
         axStd.legend(loc="upper left", prop={"size": 8})
 
-    fig.set_figwidth(12)
+    fig.set_figwidth(13)
     fig.set_figheight(4)
-    plt.savefig(Dir+'/PIC_RQ3-1_Complexity')
+
+    plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0.25, hspace=None)
+    plt.savefig(Dir+'/PIC_RQ3-1_spec', bbox_inches='tight', pad_inches=0.01, dpi=300)
     plt.close()
 
 def DrawRQ3_2 (Dir):
     print ("### RQ3.2: drawing Cov/AppNum over time line with diff Lv2Budget....")
 
-    TimeLine = [v*4 for v in range (0, 19)]
+    TimeLine = [v*8 for v in range (0, 16)]
     fig, (axCov, axApp, axStd) = plt.subplots(1, 3)
 
-    LineType = {'10':'-', '30':'-', '60':'-', '90':':', '180':':', '360':':'}
-    ColorType = {'10':'k', '30':'g', '60':'b', '90':'k', '180':'g', '360':'b'}
+    LineType = {'10':'-', '30':'-', '60':'-', '90':'-', '180':':', '360':':'}
+    ColorType = {'10':'k', '30':'g', '60':'b', '90':'b', '180':'g', '360':'b'}
 
     AllLogs = GetAllLogs (Dir)
     AllLogs.sort()
     for Log in AllLogs:
+        print (Log)
         Budget = re.findall(r"-Budget-(\d+?)/", Log)[0]
+        if not Budget in ['10', '90', '180', '360']:
+            continue
         LT = LineType[Budget]
         CL = ColorType[Budget]
 
@@ -270,39 +309,41 @@ def DrawRQ3_2 (Dir):
         axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='budget-' + str(Budget))
         #axCov.set_title('Block coverage over time', fontsize=10)
         axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-        axCov.set(ylabel="#Block-coverage")
-        axCov.set(xlabel="Time (hour)")
-        axCov.legend(loc="upper left", prop={"size": 8})
+        axCov.set(ylabel="Number of basic blocks")
+        #axCov.set(xlabel="Time (hour)")
+        axCov.legend(loc="lower right", prop={"size": 8})
 
         # AppNum over time
         Y = Apps = GetAppNumByTimeLine (TpNodeList, TimeLine)
         axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='budget-' + str(Budget))
         #axApp.set_title('Application number over time', fontsize=10)
         axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-        axApp.set(ylabel="#Application")
+        axApp.set(ylabel="Number of applications")
         axApp.set(xlabel="Time (hour)")
         axApp.legend(loc="upper left", prop={"size": 8})
 
         Y = StdCompute (TimeLine, Covs, Apps)
         axStd.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label='budget-' + str(Budget))
         axStd.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-        axStd.set(ylabel="#Block-coverage/#APP")
-        axStd.set(xlabel="Time (hour)")
-        axStd.legend(loc="upper left", prop={"size": 8})
+        axStd.set(ylabel="Per APP basic-block change / 8h")
+        #axStd.set(xlabel="Time (hour)")
+        axStd.legend(loc="upper right", prop={"size": 8})
 
-    fig.set_figwidth(12)
+    fig.set_figwidth(16)
     fig.set_figheight(4)
     
-    plt.savefig(Dir+'/PIC_RQ3-2_Lv2Budget')
+    plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0.25, hspace=None)
+    plt.savefig(Dir+'/PIC_RQ3-2_Lv2Budget', bbox_inches='tight', pad_inches=0.01, dpi=300)
     plt.close()
 
 def DrawRQ3_3 (Dir):
     print ("### RQ3.3: drawing Cov/AppNum over time line with typed/untyped....")
 
-    TimeLine = [v*4 for v in range (0, 19)]
-    fig, (axCov, axApp, axStd) = plt.subplots(1, 3)
+    TimeLine = [v*8 for v in range (0, 16)]
+    fig, (axCov, axStd) = plt.subplots(1, 2)
+    axApp = axCov.twinx()
 
-    LineType = {'typed':'-', 'untyped':'-'}
+    LineType = {'typed':'-', 'untyped':'--'}
     ColorType = {'typed':'k', 'untyped':'g'}
 
     AllLogs = GetAllLogs (Dir)
@@ -319,33 +360,39 @@ def DrawRQ3_3 (Dir):
         # Cov over time
         X = TimeLine
         Y = Covs = GetCovByTimeLine (TpNodeList, TimeLine)
-        axCov.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label=Type)
+        axCov.plot(X, Y, linewidth=2.0, color='k', linestyle=LT, label=Type)
         #axCov.set_title('Block coverage over time', fontsize=10)
         axCov.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-        axCov.set(ylabel="#Block-coverage")
-        axCov.set(xlabel="Time (hour)")
-        axCov.legend(loc="upper left", prop={"size": 8})
+        axCov.set(ylabel="Number of basic blocks")
+        #axCov.set(xlabel="Time (hour)")
+        axCov.legend(bbox_to_anchor=(0.01, 0.99), loc="upper left", prop={"size": 8})
+        SetLabelFrontSize (axCov, 16, 12)
 
         # AppNum over time
         Y = Apps = GetAppNumByTimeLine (TpNodeList, TimeLine)
-        axApp.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label=Type)
-        #axApp.set_title('Application number over time', fontsize=10)
-        axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-        axApp.set(ylabel="#Application")
-        axApp.set(xlabel="Time (hour)")
-        axApp.legend(loc="upper left", prop={"size": 8})
+        axApp.plot(X, Y, linewidth=2.0, color='g', linestyle=LT, label=Type)
+        #axApp.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
+        axApp.set(ylabel="Number of applications")
+        axApp.legend(bbox_to_anchor=(0.01, 0.88), loc="upper left", prop={"size": 8})
+        SetYLabelColor (axApp, 'g')
+        SetLabelFrontSize (axApp, 16, 12)
 
         Y = StdCompute (TimeLine, Covs, Apps)
-        axStd.plot(X, Y, linewidth=2.0, color=CL, linestyle=LT, label=Type)
+        axStd.plot(X, Y, linewidth=2.0, color='k', linestyle=LT, label=Type)
         axStd.grid(color = 'grey', linestyle = '--', linewidth = 0.5)
-        axStd.set(ylabel="#Block-coverage/#APP")
-        axStd.set(xlabel="Time (hour)")
+        axStd.set(ylabel="Per APP basic-block change / 8h")
+        axStd.set(xlabel="   ")
+        SetYLabelRight (axStd)
         axStd.legend(loc="upper left", prop={"size": 8})
+        SetLabelFrontSize (axStd, 16, 12)
 
-    fig.set_figwidth(12)
+        axStd.text(-44, -5, "Time (hour)", fontsize=16)
+
+    fig.set_figwidth(10)
     fig.set_figheight(4)
     
-    plt.savefig(Dir+'/PIC_RQ3-3_Typed')
+    plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0.25, hspace=None)
+    plt.savefig(Dir+'/PIC_RQ3-3_Typed', bbox_inches='tight', pad_inches=0.01, dpi=300)
     plt.close()
 
 def LoadFstl (path):
