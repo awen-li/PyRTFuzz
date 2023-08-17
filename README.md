@@ -1,7 +1,7 @@
 # PyRTFuzz
-fuzzing on python interpreter
+Detecting Bugs in Python Runtimes via Two-Level Collaborative Fuzzing
 
-Useable docker image for PyRTFuzz: ```docker pull daybreak2019/prtfuzz:v1.0 ```
+Useable docker image for PyRTFuzz: ```docker pull daybreak2019/pyrtfuzz:v1.0 ```
 Use the ``` . build.sh ``` to build the whole program.
 
 ```
@@ -14,7 +14,7 @@ PyRTFuzz
 +-- fuzzwrapper      --------------    a wrapper for level-2 fuzzing
 +-- libfuzzer        --------------    the fuzzing core (for both python and c)
 +-- tool             --------------    some self-developed tools for CpyFuzz
-+-- build.sh         --------------    the build script for CpyFuzz
++-- build.sh         --------------    the build script for PyRTFuzz
 
 ```
 
