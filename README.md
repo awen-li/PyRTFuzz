@@ -65,7 +65,4 @@ autofuzz.sh del
 ```
 
 
-## Temporary results:
-[FuzzResult](https://github.com/yhryyq/FuzzResult)
-
 
