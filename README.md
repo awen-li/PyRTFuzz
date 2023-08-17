@@ -13,7 +13,7 @@ PyRTFuzz
 +-- experiments      --------------    the data and scripts for experiments
 +-- fuzzwrapper      --------------    a wrapper for level-2 fuzzing
 +-- libfuzzer        --------------    the fuzzing core (for both python and c)
-+-- tool             --------------    some self-developed tools for CpyFuzz
++-- tool             --------------    some self-developed tools for PyRTFuzz
 +-- build.sh         --------------    the build script for PyRTFuzz
 
 ```
