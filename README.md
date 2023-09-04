@@ -9,7 +9,7 @@ PyRTFuzz
 +-- apispec          --------------    API spec collection
 +-- atheris          --------------    the python fuzzer
 +-- cpython          --------------    the cpython package for testing
-+-- documents        --------------    the design documents for CpyFuzz
++-- documents        --------------    the design documents for PyRTFuzz
 +-- experiments      --------------    the data and scripts for experiments
 +-- fuzzwrapper      --------------    a wrapper for level-2 fuzzing
 +-- libfuzzer        --------------    the fuzzing core (for both python and c)
