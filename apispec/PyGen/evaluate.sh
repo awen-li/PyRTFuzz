@@ -7,6 +7,8 @@ fi
 export PYRTF_CODEGEN_TIME=1
 touch evaluate.log
 
+apt-get install cloc
+
 # complexity 
 Complexity=(1 4 16 64 128 256 512 1024 2048 4096)
 for Compl in ${Complexity[@]}
