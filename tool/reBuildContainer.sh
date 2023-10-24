@@ -32,9 +32,9 @@ if [ "$rq" == "rq2.1" ] || [ "$rq" == "rq2" ] || [ "$rq" == "all" ]; then
 ./autofuzz.sh run $image python3.9 46 2 typed
 fi
 
-# 2.2 (Level-2) Fuzzing budget: 10 -> 30 -> 60 -> 90 -> 180 -> 360
+# 2.2 (Level-2) Fuzzing budget: 10 -> 90 -> 180 -> 360
 if [ "$rq" == "rq2.3" ] || [ "$rq" == "rq2" ] || [ "$rq" == "all" ]; then
-./autofuzz.sh run $image python3.9 40 6 budget
+./autofuzz.sh run $image python3.9 40 4 budget
 fi
 
 
