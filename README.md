@@ -59,6 +59,7 @@ done
 
 ## Automatically running the experiments with containers
 ```
+cd tool/
 autofuzz.sh run [docker-image] [python3.9/python3.8/python3.7] [start-cpu] [cpu-num]
 autofuzz.sh collect [GitPush:yes (default) / no]
 autofuzz.sh del
