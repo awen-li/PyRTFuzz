@@ -177,8 +177,29 @@ def TimeBudget (Log=None):
     else:
         sys.argv.append (f"-max_total_time={Budget}")
         _Log (Log, f"### set LEVEL-2 budget as {Budget} (s)")
+        
+def EnableHistFilter(Log=None):
+    enable = False
+    newArgv = []
+    for arg in sys.argv:
+        if arg.find ("-history") != -1:
+            enable = True
+        else:
+            newArgv.append (arg)
+    
+    # default time budget
+    sys.argv = newArgv
+    if enable == False:
+       _Log (Log, "### Enable history-failed filter == False!")
+       try:
+           os.remove ("History.hty")
+       except:
+           pass
+    else:
+        _Log (Log, "### Enable history-failed filter == True!")
 
 def ArgHanlde (Log=None):
+    EnableHistFilter (Log)
     Maskexcp (Log)
     DTyped (Log)
     SLComplex (Log)
