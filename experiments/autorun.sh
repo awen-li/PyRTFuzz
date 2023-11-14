@@ -40,7 +40,7 @@ if [ "$ACTION" == "run" ]; then
     setPyEnv $PY
 
     if [ -n "$SubAct" ]; then
-        python -m fuzzloop -pyscript=seeds_$PY -cpu=$CPUID -$SubAct
+        python -m fuzzloop -history -pyscript=seeds_$PY -cpu=$CPUID -$SubAct
     else
         python -m fuzzloop -pyscript=seeds_$PY -cpu=$CPUID
     fi
