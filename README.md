@@ -1,7 +1,7 @@
 # PyRTFuzz
 Detecting Bugs in Python Runtimes via Two-Level Collaborative Fuzzing
 
-Useable docker image for PyRTFuzz: ```docker pull daybreak2019/pyrtfuzz:v1.0 ```
+Useable docker image for PyRTFuzz: ```docker pull daybreak2019/pyrtfuzz:v1.1 ```
 Use the ``` . build.sh ``` to build the whole program.
 
 ```
